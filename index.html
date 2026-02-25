@@ -18,6 +18,7 @@
                 <li><a href="#section-production">Production</a></li>
                 <li><a href="#section-scaling">Scaling</a></li>
                 <li><a href="#section-about">About</a></li>
+                <li><button id="theme-toggle" class="nav-btn" title="Toggle Light/Dark Mode">🌓</button></li>
                 <li><button id="share-btn" class="nav-btn">Share Matchup</button></li>
             </ul>
         </div>
@@ -184,6 +185,7 @@
             <p>Direct 1v1 comparison of both units.</p>
         </div>
         <div class="results-area">
+            <div id="comparison-summary"></div>
             <table class="comparison-table" id="comparison-table">
                 <thead><tr><th>Attribute</th><th id="comp-name-a">Unit A</th><th id="comp-name-b">Unit B</th><th>Difference</th></tr></thead>
                 <tbody></tbody>
@@ -345,6 +347,10 @@
             <p>One of the specific design choices is to make the tool a template for testing out ideas and strategies. Some example scenarios and units are available but the tools strength is to be able to test new units without waiting for a database update. And more importantly to see what the impact of a stat or production nerf would have on certain matchups.</p>
             <p>It uses a deterministic time-based simulation that accounts for attack reloads, armor types, micro overkill, and production delays. This allows you to simulate complex "what-if" scenarios, such as how many full upgraded feudal scouts need to catch up to an all in Man-at-Arms rush, or how target fire micro makes 60 archers beat 60 skirms.</p>
             <p>For feature requests, bug reports, or to contribute, please visit the <a href="https://github.com/Crazybus/chombat" target="_blank" style="color:var(--accent-color); font-weight:bold;">Chombat GitHub repository</a>.</p>
+            <div class="disclaimer">
+                <p>Age of Empires II: Definitive Edition © Microsoft Corporation.</p>
+                <p>Chombat was created under Microsoft's <a href="https://www.xbox.com/en-us/developers/rules" target="_blank" style="color:var(--text-muted); text-decoration:underline;">"Game Content Usage Rules"</a> using assets from Age of Empires II: Definitive Edition, and it is not endorsed by or affiliated with Microsoft.</p>
+            </div>
         </div>
     </main>
 

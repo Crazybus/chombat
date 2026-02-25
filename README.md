@@ -11,3 +11,10 @@ It uses a deterministic time-based simulation that accounts for attack reloads, 
 # Contributing
 
 Pull requests very welcome! Especially for adding missing unit data and interesting test scenarios. The site is static and requires no special dependencies to run and test.
+
+# Game Content Usage Disclaimer
+
+<https://www.xbox.com/en-us/developers/rules>
+
+Age of Empires II: Definitive Edition © Microsoft Corporation.
+Chombat was created under Microsoft's "Game Content Usage Rules" using assets from Age of Empires II: Definitive Edition, and it is not endorsed by or affiliated with Microsoft.

@@ -256,14 +256,27 @@ function updateStatComparison(dA, dB) {
         { label: 'Final 1v1 HP', a: res.armyA.totalHp, b: res.armyB.totalHp, inv: false },
         { label: 'Reload', a: uA.reloadBase, b: uB.reloadBase, inv: true },
         { label: 'Total Cost', a: uA.getParsedCost().total, b: uB.getParsedCost().total, inv: true },
-        { label: 'Train Time', a: uA.trainTime, b: uB.trainTime, inv: true }
+        { label: 'Train Time', a: uA.trainTime, b: uB.trainTime, inv: true },
+        { label: 'Duration', a: res.duration, b: res.duration, inv: false }
     ];
     table.innerHTML = stats.map(s => {
         const diff = s.a - s.b;
         let diffClass = diff === 0 ? 'diff-neutral' : ((diff > 0) !== s.inv ? 'diff-pos' : 'diff-neg');
+        if (s.label === 'Duration') {
+            return `<tr><td>${s.label}</td><td colspan="2" style="text-align:center;">${s.a.toFixed(1)}s</td><td class="diff-neutral">−</td></tr>`;
+        }
         const diffTxt = diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(s.label.includes('Reload') || s.label.includes('DPS') || s.label.includes('Hit') ? 1 : 0);
         return `<tr><td>${s.label}</td><td>${s.a.toFixed(s.label.includes('Reload') || s.label.includes('DPS') || s.label.includes('Hit') ? 1 : 0)}</td><td>${s.b.toFixed(s.label.includes('Reload') || s.label.includes('DPS') || s.label.includes('Hit') ? 1 : 0)}</td><td class="${diffClass}">${diffTxt}</td></tr>`;
     }).join('');
+
+    const sumEl = document.getElementById('comparison-summary');
+    if (sumEl) {
+        const winA = res.armyA.totalHp > res.armyB.totalHp;
+        const winner = winA ? dA.name : dB.name;
+        const winHp = winA ? res.armyA.totalHp : res.armyB.totalHp;
+        const maxHp = winA ? uA.hpPerUnit : uB.hpPerUnit;
+        sumEl.innerHTML = `<h3 style="margin-top:0;">1v1 Winner: <span style="color:${winA ? 'var(--army-a-color)' : 'var(--army-b-color)'}">${winner}</span> <span style="font-size:0.9rem; color:var(--text-dim);">(${winHp.toFixed(0)}/${maxHp}hp)</span></h3>`;
+    }
 }
 
 function onInputChange(shouldSyncURL = true, preserveScenario = false) {
@@ -509,7 +522,7 @@ function updateSummary(dA, dB, res) {
     const hpA = (res.armyA.totalHp / res.armyA.initialTotalHp * 100).toFixed(1);
     const hpB = (res.armyB.totalHp / res.armyB.initialTotalHp * 100).toFixed(1);
     const remA = Math.ceil(res.armyA.remaining), remB = Math.ceil(res.armyB.remaining);
-    el.innerHTML = `<h3>Winner: <span style="color:${res.armyA.totalHp > res.armyB.totalHp ? '#3498db' : '#e74c3c'}">${winner}</span></h3><p>${dA.name} survivors: <strong>${remA}</strong> (${hpA}%) | ${dB.name} survivors: <strong>${remB}</strong> (${hpB}%)</p><p>Duration: ${res.duration.toFixed(1)}s</p>`;
+    el.innerHTML = `<h3>Winner: <span style="color:${res.armyA.totalHp > res.armyB.totalHp ? 'var(--army-a-color)' : 'var(--army-b-color)'}">${winner}</span></h3><p>${dA.name} survivors: <strong>${remA}</strong> (${hpA}%) | ${dB.name} survivors: <strong>${remB}</strong> (${hpB}%)</p><p>Duration: ${res.duration.toFixed(1)}s</p>`;
 }
 
 function updateMatchupTables(dA, dB, cA, cB) {
@@ -594,8 +607,40 @@ function loadDefaults() {
     document.querySelectorAll('input, select, textarea').forEach(el => { if (el.id) defaults[el.id] = el.value; });
 }
 
+function setupTheme() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    const setTheme = (theme) => {
+        if (theme === 'light') {
+            document.body.classList.add('light-theme');
+            toggle.textContent = '🌙';
+        } else {
+            document.body.classList.remove('light-theme');
+            toggle.textContent = '☀️';
+        }
+        localStorage.setItem('theme', theme);
+    };
+
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (systemPrefersLight) {
+        setTheme('light');
+    } else {
+        setTheme('dark');
+    }
+
+    toggle.addEventListener('click', () => {
+        const isLight = document.body.classList.contains('light-theme');
+        setTheme(isLight ? 'dark' : 'light');
+    });
+}
+
 window.onload = () => {
-    loadDefaults(); initSearchablePresets(); initSearchableScenarios(); initScenarioButtons();
+    loadDefaults(); initSearchablePresets(); initSearchableScenarios(); initScenarioButtons(); setupTheme();
     const navB = document.querySelector('.nav-brand'), headH = document.querySelector('header h1');
     if (navB) navB.addEventListener('click', resetApp); if (headH) headH.addEventListener('click', resetApp);
     document.querySelectorAll('.count-btn').forEach(b => b.addEventListener('click', () => { const i = document.getElementById(`${b.dataset.army}-count`); if (i) { i.value = Math.max(1, parseInt(i.value) + parseInt(b.dataset.delta)); onInputChange(); } }));
