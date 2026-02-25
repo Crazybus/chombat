@@ -1,20 +1,20 @@
 const presets = {
-    militia: { name: 'Militia', hp: 40, atk: 4, marm: 0, parm: 1, reload: 2.0, range: 0, f: 50, w: 0, g: 20, trainTime: 21 },
-    maa: { name: 'Man-at-Arms', hp: 45, atk: 6, marm: 0, parm: 1, reload: 2.0, range: 0, f: 50, w: 0, g: 20, trainTime: 21 },
-    champi_scout: { name: 'Champi Scout', hp: 35, atk: 4, marm: 0, parm: 2, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 30 },
-    champi_runner: { name: 'Champi Runner', hp: 40, atk: 5, marm: 0, parm: 2, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 30 },
-    champi_warrior: { name: 'Champi Warrior', hp: 55, atk: 9, marm: 0, parm: 3, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 21 },
-    elite_champi_warrior: { name: 'Elite Champi Runner', hp: 65, atk: 11, marm: 0, parm: 4, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 21 },
-    scout: { name: 'Scout Cavalry', hp: 45, atk: 5, marm: 0, parm: 2, reload: 2.0, range: 0, f: 80, w: 0, g: 0, trainTime: 30 },
-    scout_fu: { name: 'Scout Cavalry (FU Feudal)', hp: 65, atk: 6, marm: 1, parm: 3, reload: 2.0, range: 0, f: 80, w: 0, g: 0, trainTime: 30 },
-    spear: { name: 'Spearman', hp: 45, atk: 3, marm: 0, parm: 0, reload: 3.0, range: 0, f: 35, w: 25, g: 0, trainTime: 25 },
-    archer: { name: 'Archer', hp: 30, atk: 4, marm: 0, parm: 0, reload: 2.0, range: 4, f: 0, w: 25, g: 45, trainTime: 35 },
-    skirm: { name: 'Skirmisher', hp: 30, atk: 2, marm: 0, parm: 3, reload: 3.0, range: 4, f: 25, w: 35, g: 0, trainTime: 22 },
-    eagle: { name: 'Eagle Scout', hp: 50, atk: 4, marm: 0, parm: 2, reload: 1.9, range: 0, f: 20, w: 0, g: 50, trainTime: 35 },
-    paladin: { name: 'Paladin', hp: 160, atk: 14, marm: 2, parm: 3, reload: 1.9, range: 0, f: 60, w: 0, g: 75, trainTime: 30 },
-    knight: { name: 'Knight', hp: 100, atk: 10, marm: 2, parm: 2, reload: 1.8, range: 0, f: 60, w: 0, g: 75, trainTime: 30 },
-    halb: { name: 'Halberdier', hp: 60, atk: 6, marm: 0, parm: 0, reload: 3.0, range: 0, f: 35, w: 25, g: 0, trainTime: 25 },
-    arbalest: { name: 'Arbalest', hp: 40, atk: 6, marm: 0, parm: 0, reload: 2.0, range: 5, f: 0, w: 25, g: 45, trainTime: 27 }
+    militia: { name: 'Militia', hp: 40, matk: 4, patk: 0, marm: 0, parm: 1, reload: 2.0, range: 0, f: 50, w: 0, g: 20, trainTime: 21 },
+    maa: { name: 'Man-at-Arms', hp: 45, matk: 6, patk: 0, marm: 0, parm: 1, reload: 2.0, range: 0, f: 50, w: 0, g: 20, trainTime: 21 },
+    champi_scout: { name: 'Champi Scout', hp: 35, matk: 4, patk: 0, marm: 0, parm: 2, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 30 },
+    champi_runner: { name: 'Champi Runner', hp: 40, matk: 5, patk: 0, marm: 0, parm: 2, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 30 },
+    champi_warrior: { name: 'Champi Warrior', hp: 55, matk: 9, patk: 0, marm: 0, parm: 3, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 21 },
+    elite_champi_warrior: { name: 'Elite Champi Runner', hp: 65, matk: 11, patk: 0, marm: 0, parm: 4, reload: 2.0, range: 0, f: 45, w: 0, g: 25, trainTime: 21 },
+    scout: { name: 'Scout Cavalry', hp: 45, matk: 5, patk: 0, marm: 0, parm: 2, reload: 2.0, range: 0, f: 80, w: 0, g: 0, trainTime: 30 },
+    scout_fu: { name: 'Scout Cavalry (FU Feudal)', hp: 65, matk: 6, patk: 0, marm: 1, parm: 3, reload: 2.0, range: 0, f: 80, w: 0, g: 0, trainTime: 30 },
+    spear: { name: 'Spearman', hp: 45, matk: 3, patk: 0, marm: 0, parm: 0, reload: 3.0, range: 0, f: 35, w: 25, g: 0, trainTime: 25 },
+    archer: { name: 'Archer', hp: 30, matk: 0, patk: 4, marm: 0, parm: 0, reload: 2.0, range: 4, f: 0, w: 25, g: 45, trainTime: 35 },
+    skirm: { name: 'Skirmisher', hp: 30, matk: 0, patk: 2, marm: 0, parm: 3, reload: 3.0, range: 4, f: 25, w: 35, g: 0, trainTime: 22 },
+    eagle: { name: 'Eagle Scout', hp: 50, matk: 4, patk: 0, marm: 0, parm: 2, reload: 1.9, range: 0, f: 20, w: 0, g: 50, trainTime: 35 },
+    paladin: { name: 'Paladin', hp: 160, matk: 14, patk: 0, marm: 2, parm: 3, reload: 1.9, range: 0, f: 60, w: 0, g: 75, trainTime: 30 },
+    knight: { name: 'Knight', hp: 100, matk: 10, patk: 0, marm: 2, parm: 2, reload: 1.8, range: 0, f: 60, w: 0, g: 75, trainTime: 30 },
+    halb: { name: 'Halberdier', hp: 60, matk: 6, patk: 0, marm: 0, parm: 0, reload: 3.0, range: 0, f: 35, w: 25, g: 0, trainTime: 25 },
+    arbalest: { name: 'Arbalest', hp: 40, matk: 0, patk: 6, marm: 0, parm: 0, reload: 2.0, range: 5, f: 0, w: 25, g: 45, trainTime: 27 }
 };
 
 const scenarios = {
@@ -69,7 +69,8 @@ class Unit {
         this.currentCount = this.initialCount;
         this.hpPerUnit = parseFloat(data.hp) || 1;
         this.currentUnitHp = this.hpPerUnit;
-        this.atk = parseFloat(data.atk) || 0;
+        this.matk = parseFloat(data.matk) || 0;
+        this.patk = parseFloat(data.patk) || 0;
         this.marm = parseFloat(data.marm) || 0;
         this.parm = parseFloat(data.parm) || 0;
         this.reloadBase = parseFloat(data.reload) || 2.0;
@@ -107,8 +108,10 @@ class CombatSim {
         this.time = 0; this.tick = 0.05; this.history = [];
     }
     calculateDamage(attacker, defender) {
-        const armor = attacker.isMelee() ? defender.marm : defender.parm;
-        return Math.max(1, attacker.atk - armor) + (attacker.bonusAtk * (1 - defender.bonusReduction));
+        const isMelee = attacker.isMelee();
+        const armor = isMelee ? defender.marm : defender.parm;
+        const atk = isMelee ? attacker.matk : attacker.patk;
+        return Math.max(1, atk - armor) + (attacker.bonusAtk * (1 - defender.bonusReduction));
     }
     run() {
         const subA = new Unit({ ...this.dataA }), subB = new Unit({ ...this.dataB });
@@ -155,10 +158,10 @@ class CombatSim {
 }
 
 const stateMap = {
-    'a-name': 'an', 'a-hp': 'ah', 'a-atk': 'at', 'a-marm': 'am', 'a-parm': 'ap', 'a-reload': 'ar', 'a-range': 'ara', 'a-atk-speed': 'as', 'a-bonus-red': 'abr', 'a-bonus': 'abn',
+    'a-name': 'an', 'a-hp': 'ah', 'a-matk': 'at', 'a-patk': 'ap', 'a-marm': 'am', 'a-parm': 'apr', 'a-reload': 'ar', 'a-range': 'ara', 'a-atk-speed': 'as', 'a-bonus-red': 'abr', 'a-bonus': 'abn',
     'a-food': 'af', 'a-wood': 'aw', 'a-gold': 'ag', 'a-disc-all': 'ada', 'a-disc-f': 'adf', 'a-disc-w': 'adw', 'a-disc-g': 'adg',
     'pa-train': 'att', 'pa-build': 'ab', 'pa-delay': 'ad', 'pa-tech': 'atd', 'pa-pre': 'aub', 'a-count': 'acn', 'a-eng': 'ae', 'a-groups-slider': 'amc',
-    'b-name': 'bn', 'b-hp': 'bh', 'b-atk': 'bt', 'b-marm': 'bm', 'b-parm': 'bp', 'b-reload': 'br', 'b-range': 'bra', 'b-atk-speed': 'bs', 'b-bonus-red': 'bbr', 'b-bonus': 'bbn',
+    'b-name': 'bn', 'b-hp': 'bh', 'b-matk': 'bt', 'b-patk': 'bp', 'b-marm': 'bm', 'b-parm': 'bpr', 'b-reload': 'br', 'b-range': 'bra', 'b-atk-speed': 'bs', 'b-bonus-red': 'bbr', 'b-bonus': 'bbn',
     'b-food': 'bf', 'b-wood': 'bw', 'b-gold': 'bg', 'b-disc-all': 'bda', 'b-disc-f': 'bdf', 'b-disc-w': 'bdw', 'b-disc-g': 'bdg',
     'pb-train': 'btt', 'pb-build': 'bb', 'pb-delay': 'bd', 'pb-tech': 'btd', 'pb-pre': 'bcn', 'b-count': 'bcnt', 'b-eng': 'be', 'b-groups-slider': 'bmc',
     'scenario-desc': 'sd'
@@ -167,7 +170,9 @@ const stateMap = {
 function getInputs(p) {
     const safeGet = (id) => { const el = document.getElementById(id); return el ? el.value : (id.includes('build') ? 1 : 0); };
     return {
-        name: safeGet(`${p}-name`), count: parseFloat(safeGet(`${p}-count`)) || 1, hp: parseFloat(safeGet(`${p}-hp`)) || 1, atk: parseFloat(safeGet(`${p}-atk`)) || 0, marm: parseFloat(safeGet(`${p}-marm`)) || 0, parm: parseFloat(safeGet(`${p}-parm`)) || 0, reload: parseFloat(safeGet(`${p}-reload`)) || 2.0, range: parseFloat(safeGet(`${p}-range`)) || 0, atkSpeed: parseFloat(safeGet(`${p}-atk-speed`)) || 0, bonusReduct: parseFloat(safeGet(`${p}-bonus-red`)) || 0, bonusAtk: parseFloat(safeGet(`${p}-bonus`)) || 0,
+        name: safeGet(`${p}-name`), count: parseFloat(safeGet(`${p}-count`)) || 1, hp: parseFloat(safeGet(`${p}-hp`)) || 1,
+        matk: parseFloat(safeGet(`${p}-matk`)) || 0, patk: parseFloat(safeGet(`${p}-patk`)) || 0,
+        marm: parseFloat(safeGet(`${p}-marm`)) || 0, parm: parseFloat(safeGet(`${p}-parm`)) || 0, reload: parseFloat(safeGet(`${p}-reload`)) || 2.0, range: parseFloat(safeGet(`${p}-range`)) || 0, atkSpeed: parseFloat(safeGet(`${p}-atk-speed`)) || 0, bonusReduct: parseFloat(safeGet(`${p}-bonus-red`)) || 0, bonusAtk: parseFloat(safeGet(`${p}-bonus`)) || 0,
         f: parseFloat(safeGet(`${p}-food`)) || 0, w: parseFloat(safeGet(`${p}-wood`)) || 0, g: parseFloat(safeGet(`${p}-gold`)) || 0, discAll: parseFloat(safeGet(`${p}-disc-all`)) || 0, discF: parseFloat(safeGet(`${p}-disc-f`)) || 0, discW: parseFloat(safeGet(`${p}-disc-w`)) || 0, discG: parseFloat(safeGet(`${p}-disc-g`)) || 0,
         trainTime: parseFloat(safeGet(`p${p}-train`)) || 30, buildings: parseFloat(safeGet(`p${p}-build`)) || 1, delay: parseFloat(safeGet(`p${p}-delay`)) || 0, techDelay: parseFloat(safeGet(`p${p}-tech`)) || 0, unitsBefore: parseFloat(safeGet(`p${p}-pre`)) || 0
     };
@@ -243,6 +248,8 @@ function updateStatComparison(dA, dB) {
 
     const stats = [
         { label: 'HP', a: uA.hpPerUnit, b: uB.hpPerUnit, inv: false },
+        { label: 'M. Attack', a: uA.matk, b: uB.matk, inv: false },
+        { label: 'P. Attack', a: uA.patk, b: uB.patk, inv: false },
         { label: 'Dmg/Hit (Eff)', a: dmgA, b: dmgB, inv: false },
         { label: 'Hits to Kill', a: hitsA, b: hitsB, inv: true },
         { label: 'DPS (Eff)', a: dpsA, b: dpsB, inv: false },
@@ -296,7 +303,7 @@ function applyPreset(a, k, sSync = true) {
     const p = presets[k]; if (!p) return;
     const sI = document.querySelector(`.searchable-preset[data-army="${a}"] .preset-search`);
     if (sI) { sI.value = ""; sI.dataset.value = k; }
-    ['name', 'hp', 'atk', 'marm', 'parm', 'reload', 'range'].forEach(x => { const el = document.getElementById(`${a}-${x}`); if (el) el.value = p[x]; });
+    ['name', 'hp', 'matk', 'patk', 'marm', 'parm', 'reload', 'range'].forEach(x => { const el = document.getElementById(`${a}-${x}`); if (el) el.value = p[x] || 0; });
     const f = document.getElementById(`${a}-food`), w = document.getElementById(`${a}-wood`), g = document.getElementById(`${a}-gold`);
     if (f) f.value = p.f; if (w) w.value = p.w; if (g) g.value = p.g;
     const pIds = { 'train': 'trainTime', 'build': 'buildings', 'delay': 'delay', 'tech': 'techDelay', 'pre': 'unitsBefore' };
