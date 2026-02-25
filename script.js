@@ -50,9 +50,9 @@ const scenarios = {
     },
     archer_vs_skirm_mass: {
         name: "Target Fire 60 vs 60 Archer vs Skirm",
-        desc: "60 Archers vs 60 Skirmishers. Demonstrates how target fire and overkill avoidance change the outcome. Focus fire (1) allows Archers to win by 'one-shotting' units, while Split (2+) or Perfect micro favors Skirmishers by reducing wasted damage.",
+        desc: "60 Archers vs 60 Skirmishers. Demonstrates how target fire and overkill avoidance change the outcome. When both use Focus Fire (1), Archers can win by 'one-shotting' units, while switching to Perfect micro (5) would favor Skirmishers by reducing wasted damage.",
         a: { preset: 'archer', count: 60, delay: 0, tech: 0, pre: 0, amc: 1 },
-        b: { preset: 'skirm', count: 60, delay: 0, tech: 0, pre: 0, bbn: 3, bmc: 5 }
+        b: { preset: 'skirm', count: 60, delay: 0, tech: 0, pre: 0, bbn: 3, bmc: 1 }
     }
 };
 
@@ -311,7 +311,16 @@ function applyScenario(k) {
     ['a', 'b'].forEach(army => {
         const d = s[army];
         Object.keys(d).forEach(prop => {
-            const pMap = { 'train-time': `p${army}-train`, 'buildings': `p${army}-build`, 'delay': `p${army}-delay`, 'tech-delay': `p${army}-tech`, 'pre': `p${army}-pre`, 'bbn': `${army}-bonus` };
+            const pMap = { 
+                'train-time': `p${army}-train`, 
+                'buildings': `p${army}-build`, 
+                'delay': `p${army}-delay`, 
+                'tech-delay': `p${army}-tech`, 
+                'pre': `p${army}-pre`, 
+                'bbn': `${army}-bonus`,
+                'amc': 'a-groups-slider',
+                'bmc': 'b-groups-slider'
+            };
             const elId = pMap[prop] || `${army}-${prop}`;
             const el = document.getElementById(elId); if (el) el.value = d[prop];
         });
@@ -584,7 +593,7 @@ window.onload = () => {
         const id = btn.dataset.id, delta = parseFloat(btn.dataset.val), input = document.getElementById(id);
         if (input) { input.value = (parseFloat(input.value) + delta).toFixed(id.includes('reload') ? 1 : 0); onInputChange(); }
     }));
-    document.querySelectorAll('input, select, textarea').forEach(el => { if (el.classList.contains('preset-search')) return; el.addEventListener('input', () => onInputChange()); });
+    document.querySelectorAll('input, select, textarea').forEach(el => { if (el.classList.contains('preset-search') || el.classList.contains('scenario-search')) return; el.addEventListener('input', () => onInputChange()); });
     const shareB = document.getElementById('share-btn'); if (shareB) shareB.addEventListener('click', () => { navigator.clipboard.writeText(window.location.href); const oT = shareB.textContent; shareB.textContent = "Copied!"; setTimeout(() => shareB.textContent = oT, 2000); });
     document.querySelectorAll('.toggle-stats-btn').forEach(btn => btn.addEventListener('click', () => {
         const targetId = btn.dataset.target;

@@ -148,7 +148,8 @@ main {
     background: var(--panel-bg);
     padding: 10px 20px;
     border-radius: var(--border-radius);
-    overflow-x: auto;
+    overflow: visible;
+    flex-wrap: wrap;
     box-sizing: border-box;
 }
 
@@ -321,7 +322,7 @@ header h1 {
     background: #222;
     border: 1px solid #444;
     border-top: none;
-    z-index: 100;
+    z-index: 2000;
     max-height: 300px;
     overflow-y: auto;
     border-radius: 0 0 4px 4px;
@@ -688,7 +689,7 @@ td { padding: 8px 5px; border-bottom: 1px solid #222; }
     .prod-fields-row .field { flex: 1 1 calc(50% - 10px); min-width: 120px; }
     
     .searchable-scenario { width: 100%; }
-    .scenarios-bar { flex-wrap: wrap; justify-content: center; }
+    .scenarios-bar { flex-wrap: wrap; justify-content: center; overflow: visible; }
     
     .comparison-table { font-size: 0.8rem; }
     .comparison-table th, .comparison-table td { padding: 8px 5px; }
