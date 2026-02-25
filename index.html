@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chombat - AoE2 Combat Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="sticky-nav">
+        <div class="nav-content">
+            <span class="nav-brand">CHOMBAT</span>
+            <ul>
+                <li><a href="#section-comparison">Stats</a></li>
+                <li><a href="#section-battle">Battle Sim</a></li>
+                <li><a href="#section-production">Production</a></li>
+                <li><a href="#section-scaling">Scaling</a></li>
+                <li><button id="share-btn" class="nav-btn">Share Matchup</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="scenarios-bar">
+            <span style="font-weight: bold; color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase;">Scenarios:</span>
+            <button class="scenario-btn" data-scenario="militia_vs_scouts">Militia vs Scouts</button>
+            <button class="scenario-btn" data-scenario="maa_vs_scouts">MAA vs Scouts</button>
+            <button class="scenario-btn" data-scenario="archers_vs_skirms">Archers vs Skirms</button>
+            
+            <div class="searchable-scenario">
+                <input type="text" class="scenario-search" placeholder="Search more scenarios...">
+                <div class="scenario-list hidden"></div>
+            </div>
+        </div>
+        <div class="scenario-context">
+            <textarea id="scenario-desc" placeholder="Add a description for this matchup scenario..."></textarea>
+        </div>
+
+        <div class="simulation-container">
+            <!-- Unit A -->
+            <section class="army-panel" id="army-a">
+                <div class="header-row">
+                    <h2 id="name-header-a">Unit A</h2>
+                    <div class="searchable-preset" data-army="a">
+                        <input type="text" class="preset-search" placeholder="Select Unit...">
+                        <div class="preset-list hidden"></div>
+                    </div>
+                </div>
+                <div class="unit-config">
+                    <div class="field">
+                        <label>Unit Name</label>
+                        <input type="text" id="a-name" value="Paladin">
+                    </div>
+                    <div class="grid-fields">
+                        <div class="field"><label>HP</label><div class="stepper"><button class="step-btn" data-id="a-hp" data-val="-5">−</button><input type="number" id="a-hp" value="160"><button class="step-btn" data-id="a-hp" data-val="5">+</button></div></div>
+                        <div class="field"><label>Attack</label><div class="stepper"><button class="step-btn" data-id="a-atk" data-val="-1">−</button><input type="number" id="a-atk" value="14"><button class="step-btn" data-id="a-atk" data-val="1">+</button></div></div>
+                        <div class="field"><label>M. Armor</label><div class="stepper"><button class="step-btn" data-id="a-marm" data-val="-1">−</button><input type="number" id="a-marm" value="2"><button class="step-btn" data-id="a-marm" data-val="1">+</button></div></div>
+                        <div class="field"><label>P. Armor</label><div class="stepper"><button class="step-btn" data-id="a-parm" data-val="-1">−</button><input type="number" id="a-parm" value="3"><button class="step-btn" data-id="a-parm" data-val="1">+</button></div></div>
+                        <div class="field"><label>Reload (s)</label><div class="stepper"><button class="step-btn" data-id="a-reload" data-val="-0.1">−</button><input type="number" id="a-reload" value="1.9" step="0.1"><button class="step-btn" data-id="a-reload" data-val="0.1">+</button></div></div>
+                        <div class="field"><label>Range</label><div class="stepper"><button class="step-btn" data-id="a-range" data-val="-1">−</button><input type="number" id="a-range" value="0"><button class="step-btn" data-id="a-range" data-val="1">+</button></div></div>
+                    </div>
+                    <div class="grid-fields">
+                        <div class="field"><label>Atk Speed %</label><div class="stepper"><button class="step-btn" data-id="a-atk-speed" data-val="-5">−</button><input type="number" id="a-atk-speed" value="0"><button class="step-btn" data-id="a-atk-speed" data-val="5">+</button></div></div>
+                        <div class="field"><label>Bonus Red %</label><div class="stepper"><button class="step-btn" data-id="a-bonus-red" data-val="-5">−</button><input type="number" id="a-bonus-red" value="0"><button class="step-btn" data-id="a-bonus-red" data-val="5">+</button></div></div>
+                    </div>
+                    <div class="grid-fields">
+                        <div class="field"><label>Bonus vs Opp</label><div class="stepper"><button class="step-btn" data-id="a-bonus" data-val="-1">−</button><input type="number" id="a-bonus" value="0"><button class="step-btn" data-id="a-bonus" data-val="1">+</button></div></div>
+                    </div>
+                    <div class="cost-config">
+                        <label>Base Cost</label>
+                        <div class="grid-fields triple">
+                            <div class="field"><label>Food</label><div class="stepper"><button class="step-btn" data-id="a-food" data-val="-5">−</button><input type="number" id="a-food" value="60"><button class="step-btn" data-id="a-food" data-val="5">+</button></div></div>
+                            <div class="field"><label>Wood</label><div class="stepper"><button class="step-btn" data-id="a-wood" data-val="-5">−</button><input type="number" id="a-wood" value="0"><button class="step-btn" data-id="a-wood" data-val="5">+</button></div></div>
+                            <div class="field"><label>Gold</label><div class="stepper"><button class="step-btn" data-id="a-gold" data-val="-5">−</button><input type="number" id="a-gold" value="75"><button class="step-btn" data-id="a-gold" data-val="5">+</button></div></div>
+                        </div>
+                        <div class="discount-fields">
+                            <label>Discounts (%)</label>
+                            <div class="grid-fields quadruple">
+                                <div class="field"><label>All</label><div class="stepper"><button class="step-btn" data-id="a-disc-all" data-val="-5">−</button><input type="number" id="a-disc-all" value="0"><button class="step-btn" data-id="a-disc-all" data-val="5">+</button></div></div>
+                                <div class="field"><label>Food</label><div class="stepper"><button class="step-btn" data-id="a-disc-f" data-val="-5">−</button><input type="number" id="a-disc-f" value="0"><button class="step-btn" data-id="a-disc-f" data-val="5">+</button></div></div>
+                                <div class="field"><label>Wood</label><div class="stepper"><button class="step-btn" data-id="a-disc-w" data-val="-5">−</button><input type="number" id="a-disc-w" value="0"><button class="step-btn" data-id="a-disc-w" data-val="5">+</button></div></div>
+                                <div class="field"><label>Gold</label><div class="stepper"><button class="step-btn" data-id="a-disc-g" data-val="-5">−</button><input type="number" id="a-disc-g" value="0"><button class="step-btn" data-id="a-disc-g" data-val="5">+</button></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="efficiency-config">
+                    <h3>Engagement Efficiency</h3>
+                    <div class="field">
+                        <label title="Percentage of units that can attack at the same time">Engagement % <span id="a-eng-val">100%</span></label>
+                        <input type="range" id="a-eng" min="1" max="100" value="100">
+                    </div>
+                    <div class="field">
+                        <label class="help-label">
+                            Target Micro <span class="help-icon">?</span>
+                            <span class="help-text">1: Focus Fire. 5: Perfect.</span>
+                            <span id="a-micro-val" class="val-display">Perfect</span>
+                        </label>
+                        <input type="range" id="a-groups-slider" min="1" max="5" value="5">
+                        <input type="hidden" id="a-groups" value="0">
+                    </div>
+                </div>
+            </section>
+
+            <div class="vs-divider">VS</div>
+
+            <!-- Unit B -->
+            <section class="army-panel" id="army-b">
+                <div class="header-row">
+                    <h2 id="name-header-b">Unit B</h2>
+                    <div class="searchable-preset" data-army="b">
+                        <input type="text" class="preset-search" placeholder="Select Unit...">
+                        <div class="preset-list hidden"></div>
+                    </div>
+                </div>
+                <div class="unit-config">
+                    <div class="field">
+                        <label>Unit Name</label>
+                        <input type="text" id="b-name" value="Halberdier">
+                    </div>
+                    <div class="grid-fields">
+                        <div class="field"><label>HP</label><div class="stepper"><button class="step-btn" data-id="b-hp" data-val="-5">−</button><input type="number" id="b-hp" value="60"><button class="step-btn" data-id="b-hp" data-val="5">+</button></div></div>
+                        <div class="field"><label>Attack</label><div class="stepper"><button class="step-btn" data-id="b-atk" data-val="-1">−</button><input type="number" id="b-atk" value="6"><button class="step-btn" data-id="b-atk" data-val="1">+</button></div></div>
+                        <div class="field"><label>M. Armor</label><div class="stepper"><button class="step-btn" data-id="b-marm" data-val="-1">−</button><input type="number" id="b-marm" value="0"><button class="step-btn" data-id="b-marm" data-val="1">+</button></div></div>
+                        <div class="field"><label>P. Armor</label><div class="stepper"><button class="step-btn" data-id="b-parm" data-val="-1">−</button><input type="number" id="b-parm" value="0"><button class="step-btn" data-id="b-parm" data-val="1">+</button></div></div>
+                        <div class="field"><label>Reload (s)</label><div class="stepper"><button class="step-btn" data-id="b-reload" data-val="-0.1">−</button><input type="number" id="b-reload" value="3.0" step="0.1"><button class="step-btn" data-id="b-reload" data-val="0.1">+</button></div></div>
+                        <div class="field"><label>Range</label><div class="stepper"><button class="step-btn" data-id="b-range" data-val="-1">−</button><input type="number" id="b-range" value="0"><button class="step-btn" data-id="b-range" data-val="1">+</button></div></div>
+                    </div>
+                    <div class="grid-fields">
+                        <div class="field"><label>Atk Speed %</label><div class="stepper"><button class="step-btn" data-id="b-atk-speed" data-val="-5">−</button><input type="number" id="b-atk-speed" value="0"><button class="step-btn" data-id="b-atk-speed" data-val="5">+</button></div></div>
+                        <div class="field"><label>Bonus Red %</label><div class="stepper"><button class="step-btn" data-id="b-bonus-red" data-val="-5">−</button><input type="number" id="b-bonus-red" value="0"><button class="step-btn" data-id="b-bonus-red" data-val="5">+</button></div></div>
+                    </div>
+                    <div class="grid-fields">
+                        <div class="field"><label>Bonus vs Opp</label><div class="stepper"><button class="step-btn" data-id="b-bonus" data-val="-1">−</button><input type="number" id="b-bonus" value="32"><button class="step-btn" data-id="b-bonus" data-val="1">+</button></div></div>
+                    </div>
+                    <div class="cost-config">
+                        <label>Base Cost</label>
+                        <div class="grid-fields triple">
+                            <div class="field"><label>Food</label><div class="stepper"><button class="step-btn" data-id="b-food" data-val="-5">−</button><input type="number" id="b-food" value="35"><button class="step-btn" data-id="b-food" data-val="5">+</button></div></div>
+                            <div class="field"><label>Wood</label><div class="stepper"><button class="step-btn" data-id="b-wood" data-val="-5">−</button><input type="number" id="b-wood" value="25"><button class="step-btn" data-id="b-wood" data-val="5">+</button></div></div>
+                            <div class="field"><label>Gold</label><div class="stepper"><button class="step-btn" data-id="b-gold" data-val="-5">−</button><input type="number" id="b-gold" value="0"><button class="step-btn" data-id="b-gold" data-val="5">+</button></div></div>
+                        </div>
+                        <div class="discount-fields">
+                            <label>Discounts (%)</label>
+                            <div class="grid-fields quadruple">
+                                <div class="field"><label>All</label><div class="stepper"><button class="step-btn" data-id="b-disc-all" data-val="-5">−</button><input type="number" id="b-disc-all" value="0"><button class="step-btn" data-id="b-disc-all" data-val="5">+</button></div></div>
+                                <div class="field"><label>Food</label><div class="stepper"><button class="step-btn" data-id="b-disc-f" data-val="-5">−</button><input type="number" id="b-disc-f" value="0"><button class="step-btn" data-id="b-disc-f" data-val="5">+</button></div></div>
+                                <div class="field"><label>Wood</label><div class="stepper"><button class="step-btn" data-id="b-disc-w" data-val="-5">−</button><input type="number" id="b-disc-w" value="0"><button class="step-btn" data-id="b-disc-w" data-val="5">+</button></div></div>
+                                <div class="field"><label>Gold</label><div class="stepper"><button class="step-btn" data-id="b-disc-g" data-val="-5">−</button><input type="number" id="b-disc-g" value="0"><button class="step-btn" data-id="b-disc-g" data-val="5">+</button></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="efficiency-config">
+                    <h3>Engagement Efficiency</h3>
+                    <div class="field">
+                        <label>Engagement % <span id="b-eng-val">100%</span></label>
+                        <input type="range" id="b-eng" min="1" max="100" value="100">
+                    </div>
+                    <div class="field">
+                        <label class="help-label">
+                            Target Micro <span class="help-icon">?</span>
+                            <span class="help-text">1: Focus Fire. 5: Perfect.</span>
+                            <span id="b-micro-val" class="val-display">Perfect</span>
+                        </label>
+                        <input type="range" id="b-groups-slider" min="1" max="5" value="5">
+                        <input type="hidden" id="b-groups" value="0">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION: STAT COMPARISON -->
+        <div id="section-comparison" class="section-anchor"></div>
+        <div class="section-header">
+            <h2>Stat Comparison</h2>
+            <p>Direct comparison of unit attributes and differences.</p>
+        </div>
+        <div class="results-area">
+            <table class="comparison-table" id="comparison-table">
+                <thead><tr><th>Attribute</th><th id="comp-name-a">Unit A</th><th id="comp-name-b">Unit B</th><th>Difference</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- SECTION 1 -->
+        <div id="section-battle" class="section-anchor"></div>
+        <div class="section-header">
+            <h2>Battle Simulation</h2>
+            <p>Direct combat results based on current counts.</p>
+        </div>
+        <div class="ratio-bar">
+            <div class="counter-group">
+                <label id="ratio-label-a">Unit A Count</label>
+                <div class="counter-controls">
+                    <button class="count-btn" data-army="a" data-delta="-1">−</button>
+                    <input type="number" id="a-count" value="1" min="1">
+                    <button class="count-btn" data-army="a" data-delta="1">+</button>
+                </div>
+            </div>
+            <div class="ratio-vs">VS</div>
+            <div class="counter-group">
+                <label id="ratio-label-b">Unit B Count</label>
+                <div class="counter-controls">
+                    <button class="count-btn" data-army="b" data-delta="-1">−</button>
+                    <input type="number" id="b-count" value="1" min="1">
+                    <button class="count-btn" data-army="b" data-delta="1">+</button>
+                </div>
+            </div>
+        </div>
+        <section id="results" class="results-area">
+            <div id="stat-summary"></div>
+            <div class="charts-grid">
+                <div class="chart-wrapper"><h4>Unit Counts Over Time</h4><div class="chart-container"><canvas id="countChart"></canvas></div></div>
+                <div class="chart-wrapper"><h4>Total HP Over Time</h4><div class="chart-container"><canvas id="hpChart"></canvas></div></div>
+                <div class="chart-wrapper"><h4>Remaining Value</h4><div class="chart-container"><canvas id="valueChart"></canvas></div></div>
+                <div class="chart-wrapper"><h4>Cost Efficiency Ratio</h4><div class="chart-container"><canvas id="efficiencyChart"></canvas></div></div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <div id="section-production" class="section-anchor"></div>
+        <div class="section-header"><h2>Production Simulation</h2><p>Who wins over time as numbers grow?</p></div>
+        <div class="production-race-controls">
+            <div class="prod-group army-a-border">
+                <label id="prod-name-a">Unit A Production</label>
+                <div class="prod-fields-row">
+                    <div class="field"><label>Train Time (s)</label><div class="stepper"><button class="step-btn" data-id="pa-train" data-val="-1">−</button><input type="number" id="pa-train" value="30"><button class="step-btn" data-id="pa-train" data-val="1">+</button></div></div>
+                    <div class="field"><label>Building Count</label><div class="stepper"><button class="step-btn" data-id="pa-build" data-val="-1">−</button><input type="number" id="pa-build" value="2"><button class="step-btn" data-id="pa-build" data-val="1">+</button></div></div>
+                </div>
+                <div class="delay-section">
+                    <h4 style="margin: 10px 0 5px; font-size: 0.8rem; color: var(--accent-color);">Delay Settings</h4>
+                    <div class="prod-fields-row">
+                        <div class="field">
+                            <label class="help-label">
+                                Initial Delay (s) <span class="help-icon">?</span>
+                                <span class="help-text">Time where no production happens (building, age up, tech requirements).</span>
+                            </label>
+                            <div class="stepper"><button class="step-btn" data-id="pa-delay" data-val="-1">−</button><input type="number" id="pa-delay" value="0"><button class="step-btn" data-id="pa-delay" data-val="1">+</button></div>
+                        </div>
+                        <div class="field">
+                            <label class="help-label">
+                                Unit Count <span class="help-icon">?</span>
+                                <span class="help-text">Number of units to train before the tech delay starts.</span>
+                            </label>
+                            <div class="stepper"><button class="step-btn" data-id="pa-pre" data-val="-1">−</button><input type="number" id="pa-pre" value="0"><button class="step-btn" data-id="pa-pre" data-val="1">+</button></div>
+                        </div>
+                        <div class="field">
+                            <label class="help-label">
+                                Tech Delay (s) <span class="help-icon">?</span>
+                                <span class="help-text">Time spent researching a tech (pauses production in 1 building).</span>
+                            </label>
+                            <div class="stepper"><button class="step-btn" data-id="pa-tech" data-val="-1">−</button><input type="number" id="pa-tech" value="0"><button class="step-btn" data-id="pa-tech" data-val="1">+</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-requirements" id="pa-req"></div>
+            </div>
+            <div class="prod-vs">VS</div>
+            <div class="prod-group army-b-border">
+                <label id="prod-name-b">Unit B Production</label>
+                <div class="prod-fields-row">
+                    <div class="field"><label>Train Time (s)</label><div class="stepper"><button class="step-btn" data-id="pb-train" data-val="-1">−</button><input type="number" id="pb-train" value="22"><button class="step-btn" data-id="pb-train" data-val="1">+</button></div></div>
+                    <div class="field"><label>Building Count</label><div class="stepper"><button class="step-btn" data-id="pb-build" data-val="-1">−</button><input type="number" id="pb-build" value="2"><button class="step-btn" data-id="pb-build" data-val="1">+</button></div></div>
+                </div>
+                <div class="delay-section">
+                    <h4 style="margin: 10px 0 5px; font-size: 0.8rem; color: var(--accent-color);">Delay Settings</h4>
+                    <div class="prod-fields-row">
+                        <div class="field">
+                            <label class="help-label">
+                                Initial Delay (s) <span class="help-icon">?</span>
+                                <span class="help-text">Time where no production happens (building, age up, tech requirements).</span>
+                            </label>
+                            <div class="stepper"><button class="step-btn" data-id="pb-delay" data-val="-1">−</button><input type="number" id="pb-delay" value="0"><button class="step-btn" data-id="pb-delay" data-val="1">+</button></div>
+                        </div>
+                        <div class="field">
+                            <label class="help-label">
+                                Unit Count <span class="help-icon">?</span>
+                                <span class="help-text">Number of units to train before the tech delay starts.</span>
+                            </label>
+                            <div class="stepper"><button class="step-btn" data-id="pb-pre" data-val="-1">−</button><input type="number" id="pb-pre" value="0"><button class="step-btn" data-id="pb-pre" data-val="1">+</button></div>
+                        </div>
+                        <div class="field">
+                            <label class="help-label">
+                                Tech Delay (s) <span class="help-icon">?</span>
+                                <span class="help-text">Time spent researching a tech (pauses production in 1 building).</span>
+                            </label>
+                            <div class="stepper"><button class="step-btn" data-id="pb-tech" data-val="-1">−</button><input type="number" id="pb-tech" value="0"><button class="step-btn" data-id="pb-tech" data-val="1">+</button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod-requirements" id="pb-req"></div>
+            </div>
+        </div>
+        <div class="results-area">
+            <div class="charts-grid scaling-grid">
+                <div class="chart-wrapper"><h4>Army Growth</h4><div class="chart-container"><canvas id="prodGrowthChart"></canvas></div></div>
+                <div class="chart-wrapper"><h4>Battle Advantage</h4><div class="chart-container"><canvas id="prodAdvantageChart"></canvas></div></div>
+            </div>
+            <div class="matchup-report"><h3>Production Analysis</h3><div id="production-report-text">Configure production stats above.</div></div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div id="section-scaling" class="section-anchor"></div>
+        <div class="section-header"><h2>Effectiveness Scaling</h2><p>Pop & Cost efficiency across different swarm ratios.</p></div>
+        <div class="results-area">
+            <div id="matchup-report" class="matchup-report"></div>
+            <div class="scaling-analysis-layout">
+                <div class="side-by-side">
+                    <div class="table-container">
+                        <h3 id="table-a-title">1 A vs X B</h3>
+                        <table id="matchups-a"><thead><tr><th>Matchup</th><th>Survivors / Dead</th><th>Total HP Loss</th></tr></thead><tbody></tbody></table>
+                    </div>
+                    <div class="chart-wrapper"><h4 id="scale1vX-title">1 A vs X B Scaling</h4><div class="chart-container"><canvas id="scale1vXChart"></canvas></div></div>
+                </div>
+                <div class="side-by-side">
+                    <div class="table-container">
+                        <h3 id="table-b-title">1 B vs X A</h3>
+                        <table id="matchups-b"><thead><tr><th>Matchup</th><th>Survivors / Dead</th><th>Total HP Loss</th></tr></thead><tbody></tbody></table>
+                    </div>
+                    <div class="chart-wrapper"><h4 id="scaleXv1-title">1 B vs X A Scaling</h4><div class="chart-container"><canvas id="scaleXv1Chart"></canvas></div></div>
+                </div>
+                <div class="chart-wrapper full-width"><h4 id="scaleXvX-title">X A vs X B Proportional Scaling</h4><div class="chart-container"><canvas id="scaleXvXChart"></canvas></div></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
