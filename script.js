@@ -611,31 +611,46 @@ function setupTheme() {
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
+    const updateToggleIcon = () => {
+        const isLight = document.body.classList.contains('light-theme') || 
+                       (!document.body.classList.contains('dark-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
+        toggle.textContent = isLight ? '🌙' : '☀️';
+    };
+
     const setTheme = (theme) => {
-        if (theme === 'light') {
-            document.body.classList.add('light-theme');
-            toggle.textContent = '🌙';
-        } else {
-            document.body.classList.remove('light-theme');
-            toggle.textContent = '☀️';
-        }
-        localStorage.setItem('theme', theme);
+        document.body.classList.remove('light-theme', 'dark-theme');
+        if (theme) document.body.classList.add(`${theme}-theme`);
+        localStorage.setItem('theme', theme || 'system');
+        updateToggleIcon();
     };
 
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-
-    if (savedTheme) {
+    if (savedTheme && savedTheme !== 'system') {
         setTheme(savedTheme);
-    } else if (systemPrefersLight) {
-        setTheme('light');
     } else {
-        setTheme('dark');
+        updateToggleIcon();
     }
 
+    // Listen for system changes
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+        if (localStorage.getItem('theme') === 'system' || !localStorage.getItem('theme')) {
+            updateToggleIcon();
+        }
+    });
+
     toggle.addEventListener('click', () => {
-        const isLight = document.body.classList.contains('light-theme');
-        setTheme(isLight ? 'dark' : 'light');
+        const isCurrentlyLight = document.body.classList.contains('light-theme') || 
+                                (!document.body.classList.contains('dark-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
+        
+        const newTheme = isCurrentlyLight ? 'dark' : 'light';
+        const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        
+        // If the new manual choice matches the system, just go back to system mode
+        if (newTheme === systemTheme) {
+            setTheme(null); // system
+        } else {
+            setTheme(newTheme);
+        }
     });
 }
 
