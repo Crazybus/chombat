@@ -470,8 +470,27 @@ function applyScenario(k) {
         pre: `p${army}-pre`,
         count: `${army}-count`,
         bbn: `${army}-bonus`,
+        micro: `${army}-groups-slider`,
         amc: 'a-groups-slider',
         bmc: 'b-groups-slider',
+        name: `${army}-name`,
+        hp: `${army}-hp`,
+        matk: `${army}-matk`,
+        patk: `${army}-patk`,
+        marm: `${army}-marm`,
+        parm: `${army}-parm`,
+        reload: `${army}-reload`,
+        range: `${army}-range`,
+        as: `${army}-atk-speed`,
+        abr: `${army}-bonus-red`,
+        f: `${army}-food`,
+        w: `${army}-wood`,
+        g: `${army}-gold`,
+        da: `${army}-disc-all`,
+        df: `${army}-disc-f`,
+        dw: `${army}-disc-w`,
+        dg: `${army}-disc-g`,
+        eng: `${army}-eng`,
       };
       const elId = pMap[prop] || `${army}-${prop}`;
       const el = document.getElementById(elId);
@@ -1023,6 +1042,104 @@ window.onload = () => {
       shareB.textContent = 'Copied!';
       setTimeout(() => (shareB.textContent = oT), 2000);
     });
+
+  const exportB = document.getElementById('export-btn');
+  if (exportB) {
+    exportB.addEventListener('click', () => {
+      const dA = getInputs('a'),
+        dB = getInputs('b');
+      const sA = document.querySelector('.searchable-preset[data-army="a"] .preset-search');
+      const sB = document.querySelector('.searchable-preset[data-army="b"] .preset-search');
+      const desc = document.getElementById('scenario-desc')?.value || '';
+
+      const scenario = {
+        name: 'New Scenario',
+        desc: desc,
+        a: {
+          preset: sA?.dataset.value || '',
+          name: dA.name,
+          hp: dA.hp,
+          matk: dA.matk,
+          patk: dA.patk,
+          marm: dA.marm,
+          parm: dA.parm,
+          reload: dA.reload,
+          range: dA.range,
+          as: dA.atkSpeed,
+          abr: dA.bonusReduct,
+          bbn: dA.bonusAtk,
+          f: dA.f,
+          w: dA.w,
+          g: dA.g,
+          da: dA.discAll,
+          df: dA.discF,
+          dw: dA.discW,
+          dg: dA.discG,
+          count: dA.count,
+          delay: dA.delay,
+          tech: dA.techDelay,
+          pre: dA.unitsBefore,
+          'train-time': dA.trainTime,
+          buildings: dA.buildings,
+          eng: parseFloat(document.getElementById('a-eng')?.value || 100),
+          micro: parseInt(document.getElementById('a-groups-slider')?.value || 5),
+        },
+        b: {
+          preset: sB?.dataset.value || '',
+          name: dB.name,
+          hp: dB.hp,
+          matk: dB.matk,
+          patk: dB.patk,
+          marm: dB.marm,
+          parm: dB.parm,
+          reload: dB.reload,
+          range: dB.range,
+          as: dB.atkSpeed,
+          abr: dB.bonusReduct,
+          bbn: dB.bonusAtk,
+          f: dB.f,
+          w: dB.w,
+          g: dB.g,
+          da: dB.discAll,
+          df: dB.discF,
+          dw: dB.discW,
+          dg: dB.discG,
+          count: dB.count,
+          delay: dB.delay,
+          tech: dB.techDelay,
+          pre: dB.unitsBefore,
+          'train-time': dB.trainTime,
+          buildings: dB.buildings,
+          eng: parseFloat(document.getElementById('b-eng')?.value || 100),
+          micro: parseInt(document.getElementById('b-groups-slider')?.value || 5),
+        },
+      };
+
+      // Format for direct scenarios.js insertion
+      const formatUnit = (u) => {
+        const parts = Object.entries(u)
+          .map(([k, v]) => {
+            const key = k.includes('-') ? `'${k}'` : k;
+            return `${key}: ${typeof v === 'string' ? `'${v}'` : v}`;
+          })
+          .join(', ');
+        return `{ ${parts} }`;
+      };
+
+      const output = `    new_scenario: {
+        name: '${scenario.name}',
+        desc: '${scenario.desc.replace(/'/g, "\\'")}',
+        a: ${formatUnit(scenario.a)},
+        b: ${formatUnit(scenario.b)},
+    },`;
+
+      navigator.clipboard.writeText(output);
+      const oT = exportB.textContent;
+      exportB.textContent = 'Copied Code!';
+      setTimeout(() => (exportB.textContent = oT), 2000);
+    });
+  }
+
   document.querySelectorAll('.toggle-stats-btn').forEach((btn) =>
     btn.addEventListener('click', () => {
       const targetId = btn.dataset.target;
