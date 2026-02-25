@@ -12,10 +12,12 @@
         <div class="nav-content">
             <span class="nav-brand">CHOMBAT</span>
             <ul>
+                <li><a href="#">Units</a></li>
                 <li><a href="#section-comparison">Stats</a></li>
                 <li><a href="#section-battle">Battle Sim</a></li>
                 <li><a href="#section-production">Production</a></li>
                 <li><a href="#section-scaling">Scaling</a></li>
+                <li><a href="#section-about">About</a></li>
                 <li><button id="share-btn" class="nav-btn">Share Matchup</button></li>
             </ul>
         </div>
@@ -24,9 +26,7 @@
     <main>
         <div class="scenarios-bar">
             <span style="font-weight: bold; color: var(--accent-color); font-size: 0.8rem; text-transform: uppercase;">Scenarios:</span>
-            <button class="scenario-btn" data-scenario="militia_vs_scouts">Militia vs Scouts</button>
-            <button class="scenario-btn" data-scenario="maa_vs_scouts">MAA vs Scouts</button>
-            <button class="scenario-btn" data-scenario="archers_vs_skirms">Archers vs Skirms</button>
+            <div id="featured-scenarios-container" style="display: flex; gap: 10px;"></div>
             
             <div class="searchable-scenario">
                 <input type="text" class="scenario-search" placeholder="Search more scenarios...">
@@ -41,13 +41,16 @@
             <!-- Unit A -->
             <section class="army-panel" id="army-a">
                 <div class="header-row">
-                    <h2 id="name-header-a">Unit A</h2>
+                    <div class="name-edit-group">
+                        <h2 id="name-header-a">Unit A</h2>
+                        <button class="toggle-stats-btn" data-target="a-config">Edit</button>
+                    </div>
                     <div class="searchable-preset" data-army="a">
                         <input type="text" class="preset-search" placeholder="Select Unit...">
                         <div class="preset-list hidden"></div>
                     </div>
                 </div>
-                <div class="unit-config">
+                <div class="unit-config collapsed" id="a-config">
                     <div class="field">
                         <label>Unit Name</label>
                         <input type="text" id="a-name" value="Paladin">
@@ -84,37 +87,38 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="efficiency-config">
-                    <h3>Engagement Efficiency</h3>
-                    <div class="field">
-                        <label title="Percentage of units that can attack at the same time">Engagement % <span id="a-eng-val">100%</span></label>
-                        <input type="range" id="a-eng" min="1" max="100" value="100">
-                    </div>
-                    <div class="field">
-                        <label class="help-label">
-                            Target Micro <span class="help-icon">?</span>
-                            <span class="help-text">1: Focus Fire. 5: Perfect.</span>
-                            <span id="a-micro-val" class="val-display">Perfect</span>
-                        </label>
-                        <input type="range" id="a-groups-slider" min="1" max="5" value="5">
-                        <input type="hidden" id="a-groups" value="0">
+                    <div class="efficiency-config">
+                        <h3>Engagement Efficiency</h3>
+                        <div class="field">
+                            <label title="Percentage of units that can attack at the same time">Engagement % <span id="a-eng-val">100%</span></label>
+                            <input type="range" id="a-eng" min="1" max="100" value="100">
+                        </div>
+                        <div class="field">
+                            <label class="help-label">
+                                Target Micro <span class="help-icon">?</span>
+                                <span class="help-text">1: Focus Fire. 5: Perfect.</span>
+                                <span id="a-micro-val" class="val-display">Perfect</span>
+                            </label>
+                            <input type="range" id="a-groups-slider" min="1" max="5" value="5">
+                            <input type="hidden" id="a-groups" value="0">
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <div class="vs-divider">VS</div>
-
             <!-- Unit B -->
             <section class="army-panel" id="army-b">
                 <div class="header-row">
-                    <h2 id="name-header-b">Unit B</h2>
+                    <div class="name-edit-group">
+                        <h2 id="name-header-b">Unit B</h2>
+                        <button class="toggle-stats-btn" data-target="b-config">Edit</button>
+                    </div>
                     <div class="searchable-preset" data-army="b">
                         <input type="text" class="preset-search" placeholder="Select Unit...">
                         <div class="preset-list hidden"></div>
                     </div>
                 </div>
-                <div class="unit-config">
+                <div class="unit-config collapsed" id="b-config">
                     <div class="field">
                         <label>Unit Name</label>
                         <input type="text" id="b-name" value="Halberdier">
@@ -151,21 +155,21 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="efficiency-config">
-                    <h3>Engagement Efficiency</h3>
-                    <div class="field">
-                        <label>Engagement % <span id="b-eng-val">100%</span></label>
-                        <input type="range" id="b-eng" min="1" max="100" value="100">
-                    </div>
-                    <div class="field">
-                        <label class="help-label">
-                            Target Micro <span class="help-icon">?</span>
-                            <span class="help-text">1: Focus Fire. 5: Perfect.</span>
-                            <span id="b-micro-val" class="val-display">Perfect</span>
-                        </label>
-                        <input type="range" id="b-groups-slider" min="1" max="5" value="5">
-                        <input type="hidden" id="b-groups" value="0">
+                    <div class="efficiency-config">
+                        <h3>Engagement Efficiency</h3>
+                        <div class="field">
+                            <label>Engagement % <span id="b-eng-val">100%</span></label>
+                            <input type="range" id="b-eng" min="1" max="100" value="100">
+                        </div>
+                        <div class="field">
+                            <label class="help-label">
+                                Target Micro <span class="help-icon">?</span>
+                                <span class="help-text">1: Focus Fire. 5: Perfect.</span>
+                                <span id="b-micro-val" class="val-display">Perfect</span>
+                            </label>
+                            <input type="range" id="b-groups-slider" min="1" max="5" value="5">
+                            <input type="hidden" id="b-groups" value="0">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -174,8 +178,8 @@
         <!-- SECTION: STAT COMPARISON -->
         <div id="section-comparison" class="section-anchor"></div>
         <div class="section-header">
-            <h2>Stat Comparison</h2>
-            <p>Direct comparison of unit attributes and differences.</p>
+            <a href="#section-comparison"><h2>Stat Comparison</h2></a>
+            <p>Direct 1v1 comparison of both units.</p>
         </div>
         <div class="results-area">
             <table class="comparison-table" id="comparison-table">
@@ -187,8 +191,8 @@
         <!-- SECTION 1 -->
         <div id="section-battle" class="section-anchor"></div>
         <div class="section-header">
-            <h2>Battle Simulation</h2>
-            <p>Direct combat results based on current counts.</p>
+            <a href="#section-battle"><h2>Battle Simulation</h2></a>
+            <p>Simulated combat results based specific army sizes. Micro and engagement settings can be changed in the unit section</p>
         </div>
         <div class="ratio-bar">
             <div class="counter-group">
@@ -221,7 +225,10 @@
 
         <!-- SECTION 3 -->
         <div id="section-production" class="section-anchor"></div>
-        <div class="section-header"><h2>Production Simulation</h2><p>Who wins over time as numbers grow?</p></div>
+        <div class="section-header">
+            <a href="#section-production"><h2>Production Simulation</h2></a>
+            <p>This section allows you to factor in production timing and any delays from technology research and construction time. If someone starts massing miltia in dark age, how long until you have enough scouts to win?</p>
+        </div>
         <div class="production-race-controls">
             <div class="prod-group army-a-border">
                 <label id="prod-name-a">Unit A Production</label>
@@ -303,26 +310,39 @@
 
         <!-- SECTION 2 -->
         <div id="section-scaling" class="section-anchor"></div>
-        <div class="section-header"><h2>Effectiveness Scaling</h2><p>Pop & Cost efficiency across different swarm ratios.</p></div>
+        <div class="section-header">
+            <a href="#section-scaling"><h2>Effectiveness Scaling</h2></a>
+            <p>Pop & Cost efficiency across different swarm ratios.</p>
+        </div>
         <div class="results-area">
             <div id="matchup-report" class="matchup-report"></div>
             <div class="scaling-analysis-layout">
                 <div class="side-by-side">
                     <div class="table-container">
                         <h3 id="table-a-title">1 A vs X B</h3>
-                        <table id="matchups-a"><thead><tr><th>Matchup</th><th>Survivors / Dead</th><th>Total HP Loss</th></tr></thead><tbody></tbody></table>
+                        <table id="matchups-a"><thead><tr><th>Ratio</th><th>Result</th></tr></thead><tbody></tbody></table>
                     </div>
                     <div class="chart-wrapper"><h4 id="scale1vX-title">1 A vs X B Scaling</h4><div class="chart-container"><canvas id="scale1vXChart"></canvas></div></div>
                 </div>
                 <div class="side-by-side">
                     <div class="table-container">
                         <h3 id="table-b-title">1 B vs X A</h3>
-                        <table id="matchups-b"><thead><tr><th>Matchup</th><th>Survivors / Dead</th><th>Total HP Loss</th></tr></thead><tbody></tbody></table>
+                        <table id="matchups-b"><thead><tr><th>Ratio</th><th>Result</th></tr></thead><tbody></tbody></table>
                     </div>
                     <div class="chart-wrapper"><h4 id="scaleXv1-title">1 B vs X A Scaling</h4><div class="chart-container"><canvas id="scaleXv1Chart"></canvas></div></div>
                 </div>
-                <div class="chart-wrapper full-width"><h4 id="scaleXvX-title">X A vs X B Proportional Scaling</h4><div class="chart-container"><canvas id="scaleXvXChart"></canvas></div></div>
             </div>
+        </div>
+
+        <div id="section-about" class="section-anchor"></div>
+        <div class="section-header">
+            <a href="#section-about"><h2>About Chombat</h2></a>
+        </div>
+        <div class="results-area">
+            <p>Chombat is an Age of Empires II combat simulator designed to help players understand the nuances of unit interactions, balance, production timing, micro impact, and unit scaling.</p>
+            <p>One of the specific design choices is to make the tool a template for testing out ideas and strategies. Some example scenarios and units are available but the tools strength is to be able to test new units without waiting for a database update. And more importantly to see what the impact of a stat or production nerf would have on certain matchups.</p>
+            <p>It uses a determinstic time-based simulation that accounts for attack reloads, armor types, micro overkill, and production delays. This allows you to simulate complex "what-if" scenarios, such as how many full upgraded feudal scouts need to catch up to an all in Man-at-Arms rush, or how target fire micro makes 60 archers beat 60 skirms.</p>
+            <p>For feature requests, bug reports, or to contribute, please visit the <a href="https://github.com/Crazybus/chombat" target="_blank" style="color:var(--accent-color); font-weight:bold;">Chombat GitHub repository</a>.</p>
         </div>
     </main>
 
