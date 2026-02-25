@@ -205,6 +205,13 @@ function loadState() {
         applyScenario(params.get('scenario_id'));
         return;
     }
+    
+    // Default scenario if no params
+    if (!window.location.search) {
+        applyScenario('champi_vs_scouts');
+        return;
+    }
+
     if (params.has('psa')) applyPreset('a', params.get('psa'), false);
     if (params.has('psb')) applyPreset('b', params.get('psb'), false);
     for (const [id, key] of Object.entries(stateMap)) { if (params.has(key)) { const el = document.getElementById(id); if (el) el.value = params.get(key); } }
@@ -552,9 +559,7 @@ function updateTimeCharts(h, nA, nB) {
 
 function resetApp() {
     window.location.search = '';
-    Object.entries(defaults).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.value = val; });
-    document.querySelectorAll('.preset-search').forEach(s => { s.value = ""; s.dataset.value = ""; });
-    onInputChange(true);
+    applyScenario('champi_vs_scouts');
 }
 
 function initSearchablePresets() {
