@@ -256,15 +256,11 @@ function updateStatComparison(dA, dB) {
         { label: 'Final 1v1 HP', a: res.armyA.totalHp, b: res.armyB.totalHp, inv: false },
         { label: 'Reload', a: uA.reloadBase, b: uB.reloadBase, inv: true },
         { label: 'Total Cost', a: uA.getParsedCost().total, b: uB.getParsedCost().total, inv: true },
-        { label: 'Train Time', a: uA.trainTime, b: uB.trainTime, inv: true },
-        { label: 'Duration', a: res.duration, b: res.duration, inv: false }
+        { label: 'Train Time', a: uA.trainTime, b: uB.trainTime, inv: true }
     ];
     table.innerHTML = stats.map(s => {
         const diff = s.a - s.b;
         let diffClass = diff === 0 ? 'diff-neutral' : ((diff > 0) !== s.inv ? 'diff-pos' : 'diff-neg');
-        if (s.label === 'Duration') {
-            return `<tr><td>${s.label}</td><td colspan="2" style="text-align:center;">${s.a.toFixed(1)}s</td><td class="diff-neutral">−</td></tr>`;
-        }
         const diffTxt = diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(s.label.includes('Reload') || s.label.includes('DPS') || s.label.includes('Hit') ? 1 : 0);
         return `<tr><td>${s.label}</td><td>${s.a.toFixed(s.label.includes('Reload') || s.label.includes('DPS') || s.label.includes('Hit') ? 1 : 0)}</td><td>${s.b.toFixed(s.label.includes('Reload') || s.label.includes('DPS') || s.label.includes('Hit') ? 1 : 0)}</td><td class="${diffClass}">${diffTxt}</td></tr>`;
     }).join('');
@@ -275,7 +271,7 @@ function updateStatComparison(dA, dB) {
         const winner = winA ? dA.name : dB.name;
         const winHp = winA ? res.armyA.totalHp : res.armyB.totalHp;
         const maxHp = winA ? uA.hpPerUnit : uB.hpPerUnit;
-        sumEl.innerHTML = `<h3 style="margin-top:0;">1v1 Winner: <span style="color:${winA ? 'var(--army-a-color)' : 'var(--army-b-color)'}">${winner}</span> <span style="font-size:0.9rem; color:var(--text-dim);">(${winHp.toFixed(0)}/${maxHp}hp)</span></h3>`;
+        sumEl.innerHTML = `<h3 style="margin-top:0;">1v1 Result: <span style="color:${winA ? 'var(--army-a-color)' : 'var(--army-b-color)'}">${winner}</span> wins in ${res.duration.toFixed(1)}s with ${winHp.toFixed(0)}/${maxHp}hp remaining</h3>`;
     }
 }
 
