@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "esbuild": "^0.27.3",
+    "prettier": "^3.8.1",
     "wrangler": "^4.68.1"
   }
 }
