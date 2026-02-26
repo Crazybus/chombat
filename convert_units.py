@@ -1,127 +1,195 @@
+#!/usr/bin/env python3
 import json
 import os
+from genieutils.datfile import DatFile
+
+# Mapping for well-known techs (for the shortcuts UI)
+TECH_MAP = {
+    "Forging": 67, "Iron Casting": 68, "Blast Furnace": 75,
+    "Scale Mail Armor": 74, "Chain Mail Armor": 76, "Plate Mail Armor": 77,
+    "Scale Barding Armor": 81, "Chain Barding Armor": 82, "Plate Barding Armor": 80,
+    "Fletching": 199, "Bodkin Arrow": 200, "Bracer": 201,
+    "Padded Archer Armor": 211, "Leather Archer Armor": 212, "Ring Archer Armor": 219,
+    "Bloodlines": 435, "Thumb Ring": 437, "Ballistics": 93, "Chemistry": 47, "Husbandry": 39,
+    "Feudal Age": 102, "Castle Age": 101, "Imperial Age": 103
+}
+
+STANDARD_BUILDINGS = {12, 10, 87, 101, 45, 82, 30, 49, 1251, 1665}
+
+RES_FOOD = 0
+RES_WOOD = 1
+RES_STONE = 2
+RES_GOLD = 3
+ARM_PIERCE = 3
+
+def get_cost(resource_costs):
+    cost = {"f": 0, "w": 0, "g": 0, "s": 0}
+    for c in resource_costs:
+        if c.type == RES_FOOD: cost["f"] = int(c.amount)
+        elif c.type == RES_WOOD: cost["w"] = int(c.amount)
+        elif c.type == RES_GOLD: cost["g"] = int(c.amount)
+        elif c.type == RES_STONE: cost["s"] = int(c.amount)
+    return cost
+
+def clean_key(name):
+    return name.lower().replace(' ', '_').replace('(', '').replace(')', '').replace('-', '_').replace('.', '').replace("'", '').replace('/', '_')
+
+def load_extra_data():
+    dir_path = 'dat/CivTechTrees'
+    if not os.path.exists(dir_path):
+        dir_path = 'chombat/dat/CivTechTrees'
+    
+    unit_names = {}
+    tech_names = {}
+    valid_unit_ids = set()
+    valid_tech_ids = set()
+    prereqs = {} # node_id -> { techs: [], buildings: [] }
+    
+    if os.path.exists(dir_path):
+        for filename in sorted(os.listdir(dir_path)):
+            if filename.endswith('.json'):
+                with open(os.path.join(dir_path, filename), 'r') as f:
+                    try:
+                        data = json.load(f)
+                        for key in ['civ_techs_buildings', 'civ_techs_units']:
+                            for node in data.get(key, []):
+                                node_id = str(node.get('Node ID'))
+                                name = node.get('Name')
+                                ntype = node.get('Node Type')
+                                
+                                is_unit = ntype in ['Unit', 'UnitUpgrade', 'UniqueUnit', 'RegionalUnit']
+                                is_tech = ntype in ['Research']
+                                
+                                if node_id and name:
+                                    if is_unit:
+                                        valid_unit_ids.add(node_id)
+                                        if node_id not in unit_names or len(name) > len(unit_names[node_id]):
+                                            unit_names[node_id] = name
+                                    if is_tech:
+                                        valid_tech_ids.add(node_id)
+                                        if node_id not in tech_names or len(name) > len(tech_names[node_id]):
+                                            tech_names[node_id] = name
+                                
+                                # Prereqs
+                                p_ids = node.get('Prerequisite IDs', [])
+                                p_types = node.get('Prerequisite Types', [])
+                                if node_id not in prereqs:
+                                    prereqs[node_id] = {'techs': [], 'buildings': []}
+                                for pid, ptype in zip(p_ids, p_types):
+                                    if pid <= 0: continue
+                                    if ptype == 'Tech':
+                                        if pid not in prereqs[node_id]['techs']: prereqs[node_id]['techs'].append(pid)
+                                    elif ptype in ['Building', 'BuildingTech']:
+                                        if pid not in prereqs[node_id]['buildings']: prereqs[node_id]['buildings'].append(pid)
+                    except Exception as e:
+                        print(f"Error reading {filename}: {e}")
+    return unit_names, tech_names, valid_unit_ids, valid_tech_ids, prereqs
 
 def convert():
-    # External data file
-    halfon_path = '/Users/mick/tmp/halfon/data/units_buildings_techs.de.json'
-    
-    # Files relative to chombat root
-    empires_path = 'dat/empires.json'
-    output_path = 'units.js'
+    dat_path = 'dat/empires2_x2_p1.dat'
+    if not os.path.exists(dat_path):
+        dat_path = 'chombat/dat/empires2_x2_p1.dat'
 
-    # Standard buildings where units are trained
-    # 12: Barracks, 10: Archery Range, 101: Stable, 45: Dock, 82: Castle, 
-    # 30: Monastery, 49: Siege Workshop, 1251: Krepost, 1665: Donjon
-    standard_buildings = {12, 10, 101, 45, 82, 30, 49, 1251, 1665}
+    print(f"Loading extra data from Tech Trees...")
+    unit_names, tech_names, valid_unit_ids, valid_tech_ids, prereqs = load_extra_data()
 
-    print(f"Loading {halfon_path}...")
-    with open(halfon_path, 'r') as f:
-        halfon_data = json.load(f)
+    print(f"Loading {dat_path}...")
+    dat = DatFile.parse(dat_path)
     
-    print(f"Loading {empires_path} (this may take a while)...")
-    with open(empires_path, 'r') as f:
-        empires_data = json.load(f)
+    units_out = {}
+    techs_out = {}
     
-    # Use Britons (civ 1) as reference
-    britons_units = empires_data['civs'][1]['units']
-    unit_map = {str(u['id']): u for u in britons_units if u is not None}
-    
-    presets = {}
-    
-    for uid, data in halfon_data['units_buildings'].items():
-        if data['type'] != 70: # Only units
-            continue
-        
-        if data['hit_points'] <= 0:
-            continue
+    # Extract Units from ALL civs to catch regional units
+    processed_unit_ids = set()
+    for civ in dat.civs:
+        for unit in civ.units:
+            if not unit or not unit.creatable or not unit.type_50:
+                continue
             
-        local_name = data.get('localised_name')
-        if not local_name or local_name.startswith('OLD-') or 'Unused' in local_name:
-            continue
+            uid = str(unit.base_id)
+            if uid in processed_unit_ids: continue
             
-        raw_u = unit_map.get(uid)
-        if not raw_u:
-            continue
+            # ONLY include units that are explicitly in a tech tree JSON
+            if uid not in valid_unit_ids:
+                continue
+                
+            if getattr(unit, 'hide_in_editor', 0) == 1: continue
+
+            locations = unit.creatable.train_locations
+            if not locations or locations[0].unit_id == -1: continue
+            if locations[0].unit_id not in STANDARD_BUILDINGS: continue
+
+            atk = unit.type_50.displayed_attack
+            parm = 0
+            for arm in unit.type_50.armours:
+                if arm.class_ == ARM_PIERCE: parm = arm.amount
+            marm = unit.type_50.displayed_melee_armour
             
-        if not raw_u.get('type_50'):
-            continue
+            patk = 0
+            matk = 0
+            if unit.type_50.max_range > 1: patk = atk
+            else: matk = atk
 
-        # FILTER: Exclude units hidden in editor (usually campaign/internal)
-        if raw_u.get('hide_in_editor') == 1:
-            continue
+            cost = get_cost(unit.creatable.resource_costs)
+            name = unit_names.get(uid, unit.name)
+            key = clean_key(name)
+            if key in units_out: key = f"{key}_{uid}"
+                
+            units_out[key] = {
+                "name": name,
+                "hp": unit.hit_points,
+                "matk": matk,
+                "patk": patk,
+                "marm": marm,
+                "parm": parm,
+                "reload": unit.type_50.reload_time,
+                "range": unit.type_50.max_range,
+                "frame_delay": getattr(unit.type_50, 'frame_delay', 0),
+                "f": cost["f"], "w": cost["w"], "g": cost["g"],
+                "trainTime": locations[0].train_time,
+                "building": locations[0].unit_id,
+                "id": uid,
+                "class": unit.class_,
+                "requires": prereqs.get(uid, {'techs': [], 'buildings': []})
+            }
+            processed_unit_ids.add(uid)
 
-        # FILTER: Must be creatable
-        if not raw_u.get('creatable'):
-            continue
-
-        # FILTER: Heuristic for standard units - must be trained at a standard building
-        # OR be a very common base unit (like Militia/Scout which might have odd data)
-        locations = raw_u['creatable'].get('train_locations', [])
-        is_standard = any(loc.get('unit_id') in standard_buildings for loc in locations)
+    # Extract Techs
+    for tid, tech in enumerate(dat.techs):
+        if not tech or not tech.name or tech.name.startswith('Fake'): continue
         
-        # Exception for units that might not have locations in the Britons civ (like unique units)
-        # but are clearly meant for ranked play. We'll allow Unique Units (class 0, 6, 12 etc with high IDs)
-        # but the best filter is usually the presence of ANY train location.
-        if not is_standard and not locations:
-            continue
-
-        matk = 0
-        patk = 0
-        attacks = raw_u['type_50'].get('attacks', [])
-        for atk in attacks:
-            if atk['class_'] == 4: # Melee
-                matk = atk['amount']
-            elif atk['class_'] == 3: # Pierce
-                patk = atk['amount']
+        tid_str = str(tid)
+        # Optional: Filter techs by valid_tech_ids too?
+        # if tid_str not in valid_tech_ids: continue
         
-        if matk == 0 and patk == 0:
-            if raw_u['type_50']['max_range'] > 1:
-                patk = raw_u['type_50'].get('displayed_attack', 0)
-            else:
-                matk = raw_u['type_50'].get('displayed_attack', 0)
-
-        marm = 0
-        parm = 0
-        armours = raw_u['type_50'].get('armours', [])
-        for arm in armours:
-            if arm['class_'] == 4: # Melee
-                marm = arm['amount']
-            elif arm['class_'] == 3: # Pierce
-                parm = arm['amount']
-
-        train_time = 0
-        if locations:
-            train_time = locations[0].get('train_time', 0)
-
-        # Standardize key
-        key = local_name.lower().replace(' ', '_').replace('(', '').replace(')', '').replace('-', '_').replace('.', '').replace("'", '')
-        
-        # Avoid duplicate keys by appending ID if needed
-        if key in presets:
-            key = f"{key}_{uid}"
-
-        presets[key] = {
-            "name": local_name,
-            "hp": data['hit_points'],
-            "matk": matk,
-            "patk": patk,
-            "marm": marm,
-            "parm": parm,
-            "reload": raw_u['type_50'].get('reload_time', 2.0),
-            "range": raw_u['type_50'].get('max_range', 0),
-            "f": data['cost']['food'],
-            "w": data['cost']['wood'],
-            "g": data['cost']['gold'],
-            "trainTime": train_time
+        locations = tech.research_locations
+        if not locations: continue
+            
+        cost = get_cost(tech.resource_costs)
+        name = tech_names.get(tid_str, tech.name)
+        key = clean_key(name)
+        if key in techs_out: key = f"{key}_{tid}"
+            
+        techs_out[key] = {
+            "name": name,
+            "f": cost["f"], "w": cost["w"], "g": cost["g"],
+            "time": locations[0].research_time,
+            "building": locations[0].location_id,
+            "id": tid,
+            "requires": prereqs.get(tid_str, {'techs': [], 'buildings': []})
         }
 
-    # Sort presets by name for the JS file
-    sorted_presets = dict(sorted(presets.items(), key=lambda item: item[1]['name']))
+    units_out = dict(sorted(units_out.items(), key=lambda x: x[1]['name']))
+    techs_out = dict(sorted(techs_out.items(), key=lambda x: x[1]['name']))
 
-    with open(output_path, 'w') as f:
-        f.write("const units = " + json.dumps(sorted_presets, indent=4) + ";")
-    
-    print(f"Successfully converted {len(sorted_presets)} units to {output_path}")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(script_dir, 'units.js'), 'w') as f:
+        f.write("const units = " + json.dumps(units_out, indent=4) + ";")
+    with open(os.path.join(script_dir, 'techs.js'), 'w') as f:
+        f.write("const techs = " + json.dumps(techs_out, indent=4) + ";\n\n")
+        f.write("const TECH_MAP = " + json.dumps(TECH_MAP, indent=4) + ";")
+
+    print(f"Successfully converted {len(units_out)} units and {len(techs_out)} techs.")
 
 if __name__ == "__main__":
     convert()

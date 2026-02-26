@@ -12,6 +12,7 @@ const presets = {
     w: 0,
     g: 0,
     trainTime: 30,
+    class: 2,
   },
   archer_fu_feudal: {
     name: 'Archer (FU Feudal)',
@@ -26,6 +27,7 @@ const presets = {
     w: 25,
     g: 45,
     trainTime: 35,
+    class: 0,
   },
   skirm_fu_feudal: {
     name: 'Skirmisher (FU Feudal)',
@@ -40,6 +42,7 @@ const presets = {
     w: 35,
     g: 0,
     trainTime: 22,
+    class: 1,
   },
   maa_fu_feudal: {
     name: 'Man-at-Arms (FU Feudal)',
@@ -54,5 +57,6 @@ const presets = {
     w: 0,
     g: 20,
     trainTime: 21,
+    class: 6,
   },
 };

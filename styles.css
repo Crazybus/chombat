@@ -737,6 +737,40 @@ input[type='range'] {
   color: var(--accent-color);
 }
 
+.expansion-section {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.milestone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.milestone-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel-bg);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  border: 1px solid var(--border-dim);
+}
+
+.remove-milestone-btn {
+  background: none;
+  border: none;
+  color: var(--color-neg);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 5px;
+}
+
 .prod-vs {
   display: flex;
   align-items: center;
@@ -1149,4 +1183,219 @@ td {
     width: 100%;
     text-align: center;
   }
+}
+
+.stepper-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.age-upgrades {
+  display: flex;
+  gap: 5px;
+}
+
+.age-upgrade-btn {
+  background: var(--btn-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-dim);
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.age-upgrade-btn:hover {
+  background: var(--btn-hover);
+  color: var(--text-color);
+  border-color: var(--accent-color);
+}
+
+.age-upgrade-btn.active {
+  background: var(--accent-color);
+  color: black;
+  border-color: var(--accent-color);
+}
+
+.bonus-config {
+  background: var(--panel-bg-alt);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  margin-top: 15px;
+}
+
+.bonus-config > label {
+  font-weight: bold;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.searchable-bonus {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.bonus-search {
+  width: 100%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.bonus-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #222;
+  border: 1px solid var(--border-color);
+  border-top: none;
+  z-index: 2000;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.light-theme .bonus-list {
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bonus-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.bonus-item:hover {
+  background: var(--panel-bg);
+  color: var(--accent-color);
+}
+
+.applied-bonus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel-bg);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  border: 1px solid var(--border-dim);
+  margin-bottom: 5px;
+}
+
+.applied-bonus-name {
+  font-weight: bold;
+}
+
+.applied-bonus .stepper {
+  height: 24px;
+}
+.applied-bonus .step-btn {
+  width: 24px;
+  font-size: 1rem;
+}
+.applied-bonus input {
+  height: 24px;
+  width: 40px;
+  font-size: 0.8rem;
+}
+
+.remove-bonus-btn {
+  background: none;
+  border: none;
+  color: var(--color-neg);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 5px;
+}
+
+.production-timeline {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel-bg);
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-dim);
+}
+
+.timeline-step-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--text-dim);
+  width: 100px;
+}
+
+.timeline-step-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timeline-step-controls .field {
+  margin: 0;
+}
+
+.remove-step-btn {
+  background: none;
+  border: none;
+  color: var(--color-neg);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 5px;
+}
+
+.add-step-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.step-type-select {
+  flex: 1;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 6px;
+  border-radius: 4px;
+}
+
+.add-step-btn {
+  background: var(--accent-color);
+  color: black;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

@@ -50,8 +50,8 @@
               <button class="toggle-stats-btn" data-target="a-config">Edit</button>
             </div>
             <div class="searchable-preset" data-army="a">
-              <input type="text" class="preset-search" placeholder="Select Unit..." />
-              <div class="preset-list hidden"></div>
+              <input type="text" class="preset-search" data-army="a" placeholder="Select Unit..." />
+              <div id="a-preset-list" class="preset-list hidden"></div>
             </div>
           </div>
           <div class="unit-config collapsed" id="a-config">
@@ -84,38 +84,82 @@
               </div>
               <div class="field">
                 <label>M. Attack</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="a-matk" data-val="-1">−</button
-                  ><input type="number" id="a-matk" value="14" /><button class="step-btn" data-id="a-matk" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="a-matk" data-val="-1">−</button
+                    ><input type="number" id="a-matk" value="14" /><button
+                      class="step-btn"
+                      data-id="a-matk"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="a" data-type="atk">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
                 <label>M. Armor</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="a-marm" data-val="-1">−</button
-                  ><input type="number" id="a-marm" value="2" /><button class="step-btn" data-id="a-marm" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="a-marm" data-val="-1">−</button
+                    ><input type="number" id="a-marm" value="2" /><button
+                      class="step-btn"
+                      data-id="a-marm"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="a" data-type="arm">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
                 <label>P. Attack</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="a-patk" data-val="-1">−</button
-                  ><input type="number" id="a-patk" value="0" /><button class="step-btn" data-id="a-patk" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="a-patk" data-val="-1">−</button
+                    ><input type="number" id="a-patk" value="0" /><button
+                      class="step-btn"
+                      data-id="a-patk"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="a" data-type="atk">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
                 <label>P. Armor</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="a-parm" data-val="-1">−</button
-                  ><input type="number" id="a-parm" value="3" /><button class="step-btn" data-id="a-parm" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="a-parm" data-val="-1">−</button
+                    ><input type="number" id="a-parm" value="3" /><button
+                      class="step-btn"
+                      data-id="a-parm"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="a" data-type="arm">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
@@ -275,6 +319,15 @@
                   </div>
                 </div>
               </div>
+
+              <div class="bonus-config">
+                <label>Bonuses</label>
+                <div class="searchable-bonus">
+                  <input type="text" class="bonus-search" data-army="a" placeholder="Search for bonuses..." />
+                  <div class="bonus-list hidden" data-army="a"></div>
+                </div>
+                <div id="a-applied-bonuses" class="applied-bonuses"></div>
+              </div>
             </div>
             <div class="efficiency-config">
               <h3>Engagement Efficiency</h3>
@@ -305,8 +358,8 @@
               <button class="toggle-stats-btn" data-target="b-config">Edit</button>
             </div>
             <div class="searchable-preset" data-army="b">
-              <input type="text" class="preset-search" placeholder="Select Unit..." />
-              <div class="preset-list hidden"></div>
+              <input type="text" class="preset-search" data-army="b" placeholder="Select Unit..." />
+              <div id="b-preset-list" class="preset-list hidden"></div>
             </div>
           </div>
           <div class="unit-config collapsed" id="b-config">
@@ -339,38 +392,82 @@
               </div>
               <div class="field">
                 <label>M. Attack</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="b-matk" data-val="-1">−</button
-                  ><input type="number" id="b-matk" value="6" /><button class="step-btn" data-id="b-matk" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="b-matk" data-val="-1">−</button
+                    ><input type="number" id="b-matk" value="6" /><button
+                      class="step-btn"
+                      data-id="b-matk"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="b" data-type="atk">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
                 <label>M. Armor</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="b-marm" data-val="-1">−</button
-                  ><input type="number" id="b-marm" value="0" /><button class="step-btn" data-id="b-marm" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="b-marm" data-val="-1">−</button
+                    ><input type="number" id="b-marm" value="0" /><button
+                      class="step-btn"
+                      data-id="b-marm"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="b" data-type="arm">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
                 <label>P. Attack</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="b-patk" data-val="-1">−</button
-                  ><input type="number" id="b-patk" value="0" /><button class="step-btn" data-id="b-patk" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="b-patk" data-val="-1">−</button
+                    ><input type="number" id="b-patk" value="0" /><button
+                      class="step-btn"
+                      data-id="b-patk"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="b" data-type="atk">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
                 <label>P. Armor</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="b-parm" data-val="-1">−</button
-                  ><input type="number" id="b-parm" value="0" /><button class="step-btn" data-id="b-parm" data-val="1">
-                    +
-                  </button>
+                <div class="stepper-row">
+                  <div class="stepper">
+                    <button class="step-btn" data-id="b-parm" data-val="-1">−</button
+                    ><input type="number" id="b-parm" value="0" /><button
+                      class="step-btn"
+                      data-id="b-parm"
+                      data-val="1"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div class="age-upgrades" data-army="b" data-type="arm">
+                    <button class="age-upgrade-btn" data-age="2">II</button>
+                    <button class="age-upgrade-btn" data-age="3">III</button>
+                    <button class="age-upgrade-btn" data-age="4">IV</button>
+                  </div>
                 </div>
               </div>
               <div class="field">
@@ -530,6 +627,15 @@
                   </div>
                 </div>
               </div>
+
+              <div class="bonus-config">
+                <label>Bonuses</label>
+                <div class="searchable-bonus">
+                  <input type="text" class="bonus-search" data-army="b" placeholder="Search for bonuses..." />
+                  <div class="bonus-list hidden" data-army="b"></div>
+                </div>
+                <div id="b-applied-bonuses" class="applied-bonuses"></div>
+              </div>
             </div>
             <div class="efficiency-config">
               <h3>Engagement Efficiency</h3>
@@ -568,7 +674,7 @@
               <th>Difference</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody id="comparison-body"></tbody>
         </table>
       </div>
 
@@ -601,6 +707,16 @@
         </div>
       </div>
       <section id="results" class="results-area">
+        <div
+          id="overall-result"
+          style="
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--accent-color);
+          "
+        ></div>
         <div id="stat-summary"></div>
         <div class="charts-grid">
           <div class="chart-wrapper">
@@ -662,56 +778,18 @@
               </div>
             </div>
           </div>
-          <div class="delay-section">
-            <h4 style="margin: 10px 0 5px; font-size: 0.8rem; color: var(--accent-color)">Delay Settings</h4>
-            <div class="prod-fields-row">
-              <div class="field">
-                <label class="help-label">
-                  Initial Delay (s) <span class="help-icon">?</span>
-                  <span class="help-text">Time where no production happens (building, age up, tech requirements).</span>
-                </label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="pa-delay" data-val="-1">−</button
-                  ><input type="number" id="pa-delay" value="0" /><button
-                    class="step-btn"
-                    data-id="pa-delay"
-                    data-val="1"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div class="field">
-                <label class="help-label">
-                  Unit Count <span class="help-icon">?</span>
-                  <span class="help-text">Number of units to train before the tech delay starts.</span>
-                </label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="pa-pre" data-val="-1">−</button
-                  ><input type="number" id="pa-pre" value="0" /><button class="step-btn" data-id="pa-pre" data-val="1">
-                    +
-                  </button>
-                </div>
-              </div>
-              <div class="field">
-                <label class="help-label">
-                  Tech Delay (s) <span class="help-icon">?</span>
-                  <span class="help-text">Time spent researching a tech (pauses production in 1 building).</span>
-                </label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="pa-tech" data-val="-1">−</button
-                  ><input type="number" id="pa-tech" value="0" /><button
-                    class="step-btn"
-                    data-id="pa-tech"
-                    data-val="1"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="prod-requirements" id="pa-req"></div>
+          <div class="production-timeline" id="pa-timeline">
+            <!-- Steps will be added here -->
+          </div>
+          <div class="add-step-controls">
+            <select class="step-type-select" data-army="a">
+              <option value="building">Add Building</option>
+              <option value="tech">Research Tech</option>
+              <option value="train">Train Units</option>
+            </select>
+            <button class="add-step-btn" data-army="a">+</button>
+          </div>
         </div>
         <div class="prod-vs">VS</div>
         <div class="prod-group army-b-border">
@@ -744,56 +822,18 @@
               </div>
             </div>
           </div>
-          <div class="delay-section">
-            <h4 style="margin: 10px 0 5px; font-size: 0.8rem; color: var(--accent-color)">Delay Settings</h4>
-            <div class="prod-fields-row">
-              <div class="field">
-                <label class="help-label">
-                  Initial Delay (s) <span class="help-icon">?</span>
-                  <span class="help-text">Time where no production happens (building, age up, tech requirements).</span>
-                </label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="pb-delay" data-val="-1">−</button
-                  ><input type="number" id="pb-delay" value="0" /><button
-                    class="step-btn"
-                    data-id="pb-delay"
-                    data-val="1"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div class="field">
-                <label class="help-label">
-                  Unit Count <span class="help-icon">?</span>
-                  <span class="help-text">Number of units to train before the tech delay starts.</span>
-                </label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="pb-pre" data-val="-1">−</button
-                  ><input type="number" id="pb-pre" value="0" /><button class="step-btn" data-id="pb-pre" data-val="1">
-                    +
-                  </button>
-                </div>
-              </div>
-              <div class="field">
-                <label class="help-label">
-                  Tech Delay (s) <span class="help-icon">?</span>
-                  <span class="help-text">Time spent researching a tech (pauses production in 1 building).</span>
-                </label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="pb-tech" data-val="-1">−</button
-                  ><input type="number" id="pb-tech" value="0" /><button
-                    class="step-btn"
-                    data-id="pb-tech"
-                    data-val="1"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="prod-requirements" id="pb-req"></div>
+          <div class="production-timeline" id="pb-timeline">
+            <!-- Steps will be added here -->
+          </div>
+          <div class="add-step-controls">
+            <select class="step-type-select" data-army="b">
+              <option value="building">Add Building</option>
+              <option value="tech">Research Tech</option>
+              <option value="train">Train Units</option>
+            </select>
+            <button class="add-step-btn" data-army="b">+</button>
+          </div>
         </div>
       </div>
       <div class="results-area">
@@ -909,6 +949,8 @@
     </main>
 
     <script src="units.js"></script>
+    <script src="techs.js"></script>
+    <script src="bonuses.js"></script>
     <script src="presets.js"></script>
     <script src="scenarios.js"></script>
     <script src="script.js"></script>
