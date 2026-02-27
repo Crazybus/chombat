@@ -1,4 +1,4 @@
-.PHONY: deploy dev build format clean data lint
+.PHONY: deploy preview dev build format clean data lint
 
 format:
 	npx prettier --write "*.css" "*.html" "src/**/*.ts"

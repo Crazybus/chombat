@@ -9,6 +9,7 @@ import { bonuses } from './data/bonuses';
 import { CombatSim, CombatResult } from './sim/CombatSim';
 import { calculateCount } from './sim/ProductionSim';
 import { Unit } from './sim/Unit';
+import { decodeEncoded, getEffectLabel, shouldApplyTech, shouldApplyEffect, COMBAT_BUILDINGS } from './sim/TechLogic';
 
 // Global state
 let charts: Record<string, any> = {};
@@ -16,36 +17,93 @@ let defaults: Record<string, string> = {};
 let activeScenario: string | null = null;
 let allUnits: Record<string, UnitData> = {};
 let techsById: Record<number, TechData> = {};
+let useShortUrls = false; // Track if we're using short URLs
+
+// Rate limiting for share functionality
+const SHARE_RATE_LIMIT = {
+  perMinute: 1,
+  perDay: 100,
+  lastShareTime: 0,
+  dailyCount: 0,
+  dailyResetTime: 0,
+};
+
+/**
+ * Check if share action is rate limited
+ * Returns { allowed: boolean, reason?: string, retryAfter?: number }
+ */
+function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?: number } {
+  const now = Date.now();
+  const minuteMs = 60 * 1000;
+  const dayMs = 24 * 60 * 60 * 1000;
+
+  // Reset daily counter if needed
+  if (now - SHARE_RATE_LIMIT.dailyResetTime > dayMs) {
+    SHARE_RATE_LIMIT.dailyCount = 0;
+    SHARE_RATE_LIMIT.dailyResetTime = now;
+  }
+
+  // Check per-minute limit
+  if (now - SHARE_RATE_LIMIT.lastShareTime < minuteMs) {
+    const retryAfter = Math.ceil((minuteMs - (now - SHARE_RATE_LIMIT.lastShareTime)) / 1000);
+    return {
+      allowed: false,
+      reason: 'Too many shares. Please wait before sharing again.',
+      retryAfter,
+    };
+  }
+
+  // Check per-day limit
+  if (SHARE_RATE_LIMIT.dailyCount >= SHARE_RATE_LIMIT.perDay) {
+    const retryAfter = Math.ceil((dayMs - (now - SHARE_RATE_LIMIT.dailyResetTime)) / (60 * 1000));
+    return {
+      allowed: false,
+      reason: 'Daily share limit reached. Please try again tomorrow.',
+      retryAfter,
+    };
+  }
+
+  return { allowed: true };
+}
+
+/**
+ * Record a successful share action
+ */
+function recordShare() {
+  const now = Date.now();
+  SHARE_RATE_LIMIT.lastShareTime = now;
+  SHARE_RATE_LIMIT.dailyCount++;
+  
+  // Persist to localStorage
+  localStorage.setItem('shareRateLimit', JSON.stringify({
+    lastShareTime: SHARE_RATE_LIMIT.lastShareTime,
+    dailyCount: SHARE_RATE_LIMIT.dailyCount,
+    dailyResetTime: SHARE_RATE_LIMIT.dailyResetTime,
+  }));
+}
+
+/**
+ * Load rate limit state from localStorage
+ */
+function loadRateLimitState() {
+  try {
+    const stored = localStorage.getItem('shareRateLimit');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      SHARE_RATE_LIMIT.lastShareTime = parsed.lastShareTime || 0;
+      SHARE_RATE_LIMIT.dailyCount = parsed.dailyCount || 0;
+      SHARE_RATE_LIMIT.dailyResetTime = parsed.dailyResetTime || 0;
+    }
+  } catch (e) {
+    console.error('Failed to load rate limit state:', e);
+  }
+}
 
 const fieldMap: Record<string, string> = {
   name: 'nm', count: 'c', hp: 'h', reload: 'rl', matk: 'am', patk: 'ap', marm: 'aa', parm: 'ar',
   range: 'n', 'atk-speed': 'as', 'bonus-red': 'ab', bonus: 'ad', food: 'af', wood: 'aw', gold: 'ag',
   'disc-all': 'da', 'disc-f': 'df', 'disc-w': 'dw', 'disc-g': 'dg', eng: 'e', 'groups-slider': 'mc',
 };
-
-function decodeEncoded(val: number) {
-  const iv = Math.floor(val);
-  let amt = iv & 0xFF;
-  if (amt >= 128) amt -= 256;
-  const cls = iv >> 8;
-  return { cls, amt };
-}
-
-function getEffectLabel(e: any): string {
-  const { t, a, v } = e;
-  if (t === 8 || t === 9) {
-    const { cls, amt } = decodeEncoded(v);
-    const prefix = t === 9 ? 'Atk' : 'Arm';
-    const classes: Record<number, string> = { 3: 'Pierce', 4: 'Melee', 11: 'Bldg', 1: 'Inf', 2: 'Cav', 19: 'Siege' };
-    return `${classes[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
-  }
-  const attrMap: Record<number, string> = { 0: 'Atk', 3: 'Range', 12: 'HP', 10: 'Reload' };
-  if (t === 12) return `Range +${v}`;
-  if (t === 130) return `Reload ${v >= 0 ? '+' : ''}${v}`;
-  const name = attrMap[a] || 'Stat';
-  const op = (t === 2 || t === 5) ? 'x' : '+';
-  return `${name} ${op}${v}`;
-}
 
 function getThemeColor(varName: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
@@ -113,9 +171,50 @@ function updateCharts() {
 
   updateResultCard(res, nameA, nameB);
   updateStatComparison(dA, dB, cA, cB, sim);
+  updateUnitStatsSummary('a', { ...dA, ...cA } as any, res.dataA);
+  updateUnitStatsSummary('b', { ...dB, ...cB } as any, res.dataB);
   updateTimeCharts(res.history, nameA, nameB);
   updateProductionAnalysis(dA, dB, cA, cB);
   updateScalingAnalysis(dA, dB, cA, cB);
+}
+
+function updateUnitStatsSummary(army: 'a' | 'b', baseObj: any, finalObj: any) {
+  const container = document.getElementById(`${army}-stats-summary`);
+  if (!container) return;
+
+  const formatStat = (base: number, total: number) => {
+    const diff = Math.round(total - base);
+    let html = `<span>${Math.round(base)}</span>`;
+    if (Math.abs(diff) >= 1) {
+      const cls = diff > 0 ? 'stat-bonus' : 'stat-penalty';
+      html += `<span class="${cls}"> ${diff > 0 ? '+' : ''}${diff}</span>`;
+    }
+    return html;
+  };
+
+  const isMelee = (finalObj.range || 0) <= 1;
+  const stats = [
+    { icon: '❤️', label: 'HP', base: baseObj.h !== undefined ? baseObj.h : baseObj.hp, total: finalObj.hp },
+    {
+      icon: isMelee ? '⚔️' : '🏹',
+      label: isMelee ? 'Melee Attack' : 'Pierce Attack',
+      base: isMelee ? (baseObj.am !== undefined ? baseObj.am : (baseObj.matk || 0)) : (baseObj.ap !== undefined ? baseObj.ap : (baseObj.patk || 0)),
+      total: isMelee ? (finalObj.matk || 0) : (finalObj.patk || 0)
+    },
+    { icon: '🛡️', label: 'Melee Armor', base: baseObj.aa !== undefined ? baseObj.aa : (baseObj.marm || 0), total: finalObj.marm },
+    { icon: '🛡️', label: 'Pierce Armor', base: baseObj.ar !== undefined ? baseObj.ar : (baseObj.parm || 0), total: finalObj.parm },
+  ];
+
+  if (finalObj.range > 1) {
+    stats.push({ icon: '🎯', label: 'Range', base: baseObj.n !== undefined ? baseObj.n : (baseObj.range || 0), total: finalObj.range });
+  }
+
+  container.innerHTML = stats.map(s => `
+    <div class="stat-badge" title="${s.label}">
+      <span class="stat-icon">${s.icon}</span>
+      <span class="stat-text">${formatStat(s.base, s.total)}</span>
+    </div>
+  `).join('');
 }
 
 function updateResultCard(res: CombatResult, nameA: string, nameB: string) {
@@ -139,36 +238,57 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
 
   const uA = new Unit(simRef.dataA);
   const uB = new Unit(simRef.dataB);
-  const dmgA = simRef.calculateDamage(uA, uB);
-  const dmgB = simRef.calculateDamage(uB, uA);
+  const baseA = allUnits[simRef.dataA.id];
+  const baseB = allUnits[simRef.dataB.id];
 
-  let bA = 0;
-  for (const [cls, amt] of Object.entries(uA.bonuses || {})) {
-    bA += Math.max(0, amt - (uB.armors[cls] || 0));
-  }
-  let bB = 0;
-  for (const [cls, amt] of Object.entries(uB.bonuses || {})) {
-    bB += Math.max(0, amt - (uA.armors[cls] || 0));
-  }
+  const formatWithBase = (total: number, base: number) => {
+    const diff = total - base;
+    if (Math.abs(diff) < 0.01) return total.toFixed(0);
+    return `${total.toFixed(0)} (${base.toFixed(0)} + ${diff.toFixed(0)})`;
+  };
+
+  // Simple damage breakdown calculation
+  const getNetDmg = (atk: Unit, def: Unit) => {
+    const isMelee = atk.range <= 1;
+    const baseAtk = isMelee ? atk.matk : atk.patk;
+    const baseArm = isMelee ? def.marm : def.parm;
+    let bonus = 0;
+    for (const [cls, amt] of Object.entries(atk.bonuses || {})) {
+      bonus += Math.max(0, amt - (def.armors[cls] || 0));
+    }
+    return { base: baseAtk, arm: baseArm, bonus, net: Math.max(1, baseAtk - baseArm + bonus) };
+  };
+
+  const nA = getNetDmg(uA, uB);
+  const nB = getNetDmg(uB, uA);
+
+  const getBaseAtk = (u: Unit, baseData: UnitData | undefined) => {
+    if (!baseData) return u.isMelee() ? u.matk : u.patk;
+    return u.isMelee() ? (baseData.matk || 0) : (baseData.patk || 0);
+  };
+  const getBaseArm = (u: Unit, baseData: UnitData | undefined) => {
+    if (!baseData) return u.isMelee() ? u.marm : u.parm;
+    return u.isMelee() ? (baseData.marm || 0) : (baseData.parm || 0);
+  };
 
   const rows = [
-    { label: 'HP', a: uA.hpPerUnit.toFixed(0), b: uB.hpPerUnit.toFixed(0) },
-    { label: 'Attack', a: `${uA.matk.toFixed(0)}/${uA.patk.toFixed(0)}`, b: `${uB.matk.toFixed(0)}/${uB.patk.toFixed(0)}`, rawA: uA.matk + uA.patk, rawB: uB.matk + uB.patk },
-    { label: 'Bonus Dmg', a: bA.toFixed(0), b: bB.toFixed(0) },
-    { label: 'Armor', a: `${uA.marm.toFixed(0)}/${uA.parm.toFixed(0)}`, b: `${uB.marm.toFixed(0)}/${uB.parm.toFixed(0)}`, rawA: uA.marm + uA.parm, rawB: uB.marm + uB.parm },
-    { label: 'Dmg/Hit (Eff)', a: dmgA.toFixed(0), b: dmgB.toFixed(0) },
-    { label: 'DPS (Eff)', a: (dmgA / uA.reload).toFixed(2), b: (dmgB / uB.reload).toFixed(2) },
-    { label: 'Total Cost', a: uA.getParsedCost().total.toFixed(0), b: uB.getParsedCost().total.toFixed(0), inv: true },
-  ] as { label: string; a: string; b: string; rawA?: number; rawB?: number; inv?: boolean }[];
+    { label: 'HP', a: formatWithBase(uA.hpPerUnit, baseA?.hp || uA.hpPerUnit), b: formatWithBase(uB.hpPerUnit, baseB?.hp || uB.hpPerUnit) },
+    { label: 'Attack (Base)', a: formatWithBase(nA.base, getBaseAtk(uA, baseA)), b: formatWithBase(nB.base, getBaseAtk(uB, baseB)) },
+    { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0) },
+    { label: 'Opponent Arm', a: formatWithBase(nA.arm, getBaseArm(uB, baseB)), b: formatWithBase(nB.arm, getBaseArm(uA, baseA)), inv: true },
+    { label: 'Net Dmg/Hit', a: nA.net.toFixed(0), b: nB.net.toFixed(0) },
+    { label: 'Hits to Kill', a: Math.ceil(uB.hpPerUnit / nA.net).toString(), b: Math.ceil(uA.hpPerUnit / nB.net).toString(), inv: true },
+    { label: 'Reload', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), inv: true },
+    { label: 'DPS (Eff)', a: (nA.net / uA.reload).toFixed(2), b: (nB.net / uB.reload).toFixed(2) },
+  ] as { label: string; a: string; b: string; inv?: boolean }[];
 
   el.innerHTML = rows.map((r) => {
-    const vA = r.rawA !== undefined ? r.rawA : parseFloat(r.a);
-    const vB = r.rawB !== undefined ? r.rawB : parseFloat(r.b);
+    const vA = parseFloat(r.a), vB = parseFloat(r.b);
     const diff = vA - vB;
     let dClass = 'diff-neutral';
     if (diff > 0) dClass = r.inv ? 'diff-neg' : 'diff-pos';
     else if (diff < 0) dClass = r.inv ? 'diff-pos' : 'diff-neg';
-    return `<tr><td>${r.label}</td><td>${r.a}</td><td>${r.b}</td><td class="${dClass}">${diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') ? 2 : 0)}</td></tr>`;
+    return `<tr><td>${r.label}</td><td>${r.a}</td><td>${r.b}</td><td class="${dClass}">${diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('.') || r.label.includes('DPS') ? 2 : 0)}</td></tr>`;
   }).join('');
 }
 
@@ -207,9 +327,16 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
     f: parseFloat(el.querySelector('.step-f')?.value),
     w: parseFloat(el.querySelector('.step-w')?.value),
     g: parseFloat(el.querySelector('.step-g')?.value),
+    i: el.querySelector('.step-select')?.value,
+    bt: parseInt(el.dataset.bt || '0')
   }));
 
   const tlA = getTimeline('a'), tlB = getTimeline('b');
+  const contA = (document.getElementById('a-prod-cont') as HTMLInputElement)?.checked ?? true;
+  const contB = (document.getElementById('b-prod-cont') as HTMLInputElement)?.checked ?? true;
+  const startVillsA = parseInt((document.getElementById('a-prod-start-vills') as HTMLInputElement)?.value) || 3;
+  const startVillsB = parseInt((document.getElementById('b-prod-start-vills') as HTMLInputElement)?.value) || 3;
+
   const uA_unit = new Unit(dA as any), uB_unit = new Unit(dB as any);
   const baseCostA = uA_unit.getParsedCost(), baseCostB = uB_unit.getParsedCost();
 
@@ -220,13 +347,14 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
   let finalUPSA = 0, finalUPSB = 0;
 
   for (let t = 0; t <= searchMax; t += step) {
-    const resA = calculateCount(t, tlA, baseCostA);
-    const resB = calculateCount(t, tlB, baseCostB);
+    const resA = calculateCount(t, tlA, baseCostA, contA, startVillsA);
+    const resB = calculateCount(t, tlB, baseCostB, contB, startVillsB);
     data.labels.push(t + 's'); data.countA.push(resA.count); data.countB.push(resB.count);
 
     if (t === searchMax) {
       finalCostA = resA.cost; finalCostB = resB.cost;
       finalUPSA = resA.unitsPerSecond; finalUPSB = resB.unitsPerSecond;
+      renderEconomyChart(resA.economyHistory, resB.economyHistory);
     }
 
     let adv = 0;
@@ -234,7 +362,7 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
       if (!contact) contact = { time: t, cA: resA.count, cB: resB.count };
       const cleanCA = Object.assign({}, cA); delete (cleanCA as any).c;
       const cleanCB = Object.assign({}, cB); delete (cleanCB as any).c;
-      const sim = new CombatSim(dA, dB, { ...cleanCA, c: resA.count }, { ...cleanCB, c: resB.count }, techs, allUnits);
+      const sim = new CombatSim(dA, dB, { ...cleanCA, c: resA.count }, { ...cleanCB, c: resB.count }, techsById, allUnits);
       const res = sim.run();
       adv = res.armyA.totalHp > res.armyB.totalHp ? (res.armyA.totalHp / res.armyA.initialTotalHp) * 100 : -(res.armyB.totalHp / res.armyB.initialTotalHp) * 100;
 
@@ -259,8 +387,8 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
     }
 
     msg += `<h4>Event Log</h4><div class="event-log-container">`;
-    const resA_final = calculateCount(searchMax, tlA, baseCostA);
-    const resB_final = calculateCount(searchMax, tlB, baseCostB);
+    const resA_final = calculateCount(searchMax, tlA, baseCostA, contA);
+    const resB_final = calculateCount(searchMax, tlB, baseCostB, contB);
     const combinedEvents = [
       ...resA_final.events.map(e => ({ ...e, army: 'A', color: getThemeColor('--army-a-color') })),
       ...resB_final.events.map(e => ({ ...e, army: 'B', color: getThemeColor('--army-b-color') }))
@@ -306,6 +434,63 @@ function renderProductionCharts(data: any, nA: string, nB: string) {
       options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: -100, max: 100 } }, datasets: { line: { tension: 0.2, pointRadius: 0 } } }
     });
   }
+}
+
+function renderEconomyChart(historyA: any[], historyB: any[]) {
+  const ctx = (document.getElementById('economyChart') as HTMLCanvasElement)?.getContext('2d');
+  const ctxBal = (document.getElementById('economyBalanceChart') as HTMLCanvasElement)?.getContext('2d');
+  if (!ctx || !ctxBal) return;
+
+  if (charts['economy']) charts['economy'].destroy();
+  if (charts['economyBalance']) charts['economyBalance'].destroy();
+
+  const labels = historyA.map(h => h.time + 's');
+  const colorA = getThemeColor('--army-a-color');
+  const colorB = getThemeColor('--army-b-color');
+
+  // @ts-ignore
+  charts['economy'] = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'A: Gathered', data: historyA.map(h => h.gathered), borderColor: colorA, borderDash: [5, 5] },
+        { label: 'A: Spent', data: historyA.map(h => h.spent), borderColor: colorA },
+        { label: 'B: Gathered', data: historyB.map(h => h.gathered), borderColor: colorB, borderDash: [5, 5] },
+        { label: 'B: Spent', data: historyB.map(h => h.spent), borderColor: colorB }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true } },
+      datasets: { line: { tension: 0, pointRadius: 0 } }
+    }
+  });
+
+  // Balance Chart (Gathered - Spent)
+  // @ts-ignore
+  charts['economyBalance'] = new Chart(ctxBal, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label: 'A: Balance', data: historyA.map(h => h.gathered - h.spent), borderColor: colorA },
+        { label: 'B: Balance', data: historyB.map(h => h.gathered - h.spent), borderColor: colorB }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: (context: any) => context.tick.value === 0 ? '#ff0000' : 'rgba(255,255,255,0.1)' }
+        }
+      },
+      datasets: { line: { tension: 0, pointRadius: 0, fill: { target: 'origin' } } }
+    }
+  });
 }
 
 function updateScalingAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState) {
@@ -377,6 +562,7 @@ function addProductionStep(army: 'a' | 'b', type: string, data: any = {}) {
   const step = document.createElement('div');
   step.className = 'timeline-step';
   step.dataset.type = type;
+  if (data.bt) step.dataset.bt = data.bt.toString();
 
   if (type === 'villagers' && !data.name) {
     data.name = 'Villager'; data.delay = 25; data.count = 18; data.cost = 50; data.isBlocking = true; data.value = 0;
@@ -390,6 +576,7 @@ function addProductionStep(army: 'a' | 'b', type: string, data: any = {}) {
     if (tData) {
       data.id = techId.toString(); data.name = tData.name; data.delay = tData.time; data.count = 1;
       data.cost = (tData.f || 0) + (tData.w || 0) + (tData.g || 0); data.isBlocking = true;
+      step.dataset.bt = tData.building.toString();
     }
     type = 'tech'; step.dataset.type = 'tech';
   }
@@ -421,6 +608,7 @@ function addProductionStep(army: 'a' | 'b', type: string, data: any = {}) {
           (step.querySelector('.step-delay') as HTMLInputElement).value = String(item.time || 0);
           (step.querySelector('.step-cost') as HTMLInputElement).value = String((item.f || 0) + (item.w || 0) + (item.g || 0));
           (step.querySelector('.step-blocking') as HTMLInputElement).checked = true;
+          step.dataset.bt = item.building.toString();
         }
       } else if (type === 'building') {
         const item = (buildings as Record<string, BuildingData>)[val];
@@ -469,9 +657,23 @@ function addBonus(army: 'a' | 'b', id: string, effectsState: boolean[] | null = 
   div.dataset.id = id;
   let html = '';
   const effs = b.effects || [];
+  const seenLabels = new Set<string>();
+  const uData = getArmyData(army);
   effs.forEach((e: any, i: number) => {
     const checked = effectsState ? effectsState[i] : true;
-    html += `<div class="applied-bonus-effect"><input type="checkbox" data-effect-index="${i}" ${checked ? 'checked' : ''}><label>${getEffectLabel(e)}</label></div>`;
+    const label = getEffectLabel(e);
+    if (!label) return; // Skip internal/empty labels entirely
+
+    const applies = uData ? shouldApplyEffect(e, uData, effs) : true;
+
+    if (!applies) {
+      html += `<div class="applied-bonus-effect hidden"><input type="checkbox" data-effect-index="${i}" ${effectsState ? (checked ? 'checked' : '') : ''}><label>${label}</label></div>`;
+    } else if (seenLabels.has(label)) {
+      html += `<div class="applied-bonus-effect hidden"><input type="checkbox" data-effect-index="${i}" ${effectsState ? (checked ? 'checked' : '') : ''}><label>${label}</label></div>`;
+    } else {
+      html += `<div class="applied-bonus-effect"><input type="checkbox" data-effect-index="${i}" ${checked ? 'checked' : ''}><label>${label}</label></div>`;
+      seenLabels.add(label);
+    }
   });
 
   div.innerHTML = `<div style="display:flex; flex-direction:column; gap:2px;"><span class="applied-bonus-name">${b.name}</span><div style="display:flex; gap:10px;">${html}</div></div><button class="remove-bonus-btn">&times;</button>`;
@@ -499,19 +701,15 @@ function applyAge(army: 'a' | 'b', age: string) {
   if (container) container.innerHTML = '';
 
   if (ageId > 1) {
-    const COMBAT_BUILDINGS = [12, 87, 101, 49, 82, 103, 209, 45];
     const relevantTechs = Object.values(techsById).filter((t) => {
-      if (t.effects && t.effects.length > 0) {
-        if (!COMBAT_BUILDINGS.includes(t.building)) return false;
-        if (civKey && !availableTechs.includes(t.id)) return false;
-        if (t.age > ageId) return false;
-        return t.effects.some((e) => {
-          const matchesUnit = e.u === -1 || String(e.u) === data.id;
-          const matchesClass = e.c === -1 || e.c == data.class || e.a == data.class;
-          return matchesUnit && matchesClass;
-        });
-      }
-      return false;
+      // Filter by military buildings
+      if (!COMBAT_BUILDINGS.includes(t.building)) return false;
+      // Filter by civ availability
+      if (civKey && !availableTechs.includes(t.id)) return false;
+      // Filter by age
+      if (t.age > ageId) return false;
+      // Filter by relevance to the specific unit
+      return shouldApplyTech(t, data);
     });
     relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => addBonus(army, t.id.toString()));
   }
@@ -576,6 +774,21 @@ function loadScenario(id: string) {
   onInputChange(false);
 }
 
+/**
+ * Show a temporary toast notification
+ */
+function showToast(message: string, duration: number = 2000) {
+  const existing = document.querySelector('.share-toast');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.className = 'share-toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.remove(), duration);
+}
+
 function exportScenario() {
   const s = getState();
   navigator.clipboard.writeText(JSON.stringify(s, null, 2)).then(() => {
@@ -586,14 +799,70 @@ function exportScenario() {
   });
 }
 
-function syncURL() {
+async function syncURL(forceShorten: boolean = false): Promise<string | null> {
   const s = getState();
   const p = new URLSearchParams();
   if (activeScenario) p.set('scenario', activeScenario);
   const json = JSON.stringify(s);
+
+  // Check if data is large enough to warrant using KV
   const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
   const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
-  history.replaceState(null, '', '?' + clean);
+
+  // Use KV if forced, if we're already using short URLs, or if URL would be longer than 2000 characters
+  if (forceShorten || useShortUrls || clean.length > 2000) {
+    try {
+      const response = await fetch('/api/shorten', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: s }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        const shortUrl = window.location.origin + window.location.pathname + '#' + result.id;
+        
+        // Only update current URL if not forced (i.e., auto-shortening for length)
+        if (!forceShorten) {
+          const newUrl = window.location.pathname + '#' + result.id;
+          history.replaceState(null, '', newUrl);
+          useShortUrls = true;
+        }
+        
+        return shortUrl;
+      }
+      
+      // Handle specific error cases
+      if (response.status === 429) {
+        // Rate limit exceeded
+        console.warn('KV write rate limit exceeded');
+        showToast('Share limit reached, copying long URL', 3000);
+      } else if (response.status === 507) {
+        // Insufficient storage
+        console.warn('KV storage limit exceeded');
+        showToast('Storage limit reached, copying long URL', 3000);
+      } else {
+        console.warn('KV error:', response.status);
+        showToast('Creating long URL instead', 2500);
+      }
+    } catch (e) {
+      console.error('Failed to shorten URL:', e);
+      showToast('Creating long URL instead', 2500);
+    }
+    
+    // Fallback: return long URL for forced cases (share button)
+    if (forceShorten) {
+      const longUrl = window.location.origin + window.location.pathname + '?' + clean;
+      return longUrl;
+    }
+  }
+
+  // Fall back to long URL (only for non-forced cases when not using short URLs)
+  if (!forceShorten && !useShortUrls) {
+    history.replaceState(null, '', '?' + clean);
+  }
+  
+  return null;
 }
 
 function getState(): SimulationState {
@@ -617,61 +886,63 @@ function getState(): SimulationState {
       c: el.querySelector('.step-count')?.value, co: el.querySelector('.step-cost')?.value,
       b: el.querySelector('.step-blocking')?.checked, v: el.querySelector('.step-value')?.value,
       i: el.querySelector('.step-select')?.value, tr: el.querySelector('.step-train')?.value,
-      f: el.querySelector('.step-f')?.value, w: el.querySelector('.step-w')?.value, g: el.querySelector('.step-g')?.value
+      f: el.querySelector('.step-f')?.value, w: el.querySelector('.step-w')?.value, g: el.querySelector('.step-g')?.value,
+      bt: el.dataset.bt
     }));
     if (timeline.length > 0) s[army].tl = timeline;
+
+    const contEl = document.getElementById(`${army}-prod-cont`) as HTMLInputElement;
+    if (contEl) s[army].cont = contEl.checked;
 
     const bData = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el: any) => ({
       i: el.dataset.id, e: Array.from(el.querySelectorAll('input')).map((cb: any) => cb.checked)
     }));
     if (bData.length > 0) s[army].bn = bData;
+
+    const startVillsEl = document.getElementById(`${army}-prod-start-vills`) as HTMLInputElement;
+    if (startVillsEl) s[army].sv = parseInt(startVillsEl.value) || 3;
   });
   return s;
 }
 
-function loadState() {
+async function loadState() {
+  // Check for short ID in hash first
+  const hash = window.location.hash;
+  if (hash && hash.length > 1 && !hash.startsWith('?')) {
+    const shortId = hash.substring(1);
+    // Only treat as short ID if it looks like one (6-7 alphanumeric chars)
+    if (/^[a-zA-Z0-9]{6,8}$/.test(shortId)) {
+      try {
+        const response = await fetch(`/api/resolve/${shortId}`);
+        if (response.ok) {
+          const result = await response.json();
+          applyState(result.data, result.expiresAt);
+          useShortUrls = true; // Mark that we're using short URLs
+          const daysUntilExpiry = Math.round((result.expiresAt - Date.now()) / (1000 * 60 * 60 * 24));
+          if (daysUntilExpiry > 7) {
+            showToast(`Matchup loaded! Expires in ${daysUntilExpiry} days`, 3000);
+          } else if (daysUntilExpiry > 0) {
+            showToast(`Matchup loaded! Expires in ${daysUntilExpiry} days (view soon!)`, 4000);
+          }
+          return;
+        } else if (response.status === 404) {
+          console.warn('Matchup not found or expired');
+          showToast('This matchup has expired or was not found', 4000);
+        }
+      } catch (e) {
+        console.error('Failed to load matchup from KV:', e);
+        showToast('Failed to load shared matchup', 3000);
+      }
+    }
+  }
+
+  // Fall back to query parameter loading
   const p = new URLSearchParams(window.location.search);
   const dataParam = p.get('data');
   if (dataParam) {
     try {
       const state = JSON.parse(dataParam);
-      if (state.desc) {
-        const el = document.getElementById('scenario-desc') as HTMLTextAreaElement;
-        if (el) el.value = state.desc;
-      }
-      (['a', 'b'] as const).forEach((army) => {
-        const armyState = state[army];
-        if (!armyState) return;
-        if (armyState.ps) loadPreset(army, armyState.ps);
-        if (armyState.cv) {
-          const el = document.querySelector(`.civ-search[data-army="${army}"]`) as HTMLInputElement;
-          if (el) { el.value = armyState.cv; el.dataset.value = armyState.cv; }
-        }
-        for (const [field, key] of Object.entries(fieldMap)) {
-          if (armyState[key] !== undefined) {
-            const el = document.getElementById(`${army}-${field}`) as HTMLInputElement;
-            if (el) el.value = armyState[key];
-          }
-        }
-        if (armyState.tl) {
-          const container = document.getElementById(`p${army}-timeline`);
-          if (container) {
-            container.innerHTML = '';
-            armyState.tl.forEach((step: any) => addProductionStep(army, step.t, {
-              type: step.t, name: step.n, delay: step.d, count: step.c, cost: step.co,
-              isBlocking: step.b, value: step.v, id: step.i, train: step.tr, f: step.f, w: step.w, g: step.g
-            }));
-          }
-        }
-        if (armyState.bn) {
-          const container = document.getElementById(`${army}-applied-bonuses`);
-          if (container) {
-            container.innerHTML = '';
-            armyState.bn.forEach((b: any) => addBonus(army, b.i, b.e));
-          }
-        }
-      });
-      updateCharts();
+      applyState(state);
       return;
     } catch (e) { console.error('Failed to load state:', e); }
   }
@@ -679,10 +950,65 @@ function loadState() {
   updateCharts();
 }
 
-window.onload = () => {
+function applyState(state: any, expiresAt?: number) {
+  if (state.desc) {
+    const el = document.getElementById('scenario-desc') as HTMLTextAreaElement;
+    if (el) el.value = state.desc;
+  }
+  (['a', 'b'] as const).forEach((army) => {
+    const armyState = state[army];
+    if (!armyState) return;
+    if (armyState.ps) loadPreset(army, armyState.ps);
+    if (armyState.cv) {
+      const el = document.querySelector(`.civ-search[data-army="${army}"]`) as HTMLInputElement;
+      if (el) { el.value = armyState.cv; el.dataset.value = armyState.cv; }
+    }
+    for (const [field, key] of Object.entries(fieldMap)) {
+      if (armyState[key] !== undefined) {
+        const el = document.getElementById(`${army}-${field}`) as HTMLInputElement;
+        if (el) el.value = armyState[key];
+      }
+    }
+    if (armyState.tl) {
+      const container = document.getElementById(`p${army}-timeline`);
+      if (container) {
+        container.innerHTML = '';
+        armyState.tl.forEach((step: any) => addProductionStep(army, step.t, {
+          type: step.t, name: step.n, delay: step.d, count: step.c, cost: step.co,
+          isBlocking: step.b, value: step.v, id: step.i, train: step.tr, f: step.f, w: step.w, g: step.g,
+          bt: step.bt
+        }));
+      }
+    }
+    if (armyState.bn) {
+      const container = document.getElementById(`${army}-applied-bonuses`);
+      if (container) {
+        container.innerHTML = '';
+        armyState.bn.forEach((b: any) => addBonus(army, b.i, b.e));
+      }
+    }
+    if (armyState.cont !== undefined) {
+      const el = document.getElementById(`${army}-prod-cont`) as HTMLInputElement;
+      if (el) el.checked = armyState.cont;
+    }
+    if (armyState.sv !== undefined) {
+      const el = document.getElementById(`${army}-prod-start-vills`) as HTMLInputElement;
+      if (el) el.value = armyState.sv;
+    }
+  });
+  updateCharts();
+}
+
+window.onload = async () => {
   allUnits = { ...units, ...presets };
   Object.values(techs).forEach(t => techsById[t.id] = t);
   document.querySelectorAll('input, select, textarea').forEach((t: any) => { if (t.id) defaults[t.id] = t.value; });
+
+  // Load rate limit state from localStorage
+  loadRateLimitState();
+
+  // Load state from URL (hash or query params)
+  await loadState();
 
   // Render featured scenarios
   const scnContainer = document.getElementById('featured-scenarios-container');
@@ -778,12 +1104,63 @@ window.onload = () => {
 
   document.getElementById('export-btn')?.addEventListener('click', exportScenario);
 
-  document.getElementById('share-btn')?.addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn = document.getElementById('share-btn') as HTMLElement; const original = btn.textContent;
-      btn.textContent = 'Link Copied!'; btn.style.color = 'var(--color-pos)';
-      setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
-    });
+  document.getElementById('share-btn')?.addEventListener('click', async () => {
+    const btn = document.getElementById('share-btn') as HTMLElement;
+    const original = btn.textContent;
+
+    // Check rate limits first
+    const rateCheck = checkShareRateLimit();
+    if (!rateCheck.allowed) {
+      // Rate limited - copy long URL instead
+      const s = getState();
+      const p = new URLSearchParams();
+      if (activeScenario) p.set('scenario', activeScenario);
+      const json = JSON.stringify(s);
+      const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
+      const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
+      const longUrl = window.location.origin + window.location.pathname + '?' + clean;
+      
+      navigator.clipboard.writeText(longUrl).then(() => {
+        showToast(rateCheck.reason + ' Copied long URL instead.', 5000);
+      });
+      return;
+    }
+
+    // Show loading state
+    btn.classList.add('loading');
+    btn.textContent = 'Creating Link...';
+
+    try {
+      // Create short URL without changing current page
+      const shortUrl = await syncURL(true);
+
+      if (shortUrl) {
+        // Record successful share for rate limiting
+        recordShare();
+      }
+
+      const urlToCopy = shortUrl || window.location.href;
+      
+      navigator.clipboard.writeText(urlToCopy).then(() => {
+        showToast('Link copied to clipboard!', 2500);
+        btn.classList.remove('loading');
+        btn.textContent = original;
+        btn.style.color = 'var(--color-pos)';
+        setTimeout(() => { btn.style.color = ''; }, 2000);
+      }).catch(() => {
+        showToast('Failed to copy link', 2500);
+        btn.classList.remove('loading');
+        btn.textContent = original;
+        btn.style.color = 'var(--color-neg)';
+        setTimeout(() => { btn.style.color = ''; }, 2000);
+      });
+    } catch (e) {
+      showToast('Failed to create share link', 3000);
+      btn.classList.remove('loading');
+      btn.textContent = original;
+      btn.style.color = 'var(--color-neg)';
+      setTimeout(() => { btn.style.color = ''; }, 2000);
+    }
   });
 
   document.querySelectorAll('input, select').forEach(el => {

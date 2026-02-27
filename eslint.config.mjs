@@ -45,4 +45,13 @@ export default [
       },
     },
   },
+  {
+    files: ["functions/**/*.js"],
+    languageOptions: {
+      sourceType: "module",
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
 ];

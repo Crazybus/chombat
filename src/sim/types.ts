@@ -74,6 +74,7 @@ export interface TimelineStep {
   f?: number; // food cost override
   w?: number; // wood cost override
   g?: number; // gold cost override
+  bt?: number; // building target (e.g. 109 for TC)
 }
 
 export interface ArmyState {

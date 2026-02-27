@@ -1,3 +1,8 @@
 name = "chombat"
 pages_build_output_dir = "dist"
 compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "MATCHUPS"
+id = "8248986926fd41b3aafb00e747f6ea71"
+preview_id = "5367f69afe25491c9e0ae01d2c36eb01"

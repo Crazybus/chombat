@@ -1,5 +1,6 @@
 import { Unit } from './Unit';
 import { UnitData, ArmyState, TechData } from './types';
+import { decodeEncoded, shouldApplyEffect } from './TechLogic';
 
 export interface BattleTick {
   time: number;
@@ -47,13 +48,7 @@ export class CombatSim {
     if (!this.dataB.armors && armyB.armors) this.dataB.armors = armyB.armors;
   }
 
-  decodeEncoded(val: number) {
-    const iv = Math.floor(val);
-    let amt = iv & 0xFF;
-    if (amt >= 128) amt -= 256;
-    const cls = iv >> 8;
-    return { cls, amt };
-  }
+
 
   applyBonuses(
     unitData: any,
@@ -82,57 +77,93 @@ export class CombatSim {
       effs.forEach((e, idx) => {
         if (!isEffectActive(idx)) return;
 
-        // AoE2 techs often use e.a as an additional class filter if u and c are -1
-        const matchesUnit = e.u === -1 || String(e.u) === uBase.id;
-        const matchesClass = e.c === -1 || e.c == uBase.class || e.a == uBase.class;
+        if (shouldApplyEffect(e, uBase, effs)) {
+          const val = e.v;
 
-        if (matchesUnit && matchesClass) {
-          let val = e.v;
+          // Type-based mapping for this dataset:
+          // t: 0 -> Add HP
+          // t: 1 -> Add Attack
+          // t: 5 -> Mult Speed
+          // t: 10 -> Mult Reload (Rate of Fire)
+          // t: 12 -> Add Range
+          // t: 8/9 -> Class Armor/Attack (Encoded)
 
-          if (e.t === 8 || e.t === 9) {
-            const { cls, amt } = this.decodeEncoded(val);
-            if (e.t === 9) { // Attack
-              if (cls === 3) { if (newUnit.patk > 0) newUnit.patk += amt; }
-              else if (cls === 4) { if (newUnit.matk > 0) newUnit.matk += amt; }
-              else {
+          if (e.t === 0) { // Add HP
+            newUnit.hp += val;
+            if (newUnit.h !== undefined) newUnit.h += val;
+          } else if (e.t === 1) { // Add Attack (Generic)
+            if (newUnit.matk > 0) {
+              newUnit.matk += val;
+              if (newUnit.am !== undefined) newUnit.am += val;
+            }
+            if (newUnit.patk > 0) {
+              newUnit.patk += val;
+              if (newUnit.ap !== undefined) newUnit.ap += val;
+            }
+          } else if (e.t === 5) { // Mult Speed
+            if (newUnit.speed !== undefined) newUnit.speed *= val;
+            if (newUnit.s !== undefined) newUnit.s *= val;
+          } else if (e.t === 10) { // Mult Reload
+            newUnit.reload *= val;
+            if (newUnit.rl !== undefined) newUnit.rl *= val;
+          } else if (e.t === 12) { // Add Range
+            newUnit.range += val;
+            if (newUnit.n !== undefined) newUnit.n += val;
+          } else if (e.t === 8 || e.t === 9) {
+            const { cls, amt } = decodeEncoded(val);
+            if (e.t === 9) { // Class Attack
+              if (cls === 3) { // Pierce
+                if (newUnit.patk > 0) {
+                  newUnit.patk += amt;
+                  if (newUnit.ap !== undefined) newUnit.ap += amt;
+                }
+              } else if (cls === 4) { // Melee
+                if (newUnit.matk > 0) {
+                  newUnit.matk += amt;
+                  if (newUnit.am !== undefined) newUnit.am += amt;
+                }
+              } else {
                 if (!newUnit.bonuses) newUnit.bonuses = { ...uBase.bonuses };
                 newUnit.bonuses[cls] = (newUnit.bonuses[cls] || 0) + amt;
               }
-            } else { // Armor
-              if (cls === 3) newUnit.parm += amt;
-              else if (cls === 4) newUnit.marm += amt;
-              else {
+            } else { // Class Armor
+              if (cls === 3) { // Pierce
+                newUnit.parm += amt;
+                if (newUnit.ar !== undefined) newUnit.ar += amt;
+              } else if (cls === 4) { // Melee
+                newUnit.marm += amt;
+                if (newUnit.aa !== undefined) newUnit.aa += amt;
+              } else {
                 if (!newUnit.armors) newUnit.armors = { ...uBase.armors };
                 newUnit.armors[cls] = (newUnit.armors[cls] || 0) + amt;
               }
             }
-            return;
           }
-
-          if (e.t === 0 || e.t === 1 || e.t === 2 || e.t === 4 || e.t === 5) { // Add/Set/Mult
-            const isMult = e.t === 2 || e.t === 5;
-            // Attribute mapping from data: 12=HP, 0=Atk, 3=Range, 10=Reload
-            if (e.a === 12) {
-              if (isMult) newUnit.hp *= val;
-              else newUnit.hp += val;
-            } else if (e.a === 0) {
-              if (isMult) {
-                if (newUnit.matk > 0) newUnit.matk *= val;
-                if (newUnit.patk > 0) newUnit.patk *= val;
-              } else {
-                if (newUnit.matk > 0) newUnit.matk += val;
-                if (newUnit.patk > 0) newUnit.patk += val;
-              }
-            } else if (e.a === 3) {
-              if (isMult) newUnit.range *= val;
-              else newUnit.range += val;
-            }
-          }
-          if (e.t === 12) newUnit.range += val;
-          if (e.t === 130) newUnit.reload += val;
         }
       });
     });
+
+    // Handle hidden auto-upgrades for Scouts and Eagles in Feudal Age+
+    const researchedIds = new Set(bonusesState.map(s => parseInt(s.i)));
+    let ageId = 1;
+    if (researchedIds.has(103)) ageId = 4; // Imperial
+    else if (researchedIds.has(101)) ageId = 3; // Castle
+    else if (researchedIds.has(102)) ageId = 2; // Feudal
+
+    if (ageId >= 2) {
+      const isScout = newUnit.id === '448' || newUnit.id === 'scout_cavalry';
+      const isEagle = newUnit.id === '751' || newUnit.id === 'eagle_scout';
+
+      if (isScout && uBase.matk === 3) {
+        newUnit.matk += 2; // 3 -> 5
+        if (newUnit.am !== undefined) newUnit.am += 2;
+      }
+      if (isEagle && uBase.matk === 4) {
+        newUnit.matk += 3; // 4 -> 7
+        if (newUnit.am !== undefined) newUnit.am += 3;
+      }
+    }
+
     return newUnit;
   }
 
