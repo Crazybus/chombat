@@ -14,6 +14,9 @@ build: clean lint
 	cp index.html dist/index.html
 	cp _headers dist/_headers
 
+preview: build
+	npx wrangler pages deploy dist --project-name chombat
+
 deploy: build
 	npm cache clean --force
 	npx wrangler pages deploy dist --project-name chombat --branch production
