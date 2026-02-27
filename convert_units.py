@@ -98,7 +98,6 @@ def load_extra_data():
 
 def decode_val(val):
     iv = int(val)
-    # Handle signed 8-bit amount in lower byte
     amt = iv & 0xFF
     if amt >= 128: amt -= 256
     cls = iv >> 8
@@ -191,8 +190,6 @@ def convert():
         if tech.effect_id != -1 and tech.effect_id < len(dat.effects):
             eff_obj = dat.effects[tech.effect_id]
             for cmd in eff_obj.effect_commands:
-                # cmd types: 0=Unit Attribute, 4=Class Attribute, 5=Class Attribute (different scope)
-                # attr mapping: 0=HP, 1=LoS, 3=Range, 4=Attack, 5=MeleeArm, 6=PierceArm, 8=ArmorEncoded, 9=AttackEncoded, 12=RangeSimple
                 if cmd.type in [0, 4, 5]:
                     u_id = cmd.a if cmd.type == 0 else -1
                     c_id = cmd.a if cmd.type in [4, 5] else -1
@@ -201,15 +198,6 @@ def convert():
                     val = cmd.d
                     
                     if attr_id in [0, 3, 4, 5, 6, 8, 9, 12]:
-                        if attr_id in [8, 9]:
-                            ext_cls, ext_amt = decode_val(val)
-                            # Remap to base attributes if cls is 3 or 4
-                            if ext_cls == ARM_PIERCE:
-                                attr_id = 6 if attr_id == 8 else 4 # Wait, attr 4 is shared?
-                                # Let's keep them as encoded for the JS to handle more flexibly
-                                pass
-                            elif ext_cls == ARM_MELEE:
-                                pass
                         effects_out.append({"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id})
 
         if key in techs_out: key = f"{key}_{tid}"
@@ -226,17 +214,23 @@ def convert():
     buildings_out = dict(sorted(buildings_out.items(), key=lambda x: x[1]['name']))
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    with open(os.path.join(script_dir, 'units.js'), 'w') as f:
-        f.write("const units = " + json.dumps(units_out, indent=4) + ";")
-    with open(os.path.join(script_dir, 'techs.js'), 'w') as f:
-        f.write("const techs = " + json.dumps(techs_out, indent=4) + ";\n\n")
-        f.write("const TECH_MAP = " + json.dumps(TECH_MAP, indent=4) + ";")
-    with open(os.path.join(script_dir, 'buildings.js'), 'w') as f:
-        f.write("const buildings = " + json.dumps(buildings_out, indent=4) + ";")
-    with open(os.path.join(script_dir, 'civs.js'), 'w') as f:
-        f.write("const civs = " + json.dumps(civ_techs, indent=4) + ";")
+    src_data_dir = os.path.join(script_dir, 'src', 'data')
+    os.makedirs(src_data_dir, exist_ok=True)
 
-    print(f"Successfully converted {len(units_out)} units, {len(techs_out)} techs, and {len(buildings_out)} buildings, and {len(civ_techs)} civilizations.")
+    with open(os.path.join(src_data_dir, 'units.ts'), 'w') as f:
+        f.write("import { UnitData } from '../sim/types';\n\n")
+        f.write("export const units: Record<string, UnitData> = " + json.dumps(units_out, indent=4) + ";")
+    with open(os.path.join(src_data_dir, 'techs.ts'), 'w') as f:
+        f.write("import { TechData } from '../sim/types';\n\n")
+        f.write("export const techs: Record<string, TechData> = " + json.dumps(techs_out, indent=4) + ";\n\n")
+        f.write("export const TECH_MAP: Record<string, number> = " + json.dumps(TECH_MAP, indent=4) + ";")
+    with open(os.path.join(src_data_dir, 'buildings.ts'), 'w') as f:
+        f.write("import { BuildingData } from '../sim/types';\n\n")
+        f.write("export const buildings: Record<string, BuildingData> = " + json.dumps(buildings_out, indent=4) + ";")
+    with open(os.path.join(src_data_dir, 'civs.ts'), 'w') as f:
+        f.write("export const civs: Record<string, number[]> = " + json.dumps(civ_techs, indent=4) + ";")
+
+    print(f"Successfully converted {len(units_out)} units, {len(techs_out)} techs, {len(buildings_out)} buildings, and {len(civ_techs)} civilizations to TypeScript.")
 
 if __name__ == "__main__":
     convert()

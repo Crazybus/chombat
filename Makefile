@@ -32,3 +32,6 @@ lint:
 
 clean:
 	rm -rf dist
+
+test:
+	npx vitest run
