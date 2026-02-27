@@ -1,4 +1,4 @@
-const presets = {
+export const presets = {
   scout_fu_feudal: {
     name: 'Scout Cavalry (FU Feudal)',
     hp: 65,

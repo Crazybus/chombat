@@ -4,7 +4,7 @@ import globals from "globals";
 export default [
   js.configs.recommended,
   {
-    ignores: ["dist/**"],
+    ignores: ["dist/**", "main.js", ".wrangler/**"],
   },
   {
     files: ["**/*.js"],

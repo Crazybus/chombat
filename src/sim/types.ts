@@ -7,17 +7,17 @@ export interface UnitData {
   parm: number;
   reload: number;
   range: number;
-  frame_delay: number;
+  frame_delay?: number;
   f: number;
   w: number;
   g: number;
   trainTime: number;
-  building: number;
-  id: string;
+  building?: number;
+  id?: string;
   class: number;
-  bonuses: Record<string, number>;
-  armors: Record<string, number>;
-  requires: {
+  bonuses?: Record<string, number>;
+  armors?: Record<string, number>;
+  requires?: {
     techs: number[];
     buildings: number[];
   };

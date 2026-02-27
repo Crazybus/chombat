@@ -1,4 +1,4 @@
-const scenarios = {
+export const scenarios = {
   militia_vs_scouts: {
     name: 'Militia vs Scouts',
     desc: 'All in dark age militia rush vs fully upgraded bloodline scouts.',
@@ -99,4 +99,4 @@ const scenarios = {
   },
 };
 
-const featuredScenarios = ['champi_vs_scouts', 'maa_vs_scouts', 'archers_vs_skirms'];
+export const featuredScenarios = ['champi_vs_scouts', 'maa_vs_scouts', 'archers_vs_skirms'];

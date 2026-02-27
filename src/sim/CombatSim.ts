@@ -39,7 +39,7 @@ export class CombatSim {
   ) {
     this.dataA = this.applyBonuses({ ...armyA, ...configA }, configA.bn || [], 'a', allTechs, allUnits);
     this.dataB = this.applyBonuses({ ...armyB, ...configB }, configB.bn || [], 'b', allTechs, allUnits);
-    
+
     // Ensure bonuses and armors are preserved
     if (!this.dataA.bonuses && armyA.bonuses) this.dataA.bonuses = armyA.bonuses;
     if (!this.dataA.armors && armyA.armors) this.dataA.armors = armyA.armors;
@@ -56,8 +56,8 @@ export class CombatSim {
   }
 
   applyBonuses(
-    unitData: any, 
-    bonusesState: { i: string; e: boolean[] }[], 
+    unitData: any,
+    bonusesState: { i: string; e: boolean[] }[],
     armyLetter: string,
     allTechs: Record<number, TechData>,
     allUnits: Record<string, UnitData>
@@ -68,7 +68,7 @@ export class CombatSim {
     bonusesState.forEach((state) => {
       const b = allTechs[parseInt(state.i)];
       if (!b) return;
-      
+
       // If we are in browser, we check the checkboxes. If not (tests), we assume true.
       const isEffectActive = (idx: number) => {
         if (typeof document === 'undefined') return state.e[idx] !== false;
@@ -82,47 +82,54 @@ export class CombatSim {
       effs.forEach((e, idx) => {
         if (!isEffectActive(idx)) return;
 
-        if ((e.u === -1 || e.u == uBase.id) && (e.c === -1 || e.c == uBase.class)) {
-          let attr = e.a;
+        // AoE2 techs often use e.a as an additional class filter if u and c are -1
+        const matchesUnit = e.u === -1 || String(e.u) === uBase.id;
+        const matchesClass = e.c === -1 || e.c == uBase.class || e.a == uBase.class;
+
+        if (matchesUnit && matchesClass) {
           let val = e.v;
 
-          if (attr === 8 || attr === 9) {
+          if (e.t === 8 || e.t === 9) {
             const { cls, amt } = this.decodeEncoded(val);
-            val = amt;
-            if (cls === 3) attr = 6; // Pierce Arm
-            else if (cls === 4) attr = 5; // Melee Arm
-            else if (attr === 9) { // Bonus Attack
-              if (!newUnit.bonuses) newUnit.bonuses = { ...uBase.bonuses };
-              newUnit.bonuses[cls] = (newUnit.bonuses[cls] || 0) + amt;
-              return;
-            } else if (attr === 8) { // Bonus Armor
-              if (!newUnit.armors) newUnit.armors = { ...uBase.armors };
-              newUnit.armors[cls] = (newUnit.armors[cls] || 0) + amt;
-              return;
+            if (e.t === 9) { // Attack
+              if (cls === 3) { if (newUnit.patk > 0) newUnit.patk += amt; }
+              else if (cls === 4) { if (newUnit.matk > 0) newUnit.matk += amt; }
+              else {
+                if (!newUnit.bonuses) newUnit.bonuses = { ...uBase.bonuses };
+                newUnit.bonuses[cls] = (newUnit.bonuses[cls] || 0) + amt;
+              }
+            } else { // Armor
+              if (cls === 3) newUnit.parm += amt;
+              else if (cls === 4) newUnit.marm += amt;
+              else {
+                if (!newUnit.armors) newUnit.armors = { ...uBase.armors };
+                newUnit.armors[cls] = (newUnit.armors[cls] || 0) + amt;
+              }
             }
+            return;
           }
 
-          if (e.t === 1 || e.t === 4) { // Add
-            if (attr === 0) newUnit.hp += val;
-            if (attr === 3 || attr === 12) newUnit.range += val;
-            if (attr === 4) { 
-              if (newUnit.matk > 0) newUnit.matk += val; 
-              if (newUnit.patk > 0) newUnit.patk += val; 
+          if (e.t === 0 || e.t === 1 || e.t === 2 || e.t === 4 || e.t === 5) { // Add/Set/Mult
+            const isMult = e.t === 2 || e.t === 5;
+            // Attribute mapping from data: 12=HP, 0=Atk, 3=Range, 10=Reload
+            if (e.a === 12) {
+              if (isMult) newUnit.hp *= val;
+              else newUnit.hp += val;
+            } else if (e.a === 0) {
+              if (isMult) {
+                if (newUnit.matk > 0) newUnit.matk *= val;
+                if (newUnit.patk > 0) newUnit.patk *= val;
+              } else {
+                if (newUnit.matk > 0) newUnit.matk += val;
+                if (newUnit.patk > 0) newUnit.patk += val;
+              }
+            } else if (e.a === 3) {
+              if (isMult) newUnit.range *= val;
+              else newUnit.range += val;
             }
-            if (attr === 5) newUnit.marm += val;
-            if (attr === 6) newUnit.parm += val;
-            if (attr === 9) newUnit.reload += val;
-          } else if (e.t === 2 || e.t === 5) { // Mult
-            if (attr === 0) newUnit.hp *= val;
-            if (attr === 3 || attr === 12) newUnit.range *= val;
-            if (attr === 4) { 
-              if (newUnit.matk > 0) newUnit.matk *= val; 
-              if (newUnit.patk > 0) newUnit.patk *= val; 
-            }
-            if (attr === 5) newUnit.marm *= val;
-            if (attr === 6) newUnit.parm *= val;
-            if (attr === 9) newUnit.reload *= val;
           }
+          if (e.t === 12) newUnit.range += val;
+          if (e.t === 130) newUnit.reload += val;
         }
       });
     });
@@ -134,7 +141,7 @@ export class CombatSim {
     const baseArm = isMelee ? defender.marm : defender.parm;
     const baseAtk = isMelee ? attacker.matk : attacker.patk;
     let totalDmg = Math.max(1, baseAtk - baseArm);
-    
+
     const attBonuses = attacker.bonuses || {};
     const defArmors = defender.armors || {};
     for (const [cls, amt] of Object.entries(attBonuses)) {
@@ -143,7 +150,7 @@ export class CombatSim {
         totalDmg += Math.max(0, amt - defArm);
       }
     }
-    
+
     const reduction = 1 - (defender.bonus_red || 0) / 100;
     const bonusOnly = totalDmg - Math.max(1, baseAtk - baseArm);
     return Math.max(1, Math.max(1, baseAtk - baseArm) + bonusOnly * reduction);
@@ -158,8 +165,8 @@ export class CombatSim {
     const initialValB = (this.dataB.count || 0) * costB;
 
     const record = () => {
-      const hpRatioA = eA.getTotalHp() / (this.dataA.count * eA.hpPerUnit) || 0;
-      const hpRatioB = eB.getTotalHp() / (this.dataB.count * eB.hpPerUnit) || 0;
+      const hpRatioA = eA.getTotalHp() / (eA.initialCount * eA.hpPerUnit) || 0;
+      const hpRatioB = eB.getTotalHp() / (eB.initialCount * eB.hpPerUnit) || 0;
       this.history.push({
         time: this.time,
         countA: eA.currentCount,
@@ -203,8 +210,8 @@ export class CombatSim {
     record();
 
     return {
-      armyA: { remaining: eA.currentCount, totalHp: eA.getTotalHp(), initialTotalHp: this.dataA.count * eA.hpPerUnit },
-      armyB: { remaining: eB.currentCount, totalHp: eB.getTotalHp(), initialTotalHp: this.dataB.count * eB.hpPerUnit },
+      armyA: { remaining: eA.currentCount, totalHp: eA.getTotalHp(), initialTotalHp: eA.initialCount * eA.hpPerUnit },
+      armyB: { remaining: eB.currentCount, totalHp: eB.getTotalHp(), initialTotalHp: eB.initialCount * eB.hpPerUnit },
       history: this.history,
       duration: this.time,
       dataA: this.dataA,

@@ -1,4 +1,4 @@
-import { UnitData, TechData, BuildingData, ArmyState, SimulationState } from './sim/types';
+import { UnitData, TechData, BuildingData, ArmyState, SimulationState, TimelineStep } from './sim/types';
 import { units } from './data/units';
 import { techs, TECH_MAP } from './data/techs';
 import { buildings } from './data/buildings';
@@ -10,16 +10,42 @@ import { CombatSim, CombatResult } from './sim/CombatSim';
 import { calculateCount } from './sim/ProductionSim';
 import { Unit } from './sim/Unit';
 
-// Global Chart instances
+// Global state
 let charts: Record<string, any> = {};
 let defaults: Record<string, string> = {};
 let activeScenario: string | null = null;
+let allUnits: Record<string, UnitData> = {};
+let techsById: Record<number, TechData> = {};
 
-const fieldMap: Record<string, keyof ArmyState | any> = {
+const fieldMap: Record<string, string> = {
   name: 'nm', count: 'c', hp: 'h', reload: 'rl', matk: 'am', patk: 'ap', marm: 'aa', parm: 'ar',
   range: 'n', 'atk-speed': 'as', 'bonus-red': 'ab', bonus: 'ad', food: 'af', wood: 'aw', gold: 'ag',
   'disc-all': 'da', 'disc-f': 'df', 'disc-w': 'dw', 'disc-g': 'dg', eng: 'e', 'groups-slider': 'mc',
 };
+
+function decodeEncoded(val: number) {
+  const iv = Math.floor(val);
+  let amt = iv & 0xFF;
+  if (amt >= 128) amt -= 256;
+  const cls = iv >> 8;
+  return { cls, amt };
+}
+
+function getEffectLabel(e: any): string {
+  const { t, a, v } = e;
+  if (t === 8 || t === 9) {
+    const { cls, amt } = decodeEncoded(v);
+    const prefix = t === 9 ? 'Atk' : 'Arm';
+    const classes: Record<number, string> = { 3: 'Pierce', 4: 'Melee', 11: 'Bldg', 1: 'Inf', 2: 'Cav', 19: 'Siege' };
+    return `${classes[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
+  }
+  const attrMap: Record<number, string> = { 0: 'Atk', 3: 'Range', 12: 'HP', 10: 'Reload' };
+  if (t === 12) return `Range +${v}`;
+  if (t === 130) return `Reload ${v >= 0 ? '+' : ''}${v}`;
+  const name = attrMap[a] || 'Stat';
+  const op = (t === 2 || t === 5) ? 'x' : '+';
+  return `${name} ${op}${v}`;
+}
 
 function getThemeColor(varName: string): string {
   return getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
@@ -27,18 +53,18 @@ function getThemeColor(varName: string): string {
 
 function onInputChange(manualChange: boolean = true) {
   if (manualChange) activeScenario = null;
-  
+
   const updateLabel = (army: 'a' | 'b') => {
     const name = (document.getElementById(`${army}-name`) as HTMLInputElement)?.value || `Unit ${army.toUpperCase()}`;
     const header = document.getElementById(`name-header-${army}`);
     if (header) header.textContent = name;
-    
+
     const compHeader = document.getElementById(`comp-name-${army}`);
     if (compHeader) compHeader.textContent = name;
-    
+
     const ratioLabel = document.getElementById(`ratio-label-${army}`);
     if (ratioLabel) ratioLabel.textContent = `${name} Count`;
-    
+
     const prodLabel = document.getElementById(`prod-name-${army}`);
     if (prodLabel) prodLabel.textContent = `${name} Production`;
   };
@@ -52,26 +78,25 @@ function onInputChange(manualChange: boolean = true) {
 function getArmyData(army: 'a' | 'b'): UnitData | null {
   const el = document.querySelector(`.preset-search[data-army="${army}"]`) as HTMLInputElement;
   const id = el ? el.dataset.value : null;
-  const allPossibleUnits = { ...units, ...presets };
-  if (!id || !allPossibleUnits[id]) return null;
-  return { ...allPossibleUnits[id], id: id };
+  if (!id || !allUnits[id]) return null;
+  return { ...allUnits[id], id: id };
 }
 
 function getArmyConfig(army: 'a' | 'b'): ArmyState {
   const config: any = {};
-  document.querySelectorAll(`[id^="${army}-"]`).forEach((el: any) => {
-    const key = el.id.substring(2).replace(/-/g, '_');
-    config[key] = el.type === 'number' || el.type === 'range' ? parseFloat(el.value) : el.value;
-  });
-  
+  for (const [field, key] of Object.entries(fieldMap)) {
+    const el = document.getElementById(`${army}-${field}`) as HTMLInputElement;
+    if (el) config[key] = el.type === 'number' || el.type === 'range' ? parseFloat(el.value) : el.value;
+  }
+
   const slider = document.getElementById(`${army}-groups-slider`) as HTMLInputElement;
-  if (slider) config.micro = parseInt(slider.value);
-  
+  if (slider) config.mc = parseInt(slider.value);
+
   config.bn = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el: any) => ({
     i: el.dataset.id,
     e: Array.from(el.querySelectorAll('input')).map((cb: any) => cb.checked)
   }));
-  
+
   return config;
 }
 
@@ -80,12 +105,15 @@ function updateCharts() {
   const cA = getArmyConfig('a'), cB = getArmyConfig('b');
   if (!dA || !dB) return;
 
-  const sim = new CombatSim(dA, dB, cA, cB, techs, { ...units, ...presets });
+  const sim = new CombatSim(dA, dB, cA, cB, techsById, allUnits);
   const res = sim.run();
-  
-  updateResultCard(res, dA.name, dB.name);
+
+  const nameA = (cA as any).nm || dA.name;
+  const nameB = (cB as any).nm || dB.name;
+
+  updateResultCard(res, nameA, nameB);
   updateStatComparison(dA, dB, cA, cB, sim);
-  updateTimeCharts(res.history, dA.name, dB.name);
+  updateTimeCharts(res.history, nameA, nameB);
   updateProductionAnalysis(dA, dB, cA, cB);
   updateScalingAnalysis(dA, dB, cA, cB);
 }
@@ -96,7 +124,7 @@ function updateResultCard(res: CombatResult, nameA: string, nameB: string) {
   const winA = res.armyA.totalHp > res.armyB.totalHp;
   const color = winA ? getThemeColor('--army-a-color') : getThemeColor('--army-b-color');
   el.innerHTML = `Winner: <span style="color:${color}">${winA ? nameA : nameB}</span> (${res.duration.toFixed(1)}s)`;
-  
+
   const summary = document.getElementById('stat-summary');
   if (summary) {
     const ratioA = ((res.armyA.totalHp / res.armyA.initialTotalHp) * 100).toFixed(1);
@@ -108,7 +136,7 @@ function updateResultCard(res: CombatResult, nameA: string, nameB: string) {
 function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState, simRef: CombatSim) {
   const el = document.getElementById('comparison-body');
   if (!el) return;
-  
+
   const uA = new Unit(simRef.dataA);
   const uB = new Unit(simRef.dataB);
   const dmgA = simRef.calculateDamage(uA, uB);
@@ -131,10 +159,11 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
     { label: 'Dmg/Hit (Eff)', a: dmgA.toFixed(0), b: dmgB.toFixed(0) },
     { label: 'DPS (Eff)', a: (dmgA / uA.reload).toFixed(2), b: (dmgB / uB.reload).toFixed(2) },
     { label: 'Total Cost', a: uA.getParsedCost().total.toFixed(0), b: uB.getParsedCost().total.toFixed(0), inv: true },
-  ];
+  ] as { label: string; a: string; b: string; rawA?: number; rawB?: number; inv?: boolean }[];
 
   el.innerHTML = rows.map((r) => {
-    const vA = r.rawA !== undefined ? r.rawA : parseFloat(r.a), vB = r.rawB !== undefined ? r.rawB : parseFloat(r.b);
+    const vA = r.rawA !== undefined ? r.rawA : parseFloat(r.a);
+    const vB = r.rawB !== undefined ? r.rawB : parseFloat(r.b);
     const diff = vA - vB;
     let dClass = 'diff-neutral';
     if (diff > 0) dClass = r.inv ? 'diff-neg' : 'diff-pos';
@@ -146,7 +175,7 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
 function updateTimeCharts(history: any[], nameA: string, nameB: string) {
   const labels = history.map((h) => h.time.toFixed(1) + 's');
   const colorA = getThemeColor('--army-a-color'), colorB = getThemeColor('--army-b-color'), accent = getThemeColor('--accent-color');
-  
+
   const renderLineChart = (id: string, datasets: any[]) => {
     const ctx = (document.getElementById(id) as HTMLCanvasElement)?.getContext('2d');
     if (!ctx) return;
@@ -167,7 +196,7 @@ function updateTimeCharts(history: any[], nameA: string, nameB: string) {
 
 function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState) {
   const searchMax = 1800, step = 10;
-  const getTimeline = (army: 'a' | 'b') => Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el: any) => ({
+  const getTimeline = (army: 'a' | 'b'): TimelineStep[] => Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el: any) => ({
     t: el.dataset.type, n: el.querySelector('.step-name')?.value,
     d: parseFloat(el.querySelector('.step-delay')?.value) || 0,
     c: parseInt(el.querySelector('.step-count')?.value) || 1,
@@ -181,17 +210,20 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
   }));
 
   const tlA = getTimeline('a'), tlB = getTimeline('b');
-  const uA_unit = new Unit(dA), uB_unit = new Unit(dB);
+  const uA_unit = new Unit(dA as any), uB_unit = new Unit(dB as any);
   const baseCostA = uA_unit.getParsedCost(), baseCostB = uB_unit.getParsedCost();
 
+  const nameA = (cA as any).nm || dA.name, nameB = (cB as any).nm || dB.name;
   const data: any = { labels: [], countA: [], countB: [], advantage: [] };
-  let contact = null, cross = null, finalCostA = { f: 0, w: 0, g: 0 }, finalCostB = { f: 0, w: 0, g: 0 }, finalUPSA = 0, finalUPSB = 0;
+  let contact: any = null, cross: any = null;
+  let finalCostA = { f: 0, w: 0, g: 0 }, finalCostB = { f: 0, w: 0, g: 0 };
+  let finalUPSA = 0, finalUPSB = 0;
 
   for (let t = 0; t <= searchMax; t += step) {
     const resA = calculateCount(t, tlA, baseCostA);
     const resB = calculateCount(t, tlB, baseCostB);
     data.labels.push(t + 's'); data.countA.push(resA.count); data.countB.push(resB.count);
-    
+
     if (t === searchMax) {
       finalCostA = resA.cost; finalCostB = resB.cost;
       finalUPSA = resA.unitsPerSecond; finalUPSB = resB.unitsPerSecond;
@@ -200,28 +232,32 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
     let adv = 0;
     if (resA.count > 0 && resB.count > 0) {
       if (!contact) contact = { time: t, cA: resA.count, cB: resB.count };
-      const cleanCA = Object.assign({}, cA); delete cleanCA.c;
-      const cleanCB = Object.assign({}, cB); delete cleanCB.c;
-      const sim = new CombatSim(dA, dB, { ...cleanCA, c: resA.count }, { ...cleanCB, c: resB.count }, techs, { ...units, ...presets });
+      const cleanCA = Object.assign({}, cA); delete (cleanCA as any).c;
+      const cleanCB = Object.assign({}, cB); delete (cleanCB as any).c;
+      const sim = new CombatSim(dA, dB, { ...cleanCA, c: resA.count }, { ...cleanCB, c: resB.count }, techs, allUnits);
       const res = sim.run();
       adv = res.armyA.totalHp > res.armyB.totalHp ? (res.armyA.totalHp / res.armyA.initialTotalHp) * 100 : -(res.armyB.totalHp / res.armyB.initialTotalHp) * 100;
-      
+
       if (!cross && data.advantage.length > 0) {
         const prev = data.advantage[data.advantage.length - 1];
         if ((prev < 0 && adv > 0) || (prev > 0 && adv < 0))
-          cross = { time: t, cA: resA.count, cB: resB.count, win: adv > 0 ? dA.name : dB.name };
+          cross = { time: t, cA: resA.count, cB: resB.count, win: adv > 0 ? nameA : nameB };
       }
     } else if (resA.count > 0) adv = 100; else if (resB.count > 0) adv = -100;
     data.advantage.push(adv);
   }
 
-  renderProductionCharts(data, dA.name, dB.name);
-  
+  renderProductionCharts(data, nameA, nameB);
+
   const report = document.getElementById('production-report-text');
   if (report) {
-    let msg = contact ? `<p>First units arrive at ${contact.time}s: <strong>${contact.cA} ${dA.name}</strong> vs <strong>${contact.cB} ${dB.name}</strong>.</p>` : '';
-    if (cross) msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span><br>The <strong>${cross.win}</strong> player starts winning once they have massed <strong>${cross.win === dA.name ? cross.cA : cross.cB} units</strong> vs the opponent's <strong>${cross.win === dA.name ? cross.cB : cross.cA}</strong>.</p>`;
-    
+    let msg = contact ? `<p>First units arrive at ${contact.time}s: <strong>${contact.cA} ${nameA}</strong> vs <strong>${contact.cB} ${nameB}</strong>.</p>` : '';
+    if (cross) {
+      msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span><br>The <strong>${cross.win}</strong> player starts winning once they have massed <strong>${cross.win === nameA ? cross.cA : cross.cB} units</strong> vs the opponent's <strong>${cross.win === nameA ? cross.cB : cross.cA}</strong>.</p>`;
+    } else {
+      msg += `<p><strong>Dominance:</strong> ${data.advantage[data.advantage.length - 1] > 0 ? nameA : nameB} maintains the lead.</p>`;
+    }
+
     msg += `<h4>Event Log</h4><div class="event-log-container">`;
     const resA_final = calculateCount(searchMax, tlA, baseCostA);
     const resB_final = calculateCount(searchMax, tlB, baseCostB);
@@ -229,7 +265,7 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
       ...resA_final.events.map(e => ({ ...e, army: 'A', color: getThemeColor('--army-a-color') })),
       ...resB_final.events.map(e => ({ ...e, army: 'B', color: getThemeColor('--army-b-color') }))
     ].filter(e => e.time > 0).sort((a, b) => a.time - b.time);
-    
+
     combinedEvents.forEach(e => {
       msg += `<div class="event-row"><span class="event-time">${e.time}s</span> <span style="color:${e.color}; font-weight:bold">[${e.army}]</span> ${e.msg}</div>`;
     });
@@ -248,7 +284,7 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
 
 function renderProductionCharts(data: any, nA: string, nB: string) {
   const colorA = getThemeColor('--army-a-color'), colorB = getThemeColor('--army-b-color'), accent = getThemeColor('--accent-color');
-  
+
   const ctxG = (document.getElementById('prodGrowthChart') as HTMLCanvasElement)?.getContext('2d');
   if (ctxG) {
     if (charts['prodGrowth']) charts['prodGrowth'].destroy();
@@ -273,8 +309,9 @@ function renderProductionCharts(data: any, nA: string, nB: string) {
 }
 
 function updateScalingAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState) {
-  const nameA = cA.nm || dA.name, nameB = cB.nm || dB.name, scales = [1, 2, 3, 4, 5, 8, 10, 15, 20];
-  
+  const nameA = (cA as any).nm || dA.name, nameB = (cB as any).nm || dB.name;
+  const scales = [1, 2, 3, 4, 5, 8, 10, 15, 20];
+
   const updateTitle = (id: string, text: string) => {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -292,9 +329,9 @@ function updateScalingAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Ar
     if (tbody) tbody.innerHTML = '';
 
     scales.forEach((s) => {
-      const curA = { ...dA, count: mode === '1vX' ? 1 : s };
-      const curB = { ...dB, count: mode === 'Xv1' ? 1 : s };
-      const sim = new CombatSim(dA, dB, { ...cA, c: curA.count }, { ...cB, c: curB.count }, techs, { ...units, ...presets });
+      const cntA = mode === '1vX' ? 1 : s;
+      const cntB = mode === 'Xv1' ? 1 : s;
+      const sim = new CombatSim(dA, dB, { ...cA, c: cntA }, { ...cB, c: cntB }, techs, allUnits);
       const res = sim.run();
 
       const hA = (res.armyA.totalHp / res.armyA.initialTotalHp) * 100;
@@ -344,22 +381,23 @@ function addProductionStep(army: 'a' | 'b', type: string, data: any = {}) {
   if (type === 'villagers' && !data.name) {
     data.name = 'Villager'; data.delay = 25; data.count = 18; data.cost = 50; data.isBlocking = true; data.value = 0;
   }
-  
+
   if (type === 'age' && !data.name) {
     const ageMap: Record<number, string> = { 2: 'Feudal Age', 3: 'Castle Age', 4: 'Imperial Age' };
     const ageName = ageMap[data.ageVal] || 'Feudal Age';
     const techId = TECH_MAP[ageName];
-    const tData = techs[techId];
+    const tData = techsById[techId];
     if (tData) {
-      data.id = techId.toString(); data.name = tData.name; data.delay = tData.time; data.count = 1; data.cost = (tData.f || 0) + (tData.w || 0) + (tData.g || 0); data.isBlocking = true;
+      data.id = techId.toString(); data.name = tData.name; data.delay = tData.time; data.count = 1;
+      data.cost = (tData.f || 0) + (tData.w || 0) + (tData.g || 0); data.isBlocking = true;
     }
     type = 'tech'; step.dataset.type = 'tech';
   }
 
   let optionsHtml = '';
-  if (type === 'tech') optionsHtml = Object.entries(techs).sort(([, a], [, b]) => a.name.localeCompare(b.name)).map(([id, t]) => `<option value="${id}" ${String(data.id) === String(id) ? 'selected' : ''}>${t.name}</option>`).join('');
-  else if (type === 'building') optionsHtml = Object.entries(buildings).sort(([, a], [, b]) => a.name.localeCompare(b.name)).map(([id, b]) => `<option value="${id}" ${String(data.id) === String(id) ? 'selected' : ''}>${b.name}</option>`).join('');
-  
+  if (type === 'tech') optionsHtml = Object.values(techsById).sort((a, b) => a.name.localeCompare(b.name)).map((t) => `<option value="${t.id}" ${String(data.id) === String(t.id) ? 'selected' : ''}>${t.name}</option>`).join('');
+  else if (type === 'building') optionsHtml = Object.entries(buildings).sort(([, a], [, b]) => (a as BuildingData).name.localeCompare((b as BuildingData).name)).map(([id, b]) => `<option value="${id}" ${String(data.id) === String(id) ? 'selected' : ''}>${(b as BuildingData).name}</option>`).join('');
+
   const select = type === 'tech' || type === 'building' ? `<select class="step-select"><option value="">Custom...</option>${optionsHtml}</select>` : '';
 
   let bodyHtml = '';
@@ -370,19 +408,29 @@ function addProductionStep(army: 'a' | 'b', type: string, data: any = {}) {
   }
 
   step.innerHTML = `<div class="step-header"><div class="step-drag-handle">::</div><span class="timeline-step-label">${type}</span><button class="remove-step-btn">&times;</button></div><div class="step-body">${select} ${bodyHtml}</div>`;
-  
+
   const updateFromSelect = () => {
     const sel = step.querySelector('.step-select') as HTMLSelectElement;
     if (!sel) return;
     const val = sel.value;
-    const src: any = type === 'tech' ? techs : buildings;
-    if (val && src[val]) {
-      const item = src[val];
-      (step.querySelector('.step-name') as HTMLInputElement).value = item.name;
-      (step.querySelector('.step-delay') as HTMLInputElement).value = item.time || 0;
-      (step.querySelector('.step-cost') as HTMLInputElement).value = (item.f || 0) + (item.w || 0) + (item.g || 0) + (item.s || 0);
-      if (type === 'tech') (step.querySelector('.step-blocking') as HTMLInputElement).checked = true;
-      if (type === 'building') (step.querySelector('.step-value') as HTMLInputElement).value = '1';
+    if (val) {
+      if (type === 'tech') {
+        const item = techsById[parseInt(val)];
+        if (item) {
+          (step.querySelector('.step-name') as HTMLInputElement).value = item.name;
+          (step.querySelector('.step-delay') as HTMLInputElement).value = String(item.time || 0);
+          (step.querySelector('.step-cost') as HTMLInputElement).value = String((item.f || 0) + (item.w || 0) + (item.g || 0));
+          (step.querySelector('.step-blocking') as HTMLInputElement).checked = true;
+        }
+      } else if (type === 'building') {
+        const item = (buildings as Record<string, BuildingData>)[val];
+        if (item) {
+          (step.querySelector('.step-name') as HTMLInputElement).value = item.name;
+          (step.querySelector('.step-delay') as HTMLInputElement).value = String(item.time || 0);
+          (step.querySelector('.step-cost') as HTMLInputElement).value = String((item.f || 0) + (item.w || 0) + (item.g || 0) + (item.s || 0));
+          (step.querySelector('.step-value') as HTMLInputElement).value = '1';
+        }
+      }
     }
     onInputChange(true);
   };
@@ -411,11 +459,11 @@ function renderBonusList(list: HTMLElement, items: [string, any][], army: 'a' | 
 }
 
 function addBonus(army: 'a' | 'b', id: string, effectsState: boolean[] | null = null) {
-  const b = techs[parseInt(id)] || (bonuses as any)[id];
+  const b = techsById[parseInt(id)] || (bonuses as any)[id];
   if (!b) return;
   const container = document.getElementById(`${army}-applied-bonuses`);
   if (!container || container.querySelector(`.applied-bonus[data-id="${id}"]`)) return;
-  
+
   const div = document.createElement('div');
   div.className = 'applied-bonus';
   div.dataset.id = id;
@@ -423,10 +471,9 @@ function addBonus(army: 'a' | 'b', id: string, effectsState: boolean[] | null = 
   const effs = b.effects || [];
   effs.forEach((e: any, i: number) => {
     const checked = effectsState ? effectsState[i] : true;
-    const attrMap: Record<number, string> = { 0: 'HP', 3: 'Range', 4: 'Atk', 5: 'MeleeArm', 6: 'PierceArm', 9: 'Reload' };
-    html += `<div class="applied-bonus-effect"><input type="checkbox" data-effect-index="${i}" ${checked ? 'checked' : ''}><label>${attrMap[e.a] || 'Stat'} ${e.t === 2 || e.t === 5 ? 'x' : '+'}${e.v}</label></div>`;
+    html += `<div class="applied-bonus-effect"><input type="checkbox" data-effect-index="${i}" ${checked ? 'checked' : ''}><label>${getEffectLabel(e)}</label></div>`;
   });
-  
+
   div.innerHTML = `<div style="display:flex; flex-direction:column; gap:2px;"><span class="applied-bonus-name">${b.name}</span><div style="display:flex; gap:10px;">${html}</div></div><button class="remove-bonus-btn">&times;</button>`;
   div.querySelector('.remove-bonus-btn')?.addEventListener('click', () => { div.remove(); onInputChange(true); });
   div.querySelectorAll('input').forEach(el => el.addEventListener('change', () => onInputChange(true)));
@@ -446,19 +493,21 @@ function applyAge(army: 'a' | 'b', age: string) {
 
   const civInput = document.querySelector(`.civ-search[data-army="${army}"]`) as HTMLInputElement;
   const civKey = civInput ? civInput.dataset.value : null;
-  const availableTechs = civKey ? civs[civKey] || [] : [];
+  const availableTechs = civKey ? (civs as any)[civKey] || [] : [];
 
   const container = document.getElementById(`${army}-applied-bonuses`);
   if (container) container.innerHTML = '';
 
   if (ageId > 1) {
-    const relevantTechs = Object.values(techs).filter((t) => {
+    const COMBAT_BUILDINGS = [12, 87, 101, 49, 82, 103, 209, 45];
+    const relevantTechs = Object.values(techsById).filter((t) => {
       if (t.effects && t.effects.length > 0) {
+        if (!COMBAT_BUILDINGS.includes(t.building)) return false;
         if (civKey && !availableTechs.includes(t.id)) return false;
         if (t.age > ageId) return false;
         return t.effects.some((e) => {
-          const matchesUnit = e.u === -1 || e.u == parseInt(data.id);
-          const matchesClass = e.c === -1 || e.c == data.class;
+          const matchesUnit = e.u === -1 || String(e.u) === data.id;
+          const matchesClass = e.c === -1 || e.c == data.class || e.a == data.class;
           return matchesUnit && matchesClass;
         });
       }
@@ -470,14 +519,13 @@ function applyAge(army: 'a' | 'b', age: string) {
 }
 
 function loadPreset(army: 'a' | 'b', id: string) {
-  const allPossible = { ...units, ...presets };
-  const u = allPossible[id];
+  const u = allUnits[id];
   if (!u) return;
   const input = document.querySelector(`.preset-search[data-army="${army}"]`) as HTMLInputElement;
   input.value = u.name; input.dataset.value = id;
   const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
   if (nameEl) nameEl.value = u.name;
-  
+
   ['hp', 'matk', 'patk', 'marm', 'parm', 'range', 'food', 'wood', 'gold', 'reload'].forEach((k) => {
     const el = document.getElementById(`${army}-${k}`) as HTMLInputElement;
     if (el) {
@@ -485,7 +533,7 @@ function loadPreset(army: 'a' | 'b', id: string) {
       el.value = u[k === 'food' ? 'f' : k === 'wood' ? 'w' : k === 'gold' ? 'g' : k];
     }
   });
-  
+
   const timeline = document.getElementById(`p${army}-timeline`);
   if (timeline) {
     timeline.innerHTML = '';
@@ -495,33 +543,47 @@ function loadPreset(army: 'a' | 'b', id: string) {
 }
 
 function loadScenario(id: string) {
-  const s = scenarios[id];
+  const s = (scenarios as any)[id];
   if (!s) return;
   activeScenario = id;
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
   if (descEl) descEl.value = s.desc || '';
-  
-  ['a', 'b'].forEach((army: any) => {
-    const config = (s as any)[army];
+
+  (['a', 'b'] as const).forEach((army) => {
+    const config = s[army];
     const tl = document.getElementById(`p${army}-timeline`);
     if (tl) tl.innerHTML = '';
     const bn = document.getElementById(`${army}-applied-bonuses`);
     if (bn) bn.innerHTML = '';
-    
+
     if (config.preset) loadPreset(army, config.preset);
     const smap: any = { as: 'atk-speed', abr: 'bonus-red', bbn: 'bonus', da: 'disc-all', df: 'disc-f', dw: 'disc-w', dg: 'disc-g' };
     for (const [key, val] of Object.entries(config)) {
       const el = document.getElementById(`${army}-${smap[key] || key}`) as HTMLInputElement;
       if (el) el.value = val as string;
+      if (key === 'name') {
+        const h = document.getElementById(`name-header-${army}`);
+        if (h) h.textContent = val as string;
+      }
     }
-    
+
     if (config['train-time'] || config.buildings || config.delay || config.tech) {
       if (config['train-time'] || config.buildings) addProductionStep(army, 'production', { name: 'Initial Production', value: config.buildings || 1, train: config['train-time'] || 30 });
-      if (config.delay) addProductionStep(army, 'building', { name: 'Initial Delay', d: config.delay, v: 0 });
-      if (config.tech) addProductionStep(army, 'tech', { name: 'Initial Research', d: config.tech, b: true });
+      if (config.delay) addProductionStep(army, 'building', { name: 'Initial Delay', delay: config.delay, value: 0 });
+      if (config.tech) addProductionStep(army, 'tech', { name: 'Initial Research', delay: config.tech, isBlocking: true });
     }
   });
   onInputChange(false);
+}
+
+function exportScenario() {
+  const s = getState();
+  navigator.clipboard.writeText(JSON.stringify(s, null, 2)).then(() => {
+    const btn = document.getElementById('export-btn') as HTMLElement;
+    const original = btn.textContent;
+    btn.textContent = 'Copied!'; btn.style.color = 'var(--color-pos)';
+    setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
+  });
 }
 
 function syncURL() {
@@ -538,8 +600,8 @@ function getState(): SimulationState {
   const s: any = { a: {}, b: {}, desc: '' };
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
   if (descEl) s.desc = descEl.value;
-  
-  ['a', 'b'].forEach((army: any) => {
+
+  (['a', 'b'] as const).forEach((army) => {
     for (const [field, key] of Object.entries(fieldMap)) {
       const id = `${army}-${field}`;
       const el = document.getElementById(id) as HTMLInputElement;
@@ -549,7 +611,7 @@ function getState(): SimulationState {
     if (pEl && pEl.dataset.value) s[army].ps = pEl.dataset.value;
     const cEl = document.querySelector(`.civ-search[data-army="${army}"]`) as HTMLElement;
     if (cEl && cEl.dataset.value) s[army].cv = cEl.dataset.value;
-    
+
     const timeline = Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el: any) => ({
       t: el.dataset.type, n: el.querySelector('.step-name')?.value, d: el.querySelector('.step-delay')?.value,
       c: el.querySelector('.step-count')?.value, co: el.querySelector('.step-cost')?.value,
@@ -558,7 +620,7 @@ function getState(): SimulationState {
       f: el.querySelector('.step-f')?.value, w: el.querySelector('.step-w')?.value, g: el.querySelector('.step-g')?.value
     }));
     if (timeline.length > 0) s[army].tl = timeline;
-    
+
     const bData = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el: any) => ({
       i: el.dataset.id, e: Array.from(el.querySelectorAll('input')).map((cb: any) => cb.checked)
     }));
@@ -577,13 +639,13 @@ function loadState() {
         const el = document.getElementById('scenario-desc') as HTMLTextAreaElement;
         if (el) el.value = state.desc;
       }
-      ['a', 'b'].forEach((army: any) => {
+      (['a', 'b'] as const).forEach((army) => {
         const armyState = state[army];
         if (!armyState) return;
         if (armyState.ps) loadPreset(army, armyState.ps);
         if (armyState.cv) {
           const el = document.querySelector(`.civ-search[data-army="${army}"]`) as HTMLInputElement;
-          el.value = armyState.cv; el.dataset.value = armyState.cv;
+          if (el) { el.value = armyState.cv; el.dataset.value = armyState.cv; }
         }
         for (const [field, key] of Object.entries(fieldMap)) {
           if (armyState[key] !== undefined) {
@@ -595,7 +657,10 @@ function loadState() {
           const container = document.getElementById(`p${army}-timeline`);
           if (container) {
             container.innerHTML = '';
-            armyState.tl.forEach((s: any) => addProductionStep(army, s.t, { type: s.t, name: s.n, delay: s.d, count: s.c, cost: s.co, isBlocking: s.b, value: s.v, id: s.i, train: s.tr, f: s.f, w: s.w, g: s.g }));
+            armyState.tl.forEach((step: any) => addProductionStep(army, step.t, {
+              type: step.t, name: step.n, delay: step.d, count: step.c, cost: step.co,
+              isBlocking: step.b, value: step.v, id: step.i, train: step.tr, f: step.f, w: step.w, g: step.g
+            }));
           }
         }
         if (armyState.bn) {
@@ -610,19 +675,20 @@ function loadState() {
       return;
     } catch (e) { console.error('Failed to load state:', e); }
   }
-  if (p.has('scenario')) loadScenario(p.get('scenario'));
+  if (p.has('scenario')) loadScenario(p.get('scenario')!);
   updateCharts();
 }
 
 window.onload = () => {
   allUnits = { ...units, ...presets };
+  Object.values(techs).forEach(t => techsById[t.id] = t);
   document.querySelectorAll('input, select, textarea').forEach((t: any) => { if (t.id) defaults[t.id] = t.value; });
-  
+
   // Render featured scenarios
   const scnContainer = document.getElementById('featured-scenarios-container');
   if (scnContainer) {
-    featuredScenarios.forEach(id => {
-      const s = scenarios[id]; if (!s) return;
+    (featuredScenarios as string[]).forEach(id => {
+      const s = (scenarios as any)[id]; if (!s) return;
       const btn = document.createElement('button'); btn.className = 'scenario-btn'; btn.textContent = s.name;
       btn.addEventListener('click', () => loadScenario(id)); scnContainer.appendChild(btn);
     });
@@ -633,7 +699,7 @@ window.onload = () => {
   if (scnSearch && scnList) {
     const render = () => {
       const term = scnSearch.value.toLowerCase(); scnList.innerHTML = '';
-      Object.entries(scenarios).forEach(([id, s]) => {
+      Object.entries(scenarios as any).forEach(([id, s]: [string, any]) => {
         if (s.name.toLowerCase().includes(term)) {
           const item = document.createElement('div'); item.className = 'scenario-item'; item.textContent = s.name;
           item.addEventListener('click', () => { loadScenario(id); scnList.classList.add('hidden'); }); scnList.appendChild(item);
@@ -646,7 +712,7 @@ window.onload = () => {
   }
 
   document.getElementById('scenario-desc')?.addEventListener('input', () => onInputChange(true));
-  
+
   document.querySelectorAll('.preset-search').forEach((input: any) => {
     const render = () => {
       const army = input.dataset.army, list = document.getElementById(`${army}-preset-list`) as HTMLElement, term = input.value.toLowerCase();
@@ -679,8 +745,18 @@ window.onload = () => {
     input.addEventListener('blur', () => setTimeout(() => (document.getElementById(`${input.dataset.army}-civ-list`) as HTMLElement).classList.add('hidden'), 200));
   });
 
-  document.querySelectorAll('.age-btn').forEach((btn: any) => btn.addEventListener('click', () => applyAge(btn.closest('.army-age-controls').dataset.army, btn.dataset.age)));
-  
+  document.querySelectorAll('.age-btn').forEach((btn: any) => btn.addEventListener('click', () => {
+    const controls = btn.closest('.army-age-controls');
+    if (controls) applyAge(controls.dataset.army, btn.dataset.age);
+  }));
+
+  document.querySelectorAll('.add-step-btn').forEach((btn: any) => btn.addEventListener('click', () => {
+    const army = btn.dataset.army, type = btn.dataset.type;
+    const data: any = {};
+    if (type === 'age') data.ageVal = parseInt(btn.dataset.val);
+    addProductionStep(army, type, data);
+  }));
+
   document.querySelectorAll('.step-btn').forEach((btn: any) => btn.addEventListener('click', () => {
     const el = document.getElementById(btn.dataset.id) as HTMLInputElement;
     if (el) { el.value = Math.max(0, (parseFloat(el.value) || 0) + parseFloat(btn.dataset.val)).toFixed(btn.dataset.id.includes('reload') ? 1 : 0); onInputChange(true); }
@@ -695,18 +771,12 @@ window.onload = () => {
     input.addEventListener('keyup', () => {
       const army = input.dataset.army, list = document.querySelector(`.bonus-list[data-army="${army}"]`) as HTMLElement, term = input.value.toLowerCase();
       const allPossible = { ...techs, ...bonuses };
-      renderBonusList(list, Object.entries(allPossible).filter(([, b]) => b.name && b.name.toLowerCase().includes(term)), army);
+      renderBonusList(list, Object.entries(allPossible).filter(([, b]) => (b as any).name && (b as any).name.toLowerCase().includes(term)) as [string, any][], army);
     });
     input.addEventListener('blur', () => setTimeout(() => (document.querySelector(`.bonus-list[data-army="${input.dataset.army}"]`) as HTMLElement)?.classList.add('hidden'), 200));
   });
 
-  document.getElementById('export-btn')?.addEventListener('click', () => {
-    const s = getState(); navigator.clipboard.writeText(JSON.stringify(s, null, 2)).then(() => {
-      const btn = document.getElementById('export-btn') as HTMLElement; const original = btn.textContent;
-      btn.textContent = 'Copied!'; btn.style.color = 'var(--color-pos)';
-      setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
-    });
-  });
+  document.getElementById('export-btn')?.addEventListener('click', exportScenario);
 
   document.getElementById('share-btn')?.addEventListener('click', () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -716,16 +786,37 @@ window.onload = () => {
     });
   });
 
-  document.querySelectorAll('input, select').forEach(el => { el.addEventListener('change', () => onInputChange(true)); el.addEventListener('keyup', () => onInputChange(true)); });
-  
+  document.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('change', () => onInputChange(true));
+    el.addEventListener('keyup', () => onInputChange(true));
+  });
+
   document.querySelectorAll('.count-btn').forEach((btn: any) => btn.addEventListener('click', () => {
     const el = document.getElementById(`${btn.dataset.army}-count`) as HTMLInputElement;
-    if (el) { el.value = Math.max(1, (parseInt(el.value) || 1) + parseInt(btn.dataset.delta)); onInputChange(true); }
+    if (el) { el.value = String(Math.max(1, (parseInt(el.value) || 1) + parseInt(btn.dataset.delta))); onInputChange(true); }
   }));
 
-  ['a', 'b'].forEach((army) => {
+  // Engagement/Micro slider live display
+  (['a', 'b'] as const).forEach((army) => {
+    const engSlider = document.getElementById(`${army}-eng`) as HTMLInputElement;
+    const engVal = document.getElementById(`${army}-eng-val`);
+    if (engSlider && engVal) {
+      engVal.textContent = engSlider.value + '%';
+      engSlider.addEventListener('input', () => { engVal.textContent = engSlider.value + '%'; });
+    }
+
+    const microSlider = document.getElementById(`${army}-groups-slider`) as HTMLInputElement;
+    const microVal = document.getElementById(`${army}-micro-val`);
+    const microLabels: Record<string, string> = { '1': 'Focus Fire', '2': 'High', '3': 'Medium', '4': 'Low', '5': 'Perfect' };
+    if (microSlider && microVal) {
+      microVal.textContent = microLabels[microSlider.value] || microSlider.value;
+      microSlider.addEventListener('input', () => { microVal.textContent = microLabels[microSlider.value] || microSlider.value; });
+    }
+
     // @ts-ignore
-    new Sortable(document.getElementById(`p${army}-timeline`), { animation: 150, handle: '.step-drag-handle', onEnd: () => onInputChange(true) });
+    new Sortable(document.getElementById(`p${army}-timeline`), {
+      animation: 150, handle: '.step-drag-handle', onEnd: () => onInputChange(true)
+    });
   });
 
   loadState();

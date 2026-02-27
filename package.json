@@ -10,7 +10,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/chart.js": "^2.9.41",

@@ -1,14 +1,15 @@
 .PHONY: deploy dev build format clean data lint
 
 format:
-	npx prettier --write "*.js" "*.css" "*.html"
+	npx prettier --write "*.css" "*.html" "src/**/*.ts"
 
 data:
 	python3 convert_units.py
 
-build: clean format lint
+build: clean lint
 	mkdir -p dist
-	npx esbuild script.js units.js techs.js bonuses.js presets.js scenarios.js --minify --outdir=dist
+	npx esbuild src/main.ts --bundle --minify --outfile=main.js --platform=browser --target=es2022
+	cp main.js dist/main.js
 	npx esbuild styles.css --minify --outfile=dist/styles.css
 	cp index.html dist/index.html
 	cp _headers dist/_headers

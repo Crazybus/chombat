@@ -1,4 +1,4 @@
-const bonuses = {
+export const bonuses = {
   japanese_infantry_atk_speed: {
     name: 'Japanese Infantry Attack Speed',
     description: 'Infantry attacks 33% faster starting in Feudal Age.',
