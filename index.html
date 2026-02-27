@@ -6,11 +6,15 @@
     <title>Chombat - AoE2 Combat Simulator</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
   </head>
   <body>
     <nav class="sticky-nav">
       <div class="nav-content">
-        <span class="nav-brand">CHOMBAT</span>
+        <a href="index.html" class="nav-brand">
+          <img src="img/logo.png" alt="Chombat Logo" class="brand-logo" />
+          <span>CHOMBAT</span>
+        </a>
         <ul>
           <li><a href="#">Units</a></li>
           <li><a href="#section-comparison">Stats</a></li>
@@ -750,89 +754,37 @@
       <div class="production-race-controls">
         <div class="prod-group army-a-border">
           <label id="prod-name-a">Unit A Production</label>
-          <div class="prod-fields-row">
-            <div class="field">
-              <label>Train Time (s)</label>
-              <div class="stepper">
-                <button class="step-btn" data-id="pa-train" data-val="-1">−</button
-                ><input type="number" id="pa-train" value="30" /><button
-                  class="step-btn"
-                  data-id="pa-train"
-                  data-val="1"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            <div class="field">
-              <label>Building Count</label>
-              <div class="stepper">
-                <button class="step-btn" data-id="pa-build" data-val="-1">−</button
-                ><input type="number" id="pa-build" value="2" /><button
-                  class="step-btn"
-                  data-id="pa-build"
-                  data-val="1"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
           <div class="prod-requirements" id="pa-req"></div>
           <div class="production-timeline" id="pa-timeline">
             <!-- Steps will be added here -->
           </div>
           <div class="add-step-controls">
-            <select class="step-type-select" data-army="a">
-              <option value="building">Add Building</option>
-              <option value="tech">Research Tech</option>
-              <option value="train">Train Units</option>
-            </select>
-            <button class="add-step-btn" data-army="a">+</button>
+            <button class="add-step-btn" data-army="a" data-type="villagers">Villagers</button>
+            <button class="add-step-btn" data-army="a" data-type="building">Building</button>
+            <button class="add-step-btn" data-army="a" data-type="production">Production</button>
+            <button class="add-step-btn" data-army="a" data-type="tech">Tech</button>
+            <button class="add-step-btn" data-army="a" data-type="cost">Cost</button>
+            <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="2">II</button>
+            <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="3">III</button>
+            <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="4">IV</button>
           </div>
         </div>
         <div class="prod-vs">VS</div>
         <div class="prod-group army-b-border">
           <label id="prod-name-b">Unit B Production</label>
-          <div class="prod-fields-row">
-            <div class="field">
-              <label>Train Time (s)</label>
-              <div class="stepper">
-                <button class="step-btn" data-id="pb-train" data-val="-1">−</button
-                ><input type="number" id="pb-train" value="22" /><button
-                  class="step-btn"
-                  data-id="pb-train"
-                  data-val="1"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-            <div class="field">
-              <label>Building Count</label>
-              <div class="stepper">
-                <button class="step-btn" data-id="pb-build" data-val="-1">−</button
-                ><input type="number" id="pb-build" value="2" /><button
-                  class="step-btn"
-                  data-id="pb-build"
-                  data-val="1"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </div>
           <div class="prod-requirements" id="pb-req"></div>
           <div class="production-timeline" id="pb-timeline">
             <!-- Steps will be added here -->
           </div>
           <div class="add-step-controls">
-            <select class="step-type-select" data-army="b">
-              <option value="building">Add Building</option>
-              <option value="tech">Research Tech</option>
-              <option value="train">Train Units</option>
-            </select>
-            <button class="add-step-btn" data-army="b">+</button>
+            <button class="add-step-btn" data-army="b" data-type="villagers">Villagers</button>
+            <button class="add-step-btn" data-army="b" data-type="building">Building</button>
+            <button class="add-step-btn" data-army="b" data-type="production">Production</button>
+            <button class="add-step-btn" data-army="b" data-type="tech">Tech</button>
+            <button class="add-step-btn" data-army="b" data-type="cost">Cost</button>
+            <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="2">II</button>
+            <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="3">III</button>
+            <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="4">IV</button>
           </div>
         </div>
       </div>
@@ -950,6 +902,7 @@
 
     <script src="units.js"></script>
     <script src="techs.js"></script>
+    <script src="buildings.js"></script>
     <script src="bonuses.js"></script>
     <script src="presets.js"></script>
     <script src="scenarios.js"></script>

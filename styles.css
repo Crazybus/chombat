@@ -109,7 +109,7 @@ body {
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   backdrop-filter: blur(10px);
-  padding: 10px 0;
+  height: 60px; /* Explicit height */
   box-shadow: var(--shadow);
 }
 
@@ -120,6 +120,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  height: 100%;
 }
 
 .nav-brand {
@@ -128,6 +129,26 @@ body {
   font-size: 1.2rem;
   letter-spacing: 2px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  height: 60px; /* Match sticky-nav height */
+  padding: 0;
+}
+
+.brand-logo {
+  height: 60px; /* Full height of nav bar */
+  width: auto;
+  vertical-align: middle;
+}
+
+.nav-brand span {
+  color: var(--accent-color);
+}
+
+.nav-brand:hover {
+  opacity: 0.8;
 }
 
 .sticky-nav ul {
@@ -1339,19 +1360,78 @@ td {
 
 .timeline-step {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
   background: var(--panel-bg);
-  padding: 8px;
+  padding: 10px;
   border-radius: 4px;
   border: 1px solid var(--border-dim);
+  font-size: 0.75rem;
+  position: relative;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-dim);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.step-drag-handle {
+  cursor: grab;
+  color: var(--text-muted);
+  font-weight: bold;
 }
 
 .timeline-step-label {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.step-body {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.step-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.step-field label {
+  font-size: 0.6rem;
   color: var(--text-dim);
-  width: 100px;
+  margin: 0;
+}
+
+.timeline-step input,
+.timeline-step select {
+  font-size: 0.75rem !important;
+  padding: 4px !important;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 2px;
+}
+
+.remove-step-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: var(--color-neg);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .timeline-step-controls {

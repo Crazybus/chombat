@@ -1,4 +1,4 @@
-.PHONY: deploy dev build format clean data
+.PHONY: deploy dev build format clean data lint
 
 format:
 	npx prettier --write "*.js" "*.css" "*.html"
@@ -6,7 +6,7 @@ format:
 data:
 	python3 convert_units.py
 
-build: clean format
+build: clean format lint
 	mkdir -p dist
 	npx esbuild script.js units.js techs.js bonuses.js presets.js scenarios.js --minify --outdir=dist
 	npx esbuild styles.css --minify --outfile=dist/styles.css
@@ -26,6 +26,9 @@ deploy: build
 
 dev: build
 	npx wrangler pages dev dist
+
+lint:
+	npx eslint .
 
 clean:
 	rm -rf dist

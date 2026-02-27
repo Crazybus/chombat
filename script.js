@@ -7,52 +7,30 @@ let charts = {},
   defaults = {},
   activeScenario = null;
 
-const stateMap = {
-  'a-count': 'ac',
-  'a-hp': 'ah',
-  'a-matk': 'am',
-  'a-patk': 'ap',
-  'a-marm': 'aa',
-  'a-parm': 'ar',
-  'a-range': 'an',
-  'a-atk-speed': 'as',
-  'a-bonus-red': 'ab',
-  'a-bonus': 'ad',
-  'a-food': 'af',
-  'a-wood': 'aw',
-  'a-gold': 'ag',
-  'a-disc-all': 'da',
-  'a-disc-f': 'df',
-  'a-disc-w': 'dw',
-  'a-disc-g': 'dg',
-  'a-eng': 'ae',
-  'a-groups-slider': 'amc',
-  'b-count': 'bc',
-  'b-hp': 'bh',
-  'b-matk': 'bm',
-  'b-patk': 'bp',
-  'b-marm': 'ba',
-  'b-parm': 'br',
-  'b-range': 'bn',
-  'b-atk-speed': 'bs',
-  'b-bonus-red': 'bb',
-  'b-bonus': 'bd',
-  'b-food': 'bf',
-  'b-wood': 'bw',
-  'b-gold': 'bg',
-  'b-disc-all': 'ca',
-  'b-disc-f': 'cf',
-  'b-disc-w': 'cw',
-  'b-disc-g': 'cg',
-  'b-eng': 'be',
-  'b-micro': 'bmc',
-  'pa-train': 'pt',
-  'pa-build': 'pc',
-  'pb-train': 'qt',
-  'pb-build': 'qc',
+const fieldMap = {
+  name: 'nm',
+  count: 'c',
+  hp: 'h',
+  reload: 'rl',
+  matk: 'am',
+  patk: 'ap',
+  marm: 'aa',
+  parm: 'ar',
+  range: 'n',
+  'atk-speed': 'as',
+  'bonus-red': 'ab',
+  bonus: 'ad',
+  food: 'af',
+  wood: 'aw',
+  gold: 'ag',
+  'disc-all': 'da',
+  'disc-f': 'df',
+  'disc-w': 'dw',
+  'disc-g': 'dg',
+  eng: 'e',
+  'groups-slider': 'mc',
 };
 
-// Combined unit/preset data - initialized later to ensure scripts are loaded
 let allUnits = {};
 
 class Unit {
@@ -70,6 +48,8 @@ class Unit {
     this.reloadBase = parseFloat(data.reload) || 2;
     this.range = parseFloat(data.range) || 0;
     this.atk_speed = parseFloat(data.atk_speed) || 0;
+    this.bonus = parseFloat(data.bonus) || 0;
+    this.bonus_red = parseFloat(data.bonus_red) || 0;
     this.reload = this.reloadBase / (1 + this.atk_speed / 100);
     this.attackCooldown = 0;
     this.f = parseFloat(data.f) || 0;
@@ -90,10 +70,10 @@ class Unit {
     return Math.max(0, (this.currentCount - 1) * this.hpPerUnit + this.currentUnitHp);
   }
   getParsedCost() {
-    const e = 1 - this.disc_all / 100;
-    const f = (this.f || 0) * (1 - this.disc_f / 100) * e;
-    const w = (this.w || 0) * (1 - this.disc_w / 100) * e;
-    const g = (this.g || 0) * (1 - this.disc_g / 100) * e;
+    const e = 1 - (this.disc_all || 0) / 100;
+    const f = (this.f || 0) * (1 - (this.disc_f || 0) / 100) * e;
+    const w = (this.w || 0) * (1 - (this.disc_w || 0) / 100) * e;
+    const g = (this.g || 0) * (1 - (this.disc_g || 0) / 100) * e;
     return { f, w, g, total: f + w + g };
   }
 }
@@ -104,7 +84,6 @@ class CombatSim {
       idB = armyB.id;
     armyA = this.applyBonuses(armyA, configA.bonuses, 'a');
     armyB = this.applyBonuses(armyB, configB.bonuses, 'b');
-
     this.dataA = { ...armyA, ...configA, id: idA };
     this.dataB = { ...armyB, ...configB, id: idB };
     this.time = 0;
@@ -136,7 +115,9 @@ class CombatSim {
     const isMelee = attacker.range <= 1;
     const arm = isMelee ? defender.marm : defender.parm;
     const atk = isMelee ? attacker.matk : attacker.patk;
-    return Math.max(1, atk - arm);
+    const bDmg = Math.max(1, atk - arm);
+    const bonusDmg = (attacker.bonus || 0) * (1 - (defender.bonus_red || 0) / 100);
+    return bDmg + bonusDmg;
   }
   run() {
     const eA = new Unit(this.dataA),
@@ -221,7 +202,7 @@ function getArmyData(army) {
 function getArmyConfig(army) {
   const config = {};
   document.querySelectorAll(`[id^="${army}-"]`).forEach((el) => {
-    const key = el.id.substring(2);
+    const key = el.id.substring(2).replace(/-/g, '_');
     config[key] = el.type === 'number' || el.type === 'range' ? parseFloat(el.value) : el.value;
   });
   const slider = document.getElementById(`${army}-groups-slider`);
@@ -349,41 +330,54 @@ function updateTimeCharts(history, nameA, nameB) {
   });
 }
 
-function calculateCount(t, train, initialBuild, timelineSteps) {
+// --- Production Simulation ---
+
+function calculateCount(t, timelineSteps) {
   let unitsCount = 0,
-    currentBuild = initialBuild,
+    currentBuild = 0,
     productionDebt = 0,
-    techQueue = [];
+    currentTrain = 30;
+  let currentCost = { f: 0, w: 0, g: 0 };
   const steps = JSON.parse(JSON.stringify(timelineSteps));
+  let stepIdx = 0;
+  const events = [];
+
   for (let s = 0; s <= t; s++) {
-    techQueue.forEach((tech) => {
-      tech.remainingTime--;
-      if (tech.remainingTime <= 0) currentBuild++;
-    });
-    techQueue = techQueue.filter((tech) => tech.remainingTime > 0);
-    for (let i = steps.length - 1; i >= 0; i--) {
-      const step = steps[i];
-      let met = false;
-      const triggerVal = parseFloat(step.triggerVal) || 0;
-      if (step.triggerType === 'time') {
-        if (s >= triggerVal) met = true;
-      } else if (step.triggerType === 'units') {
-        if (unitsCount >= triggerVal) met = true;
-      }
-      if (met) {
-        if (step.type === 'building') currentBuild += parseFloat(step.value) || 0;
-        else if (step.type === 'tech') {
-          const tech = techs[step.techId];
-          if (tech && currentBuild > 0) {
-            techQueue.push({ id: step.techId, remainingTime: tech.time });
-            currentBuild--;
-          }
+    while (stepIdx < steps.length) {
+      const step = steps[stepIdx];
+      const delay = (parseFloat(step.delay) || 0) * (parseInt(step.count) || 1);
+      if (!step.started) {
+        step.started = true;
+        step.startTime = s;
+        events.push({ time: s, msg: `Started: ${step.name || step.type} (at ${unitsCount} units)` });
+        if (step.isBlocking && currentBuild > 0) {
+          step.unblockTime = s + delay;
+          currentBuild = Math.max(0, currentBuild - 1);
+          step.wasActuallyBlocking = true;
         }
-        steps.splice(i, 1);
       }
+      if (s >= step.startTime + delay) {
+        if (step.wasActuallyBlocking) {
+          currentBuild++;
+          step.wasActuallyBlocking = false;
+        }
+        events.push({ time: s, msg: `Finished: ${step.name || step.type}` });
+        if (step.type === 'building' || step.type === 'prod' || step.type === 'villagers') {
+          currentBuild += parseFloat(step.value) || 0;
+          if (step.type === 'building' && step.value > 0)
+            events.push({ time: s, msg: `Production Capacity +${step.value}` });
+        } else if (step.type === 'production') {
+          currentBuild = parseFloat(step.value) || currentBuild;
+          currentTrain = parseFloat(step.train) || currentTrain;
+          events.push({ time: s, msg: `Production set to ${currentBuild}x at ${currentTrain}s` });
+        } else if (step.type === 'cost') {
+          currentCost = { f: parseFloat(step.f) || 0, w: parseFloat(step.w) || 0, g: parseFloat(step.g) || 0 };
+        }
+        stepIdx++;
+      } else break;
     }
-    if (currentBuild > 0 && train > 0) {
-      productionDebt += currentBuild / train;
+    if (currentBuild > 0 && currentTrain > 0) {
+      productionDebt += currentBuild / currentTrain;
       if (productionDebt >= 1) {
         const n = Math.floor(productionDebt);
         unitsCount += n;
@@ -391,7 +385,7 @@ function calculateCount(t, train, initialBuild, timelineSteps) {
       }
     }
   }
-  return unitsCount;
+  return { count: unitsCount, cost: currentCost, events: events };
 }
 
 function updateProductionAnalysis(dA, dB, cA, cB) {
@@ -400,47 +394,101 @@ function updateProductionAnalysis(dA, dB, cA, cB) {
   const getTimeline = (army) =>
     Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el) => ({
       type: el.dataset.type,
-      triggerType: el.querySelector('.step-trigger-type')?.value || 'time',
-      triggerVal: el.querySelector('.step-trigger-val')?.value || 0,
-      value: el.querySelector('.step-value')?.value || 0,
-      techId: el.querySelector('.step-tech-select')?.value,
+      name: el.querySelector('.step-name')?.value,
+      delay: parseFloat(el.querySelector('.step-delay')?.value) || 0,
+      count: parseInt(el.querySelector('.step-count')?.value) || 1,
+      cost: parseFloat(el.querySelector('.step-cost')?.value) || 0,
+      isBlocking: el.querySelector('.step-blocking')?.checked,
+      value: parseFloat(el.querySelector('.step-value')?.value) || 0,
+      train: el.querySelector('.step-train')?.value,
+      f: el.querySelector('.step-f')?.value,
+      w: el.querySelector('.step-w')?.value,
+      g: el.querySelector('.step-g')?.value,
     }));
   const timelineA = getTimeline('a'),
     timelineB = getTimeline('b');
-  const bA = parseInt(document.getElementById('pa-build').value) || 1,
-    bB = parseInt(document.getElementById('pb-build').value) || 1;
-  const tA = parseFloat(document.getElementById('pa-train').value) || 30,
-    tB = parseFloat(document.getElementById('pb-train').value) || 30;
+
   const data = { labels: [], countA: [], countB: [], advantage: [] };
+  let contact = null,
+    cross = null,
+    finalCostA = { f: 0, w: 0, g: 0 },
+    finalCostB = { f: 0, w: 0, g: 0 };
+
   for (let t = 0; t <= searchMax; t += step) {
-    const cA_t = calculateCount(t, tA, bA, timelineA),
-      cB_t = calculateCount(t, tB, bB, timelineB);
+    const resA = calculateCount(t, timelineA),
+      resB = calculateCount(t, timelineB);
     data.labels.push(t + 's');
-    data.countA.push(cA_t);
-    data.countB.push(cB_t);
+    data.countA.push(resA.count);
+    data.countB.push(resB.count);
+    if (t === searchMax) {
+      finalCostA = resA.cost;
+      finalCostB = resB.cost;
+    }
     let adv = 0;
-    if (cA_t > 0 && cB_t > 0) {
-      const sim = new CombatSim({ ...dA, count: cA_t }, { ...dB, count: cB_t }, cA, cB).run();
+    if (resA.count > 0 && resB.count > 0) {
+      if (!contact) contact = { time: t, cA: resA.count, cB: resB.count };
+      const sim = new CombatSim({ ...dA, count: resA.count }, { ...dB, count: resB.count }, cA, cB).run();
       adv =
         sim.armyA.totalHp > sim.armyB.totalHp
           ? (sim.armyA.totalHp / sim.armyA.initialTotalHp) * 100
-          : -((sim.armyB.totalHp / sim.armyB.initialTotalHp) * 100);
-    } else if (cA_t > 0) adv = 100;
-    else if (cB_t > 0) adv = -100;
+          : -(sim.armyB.totalHp / sim.armyB.initialTotalHp) * 100;
+      if (!cross && data.advantage.length > 0) {
+        const prev = data.advantage[data.advantage.length - 1];
+        if ((prev < 0 && adv > 0) || (prev > 0 && adv < 0))
+          cross = { time: t, cA: resA.count, cB: resB.count, win: adv > 0 ? dA.name : dB.name };
+      }
+    } else if (resA.count > 0) adv = 100;
+    else if (resB.count > 0) adv = -100;
     data.advantage.push(adv);
   }
   renderProductionCharts(data, dA.name, dB.name);
+
+  const resA_final = calculateCount(searchMax, timelineA);
+  const resB_final = calculateCount(searchMax, timelineB);
+
+  const report = document.getElementById('production-report-text');
+  if (report) {
+    let msg = contact
+      ? `<p>First units arrive at ${contact.time}s: <strong>${contact.cA} ${dA.name}</strong> vs <strong>${contact.cB} ${dB.name}</strong>.</p>`
+      : '';
+    if (cross)
+      msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span><br>The <strong>${cross.win}</strong> catches up once they have massed <strong>${cross.win === dA.name ? cross.cA : cross.cB} units</strong>.</p>`;
+    else
+      msg += `<p><strong>Dominance:</strong> ${data.advantage[data.advantage.length - 1] > 0 ? dA.name : dB.name} maintains the lead.</p>`;
+
+    msg += `<h4>Event Log</h4><div class="event-log-container">`;
+    const combinedEvents = [
+      ...resA_final.events.map((e) => ({ ...e, army: 'A', color: getThemeColor('--army-a-color') })),
+      ...resB_final.events.map((e) => ({ ...e, army: 'B', color: getThemeColor('--army-b-color') })),
+    ]
+      .filter((e) => e.time > 0)
+      .sort((a, b) => a.time - b.time);
+
+    combinedEvents.forEach((e) => {
+      msg += `<div class="event-row"><span class="event-time">${e.time}s</span> <span style="color:${e.color}; font-weight:bold">[${e.army}]</span> ${e.msg}</div>`;
+    });
+    msg += `</div>`;
+    report.innerHTML = msg;
+  }
+
+  const renderReqs = (army, cost) => {
+    const el = document.getElementById(`p${army}-req`);
+    if (!el) return;
+    el.innerHTML = `<span style="font-size:0.7rem; color:var(--text-muted)">Current Cost: F:${cost.f} W:${cost.w} G:${cost.g}</span>`;
+  };
+  renderReqs('a', finalCostA);
+  renderReqs('b', finalCostB);
 }
 
 function renderProductionCharts(data, nA, nB) {
-  const ctxGrowth = document.getElementById('prodGrowthChart')?.getContext('2d'),
-    ctxAdv = document.getElementById('prodAdvantageChart')?.getContext('2d');
+  const ctxG = document.getElementById('prodGrowthChart')?.getContext('2d'),
+    ctxA = document.getElementById('prodAdvantageChart')?.getContext('2d');
   const colorA = getThemeColor('--army-a-color'),
     colorB = getThemeColor('--army-b-color'),
     accent = getThemeColor('--accent-color');
-  if (ctxGrowth) {
+  if (ctxG) {
     if (charts['prodGrowth']) charts['prodGrowth'].destroy();
-    charts['prodGrowth'] = new Chart(ctxGrowth, {
+    charts['prodGrowth'] = new Chart(ctxG, {
       type: 'line',
       data: {
         labels: data.labels,
@@ -452,9 +500,9 @@ function renderProductionCharts(data, nA, nB) {
       options: { responsive: true, maintainAspectRatio: false, datasets: { line: { tension: 0, pointRadius: 0 } } },
     });
   }
-  if (ctxAdv) {
+  if (ctxA) {
     if (charts['prodAdv']) charts['prodAdv'].destroy();
-    charts['prodAdv'] = new Chart(ctxAdv, {
+    charts['prodAdv'] = new Chart(ctxA, {
       type: 'line',
       data: {
         labels: data.labels,
@@ -520,27 +568,101 @@ function renderScalingChart(id, data, nA, nB) {
   });
 }
 
+// --- UI Functions ---
+
 function addProductionStep(army, type, data = {}) {
   const timeline = document.getElementById(`p${army}-timeline`);
   if (!timeline) return;
   const step = document.createElement('div');
   step.className = 'timeline-step';
   step.dataset.type = type;
-  const triggerType = data.triggerType || 'time',
-    triggerVal = data.triggerVal || 0;
-  const triggerHtml = `<select class="step-trigger-type"><option value="time" ${triggerType === 'time' ? 'selected' : ''}>At Time</option><option value="units" ${triggerType === 'units' ? 'selected' : ''}>After Units</option></select><input type="number" class="step-trigger-val" value="${triggerVal}" style="width:60px;">`;
-  let controls = '';
-  if (type === 'building')
-    controls = `${triggerHtml}<div class="field"><label>Add</label><input type="number" class="step-value" value="${data.value || 1}" style="width:40px;"></div>`;
-  else if (type === 'tech') {
-    const options = Object.entries(techs)
+
+  if (type === 'villagers' && !data.name) {
+    data.name = 'Villager';
+    data.delay = 25;
+    data.count = 18;
+    data.cost = 50;
+    data.isBlocking = true;
+    data.value = 0;
+  }
+  if (type === 'age' && !data.name) {
+    const ageMap = { 2: 'Feudal Age', 3: 'Castle Age', 4: 'Imperial Age' };
+    const ageName = ageMap[data.ageVal] || 'Feudal Age';
+    const techId = TECH_MAP[ageName],
+      tData = techs[techId];
+    if (tData) {
+      data.id = techId.toString();
+      data.name = tData.name;
+      data.delay = tData.time;
+      data.count = 1;
+      data.cost = (tData.f || 0) + (tData.w || 0) + (tData.g || 0);
+      data.isBlocking = true;
+    }
+    type = 'tech';
+    step.dataset.type = 'tech';
+  }
+
+  let optionsHtml = '';
+  if (type === 'tech')
+    optionsHtml = Object.entries(techs)
       .sort(([, a], [, b]) => a.name.localeCompare(b.name))
-      .map(([id, t]) => `<option value="${id}" ${data.techId === id ? 'selected' : ''}>${t.name}</option>`)
+      .map(([id, t]) => `<option value="${id}" ${String(data.id) === String(id) ? 'selected' : ''}>${t.name}</option>`)
       .join('');
-    controls = `${triggerHtml}<div class="field" style="min-width: 120px;"><label>Tech</label><select class="step-tech-select">${options}</select></div>`;
-  } else if (type === 'train')
-    controls = `<div class="field"><label>Units</label><input type="number" class="step-value" value="${data.value || 10}" style="width:50px;"></div>`;
-  step.innerHTML = `<span class="timeline-step-label" style="width:60px;">${type}</span><div class="timeline-step-controls" style="display:flex; gap:5px; align-items:center;">${controls}</div><button class="remove-step-btn">&times;</button>`;
+  else if (type === 'building')
+    optionsHtml = Object.entries(buildings)
+      .sort(([, a], [, b]) => a.name.localeCompare(b.name))
+      .map(([id, b]) => `<option value="${id}" ${String(data.id) === String(id) ? 'selected' : ''}>${b.name}</option>`)
+      .join('');
+  const select =
+    type === 'tech' || type === 'building'
+      ? `<select class="step-select"><option value="">Custom...</option>${optionsHtml}</select>`
+      : '';
+
+  let bodyHtml;
+  if (type === 'cost') {
+    bodyHtml = `
+        <div class="step-field"><label>Food</label><input type="number" class="step-f" value="${data.f || 0}" style="width:40px;"></div>
+        <div class="step-field"><label>Wood</label><input type="number" class="step-w" value="${data.w || 0}" style="width:40px;"></div>
+        <div class="step-field"><label>Gold</label><input type="number" class="step-g" value="${data.g || 0}" style="width:40px;"></div>
+      `;
+  } else {
+    bodyHtml = `
+        <div class="step-field"><label>Name</label><input type="text" class="step-name" value="${data.name || ''}" style="width:100px;"></div>
+        <div class="step-field"><label>Delay</label><input type="number" class="step-delay" value="${data.delay || 0}" style="width:45px;"></div>
+        <div class="step-field"><label>x</label><input type="number" class="step-count" value="${data.count || 1}" style="width:35px;"></div>
+        <div class="step-field"><label>Cost</label><input type="number" class="step-cost" value="${data.cost || 0}" style="width:45px;"></div>
+        <div class="step-field"><label>Block</label><input type="checkbox" class="step-blocking" ${data.isBlocking ? 'checked' : ''}></div>
+        <div class="step-field"><label>Value</label><input type="number" class="step-value" value="${data.value || 0}" style="width:40px;"></div>
+        ${type === 'production' ? `<div class="step-field"><label>Speed</label><input type="number" class="step-train" value="${data.train || 30}" style="width:40px;"></div>` : ''}
+      `;
+  }
+
+  step.innerHTML = `
+    <div class="step-header">
+      <div class="step-drag-handle">::</div><span class="timeline-step-label">${type}</span><button class="remove-step-btn">&times;</button>
+    </div>
+    <div class="step-body">
+      ${select} ${bodyHtml}
+    </div>
+  `;
+
+  const updateFromSelect = () => {
+    const sel = step.querySelector('.step-select');
+    if (!sel) return;
+    const val = sel.value,
+      src = type === 'tech' ? techs : buildings;
+    if (val && src[val]) {
+      const item = src[val];
+      step.querySelector('.step-name').value = item.name;
+      step.querySelector('.step-delay').value = item.time || 0;
+      step.querySelector('.step-cost').value = (item.f || 0) + (item.w || 0) + (item.g || 0) + (item.s || 0);
+      if (type === 'tech') step.querySelector('.step-blocking').checked = true;
+      if (type === 'building') step.querySelector('.step-value').value = 1;
+    }
+    onInputChange(true);
+  };
+
+  if (select) step.querySelector('.step-select').addEventListener('change', updateFromSelect);
   step.querySelector('.remove-step-btn').addEventListener('click', () => {
     step.remove();
     onInputChange(true);
@@ -597,7 +719,6 @@ function applyAgeUpgrades(army) {
   let tAtk = 0,
     tArm = 0;
   const isI = data.class === 6,
-    isA = data.class === 0,
     isC = data.class === 4 || data.class === 2;
   active.forEach((btn) => {
     const age = parseInt(btn.dataset.age),
@@ -629,6 +750,12 @@ function loadPreset(army, id) {
     const el = document.getElementById(`${army}-${k}`);
     if (el) el.value = u[k === 'food' ? 'f' : k === 'wood' ? 'w' : k === 'gold' ? 'g' : k];
   });
+  const timeline = document.getElementById(`p${army}-timeline`);
+  if (timeline) {
+    timeline.innerHTML = '';
+    addProductionStep(army, 'production', { name: 'Initial Production', value: 1, train: u.trainTime });
+    addProductionStep(army, 'cost', { f: u.f, w: u.w, g: u.g });
+  }
   onInputChange(false);
 }
 
@@ -636,25 +763,41 @@ function loadScenario(id) {
   const s = scenarios[id];
   if (!s) return;
   activeScenario = id;
-  document.getElementById('scenario-desc').value = s.desc || '';
+  const descEl = document.getElementById('scenario-desc');
+  if (descEl) descEl.value = s.desc || '';
   ['a', 'b'].forEach((army) => {
     const config = s[army];
     document.getElementById(`p${army}-timeline`).innerHTML = '';
     document.getElementById(`${army}-applied-bonuses`).innerHTML = '';
     if (config.preset) loadPreset(army, config.preset);
+    const smap = {
+      as: 'atk-speed',
+      abr: 'bonus-red',
+      bbn: 'bonus',
+      da: 'disc-all',
+      df: 'disc-f',
+      dw: 'disc-w',
+      dg: 'disc-g',
+    };
     for (const [key, val] of Object.entries(config)) {
-      const el = document.getElementById(`${army}-${key}`);
+      const el = document.getElementById(`${army}-${smap[key] || key}`);
       if (el) el.value = val;
-      // Handle production delay conversion
-      if (key === 'delay' && val > 0)
-        addProductionStep(army, 'building', { triggerType: 'time', triggerVal: val, value: 0 });
-      if (key === 'tech' && val > 0)
-        addProductionStep(army, 'tech', {
-          triggerType: 'units',
-          triggerVal: config.pre || 0,
-          techId: 'fake_delay',
-          value: val,
+      if (key === 'name') {
+        const h = document.getElementById(`name-header-${army}`);
+        if (h) h.textContent = val;
+      }
+    }
+    if (config['train-time'] || config.buildings || config.delay || config.tech) {
+      document.getElementById(`p${army}-timeline`).innerHTML = '';
+      if (config['train-time'] || config.buildings)
+        addProductionStep(army, 'production', {
+          name: 'Initial Production',
+          value: config.buildings || 1,
+          train: config['train-time'] || 30,
         });
+      if (config.delay) addProductionStep(army, 'building', { name: 'Initial Delay', delay: config.delay, value: 0 });
+      if (config.tech)
+        addProductionStep(army, 'tech', { name: 'Initial Research', delay: config.tech, isBlocking: true });
     }
   });
   onInputChange(false);
@@ -702,73 +845,140 @@ function renderScenarioBar() {
 }
 
 function getState() {
-  const s = {};
-  for (const [id, key] of Object.entries(stateMap)) {
-    const el = document.getElementById(id);
-    if (el && el.value !== defaults[id]) s[key] = el.value;
-  }
+  const s = { a: {}, b: {}, desc: '' };
+  const descEl = document.getElementById('scenario-desc');
+  if (descEl) s.desc = descEl.value;
+
   ['a', 'b'].forEach((army) => {
+    for (const [field, key] of Object.entries(fieldMap)) {
+      const id = `${army}-${field}`;
+      const el = document.getElementById(id);
+      if (el && el.value !== defaults[id]) s[army][key] = el.value;
+    }
+    const presetEl = document.querySelector(`.preset-search[data-army="${army}"]`);
+    if (presetEl && presetEl.dataset.value) s[army].ps = presetEl.dataset.value;
+
     const timeline = Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el) => ({
-      type: el.dataset.type,
-      triggerType: el.querySelector('.step-trigger-type')?.value,
-      triggerVal: el.querySelector('.step-trigger-val')?.value,
-      value: el.querySelector('.step-value')?.value,
-      techId: el.querySelector('.step-tech-select')?.value,
+      t: el.dataset.type,
+      n: el.querySelector('.step-name')?.value,
+      d: el.querySelector('.step-delay')?.value,
+      c: el.querySelector('.step-count')?.value,
+      co: el.querySelector('.step-cost')?.value,
+      b: el.querySelector('.step-blocking')?.checked,
+      v: el.querySelector('.step-value')?.value,
+      i: el.querySelector('.step-select')?.value,
+      tr: el.querySelector('.step-train')?.value,
+      f: el.querySelector('.step-f')?.value,
+      w: el.querySelector('.step-w')?.value,
+      g: el.querySelector('.step-g')?.value,
     }));
-    if (timeline.length > 0) s[`p${army}_timeline`] = timeline;
+    if (timeline.length > 0) s[army].tl = timeline;
+
     const bData = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el) => ({
-      id: el.dataset.id,
-      effects: Array.from(el.querySelectorAll('input')).map((cb) => cb.checked),
+      i: el.dataset.id,
+      e: Array.from(el.querySelectorAll('input')).map((cb) => cb.checked),
     }));
-    if (bData.length > 0) s[`${army}_bonuses`] = bData;
+    if (bData.length > 0) s[army].bn = bData;
   });
   return s;
 }
 
 function loadState() {
   const p = new URLSearchParams(window.location.search);
+  const dataParam = p.get('data');
+  if (dataParam) {
+    try {
+      const state = JSON.parse(dataParam);
+      if (state.desc) {
+        const el = document.getElementById('scenario-desc');
+        if (el) el.value = state.desc;
+      }
+      ['a', 'b'].forEach((army) => {
+        const armyState = state[army];
+        if (!armyState) return;
 
-  if (p.has('scenario')) {
-    loadScenario(p.get('scenario'));
+        if (armyState.ps) loadPreset(army, armyState.ps);
+
+        for (const [field, key] of Object.entries(fieldMap)) {
+          if (armyState[key] !== undefined) {
+            const id = `${army}-${field}`;
+            const el = document.getElementById(id);
+            if (el) el.value = armyState[key];
+          }
+        }
+
+        if (armyState.tl) {
+          const container = document.getElementById(`p${army}-timeline`);
+          if (container) {
+            container.innerHTML = '';
+            armyState.tl.forEach((s) => {
+              const data = {
+                type: s.t,
+                name: s.n,
+                delay: s.d,
+                count: s.c,
+                cost: s.co,
+                isBlocking: s.b,
+                value: s.v,
+                id: s.i,
+                train: s.tr,
+                f: s.f,
+                w: s.w,
+                g: s.g,
+              };
+              addProductionStep(army, s.t, data);
+            });
+          }
+        }
+
+        if (armyState.bn) {
+          const container = document.getElementById(`${army}-applied-bonuses`);
+          if (container) {
+            container.innerHTML = '';
+            armyState.bn.forEach((b) => addBonus(army, b.i, b.e));
+          }
+        }
+      });
+      updateCharts();
+      return;
+    } catch (e) {
+      console.error('Failed to load state:', e);
+    }
   }
-
-  p.forEach((v, k) => {
-    const id = Object.keys(stateMap).find((x) => stateMap[x] === k);
-    const el = document.getElementById(id);
-    if (el) el.value = v;
-  });
-
-  ['a', 'b'].forEach((army) => {
-    if (p.has(`p${army}_timeline`))
-      try {
-        const timeline = JSON.parse(p.get(`p${army}_timeline`));
-        document.getElementById(`p${army}-timeline`).innerHTML = '';
-        timeline.forEach((s) => addProductionStep(army, s.type, s));
-      } catch (e) {}
-    if (p.has(`${army}_bonuses`))
-      try {
-        const bData = JSON.parse(p.get(`${army}_bonuses`));
-        document.getElementById(`${army}-applied-bonuses`).innerHTML = '';
-        bData.forEach((b) => addBonus(army, b.id, b.effects));
-      } catch (e) {}
-  });
+  if (p.has('scenario')) loadScenario(p.get('scenario'));
   updateCharts();
 }
 
 function syncURL() {
   const s = getState(),
     p = new URLSearchParams();
-  ['a', 'b'].forEach((army) => {
-    const id = document.querySelector(`.preset-search[data-army="${army}"]`)?.dataset.value;
-    if (id) p.set(`ps${army}`, id);
-  });
   if (activeScenario) p.set('scenario', activeScenario);
-  Object.entries(s).forEach(([k, v]) => {
-    if (Array.isArray(v)) {
-      if (v.length > 0) p.set(k, JSON.stringify(v));
-    } else p.set(k, v);
+  const json = JSON.stringify(s);
+  const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
+  const clean = encoded
+    .replace(/%22/g, '"')
+    .replace(/%7B/g, '{')
+    .replace(/%7D/g, '}')
+    .replace(/%3A/g, ':')
+    .replace(/%2C/g, ',')
+    .replace(/%5B/g, '[')
+    .replace(/%5D/g, ']');
+  history.replaceState(null, '', '?' + clean);
+}
+
+function exportScenario() {
+  const s = getState();
+  const json = JSON.stringify(s, null, 2);
+  navigator.clipboard.writeText(json).then(() => {
+    const btn = document.getElementById('export-btn');
+    const originalText = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.style.color = 'var(--color-pos)';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.color = '';
+    }, 2000);
   });
-  history.replaceState(null, '', '?' + p.toString());
 }
 
 window.onload = () => {
@@ -777,6 +987,20 @@ window.onload = () => {
     if (t.id) defaults[t.id] = t.value;
   });
   renderScenarioBar();
+  document.getElementById('scenario-desc')?.addEventListener('input', () => onInputChange(true));
+  document.getElementById('export-btn')?.addEventListener('click', exportScenario);
+  document.getElementById('share-btn')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.getElementById('share-btn');
+      const originalText = btn.textContent;
+      btn.textContent = 'Link Copied!';
+      btn.style.color = 'var(--color-pos)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.color = '';
+      }, 2000);
+    });
+  });
   document.querySelectorAll('input, select').forEach((el) => {
     el.addEventListener('change', () => onInputChange(true));
     el.addEventListener('keyup', () => onInputChange(true));
@@ -856,10 +1080,7 @@ window.onload = () => {
     .querySelectorAll('.add-step-btn')
     .forEach((btn) =>
       btn.addEventListener('click', () =>
-        addProductionStep(
-          btn.dataset.army,
-          document.querySelector(`.step-type-select[data-army="${btn.dataset.army}"]`).value,
-        ),
+        addProductionStep(btn.dataset.army, btn.dataset.type, { ageVal: btn.dataset.val }),
       ),
     );
   document.querySelectorAll('.count-btn').forEach((btn) =>
@@ -871,12 +1092,12 @@ window.onload = () => {
       }
     }),
   );
-  const p = new URLSearchParams(window.location.search);
-  if (p.has('psa')) loadPreset('a', p.get('psa'));
-  if (p.has('psb')) loadPreset('b', p.get('psb'));
-  if (p.has('scenario')) {
-    loadScenario(p.get('scenario'));
-  } else {
-    loadState();
-  }
+  ['a', 'b'].forEach((army) => {
+    new Sortable(document.getElementById(`p${army}-timeline`), {
+      animation: 150,
+      handle: '.step-drag-handle',
+      onEnd: () => onInputChange(true),
+    });
+  });
+  loadState();
 };
