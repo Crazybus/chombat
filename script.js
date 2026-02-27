@@ -48,7 +48,6 @@ class Unit {
     this.reloadBase = parseFloat(data.reload) || 2;
     this.range = parseFloat(data.range) || 0;
     this.atk_speed = parseFloat(data.atk_speed) || 0;
-    this.bonus = parseFloat(data.bonus) || 0;
     this.bonus_red = parseFloat(data.bonus_red) || 0;
     this.reload = this.reloadBase / (1 + this.atk_speed / 100);
     this.attackCooldown = 0;
@@ -61,6 +60,8 @@ class Unit {
     this.disc_g = parseFloat(data.disc_g) || 0;
     this.eng = parseFloat(data.eng) || 100;
     this.class = data.class;
+    this.bonuses = data.bonuses || {};
+    this.armors = data.armors || {};
     this.micro = parseFloat(data.micro) || 5;
   }
   isMelee() {
@@ -82,43 +83,106 @@ class CombatSim {
   constructor(armyA, armyB, configA, configB) {
     const idA = armyA.id,
       idB = armyB.id;
-    armyA = this.applyBonuses(armyA, configA.bonuses, 'a');
-    armyB = this.applyBonuses(armyB, configB.bonuses, 'b');
-    this.dataA = { ...armyA, ...configA, id: idA };
-    this.dataB = { ...armyB, ...configB, id: idB };
+    this.dataA = this.applyBonuses({ ...armyA, ...configA, id: idA }, configA.bonuses, 'a');
+    this.dataB = this.applyBonuses({ ...armyB, ...configB, id: idB }, configB.bonuses, 'b');
+
+    ['dataA', 'dataB'].forEach((d) => {
+      const base = d === 'dataA' ? armyA : armyB;
+      if (!this[d].bonuses && base.bonuses) this[d].bonuses = base.bonuses;
+      if (!this[d].armors && base.armors) this[d].armors = base.armors;
+    });
+
     this.time = 0;
     this.tick = 0.05;
     this.history = [];
   }
-  applyBonuses(army, bonusIds, armyLetter) {
-    if (!bonusIds) return army;
-    let newArmy = { ...army };
+
+  decodeEncoded(val) {
+    const iv = Math.floor(val);
+    let amt = iv & 0xff;
+    if (amt >= 128) amt -= 256;
+    const cls = iv >> 8;
+    return { cls, amt };
+  }
+
+  applyBonuses(unitData, bonusIds, armyLetter) {
+    if (!bonusIds) return unitData;
+    let newUnit = { ...unitData };
+    const uBase = allUnits[unitData.id] || unitData;
+
     bonusIds.forEach((id) => {
-      const b = bonuses[id];
+      const b = techs[id] || bonuses[id];
       if (!b) return;
       const active = document.querySelectorAll(
         `#${armyLetter}-applied-bonuses .applied-bonus[data-id="${id}"] input:checked`,
       );
-      active.forEach((cb) => {
-        const e = b.effects[parseInt(cb.dataset.effectIndex)];
-        const uData = allUnits[army.id];
-        if (uData && (uData.class === e.class || e.class === 'all')) {
-          if (e.type === 'hp') newArmy.hp *= 1 + e.value;
-          if (e.type === 'range') newArmy.range += e.value;
-          if (e.type === 'atk_speed') newArmy.reload /= 1 + e.value;
+      if (active.length === 0) return;
+
+      const effs = b.effects || [];
+      effs.forEach((e) => {
+        if ((e.u === -1 || e.u == uBase.id) && (e.c === -1 || e.c == uBase.class)) {
+          let attr = e.a;
+          let val = e.v;
+
+          if (attr === 8 || attr === 9) {
+            const { cls, amt } = this.decodeEncoded(val);
+            val = amt;
+            if (cls === 3) attr = 6;
+            else if (cls === 4) attr = 5;
+            else if (attr === 9) {
+              if (!newUnit.bonuses) newUnit.bonuses = { ...uBase.bonuses };
+              newUnit.bonuses[cls] = (newUnit.bonuses[cls] || 0) + amt;
+              return;
+            } else if (attr === 8) {
+              if (!newUnit.armors) newUnit.armors = { ...uBase.armors };
+              newUnit.armors[cls] = (newUnit.armors[cls] || 0) + amt;
+              return;
+            }
+          }
+
+          if (e.t === 1 || e.t === 4) {
+            if (attr === 0) newUnit.hp += val;
+            if (attr === 3 || attr === 12) newUnit.range += val;
+            if (attr === 4) {
+              if (newUnit.matk > 0) newUnit.matk += val;
+              if (newUnit.patk > 0) newUnit.patk += val;
+            }
+            if (attr === 5) newUnit.marm += val;
+            if (attr === 6) newUnit.parm += val;
+            if (attr === 9) newUnit.reload += val;
+          } else if (e.t === 2 || e.t === 5) {
+            if (attr === 0) newUnit.hp *= val;
+            if (attr === 3 || attr === 12) newUnit.range *= val;
+            if (attr === 4) {
+              if (newUnit.matk > 0) newUnit.matk *= val;
+              if (newUnit.patk > 0) newUnit.patk *= val;
+            }
+            if (attr === 5) newUnit.marm *= val;
+            if (attr === 6) newUnit.parm *= val;
+            if (attr === 9) newUnit.reload *= val;
+          }
         }
       });
     });
-    return newArmy;
+    return newUnit;
   }
+
   calculateDamage(attacker, defender) {
     const isMelee = attacker.range <= 1;
-    const arm = isMelee ? defender.marm : defender.parm;
-    const atk = isMelee ? attacker.matk : attacker.patk;
-    const bDmg = Math.max(1, atk - arm);
-    const bonusDmg = (attacker.bonus || 0) * (1 - (defender.bonus_red || 0) / 100);
-    return bDmg + bonusDmg;
+    const baseArm = isMelee ? defender.marm : defender.parm;
+    const baseAtk = isMelee ? attacker.matk : attacker.patk;
+    let totalDmg = Math.max(1, baseAtk - baseArm);
+    const attBonuses = attacker.bonuses || {};
+    const defArmors = defender.armors || {};
+    for (const [cls, amt] of Object.entries(attBonuses)) {
+      const defArm = defArmors[cls] || 0;
+      totalDmg += Math.max(0, amt - defArm);
+    }
+    const reduction = 1 - (defender.bonus_red || 0) / 100;
+    const bonusOnly = totalDmg - Math.max(1, baseAtk - baseArm);
+    return Math.max(1, Math.max(1, baseAtk - baseArm) + bonusOnly * reduction);
   }
+
   run() {
     const eA = new Unit(this.dataA),
       eB = new Unit(this.dataB);
@@ -143,25 +207,32 @@ class CombatSim {
     };
     record();
     while (eA.currentCount > 0 && eB.currentCount > 0 && this.time < 300) {
-      const pA = Math.ceil(eA.currentCount),
-        pB = Math.ceil(eB.currentCount);
+      let dmgAtoB = 0;
+      let dmgBtoA = 0;
+
       if (eA.attackCooldown <= 0) {
         const attackers = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.eng / 100)));
-        this.applyDamage(eB, this.calculateDamage(eA, eB) * attackers, this.dataA.micro || 5);
-        eA.attackCooldown = eA.reload;
-      } else eA.attackCooldown -= this.tick;
+        dmgAtoB = this.calculateDamage(eA, eB) * attackers;
+      }
+
       if (eB.attackCooldown <= 0) {
         const attackers = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.eng / 100)));
-        this.applyDamage(eA, this.calculateDamage(eB, eA) * attackers, this.dataB.micro || 5);
-        eB.attackCooldown = eB.reload;
-      } else eB.attackCooldown -= this.tick;
+        dmgBtoA = this.calculateDamage(eB, eA) * attackers;
+      }
+
+      // Apply damage simultaneously
+      if (dmgAtoB > 0) this.applyDamage(eB, dmgAtoB, this.dataA.micro || 5);
+      if (dmgBtoA > 0) this.applyDamage(eA, dmgBtoA, this.dataB.micro || 5);
+
+      // Update cooldowns
+      if (eA.attackCooldown <= 0) eA.attackCooldown = eA.reload;
+      else eA.attackCooldown -= this.tick;
+
+      if (eB.attackCooldown <= 0) eB.attackCooldown = eB.reload;
+      else eB.attackCooldown -= this.tick;
+
       this.time += this.tick;
-      if (
-        Math.ceil(eA.currentCount) !== pA ||
-        Math.ceil(eB.currentCount) !== pB ||
-        Math.round(this.time * 100) % 25 === 0
-      )
-        record();
+      if (Math.round(this.time * 100) % 25 === 0) record();
     }
     record();
     return {
@@ -188,6 +259,20 @@ function getThemeColor(varName) {
 }
 function onInputChange(manualChange = true) {
   if (manualChange) activeScenario = null;
+  const nameA = document.getElementById('a-name')?.value || 'Unit A';
+  const nameB = document.getElementById('b-name')?.value || 'Unit B';
+  const updateLabel = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  };
+  updateLabel('name-header-a', nameA);
+  updateLabel('name-header-b', nameB);
+  updateLabel('comp-name-a', nameA);
+  updateLabel('comp-name-b', nameB);
+  updateLabel('ratio-label-a', `${nameA} Count`);
+  updateLabel('ratio-label-b', `${nameB} Count`);
+  updateLabel('prod-name-a', `${nameA} Production`);
+  updateLabel('prod-name-b', `${nameB} Production`);
   updateCharts();
   syncURL();
 }
@@ -219,10 +304,12 @@ function updateCharts() {
   const cA = getArmyConfig('a'),
     cB = getArmyConfig('b');
   if (!dA || !dB) return;
+  const nameA = cA.nm || dA.name || 'Unit A';
+  const nameB = cB.nm || dB.name || 'Unit B';
   const res = new CombatSim(dA, dB, cA, cB).run();
-  updateResultCard(res, dA.name, dB.name);
+  updateResultCard(res, nameA, nameB);
   updateStatComparison(dA, dB, cA, cB);
-  updateTimeCharts(res.history, dA.name, dB.name);
+  updateTimeCharts(res.history, nameA, nameB);
   updateProductionAnalysis(dA, dB, cA, cB);
   updateScalingAnalysis(dA, dB, cA, cB);
 }
@@ -244,28 +331,37 @@ function updateResultCard(res, nameA, nameB) {
 function updateStatComparison(dA, dB, cA, cB) {
   const el = document.getElementById('comparison-body');
   if (!el) return;
-  const uA = new Unit({ ...dA, ...cA }),
-    uB = new Unit({ ...dB, ...cB });
   const sim = new CombatSim({ ...dA, count: 1 }, { ...dB, count: 1 }, { ...cA, count: 1 }, { ...cB, count: 1 });
+  const uA = new Unit(sim.dataA),
+    uB = new Unit(sim.dataB);
   const dmgA = sim.calculateDamage(uA, uB),
     dmgB = sim.calculateDamage(uB, uA);
+  let bA = 0;
+  for (const [cls, amt] of Object.entries(uA.bonuses || {})) {
+    bA += Math.max(0, amt - (uB.armors[cls] || 0));
+  }
+  let bB = 0;
+  for (const [cls, amt] of Object.entries(uB.bonuses || {})) {
+    bB += Math.max(0, amt - (uA.armors[cls] || 0));
+  }
   const rows = [
-    { label: 'HP', a: uA.hpPerUnit, b: uB.hpPerUnit },
+    { label: 'HP', a: uA.hpPerUnit.toFixed(0), b: uB.hpPerUnit.toFixed(0) },
     {
       label: 'Attack',
-      a: `${uA.matk}/${uA.patk}`,
-      b: `${uB.matk}/${uB.patk}`,
+      a: `${uA.matk.toFixed(0)}/${uA.patk.toFixed(0)}`,
+      b: `${uB.matk.toFixed(0)}/${uB.patk.toFixed(0)}`,
       rawA: uA.matk + uA.patk,
       rawB: uB.matk + uB.patk,
     },
+    { label: 'Bonus Dmg', a: bA.toFixed(0), b: bB.toFixed(0) },
     {
       label: 'Armor',
-      a: `${uA.marm}/${uA.parm}`,
-      b: `${uB.marm}/${uB.parm}`,
+      a: `${uA.marm.toFixed(0)}/${uA.parm.toFixed(0)}`,
+      b: `${uB.marm.toFixed(0)}/${uB.parm.toFixed(0)}`,
       rawA: uA.marm + uA.parm,
       rawB: uB.marm + uB.parm,
     },
-    { label: 'Dmg/Hit (Eff)', a: dmgA, b: dmgB },
+    { label: 'Dmg/Hit (Eff)', a: dmgA.toFixed(0), b: dmgB.toFixed(0) },
     { label: 'DPS (Eff)', a: (dmgA / uA.reload).toFixed(2), b: (dmgB / uB.reload).toFixed(2) },
     { label: 'Total Cost', a: uA.getParsedCost().total.toFixed(0), b: uB.getParsedCost().total.toFixed(0), inv: true },
   ];
@@ -273,8 +369,10 @@ function updateStatComparison(dA, dB, cA, cB) {
     .map((r) => {
       const vA = r.rawA !== undefined ? r.rawA : parseFloat(r.a),
         vB = r.rawB !== undefined ? r.rawB : parseFloat(r.b);
-      const diff = vA - vB,
-        dClass = diff === 0 ? 'diff-neutral' : diff > 0 !== r.inv ? 'diff-pos' : 'diff-neg';
+      const diff = vA - vB;
+      let dClass = 'diff-neutral';
+      if (diff > 0) dClass = r.inv ? 'diff-neg' : 'diff-pos';
+      else if (diff < 0) dClass = r.inv ? 'diff-pos' : 'diff-neg';
       return `<tr><td>${r.label}</td><td>${r.a}</td><td>${r.b}</td><td class="${dClass}">${diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') ? 2 : 0)}</td></tr>`;
     })
     .join('');
@@ -332,16 +430,15 @@ function updateTimeCharts(history, nameA, nameB) {
 
 // --- Production Simulation ---
 
-function calculateCount(t, timelineSteps) {
+function calculateCount(t, timelineSteps, initialCost = { f: 0, w: 0, g: 0 }) {
   let unitsCount = 0,
     currentBuild = 0,
     productionDebt = 0,
     currentTrain = 30;
-  let currentCost = { f: 0, w: 0, g: 0 };
+  let currentCost = { ...initialCost };
   const steps = JSON.parse(JSON.stringify(timelineSteps));
   let stepIdx = 0;
   const events = [];
-
   for (let s = 0; s <= t; s++) {
     while (stepIdx < steps.length) {
       const step = steps[stepIdx];
@@ -385,7 +482,8 @@ function calculateCount(t, timelineSteps) {
       }
     }
   }
-  return { count: unitsCount, cost: currentCost, events: events };
+  const unitsPerSecond = currentTrain > 0 ? currentBuild / currentTrain : 0;
+  return { count: unitsCount, cost: currentCost, events: events, unitsPerSecond: unitsPerSecond };
 }
 
 function updateProductionAnalysis(dA, dB, cA, cB) {
@@ -407,27 +505,42 @@ function updateProductionAnalysis(dA, dB, cA, cB) {
     }));
   const timelineA = getTimeline('a'),
     timelineB = getTimeline('b');
-
+  const uA_u = new Unit(dA),
+    uB_u = new Unit(dB);
+  const baseCostA = uA_u.getParsedCost(),
+    baseCostB = uB_u.getParsedCost();
   const data = { labels: [], countA: [], countB: [], advantage: [] };
   let contact = null,
     cross = null,
     finalCostA = { f: 0, w: 0, g: 0 },
-    finalCostB = { f: 0, w: 0, g: 0 };
-
+    finalCostB = { f: 0, w: 0, g: 0 },
+    finalUPSA = 0,
+    finalUPSB = 0;
   for (let t = 0; t <= searchMax; t += step) {
-    const resA = calculateCount(t, timelineA),
-      resB = calculateCount(t, timelineB);
+    const resA = calculateCount(t, timelineA, baseCostA),
+      resB = calculateCount(t, timelineB, baseCostB);
     data.labels.push(t + 's');
     data.countA.push(resA.count);
     data.countB.push(resB.count);
     if (t === searchMax) {
       finalCostA = resA.cost;
       finalCostB = resB.cost;
+      finalUPSA = resA.unitsPerSecond;
+      finalUPSB = resB.unitsPerSecond;
     }
     let adv = 0;
     if (resA.count > 0 && resB.count > 0) {
       if (!contact) contact = { time: t, cA: resA.count, cB: resB.count };
-      const sim = new CombatSim({ ...dA, count: resA.count }, { ...dB, count: resB.count }, cA, cB).run();
+      const cleanCA = Object.assign({}, cA);
+      delete cleanCA.c;
+      const cleanCB = Object.assign({}, cB);
+      delete cleanCB.c;
+      const sim = new CombatSim(
+        { ...dA, ...cleanCA, count: resA.count },
+        { ...dB, ...cleanCB, count: resB.count },
+        { bonuses: cA.bonuses },
+        { bonuses: cB.bonuses },
+      ).run();
       adv =
         sim.armyA.totalHp > sim.armyB.totalHp
           ? (sim.armyA.totalHp / sim.armyA.initialTotalHp) * 100
@@ -435,27 +548,26 @@ function updateProductionAnalysis(dA, dB, cA, cB) {
       if (!cross && data.advantage.length > 0) {
         const prev = data.advantage[data.advantage.length - 1];
         if ((prev < 0 && adv > 0) || (prev > 0 && adv < 0))
-          cross = { time: t, cA: resA.count, cB: resB.count, win: adv > 0 ? dA.name : dB.name };
+          cross = { time: t, cA: resA.count, cB: resB.count, win: adv > 0 ? cA.nm || dA.name : cB.nm || dB.name };
       }
     } else if (resA.count > 0) adv = 100;
     else if (resB.count > 0) adv = -100;
     data.advantage.push(adv);
   }
-  renderProductionCharts(data, dA.name, dB.name);
-
-  const resA_final = calculateCount(searchMax, timelineA);
-  const resB_final = calculateCount(searchMax, timelineB);
-
+  renderProductionCharts(data, cA.nm || dA.name, cB.nm || dB.name);
+  const resA_final = calculateCount(searchMax, timelineA, baseCostA),
+    resB_final = calculateCount(searchMax, timelineB, baseCostB);
   const report = document.getElementById('production-report-text');
   if (report) {
     let msg = contact
-      ? `<p>First units arrive at ${contact.time}s: <strong>${contact.cA} ${dA.name}</strong> vs <strong>${contact.cB} ${dB.name}</strong>.</p>`
+      ? `<p>First units arrive at ${contact.time}s: <strong>${contact.cA} ${cA.nm || dA.name}</strong> vs <strong>${contact.cB} ${cB.nm || dB.name}</strong>.</p>`
       : '';
+    const nameA = cA.nm || dA.name,
+      nameB = cB.nm || dB.name;
     if (cross)
-      msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span><br>The <strong>${cross.win}</strong> catches up once they have massed <strong>${cross.win === dA.name ? cross.cA : cross.cB} units</strong>.</p>`;
+      msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span><br>The <strong>${cross.win}</strong> player starts winning once they have massed <strong>${cross.win === nameA ? cross.cA : cross.cB} units</strong> vs the opponent's <strong>${cross.win === nameA ? cross.cB : cross.cA}</strong>.</p>`;
     else
-      msg += `<p><strong>Dominance:</strong> ${data.advantage[data.advantage.length - 1] > 0 ? dA.name : dB.name} maintains the lead.</p>`;
-
+      msg += `<p><strong>Dominance:</strong> ${data.advantage[data.advantage.length - 1] > 0 ? nameA : nameB} maintains the lead.</p>`;
     msg += `<h4>Event Log</h4><div class="event-log-container">`;
     const combinedEvents = [
       ...resA_final.events.map((e) => ({ ...e, army: 'A', color: getThemeColor('--army-a-color') })),
@@ -463,21 +575,19 @@ function updateProductionAnalysis(dA, dB, cA, cB) {
     ]
       .filter((e) => e.time > 0)
       .sort((a, b) => a.time - b.time);
-
     combinedEvents.forEach((e) => {
       msg += `<div class="event-row"><span class="event-time">${e.time}s</span> <span style="color:${e.color}; font-weight:bold">[${e.army}]</span> ${e.msg}</div>`;
     });
     msg += `</div>`;
     report.innerHTML = msg;
   }
-
-  const renderReqs = (army, cost) => {
+  const renderReqs = (army, cost, ups) => {
     const el = document.getElementById(`p${army}-req`);
     if (!el) return;
-    el.innerHTML = `<span style="font-size:0.7rem; color:var(--text-muted)">Current Cost: F:${cost.f} W:${cost.w} G:${cost.g}</span>`;
+    el.innerHTML = `<div style="font-size:0.75rem; color:var(--text-color); display:flex; flex-direction:column; gap:4px; padding: 10px; background: var(--panel-bg-alt); border-radius: 4px; border: 1px solid var(--border-dim);"><span style="font-weight:bold; color:var(--accent-color); text-transform:uppercase; font-size:0.65rem;">Resource Requirements (Per Second)</span><div style="display:flex; gap:15px;"><span><strong style="color:#f1c40f">Food:</strong> ${(cost.f * ups).toFixed(1)}</span><span><strong style="color:#e67e22">Wood:</strong> ${(cost.w * ups).toFixed(1)}</span><span><strong style="color:#f1c40f">Gold:</strong> ${(cost.g * ups).toFixed(1)}</span></div></div>`;
   };
-  renderReqs('a', finalCostA);
-  renderReqs('b', finalCostB);
+  renderReqs('a', finalCostA, finalUPSA);
+  renderReqs('b', finalCostB, finalUPSB);
 }
 
 function renderProductionCharts(data, nA, nB) {
@@ -526,30 +636,55 @@ function renderProductionCharts(data, nA, nB) {
 }
 
 function updateScalingAnalysis(dA, dB, cA, cB) {
-  const scales = [1, 2, 3, 5, 8, 10, 15, 20, 30, 40, 50];
-  const r = (mode) => {
-    const results = { labels: scales, hpA: [], hpB: [], winPoint: -1 };
+  const nameA = cA.nm || dA.name || 'Unit A',
+    nameB = cB.nm || dB.name || 'Unit B',
+    scales = [1, 2, 3, 4, 5, 8, 10, 15, 20];
+  const updateTitle = (id, text) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  };
+  updateTitle('table-a-title', `1 ${nameA} vs X ${nameB}`);
+  updateTitle('scale1vX-title', `1 ${nameA} vs X ${nameB} Scaling`);
+  updateTitle('table-b-title', `1 ${nameB} vs X ${nameA}`);
+  updateTitle('scaleXv1-title', `1 ${nameB} vs X ${nameA} Scaling`);
+  const runScaling = (mode) => {
+    const results = { labels: scales, hpA: [], hpB: [], rows: [] };
+    const tableId = mode === '1vX' ? 'matchups-a' : 'matchups-b',
+      tbody = document.querySelector(`#${tableId} tbody`);
+    if (tbody) tbody.innerHTML = '';
     scales.forEach((s) => {
       const curA = { ...dA, count: mode === '1vX' ? 1 : s },
         curB = { ...dB, count: mode === 'Xv1' ? 1 : s };
       const sim = new CombatSim(curA, curB, cA, cB).run();
-      results.hpA.push((sim.armyA.totalHp / sim.armyA.initialTotalHp) * 100);
-      results.hpB.push((sim.armyB.totalHp / sim.armyB.initialTotalHp) * 100);
-      if (
-        results.winPoint === -1 &&
-        ((mode === '1vX' && sim.armyB.totalHp > 0) || (mode === 'Xv1' && sim.armyA.totalHp > 0))
-      )
-        results.winPoint = s;
+      const hA = (sim.armyA.totalHp / sim.armyA.initialTotalHp) * 100,
+        hB = (sim.armyB.totalHp / sim.armyB.initialTotalHp) * 100;
+      results.hpA.push(hA);
+      results.hpB.push(hB);
+      if (tbody) {
+        const winner =
+          sim.armyA.totalHp > sim.armyB.totalHp
+            ? mode === '1vX'
+              ? `1 ${nameA}`
+              : `${s} ${nameA}`
+            : mode === '1vX'
+              ? `${s} ${nameB}`
+              : `1 ${nameB}`;
+        const color =
+          sim.armyA.totalHp > sim.armyB.totalHp ? getThemeColor('--army-a-color') : getThemeColor('--army-b-color');
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>1 vs ${s}</td><td style="color:${color}; font-weight:bold;">${winner} (${Math.max(hA, hB).toFixed(0)}% HP)</td>`;
+        tbody.appendChild(row);
+      }
     });
     return results;
   };
-  const m1vX = r('1vX'),
-    mXv1 = r('Xv1');
-  renderScalingChart('scale1vXChart', m1vX, dA.name, dB.name);
-  renderScalingChart('scaleXv1Chart', mXv1, dB.name, dA.name);
+  const res1vX = runScaling('1vX'),
+    resXv1 = runScaling('Xv1');
+  renderScalingChart('scale1vXChart', res1vX, nameA, nameB);
+  renderScalingChart('scaleXv1Chart', resXv1, nameA, nameB);
 }
 
-function renderScalingChart(id, data, nA, nB) {
+function renderScalingChart(id, data, nameA, nameB) {
   const ctx = document.getElementById(id)?.getContext('2d');
   if (!ctx) return;
   const colorA = getThemeColor('--army-a-color'),
@@ -560,11 +695,16 @@ function renderScalingChart(id, data, nA, nB) {
     data: {
       labels: data.labels,
       datasets: [
-        { label: nA + ' % HP', data: data.hpA, borderColor: colorA },
-        { label: nB + ' % HP', data: data.hpB, borderColor: colorB },
+        { label: nameA + ' % HP', data: data.hpA, borderColor: colorA },
+        { label: nameB + ' % HP', data: data.hpB, borderColor: colorB },
       ],
     },
-    options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 100 } } },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: { y: { min: 0, max: 100 } },
+      datasets: { line: { tension: 0.2, pointRadius: 2 } },
+    },
   });
 }
 
@@ -576,7 +716,6 @@ function addProductionStep(army, type, data = {}) {
   const step = document.createElement('div');
   step.className = 'timeline-step';
   step.dataset.type = type;
-
   if (type === 'villagers' && !data.name) {
     data.name = 'Villager';
     data.delay = 25;
@@ -587,8 +726,8 @@ function addProductionStep(army, type, data = {}) {
   }
   if (type === 'age' && !data.name) {
     const ageMap = { 2: 'Feudal Age', 3: 'Castle Age', 4: 'Imperial Age' };
-    const ageName = ageMap[data.ageVal] || 'Feudal Age';
-    const techId = TECH_MAP[ageName],
+    const ageName = ageMap[data.ageVal] || 'Feudal Age',
+      techId = TECH_MAP[ageName],
       tData = techs[techId];
     if (tData) {
       data.id = techId.toString();
@@ -601,7 +740,6 @@ function addProductionStep(army, type, data = {}) {
     type = 'tech';
     step.dataset.type = 'tech';
   }
-
   let optionsHtml = '';
   if (type === 'tech')
     optionsHtml = Object.entries(techs)
@@ -617,35 +755,13 @@ function addProductionStep(army, type, data = {}) {
     type === 'tech' || type === 'building'
       ? `<select class="step-select"><option value="">Custom...</option>${optionsHtml}</select>`
       : '';
-
   let bodyHtml;
   if (type === 'cost') {
-    bodyHtml = `
-        <div class="step-field"><label>Food</label><input type="number" class="step-f" value="${data.f || 0}" style="width:40px;"></div>
-        <div class="step-field"><label>Wood</label><input type="number" class="step-w" value="${data.w || 0}" style="width:40px;"></div>
-        <div class="step-field"><label>Gold</label><input type="number" class="step-g" value="${data.g || 0}" style="width:40px;"></div>
-      `;
+    bodyHtml = `<div class="step-field"><label>Food</label><input type="number" class="step-f" value="${data.f || 0}" style="width:40px;"></div><div class="step-field"><label>Wood</label><input type="number" class="step-w" value="${data.w || 0}" style="width:40px;"></div><div class="step-field"><label>Gold</label><input type="number" class="step-g" value="${data.g || 0}" style="width:40px;"></div>`;
   } else {
-    bodyHtml = `
-        <div class="step-field"><label>Name</label><input type="text" class="step-name" value="${data.name || ''}" style="width:100px;"></div>
-        <div class="step-field"><label>Delay</label><input type="number" class="step-delay" value="${data.delay || 0}" style="width:45px;"></div>
-        <div class="step-field"><label>x</label><input type="number" class="step-count" value="${data.count || 1}" style="width:35px;"></div>
-        <div class="step-field"><label>Cost</label><input type="number" class="step-cost" value="${data.cost || 0}" style="width:45px;"></div>
-        <div class="step-field"><label>Block</label><input type="checkbox" class="step-blocking" ${data.isBlocking ? 'checked' : ''}></div>
-        <div class="step-field"><label>Value</label><input type="number" class="step-value" value="${data.value || 0}" style="width:40px;"></div>
-        ${type === 'production' ? `<div class="step-field"><label>Speed</label><input type="number" class="step-train" value="${data.train || 30}" style="width:40px;"></div>` : ''}
-      `;
+    bodyHtml = `<div class="step-field"><label>Name</label><input type="text" class="step-name" value="${data.name || ''}" style="width:100px;"></div><div class="step-field"><label>Delay</label><input type="number" class="step-delay" value="${data.delay || 0}" style="width:45px;"></div><div class="step-field"><label>x</label><input type="number" class="step-count" value="${data.count || 1}" style="width:35px;"></div><div class="step-field"><label>Cost</label><input type="number" class="step-cost" value="${data.cost || 0}" style="width:45px;"></div><div class="step-field"><label>Block</label><input type="checkbox" class="step-blocking" ${data.isBlocking ? 'checked' : ''}></div><div class="step-field"><label>Value</label><input type="number" class="step-value" value="${data.value || 0}" style="width:40px;"></div>${type === 'production' ? `<div class="step-field"><label>Speed</label><input type="number" class="step-train" value="${data.train || 30}" style="width:40px;"></div>` : ''}`;
   }
-
-  step.innerHTML = `
-    <div class="step-header">
-      <div class="step-drag-handle">::</div><span class="timeline-step-label">${type}</span><button class="remove-step-btn">&times;</button>
-    </div>
-    <div class="step-body">
-      ${select} ${bodyHtml}
-    </div>
-  `;
-
+  step.innerHTML = `<div class="step-header"><div class="step-drag-handle">::</div><span class="timeline-step-label">${type}</span><button class="remove-step-btn">&times;</button></div><div class="step-body">${select} ${bodyHtml}</div>`;
   const updateFromSelect = () => {
     const sel = step.querySelector('.step-select');
     if (!sel) return;
@@ -661,7 +777,6 @@ function addProductionStep(army, type, data = {}) {
     }
     onInputChange(true);
   };
-
   if (select) step.querySelector('.step-select').addEventListener('change', updateFromSelect);
   step.querySelector('.remove-step-btn').addEventListener('click', () => {
     step.remove();
@@ -677,19 +792,20 @@ function renderBonusList(list, items, army) {
   else list.classList.add('hidden');
   items.forEach(([id, b]) => {
     const item = document.createElement('div');
-    item.className = 'bonus-item';
+    item.className = 'preset-item';
     item.textContent = b.name;
     item.addEventListener('click', () => {
       addBonus(army, id);
       list.classList.add('hidden');
-      document.querySelector(`.bonus-search[data-army="${army}"]`).value = '';
+      const searchInput = document.querySelector(`.bonus-search[data-army="${army}"]`);
+      if (searchInput) searchInput.value = '';
     });
     list.appendChild(item);
   });
 }
 
 function addBonus(army, id, effectsState = null) {
-  const b = bonuses[id];
+  const b = techs[id] || bonuses[id];
   if (!b) return;
   const container = document.getElementById(`${army}-applied-bonuses`);
   if (container.querySelector(`.applied-bonus[data-id="${id}"]`)) return;
@@ -697,9 +813,11 @@ function addBonus(army, id, effectsState = null) {
   div.className = 'applied-bonus';
   div.dataset.id = id;
   let html = '';
-  b.effects.forEach((e, i) => {
+  const effs = b.effects || [];
+  effs.forEach((e, i) => {
     const checked = effectsState ? effectsState[i] : true;
-    html += `<div class="applied-bonus-effect"><input type="checkbox" data-effect-index="${i}" ${checked ? 'checked' : ''}><label>${e.type} +${e.value * 100}%</label></div>`;
+    const attrMap = { 0: 'HP', 3: 'Range', 4: 'Atk', 5: 'MeleeArm', 6: 'PierceArm', 9: 'Reload' };
+    html += `<div class="applied-bonus-effect"><input type="checkbox" data-effect-index="${i}" ${checked ? 'checked' : ''}><label>${attrMap[e.a] || 'Stat'} ${e.t === 2 || e.t === 5 ? 'x' : '+'}${e.v}</label></div>`;
   });
   div.innerHTML = `<div style="display:flex; flex-direction:column; gap:2px;"><span class="applied-bonus-name">${b.name}</span><div style="display:flex; gap:10px;">${html}</div></div><button class="remove-bonus-btn">&times;</button>`;
   div.querySelector('.remove-bonus-btn').addEventListener('click', () => {
@@ -711,30 +829,36 @@ function addBonus(army, id, effectsState = null) {
   onInputChange(true);
 }
 
-function applyAgeUpgrades(army) {
+function applyAge(army, age) {
   const data = getArmyData(army);
   if (!data) return;
-  const group = document.querySelector(`.age-upgrades[data-army="${army}"]`);
-  const active = group.querySelectorAll('.age-upgrade-btn.active');
-  let tAtk = 0,
-    tArm = 0;
-  const isI = data.class === 6,
-    isC = data.class === 4 || data.class === 2;
-  active.forEach((btn) => {
-    const age = parseInt(btn.dataset.age),
-      type = btn.closest('.age-upgrades').dataset.type;
-    if (type === 'atk') {
-      if (age === 2) tAtk += 1;
-      if (age === 3) tAtk += 1;
-      if (age === 4) tAtk += isI || isC ? 2 : 1;
-    } else {
-      if (age === 2 || age === 3 || age === 4) tArm += 1;
-    }
+  const ageId = parseInt(age);
+  const controls = document.querySelector(`.army-age-controls[data-army="${army}"]`);
+  controls.querySelectorAll('.age-btn').forEach((btn) => {
+    if (parseInt(btn.dataset.age) === ageId) btn.classList.add('active');
+    else btn.classList.remove('active');
   });
-  if (data.matk > 0) document.getElementById(`${army}-matk`).value = data.matk + tAtk;
-  if (data.patk > 0) document.getElementById(`${army}-patk`).value = data.patk + tAtk;
-  document.getElementById(`${army}-marm`).value = data.marm + tArm;
-  document.getElementById(`${army}-parm`).value = data.parm + tArm;
+  const civInput = document.querySelector(`.civ-search[data-army="${army}"]`);
+  const civKey = civInput ? civInput.dataset.value : null;
+  const availableTechs = civs[civKey] || [];
+  const container = document.getElementById(`${army}-applied-bonuses`);
+  if (container) container.innerHTML = '';
+  if (ageId > 1) {
+    const relevantTechs = Object.values(techs).filter((t) => {
+      if (t.effects && t.effects.length > 0) {
+        if (civKey && !availableTechs.includes(t.id)) return false;
+        if (t.age > ageId) return false;
+        return t.effects.some((e) => {
+          const matchesUnit = e.u === -1 || e.u == data.id;
+          const matchesClass = e.c === -1 || e.c == data.class;
+          return matchesUnit && matchesClass;
+        });
+      }
+      return false;
+    });
+    // Sort by Age then ID to apply in logical order
+    relevantTechs.sort((a, b) => a.age - b.age || a.id - b.id).forEach((t) => addBonus(army, t.id));
+  }
   onInputChange(true);
 }
 
@@ -746,7 +870,7 @@ function loadPreset(army, id) {
   input.dataset.value = id;
   const nameEl = document.getElementById(`${army}-name`);
   if (nameEl) nameEl.value = u.name;
-  ['hp', 'matk', 'patk', 'marm', 'parm', 'range', 'food', 'wood', 'gold'].forEach((k) => {
+  ['hp', 'matk', 'patk', 'marm', 'parm', 'range', 'food', 'wood', 'gold', 'reload'].forEach((k) => {
     const el = document.getElementById(`${army}-${k}`);
     if (el) el.value = u[k === 'food' ? 'f' : k === 'wood' ? 'w' : k === 'gold' ? 'g' : k];
   });
@@ -754,7 +878,6 @@ function loadPreset(army, id) {
   if (timeline) {
     timeline.innerHTML = '';
     addProductionStep(army, 'production', { name: 'Initial Production', value: 1, train: u.trainTime });
-    addProductionStep(army, 'cost', { f: u.f, w: u.w, g: u.g });
   }
   onInputChange(false);
 }
@@ -848,16 +971,16 @@ function getState() {
   const s = { a: {}, b: {}, desc: '' };
   const descEl = document.getElementById('scenario-desc');
   if (descEl) s.desc = descEl.value;
-
   ['a', 'b'].forEach((army) => {
     for (const [field, key] of Object.entries(fieldMap)) {
-      const id = `${army}-${field}`;
-      const el = document.getElementById(id);
+      const id = `${army}-${field}`,
+        el = document.getElementById(id);
       if (el && el.value !== defaults[id]) s[army][key] = el.value;
     }
-    const presetEl = document.querySelector(`.preset-search[data-army="${army}"]`);
-    if (presetEl && presetEl.dataset.value) s[army].ps = presetEl.dataset.value;
-
+    const pEl = document.querySelector(`.preset-search[data-army="${army}"]`);
+    if (pEl && pEl.dataset.value) s[army].ps = pEl.dataset.value;
+    const cEl = document.querySelector(`.civ-search[data-army="${army}"]`);
+    if (cEl && cEl.dataset.value) s[army].cv = cEl.dataset.value;
     const timeline = Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el) => ({
       t: el.dataset.type,
       n: el.querySelector('.step-name')?.value,
@@ -873,7 +996,6 @@ function getState() {
       g: el.querySelector('.step-g')?.value,
     }));
     if (timeline.length > 0) s[army].tl = timeline;
-
     const bData = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el) => ({
       i: el.dataset.id,
       e: Array.from(el.querySelectorAll('input')).map((cb) => cb.checked),
@@ -884,8 +1006,8 @@ function getState() {
 }
 
 function loadState() {
-  const p = new URLSearchParams(window.location.search);
-  const dataParam = p.get('data');
+  const p = new URLSearchParams(window.location.search),
+    dataParam = p.get('data');
   if (dataParam) {
     try {
       const state = JSON.parse(dataParam);
@@ -896,23 +1018,24 @@ function loadState() {
       ['a', 'b'].forEach((army) => {
         const armyState = state[army];
         if (!armyState) return;
-
         if (armyState.ps) loadPreset(army, armyState.ps);
-
+        if (armyState.cv) {
+          const el = document.querySelector(`.civ-search[data-army="${army}"]`);
+          el.value = armyState.cv;
+          el.dataset.value = armyState.cv;
+        }
         for (const [field, key] of Object.entries(fieldMap)) {
           if (armyState[key] !== undefined) {
-            const id = `${army}-${field}`;
-            const el = document.getElementById(id);
+            const el = document.getElementById(`${army}-${field}`);
             if (el) el.value = armyState[key];
           }
         }
-
         if (armyState.tl) {
           const container = document.getElementById(`p${army}-timeline`);
           if (container) {
             container.innerHTML = '';
             armyState.tl.forEach((s) => {
-              const data = {
+              addProductionStep(army, s.t, {
                 type: s.t,
                 name: s.n,
                 delay: s.d,
@@ -925,12 +1048,10 @@ function loadState() {
                 f: s.f,
                 w: s.w,
                 g: s.g,
-              };
-              addProductionStep(army, s.t, data);
+              });
             });
           }
         }
-
         if (armyState.bn) {
           const container = document.getElementById(`${army}-applied-bonuses`);
           if (container) {
@@ -953,8 +1074,8 @@ function syncURL() {
   const s = getState(),
     p = new URLSearchParams();
   if (activeScenario) p.set('scenario', activeScenario);
-  const json = JSON.stringify(s);
-  const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
+  const json = JSON.stringify(s),
+    encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
   const clean = encoded
     .replace(/%22/g, '"')
     .replace(/%7B/g, '{')
@@ -988,34 +1109,6 @@ window.onload = () => {
   });
   renderScenarioBar();
   document.getElementById('scenario-desc')?.addEventListener('input', () => onInputChange(true));
-  document.getElementById('export-btn')?.addEventListener('click', exportScenario);
-  document.getElementById('share-btn')?.addEventListener('click', () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      const btn = document.getElementById('share-btn');
-      const originalText = btn.textContent;
-      btn.textContent = 'Link Copied!';
-      btn.style.color = 'var(--color-pos)';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.color = '';
-      }, 2000);
-    });
-  });
-  document.querySelectorAll('input, select').forEach((el) => {
-    el.addEventListener('change', () => onInputChange(true));
-    el.addEventListener('keyup', () => onInputChange(true));
-  });
-  document.querySelectorAll('.step-btn').forEach((btn) =>
-    btn.addEventListener('click', () => {
-      const el = document.getElementById(btn.dataset.id);
-      if (el) {
-        el.value = Math.max(0, (parseFloat(el.value) || 0) + parseFloat(btn.dataset.val)).toFixed(
-          btn.dataset.id.includes('reload') ? 1 : 0,
-        );
-        onInputChange(true);
-      }
-    }),
-  );
   document.querySelectorAll('.preset-search').forEach((input) => {
     const render = () => {
       const army = input.dataset.army,
@@ -1043,6 +1136,51 @@ window.onload = () => {
       setTimeout(() => document.getElementById(`${input.dataset.army}-preset-list`).classList.add('hidden'), 200),
     );
   });
+  document.querySelectorAll('.civ-search').forEach((input) => {
+    const render = () => {
+      const army = input.dataset.army,
+        list = document.getElementById(`${army}-civ-list`),
+        term = input.value.toLowerCase();
+      list.innerHTML = '';
+      Object.keys(civs).forEach((c) => {
+        if (c.toLowerCase().includes(term)) {
+          const item = document.createElement('div');
+          item.className = 'preset-item';
+          item.textContent = c;
+          item.addEventListener('click', () => {
+            input.value = c;
+            input.dataset.value = c;
+            list.classList.add('hidden');
+            onInputChange(true);
+          });
+          list.appendChild(item);
+        }
+      });
+      if (list.children.length > 0) list.classList.remove('hidden');
+      else list.classList.add('hidden');
+    };
+    input.addEventListener('click', render);
+    input.addEventListener('keyup', render);
+    input.addEventListener('blur', () =>
+      setTimeout(() => document.getElementById(`${input.dataset.army}-civ-list`).classList.add('hidden'), 200),
+    );
+  });
+  document
+    .querySelectorAll('.age-btn')
+    .forEach((btn) =>
+      btn.addEventListener('click', () => applyAge(btn.closest('.army-age-controls').dataset.army, btn.dataset.age)),
+    );
+  document.querySelectorAll('.step-btn').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const el = document.getElementById(btn.dataset.id);
+      if (el) {
+        el.value = Math.max(0, (parseFloat(el.value) || 0) + parseFloat(btn.dataset.val)).toFixed(
+          btn.dataset.id.includes('reload') ? 1 : 0,
+        );
+        onInputChange(true);
+      }
+    }),
+  );
   document.querySelectorAll('.toggle-stats-btn').forEach((btn) =>
     btn.addEventListener('click', () => {
       const t = document.getElementById(btn.dataset.target);
@@ -1057,9 +1195,10 @@ window.onload = () => {
       const army = input.dataset.army,
         list = document.querySelector(`.bonus-list[data-army="${army}"]`),
         term = input.value.toLowerCase();
+      const allPossible = { ...techs, ...bonuses };
       renderBonusList(
         list,
-        Object.entries(bonuses).filter(([, b]) => b.name.toLowerCase().includes(term)),
+        Object.entries(allPossible).filter(([, b]) => b.name && b.name.toLowerCase().includes(term)),
         army,
       );
     });
@@ -1070,19 +1209,23 @@ window.onload = () => {
       ),
     );
   });
-  document.querySelectorAll('.age-upgrade-btn').forEach((btn) =>
-    btn.addEventListener('click', () => {
-      btn.classList.toggle('active');
-      applyAgeUpgrades(btn.dataset.army);
-    }),
-  );
-  document
-    .querySelectorAll('.add-step-btn')
-    .forEach((btn) =>
-      btn.addEventListener('click', () =>
-        addProductionStep(btn.dataset.army, btn.dataset.type, { ageVal: btn.dataset.val }),
-      ),
-    );
+  document.getElementById('export-btn')?.addEventListener('click', exportScenario);
+  document.getElementById('share-btn')?.addEventListener('click', () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const btn = document.getElementById('share-btn');
+      const originalText = btn.textContent;
+      btn.textContent = 'Link Copied!';
+      btn.style.color = 'var(--color-pos)';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.color = '';
+      }, 2000);
+    });
+  });
+  document.querySelectorAll('input, select').forEach((el) => {
+    el.addEventListener('change', () => onInputChange(true));
+    el.addEventListener('keyup', () => onInputChange(true));
+  });
   document.querySelectorAll('.count-btn').forEach((btn) =>
     btn.addEventListener('click', () => {
       const el = document.getElementById(`${btn.dataset.army}-count`);

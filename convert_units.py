@@ -21,6 +21,7 @@ RES_WOOD = 1
 RES_STONE = 2
 RES_GOLD = 3
 ARM_PIERCE = 3
+ARM_MELEE = 4
 
 def get_cost(resource_costs):
     cost = {"f": 0, "w": 0, "g": 0, "s": 0}
@@ -46,10 +47,14 @@ def load_extra_data():
     valid_tech_ids = set()
     valid_building_ids = set()
     prereqs = {}
+    civ_techs = {}
+    tech_ages = {}
     
     if os.path.exists(dir_path):
         for filename in sorted(os.listdir(dir_path)):
             if filename.endswith('.json'):
+                civ_name = filename.replace('.json', '')
+                civ_techs[civ_name] = []
                 with open(os.path.join(dir_path, filename), 'r') as f:
                     try:
                         data = json.load(f)
@@ -58,19 +63,22 @@ def load_extra_data():
                                 node_id = str(node.get('Node ID'))
                                 name = node.get('Name')
                                 ntype = node.get('Node Type')
-                                
-                                is_unit = ntype in ['Unit', 'UnitUpgrade', 'UniqueUnit', 'RegionalUnit']
-                                is_tech = ntype in ['Research']
-                                is_building = ntype in ['BuildingTech', 'BuildingNonTech']
+                                age_id = node.get('Age ID', 1)
                                 
                                 if node_id and name:
-                                    if is_unit:
+                                    if ntype == 'Research': 
+                                        tid = int(node_id)
+                                        civ_techs[civ_name].append(tid)
+                                        if tid not in tech_ages or age_id < tech_ages[tid]:
+                                            tech_ages[tid] = age_id
+                                    
+                                    if ntype in ['Unit', 'UnitUpgrade', 'UniqueUnit', 'RegionalUnit']:
                                         valid_unit_ids.add(node_id)
                                         if node_id not in unit_names or len(name) > len(unit_names[node_id]): unit_names[node_id] = name
-                                    elif is_tech:
+                                    elif ntype == 'Research':
                                         valid_tech_ids.add(node_id)
                                         if node_id not in tech_names or len(name) > len(tech_names[node_id]): tech_names[node_id] = name
-                                    elif is_building:
+                                    elif ntype in ['BuildingTech', 'BuildingNonTech']:
                                         valid_building_ids.add(node_id)
                                         if node_id not in building_names or len(name) > len(building_names[node_id]): building_names[node_id] = name
                                 
@@ -86,7 +94,15 @@ def load_extra_data():
                                         if pid not in prereqs[node_id]['buildings']: prereqs[node_id]['buildings'].append(pid)
                     except Exception as e:
                         print(f"Error reading {filename}: {e}")
-    return unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs
+    return unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages
+
+def decode_val(val):
+    iv = int(val)
+    # Handle signed 8-bit amount in lower byte
+    amt = iv & 0xFF
+    if amt >= 128: amt -= 256
+    cls = iv >> 8
+    return cls, amt
 
 def convert():
     dat_path = 'dat/empires2_x2_p1.dat'
@@ -94,7 +110,7 @@ def convert():
         dat_path = 'chombat/dat/empires2_x2_p1.dat'
 
     print(f"Loading extra data from Tech Trees...")
-    unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs = load_extra_data()
+    unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages = load_extra_data()
 
     print(f"Loading {dat_path}...")
     dat = DatFile.parse(dat_path)
@@ -111,7 +127,6 @@ def convert():
             uid = str(unit.base_id)
             if uid in processed_ids: continue
             
-            # Unit extraction
             if uid in valid_unit_ids and unit.creatable and unit.type_50:
                 if getattr(unit, 'hide_in_editor', 0) == 1: continue
                 locations = unit.creatable.train_locations
@@ -126,6 +141,15 @@ def convert():
                 patk = atk if unit.type_50.max_range > 1 else 0
                 matk = 0 if unit.type_50.max_range > 1 else atk
 
+                bonuses = {}
+                for attack in unit.type_50.attacks:
+                    if attack.class_ != ARM_PIERCE and attack.class_ != ARM_MELEE:
+                        bonuses[str(attack.class_)] = attack.amount
+                
+                armors = {}
+                for arm in unit.type_50.armours:
+                    armors[str(arm.class_)] = arm.amount
+
                 cost = get_cost(unit.creatable.resource_costs)
                 name = unit_names.get(uid, unit.name)
                 key = clean_key(name)
@@ -136,11 +160,11 @@ def convert():
                     "frame_delay": getattr(unit.type_50, 'frame_delay', 0),
                     "f": cost["f"], "w": cost["w"], "g": cost["g"],
                     "trainTime": locations[0].train_time, "building": locations[0].unit_id,
-                    "id": uid, "class": unit.class_, "requires": prereqs.get(uid, {'techs': [], 'buildings': []})
+                    "id": uid, "class": unit.class_, "bonuses": bonuses, "armors": armors,
+                    "requires": prereqs.get(uid, {'techs': [], 'buildings': []})
                 }
                 processed_ids.add(uid)
             
-            # Building extraction
             elif uid in valid_building_ids and unit.creatable:
                 cost = get_cost(unit.creatable.resource_costs)
                 name = building_names.get(uid, unit.name)
@@ -148,12 +172,12 @@ def convert():
                 if key in buildings_out: key = f"{key}_{uid}"
                 buildings_out[key] = {
                     "name": name, "f": cost["f"], "w": cost["w"], "g": cost["g"], "s": cost["s"],
-                    "time": 50, # Default to 50s as suggested
+                    "time": 50,
                     "id": uid, "requires": prereqs.get(uid, {'techs': [], 'buildings': []})
                 }
                 processed_ids.add(uid)
 
-    # Extract Techs
+    # Extract Techs and their Effects
     for tid, tech in enumerate(dat.techs):
         if not tech or not tech.name or tech.name.startswith('Fake'): continue
         locations = tech.research_locations
@@ -162,11 +186,39 @@ def convert():
         tid_str = str(tid)
         name = tech_names.get(tid_str, tech.name)
         key = clean_key(name)
+        
+        effects_out = []
+        if tech.effect_id != -1 and tech.effect_id < len(dat.effects):
+            eff_obj = dat.effects[tech.effect_id]
+            for cmd in eff_obj.effect_commands:
+                # cmd types: 0=Unit Attribute, 4=Class Attribute, 5=Class Attribute (different scope)
+                # attr mapping: 0=HP, 1=LoS, 3=Range, 4=Attack, 5=MeleeArm, 6=PierceArm, 8=ArmorEncoded, 9=AttackEncoded, 12=RangeSimple
+                if cmd.type in [0, 4, 5]:
+                    u_id = cmd.a if cmd.type == 0 else -1
+                    c_id = cmd.a if cmd.type in [4, 5] else -1
+                    attr_id = cmd.b
+                    mode = cmd.c
+                    val = cmd.d
+                    
+                    if attr_id in [0, 3, 4, 5, 6, 8, 9, 12]:
+                        if attr_id in [8, 9]:
+                            ext_cls, ext_amt = decode_val(val)
+                            # Remap to base attributes if cls is 3 or 4
+                            if ext_cls == ARM_PIERCE:
+                                attr_id = 6 if attr_id == 8 else 4 # Wait, attr 4 is shared?
+                                # Let's keep them as encoded for the JS to handle more flexibly
+                                pass
+                            elif ext_cls == ARM_MELEE:
+                                pass
+                        effects_out.append({"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id})
+
         if key in techs_out: key = f"{key}_{tid}"
         techs_out[key] = {
             "name": name, "f": cost["f"], "w": cost["w"], "g": cost["g"],
             "time": locations[0].research_time, "building": locations[0].location_id,
-            "id": tid, "requires": prereqs.get(tid_str, {'techs': [], 'buildings': []})
+            "id": tid, "requires": prereqs.get(tid_str, {'techs': [], 'buildings': []}),
+            "effects": effects_out,
+            "age": tech_ages.get(tid, 1)
         }
 
     units_out = dict(sorted(units_out.items(), key=lambda x: x[1]['name']))
@@ -181,8 +233,10 @@ def convert():
         f.write("const TECH_MAP = " + json.dumps(TECH_MAP, indent=4) + ";")
     with open(os.path.join(script_dir, 'buildings.js'), 'w') as f:
         f.write("const buildings = " + json.dumps(buildings_out, indent=4) + ";")
+    with open(os.path.join(script_dir, 'civs.js'), 'w') as f:
+        f.write("const civs = " + json.dumps(civ_techs, indent=4) + ";")
 
-    print(f"Successfully converted {len(units_out)} units, {len(techs_out)} techs, and {len(buildings_out)} buildings.")
+    print(f"Successfully converted {len(units_out)} units, {len(techs_out)} techs, and {len(buildings_out)} buildings, and {len(civ_techs)} civilizations.")
 
 if __name__ == "__main__":
     convert()

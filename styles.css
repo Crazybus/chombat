@@ -126,12 +126,12 @@ body {
 .nav-brand {
   font-weight: bold;
   color: var(--accent-color);
-  font-size: 1.2rem;
-  letter-spacing: 2px;
+  font-size: 3.5rem; /* Increased from 2rem */
+  letter-spacing: 1px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   text-decoration: none;
   height: 60px; /* Match sticky-nav height */
   padding: 0;
@@ -405,6 +405,7 @@ header h1 {
 }
 
 /* Searchable Controls */
+.searchable-civ,
 .searchable-preset,
 .searchable-scenario {
   position: relative;
@@ -415,6 +416,7 @@ header h1 {
   width: 250px;
 }
 
+.civ-search,
 .preset-search,
 .scenario-search {
   width: 100%;
@@ -426,6 +428,7 @@ header h1 {
   font-size: 0.85rem;
 }
 
+.civ-list,
 .preset-list,
 .scenario-list {
   position: absolute;
@@ -440,6 +443,28 @@ header h1 {
   overflow-y: auto;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.age-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  font-weight: bold;
+}
+
+.age-btn:hover {
+  background: var(--accent-color);
+  color: black;
+}
+
+.age-btn.active {
+  background: var(--accent-color);
+  color: black;
 }
 
 .light-theme .preset-list,

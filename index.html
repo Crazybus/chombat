@@ -53,9 +53,27 @@
               <h2 id="name-header-a">Unit A</h2>
               <button class="toggle-stats-btn" data-target="a-config">Edit</button>
             </div>
-            <div class="searchable-preset" data-army="a">
-              <input type="text" class="preset-search" data-army="a" placeholder="Select Unit..." />
-              <div id="a-preset-list" class="preset-list hidden"></div>
+            <div style="display: flex; gap: 10px; align-items: center">
+              <div class="searchable-civ" data-army="a">
+                <input
+                  type="text"
+                  class="civ-search"
+                  data-army="a"
+                  placeholder="Select Civilization..."
+                  style="width: 150px"
+                />
+                <div id="a-civ-list" class="civ-list hidden"></div>
+              </div>
+              <div class="searchable-preset" data-army="a">
+                <input type="text" class="preset-search" data-army="a" placeholder="Select Unit..." />
+                <div id="a-preset-list" class="preset-list hidden"></div>
+              </div>
+            </div>
+            <div class="army-age-controls" data-army="a" style="margin-top: 10px; display: flex; gap: 5px">
+              <button class="age-btn active" data-age="1">I</button>
+              <button class="age-btn" data-age="2">II</button>
+              <button class="age-btn" data-age="3">III</button>
+              <button class="age-btn" data-age="4">IV</button>
             </div>
           </div>
           <div class="unit-config collapsed" id="a-config">
@@ -88,82 +106,38 @@
               </div>
               <div class="field">
                 <label>M. Attack</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="a-matk" data-val="-1">−</button
-                    ><input type="number" id="a-matk" value="14" /><button
-                      class="step-btn"
-                      data-id="a-matk"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="a" data-type="atk">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="a-matk" data-val="-1">−</button
+                  ><input type="number" id="a-matk" value="14" /><button class="step-btn" data-id="a-matk" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
                 <label>M. Armor</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="a-marm" data-val="-1">−</button
-                    ><input type="number" id="a-marm" value="2" /><button
-                      class="step-btn"
-                      data-id="a-marm"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="a" data-type="arm">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="a-marm" data-val="-1">−</button
+                  ><input type="number" id="a-marm" value="2" /><button class="step-btn" data-id="a-marm" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
                 <label>P. Attack</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="a-patk" data-val="-1">−</button
-                    ><input type="number" id="a-patk" value="0" /><button
-                      class="step-btn"
-                      data-id="a-patk"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="a" data-type="atk">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="a-patk" data-val="-1">−</button
+                  ><input type="number" id="a-patk" value="0" /><button class="step-btn" data-id="a-patk" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
                 <label>P. Armor</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="a-parm" data-val="-1">−</button
-                    ><input type="number" id="a-parm" value="3" /><button
-                      class="step-btn"
-                      data-id="a-parm"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="a" data-type="arm">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="a-parm" data-val="-1">−</button
+                  ><input type="number" id="a-parm" value="3" /><button class="step-btn" data-id="a-parm" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
@@ -202,21 +176,6 @@
                     class="step-btn"
                     data-id="a-bonus-red"
                     data-val="5"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="grid-fields">
-              <div class="field">
-                <label>Bonus vs Opp</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="a-bonus" data-val="-1">−</button
-                  ><input type="number" id="a-bonus" value="0" /><button
-                    class="step-btn"
-                    data-id="a-bonus"
-                    data-val="1"
                   >
                     +
                   </button>
@@ -361,9 +320,27 @@
               <h2 id="name-header-b">Unit B</h2>
               <button class="toggle-stats-btn" data-target="b-config">Edit</button>
             </div>
-            <div class="searchable-preset" data-army="b">
-              <input type="text" class="preset-search" data-army="b" placeholder="Select Unit..." />
-              <div id="b-preset-list" class="preset-list hidden"></div>
+            <div style="display: flex; gap: 10px; align-items: center">
+              <div class="searchable-civ" data-army="b">
+                <input
+                  type="text"
+                  class="civ-search"
+                  data-army="b"
+                  placeholder="Select Civilization..."
+                  style="width: 150px"
+                />
+                <div id="b-civ-list" class="civ-list hidden"></div>
+              </div>
+              <div class="searchable-preset" data-army="b">
+                <input type="text" class="preset-search" data-army="b" placeholder="Select Unit..." />
+                <div id="b-preset-list" class="preset-list hidden"></div>
+              </div>
+            </div>
+            <div class="army-age-controls" data-army="b" style="margin-top: 10px; display: flex; gap: 5px">
+              <button class="age-btn active" data-age="1">I</button>
+              <button class="age-btn" data-age="2">II</button>
+              <button class="age-btn" data-age="3">III</button>
+              <button class="age-btn" data-age="4">IV</button>
             </div>
           </div>
           <div class="unit-config collapsed" id="b-config">
@@ -396,82 +373,38 @@
               </div>
               <div class="field">
                 <label>M. Attack</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="b-matk" data-val="-1">−</button
-                    ><input type="number" id="b-matk" value="6" /><button
-                      class="step-btn"
-                      data-id="b-matk"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="b" data-type="atk">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="b-matk" data-val="-1">−</button
+                  ><input type="number" id="b-matk" value="6" /><button class="step-btn" data-id="b-matk" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
                 <label>M. Armor</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="b-marm" data-val="-1">−</button
-                    ><input type="number" id="b-marm" value="0" /><button
-                      class="step-btn"
-                      data-id="b-marm"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="b" data-type="arm">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="b-marm" data-val="-1">−</button
+                  ><input type="number" id="b-marm" value="0" /><button class="step-btn" data-id="b-marm" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
                 <label>P. Attack</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="b-patk" data-val="-1">−</button
-                    ><input type="number" id="b-patk" value="0" /><button
-                      class="step-btn"
-                      data-id="b-patk"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="b" data-type="atk">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="b-patk" data-val="-1">−</button
+                  ><input type="number" id="b-patk" value="0" /><button class="step-btn" data-id="b-patk" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
                 <label>P. Armor</label>
-                <div class="stepper-row">
-                  <div class="stepper">
-                    <button class="step-btn" data-id="b-parm" data-val="-1">−</button
-                    ><input type="number" id="b-parm" value="0" /><button
-                      class="step-btn"
-                      data-id="b-parm"
-                      data-val="1"
-                    >
-                      +
-                    </button>
-                  </div>
-                  <div class="age-upgrades" data-army="b" data-type="arm">
-                    <button class="age-upgrade-btn" data-age="2">II</button>
-                    <button class="age-upgrade-btn" data-age="3">III</button>
-                    <button class="age-upgrade-btn" data-age="4">IV</button>
-                  </div>
+                <div class="stepper">
+                  <button class="step-btn" data-id="b-parm" data-val="-1">−</button
+                  ><input type="number" id="b-parm" value="0" /><button class="step-btn" data-id="b-parm" data-val="1">
+                    +
+                  </button>
                 </div>
               </div>
               <div class="field">
@@ -510,21 +443,6 @@
                     class="step-btn"
                     data-id="b-bonus-red"
                     data-val="5"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="grid-fields">
-              <div class="field">
-                <label>Bonus vs Opp</label>
-                <div class="stepper">
-                  <button class="step-btn" data-id="b-bonus" data-val="-1">−</button
-                  ><input type="number" id="b-bonus" value="32" /><button
-                    class="step-btn"
-                    data-id="b-bonus"
-                    data-val="1"
                   >
                     +
                   </button>
@@ -906,6 +824,7 @@
     <script src="bonuses.js"></script>
     <script src="presets.js"></script>
     <script src="scenarios.js"></script>
+    <script src="civs.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

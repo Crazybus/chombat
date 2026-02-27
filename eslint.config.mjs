@@ -20,6 +20,7 @@ export default [
         scenarios: "readonly",
         featuredScenarios: "readonly",
         TECH_MAP: "readonly",
+        civs: "readonly",
         Chart: "readonly",
         Sortable: "readonly",
       },
@@ -29,7 +30,7 @@ export default [
       "no-unused-vars": [
         "error",
         {
-          varsIgnorePattern: "^(units|techs|buildings|bonuses|presets|scenarios|featuredScenarios|TECH_MAP)$",
+          varsIgnorePattern: "^(units|techs|buildings|bonuses|presets|scenarios|featuredScenarios|TECH_MAP|civs)$",
         },
       ],
       "no-empty": ["error", { allowEmptyCatch: true }],

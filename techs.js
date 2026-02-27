@@ -11,6 +11,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   arrg_make_avail: {
     name: 'ARRG (make avail)',
@@ -24,6 +26,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   achaemenids: {
     name: 'Achaemenids',
@@ -37,6 +41,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   achaemenids_static_bonuses: {
     name: 'Achaemenids Static Bonuses',
@@ -50,6 +56,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   achaemenids_full_tech_tree: {
     name: 'Achaemenids full tech tree',
@@ -63,6 +71,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   all_ages: {
     name: 'All Ages',
@@ -76,6 +86,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   amulet_protection: {
     name: 'Amulet Protection',
@@ -89,6 +101,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   anarchy: {
     name: 'Anarchy',
@@ -102,6 +116,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   andean_sling: {
     name: 'Andean Sling',
@@ -115,6 +131,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   antiquity_mode_enabled: {
     name: 'Antiquity Mode Enabled',
@@ -128,6 +146,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   arambai_make_avail: {
     name: 'Arambai (make avail)',
@@ -141,6 +161,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   arbalest: {
     name: 'Arbalest',
@@ -154,6 +176,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   archer_make_avail: {
     name: 'Archer (make avail)',
@@ -167,6 +191,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   archery_range_balanced_doctrine: {
     name: 'Archery Range Balanced Doctrine',
@@ -180,6 +206,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   archery_range_mercenaries_doctrine: {
     name: 'Archery Range Mercenaries Doctrine',
@@ -193,6 +221,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   archery_range_regulars_doctrine: {
     name: 'Archery Range Regulars Doctrine',
@@ -206,6 +236,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   archery_rg_upgrade____age_two: {
     name: 'Archery Rg Upgrade -- Age Two',
@@ -219,6 +251,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   architecture: {
     name: 'Architecture',
@@ -232,6 +266,37 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 3,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 3,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 3,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 3,
+        v: 2819.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   architecture_researched_for_vedic_teachings: {
     name: 'Architecture Researched for Vedic Teachings',
@@ -245,6 +310,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   armenians: {
     name: 'Armenians',
@@ -258,6 +333,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   armored_elephant_make_avail: {
     name: 'Armored Elephant (make avail)',
@@ -271,6 +348,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   arquebus: {
     name: 'Arquebus',
@@ -284,6 +363,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   arrowslits: {
     name: 'Arrowslits',
@@ -297,6 +378,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   arrowslits_guard_tower: {
     name: 'Arrowslits (Guard tower)',
@@ -310,6 +393,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   arrowslits_keep: {
     name: 'Arrowslits (Keep)',
@@ -323,6 +408,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   arrowslits_researched_for_vedic_teachings: {
     name: 'Arrowslits Researched for Vedic Teachings',
@@ -336,6 +423,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   arson: {
     name: 'Arson',
@@ -349,6 +446,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 5378.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   artillery: {
     name: 'Artillery',
@@ -362,6 +469,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   atheism: {
     name: 'Atheism',
@@ -375,6 +484,8 @@ const techs = {
       techs: [34],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   athenians: {
     name: 'Athenians',
@@ -388,6 +499,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   athenians_static_bonuses: {
     name: 'Athenians Static Bonuses',
@@ -401,6 +514,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   athenians_full_tech_tree: {
     name: 'Athenians full tech tree',
@@ -414,6 +529,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   atlatl: {
     name: 'Atlatl',
@@ -427,6 +544,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   auto_upgrade_scout_feudal_age: {
     name: 'Auto upgrade Scout Feudal Age',
@@ -440,6 +559,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   aznauri_cavalry: {
     name: 'Aznauri Cavalry',
@@ -453,6 +574,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 110,
+        a: 12,
+        v: -0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   aztecs: {
     name: 'Aztecs',
@@ -466,6 +597,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bagains: {
     name: 'Bagains',
@@ -479,6 +612,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   baggage_carriers: {
     name: 'Baggage Carriers',
@@ -492,6 +627,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 6,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   ballista_elephant_make_avail: {
     name: 'Ballista Elephant (make avail)',
@@ -505,6 +650,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ballistas: {
     name: 'Ballistas',
@@ -518,6 +665,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   ballistics_researched_for_vedic_teachings: {
     name: 'Ballistics Researched for Vedic Teachings',
@@ -531,6 +680,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   banking: {
     name: 'Banking',
@@ -544,6 +703,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   barracks_make_avail: {
     name: 'Barracks (make avail)',
@@ -557,6 +718,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   barracks_balanced_doctrine: {
     name: 'Barracks Balanced Doctrine',
@@ -570,6 +733,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   barracks_mercenaries_doctrine: {
     name: 'Barracks Mercenaries Doctrine',
@@ -583,6 +748,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   barracks_regulars_doctrine: {
     name: 'Barracks Regulars Doctrine',
@@ -596,6 +763,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bastion: {
     name: 'Bastion',
@@ -609,6 +778,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   bat_ram_make_avail: {
     name: 'Bat Ram (make avail)',
@@ -622,6 +793,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   battle_drills: {
     name: 'Battle Drills',
@@ -635,6 +808,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   battle_elephant_make_avail: {
     name: 'Battle Elephant (make avail)',
@@ -648,6 +823,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bearded_axe: {
     name: 'Bearded Axe',
@@ -661,6 +838,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   bengalis: {
     name: 'Bengalis',
@@ -674,6 +853,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   berbers: {
     name: 'Berbers',
@@ -687,6 +868,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   berserk: {
     name: 'Berserk',
@@ -700,6 +883,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   berserker_make_avail: {
     name: 'Berserker (make avail)',
@@ -713,6 +898,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bessian_metalworking: {
     name: 'Bessian Metalworking',
@@ -726,6 +913,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   bimaristan: {
     name: 'Bimaristan',
@@ -739,6 +928,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   bireme: {
     name: 'Bireme',
@@ -752,6 +943,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blacksmith_make_avail: {
     name: 'Blacksmith (make avail)',
@@ -765,6 +958,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blackwood_archer_make_avail: {
     name: 'Blackwood Archer (make avail)',
@@ -778,6 +973,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_0: {
     name: 'Blank Technology 0',
@@ -791,6 +988,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_0_1240: {
     name: 'Blank Technology 0',
@@ -804,6 +1003,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_1: {
     name: 'Blank Technology 1',
@@ -817,6 +1018,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_1_1241: {
     name: 'Blank Technology 1',
@@ -830,6 +1033,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_2: {
     name: 'Blank Technology 2',
@@ -843,6 +1048,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_2_1242: {
     name: 'Blank Technology 2',
@@ -856,6 +1063,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_20: {
     name: 'Blank Technology 20',
@@ -869,6 +1078,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_21: {
     name: 'Blank Technology 21',
@@ -882,6 +1093,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_22: {
     name: 'Blank Technology 22',
@@ -895,6 +1108,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_23: {
     name: 'Blank Technology 23',
@@ -908,6 +1123,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_24: {
     name: 'Blank Technology 24',
@@ -921,6 +1138,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_25: {
     name: 'Blank Technology 25',
@@ -934,6 +1153,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_26: {
     name: 'Blank Technology 26',
@@ -947,6 +1168,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_27: {
     name: 'Blank Technology 27',
@@ -960,6 +1183,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_28: {
     name: 'Blank Technology 28',
@@ -973,6 +1198,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_29: {
     name: 'Blank Technology 29',
@@ -986,6 +1213,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_3: {
     name: 'Blank Technology 3',
@@ -999,6 +1228,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_3_1243: {
     name: 'Blank Technology 3',
@@ -1012,6 +1243,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_30: {
     name: 'Blank Technology 30',
@@ -1025,6 +1258,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_31: {
     name: 'Blank Technology 31',
@@ -1038,6 +1273,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_32: {
     name: 'Blank Technology 32',
@@ -1051,6 +1288,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_33: {
     name: 'Blank Technology 33',
@@ -1064,6 +1303,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_34: {
     name: 'Blank Technology 34',
@@ -1077,6 +1318,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_35: {
     name: 'Blank Technology 35',
@@ -1090,6 +1333,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_36: {
     name: 'Blank Technology 36',
@@ -1103,6 +1348,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_37: {
     name: 'Blank Technology 37',
@@ -1116,6 +1363,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_38: {
     name: 'Blank Technology 38',
@@ -1129,6 +1378,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_39: {
     name: 'Blank Technology 39',
@@ -1142,6 +1393,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_4: {
     name: 'Blank Technology 4',
@@ -1155,6 +1408,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_4_1244: {
     name: 'Blank Technology 4',
@@ -1168,6 +1423,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_5: {
     name: 'Blank Technology 5',
@@ -1181,6 +1438,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_5_1245: {
     name: 'Blank Technology 5',
@@ -1194,6 +1453,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_6: {
     name: 'Blank Technology 6',
@@ -1207,6 +1468,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_6_1246: {
     name: 'Blank Technology 6',
@@ -1220,6 +1483,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_7: {
     name: 'Blank Technology 7',
@@ -1233,6 +1498,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_7_1247: {
     name: 'Blank Technology 7',
@@ -1246,6 +1513,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_8: {
     name: 'Blank Technology 8',
@@ -1259,6 +1528,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_8_1248: {
     name: 'Blank Technology 8',
@@ -1272,6 +1543,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_9: {
     name: 'Blank Technology 9',
@@ -1285,6 +1558,8 @@ const techs = {
       techs: [624],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blank_technology_9_1249: {
     name: 'Blank Technology 9',
@@ -1298,6 +1573,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   blast_furnace: {
     name: 'Blast Furnace',
@@ -1311,6 +1588,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1026.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1026.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   block_printing: {
     name: 'Block Printing',
@@ -1324,6 +1618,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   bloodlines: {
     name: 'Bloodlines',
@@ -1337,6 +1633,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 12,
+        v: 20.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   bodkin_arrow: {
     name: 'Bodkin Arrow',
@@ -1350,6 +1656,44 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 1,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 12,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 130,
+        a: 4,
+        v: -0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   bogsveigar: {
     name: 'Bogsveigar',
@@ -1363,6 +1707,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   bohemians: {
     name: 'Bohemians',
@@ -1376,6 +1722,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bolas_rider_make_avail: {
     name: 'Bolas Rider (make avail)',
@@ -1389,6 +1737,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bolt_magazine: {
     name: 'Bolt Magazine',
@@ -1402,6 +1752,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   bombard_make_avail: {
     name: 'Bombard (make avail)',
@@ -1415,6 +1767,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bombard_cannon: {
     name: 'Bombard Cannon',
@@ -1428,6 +1782,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bombard_tower: {
     name: 'Bombard Tower',
@@ -1441,6 +1797,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   bow_saw: {
     name: 'Bow Saw',
@@ -1454,6 +1812,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   bow_saw_requirement: {
     name: 'Bow Saw requirement',
@@ -1467,6 +1827,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   boyar_make_avail: {
     name: 'Boyar (make avail)',
@@ -1480,6 +1842,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bracer: {
     name: 'Bracer',
@@ -1493,6 +1857,44 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 1,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 12,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 130,
+        a: 4,
+        v: -0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   britons: {
     name: 'Britons',
@@ -1506,6 +1908,8 @@ const techs = {
       techs: [34],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   bulgarians: {
     name: 'Bulgarians',
@@ -1519,6 +1923,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   burgundian_vineyards: {
     name: 'Burgundian Vineyards',
@@ -1532,6 +1938,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   burgundians: {
     name: 'Burgundians',
@@ -1545,6 +1953,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   burmese: {
     name: 'Burmese',
@@ -1558,6 +1968,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   butalmapu: {
     name: 'Butalmapu',
@@ -1571,6 +1983,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   byzantines: {
     name: 'Byzantines',
@@ -1584,6 +1998,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus: {
     name: 'C-Bonus',
@@ -1597,6 +2013,8 @@ const techs = {
       techs: [47],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_421: {
     name: 'C-Bonus',
@@ -1610,6 +2028,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_422: {
     name: 'C-Bonus',
@@ -1623,6 +2043,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_423: {
     name: 'C-Bonus',
@@ -1636,6 +2058,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_424: {
     name: 'C-Bonus',
@@ -1649,6 +2073,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_cheaper_traction_treb: {
     name: 'C-Bonus Cheaper Traction Treb',
@@ -1662,6 +2088,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_chinese_tc_pop: {
     name: 'C-Bonus Chinese TC POP',
@@ -1675,6 +2103,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_free_war_galley: {
     name: 'C-Bonus Free War Galley',
@@ -1688,6 +2118,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_lcav_cheaper: {
     name: 'C-Bonus Lcav Cheaper',
@@ -1701,6 +2133,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   c_bonus_vil_blast_furnace: {
     name: 'C-Bonus Vil Blast Furnace',
@@ -1714,6 +2148,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 4,
+        v: 1026.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   c_bonus_vil_chain_armor: {
     name: 'C-Bonus Vil Chain Armor',
@@ -1727,6 +2171,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 4,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   c_bonus_vil_forging: {
     name: 'C-Bonus Vil Forging',
@@ -1740,6 +2201,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 4,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   c_bonus_vil_iron_casting: {
     name: 'C-Bonus Vil Iron Casting',
@@ -1753,6 +2224,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 4,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   c_bonus_vil_plate_armor: {
     name: 'C-Bonus Vil Plate Armor',
@@ -1766,6 +2247,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 4,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   c_bonus_vil_scale_armor: {
     name: 'C-Bonus Vil Scale Armor',
@@ -1779,6 +2277,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 4,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_+%_bow_saw': {
     name: 'C-Bonus, +% Bow Saw',
@@ -1792,6 +2307,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+%_double_bit_axe': {
     name: 'C-Bonus, +% Double-Bit Axe',
@@ -1805,6 +2322,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+%_gold_mining': {
     name: 'C-Bonus, +% Gold Mining',
@@ -1818,6 +2337,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+%_gold_shaft_mining': {
     name: 'C-Bonus, +% Gold Shaft Mining',
@@ -1831,6 +2352,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+%_stone_mining': {
     name: 'C-Bonus, +% Stone Mining',
@@ -1844,6 +2367,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+%_stone_shaft_mining': {
     name: 'C-Bonus, +% Stone Shaft Mining',
@@ -1857,6 +2382,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+%_two_man_saw': {
     name: 'C-Bonus, +% Two-Man Saw',
@@ -1870,6 +2397,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+1_archer_range': {
     name: 'C-Bonus, +1 Archer range',
@@ -1883,6 +2412,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 12,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 1,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_+1_inf_attk': {
     name: 'C-Bonus, +1 inf attk',
@@ -1896,6 +2449,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+1_inf_attk_43': {
     name: 'C-Bonus, +1 inf attk',
@@ -1909,6 +2464,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+1_inf_attk_44': {
     name: 'C-Bonus, +1 inf attk',
@@ -1922,6 +2479,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+10_pop': {
     name: 'C-Bonus, +10 pop',
@@ -1935,6 +2494,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+100_food_per_tc': {
     name: 'C-Bonus, +100 food per TC',
@@ -1948,6 +2509,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+100f,_+100g_gs': {
     name: 'C-Bonus, +100f, +100g GS',
@@ -1961,6 +2524,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+100f,_+100g_in_age2': {
     name: 'C-Bonus, +100f, +100g in age2',
@@ -1974,6 +2539,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+100f,_+100g_in_age3': {
     name: 'C-Bonus, +100f, +100g in age3',
@@ -1987,6 +2554,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+100f,_+100g_in_age4': {
     name: 'C-Bonus, +100f, +100g in age4',
@@ -2000,6 +2569,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+100s': {
     name: 'C-Bonus, +100s',
@@ -2013,6 +2584,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+15%_farmers': {
     name: 'C-Bonus, +15% farmers',
@@ -2026,6 +2599,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+2_vs_animals': {
     name: 'C-Bonus, +2 vs Animals',
@@ -2039,6 +2614,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+2%_arc_hp_castle': {
     name: 'C-Bonus, +2% arc HP castle',
@@ -2052,6 +2629,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+2%_arc_hp_feudal': {
     name: 'C-Bonus, +2% arc HP feudal',
@@ -2065,6 +2644,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+2%_arc_hp_imp': {
     name: 'C-Bonus, +2% arc HP imp',
@@ -2078,6 +2659,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+20%_cav_bonus_damage': {
     name: 'C-Bonus, +20% Cav bonus damage',
@@ -2091,6 +2674,240 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 376.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 632.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1400.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1656.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1912.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2168.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2424.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2680.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2936.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3192.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3448.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3704.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3960.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4216.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4472.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4728.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4984.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5240.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5496.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5752.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6008.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6264.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6520.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6776.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7032.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7288.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7544.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7800.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 8568.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9080.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9336.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9592.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9848.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_+200w_gs': {
     name: 'C-Bonus, +200w GS',
@@ -2104,6 +2921,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+200w_in_age2': {
     name: 'C-Bonus, +200w in age2',
@@ -2117,6 +2936,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+200w_in_age3': {
     name: 'C-Bonus, +200w in age3',
@@ -2130,6 +2951,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+200w_in_age4': {
     name: 'C-Bonus, +200w in age4',
@@ -2143,6 +2966,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+25_each_res': {
     name: 'C-Bonus, +25 each res',
@@ -2156,6 +2981,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+25%_shepherd': {
     name: 'C-Bonus, +25% Shepherd',
@@ -2169,6 +2996,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+2vill_gs': {
     name: 'C-Bonus, +2vill GS',
@@ -2182,6 +3011,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+30%_cav_bonus_damage': {
     name: 'C-Bonus, +30% Cav bonus damage',
@@ -2195,6 +3026,240 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 367.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 623.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1391.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1647.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1903.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2159.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2415.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2671.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2927.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3183.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3439.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3695.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3951.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4207.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4463.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4719.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4975.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5231.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5487.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5743.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5999.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6255.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6511.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6767.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7023.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7279.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7535.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7791.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 8559.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9071.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9327.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9583.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9839.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_+40%_cav_bonus_damage': {
     name: 'C-Bonus, +40% Cav bonus damage',
@@ -2208,6 +3273,240 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 361.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 617.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1385.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1641.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1897.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2153.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2409.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2665.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 2921.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3177.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3433.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3689.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 3945.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4201.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4457.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4713.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 4969.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5225.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5481.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5737.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 5993.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6249.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6505.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 6761.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7017.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7273.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7529.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 7785.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 8553.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9065.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9321.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9577.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 9833.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp': {
     name: 'C-Bonus, +5 monk HP',
@@ -2221,6 +3520,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_30': {
     name: 'C-Bonus, +5 monk HP',
@@ -2234,6 +3535,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_31': {
     name: 'C-Bonus, +5 monk HP',
@@ -2247,6 +3550,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_32': {
     name: 'C-Bonus, +5 monk HP',
@@ -2260,6 +3565,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_33': {
     name: 'C-Bonus, +5 monk HP',
@@ -2273,6 +3580,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_36': {
     name: 'C-Bonus, +5 monk HP',
@@ -2286,6 +3595,8 @@ const techs = {
       techs: [47],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_38': {
     name: 'C-Bonus, +5 monk HP',
@@ -2299,6 +3610,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_40': {
     name: 'C-Bonus, +5 monk HP',
@@ -2312,6 +3625,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_41': {
     name: 'C-Bonus, +5 monk HP',
@@ -2325,6 +3640,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_66': {
     name: 'C-Bonus, +5 monk HP',
@@ -2338,6 +3655,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+5_monk_hp_456': {
     name: 'C-Bonus, +5 monk HP',
@@ -2351,6 +3670,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+50%_demo_hp': {
     name: 'C-Bonus, +50% Demo HP',
@@ -2364,6 +3685,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+50f_+50w': {
     name: 'C-Bonus, +50f +50w',
@@ -2377,6 +3700,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_+50g': {
     name: 'C-Bonus, +50g',
@@ -2390,6 +3715,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,__100w': {
     name: 'C-Bonus, -100w',
@@ -2403,6 +3730,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,__20%_archer_cost': {
     name: 'C-Bonus, -20% archer cost',
@@ -2416,6 +3745,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,__200f__50w': {
     name: 'C-Bonus, -200f -50w',
@@ -2429,6 +3760,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,__30%_archer_cost': {
     name: 'C-Bonus, -30% archer cost',
@@ -2442,6 +3775,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,__50f': {
     name: 'C-Bonus, -50f',
@@ -2455,6 +3790,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_1_2_tcs': {
     name: 'C-Bonus, 1/2 TCs',
@@ -2468,6 +3805,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_15%_faster_foragers': {
     name: 'C-Bonus, 15% faster foragers',
@@ -2481,6 +3820,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_35%_ca': {
     name: 'C-Bonus, 35% CA',
@@ -2494,6 +3835,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_3x_food_fish_traps': {
     name: 'C-Bonus, 3x food fish traps',
@@ -2507,6 +3850,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_40%_ca': {
     name: 'C-Bonus, 40% CA',
@@ -2520,6 +3865,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_age_up__50%_gold': {
     name: 'C-Bonus, Age up -50% gold',
@@ -2533,6 +3880,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_age_up_faster': {
     name: 'C-Bonus, Age up faster',
@@ -2546,6 +3895,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_age2_siege_wksp': {
     name: 'C-Bonus, Age2 Siege Wksp',
@@ -2559,6 +3910,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_all_units__20%_gold': {
     name: 'C-Bonus, All units -20% gold',
@@ -2572,6 +3925,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 105,
+        a: 0,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 105,
+        a: 6,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 105,
+        a: 12,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_animals_dont_decay': {
     name: "C-Bonus, Animals don't decay",
@@ -2585,6 +3962,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_arch_+_champi_+1_armor_age2': {
     name: 'C-Bonus, Arch + Champi +1 armor Age2',
@@ -2598,6 +3977,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_arch_+_champi_+1_armor_age3': {
     name: 'C-Bonus, Arch + Champi +1 armor Age3',
@@ -2611,6 +4000,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_arch_+_champi_+1_armor_age4': {
     name: 'C-Bonus, Arch + Champi +1 armor Age4',
@@ -2624,6 +4023,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_archer_armor_free': {
     name: 'C-Bonus, Archer armor free',
@@ -2637,6 +4046,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_archers_+1_+1_armor': {
     name: 'C-Bonus, Archers +1/+1 armor',
@@ -2650,6 +4061,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_archers_+20%_hp': {
     name: 'C-Bonus, Archers +20% HP',
@@ -2663,6 +4091,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_archers_fire_+15%_fas': {
     name: 'C-Bonus, Archers fire +15% fas',
@@ -2676,6 +4106,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_archers_vs_buildings_age3': {
     name: 'C-Bonus, Archers vs buildings Age3',
@@ -2689,6 +4121,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_archers_vs_buildings_age4': {
     name: 'C-Bonus, Archers vs buildings Age4',
@@ -2702,6 +4136,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_barracks_+_range_tech_discount': {
     name: 'C-Bonus, Barracks + Range tech discount',
@@ -2715,6 +4151,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_battle_ele_10%_faster': {
     name: 'C-Bonus, Battle Ele 10% faster',
@@ -2728,6 +4166,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_battle_ele_25%_cheaper': {
     name: 'C-Bonus, Battle Ele 25% cheaper',
@@ -2741,6 +4181,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_battle_ele_35%_cheaper': {
     name: 'C-Bonus, Battle Ele 35% cheaper',
@@ -2754,6 +4196,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_battle_elephant_armor': {
     name: 'C-Bonus, Battle Elephant armor',
@@ -2767,6 +4211,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_better_fishing_ships': {
     name: 'C-Bonus, Better Fishing Ships',
@@ -2780,6 +4226,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_bld_+20%': {
     name: 'C-Bonus, Bld +20%',
@@ -2793,6 +4241,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 3,
+        v: 1.09089994430542,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_bld_+30%': {
     name: 'C-Bonus, Bld +30%',
@@ -2806,6 +4264,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 3,
+        v: 1.083299994468689,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_bld_+40%': {
     name: 'C-Bonus, Bld +40%',
@@ -2819,6 +4287,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 3,
+        v: 1.0769000053405762,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_bonus_damage_increase': {
     name: 'C-Bonus, Bonus damage increase',
@@ -2832,6 +4310,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_bonus_damage_resistance': {
     name: 'C-Bonus, Bonus damage resistance',
@@ -2845,6 +4325,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 24,
+        a: 0,
+        v: 0.4000000059604645,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 24,
+        a: 6,
+        v: 0.4000000059604645,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 24,
+        a: 12,
+        v: 0.4000000059604645,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_building_hp_x15': {
     name: 'C-Bonus, Building HP x1.5',
@@ -2858,6 +4362,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 3,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_building_stone_cost': {
     name: 'C-Bonus, Building Stone cost',
@@ -2871,6 +4385,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 106,
+        a: 3,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_ca_vs_archers': {
     name: 'C-Bonus, CA vs Archers',
@@ -2884,6 +4408,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_camel_rider_attack_speed': {
     name: 'C-Bonus, Camel Rider attack speed',
@@ -2897,6 +4423,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_camels_+25%_hp': {
     name: 'C-Bonus, Camels +25% HP',
@@ -2910,6 +4438,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_castle_15%_cheaper': {
     name: 'C-Bonus, Castle 15% cheaper',
@@ -2923,6 +4453,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_castle_25%_cheaper': {
     name: 'C-Bonus, Castle 25% cheaper',
@@ -2936,6 +4468,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cavalry_+20%_hp': {
     name: 'C-Bonus, Cavalry +20% HP',
@@ -2949,6 +4483,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 12,
+        v: 1.2000000476837158,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_+5%_speed_age2': {
     name: 'C-Bonus, Cavalry +5% speed Age2',
@@ -2962,6 +4506,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 12,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_+5%_speed_age3': {
     name: 'C-Bonus, Cavalry +5% speed Age3',
@@ -2975,6 +4529,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 12,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_+5%_speed_age4': {
     name: 'C-Bonus, Cavalry +5% speed Age4',
@@ -2988,6 +4552,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 12,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_gold': {
     name: 'C-Bonus, Cavalry gold',
@@ -3001,6 +4575,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cavalry_regeneration_age2': {
     name: 'C-Bonus, Cavalry regeneration age2',
@@ -3014,6 +4590,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 12,
+        v: 2.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_regeneration_age3': {
     name: 'C-Bonus, Cavalry regeneration age3',
@@ -3027,6 +4613,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 12,
+        v: 6.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_regeneration_age4': {
     name: 'C-Bonus, Cavalry regeneration age4',
@@ -3040,6 +4636,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 12,
+        v: 6.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cavalry_vs_skirm': {
     name: 'C-Bonus, Cavalry vs Skirm',
@@ -3053,6 +4659,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 9730.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cheap_farms': {
     name: 'C-Bonus, Cheap Farms',
@@ -3066,6 +4682,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cheap_ranges_and_stables': {
     name: 'C-Bonus, Cheap Ranges and Stables',
@@ -3079,6 +4697,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cheap_buildings': {
     name: 'C-Bonus, Cheap buildings',
@@ -3092,6 +4712,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cheaper_+_healing_settlement': {
     name: 'C-Bonus, Cheaper + Healing Settlement',
@@ -3105,6 +4727,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cheaper_mule_cart': {
     name: 'C-Bonus, Cheaper Mule Cart',
@@ -3118,6 +4742,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_cheaper_scorpions': {
     name: 'C-Bonus, Cheaper scorpions',
@@ -3131,6 +4757,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_disable_horse': {
     name: 'C-Bonus, Disable Horse',
@@ -3144,6 +4772,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_disable_horse2': {
     name: 'C-Bonus, Disable Horse2',
@@ -3157,6 +4787,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_docks_garrison': {
     name: 'C-Bonus, Docks garrison',
@@ -3170,6 +4802,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_dominant_los': {
     name: 'C-Bonus, Dominant LOS',
@@ -3183,6 +4817,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_double_blast_furnace': {
     name: 'C-Bonus, Double Blast Furnace',
@@ -3196,6 +4832,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1026.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1026.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_double_chain_mail': {
     name: 'C-Bonus, Double Chain Mail',
@@ -3209,6 +4862,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 6,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_double_forging': {
     name: 'C-Bonus, Double Forging',
@@ -3222,6 +4892,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_double_iron_casting': {
     name: 'C-Bonus, Double Iron Casting',
@@ -3235,6 +4922,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_double_plate_mail': {
     name: 'C-Bonus, Double Plate Mail',
@@ -3248,6 +4952,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 6,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_double_scale_mail': {
     name: 'C-Bonus, Double Scale Mail',
@@ -3261,6 +4982,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 6,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_earlier_chemistry': {
     name: 'C-Bonus, Earlier Chemistry',
@@ -3274,6 +5012,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_earlier_hand_cannon': {
     name: 'C-Bonus, Earlier Hand Cannon',
@@ -3287,6 +5027,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_early_+_cheaper_hca': {
     name: 'C-Bonus, Early + Cheaper HCA',
@@ -3300,6 +5042,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_early_barracks_techs': {
     name: 'C-Bonus, Early Barracks techs',
@@ -3313,6 +5057,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_elephant_resistance': {
     name: 'C-Bonus, Elephant resistance',
@@ -3326,6 +5072,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_elevation_bonus': {
     name: 'C-Bonus, Elevation Bonus',
@@ -3339,6 +5087,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_elevation_bonus_defense': {
     name: 'C-Bonus, Elevation Bonus Defense',
@@ -3352,6 +5102,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_enable_donjon': {
     name: 'C-Bonus, Enable Donjon',
@@ -3365,6 +5117,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_enable_folwark': {
     name: 'C-Bonus, Enable Folwark',
@@ -3378,6 +5132,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_enable_krepost': {
     name: 'C-Bonus, Enable Krepost',
@@ -3391,6 +5147,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_extra_sheep_from_tc': {
     name: 'C-Bonus, Extra sheep from TC',
@@ -3404,6 +5162,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_farms_extra_food': {
     name: 'C-Bonus, Farms extra food',
@@ -3417,6 +5177,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fast_castle_and_tc': {
     name: 'C-Bonus, Fast Castle and TC',
@@ -3430,6 +5192,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_feudal_tc': {
     name: 'C-Bonus, Feudal TC',
@@ -3443,6 +5207,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fire_lancer_ship_speed_castle': {
     name: 'C-Bonus, Fire Lancer/Ship speed Castle',
@@ -3456,6 +5222,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fire_lancer_ship_speed_imp': {
     name: 'C-Bonus, Fire Lancer/Ship speed Imp',
@@ -3469,6 +5237,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fish_trap_33%_cheaper': {
     name: 'C-Bonus, Fish Trap 33% cheaper',
@@ -3482,6 +5252,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fish_carry': {
     name: 'C-Bonus, Fish carry',
@@ -3495,6 +5267,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_forager_productivity': {
     name: 'C-Bonus, Forager productivity',
@@ -3508,6 +5282,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_foragers_generate_wood': {
     name: 'C-Bonus, Foragers generate wood',
@@ -3521,6 +5297,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fortified_church': {
     name: 'C-Bonus, Fortified Church',
@@ -3534,6 +5312,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fortified_church_area_effect': {
     name: 'C-Bonus, Fortified Church area effect',
@@ -3547,6 +5327,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_bit_axe': {
     name: 'C-Bonus, Fre vill + Bit Axe',
@@ -3560,6 +5342,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_bow_saw': {
     name: 'C-Bonus, Fre vill + Bow Saw',
@@ -3573,6 +5357,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_caravan': {
     name: 'C-Bonus, Fre vill + Caravan',
@@ -3586,6 +5372,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_crop_rotation': {
     name: 'C-Bonus, Fre vill + Crop Rotation',
@@ -3599,6 +5387,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_gillnets': {
     name: 'C-Bonus, Fre vill + Gillnets',
@@ -3612,6 +5402,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_gillnets_1054': {
     name: 'C-Bonus, Fre vill + Gillnets',
@@ -3625,6 +5417,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_gold_mining': {
     name: 'C-Bonus, Fre vill + Gold Mining',
@@ -3638,6 +5432,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_gold_shaft': {
     name: 'C-Bonus, Fre vill + Gold Shaft',
@@ -3651,6 +5447,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_guilds': {
     name: 'C-Bonus, Fre vill + Guilds',
@@ -3664,6 +5462,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_hand_cart': {
     name: 'C-Bonus, Fre vill + Hand Cart',
@@ -3677,6 +5477,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_heavy_plow': {
     name: 'C-Bonus, Fre vill + Heavy Plow',
@@ -3690,6 +5492,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_horse_collar': {
     name: 'C-Bonus, Fre vill + Horse collar',
@@ -3703,6 +5507,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_stone_mining': {
     name: 'C-Bonus, Fre vill + Stone Mining',
@@ -3716,6 +5522,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_stone_shaft': {
     name: 'C-Bonus, Fre vill + Stone Shaft',
@@ -3729,6 +5537,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_two_man_saw': {
     name: 'C-Bonus, Fre vill + Two-Man Saw',
@@ -3742,6 +5552,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_fre_vill_+_wheelbarrow': {
     name: 'C-Bonus, Fre vill + Wheelbarrow',
@@ -3755,6 +5567,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_caravan_and_guilds': {
     name: 'C-Bonus, Free Caravan and Guilds',
@@ -3768,6 +5582,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_chemistry': {
     name: 'C-Bonus, Free Chemistry',
@@ -3781,6 +5597,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_hand_cart': {
     name: 'C-Bonus, Free Hand Cart',
@@ -3794,6 +5612,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_militia_upgrades': {
     name: 'C-Bonus, Free Militia upgrades',
@@ -3807,6 +5627,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_parthian_tactics': {
     name: 'C-Bonus, Free Parthian Tactics',
@@ -3820,6 +5642,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_pike': {
     name: 'C-Bonus, Free Pike',
@@ -3833,6 +5657,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_relic': {
     name: 'C-Bonus, Free Relic',
@@ -3846,6 +5672,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_relic2': {
     name: 'C-Bonus, Free Relic2',
@@ -3859,6 +5687,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_wheel': {
     name: 'C-Bonus, Free Wheel',
@@ -3872,6 +5702,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_galley_+20%_fire': {
     name: 'C-Bonus, Galley +20% fire',
@@ -3885,6 +5717,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_gather_price': {
     name: 'C-Bonus, Gather Price',
@@ -3898,6 +5732,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_gold_productivity': {
     name: 'C-Bonus, Gold productivity',
@@ -3911,6 +5747,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_gunpowder_+25%_hp': {
     name: 'C-Bonus, Gunpowder +25% HP',
@@ -3924,6 +5762,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_gunpowder__20%_cheaper': {
     name: 'C-Bonus, Gunpowder -20% cheaper',
@@ -3937,6 +5777,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_gunpowder_armor': {
     name: 'C-Bonus, Gunpowder armor',
@@ -3950,6 +5792,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_gunpowder_units_+25%_attack': {
     name: 'C-Bonus, Gunpowder units +25% attack',
@@ -3963,6 +5807,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_heavy_cav_+15%_hp': {
     name: 'C-Bonus, Heavy Cav +15% HP',
@@ -3976,6 +5822,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_heavy_cav_+15%_hp_+_bl': {
     name: 'C-Bonus, Heavy Cav +15% HP + BL',
@@ -3989,6 +5837,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_heavy_cav_+30%_hp': {
     name: 'C-Bonus, Heavy Cav +30% HP',
@@ -4002,6 +5852,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_heavy_cav_+30%_hp_+_bl': {
     name: 'C-Bonus, Heavy Cav +30% HP + BL',
@@ -4015,6 +5867,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_herdables_garrison': {
     name: 'C-Bonus, Herdables garrison',
@@ -4028,6 +5882,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_houses_+5_pop': {
     name: 'C-Bonus, Houses +5 pop',
@@ -4041,6 +5897,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_houses_garrison': {
     name: 'C-Bonus, Houses garrison',
@@ -4054,6 +5912,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_hunters_40%_faster': {
     name: 'C-Bonus, Hunters 40% faster',
@@ -4067,6 +5927,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_hunting_bonuses': {
     name: 'C-Bonus, Hunting bonuses',
@@ -4080,6 +5942,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+15%_hp': {
     name: 'C-Bonus, Inf +15% HP',
@@ -4093,6 +5957,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+20%_hp': {
     name: 'C-Bonus, Inf +20% HP',
@@ -4106,6 +5972,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+20%_hp_416': {
     name: 'C-Bonus, Inf +20% HP',
@@ -4119,6 +5987,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 6,
+        v: 1.2000000476837158,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_attack_spd': {
     name: 'C-Bonus, Inf Attack Spd',
@@ -4132,6 +6010,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 10,
+        a: 6,
+        v: 0.75,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_cav_+1_armor_age3': {
     name: 'C-Bonus, Inf Cav +1 armor Age3',
@@ -4145,6 +6033,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_cav_+1_armor_age4': {
     name: 'C-Bonus, Inf Cav +1 armor Age4',
@@ -4158,6 +6048,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_v_building_age2': {
     name: 'C-Bonus, Inf v Building Age2',
@@ -4171,6 +6063,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 5377.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_v_building_age3': {
     name: 'C-Bonus, Inf v Building Age3',
@@ -4184,6 +6086,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 5377.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_v_building_age4': {
     name: 'C-Bonus, Inf v Building Age4',
@@ -4197,6 +6109,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 5377.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_+10%_speed': {
     name: 'C-Bonus, Infantry +10% speed',
@@ -4210,6 +6132,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 6,
+        v: 1.0476200580596924,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_+15%_speed': {
     name: 'C-Bonus, Infantry +15% speed',
@@ -4223,6 +6155,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 6,
+        v: 1.04544997215271,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_+20%_speed': {
     name: 'C-Bonus, Infantry +20% speed',
@@ -4236,6 +6178,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 6,
+        v: 1.0434800386428833,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_+5%_speed': {
     name: 'C-Bonus, Infantry +5% speed',
@@ -4249,6 +6201,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 6,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_cost__15%': {
     name: 'C-Bonus, Infantry Cost -15%',
@@ -4262,6 +6224,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 100,
+        a: 6,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_cost__20%': {
     name: 'C-Bonus, Infantry Cost -20%',
@@ -4275,6 +6247,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 100,
+        a: 6,
+        v: 0.9375,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_cost__25%': {
     name: 'C-Bonus, Infantry Cost -25%',
@@ -4288,6 +6270,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 100,
+        a: 6,
+        v: 0.9465000033378601,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_infantry_cost__30%': {
     name: 'C-Bonus, Infantry Cost -30%',
@@ -4301,6 +6293,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 100,
+        a: 6,
+        v: 0.9285709857940674,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_instant_farmers': {
     name: 'C-Bonus, Instant Farmers',
@@ -4314,6 +6316,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_instant_loom': {
     name: 'C-Bonus, Instant Loom',
@@ -4327,6 +6331,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_jian_&_hei_kuang_attack': {
     name: 'C-Bonus, Jian & Hei Kuang attack',
@@ -4340,6 +6346,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_light_cavalry_+20%_hp': {
     name: 'C-Bonus, Light Cavalry +20% HP',
@@ -4353,6 +6361,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_light_cavalry_+20%_hp_+_bl': {
     name: 'C-Bonus, Light Cavalry +20% HP + BL',
@@ -4366,6 +6376,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_light_cavalry_+30%_hp': {
     name: 'C-Bonus, Light Cavalry +30% HP',
@@ -4379,6 +6391,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_light_cavalry_+30%_hp_+_bl': {
     name: 'C-Bonus, Light Cavalry +30% HP + BL',
@@ -4392,6 +6406,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_light_cavalry_+1p_armor': {
     name: 'C-Bonus, Light cavalry +1P armor',
@@ -4405,6 +6421,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_lumberjack_food_+_bow_saw': {
     name: 'C-Bonus, Lumberjack food + Bow Saw',
@@ -4418,6 +6436,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_lumberjack_food_+_double_bit_axe': {
     name: 'C-Bonus, Lumberjack food + Double-Bit Axe',
@@ -4431,6 +6451,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_lumberjack_food_+_two_man_saw': {
     name: 'C-Bonus, Lumberjack food + Two-Man Saw',
@@ -4444,6 +6466,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_lumberjacks_15%_faster': {
     name: 'C-Bonus, Lumberjacks 15% faster',
@@ -4457,6 +6481,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_lumberjacks_food': {
     name: 'C-Bonus, Lumberjacks food',
@@ -4470,6 +6496,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_market': {
     name: 'C-Bonus, Market',
@@ -4483,6 +6511,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_military_buildings_+65f': {
     name: 'C-Bonus, Military Buildings +65f',
@@ -4496,6 +6526,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 27,
+        a: 3,
+        v: 55.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_military_cost__10%': {
     name: 'C-Bonus, Military cost -10%',
@@ -4509,6 +6549,51 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 103,
+        a: 0,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 0,
+        v: 0.8999999761581421,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 0.8999999761581421,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 0.8999999761581421,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_military_cost__15%': {
     name: 'C-Bonus, Military cost -15%',
@@ -4522,6 +6607,51 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 103,
+        a: 0,
+        v: 1.1050000190734863,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 1.1050000190734863,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 1.1050000190734863,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 0,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_military_cost__20%': {
     name: 'C-Bonus, Military cost -20%',
@@ -4535,6 +6665,51 @@ const techs = {
       techs: [194],
       buildings: [],
     },
+    effects: [
+      {
+        t: 103,
+        a: 0,
+        v: 1.1759999990463257,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 1.1759999990463257,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 1.1759999990463257,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 0,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_military_cost__5%': {
     name: 'C-Bonus, Military cost -5%',
@@ -4548,6 +6723,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 103,
+        a: 0,
+        v: 0.949999988079071,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 0.949999988079071,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 0.949999988079071,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_mining_+25%': {
     name: 'C-Bonus, Mining +25%',
@@ -4561,6 +6760,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_monk_heal_range': {
     name: 'C-Bonus, Monk Heal Range',
@@ -4574,6 +6775,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_monk_armor': {
     name: 'C-Bonus, Monk armor',
@@ -4587,6 +6790,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_monks_20%_faster': {
     name: 'C-Bonus, Monks 20% faster',
@@ -4600,6 +6805,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_monks_faster_faith': {
     name: 'C-Bonus, Monks Faster Faith',
@@ -4613,6 +6820,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_navy_+1_projectile': {
     name: 'C-Bonus, Navy +1 projectile',
@@ -4626,6 +6835,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_navy_armor': {
     name: 'C-Bonus, Navy armor',
@@ -4639,6 +6850,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_navy_attack_speed': {
     name: 'C-Bonus, Navy attack speed',
@@ -4652,6 +6865,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_no_friendly_damage': {
     name: 'C-Bonus, No friendly damage',
@@ -4665,6 +6880,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 119,
+        a: 0,
+        v: 0.5,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 119,
+        a: 6,
+        v: 0.5,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 119,
+        a: 12,
+        v: 0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_parthian_tactics_age_and_cost': {
     name: 'C-Bonus, Parthian Tactics age and cost',
@@ -4678,6 +6917,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_pastures': {
     name: 'C-Bonus, Pastures',
@@ -4691,6 +6932,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_relic_+1_cav_attack_1': {
     name: 'C-Bonus, Relic +1 cav attack 1',
@@ -4704,6 +6947,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_relic_+1_cav_attack_2': {
     name: 'C-Bonus, Relic +1 cav attack 2',
@@ -4717,6 +6962,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_relic_+1_cav_attack_3': {
     name: 'C-Bonus, Relic +1 cav attack 3',
@@ -4730,6 +6977,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_relic_+1_cav_attack_4': {
     name: 'C-Bonus, Relic +1 cav attack 4',
@@ -4743,6 +6992,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_reveal_castle': {
     name: 'C-Bonus, Reveal Castle',
@@ -4756,6 +7007,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_siege_and_defensive_techs': {
     name: 'C-Bonus, SIege and Defensive techs',
@@ -4769,6 +7022,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_settlement_garrison': {
     name: 'C-Bonus, Settlement garrison',
@@ -4782,6 +7037,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_sheep_+50%_food': {
     name: 'C-Bonus, Sheep +50% food',
@@ -4795,6 +7052,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_sheep_annex_hp': {
     name: 'C-Bonus, Sheep annex HP',
@@ -4808,6 +7067,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_sheep_bonus_age3_start': {
     name: 'C-Bonus, Sheep bonus age3 start',
@@ -4821,6 +7082,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_sheep_from_second_tc': {
     name: 'C-Bonus, Sheep from second TC',
@@ -4834,6 +7097,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_ship_los': {
     name: 'C-Bonus, Ship LOS',
@@ -4847,6 +7112,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_ships_+10%_hp': {
     name: 'C-Bonus, Ships +10% HP',
@@ -4860,6 +7127,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_ships_+10%_faster': {
     name: 'C-Bonus, Ships +10% faster',
@@ -4873,6 +7142,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_ships_+15%_hp': {
     name: 'C-Bonus, Ships +15% HP',
@@ -4886,6 +7157,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_ships_+20%_hp': {
     name: 'C-Bonus, Ships +20% HP',
@@ -4899,6 +7172,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_ships_regenerate': {
     name: 'C-Bonus, Ships regenerate',
@@ -4912,6 +7187,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_siege_+10%_movement': {
     name: 'C-Bonus, Siege +10% movement',
@@ -4925,6 +7202,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_siege_+15%_movement': {
     name: 'C-Bonus, Siege +15% movement',
@@ -4938,6 +7217,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_siege_units_cheaper': {
     name: 'C-Bonus, Siege Units Cheaper',
@@ -4951,6 +7232,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_siege_fire_rate': {
     name: 'C-Bonus, Siege fire rate',
@@ -4964,6 +7247,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_siege_wood_discount': {
     name: 'C-Bonus, Siege wood discount',
@@ -4977,6 +7262,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirm_spear_+5_hp_castle': {
     name: 'C-Bonus, Skirm Spear +5 HP Castle',
@@ -4990,6 +7277,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 6,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_skirm_spear_+5_hp_feudal': {
     name: 'C-Bonus, Skirm Spear +5 HP Feudal',
@@ -5003,6 +7300,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 6,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_skirm_spear_+5_hp_imperial': {
     name: 'C-Bonus, Skirm Spear +5 HP Imperial',
@@ -5016,6 +7323,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 6,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_skirm_and_ea_faster_attack': {
     name: 'C-Bonus, Skirm and EA faster attack',
@@ -5029,6 +7346,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_pikes_10%_faster': {
     name: 'C-Bonus, Skirms Pikes 10% faster',
@@ -5042,6 +7361,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_pikes_cost__25%': {
     name: 'C-Bonus, Skirms Pikes cost -25%',
@@ -5055,6 +7376,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_spear_scout_train_25%_faster': {
     name: 'C-Bonus, Skirms Spear Scout train 25% faster',
@@ -5068,6 +7391,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_spear_settlements': {
     name: 'C-Bonus, Skirms Spear Settlements',
@@ -5081,6 +7406,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_spear_settlements_castle': {
     name: 'C-Bonus, Skirms Spear Settlements Castle',
@@ -5094,6 +7421,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_spear_settlements_feudal': {
     name: 'C-Bonus, Skirms Spear Settlements Feudal',
@@ -5107,6 +7436,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_skirms_spear_settlements_imperia;': {
     name: 'C-Bonus, Skirms Spear Settlements Imperia;',
@@ -5120,6 +7451,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_spr_xport_ship': {
     name: 'C-Bonus, Spr Xport Ship',
@@ -5133,6 +7466,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_stable_units__15%_che': {
     name: 'C-Bonus, Stable units -15% che',
@@ -5146,6 +7481,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 100,
+        a: 12,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_stable_units__20%_che': {
     name: 'C-Bonus, Stable units -20% che',
@@ -5159,6 +7504,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 100,
+        a: 12,
+        v: 0.9411764144897461,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_start_w__2_bushes': {
     name: 'C-Bonus, Start w/ 2 bushes',
@@ -5172,6 +7527,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_start_w__4_villagers': {
     name: 'C-Bonus, Start w/ 4 villagers',
@@ -5185,6 +7542,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_start_w__6_villagers': {
     name: 'C-Bonus, Start w/ 6 villagers',
@@ -5198,6 +7557,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_start_w__horse': {
     name: 'C-Bonus, Start w/ Horse',
@@ -5211,6 +7572,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_start_w__mule_cart': {
     name: 'C-Bonus, Start w/ mule cart',
@@ -5224,6 +7587,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_stone_miners_generate_gold': {
     name: 'C-Bonus, Stone Miners generate gold',
@@ -5237,6 +7602,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_super_dock': {
     name: 'C-Bonus, Super Dock',
@@ -5250,6 +7617,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_+_atk': {
     name: 'C-Bonus, TC + Atk',
@@ -5263,6 +7632,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_cost_1_2_stone': {
     name: 'C-Bonus, TC Cost 1/2 Stone',
@@ -5276,6 +7647,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_productivity': {
     name: 'C-Bonus, TC Productivity',
@@ -5289,6 +7662,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_stone_cost': {
     name: 'C-Bonus, TC Stone cost',
@@ -5302,6 +7677,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_wood_cost': {
     name: 'C-Bonus, TC Wood cost',
@@ -5315,6 +7692,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_and_dock_work_rate': {
     name: 'C-Bonus, TC and Dock work rate',
@@ -5328,6 +7707,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tc_constr_time': {
     name: 'C-Bonus, TC constr time',
@@ -5341,6 +7722,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tec_cost': {
     name: 'C-Bonus, Tec Cost',
@@ -5354,6 +7737,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tec_cost_351': {
     name: 'C-Bonus, Tec Cost',
@@ -5367,6 +7752,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tec_cost_352': {
     name: 'C-Bonus, Tec Cost',
@@ -5380,6 +7767,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tech_reward': {
     name: 'C-Bonus, Tech reward',
@@ -5393,6 +7782,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_techs__15%_cost': {
     name: 'C-Bonus, Techs -15% cost',
@@ -5406,6 +7797,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tower_arrows': {
     name: 'C-Bonus, Tower Arrows',
@@ -5419,6 +7812,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_tower_arrows_353': {
     name: 'C-Bonus, Tower Arrows',
@@ -5432,6 +7827,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_unit_cost_35%': {
     name: 'C-Bonus, Unit Cost 35%',
@@ -5445,6 +7842,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_unit_cost_50%': {
     name: 'C-Bonus, Unit Cost 50%',
@@ -5458,6 +7857,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_unit_refund': {
     name: 'C-Bonus, Unit Refund',
@@ -5471,6 +7872,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_units_cost_less_wood': {
     name: 'C-Bonus, Units cost less wood',
@@ -5484,6 +7887,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 104,
+        a: 0,
+        v: 0.5,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 104,
+        a: 6,
+        v: 0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_university_+80%_faste': {
     name: 'C-Bonus, University +80% faste',
@@ -5497,6 +7917,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_vietnamese_vision': {
     name: 'C-Bonus, Vietnamese Vision',
@@ -5510,6 +7932,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villager_fervor': {
     name: 'C-Bonus, Villager Fervor',
@@ -5523,6 +7947,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 4,
+        v: 1.149999976158142,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villager_sanctity': {
     name: 'C-Bonus, Villager Sanctity',
@@ -5536,6 +7970,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 4,
+        v: 15.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villager_cost_age1': {
     name: 'C-Bonus, Villager cost Age1',
@@ -5549,6 +7993,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villager_cost_age2': {
     name: 'C-Bonus, Villager cost Age2',
@@ -5562,6 +8008,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villager_cost_age3': {
     name: 'C-Bonus, Villager cost Age3',
@@ -5575,6 +8023,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villager_cost_age4': {
     name: 'C-Bonus, Villager cost Age4',
@@ -5588,6 +8038,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villager_regeneration': {
     name: 'C-Bonus, Villager regeneration',
@@ -5601,6 +8053,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 4,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villager_regeneration_age2': {
     name: 'C-Bonus, Villager regeneration age2',
@@ -5614,6 +8076,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 4,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villager_regeneration_age3': {
     name: 'C-Bonus, Villager regeneration age3',
@@ -5627,6 +8099,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 4,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villager_regeneration_age4': {
     name: 'C-Bonus, Villager regeneration age4',
@@ -5640,6 +8122,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 4,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villagers_10%_faster': {
     name: 'C-Bonus, Villagers 10% faster',
@@ -5653,6 +8145,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 4,
+        v: 1.0476189851760864,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villagers_5%_faster': {
     name: 'C-Bonus, Villagers 5% faster',
@@ -5666,6 +8168,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 4,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_villagers_in_age2': {
     name: 'C-Bonus, Villagers in age2',
@@ -5679,6 +8191,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villagers_in_age3': {
     name: 'C-Bonus, Villagers in age3',
@@ -5692,6 +8206,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villagers_in_age4': {
     name: 'C-Bonus, Villagers in age4',
@@ -5705,6 +8221,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_villagers_work_faster': {
     name: 'C-Bonus, Villagers work faster',
@@ -5718,6 +8236,16 @@ const techs = {
       techs: [483],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0499999523162842,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_warship_cost_age2': {
     name: 'C-Bonus, Warship cost age2',
@@ -5731,6 +8259,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_warship_cost_age3': {
     name: 'C-Bonus, Warship cost age3',
@@ -5744,6 +8274,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_warship_cost_age4': {
     name: 'C-Bonus, Warship cost age4',
@@ -5757,6 +8289,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_archer_range_+1': {
     name: 'C-Bonus, archer range +1',
@@ -5770,6 +8304,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 12,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 1,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_buildings_cost__15%_w': {
     name: 'C-Bonus, buildings cost -15% w',
@@ -5783,6 +8341,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 104,
+        a: 3,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cav_&_fire_lancer_+25%_attack': {
     name: 'C-Bonus, cav & Fire Lancer +25% attack',
@@ -5796,6 +8364,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 10,
+        a: 12,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_cheaper_archer_upg': {
     name: 'C-Bonus, cheaper archer upg',
@@ -5809,6 +8387,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_careening,_dry_dock': {
     name: 'C-Bonus, free Careening, Dry Dock',
@@ -5822,6 +8402,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_free_lumberjack_upgra': {
     name: 'C-Bonus, free lumberjack upgra',
@@ -5835,6 +8417,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+1_armor_castle': {
     name: 'C-Bonus, inf +1 armor castle',
@@ -5848,6 +8432,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+1_armor_feudal': {
     name: 'C-Bonus, inf +1 armor feudal',
@@ -5861,6 +8447,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+1_armor_imp': {
     name: 'C-Bonus, inf +1 armor imp',
@@ -5874,6 +8462,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+1_attack_castle': {
     name: 'C-Bonus, inf +1 attack castle',
@@ -5887,6 +8477,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_+1_attack_dark': {
     name: 'C-Bonus, inf +1 attack dark',
@@ -5900,6 +8500,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_inf_+1_attack_feudal': {
     name: 'C-Bonus, inf +1 attack feudal',
@@ -5913,6 +8515,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_+1_attack_imp': {
     name: 'C-Bonus, inf +1 attack imp',
@@ -5926,6 +8538,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_regen_castle': {
     name: 'C-Bonus, inf regen Castle',
@@ -5939,6 +8561,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 6,
+        v: 5.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_regen_feudal': {
     name: 'C-Bonus, inf regen Feudal',
@@ -5952,6 +8584,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 6,
+        v: 10.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_inf_regen_imp': {
     name: 'C-Bonus, inf regen Imp',
@@ -5965,6 +8607,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 109,
+        a: 6,
+        v: 15.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   'c_bonus,_monastery_techs__50%_cost': {
     name: 'C-Bonus, monastery techs -50% cost',
@@ -5978,6 +8630,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus,_start_with_eagle': {
     name: 'C-Bonus, start with eagle',
@@ -5991,6 +8645,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'c_bonus:_free_hussars': {
     name: 'C-Bonus: free Hussars',
@@ -6004,6 +8660,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   caciques: {
     name: 'Caciques',
@@ -6017,6 +8675,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   camel_archer_make_avail: {
     name: 'Camel Archer (make avail)',
@@ -6030,6 +8690,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   camel_scout_make_avail: {
     name: 'Camel Scout (make avail)',
@@ -6043,6 +8705,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cannon_galleon: {
     name: 'Cannon Galleon',
@@ -6056,6 +8720,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cao_cao_make_avail: {
     name: 'Cao Cao (make avail)',
@@ -6069,6 +8735,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   capped_ram: {
     name: 'Capped Ram',
@@ -6082,6 +8750,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   caravan: {
     name: 'Caravan',
@@ -6095,6 +8765,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   caravanserai_make_avail: {
     name: 'Caravanserai (make avail)',
@@ -6108,6 +8780,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   caravanserai_make_avail_552: {
     name: 'Caravanserai (make avail)',
@@ -6121,6 +8795,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   caravel_make_avail: {
     name: 'Caravel (make avail)',
@@ -6134,6 +8810,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   careening: {
     name: 'Careening',
@@ -6147,6 +8825,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   carrack: {
     name: 'Carrack',
@@ -6160,6 +8840,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cartography: {
     name: 'Cartography',
@@ -6173,6 +8855,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   carvel_hull: {
     name: 'Carvel Hull',
@@ -6186,6 +8870,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   castle____age_three: {
     name: 'Castle -- Age Three',
@@ -6199,6 +8885,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   castle_age: {
     name: 'Castle Age',
@@ -6212,6 +8900,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   castle_age_start: {
     name: 'Castle Age start',
@@ -6225,6 +8915,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   castle_barracks_tech_requirement: {
     name: 'Castle Barracks tech requirement',
@@ -6238,6 +8930,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   castle_built: {
     name: 'Castle built',
@@ -6251,6 +8945,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   castle_eco_tech_requirement: {
     name: 'Castle eco tech requirement',
@@ -6264,6 +8960,8 @@ const techs = {
       techs: [16],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cataphract_make_avail: {
     name: 'Cataphract (make avail)',
@@ -6277,6 +8975,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   catapult_galleon_make_avail: {
     name: 'Catapult Galleon (make avail)',
@@ -6290,6 +8990,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cav_archer_make_avail: {
     name: 'Cav Archer (make avail)',
@@ -6303,6 +9005,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cavalier: {
     name: 'Cavalier',
@@ -6316,6 +9020,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cavalier_requirement: {
     name: 'Cavalier requirement',
@@ -6329,6 +9035,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   celts: {
     name: 'Celts',
@@ -6342,6 +9050,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   centurion_make_avail: {
     name: 'Centurion (make avail)',
@@ -6355,6 +9065,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   chain_barding_armor: {
     name: 'Chain Barding Armor',
@@ -6368,6 +9080,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 12,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   chain_mail_armor: {
     name: 'Chain Mail Armor',
@@ -6381,6 +9110,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 6,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   'chain_mail_for_cavalry,_macedonian_civ_bonus': {
     name: 'Chain Mail for Cavalry, Macedonian Civ Bonus',
@@ -6394,6 +9140,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 12,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   chakram_thrower_make_avail: {
     name: 'Chakram Thrower (make avail)',
@@ -6407,6 +9170,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   champi_runner: {
     name: 'Champi Runner',
@@ -6420,6 +9185,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   champi_scout_make_avail: {
     name: 'Champi Scout (Make avail)',
@@ -6433,6 +9200,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   champi_warrior: {
     name: 'Champi Warrior',
@@ -6446,6 +9215,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   champion: {
     name: 'Champion',
@@ -6459,6 +9230,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   champion_1174: {
     name: 'Champion',
@@ -6472,6 +9245,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   champion_requirement: {
     name: 'Champion requirement',
@@ -6485,6 +9260,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   change_tc_constr_time1: {
     name: 'Change TC constr time1',
@@ -6498,6 +9275,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   change_tc_constr_time2: {
     name: 'Change TC constr time2',
@@ -6511,6 +9290,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   chatras: {
     name: 'Chatras',
@@ -6524,6 +9305,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   'chemistry_+_torsion': {
     name: 'Chemistry + Torsion',
@@ -6537,6 +9320,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   chemistry_researched_for_vedic_teachings: {
     name: 'Chemistry Researched for Vedic Teachings',
@@ -6550,6 +9335,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   chieftains: {
     name: 'Chieftains',
@@ -6563,6 +9358,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 2053.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 6,
+        v: 7684.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   chinese: {
     name: 'Chinese',
@@ -6576,6 +9388,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   chinese_team_bonus: {
     name: 'Chinese team bonus',
@@ -6589,6 +9403,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   chivalry: {
     name: 'Chivalry',
@@ -6602,6 +9418,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   chu_ko_nu_make_avail: {
     name: 'Chu-Ko-Nu (make avail)',
@@ -6615,6 +9433,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   church_make_avail: {
     name: 'Church (make avail)',
@@ -6628,6 +9448,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cilician_fleet: {
     name: 'Cilician Fleet',
@@ -6641,6 +9463,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   circumnavigation: {
     name: 'Circumnavigation',
@@ -6654,6 +9478,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   citadels: {
     name: 'Citadels',
@@ -6667,6 +9493,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   'citadels_+_chemistry': {
     name: 'Citadels + Chemistry',
@@ -6680,6 +9508,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   civ_specific_castle_age_prereq: {
     name: 'Civ specific Castle Age prereq',
@@ -6693,6 +9523,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   clinker_construction: {
     name: 'Clinker Construction',
@@ -6706,6 +9538,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   cog: {
     name: 'Cog',
@@ -6719,6 +9553,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   coiled_serpent_array: {
     name: 'Coiled Serpent Array',
@@ -6732,6 +9568,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   coinage: {
     name: 'Coinage',
@@ -6745,6 +9583,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   comitatenses: {
     name: 'Comitatenses',
@@ -6758,6 +9598,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   composite_bowman_make_avail: {
     name: 'Composite Bowman (make avail)',
@@ -6771,6 +9613,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   condottiero_make_avail: {
     name: 'Condottiero (make avail)',
@@ -6784,6 +9628,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   conquistador_make_avail: {
     name: 'Conquistador (make avail)',
@@ -6797,6 +9643,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   conscription: {
     name: 'Conscription',
@@ -6810,6 +9658,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   conversion_enabler: {
     name: 'Conversion enabler',
@@ -6823,6 +9673,8 @@ const techs = {
       techs: [140],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   convert_ships: {
     name: 'Convert Ships',
@@ -6836,6 +9688,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   corvinian_army: {
     name: 'Corvinian Army',
@@ -6849,6 +9703,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   cotton_armors: {
     name: 'Cotton Armors',
@@ -6862,6 +9718,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   counterweights: {
     name: 'Counterweights',
@@ -6875,6 +9733,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   coustillier_make_avail: {
     name: 'Coustillier (make avail)',
@@ -6888,6 +9748,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   crenellations: {
     name: 'Crenellations',
@@ -6901,6 +9763,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 130,
+        a: 6,
+        v: -2.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   crop_rotation: {
     name: 'Crop Rotation',
@@ -6914,6 +9786,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   crop_rotation_requirement: {
     name: 'Crop Rotation requirement',
@@ -6927,6 +9801,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   crossbow: {
     name: 'Crossbow',
@@ -6940,6 +9816,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cuman_merc_part2: {
     name: 'Cuman Merc Part2',
@@ -6953,6 +9831,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cuman_mercenaries: {
     name: 'Cuman Mercenaries',
@@ -6966,6 +9846,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   cuman_siege_workshop_built: {
     name: 'Cuman Siege Workshop built',
@@ -6979,6 +9861,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   cumans: {
     name: 'Cumans',
@@ -6992,6 +9876,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   curare: {
     name: 'Curare',
@@ -7005,6 +9891,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   dark_age: {
     name: 'Dark Age',
@@ -7018,6 +9906,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   dark_age_naval_building: {
     name: 'Dark Age Naval building',
@@ -7031,6 +9921,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   defensive_emplacement: {
     name: 'Defensive Emplacement',
@@ -7044,6 +9936,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   defensive_satrapy: {
     name: 'Defensive Satrapy',
@@ -7057,6 +9951,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   delian_league: {
     name: 'Delian League',
@@ -7070,6 +9966,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   demo_galley_make_avail: {
     name: 'Demo Galley (make avail)',
@@ -7083,6 +9981,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   democracy: {
     name: 'Democracy',
@@ -7096,6 +9996,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 105,
+        a: 0,
+        v: 0.800000011920929,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   demolition_ship: {
     name: 'Demolition Ship',
@@ -7109,6 +10019,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   detinets: {
     name: 'Detinets',
@@ -7122,6 +10034,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   devotion: {
     name: 'Devotion',
@@ -7135,6 +10049,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   dii_plunderers: {
     name: 'Dii Plunderers',
@@ -7148,6 +10064,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   disable_spies_regicide_only: {
     name: 'Disable Spies (Regicide only)',
@@ -7161,6 +10079,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   domestication: {
     name: 'Domestication',
@@ -7174,6 +10094,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   donjon_built: {
     name: 'Donjon built',
@@ -7187,6 +10109,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   double_crossbow: {
     name: 'Double Crossbow',
@@ -7200,6 +10124,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   double_bit_axe: {
     name: 'Double-Bit Axe',
@@ -7213,6 +10139,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   dragon_ship: {
     name: 'Dragon Ship',
@@ -7226,6 +10154,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   dravidians: {
     name: 'Dravidians',
@@ -7239,6 +10169,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   drill: {
     name: 'Drill',
@@ -7252,6 +10184,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   dromon_make_avail: {
     name: 'Dromon (make avail)',
@@ -7265,6 +10199,8 @@ const techs = {
       techs: [483],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   drums: {
     name: 'Drums',
@@ -7278,6 +10214,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   druzhina: {
     name: 'Druzhina',
@@ -7291,6 +10229,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 22,
+        a: 6,
+        v: 0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   dry_dock: {
     name: 'Dry Dock',
@@ -7304,6 +10252,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   dupl_castle_age: {
     name: 'Dupl. Castle Age',
@@ -7317,6 +10267,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   dupl_dark_age: {
     name: 'Dupl. Dark Age',
@@ -7330,6 +10282,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   dupl_feudal_age: {
     name: 'Dupl. Feudal Age',
@@ -7343,6 +10297,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   dupl_imperial_age: {
     name: 'Dupl. Imperial Age',
@@ -7356,6 +10312,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   eagle_warrior_make_avail: {
     name: 'Eagle Warrior (make avail)',
@@ -7369,6 +10327,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'early_battle_drills_requirement,_thracian_civ_bonus': {
     name: 'Early Battle Drills requirement, Thracian Civ Bonus',
@@ -7382,6 +10342,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   eastern_settlement: {
     name: 'Eastern Settlement',
@@ -7395,6 +10357,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   economic_satrapy: {
     name: 'Economic Satrapy',
@@ -7408,6 +10372,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   eisphora: {
     name: 'Eisphora',
@@ -7421,6 +10387,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   elephant_archer_make_avail: {
     name: 'Elephant Archer (make avail)',
@@ -7434,6 +10402,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_arambai: {
     name: 'Elite Arambai',
@@ -7447,6 +10417,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_armored_elephant: {
     name: 'Elite Armored Elephant',
@@ -7460,6 +10432,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_ballista_elephant: {
     name: 'Elite Ballista Elephant',
@@ -7473,6 +10447,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_battle_elephant: {
     name: 'Elite Battle Elephant',
@@ -7486,6 +10462,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_berserk: {
     name: 'Elite Berserk',
@@ -7499,6 +10477,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_blackwood_archer: {
     name: 'Elite Blackwood Archer',
@@ -7512,6 +10492,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_bolas_rider: {
     name: 'Elite Bolas Rider',
@@ -7525,6 +10507,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_camel_archer: {
     name: 'Elite Camel Archer',
@@ -7538,6 +10522,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_cannon_galley: {
     name: 'Elite Cannon Galley',
@@ -7551,6 +10537,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_caravel: {
     name: 'Elite Caravel',
@@ -7564,6 +10552,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_cataphract: {
     name: 'Elite Cataphract',
@@ -7577,6 +10567,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_centurion: {
     name: 'Elite Centurion',
@@ -7590,6 +10582,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_chakram_thrower: {
     name: 'Elite Chakram Thrower',
@@ -7603,6 +10597,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_champi_warrior: {
     name: 'Elite Champi Warrior',
@@ -7616,6 +10612,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_chu_ko_nu: {
     name: 'Elite Chu Ko Nu',
@@ -7629,6 +10627,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_companion: {
     name: 'Elite Companion',
@@ -7642,6 +10642,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_composite_bowman: {
     name: 'Elite Composite Bowman',
@@ -7655,6 +10657,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_conquistador: {
     name: 'Elite Conquistador',
@@ -7668,6 +10672,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_coustillier: {
     name: 'Elite Coustillier',
@@ -7681,6 +10687,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_eagle_warrior: {
     name: 'Elite Eagle Warrior',
@@ -7694,6 +10702,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_elephant_archer: {
     name: 'Elite Elephant Archer',
@@ -7707,6 +10717,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_ethiopia_unit: {
     name: 'Elite Ethiopia Unit',
@@ -7720,6 +10732,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_fire_archer: {
     name: 'Elite Fire Archer',
@@ -7733,6 +10747,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_fire_lancer: {
     name: 'Elite Fire Lancer',
@@ -7746,6 +10762,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_galley: {
     name: 'Elite Galley',
@@ -7759,6 +10777,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_genitour: {
     name: 'Elite Genitour',
@@ -7772,6 +10792,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_genitour_599: {
     name: 'Elite Genitour',
@@ -7785,6 +10807,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_genitour_post_imperial: {
     name: 'Elite Genitour (post-imperial)',
@@ -7798,6 +10822,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_genoese_bow: {
     name: 'Elite Genoese Bow',
@@ -7811,6 +10837,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_ghulam: {
     name: 'Elite Ghulam',
@@ -7824,6 +10852,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_hippeus: {
     name: 'Elite Hippeus',
@@ -7837,6 +10867,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_hoplite: {
     name: 'Elite Hoplite',
@@ -7850,6 +10882,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_hoplite_requirement: {
     name: 'Elite Hoplite requirement',
@@ -7863,6 +10897,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_huskarl: {
     name: 'Elite Huskarl',
@@ -7876,6 +10912,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_hussite_wagon: {
     name: 'Elite Hussite Wagon',
@@ -7889,6 +10927,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_ibirapema_warrior: {
     name: 'Elite Ibirapema Warrior',
@@ -7902,6 +10942,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_immortal: {
     name: 'Elite Immortal',
@@ -7915,6 +10957,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_iron_pagoda: {
     name: 'Elite Iron Pagoda',
@@ -7928,6 +10972,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_jaguar_man: {
     name: 'Elite Jaguar Man',
@@ -7941,6 +10987,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_jannisary: {
     name: 'Elite Jannisary',
@@ -7954,6 +11002,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_kamayuk: {
     name: 'Elite Kamayuk',
@@ -7967,6 +11017,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_karambit_warrior: {
     name: 'Elite Karambit Warrior',
@@ -7980,6 +11032,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_keshik: {
     name: 'Elite Keshik',
@@ -7993,6 +11047,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_kipchak: {
     name: 'Elite Kipchak',
@@ -8006,6 +11062,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_kona: {
     name: 'Elite Kona',
@@ -8019,6 +11077,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_konnik: {
     name: 'Elite Konnik',
@@ -8032,6 +11092,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_leitis: {
     name: 'Elite Leitis',
@@ -8045,6 +11107,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_lembos: {
     name: 'Elite Lembos',
@@ -8058,6 +11122,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_liao_dao: {
     name: 'Elite Liao Dao',
@@ -8071,6 +11137,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_longbow: {
     name: 'Elite Longbow',
@@ -8084,6 +11152,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_magyar_huszar: {
     name: 'Elite Magyar Huszar',
@@ -8097,6 +11167,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_mali_unit: {
     name: 'Elite Mali Unit',
@@ -8110,6 +11182,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_mameluke: {
     name: 'Elite Mameluke',
@@ -8123,6 +11197,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_mangudai: {
     name: 'Elite Mangudai',
@@ -8136,6 +11212,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_monaspa: {
     name: 'Elite Monaspa',
@@ -8149,6 +11227,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_obuch: {
     name: 'Elite Obuch',
@@ -8162,6 +11242,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_organ_gun: {
     name: 'Elite Organ Gun',
@@ -8175,6 +11257,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_pattiyodha_longbowman: {
     name: 'Elite Pattiyodha Longbowman',
@@ -8188,6 +11272,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_plumed_archer: {
     name: 'Elite Plumed Archer',
@@ -8201,6 +11287,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_qizilbash_warrior: {
     name: 'Elite Qizilbash Warrior',
@@ -8214,6 +11302,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_ratha: {
     name: 'Elite Ratha',
@@ -8227,6 +11317,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_rattan_archer: {
     name: 'Elite Rattan Archer',
@@ -8240,6 +11332,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_rhomphaia_warrior: {
     name: 'Elite Rhomphaia Warrior',
@@ -8253,6 +11347,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_samurai: {
     name: 'Elite Samurai',
@@ -8266,6 +11362,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_sannahya: {
     name: 'Elite Sannahya',
@@ -8279,6 +11377,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_scythian_horse_archer: {
     name: 'Elite Scythian Horse Archer',
@@ -8292,6 +11392,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_serjeant: {
     name: 'Elite Serjeant',
@@ -8305,6 +11407,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_shrivamsha_rider: {
     name: 'Elite Shrivamsha Rider',
@@ -8318,6 +11422,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_siege_tower: {
     name: 'Elite Siege Tower',
@@ -8331,6 +11437,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_skirmisher: {
     name: 'Elite Skirmisher',
@@ -8344,6 +11452,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_steppe_lancer: {
     name: 'Elite Steppe Lancer',
@@ -8357,6 +11467,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_strategos: {
     name: 'Elite Strategos',
@@ -8370,6 +11482,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_tarkan: {
     name: 'Elite Tarkan',
@@ -8383,6 +11497,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_temple_guard: {
     name: 'Elite Temple Guard',
@@ -8396,6 +11512,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_teutonic_knight: {
     name: 'Elite Teutonic Knight',
@@ -8409,6 +11527,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_throwing_axemen: {
     name: 'Elite Throwing Axemen',
@@ -8422,6 +11542,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_tiger_cavalry: {
     name: 'Elite Tiger Cavalry',
@@ -8435,6 +11557,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_turtle_ship: {
     name: 'Elite Turtle Ship',
@@ -8448,6 +11572,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_urumi_swordsman: {
     name: 'Elite Urumi Swordsman',
@@ -8461,6 +11587,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_war_chariot: {
     name: 'Elite War Chariot',
@@ -8474,6 +11602,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_war_dog: {
     name: 'Elite War Dog',
@@ -8487,6 +11617,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_war_elephant: {
     name: 'Elite War Elephant',
@@ -8500,6 +11632,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_war_wagon: {
     name: 'Elite War Wagon',
@@ -8513,6 +11647,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_white_feather_guard: {
     name: 'Elite White Feather Guard',
@@ -8526,6 +11662,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   elite_woad_raider: {
     name: 'Elite Woad Raider',
@@ -8539,6 +11677,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_catapult_ship: {
     name: 'Enable Catapult Ship',
@@ -8552,6 +11692,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_companion,_macedonian_unique_unit': {
     name: 'Enable Companion, Macedonian Unique Unit',
@@ -8565,6 +11707,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_galley___antiquity: {
     name: 'Enable Galley - Antiquity',
@@ -8578,6 +11722,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_hippeus,_spartan_unique_unit': {
     name: 'Enable Hippeus, Spartan Unique Unit',
@@ -8591,6 +11737,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_hoplite,_greek_regional_unit': {
     name: 'Enable Hoplite, Greek Regional Unit',
@@ -8604,6 +11752,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_immortal,_achaemenid_unique_unit': {
     name: 'Enable Immortal, Achaemenid Unique Unit',
@@ -8617,6 +11767,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_incendiary_raft: {
     name: 'Enable Incendiary Raft',
@@ -8630,6 +11782,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_lembos: {
     name: 'Enable Lembos',
@@ -8643,6 +11797,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_leviathan: {
     name: 'Enable Leviathan',
@@ -8656,6 +11812,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_merchant_ship: {
     name: 'Enable Merchant Ship',
@@ -8669,6 +11827,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_monoreme: {
     name: 'Enable Monoreme',
@@ -8682,6 +11842,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_pattiyodha_longbowman,_puru_unique_unit': {
     name: 'Enable Pattiyodha Longbowman, Puru Unique Unit',
@@ -8695,6 +11857,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_phalangite,_macedonian_unique_unit': {
     name: 'Enable Phalangite, Macedonian Unique Unit',
@@ -8708,6 +11872,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_rhomphaia_warrior,_thracian_unique_unit': {
     name: 'Enable Rhomphaia Warrior, Thracian Unique Unit',
@@ -8721,6 +11887,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_sannahya,_puru_unique_unit': {
     name: 'Enable Sannahya, Puru Unique Unit',
@@ -8734,6 +11902,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_scythian_horse_archer: {
     name: 'Enable Scythian Horse Archer',
@@ -8747,6 +11917,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_shipyard: {
     name: 'Enable Shipyard',
@@ -8760,6 +11932,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'enable_strategos,_athenian_unique_unit': {
     name: 'Enable Strategos, Athenian Unique Unit',
@@ -8773,6 +11947,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_war_chariot: {
     name: 'Enable War Chariot',
@@ -8786,6 +11962,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_war_chariot_full_techs: {
     name: 'Enable War Chariot Full Techs',
@@ -8799,6 +11977,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_cows: {
     name: 'Enable cows',
@@ -8812,6 +11992,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_llamas: {
     name: 'Enable llamas',
@@ -8825,6 +12007,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_sheep: {
     name: 'Enable sheep',
@@ -8838,6 +12022,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   enable_turkeys: {
     name: 'Enable turkeys',
@@ -8851,6 +12037,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ends_of_the_world: {
     name: 'Ends of the World',
@@ -8864,6 +12052,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   ephorate: {
     name: 'Ephorate',
@@ -8877,6 +12067,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   ethiopians: {
     name: 'Ethiopians',
@@ -8890,6 +12082,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   eupseong: {
     name: 'Eupseong',
@@ -8903,6 +12097,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   exclude_age2_from_tech_reward: {
     name: 'Exclude Age2 from tech reward',
@@ -8916,6 +12112,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   exclude_age3_from_tech_reward: {
     name: 'Exclude Age3 from tech reward',
@@ -8929,6 +12127,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   exclude_age4_from_tech_reward: {
     name: 'Exclude Age4 from tech reward',
@@ -8942,6 +12142,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   exorcism: {
     name: 'Exorcism',
@@ -8955,6 +12157,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   fabric_shields: {
     name: 'Fabric Shields',
@@ -8968,6 +12172,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   fabric_shields_1366: {
     name: 'Fabric Shields',
@@ -8981,6 +12187,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   farimba: {
     name: 'Farimba',
@@ -8994,6 +12202,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 1029.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   farm____age_one: {
     name: 'Farm -- Age One',
@@ -9007,6 +12225,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   farms_make_avail: {
     name: 'Farms (make avail)',
@@ -9020,6 +12240,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fast_fire_ship: {
     name: 'Fast Fire Ship',
@@ -9033,6 +12255,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   feitoria_make_avail: {
     name: 'Feitoria (make avail)',
@@ -9046,6 +12270,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fereters: {
     name: 'Fereters',
@@ -9059,6 +12285,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 6,
+        v: 30.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   fervor: {
     name: 'Fervor',
@@ -9072,6 +12308,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   feudal_age: {
     name: 'Feudal Age',
@@ -9085,6 +12323,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   feudal_age_start: {
     name: 'Feudal Age start',
@@ -9098,6 +12338,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   feudal_eco_tech_requirement: {
     name: 'Feudal eco tech requirement',
@@ -9111,6 +12353,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fire_archer_make_avail: {
     name: 'Fire Archer (make avail)',
@@ -9124,6 +12368,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fire_galley_make_avail: {
     name: 'Fire Galley (make avail)',
@@ -9137,6 +12383,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fire_lancer_make_avail: {
     name: 'Fire Lancer (make avail)',
@@ -9150,6 +12398,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fire_tower_make_avail: {
     name: 'Fire Tower (make avail)',
@@ -9163,6 +12413,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   first_crusade: {
     name: 'First Crusade',
@@ -9176,6 +12428,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   first_change_of_government: {
     name: 'First change of Government',
@@ -9189,6 +12443,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fish_trap_make_avail: {
     name: 'Fish Trap (make avail)',
@@ -9202,6 +12458,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fishing_lines: {
     name: 'Fishing Lines',
@@ -9215,6 +12473,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fishing_ship: {
     name: 'Fishing Ship',
@@ -9228,6 +12488,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   flaming_arrows: {
     name: 'Flaming Arrows',
@@ -9241,6 +12503,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 130,
+        a: 4,
+        v: -0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   flaming_camel_make_avail: {
     name: 'Flaming Camel (make avail)',
@@ -9254,6 +12533,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   flemish_militia_make_avail: {
     name: 'Flemish Militia (make avail)',
@@ -9267,6 +12548,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   flemish_militia_age3: {
     name: 'Flemish Militia Age3',
@@ -9280,6 +12563,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   flemish_militia_age4: {
     name: 'Flemish Militia Age4',
@@ -9293,6 +12578,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   flemish_revolution: {
     name: 'Flemish Revolution',
@@ -9306,6 +12593,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   fletching: {
     name: 'Fletching',
@@ -9319,6 +12608,44 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 1,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 12,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 130,
+        a: 4,
+        v: -0.5,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   folwark_age2_upgrade: {
     name: 'Folwark Age2 upgrade',
@@ -9332,6 +12659,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   folwark_age3_upgrade: {
     name: 'Folwark Age3 upgrade',
@@ -9345,6 +12674,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   folwark_age4_upgrade: {
     name: 'Folwark Age4 upgrade',
@@ -9358,6 +12689,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   forced_levy: {
     name: 'Forced Levy',
@@ -9371,6 +12704,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   forging: {
     name: 'Forging',
@@ -9384,6 +12719,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   fortified_bastions: {
     name: 'Fortified Bastions',
@@ -9397,6 +12749,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   fortified_church_armenians: {
     name: 'Fortified Church (Armenians)',
@@ -9410,6 +12764,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fortified_church_georgians: {
     name: 'Fortified Church (Georgians)',
@@ -9423,6 +12779,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'fortified_church_+_bodkin': {
     name: 'Fortified Church + Bodkin',
@@ -9436,6 +12794,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'fortified_church_+_bracer': {
     name: 'Fortified Church + Bracer',
@@ -9449,6 +12809,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'fortified_church_+_chemistry': {
     name: 'Fortified Church + Chemistry',
@@ -9462,6 +12824,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'fortified_church_+_fletching': {
     name: 'Fortified Church + Fletching',
@@ -9475,6 +12839,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'fortified_church_+_murder_holes': {
     name: 'Fortified Church + Murder Holes',
@@ -9488,6 +12854,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'fortified_church_+_svan_towers': {
     name: 'Fortified Church + Svan Towers',
@@ -9501,6 +12869,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fortified_church_age4_upgrade: {
     name: 'Fortified Church Age4 upgrade',
@@ -9514,6 +12884,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fortified_outpost: {
     name: 'Fortified Outpost',
@@ -9527,6 +12899,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   fortified_wall: {
     name: 'Fortified Wall',
@@ -9540,6 +12914,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   fortified_wall_researched_for_vedic_teachings: {
     name: 'Fortified Wall Researched for Vedic Teachings',
@@ -9553,6 +12929,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   fourth_change_of_government: {
     name: 'Fourth change of Government',
@@ -9566,6 +12952,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   franks: {
     name: 'Franks',
@@ -9579,6 +12967,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   free_elite_hoplite: {
     name: 'Free Elite Hoplite',
@@ -9592,6 +12982,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   frontier_guards: {
     name: 'Frontier Guards',
@@ -9605,6 +12997,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   functional_enable_scythian_horse_archer: {
     name: 'Functional Enable Scythian Horse Archer',
@@ -9618,6 +13012,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   furor_celtica: {
     name: 'Furor Celtica',
@@ -9631,6 +13027,8 @@ const techs = {
       techs: [47],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   galleon: {
     name: 'Galleon',
@@ -9644,6 +13042,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   gambesons: {
     name: 'Gambesons',
@@ -9657,6 +13057,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   garland_wars: {
     name: 'Garland Wars',
@@ -9670,6 +13072,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1028.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   gbeto_make_avail: {
     name: 'Gbeto (make avail)',
@@ -9683,6 +13095,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   genitour_make_avail: {
     name: 'Genitour (make avail)',
@@ -9696,6 +13110,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   genitour_make_avail_598: {
     name: 'Genitour (make avail)',
@@ -9709,6 +13125,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   genitour_make_avail_601: {
     name: 'Genitour (make avail)',
@@ -9722,6 +13140,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   genoese_bow_make_avail: {
     name: 'Genoese Bow (make avail)',
@@ -9735,6 +13155,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   georgians: {
     name: 'Georgians',
@@ -9748,6 +13170,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ghulam_make_avail: {
     name: 'Ghulam (make avail)',
@@ -9761,6 +13185,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   gillnets: {
     name: 'Gillnets',
@@ -9774,6 +13200,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   gillnets_requirement: {
     name: 'Gillnets requirement',
@@ -9787,6 +13215,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   gold_mining: {
     name: 'Gold Mining',
@@ -9800,6 +13230,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   gold_shaft_mining: {
     name: 'Gold Shaft Mining',
@@ -9813,6 +13245,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   gold_shaft_mining_requirement: {
     name: 'Gold Shaft Mining requirement',
@@ -9826,6 +13260,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   goths: {
     name: 'Goths',
@@ -9839,6 +13275,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   grand_trunk_road: {
     name: 'Grand Trunk Road',
@@ -9852,6 +13290,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   great_wall: {
     name: 'Great Wall',
@@ -9865,6 +13305,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   greek_fire: {
     name: 'Greek Fire',
@@ -9878,6 +13320,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   'greek_fire_+_chemistry': {
     name: 'Greek Fire + Chemistry',
@@ -9891,6 +13335,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   grenadier_make_avail: {
     name: 'Grenadier (make avail)',
@@ -9904,6 +13350,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   guard_tower: {
     name: 'Guard Tower',
@@ -9917,6 +13365,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   guard_tower_researched_for_vedic_teachings: {
     name: 'Guard Tower Researched for Vedic Teachings',
@@ -9930,6 +13380,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   guecha_warrior_make_avail: {
     name: 'Guecha Warrior (make avail)',
@@ -9943,6 +13403,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   guecha_warrior_pagoda: {
     name: 'Guecha Warrior Pagoda',
@@ -9956,6 +13418,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   guilds: {
     name: 'Guilds',
@@ -9969,6 +13433,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   gurjaras: {
     name: 'Gurjaras',
@@ -9982,6 +13448,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   halberdier: {
     name: 'Halberdier',
@@ -9995,6 +13463,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   halberdier_requirement: {
     name: 'Halberdier requirement',
@@ -10008,6 +13478,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hand_cannoneer: {
     name: 'Hand Cannoneer',
@@ -10021,6 +13493,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hand_cart: {
     name: 'Hand Cart',
@@ -10034,6 +13508,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 14,
+        a: 4,
+        v: 1.5,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 4,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   hand_cart_requirement: {
     name: 'Hand Cart requirement',
@@ -10047,6 +13538,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hauberk: {
     name: 'Hauberk',
@@ -10060,6 +13553,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   heated_shot: {
     name: 'Heated Shot',
@@ -10073,6 +13568,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 3,
+        v: 4100.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   heated_shot_researched_for_vedic_teachings: {
     name: 'Heated Shot Researched for Vedic Teachings',
@@ -10086,6 +13591,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   heavy_camel: {
     name: 'Heavy Camel',
@@ -10099,6 +13614,8 @@ const techs = {
       techs: [64],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_camel_521: {
     name: 'Heavy Camel',
@@ -10112,6 +13629,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_cavalry_archer: {
     name: 'Heavy Cavalry Archer',
@@ -10125,6 +13644,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_demolition: {
     name: 'Heavy Demolition',
@@ -10138,6 +13659,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_eagle_warrior: {
     name: 'Heavy Eagle Warrior',
@@ -10151,6 +13674,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_hei_kuang_cavalry: {
     name: 'Heavy Hei-Kuang Cavalry',
@@ -10164,6 +13689,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_incendiary_ship: {
     name: 'Heavy Incendiary Ship',
@@ -10177,6 +13704,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_lembos: {
     name: 'Heavy Lembos',
@@ -10190,6 +13719,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_plow: {
     name: 'Heavy Plow',
@@ -10203,6 +13734,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   heavy_plow_requirement: {
     name: 'Heavy Plow requirement',
@@ -10216,6 +13749,8 @@ const techs = {
       techs: [16],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_rocket_cart: {
     name: 'Heavy Rocket Cart',
@@ -10229,6 +13764,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_scorpion: {
     name: 'Heavy Scorpion',
@@ -10242,6 +13779,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   heavy_warships: {
     name: 'Heavy Warships',
@@ -10255,6 +13794,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   hei_kuang_cavalry_make_avail: {
     name: 'Hei-Kuang Cavalry (make avail)',
@@ -10268,6 +13809,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   helot_levies: {
     name: 'Helot Levies',
@@ -10281,6 +13824,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 101,
+        a: 4,
+        v: 0.6666666865348816,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   hemlock: {
     name: 'Hemlock',
@@ -10294,6 +13847,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   herbal_medicine: {
     name: 'Herbal Medicine',
@@ -10307,6 +13862,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 108,
+        a: 3,
+        v: 6.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   herbalism: {
     name: 'Herbalism',
@@ -10320,6 +13885,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.149999976158142,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   hero_shadow_tech: {
     name: 'Hero Shadow Tech',
@@ -10333,6 +13908,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hill_forts: {
     name: 'Hill Forts',
@@ -10346,6 +13923,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   hindustanis: {
     name: 'Hindustanis',
@@ -10359,6 +13938,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hippagretai: {
     name: 'Hippagretai',
@@ -10372,6 +13953,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   hoardings: {
     name: 'Hoardings',
@@ -10385,6 +13968,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   horse_collar: {
     name: 'Horse Collar',
@@ -10398,6 +13983,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   houfnice: {
     name: 'Houfnice',
@@ -10411,6 +13998,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   howdah: {
     name: 'Howdah',
@@ -10424,6 +14013,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   hulk_make_avail: {
     name: 'Hulk (make avail)',
@@ -10437,6 +14028,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   huns: {
     name: 'Huns',
@@ -10450,6 +14043,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   husbandry: {
     name: 'Husbandry',
@@ -10463,6 +14058,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 12,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   huskarl_make_avail: {
     name: 'Huskarl (make avail)',
@@ -10476,6 +14081,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hussar: {
     name: 'Hussar',
@@ -10489,6 +14096,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hussite_reforms: {
     name: 'Hussite Reforms',
@@ -10502,6 +14111,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   hussite_wagon_make_avail: {
     name: 'Hussite Wagon (make avail)',
@@ -10515,6 +14126,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   hypozomata: {
     name: 'Hypozomata',
@@ -10528,6 +14141,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   ibirapema_warrior_make_avail: {
     name: 'Ibirapema Warrior (make avail)',
@@ -10541,6 +14156,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   imperial_age: {
     name: 'Imperial Age',
@@ -10554,6 +14171,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   imperial_age_start: {
     name: 'Imperial Age start',
@@ -10567,6 +14186,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   imperial_nomads: {
     name: 'Imperial Nomads',
@@ -10580,6 +14201,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   imperial_skirmisher: {
     name: 'Imperial Skirmisher',
@@ -10593,6 +14216,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   imperial_skirmisher_disable: {
     name: 'Imperial Skirmisher (disable)',
@@ -10606,6 +14231,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   imperial_eco_tech_requirement: {
     name: 'Imperial eco tech requirement',
@@ -10619,6 +14246,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   inca: {
     name: 'Inca',
@@ -10632,6 +14261,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   incendiaries: {
     name: 'Incendiaries',
@@ -10645,6 +14276,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   incendiary_ship: {
     name: 'Incendiary Ship',
@@ -10658,6 +14291,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   initial_oligarchy_researched: {
     name: 'Initial Oligarchy researched',
@@ -10671,6 +14306,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   inquisition: {
     name: 'Inquisition',
@@ -10684,6 +14321,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   iphicratean_tactics: {
     name: 'Iphicratean Tactics',
@@ -10697,6 +14336,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   iron_casting: {
     name: 'Iron Casting',
@@ -10710,6 +14351,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   iron_pagoda_make_avail: {
     name: 'Iron Pagoda (make avail)',
@@ -10723,6 +14381,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ironclad: {
     name: 'Ironclad',
@@ -10736,6 +14396,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   italians: {
     name: 'Italians',
@@ -10749,6 +14411,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   jaguar_man: {
     name: 'Jaguar Man',
@@ -10762,6 +14426,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   jannisary_make_avail: {
     name: 'Jannisary (make avail)',
@@ -10775,6 +14441,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   japanese: {
     name: 'Japanese',
@@ -10788,6 +14456,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   jian_swordsman_make_avail: {
     name: 'Jian Swordsman (make avail)',
@@ -10801,6 +14471,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   jurchens: {
     name: 'Jurchens',
@@ -10814,6 +14486,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   kamandaran: {
     name: 'Kamandaran',
@@ -10827,6 +14501,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   kamayuk_make_avail: {
     name: 'Kamayuk (make avail)',
@@ -10840,6 +14516,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   karambit_warrior_make_avail: {
     name: 'Karambit Warrior (make avail)',
@@ -10853,6 +14531,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   karda: {
     name: 'Karda',
@@ -10866,6 +14546,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 7938.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   kasbah: {
     name: 'Kasbah',
@@ -10879,6 +14569,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   kataparuto: {
     name: 'Kataparuto',
@@ -10892,6 +14584,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   keep_researched_for_vedic_teachings: {
     name: 'Keep Researched for Vedic Teachings',
@@ -10905,6 +14599,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   keshik_make_avail: {
     name: 'Keshik (make avail)',
@@ -10918,6 +14622,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   khitans: {
     name: 'Khitans',
@@ -10931,6 +14637,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   khmer: {
     name: 'Khmer',
@@ -10944,6 +14652,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   khmer_requirement: {
     name: 'Khmer requirement',
@@ -10957,6 +14667,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   kipchak_make_avail: {
     name: 'Kipchak (make avail)',
@@ -10970,6 +14682,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   knight_make_avail: {
     name: 'Knight (make avail)',
@@ -10983,6 +14697,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   kona_make_avail: {
     name: 'Kona (make avail)',
@@ -10996,6 +14712,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   konnik_make_avail: {
     name: 'Konnik (make avail)',
@@ -11009,6 +14727,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   kopis_sarissa_choice: {
     name: 'Kopis/Sarissa choice',
@@ -11022,6 +14742,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   koreans: {
     name: 'Koreans',
@@ -11035,6 +14757,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   kotthybos_telamon_choice: {
     name: 'Kotthybos/Telamon choice',
@@ -11048,6 +14772,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   krepost_built: {
     name: 'Krepost built',
@@ -11061,6 +14787,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   krypteia: {
     name: 'Krypteia',
@@ -11074,6 +14802,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   kshatriyas: {
     name: 'Kshatriyas',
@@ -11087,6 +14817,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 103,
+        a: 0,
+        v: 0.75,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 6,
+        v: 0.75,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 103,
+        a: 12,
+        v: 0.75,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   'kshatriyas_+_supplies': {
     name: 'Kshatriyas + Supplies',
@@ -11100,6 +14854,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   lamellar_armor: {
     name: 'Lamellar Armor',
@@ -11113,6 +14869,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 118,
+        a: 6,
+        v: 0.25,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   leaf_headed_shafts: {
     name: 'Leaf-Headed Shafts',
@@ -11126,6 +14892,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   leather_archer_armor: {
     name: 'Leather Archer Armor',
@@ -11139,6 +14907,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   lechitic_legacy: {
     name: 'Lechitic Legacy',
@@ -11152,6 +14937,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   legionary: {
     name: 'Legionary',
@@ -11165,6 +14952,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   leitis_make_avail: {
     name: 'Leitis (make avail)',
@@ -11178,6 +14967,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'lemboi_cost__10%_and_+1_attack_in_civic_age,_puru_civ_bonus': {
     name: 'Lemboi cost -10% and +1 attack in Civic Age, Puru Civ Bonus',
@@ -11191,6 +14982,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'lemboi_cost__10%_and_+1_attack_in_classical_age,_puru_civ_bonus': {
     name: 'Lemboi cost -10% and +1 attack in Classical Age, Puru Civ Bonus',
@@ -11204,6 +14997,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'lemboi_cost__10%_and_+1_attack_in_imperial_age,_puru_civ_bonus': {
     name: 'Lemboi cost -10% and +1 attack in Imperial Age, Puru Civ Bonus',
@@ -11217,6 +15012,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   liao_dao_make_avail: {
     name: 'Liao Dao (make avail)',
@@ -11230,6 +15027,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   light_cavalry: {
     name: 'Light Cavalry',
@@ -11243,6 +15042,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   lithuanians: {
     name: 'Lithuanians',
@@ -11256,6 +15057,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   liu_bei_make_avail: {
     name: 'Liu Bei (make avail)',
@@ -11269,6 +15072,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   logistica: {
     name: 'Logistica',
@@ -11282,6 +15087,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   long_swordsman: {
     name: 'Long Swordsman',
@@ -11295,6 +15102,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   long_swordsman_requirement: {
     name: 'Long Swordsman requirement',
@@ -11308,6 +15117,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   longboat_make_avail: {
     name: 'Longboat (make avail)',
@@ -11321,6 +15132,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   longbow_make_avail: {
     name: 'Longbow (make avail)',
@@ -11334,6 +15147,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   loom: {
     name: 'Loom',
@@ -11347,6 +15162,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 4,
+        v: 15.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   lou_chuan_make_avail: {
     name: 'Lou Chuan (make avail)',
@@ -11360,6 +15199,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mrkt_tdws_make_avail: {
     name: 'MRKT TDWS (make avail)',
@@ -11373,6 +15214,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   macedonian_team_bonus: {
     name: 'Macedonian Team Bonus',
@@ -11386,6 +15229,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   macedonians_static_bonuses: {
     name: 'Macedonians Static Bonuses',
@@ -11399,6 +15244,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   maghrebi_camels: {
     name: 'Maghrebi Camels',
@@ -11412,6 +15259,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   magyar_huszar_make_avail: {
     name: 'Magyar Huszar (make avail)',
@@ -11425,6 +15274,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   magyars: {
     name: 'Magyars',
@@ -11438,6 +15289,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mahayana: {
     name: 'Mahayana',
@@ -11451,6 +15304,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 110,
+        a: 4,
+        v: -0.8999999761581421,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   make_camels_available: {
     name: 'Make Camels Available',
@@ -11464,6 +15327,8 @@ const techs = {
       techs: [63],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   make_fire_galley_avail: {
     name: 'Make Fire Galley Avail',
@@ -11477,6 +15342,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   make_scout_ship_avail: {
     name: 'Make Scout Ship Avail',
@@ -11490,6 +15357,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   malay: {
     name: 'Malay',
@@ -11503,6 +15372,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   malians: {
     name: 'Malians',
@@ -11516,6 +15387,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   malon: {
     name: 'Malon',
@@ -11529,6 +15402,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   mameluke_make_avail: {
     name: 'Mameluke (make avail)',
@@ -11542,6 +15417,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   man_at_arms: {
     name: 'Man-At-Arms',
@@ -11555,6 +15432,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mangonel: {
     name: 'Mangonel',
@@ -11568,6 +15447,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   manipur_cavalry: {
     name: 'Manipur Cavalry',
@@ -11581,6 +15462,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 12,
+        v: 3844.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   mapuche: {
     name: 'Mapuche',
@@ -11594,6 +15485,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   marauders: {
     name: 'Marauders',
@@ -11607,6 +15500,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   masonry: {
     name: 'Masonry',
@@ -11620,6 +15515,37 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 0,
+        a: 3,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 3,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 3,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 3,
+        v: 2819.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   masonry_researched_for_vedic_teachings: {
     name: 'Masonry Researched for Vedic Teachings',
@@ -11633,6 +15559,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   maya: {
     name: 'Maya',
@@ -11646,6 +15582,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   medical_corps: {
     name: 'Medical Corps',
@@ -11659,6 +15597,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   military_satrapy: {
     name: 'Military Satrapy',
@@ -11672,6 +15612,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   mine_has_been_built: {
     name: 'Mine has been built',
@@ -11685,6 +15627,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ming_kuang_armor: {
     name: 'Ming-Kuang Armor',
@@ -11698,6 +15642,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1028.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   missionary_avail: {
     name: 'Missionary (avail)',
@@ -11711,6 +15665,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mobile_siege_unit_make_avail: {
     name: 'Mobile Siege Unit (make avail)',
@@ -11724,6 +15680,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   monaspa_make_avail: {
     name: 'Monaspa (make avail)',
@@ -11737,6 +15695,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mongols: {
     name: 'Mongols',
@@ -11750,6 +15710,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   monk_make_avail: {
     name: 'Monk (make avail)',
@@ -11763,6 +15725,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   monk_ranged_heal: {
     name: 'Monk Ranged Heal',
@@ -11776,6 +15740,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   monument_resources_koth_only: {
     name: 'Monument Resources (KotH only)',
@@ -11789,6 +15755,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   morai: {
     name: 'Morai',
@@ -11802,6 +15770,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   mounted_trebuchet_make_avail: {
     name: 'Mounted Trebuchet (make avail)',
@@ -11815,6 +15785,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   muisca: {
     name: 'Muisca',
@@ -11828,6 +15800,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mule_cart_make_avail: {
     name: 'Mule Cart (make avail)',
@@ -11841,6 +15815,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   mule_cart_make_avail_940: {
     name: 'Mule Cart (make avail)',
@@ -11854,6 +15830,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   murder_holes: {
     name: 'Murder Holes',
@@ -11867,6 +15845,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 20,
+        a: 3,
+        v: 0.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   murder_holes_researched_for_vedic_teachings: {
     name: 'Murder Holes Researched for Vedic Teachings',
@@ -11880,6 +15868,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   mystery_cults: {
     name: 'Mystery Cults',
@@ -11893,6 +15891,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   new_research: {
     name: 'New Research',
@@ -11906,6 +15906,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_73: {
     name: 'New Research',
@@ -11919,6 +15921,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_78: {
     name: 'New Research',
@@ -11932,6 +15936,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_79: {
     name: 'New Research',
@@ -11945,6 +15951,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_86: {
     name: 'New Research',
@@ -11958,6 +15966,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_88: {
     name: 'New Research',
@@ -11971,6 +15981,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_89: {
     name: 'New Research',
@@ -11984,6 +15996,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_91: {
     name: 'New Research',
@@ -11997,6 +16011,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_92: {
     name: 'New Research',
@@ -12010,6 +16026,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_97: {
     name: 'New Research',
@@ -12023,6 +16041,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_105: {
     name: 'New Research',
@@ -12036,6 +16056,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_111: {
     name: 'New Research',
@@ -12049,6 +16071,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_119: {
     name: 'New Research',
@@ -12062,6 +16086,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_133: {
     name: 'New Research',
@@ -12075,6 +16101,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_136: {
     name: 'New Research',
@@ -12088,6 +16116,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_139: {
     name: 'New Research',
@@ -12101,6 +16131,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_141: {
     name: 'New Research',
@@ -12114,6 +16146,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_145: {
     name: 'New Research',
@@ -12127,6 +16161,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_163: {
     name: 'New Research',
@@ -12140,6 +16176,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_164: {
     name: 'New Research',
@@ -12153,6 +16191,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_165: {
     name: 'New Research',
@@ -12166,6 +16206,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_167: {
     name: 'New Research',
@@ -12179,6 +16221,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_168: {
     name: 'New Research',
@@ -12192,6 +16236,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_169: {
     name: 'New Research',
@@ -12205,6 +16251,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_170: {
     name: 'New Research',
@@ -12218,6 +16266,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_171: {
     name: 'New Research',
@@ -12231,6 +16281,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_173: {
     name: 'New Research',
@@ -12244,6 +16296,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_174: {
     name: 'New Research',
@@ -12257,6 +16311,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_176: {
     name: 'New Research',
@@ -12270,6 +16326,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_177: {
     name: 'New Research',
@@ -12283,6 +16341,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_179: {
     name: 'New Research',
@@ -12296,6 +16356,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_181: {
     name: 'New Research',
@@ -12309,6 +16371,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_183: {
     name: 'New Research',
@@ -12322,6 +16386,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_184: {
     name: 'New Research',
@@ -12335,6 +16401,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_185: {
     name: 'New Research',
@@ -12348,6 +16416,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_191: {
     name: 'New Research',
@@ -12361,6 +16431,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_193: {
     name: 'New Research',
@@ -12374,6 +16446,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_195: {
     name: 'New Research',
@@ -12387,6 +16461,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_196: {
     name: 'New Research',
@@ -12400,6 +16476,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_198: {
     name: 'New Research',
@@ -12413,6 +16491,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_205: {
     name: 'New Research',
@@ -12426,6 +16506,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_206: {
     name: 'New Research',
@@ -12439,6 +16521,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_208: {
     name: 'New Research',
@@ -12452,6 +16536,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_214: {
     name: 'New Research',
@@ -12465,6 +16551,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_229: {
     name: 'New Research',
@@ -12478,6 +16566,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_245: {
     name: 'New Research',
@@ -12491,6 +16581,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_247: {
     name: 'New Research',
@@ -12504,6 +16596,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_248: {
     name: 'New Research',
@@ -12517,6 +16611,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_250: {
     name: 'New Research',
@@ -12530,6 +16626,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_251: {
     name: 'New Research',
@@ -12543,6 +16641,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_253: {
     name: 'New Research',
@@ -12556,6 +16656,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_293: {
     name: 'New Research',
@@ -12569,6 +16671,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_294: {
     name: 'New Research',
@@ -12582,6 +16686,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_296: {
     name: 'New Research',
@@ -12595,6 +16701,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_297: {
     name: 'New Research',
@@ -12608,6 +16716,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_331: {
     name: 'New Research',
@@ -12621,6 +16731,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_338: {
     name: 'New Research',
@@ -12634,6 +16746,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_356: {
     name: 'New Research',
@@ -12647,6 +16761,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_410: {
     name: 'New Research',
@@ -12660,6 +16776,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_411: {
     name: 'New Research',
@@ -12673,6 +16791,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_412: {
     name: 'New Research',
@@ -12686,6 +16806,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_413: {
     name: 'New Research',
@@ -12699,6 +16821,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_414: {
     name: 'New Research',
@@ -12712,6 +16836,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_442: {
     name: 'New Research',
@@ -12725,6 +16851,8 @@ const techs = {
       techs: [35],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_443: {
     name: 'New Research',
@@ -12738,6 +16866,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_444: {
     name: 'New Research',
@@ -12751,6 +16881,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_612: {
     name: 'New Research',
@@ -12764,6 +16896,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_798: {
     name: 'New Research',
@@ -12777,6 +16911,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_799: {
     name: 'New Research',
@@ -12790,6 +16926,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_812: {
     name: 'New Research',
@@ -12803,6 +16941,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_813: {
     name: 'New Research',
@@ -12816,6 +16956,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_814: {
     name: 'New Research',
@@ -12829,6 +16971,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_815: {
     name: 'New Research',
@@ -12842,6 +16986,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_816: {
     name: 'New Research',
@@ -12855,6 +17001,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_817: {
     name: 'New Research',
@@ -12868,6 +17016,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_818: {
     name: 'New Research',
@@ -12881,6 +17031,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_819: {
     name: 'New Research',
@@ -12894,6 +17046,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_820: {
     name: 'New Research',
@@ -12907,6 +17061,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   new_research_821: {
     name: 'New Research',
@@ -12920,6 +17076,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   nomads: {
     name: 'Nomads',
@@ -12933,6 +17091,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   none: {
     name: 'None',
@@ -12946,6 +17106,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   obsidian_arrows: {
     name: 'Obsidian Arrows',
@@ -12959,6 +17121,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   obuch_make_avail: {
     name: 'Obuch (make avail)',
@@ -12972,6 +17136,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   odomantian_raiders: {
     name: 'Odomantian Raiders',
@@ -12985,6 +17151,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   offensive_emplacement: {
     name: 'Offensive Emplacement',
@@ -12998,6 +17166,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   oligarchy: {
     name: 'Oligarchy',
@@ -13011,6 +17181,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   onager: {
     name: 'Onager',
@@ -13024,6 +17196,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   onager_ship: {
     name: 'Onager Ship',
@@ -13037,6 +17211,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ordo_cavalry: {
     name: 'Ordo Cavalry',
@@ -13050,6 +17226,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   organ_gun_make_avail: {
     name: 'Organ Gun (make avail)',
@@ -13063,6 +17241,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   outpost_make_avail: {
     name: 'Outpost (make avail)',
@@ -13076,6 +17256,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   padded_archer_armor: {
     name: 'Padded Archer Armor',
@@ -13089,6 +17271,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   paiks: {
     name: 'Paiks',
@@ -13102,6 +17301,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   paladin: {
     name: 'Paladin',
@@ -13115,6 +17316,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paladin_make_avail: {
     name: 'Paladin (make avail)',
@@ -13128,6 +17331,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   palisade_wall_make_avail: {
     name: 'Palisade Wall (make avail)',
@@ -13141,6 +17346,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   palisade_walls_hp_feudal_age: {
     name: 'Palisade Walls HP feudal age',
@@ -13154,6 +17361,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paper_money: {
     name: 'Paper Money',
@@ -13167,6 +17376,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   'paper_money_+_bow_saw': {
     name: 'Paper Money + Bow Saw',
@@ -13180,6 +17391,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'paper_money_+_double_bit_axe': {
     name: 'Paper Money + Double-Bit Axe',
@@ -13193,6 +17406,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'paper_money_+_two_man_saw': {
     name: 'Paper Money + Two-Man Saw',
@@ -13206,6 +17421,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paphos_naval: {
     name: 'Paphos Naval',
@@ -13219,6 +17436,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paphos_port_age_2: {
     name: 'Paphos Port Age 2',
@@ -13232,6 +17451,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paphos_port_age_3: {
     name: 'Paphos Port Age 3',
@@ -13245,6 +17466,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paphos_port_age_4: {
     name: 'Paphos Port Age 4',
@@ -13258,6 +17481,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paphos_shadow_tech: {
     name: 'Paphos Shadow Tech',
@@ -13271,6 +17496,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   paphos_full_tech_tree_prereq: {
     name: 'Paphos full tech tree prereq',
@@ -13284,6 +17511,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   parthian_tactics: {
     name: 'Parthian Tactics',
@@ -13297,6 +17526,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   pastoralism: {
     name: 'Pastoralism',
@@ -13310,6 +17541,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   pavise: {
     name: 'Pavise',
@@ -13323,6 +17556,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   peloponnesian_league: {
     name: 'Peloponnesian League',
@@ -13336,6 +17586,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   peltasts: {
     name: 'Peltasts',
@@ -13349,6 +17601,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   perfusion: {
     name: 'Perfusion',
@@ -13362,6 +17616,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   persians: {
     name: 'Persians',
@@ -13375,6 +17631,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   petard_make_avail: {
     name: 'Petard (make avail)',
@@ -13388,6 +17646,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   pezhetairoi: {
     name: 'Pezhetairoi',
@@ -13401,6 +17661,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   pikeman: {
     name: 'Pikeman',
@@ -13414,6 +17676,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   pikeman_requirement: {
     name: 'Pikeman requirement',
@@ -13427,6 +17691,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   pirotechnia: {
     name: 'Pirotechnia',
@@ -13440,6 +17706,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   placeholder_1: {
     name: 'Placeholder 1',
@@ -13453,6 +17721,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_10: {
     name: 'Placeholder 10',
@@ -13466,6 +17736,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_2: {
     name: 'Placeholder 2',
@@ -13479,6 +17751,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_3: {
     name: 'Placeholder 3',
@@ -13492,6 +17766,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_4: {
     name: 'Placeholder 4',
@@ -13505,6 +17781,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_5: {
     name: 'Placeholder 5',
@@ -13518,6 +17796,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_6: {
     name: 'Placeholder 6',
@@ -13531,6 +17811,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_7: {
     name: 'Placeholder 7',
@@ -13544,6 +17826,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_8: {
     name: 'Placeholder 8',
@@ -13557,6 +17841,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   placeholder_9: {
     name: 'Placeholder 9',
@@ -13570,6 +17856,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   plate_barding_armor: {
     name: 'Plate Barding Armor',
@@ -13583,6 +17871,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 12,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   plate_mail_armor: {
     name: 'Plate Mail Armor',
@@ -13596,6 +17901,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 6,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   'plate_mail_for_cavalry,_macedonian_civ_bonus': {
     name: 'Plate Mail for Cavalry, Macedonian Civ Bonus',
@@ -13609,6 +17931,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 12,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   plumed_archer_make_avail: {
     name: 'Plumed Archer (make avail)',
@@ -13622,6 +17961,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'polemarchs_become_stronger_in_imperial_age,_spartan_civ_bonus': {
     name: 'Polemarchs become stronger in Imperial Age, Spartan Civ Bonus',
@@ -13635,6 +17976,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   poles: {
     name: 'Poles',
@@ -13648,6 +17991,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   port_built: {
     name: 'Port built',
@@ -13661,6 +18006,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   portuguese: {
     name: 'Portuguese',
@@ -13674,6 +18021,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   portuguese_ut: {
     name: 'Portuguese UT',
@@ -13687,6 +18036,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   post_imperial_age_start: {
     name: 'Post-Imperial Age start',
@@ -13700,6 +18051,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'post_tc_+100s': {
     name: 'Post-TC +100s',
@@ -13713,6 +18066,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'post_tc_+25_each_res': {
     name: 'Post-TC +25 each res',
@@ -13726,6 +18081,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'post_tc_+50f_+50w': {
     name: 'Post-TC +50f +50w',
@@ -13739,6 +18096,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'post_tc_+50g': {
     name: 'Post-TC +50g',
@@ -13752,6 +18111,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   purification: {
     name: 'Purification',
@@ -13765,6 +18126,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   puru_static_bonuses: {
     name: 'Puru Static Bonuses',
@@ -13778,6 +18141,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   r_tc_make_avail: {
     name: 'R TC (make avail)',
@@ -13791,6 +18156,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved: {
     name: 'RESERVED',
@@ -13804,6 +18171,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_879: {
     name: 'RESERVED',
@@ -13817,6 +18186,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_893: {
     name: 'RESERVED',
@@ -13830,6 +18201,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_896: {
     name: 'RESERVED',
@@ -13843,6 +18216,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_897: {
     name: 'RESERVED',
@@ -13856,6 +18231,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_914: {
     name: 'RESERVED',
@@ -13869,6 +18246,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_927: {
     name: 'RESERVED',
@@ -13882,6 +18261,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_928: {
     name: 'RESERVED',
@@ -13895,6 +18276,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_935: {
     name: 'RESERVED',
@@ -13908,6 +18291,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1003: {
     name: 'RESERVED',
@@ -13921,6 +18306,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1016: {
     name: 'RESERVED',
@@ -13934,6 +18321,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1017: {
     name: 'RESERVED',
@@ -13947,6 +18336,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1018: {
     name: 'RESERVED',
@@ -13960,6 +18351,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1019: {
     name: 'RESERVED',
@@ -13973,6 +18366,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1020: {
     name: 'RESERVED',
@@ -13986,6 +18381,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1021: {
     name: 'RESERVED',
@@ -13999,6 +18396,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1022: {
     name: 'RESERVED',
@@ -14012,6 +18411,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1023: {
     name: 'RESERVED',
@@ -14025,6 +18426,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1055: {
     name: 'RESERVED',
@@ -14038,6 +18441,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1090: {
     name: 'RESERVED',
@@ -14051,6 +18456,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1091: {
     name: 'RESERVED',
@@ -14064,6 +18471,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1092: {
     name: 'RESERVED',
@@ -14077,6 +18486,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1093: {
     name: 'RESERVED',
@@ -14090,6 +18501,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1094: {
     name: 'RESERVED',
@@ -14103,6 +18516,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1095: {
     name: 'RESERVED',
@@ -14116,6 +18531,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1096: {
     name: 'RESERVED',
@@ -14129,6 +18546,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1097: {
     name: 'RESERVED',
@@ -14142,6 +18561,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1098: {
     name: 'RESERVED',
@@ -14155,6 +18576,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1099: {
     name: 'RESERVED',
@@ -14168,6 +18591,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reserved_1100: {
     name: 'RESERVED',
@@ -14181,6 +18606,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ratha_make_avail: {
     name: 'Ratha (make avail)',
@@ -14194,6 +18621,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   rattan_archer_make_avail: {
     name: 'Rattan Archer (make avail)',
@@ -14207,6 +18636,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   recurve_bow: {
     name: 'Recurve Bow',
@@ -14220,6 +18651,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   red_cliff_tactics: {
     name: 'Red Cliff Tactics',
@@ -14233,6 +18666,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   reed_arrows: {
     name: 'Reed Arrows',
@@ -14246,6 +18681,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   rename_units: {
     name: 'Rename Units',
@@ -14259,6 +18696,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reset_democracy: {
     name: 'Reset Democracy',
@@ -14272,6 +18711,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 105,
+        a: 0,
+        v: 1.25,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   reset_oligarchy: {
     name: 'Reset Oligarchy',
@@ -14285,6 +18734,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   reset_tyranny: {
     name: 'Reset Tyranny',
@@ -14298,6 +18749,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+100%': {
     name: 'Resources last +100%',
@@ -14311,6 +18764,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+125%': {
     name: 'Resources last +125%',
@@ -14324,6 +18779,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+15%': {
     name: 'Resources last +15%',
@@ -14337,6 +18794,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+150%': {
     name: 'Resources last +150%',
@@ -14350,6 +18809,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+175%': {
     name: 'Resources last +175%',
@@ -14363,6 +18824,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+200%': {
     name: 'Resources last +200%',
@@ -14376,6 +18839,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+30%': {
     name: 'Resources last +30%',
@@ -14389,6 +18854,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+300%': {
     name: 'Resources last +300%',
@@ -14402,6 +18869,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+40%': {
     name: 'Resources last +40%',
@@ -14415,6 +18884,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+50%': {
     name: 'Resources last +50%',
@@ -14428,6 +18899,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'resources_last_+75%': {
     name: 'Resources last +75%',
@@ -14441,6 +18914,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   ring_archer_armor: {
     name: 'Ring Archer Armor',
@@ -14454,6 +18929,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 0,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 0,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   rocket_cart_make_avail: {
     name: 'Rocket Cart (make avail)',
@@ -14467,6 +18959,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   rocketry: {
     name: 'Rocketry',
@@ -14480,6 +18974,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   'rocketry_+_chemistry': {
     name: 'Rocketry + Chemistry',
@@ -14493,6 +18989,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   romans: {
     name: 'Romans',
@@ -14506,6 +19004,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   royal_heirs: {
     name: 'Royal Heirs',
@@ -14519,6 +19019,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   siege_engineers_requirement: {
     name: 'SIege Engineers requirement',
@@ -14532,6 +19034,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stbl_make_avail: {
     name: 'STBL (make avail)',
@@ -14545,6 +19049,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   sacrificial_dedication: {
     name: 'Sacrificial Dedication',
@@ -14558,6 +19064,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   samurai_make_avail: {
     name: 'Samurai (make avail)',
@@ -14571,6 +19079,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   sappers: {
     name: 'Sappers',
@@ -14584,6 +19094,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 4,
+        v: 2831.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 4,
+        v: 3343.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 9,
+        a: 4,
+        v: 4355.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   saracen_zealotry: {
     name: 'Saracen Zealotry',
@@ -14597,6 +19131,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   saracens: {
     name: 'Saracens',
@@ -14610,6 +19146,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   saracens_ut: {
     name: 'Saracens UT',
@@ -14623,6 +19161,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   sarissophoroi: {
     name: 'Sarissophoroi',
@@ -14636,6 +19176,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   savar: {
     name: 'Savar',
@@ -14649,6 +19191,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   scale_alexanders_soldiers_in_imperial_age: {
     name: "Scale Alexander's Soldiers in Imperial Age",
@@ -14662,6 +19206,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   scale_barding_armor: {
     name: 'Scale Barding Armor',
@@ -14675,6 +19221,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 12,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   scale_mail_armor: {
     name: 'Scale Mail Armor',
@@ -14688,6 +19251,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 6,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 6,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   'scale_mail_for_cavalry,_macedonian_civ_bonus': {
     name: 'Scale Mail for Cavalry, Macedonian Civ Bonus',
@@ -14701,6 +19281,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 8,
+        a: 12,
+        v: 1025.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 12,
+        v: 769.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   scoop_nets: {
     name: 'Scoop Nets',
@@ -14714,6 +19311,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   scorpion: {
     name: 'Scorpion',
@@ -14727,6 +19326,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   scout_make_avail: {
     name: 'Scout (make avail)',
@@ -14740,6 +19341,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   scythed_chariots: {
     name: 'Scythed Chariots',
@@ -14753,6 +19356,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   second_change_of_government: {
     name: 'Second change of Government',
@@ -14766,6 +19371,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   serjeant_make_avail: {
     name: 'Serjeant (make avail)',
@@ -14779,6 +19386,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   set_max_pop_no_houses: {
     name: 'Set Max pop (no houses)',
@@ -14792,6 +19401,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   settlement_make_avail: {
     name: 'Settlement (make avail)',
@@ -14805,6 +19416,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   settlement_age2_upgrade: {
     name: 'Settlement Age2 upgrade',
@@ -14818,6 +19431,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   settlement_age3_upgrade: {
     name: 'Settlement Age3 upgrade',
@@ -14831,6 +19446,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   settlement_age4_upgrade: {
     name: 'Settlement Age4 upgrade',
@@ -14844,6 +19461,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_archery_rg____age_two: {
     name: 'Shadow Archery Rg -- Age Two',
@@ -14857,6 +19476,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_barracks____age_two: {
     name: 'Shadow Barracks -- Age Two',
@@ -14870,6 +19491,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_blacksmith____age_one: {
     name: 'Shadow Blacksmith -- Age One',
@@ -14883,6 +19506,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_blacksmith____age_two: {
     name: 'Shadow Blacksmith -- Age Two',
@@ -14896,6 +19521,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_church____age_one: {
     name: 'Shadow Church -- Age One',
@@ -14909,6 +19536,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_church____age_two: {
     name: 'Shadow Church -- Age Two',
@@ -14922,6 +19551,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_dock____age_one: {
     name: 'Shadow Dock -- Age One',
@@ -14935,6 +19566,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_dock____age_two: {
     name: 'Shadow Dock -- Age Two',
@@ -14948,6 +19581,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_farm____age_two: {
     name: 'Shadow Farm -- Age Two',
@@ -14961,6 +19596,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_market____age_two: {
     name: 'Shadow Market -- Age Two',
@@ -14974,6 +19611,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_mill____age_one: {
     name: 'Shadow Mill -- Age One',
@@ -14987,6 +19626,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_mill____age_two: {
     name: 'Shadow Mill -- Age Two',
@@ -15000,6 +19641,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_mule_cart_1: {
     name: 'Shadow Mule Cart 1',
@@ -15013,6 +19656,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'shadow_node_barracks_donjon_+_khmer': {
     name: 'Shadow Node Barracks/Donjon + Khmer',
@@ -15026,6 +19671,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'shadow_node_blacksmith_+_khmer': {
     name: 'Shadow Node Blacksmith + Khmer',
@@ -15039,6 +19686,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'shadow_node_mill_+_khmer': {
     name: 'Shadow Node Mill + Khmer',
@@ -15052,6 +19701,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_node_mule_cart_settlement: {
     name: 'Shadow Node Mule Cart/Settlement',
@@ -15065,6 +19716,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_node_for_age_four: {
     name: 'Shadow Node for Age Four',
@@ -15078,6 +19731,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_node_for_age_three: {
     name: 'Shadow Node for Age Three',
@@ -15091,6 +19746,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_node_for_age_two: {
     name: 'Shadow Node for Age Two',
@@ -15104,6 +19761,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'shadow_node+_for_age_four': {
     name: 'Shadow Node+ for Age Four',
@@ -15117,6 +19776,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'shadow_node+_for_age_three': {
     name: 'Shadow Node+ for Age Three',
@@ -15130,6 +19791,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'shadow_node+_for_age_two': {
     name: 'Shadow Node+ for Age Two',
@@ -15143,6 +19806,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_port____age_one: {
     name: 'Shadow Port -- Age One',
@@ -15156,6 +19821,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_saw_mill_1: {
     name: 'Shadow Saw Mill 1',
@@ -15169,6 +19836,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_settlement____age_one: {
     name: 'Shadow Settlement -- Age One',
@@ -15182,6 +19851,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_tc____age_one: {
     name: 'Shadow TC -- Age One',
@@ -15195,6 +19866,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_tc_annex: {
     name: 'Shadow TC Annex',
@@ -15208,6 +19881,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_tc_foundation: {
     name: 'Shadow TC Foundation',
@@ -15221,6 +19896,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_tower____age_four: {
     name: 'Shadow Tower -- Age Four',
@@ -15234,6 +19911,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_trade_wksp____age_two: {
     name: 'Shadow Trade Wksp -- Age Two',
@@ -15247,6 +19926,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_transport_ship____age_four: {
     name: 'Shadow Transport Ship -- Age Four',
@@ -15260,6 +19941,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_transport_ship____age_three: {
     name: 'Shadow Transport Ship -- Age Three',
@@ -15273,6 +19956,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadow_university____age_three: {
     name: 'Shadow University -- Age Three',
@@ -15286,6 +19971,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shadowsiege_wrksp____age_three: {
     name: 'ShadowSiege Wrksp -- Age Three',
@@ -15299,6 +19986,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shatagni: {
     name: 'Shatagni',
@@ -15312,6 +20001,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   shinkichon: {
     name: 'Shinkichon',
@@ -15325,6 +20016,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   shipwright: {
     name: 'Shipwright',
@@ -15338,6 +20031,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   shipwright_1167: {
     name: 'Shipwright',
@@ -15351,6 +20046,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   shipyard_built: {
     name: 'Shipyard built',
@@ -15364,6 +20061,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shotel_warrior_make_avail: {
     name: 'Shotel Warrior (make avail)',
@@ -15377,6 +20076,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shrivamsha_rider_make_avail: {
     name: 'Shrivamsha Rider (make avail)',
@@ -15390,6 +20091,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   shu: {
     name: 'Shu',
@@ -15403,6 +20106,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   sicilians: {
     name: 'Sicilians',
@@ -15416,6 +20121,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   siege_engineers: {
     name: 'Siege Engineers',
@@ -15429,6 +20136,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   siege_engineers_researched_for_vedic_teachings: {
     name: 'Siege Engineers Researched for Vedic Teachings',
@@ -15442,6 +20151,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   siege_onager: {
     name: 'Siege Onager',
@@ -15455,6 +20174,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   siege_ram: {
     name: 'Siege Ram',
@@ -15468,6 +20189,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   siege_tower_make_avail: {
     name: 'Siege Tower (make avail)',
@@ -15481,6 +20204,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   siege_wksp_make_avail: {
     name: 'Siege Wksp (make avail)',
@@ -15494,6 +20219,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   silk_armor: {
     name: 'Silk Armor',
@@ -15507,6 +20234,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   silk_road: {
     name: 'Silk Road',
@@ -15520,6 +20249,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   sipahi: {
     name: 'Sipahi',
@@ -15533,6 +20264,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   siphons: {
     name: 'Siphons',
@@ -15546,6 +20279,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   sitting_tiger: {
     name: 'Sitting Tiger',
@@ -15559,6 +20294,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   'sitting_tiger_+_chemistry': {
     name: 'Sitting Tiger + Chemistry',
@@ -15572,6 +20309,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   skandhavaras: {
     name: 'Skandhavaras',
@@ -15585,6 +20324,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   skeuophoroi: {
     name: 'Skeuophoroi',
@@ -15598,6 +20339,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   skirmisher_make_avail: {
     name: 'Skirmisher (make avail)',
@@ -15611,6 +20354,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'skirmishers_regen_10_hp_in_classical_age,_thracian_civ_bonus': {
     name: 'Skirmishers regen 10 hp in Classical Age, Thracian Civ Bonus',
@@ -15624,6 +20369,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'skirmishers_regen_5_hp_in_civic_age,_thracian_civ_bonus': {
     name: 'Skirmishers regen 5 hp in Civic Age, Thracian Civ Bonus',
@@ -15637,6 +20384,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   slavic_team_bonus: {
     name: 'Slavic team bonus',
@@ -15650,6 +20399,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   slavs: {
     name: 'Slavs',
@@ -15663,6 +20414,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   slavs_ut: {
     name: 'Slavs UT',
@@ -15676,6 +20429,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   slinger_make_avail: {
     name: 'Slinger (make avail)',
@@ -15689,6 +20444,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spanish: {
     name: 'Spanish',
@@ -15702,6 +20459,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   sparabaras: {
     name: 'Sparabaras',
@@ -15715,6 +20474,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   spartans: {
     name: 'Spartans',
@@ -15728,6 +20489,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spartans_static_bonuses: {
     name: 'Spartans Static Bonuses',
@@ -15741,6 +20504,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spartans_full_tech_tree: {
     name: 'Spartans full tech tree',
@@ -15754,6 +20519,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spawn_lembos_from_port: {
     name: 'Spawn Lembos from Port',
@@ -15767,6 +20534,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'spawn_first_polemarch,_spartan_civ_bonus': {
     name: 'Spawn first Polemarch, Spartan Civ bonus',
@@ -15780,6 +20549,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'spawn_second_polemarch,_spartan_civ_bonus': {
     name: 'Spawn second Polemarch, Spartan Civ Bonus',
@@ -15793,6 +20564,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spearman: {
     name: 'Spearman',
@@ -15806,6 +20579,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spearman_make_avail: {
     name: 'Spearman (make avail)',
@@ -15819,6 +20594,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   spies_treason: {
     name: 'Spies/Treason',
@@ -15832,6 +20609,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   stable____age_two: {
     name: 'Stable -- Age Two',
@@ -15845,6 +20624,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stable_balanced_doctrine: {
     name: 'Stable Balanced Doctrine',
@@ -15858,6 +20639,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stable_mercenaries_doctrine: {
     name: 'Stable Mercenaries Doctrine',
@@ -15871,6 +20654,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stable_regulars_doctrine: {
     name: 'Stable Regulars Doctrine',
@@ -15884,6 +20669,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'stable_units_heal_when_no_nearby_enemies,_puru_civ_bonus': {
     name: 'Stable units heal when no nearby enemies, Puru Civ Bonus',
@@ -15897,6 +20684,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   steppe_husbandry: {
     name: 'Steppe Husbandry',
@@ -15910,6 +20699,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   steppe_lancer_make_avail: {
     name: 'Steppe Lancer (make avail)',
@@ -15923,6 +20714,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stirrups: {
     name: 'Stirrups',
@@ -15936,6 +20729,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 10,
+        a: 12,
+        v: 0.75,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   stone_mining: {
     name: 'Stone Mining',
@@ -15949,6 +20752,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'stone_mining_food_generation_increase,_puru_civ_bonus': {
     name: 'Stone Mining food generation increase, Puru Civ Bonus',
@@ -15962,6 +20767,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stone_mining_gold_generation_increase: {
     name: 'Stone Mining gold generation increase',
@@ -15975,6 +20782,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stone_shaft_mining: {
     name: 'Stone Shaft Mining',
@@ -15988,6 +20797,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 2,
   },
   'stone_shaft_mining_food_generation_increase,_puru_civ_bonus': {
     name: 'Stone Shaft Mining food generation increase, Puru Civ Bonus',
@@ -16001,6 +20812,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stone_shaft_mining_gold_generation_increase: {
     name: 'Stone Shaft Mining gold generation increase',
@@ -16014,6 +20827,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stone_shaft_mining_requirement: {
     name: 'Stone Shaft Mining requirement',
@@ -16027,6 +20842,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   stronghold: {
     name: 'Stronghold',
@@ -16040,6 +20857,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   sub_shadow_age4: {
     name: 'Sub-Shadow Age4',
@@ -16053,6 +20872,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   sun_jian_make_avail: {
     name: 'Sun Jian (make avail)',
@@ -16066,6 +20887,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   supplies: {
     name: 'Supplies',
@@ -16079,6 +20902,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   supremacy: {
     name: 'Supremacy',
@@ -16092,6 +20917,37 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 9,
+        a: 4,
+        v: 1030.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 4,
+        v: 40.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 1026.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 8,
+        a: 4,
+        v: 770.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   svan_towers: {
     name: 'Svan Towers',
@@ -16105,6 +20961,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 130,
+        a: 4,
+        v: -1.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   'svan_towers_+_chemistry': {
     name: 'Svan Towers + Chemistry',
@@ -16118,6 +20984,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   swordsman_make_avail: {
     name: 'Swordsman (make avail)',
@@ -16131,6 +20999,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   syncretism: {
     name: 'Syncretism',
@@ -16144,6 +21014,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   szlachta_privileges: {
     name: 'Szlachta Privileges',
@@ -16157,6 +21029,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   't_bonus,_start_w__llama': {
     name: 'T-Bonus, Start w/ Llama',
@@ -16170,6 +21044,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tc____age_one: {
     name: 'TC -- Age One',
@@ -16183,6 +21059,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tc_built_for_polemarch: {
     name: 'TC built for Polemarch',
@@ -16196,6 +21074,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   target_practice: {
     name: 'Target Practice',
@@ -16209,6 +21089,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   tarkan_make_avail: {
     name: 'Tarkan (make avail)',
@@ -16222,6 +21104,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tatars: {
     name: 'Tatars',
@@ -16235,6 +21119,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   taxiarchs: {
     name: 'Taxiarchs',
@@ -16248,6 +21134,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   temple_guard_make_avail: {
     name: 'Temple Guard (make avail)',
@@ -16261,6 +21149,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   teutonic_knight_make_avail: {
     name: 'Teutonic Knight (make avail)',
@@ -16274,6 +21164,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   teutons: {
     name: 'Teutons',
@@ -16287,6 +21179,8 @@ const techs = {
       techs: [35],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   thalassocracy: {
     name: 'Thalassocracy',
@@ -16300,6 +21194,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   'thalassocracy_+_bodkin': {
     name: 'Thalassocracy + Bodkin',
@@ -16313,6 +21209,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'thalassocracy_+_bracer': {
     name: 'Thalassocracy + Bracer',
@@ -16326,6 +21224,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'thalassocracy_+_chemistry': {
     name: 'Thalassocracy + Chemistry',
@@ -16339,6 +21239,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'thalassocracy_+_fletching': {
     name: 'Thalassocracy + Fletching',
@@ -16352,6 +21254,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'thalassocracy_+_heated_shot': {
     name: 'Thalassocracy + Heated Shot',
@@ -16365,6 +21269,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'thalassocracy_+_murder_holes': {
     name: 'Thalassocracy + Murder Holes',
@@ -16378,6 +21284,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   third_change_of_government: {
     name: 'Third change of Government',
@@ -16391,6 +21299,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   thirisadai_make_avail: {
     name: 'Thirisadai (make avail)',
@@ -16404,6 +21314,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   thracians_static_bonuses: {
     name: 'Thracians Static Bonuses',
@@ -16417,6 +21329,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   throwing_axemen_make_avail: {
     name: 'Throwing Axemen (make avail)',
@@ -16430,6 +21344,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   thumb_ring: {
     name: 'Thumb Ring',
@@ -16443,6 +21359,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 11,
+        a: 0,
+        v: 100.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 10,
+        a: 0,
+        v: 0.8500000238418579,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   thunderclap_bombs: {
     name: 'Thunderclap Bombs',
@@ -16456,6 +21389,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   tiger_cavalry_make_avail: {
     name: 'Tiger Cavalry (make avail)',
@@ -16469,6 +21404,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tigui: {
     name: 'Tigui',
@@ -16482,6 +21419,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   timurid_siegecraft: {
     name: 'Timurid Siegecraft',
@@ -16495,6 +21434,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   torsion_engines: {
     name: 'Torsion Engines',
@@ -16508,6 +21449,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   tower_shields: {
     name: 'Tower Shields',
@@ -16521,6 +21464,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   town_center_spawn: {
     name: 'Town Center Spawn',
@@ -16534,6 +21479,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   town_patrol: {
     name: 'Town Patrol',
@@ -16547,6 +21494,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 1,
+        a: 3,
+        v: 4.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   town_watch: {
     name: 'Town Watch',
@@ -16560,6 +21517,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 1,
+        a: 3,
+        v: 4.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 2,
   },
   tracking: {
     name: 'Tracking',
@@ -16573,6 +21540,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 1,
+        a: 6,
+        v: 2.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 6,
+        v: 2.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   traction_trebuchet_make_avail: {
     name: 'Traction Trebuchet (make avail)',
@@ -16586,6 +21570,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_0%_wood': {
     name: 'Trade 0% wood',
@@ -16599,6 +21585,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_100%_wood': {
     name: 'Trade 100% wood',
@@ -16612,6 +21600,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_25%_wood': {
     name: 'Trade 25% wood',
@@ -16625,6 +21615,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_25%_wood_1263': {
     name: 'Trade 25% wood',
@@ -16638,6 +21630,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_50%_wood': {
     name: 'Trade 50% wood',
@@ -16651,6 +21645,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_50%_wood_1264': {
     name: 'Trade 50% wood',
@@ -16664,6 +21660,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_75%_wood': {
     name: 'Trade 75% wood',
@@ -16677,6 +21675,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   'trade_75%_wood_1265': {
     name: 'Trade 75% wood',
@@ -16690,6 +21690,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   trade_cart_make_avail: {
     name: 'Trade Cart (make avail)',
@@ -16703,6 +21705,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   transhumance: {
     name: 'Transhumance',
@@ -16716,6 +21720,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   treadmill_crane: {
     name: 'Treadmill Crane',
@@ -16729,6 +21735,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   treadmill_crane_researched_for_vedic_teachings: {
     name: 'Treadmill Crane Researched for Vedic Teachings',
@@ -16742,6 +21750,16 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 13,
+        a: 4,
+        v: 1.0199999809265137,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   trebuchet: {
     name: 'Trebuchet',
@@ -16755,6 +21773,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   trireme: {
     name: 'Trireme',
@@ -16768,6 +21788,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tuntian: {
     name: 'Tuntian',
@@ -16781,6 +21803,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   tupi: {
     name: 'Tupi',
@@ -16794,6 +21818,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tupi_team_bonus: {
     name: 'Tupi team bonus',
@@ -16807,6 +21833,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   turk_castle: {
     name: 'Turk Castle',
@@ -16820,6 +21848,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   turks: {
     name: 'Turks',
@@ -16833,6 +21863,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   turtle_ship_make_avail: {
     name: 'Turtle Ship (make avail)',
@@ -16846,6 +21878,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tusk_swords: {
     name: 'Tusk Swords',
@@ -16859,6 +21893,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   two_handed_swordsman: {
     name: 'Two-Handed Swordsman',
@@ -16872,6 +21908,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   two_handed_swordsman_requirement: {
     name: 'Two-Handed Swordsman requirement',
@@ -16885,6 +21923,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   two_man_saw: {
     name: 'Two-Man Saw',
@@ -16898,6 +21938,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   two_man_saw_requirement: {
     name: 'Two-Man Saw requirement',
@@ -16911,6 +21953,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   tyranny: {
     name: 'Tyranny',
@@ -16924,6 +21968,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   unique_heroic_viking_lbt: {
     name: 'Unique Heroic Viking LBT',
@@ -16937,6 +21983,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   univ_make_avail: {
     name: 'Univ (make avail)',
@@ -16950,6 +21998,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   upgrade_camel_scouts_to_riders: {
     name: 'Upgrade Camel Scouts to Riders',
@@ -16963,6 +22013,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   upgrade_eagle_in_age3: {
     name: 'Upgrade Eagle in Age3',
@@ -16976,6 +22028,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   upgrade_rams: {
     name: 'Upgrade Rams',
@@ -16989,6 +22043,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   upgrade_rams_in_castle: {
     name: 'Upgrade Rams in Castle',
@@ -17002,6 +22058,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   urumi_swordsman_make_avail: {
     name: 'Urumi Swordsman (make avail)',
@@ -17015,6 +22073,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   vadhavadha: {
     name: 'Vadhavadha',
@@ -17028,6 +22088,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   vedic_teachings: {
     name: 'Vedic Teachings',
@@ -17041,6 +22103,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   veteran_chiliarchs: {
     name: 'Veteran Chiliarchs',
@@ -17054,6 +22118,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   vietnamese: {
     name: 'Vietnamese',
@@ -17067,6 +22133,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   vikings: {
     name: 'Vikings',
@@ -17080,6 +22148,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   villager: {
     name: 'Villager',
@@ -17093,6 +22163,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wall_2_make_avail: {
     name: 'Wall 2 (make avail)',
@@ -17106,6 +22178,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   walls_hp_castle_age: {
     name: 'Walls HP castle age',
@@ -17119,6 +22193,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   war_chariot_make_avail: {
     name: 'War Chariot (make avail)',
@@ -17132,6 +22208,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   war_elephant_make_avail: {
     name: 'War Elephant (make avail)',
@@ -17145,6 +22223,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   war_galley___antiquity: {
     name: 'War Galley - Antiquity',
@@ -17158,6 +22238,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   war_lembos: {
     name: 'War Lembos',
@@ -17171,6 +22253,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   war_wagon: {
     name: 'War Wagon',
@@ -17184,6 +22268,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   warrior_priest_make_avail: {
     name: 'Warrior Priest (make avail)',
@@ -17197,6 +22283,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   warships: {
     name: 'Warships',
@@ -17210,6 +22298,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   warwolf: {
     name: 'Warwolf',
@@ -17223,6 +22313,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 4,
   },
   watch_tower_make_avail: {
     name: 'Watch Tower (make avail)',
@@ -17236,6 +22328,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wei: {
     name: 'Wei',
@@ -17249,6 +22343,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wheelbarrow: {
     name: 'Wheelbarrow',
@@ -17262,6 +22358,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 5,
+        a: 4,
+        v: 1.100000023841858,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 14,
+        a: 4,
+        v: 1.2695000171661377,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 1,
   },
   white_feather_guard_make_avail: {
     name: 'White Feather Guard (make avail)',
@@ -17275,6 +22388,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   winged_hussar: {
     name: 'Winged Hussar',
@@ -17288,6 +22403,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   winged_hussar_l_post_imperial: {
     name: 'Winged Hussar (L. post-imperial)',
@@ -17301,6 +22418,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   winged_hussar_lithuanians: {
     name: 'Winged Hussar (Lithuanians)',
@@ -17314,6 +22433,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   winged_hussar_p_post_imperial: {
     name: 'Winged Hussar (P. post-imperial)',
@@ -17327,6 +22448,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   winged_hussar_poles: {
     name: 'Winged Hussar (Poles)',
@@ -17340,6 +22463,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   woad_berserker_make_avail: {
     name: 'Woad Berserker (make avail)',
@@ -17353,6 +22478,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wonder_built: {
     name: 'Wonder Built',
@@ -17366,6 +22493,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wonder_plans: {
     name: 'Wonder Plans',
@@ -17379,6 +22508,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wootz_steel: {
     name: 'Wootz Steel',
@@ -17392,6 +22523,23 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 63,
+        a: 6,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 63,
+        a: 12,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 4,
   },
   wu: {
     name: 'Wu',
@@ -17405,6 +22553,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wu_tb_local: {
     name: 'Wu TB local',
@@ -17418,6 +22568,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   wu_team_bonus: {
     name: 'Wu Team Bonus',
@@ -17431,6 +22583,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   xianbei_raider_make_avail: {
     name: 'Xianbei Raider (make avail)',
@@ -17444,6 +22598,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   xolotl_disable: {
     name: 'Xolotl (disable)',
@@ -17457,6 +22613,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   xolotl_make_avail_ande: {
     name: 'Xolotl (make avail) Ande',
@@ -17470,6 +22628,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   xolotl_make_avail_azt: {
     name: 'Xolotl (make avail) Azt',
@@ -17483,6 +22643,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   xolotl_make_avail_may: {
     name: 'Xolotl (make avail) May',
@@ -17496,6 +22658,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   xyphos: {
     name: 'Xyphos',
@@ -17509,6 +22673,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   yasama: {
     name: 'Yasama',
@@ -17522,6 +22688,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 3,
   },
   yeomen: {
     name: 'Yeomen',
@@ -17535,6 +22703,30 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [
+      {
+        t: 12,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 1,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+      {
+        t: 23,
+        a: 0,
+        v: 1.0,
+        u: -1,
+        c: -1,
+      },
+    ],
+    age: 3,
   },
   '[ew]_remove_hun_houses': {
     name: '[EW] Remove hun houses',
@@ -17548,6 +22740,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_disable_paladin': {
     name: '[FTT] Disable Paladin',
@@ -17561,6 +22755,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_disable_militia_upgrades': {
     name: '[FTT] Disable militia upgrades',
@@ -17574,6 +22770,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_armored_elephants': {
     name: '[FTT] Move Armored Elephants',
@@ -17587,6 +22785,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_dromon': {
     name: '[FTT] Move Dromon',
@@ -17600,6 +22800,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_elephant_archers': {
     name: '[FTT] Move Elephant Archers',
@@ -17613,6 +22815,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_flaming_camels': {
     name: '[FTT] Move Flaming Camels',
@@ -17626,6 +22830,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_huskarls': {
     name: '[FTT] Move Huskarls',
@@ -17639,6 +22845,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_lancers': {
     name: '[FTT] Move Lancers',
@@ -17652,6 +22860,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_shrivamsha_riders': {
     name: '[FTT] Move Shrivamsha Riders',
@@ -17665,6 +22875,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_shrivamsha_riders_2': {
     name: '[FTT] Move Shrivamsha Riders 2',
@@ -17678,6 +22890,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_slingers': {
     name: '[FTT] Move Slingers',
@@ -17691,6 +22905,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_tarkans': {
     name: '[FTT] Move Tarkans',
@@ -17704,6 +22920,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[ftt]_move_tarkans_2': {
     name: '[FTT] Move Tarkans 2',
@@ -17717,6 +22935,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[scen]_move_huskarl': {
     name: '[SCEN] Move Huskarl',
@@ -17730,6 +22950,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
   '[scen]_move_tarkan': {
     name: '[SCEN] Move Tarkan',
@@ -17743,6 +22965,8 @@ const techs = {
       techs: [],
       buildings: [],
     },
+    effects: [],
+    age: 1,
   },
 };
 
