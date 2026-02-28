@@ -289,6 +289,57 @@ main {
   color: var(--text-color);
 }
 
+.scenario-name-header {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin: 20px 0 15px 0;
+  padding: 10px;
+  background: var(--panel-bg-alt);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.scenario-name-header:hover {
+  border-color: var(--accent-color);
+  background: var(--panel-bg);
+}
+
+.scenario-name-input {
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+}
+
+.scenario-name-input:focus {
+  outline: none;
+  border-color: var(--color-pos);
+}
+
+#new-scenario-btn {
+  margin-left: 10px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+#new-scenario-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(46, 204, 113, 0.4);
+}
+
 .scenario-btn {
   background: var(--btn-bg);
   color: var(--btn-text);
@@ -729,9 +780,8 @@ input[type='range'] {
 /* Results */
 .production-race-controls {
   display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 20px;
+  flex-direction: column;
+  gap: 15px;
   background: var(--panel-bg);
   padding: 15px 30px;
   border-radius: var(--border-radius);
@@ -836,13 +886,6 @@ input[type='range'] {
   font-weight: bold;
   font-size: 1rem;
   padding: 0 5px;
-}
-
-.prod-vs {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  color: var(--text-muted);
 }
 
 .results-area {
@@ -1017,6 +1060,108 @@ input[type='range'] {
 .cost-tag {
   background: var(--accent-color);
   color: #000;
+}
+
+/* Collapsible Event Log */
+.event-log-details {
+  margin-top: 20px;
+  border-top: 1px solid var(--border-dim);
+  padding-top: 15px;
+}
+
+.event-log-summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text-dim);
+  padding: 10px 0;
+  list-style: none;
+  transition: color 0.2s;
+}
+
+.event-log-summary:hover {
+  color: var(--accent-color);
+}
+
+.event-log-summary::-webkit-details-marker {
+  display: none;
+}
+
+.event-log-summary::before {
+  content: '▶ ';
+  display: inline-block;
+  margin-right: 8px;
+  transition: transform 0.2s;
+}
+
+.event-log-details[open] .event-log-summary::before {
+  transform: rotate(90deg);
+}
+
+.event-log-details[open] .event-log-summary {
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+/* Production Timeline Collapsed */
+.production-content.collapsed {
+  display: none;
+}
+
+.toggle-prod-section-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 15px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.toggle-prod-section-btn:hover {
+  background: var(--accent-color);
+  color: black;
+}
+
+.toggle-prod-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.toggle-prod-btn:hover {
+  background: var(--accent-color);
+  color: black;
+}
+
+.event-row {
+  display: flex;
+  gap: 15px;
+  padding: 6px 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.event-row:last-child {
+  border-bottom: none;
+}
+
+.event-time {
+  min-width: 50px;
+  font-weight: bold;
+  color: var(--text-dim);
 }
 
 /* Scaling Layout */
@@ -1267,10 +1412,6 @@ td {
   .production-race-controls {
     flex-direction: column;
     padding: 15px 20px;
-  }
-
-  .prod-vs {
-    display: none;
   }
 
   .prod-fields-row {

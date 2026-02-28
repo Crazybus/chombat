@@ -12,6 +12,8 @@ export interface BattleTick {
   valRemainingB: number;
   valLostA: number;
   valLostB: number;
+  dpsA: number;
+  dpsB: number;
 }
 
 export interface CombatResult {
@@ -173,13 +175,11 @@ export class CombatSim {
     const baseAtk = isMelee ? attacker.matk : attacker.patk;
     let totalDmg = Math.max(1, baseAtk - baseArm);
 
+    // Apply bonuses based on defender's class
     const attBonuses = attacker.bonuses || {};
-    const defArmors = defender.armors || {};
-    for (const [cls, amt] of Object.entries(attBonuses)) {
-      if (defArmors[cls] !== undefined) {
-        const defArm = defArmors[cls] || 0;
-        totalDmg += Math.max(0, amt - defArm);
-      }
+    const defClass = String(defender.class);
+    if (attBonuses[defClass] !== undefined) {
+      totalDmg += attBonuses[defClass];
     }
 
     const reduction = 1 - (defender.bonus_red || 0) / 100;
@@ -198,6 +198,14 @@ export class CombatSim {
     const record = () => {
       const hpRatioA = eA.getTotalHp() / (eA.initialCount * eA.hpPerUnit) || 0;
       const hpRatioB = eB.getTotalHp() / (eB.initialCount * eB.hpPerUnit) || 0;
+      
+      // Calculate damage per hit being dealt by the entire group
+      // This shows how much damage all units deal together in one attack
+      const attackersA = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.eng / 100)));
+      const attackersB = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.eng / 100)));
+      const damagePerHitA = this.calculateDamage(eA, eB) * attackersA;
+      const damagePerHitB = this.calculateDamage(eB, eA) * attackersB;
+      
       this.history.push({
         time: this.time,
         countA: eA.currentCount,
@@ -208,6 +216,8 @@ export class CombatSim {
         valRemainingB: hpRatioB * initialValB,
         valLostA: initialValA - hpRatioA * initialValA,
         valLostB: initialValB - hpRatioB * initialValB,
+        dpsA: damagePerHitA,
+        dpsB: damagePerHitB,
       });
     };
 
