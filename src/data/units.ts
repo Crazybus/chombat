@@ -7430,7 +7430,7 @@ export const units: Record<string, UnitData> = {
     "scout_cavalry": {
         "name": "Scout Cavalry",
         "hp": 45,
-        "matk": 3,
+        "matk": 5,
         "patk": 0,
         "marm": 0,
         "parm": 2,

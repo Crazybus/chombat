@@ -1,102 +1,173 @@
 export const scenarios = {
-    militia_vs_scouts: {
-        name: 'Militia vs Scouts',
-        desc: 'All in dark age militia rush vs fully upgraded bloodline scouts.',
-        a: { preset: 'militia', count: 10, delay: 0, tech: 0, pre: 0 },
-        b: { preset: 'scout_fu_feudal', count: 5, delay: 165, tech: 50, pre: 5, hp: 65 },
-    },
-    maa_vs_scouts: {
-        name: 'MAA vs Scouts',
-        desc: '3 Militia trained first, then MAA upgrade (40s), then constant production. Scouts player has to wait for feudal, stable before starting production',
-        a: { preset: 'maa_fu_feudal', count: 7, delay: 0, tech: 40, pre: 3 },
-        b: { preset: 'scout_fu_feudal', count: 5, delay: 165, tech: 50, pre: 5, hp: 65 },
-    },
-    archers_vs_skirms: {
-        name: 'Archers vs Skirms',
-        desc: 'Overcoming an archer mass with a tech switch into skirms',
-        a: { preset: 'archer_fu_feudal', count: 10, delay: 0, tech: 0, pre: 0 },
-        b: { preset: 'skirm_fu_feudal', count: 5, delay: 35 * 6, tech: 0, pre: 0, bbn: 3 },
-    },
-    champi_vs_scouts: {
-        name: 'Champi Scout vs Scouts',
-        desc: 'Dark Age champi rush vs fully upgraded bloodline scouts. Champi production starts at the same time that the scouts player clicks up to feudal.',
-        a: { preset: 'champi_scout', count: 10, delay: 0, tech: 0, pre: 0 },
-        b: { preset: 'scout_fu_feudal', count: 5, delay: 165, tech: 50, pre: 5, hp: 65 },
-    },
-    knights_vs_halbs: {
-        name: 'Castle Knights vs Imp Halberdiers',
-        desc: 'Castle Knights vs Imperial Halberdiers. Bonus damage trade-off.',
-        a: { preset: 'knight', count: 10, delay: 0, tech: 0, pre: 0, hp: 120, marm: 4, parm: 4 },
-        b: { preset: 'halberdier', count: 20, delay: 0, tech: 0, pre: 0, bbn: 32 },
-    },
-    archer_vs_skirm_mass: {
-        name: 'Target Fire 60 vs 60 Archer vs Skirm',
-        desc: "60 Archers vs 60 Skirmishers. Demonstrates how target fire and overkill avoidance change the outcome. When both use Focus Fire (1), Archers can win by 'one-shotting' units, while switching to Perfect micro (5) would favor Skirmishers by reducing wasted damage.",
-        a: { preset: 'archer_fu_feudal', count: 60, delay: 0, tech: 0, pre: 0, micro: 1 },
-        b: { preset: 'skirm_fu_feudal', count: 60, delay: 0, tech: 0, pre: 0, bbn: 3, micro: 1 },
-    },
-    champi_scout_vs_fc_cataphract: {
-        name: 'Champi Scout vs FC Cataphract',
-        desc: 'Champi scout productions starts from 1 barracks at the same time Byz clicks up for a Red Phos style cataphract rush. Production starts after 400 seconds of cataphracts which is 130 for feudal, 50 for 1 vill/loom, 160 for castle and 60 to build the castle with 8 vills.',
-        a: {
-            preset: 'champi_scout',
-            name: 'Champi Scout',
-            hp: 35,
-            matk: 4,
-            patk: 0,
-            marm: 0,
-            parm: 2,
-            reload: 2,
-            range: 0,
-            as: 0,
-            abr: 0,
-            bbn: 0,
-            f: 45,
-            w: 0,
-            g: 25,
-            da: 0,
-            df: 0,
-            dw: 0,
-            dg: 0,
-            count: 36,
-            delay: 0,
-            tech: 0,
-            pre: 0,
-            'train-time': 30,
-            buildings: 1,
-            eng: 100,
-            micro: 5,
+    "champi_vs_scouts": {
+        "name": "Champi Scout vs FU Feudal Scouts",
+        "a": {
+            "nm": "Champi Scout",
+            "c": "11",
+            "age": "1",
+            "h": "35",
+            "am": "4",
+            "aa": "0",
+            "ar": "2",
+            "rl": "2",
+            "af": "45",
+            "ag": "25",
+            "tl": [
+                {
+                    "t": "villagers",
+                    "n": "Villager",
+                    "d": "25",
+                    "c": "12",
+                    "co": "50",
+                    "b": true,
+                    "v": "12"
+                },
+                {
+                    "t": "building",
+                    "n": "Barracks",
+                    "d": "50",
+                    "c": "1",
+                    "co": "175",
+                    "v": "1",
+                    "i": "barracks"
+                },
+                {
+                    "t": "production",
+                    "n": "Champis",
+                    "d": "0",
+                    "c": "1",
+                    "co": "0",
+                    "b": true,
+                    "v": "1",
+                    "tr": "30"
+                }
+            ]
         },
-        b: {
-            preset: 'cataphract',
-            name: 'Cataphract',
-            hp: 110,
-            matk: 9,
-            patk: 0,
-            marm: 2,
-            parm: 1,
-            reload: 1.7999999523162842,
-            range: 0,
-            as: 0,
-            abr: 0,
-            bbn: 9,
-            f: 70,
-            w: 0,
-            g: 75,
-            da: 0,
-            df: 0,
-            dw: 0,
-            dg: 0,
-            count: 6,
-            delay: 400,
-            tech: 0,
-            pre: 0,
-            'train-time': 20,
-            buildings: 1,
-            eng: 100,
-            micro: 5,
+        "b": {
+            "nm": "Scout Cavalry",
+            "c": "5",
+            "age": "2",
+            "h": "45",
+            "am": "5",
+            "ar": "2",
+            "rl": "2",
+            "af": "80",
+            "aw": "0",
+            "tl": [
+                {
+                    "t": "villagers",
+                    "n": "Villager",
+                    "d": "25",
+                    "c": "18",
+                    "co": "50",
+                    "b": true,
+                    "v": "0"
+                },
+                {
+                    "t": "building",
+                    "n": "Barracks",
+                    "d": "50",
+                    "c": "1",
+                    "co": "175",
+                    "v": "1",
+                    "i": "barracks"
+                },
+                {
+                    "t": "tech",
+                    "n": "Feudal Age",
+                    "d": "130",
+                    "c": "1",
+                    "co": "500",
+                    "b": true,
+                    "v": "0",
+                    "i": "101",
+                    "bt": "109"
+                },
+                {
+                    "t": "building",
+                    "n": "Stable",
+                    "d": "50",
+                    "c": "1",
+                    "co": "175",
+                    "b": true,
+                    "v": "1",
+                    "i": "stable"
+                },
+                {
+                    "t": "production",
+                    "n": "Scouts",
+                    "d": "0",
+                    "c": "1",
+                    "co": "0",
+                    "v": "1",
+                    "tr": "30"
+                },
+                {
+                    "t": "building",
+                    "n": "Blacksmith",
+                    "d": "50",
+                    "c": "1",
+                    "co": "150",
+                    "v": "1",
+                    "i": "blacksmith"
+                },
+                {
+                    "t": "tech",
+                    "n": "Forging",
+                    "d": "50",
+                    "c": "1",
+                    "co": "150",
+                    "v": "0",
+                    "i": "67",
+                    "bt": "103"
+                },
+                {
+                    "t": "tech",
+                    "n": "Scale Barding Armor",
+                    "d": "45",
+                    "c": "1",
+                    "co": "150",
+                    "v": "0",
+                    "i": "81",
+                    "bt": "103"
+                },
+                {
+                    "t": "tech",
+                    "n": "Bloodlines",
+                    "d": "50",
+                    "c": "1",
+                    "co": "250",
+                    "b": true,
+                    "v": "0",
+                    "i": "435",
+                    "bt": "101"
+                }
+            ],
+            "bn": [
+                {
+                    "i": "67",
+                    "e": [
+                        false,
+                        true
+                    ]
+                },
+                {
+                    "i": "81",
+                    "e": [
+                        true,
+                        true
+                    ]
+                },
+                {
+                    "i": "435",
+                    "e": [
+                        true
+                    ]
+                }
+            ]
         },
+        "desc": "All in dark age champi scout rush vs a theoretical perfect 18 pop constant scout production into fully upgraded feudal scouts."
     },
 };
 
-export const featuredScenarios = ['champi_vs_scouts', 'maa_vs_scouts', 'archers_vs_skirms'];
+export const featuredScenarios = ['champi_vs_scouts', 'test'];

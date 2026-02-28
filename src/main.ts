@@ -334,7 +334,7 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
     co: parseFloat(el.querySelector('.step-cost')?.value) || 0,
     b: el.querySelector('.step-blocking')?.checked,
     v: parseFloat(el.querySelector('.step-value')?.value) || 0,
-    tr: parseFloat(el.querySelector('.step-train')?.value),
+    tr: parseFloat(el.querySelector('.step-train')?.value) || 30,
     f: parseFloat(el.querySelector('.step-f')?.value),
     w: parseFloat(el.querySelector('.step-w')?.value),
     g: parseFloat(el.querySelector('.step-g')?.value),
@@ -724,6 +724,15 @@ function applyAge(army: 'a' | 'b', age: string) {
     });
     relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => addBonus(army, t.id.toString()));
   }
+  
+  // Special case: Scout Cavalry gets +2 attack in Feudal Age+
+  if (data.id === '448') {
+    const matkEl = document.getElementById(`${army}-matk`) as HTMLInputElement;
+    if (matkEl) {
+      matkEl.value = ageId >= 2 ? '5' : '3';
+    }
+  }
+  
   onInputChange(true);
 }
 
@@ -741,11 +750,22 @@ function loadPreset(army: 'a' | 'b', id: string) {
   const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
   if (nameEl) nameEl.value = u.name;
 
+  // Get current age to apply age-based adjustments
+  const ageBtns = document.querySelectorAll(`.army-age-controls[data-army="${army}"] .age-btn.active`);
+  const currentAge = ageBtns.length > 0 ? parseInt(ageBtns[0].dataset.age) : 1;
+
   ['hp', 'matk', 'patk', 'marm', 'parm', 'range', 'food', 'wood', 'gold', 'reload'].forEach((k) => {
     const el = document.getElementById(`${army}-${k}`) as HTMLInputElement;
     if (el) {
       // @ts-ignore
-      el.value = u[k === 'food' ? 'f' : k === 'wood' ? 'w' : k === 'gold' ? 'g' : k];
+      let value = u[k === 'food' ? 'f' : k === 'wood' ? 'w' : k === 'gold' ? 'g' : k];
+      
+      // Special case: Scout Cavalry gets +2 attack in Feudal Age+
+      if (id === '448' && k === 'matk' && currentAge >= 2) {
+        value = 5; // Feudal Age+ Scout Cavalry has 5 attack
+      }
+      
+      el.value = value;
     }
   });
 
@@ -759,35 +779,87 @@ function loadPreset(army: 'a' | 'b', id: string) {
 
 function loadScenario(id: string) {
   const s = (scenarios as any)[id];
-  if (!s) return;
+  if (!s) {
+    console.error(`Scenario "${id}" not found!`);
+    return;
+  }
   activeScenario = id;
+  
+  // Load description (or name if desc doesn't exist)
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
-  if (descEl) descEl.value = s.desc || '';
+  if (descEl) descEl.value = s.desc || s.name || '';
 
   (['a', 'b'] as const).forEach((army) => {
     const config = s[army];
+    if (!config) {
+      console.error(`Scenario "${id}" missing army ${army} config!`);
+      return;
+    }
+    
     const tl = document.getElementById(`p${army}-timeline`);
     if (tl) tl.innerHTML = '';
     const bn = document.getElementById(`${army}-applied-bonuses`);
     if (bn) bn.innerHTML = '';
 
-    if (config.preset) loadPreset(army, config.preset);
+    // Load preset if specified
+    if (config.ps) loadPreset(army, config.ps);
+
+    // Apply config overrides
     const smap: any = { as: 'atk-speed', abr: 'bonus-red', bbn: 'bonus', da: 'disc-all', df: 'disc-f', dw: 'disc-w', dg: 'disc-g' };
     for (const [key, val] of Object.entries(config)) {
+      // Skip timeline and bonus fields - handled separately
+      if (key === 'tl' || key === 'bn' || key === 'name') continue;
+
       const el = document.getElementById(`${army}-${smap[key] || key}`) as HTMLInputElement;
-      if (el) el.value = val as string;
-      if (key === 'name') {
+      if (el) {
+        el.value = val as string;
+      }
+      if (key === 'nm') {
         const h = document.getElementById(`name-header-${army}`);
         if (h) h.textContent = val as string;
       }
+      if (key === 'cv') {
+        const civEl = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
+        const civNameEl = document.getElementById(`${army}-civ-name`);
+        if (civEl) civEl.dataset.value = val as string;
+        if (civNameEl) civNameEl.textContent = val as string;
+      }
+      if (key === 'age') {
+        const ageBtns = document.querySelectorAll(`.army-age-controls[data-army="${army}"] .age-btn`);
+        ageBtns.forEach((btn: any) => {
+          btn.classList.toggle('active', parseInt(btn.dataset.age) === parseInt(val as string));
+        });
+      }
     }
 
-    if (config['train-time'] || config.buildings || config.delay || config.tech) {
-      if (config['train-time'] || config.buildings) addProductionStep(army, 'production', { name: 'Initial Production', value: config.buildings || 1, train: config['train-time'] || 30 });
-      if (config.delay) addProductionStep(army, 'building', { name: 'Initial Delay', delay: config.delay, value: 0 });
-      if (config.tech) addProductionStep(army, 'tech', { name: 'Initial Research', delay: config.tech, isBlocking: true });
+    // Load timeline steps
+    if (config.tl && Array.isArray(config.tl)) {
+      config.tl.forEach((step: any) => {
+        addProductionStep(army, step.t, {
+          type: step.t,
+          name: step.n,
+          delay: step.d,
+          count: step.c,
+          cost: step.co,
+          isBlocking: step.b,
+          value: step.v,
+          id: step.i,
+          train: step.tr,
+          f: step.f,
+          w: step.w,
+          g: step.g,
+          bt: step.bt
+        });
+      });
+    }
+
+    // Load bonus tech states
+    if (config.bn && Array.isArray(config.bn)) {
+      config.bn.forEach((b: any) => addBonus(army, b.i, b.e));
     }
   });
+  
+  // Force a full update after loading scenario
   onInputChange(false);
 }
 
@@ -835,25 +907,25 @@ function exportScenario() {
  */
 function cleanArmyState(state: any): any {
   const cleaned: any = {};
-  
-  // Copy defined values
-  if (state.nm) cleaned.nm = state.nm;
-  if (state.c) cleaned.c = state.c;
-  if (state.ps) cleaned.ps = state.ps;
-  if (state.cv) cleaned.cv = state.cv;
-  if (state.age) cleaned.age = state.age;
-  
+
+  // Copy defined values (as strings to match scenario format)
+  if (state.nm) cleaned.nm = String(state.nm);
+  if (state.c) cleaned.c = String(state.c);
+  if (state.ps) cleaned.ps = String(state.ps);
+  if (state.cv) cleaned.cv = String(state.cv);
+  if (state.age) cleaned.age = String(state.age);
+
   // Clean numeric overrides (only include if defined and non-zero)
   const numericFields = ['h', 'am', 'ap', 'aa', 'ar', 'rl', 'n', 'as', 'ab', 'ad', 'af', 'aw', 'ag', 'da', 'df', 'dw', 'dg', 'e'];
   numericFields.forEach(field => {
     if (state[field] !== undefined && state[field] !== 0 && state[field] !== '') {
-      cleaned[field] = state[field];
+      cleaned[field] = String(state[field]);
     }
   });
-  
+
   // Clean mc (micro control) - include even if 0
-  if (state.mc !== undefined) cleaned.mc = state.mc;
-  
+  if (state.mc !== undefined) cleaned.mc = String(state.mc);
+
   // Clean timeline
   if (state.tl && state.tl.length > 0) {
     cleaned.tl = state.tl.map((step: any) => {
