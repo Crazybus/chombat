@@ -1603,7 +1603,9 @@ td {
 .add-step-controls {
   margin-top: 10px;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 .step-type-select {
@@ -1616,14 +1618,32 @@ td {
 }
 
 .add-step-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 80px;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.add-step-btn:hover {
   background: var(--accent-color);
   color: black;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  font-size: 1.5rem;
-  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.add-step-btn.age-btn {
+  min-width: 45px;
+  font-weight: bold;
+  font-size: 0.95rem;
 }
 
 /* Share button loading state */

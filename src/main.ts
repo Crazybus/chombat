@@ -135,20 +135,34 @@ function getArmyData(army: 'a' | 'b'): UnitData | null {
   const nameHeader = document.getElementById(`name-header-${army}`);
   const id = nameHeader ? nameHeader.dataset.value : null;
   
-  // If no preset is selected, try to find by unit name
-  if (!id) {
-    const nameInput = document.getElementById(`${army}-name`) as HTMLInputElement;
-    const unitName = nameInput ? nameInput.value : '';
-    // Find unit by name
-    const found = Object.entries(allUnits).find(([, u]) => u.name === unitName);
-    if (found) {
-      return { ...found[1], id: found[0] };
-    }
-    return null;
+  // If we have a preset ID, use it
+  if (id && allUnits[id]) {
+    return { ...allUnits[id], id: id };
   }
   
-  if (!allUnits[id]) return null;
-  return { ...allUnits[id], id: id };
+  // Otherwise, try to find by unit name from the header
+  const unitName = nameHeader ? nameHeader.textContent : '';
+  if (unitName) {
+    // Search for unit by name
+    const found = Object.entries(allUnits).find(([, u]) => u.name === unitName);
+    if (found) {
+      console.log(`Found unit "${unitName}" by name: ${found[0]}`);
+      return { ...found[1], id: found[0] };
+    }
+  }
+  
+  // Last resort: try the hidden name input
+  const nameInput = document.getElementById(`${army}-name`) as HTMLInputElement;
+  if (nameInput && nameInput.value) {
+    const found = Object.entries(allUnits).find(([, u]) => u.name === nameInput.value);
+    if (found) {
+      console.log(`Found unit "${nameInput.value}" by input: ${found[0]}`);
+      return { ...found[1], id: found[0] };
+    }
+  }
+  
+  console.warn(`Could not find unit data for army ${army} (name="${unitName}")`);
+  return null;
 }
 
 function getArmyConfig(army: 'a' | 'b'): ArmyState {
@@ -779,11 +793,15 @@ function loadPreset(army: 'a' | 'b', id: string) {
 
 function loadScenario(id: string) {
   const s = (scenarios as any)[id];
+  console.log(`Loading scenario "${id}":`, s ? 'FOUND' : 'NOT FOUND');
+  
   if (!s) {
-    console.error(`Scenario "${id}" not found!`);
+    console.error(`Scenario "${id}" not found! Available:`, Object.keys(scenarios));
+    showToast(`Scenario "${id}" not found!`, 3000);
     return;
   }
   activeScenario = id;
+  console.log(`Scenario "${id}" loaded successfully`);
   
   // Load description (or name if desc doesn't exist)
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
@@ -791,50 +809,90 @@ function loadScenario(id: string) {
 
   (['a', 'b'] as const).forEach((army) => {
     const config = s[army];
+    console.log(`Loading army ${army}:`, config ? 'OK' : 'MISSING');
+    
     if (!config) {
       console.error(`Scenario "${id}" missing army ${army} config!`);
       return;
     }
     
     const tl = document.getElementById(`p${army}-timeline`);
-    if (tl) tl.innerHTML = '';
+    if (tl) {
+      tl.innerHTML = '';
+      console.log(`Cleared timeline for army ${army}`);
+    }
     const bn = document.getElementById(`${army}-applied-bonuses`);
-    if (bn) bn.innerHTML = '';
+    if (bn) {
+      bn.innerHTML = '';
+      console.log(`Cleared bonuses for army ${army}`);
+    }
 
     // Load preset if specified
-    if (config.ps) loadPreset(army, config.ps);
+    if (config.ps) {
+      console.log(`Loading preset ${config.ps} for army ${army}`);
+      loadPreset(army, config.ps);
+    }
 
     // Apply config overrides
-    const smap: any = { as: 'atk-speed', abr: 'bonus-red', bbn: 'bonus', da: 'disc-all', df: 'disc-f', dw: 'disc-w', dg: 'disc-g' };
+    const smap: any = {
+      // Special mappings
+      as: 'atk-speed', abr: 'bonus-red', bbn: 'bonus', da: 'disc-all', df: 'disc-f', dw: 'disc-w', dg: 'disc-g',
+      // Stat mappings
+      h: 'hp', am: 'matk', ap: 'patk', aa: 'marm', ar: 'parm', n: 'range', rl: 'reload',
+      af: 'food', aw: 'wood', ag: 'gold',
+      e: 'eng', mc: 'groups-slider'
+    };
     for (const [key, val] of Object.entries(config)) {
       // Skip timeline and bonus fields - handled separately
       if (key === 'tl' || key === 'bn' || key === 'name') continue;
 
-      const el = document.getElementById(`${army}-${smap[key] || key}`) as HTMLInputElement;
+      const fieldId = smap[key] || key;
+      const el = document.getElementById(`${army}-${fieldId}`) as HTMLInputElement;
       if (el) {
         el.value = val as string;
-      }
-      if (key === 'nm') {
+        console.log(`Set ${army}-${fieldId} = ${val}`);
+      } else if (key === 'c') {
+        // Count field - needs special handling
+        const countEl = document.getElementById(`${army}-count`) as HTMLInputElement;
+        if (countEl) {
+          countEl.value = val as string;
+          console.log(`Set count ${army} = ${val}`);
+        } else {
+          console.warn(`Could not find count element for ${army}`);
+        }
+      } else if (key === 'nm') {
         const h = document.getElementById(`name-header-${army}`);
-        if (h) h.textContent = val as string;
-      }
-      if (key === 'cv') {
+        const nameInput = document.getElementById(`${army}-name`) as HTMLInputElement;
+        if (h) {
+          h.textContent = val as string;
+          console.log(`Set name header ${army} = ${val}`);
+        }
+        if (nameInput) {
+          nameInput.value = val as string;
+          console.log(`Set name input ${army} = ${val}`);
+        }
+      } else if (key === 'cv') {
         const civEl = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
         const civNameEl = document.getElementById(`${army}-civ-name`);
         if (civEl) civEl.dataset.value = val as string;
         if (civNameEl) civNameEl.textContent = val as string;
-      }
-      if (key === 'age') {
+        console.log(`Set civ ${army} = ${val}`);
+      } else if (key === 'age') {
         const ageBtns = document.querySelectorAll(`.army-age-controls[data-army="${army}"] .age-btn`);
         ageBtns.forEach((btn: any) => {
           btn.classList.toggle('active', parseInt(btn.dataset.age) === parseInt(val as string));
         });
+        console.log(`Set age ${army} = ${val}`);
+      } else {
+        console.warn(`Could not find element for ${army}-${fieldId} (key=${key})`);
       }
     }
 
     // Load timeline steps
     if (config.tl && Array.isArray(config.tl)) {
-      config.tl.forEach((step: any) => {
+      console.log(`Loading ${config.tl.length} timeline steps for army ${army}`);
+      config.tl.forEach((step: any, idx: number) => {
+        console.log(`  Step ${idx}: ${step.t} - ${step.n}`);
         addProductionStep(army, step.t, {
           type: step.t,
           name: step.n,
@@ -855,12 +913,15 @@ function loadScenario(id: string) {
 
     // Load bonus tech states
     if (config.bn && Array.isArray(config.bn)) {
+      console.log(`Loading ${config.bn.length} bonuses for army ${army}`);
       config.bn.forEach((b: any) => addBonus(army, b.i, b.e));
     }
   });
-  
+
   // Force a full update after loading scenario
-  onInputChange(false);
+  console.log('=== Calling updateCharts to refresh display ===');
+  updateCharts();
+  console.log('=== updateCharts complete ===');
 }
 
 /**
@@ -1172,6 +1233,13 @@ window.onload = async () => {
 
   // Load state from URL (hash or query params)
   await loadState();
+
+  // Load first scenario by default if no URL params
+  if (!window.location.search && !window.location.hash && featuredScenarios.length > 0) {
+    const firstScenario = featuredScenarios[0];
+    console.log(`Loading default scenario: ${firstScenario}`);
+    loadScenario(firstScenario);
+  }
 
   // Render featured scenarios
   const scnContainer = document.getElementById('featured-scenarios-container');
@@ -1777,18 +1845,30 @@ ${scenarioJson}
   // Theme toggle
   const themeToggle = document.getElementById('theme-toggle');
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.documentElement.classList.add(savedTheme);
+  
+  // Apply saved theme
+  if (savedTheme === 'light-theme') {
+    document.documentElement.classList.add('light-theme');
+    document.documentElement.classList.remove('dark-theme');
+  } else if (savedTheme === 'dark-theme') {
+    document.documentElement.classList.add('dark-theme');
+    document.documentElement.classList.remove('light-theme');
   }
+  
   themeToggle?.addEventListener('click', () => {
     const isDark = document.documentElement.classList.contains('dark-theme');
     if (isDark) {
+      // Switch to light
       document.documentElement.classList.remove('dark-theme');
+      document.documentElement.classList.add('light-theme');
       localStorage.setItem('theme', 'light-theme');
     } else {
+      // Switch to dark
       document.documentElement.classList.add('dark-theme');
+      document.documentElement.classList.remove('light-theme');
       localStorage.setItem('theme', 'dark-theme');
     }
+    console.log(`Theme switched to: ${isDark ? 'light' : 'dark'}`);
   });
 
   document.getElementById('share-btn')?.addEventListener('click', async () => {

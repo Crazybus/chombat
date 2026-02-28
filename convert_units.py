@@ -11,7 +11,7 @@ TECH_MAP = {
     "Fletching": 199, "Bodkin Arrow": 200, "Bracer": 201,
     "Padded Archer Armor": 211, "Leather Archer Armor": 212, "Ring Archer Armor": 219,
     "Bloodlines": 435, "Thumb Ring": 437, "Ballistics": 93, "Chemistry": 47, "Husbandry": 39,
-    "Feudal Age": 102, "Castle Age": 101, "Imperial Age": 103
+    "Feudal Age": 101, "Castle Age": 102, "Imperial Age": 103
 }
 
 STANDARD_BUILDINGS = {12, 10, 87, 101, 45, 82, 30, 49, 1251, 1665}

@@ -1,4 +1,85 @@
 export const scenarios = {
+    "archer_vs_skirm": {
+        "name": "Archer vs Skirm",
+        "a": {
+            "nm": "Archer",
+            "c": "10",
+            "age": "2",
+            "h": "30",
+            "am": "0",
+            "ap": "4",
+            "aa": "0",
+            "ar": "0",
+            "rl": "2",
+            "n": "4",
+            "af": "0",
+            "aw": "25",
+            "ag": "45",
+            "tl": [
+                {
+                    "t": "production",
+                    "n": "Initial Production",
+                    "d": "0",
+                    "c": "1",
+                    "co": "0",
+                    "v": "1",
+                    "tr": "35"
+                }
+            ],
+            "bn": [
+                {
+                    "i": "199",
+                    "e": [
+                        true,
+                        false,
+                        true
+                    ]
+                }
+            ]
+        },
+        "b": {
+            "nm": "Skirmisher",
+            "c": "5",
+            "age": "2",
+            "h": "30",
+            "am": "0",
+            "ap": "2",
+            "ar": "3",
+            "rl": "3",
+            "n": "4",
+            "af": "25",
+            "aw": "35",
+            "tl": [
+                {
+                    "t": "production",
+                    "n": "Initial Production",
+                    "d": "200",
+                    "c": "1",
+                    "co": "0",
+                    "v": "1",
+                    "tr": "26"
+                }
+            ],
+            "bn": [
+                {
+                    "i": "199",
+                    "e": [
+                        true,
+                        false,
+                        true
+                    ]
+                },
+                {
+                    "i": "211",
+                    "e": [
+                        true,
+                        true
+                    ]
+                }
+            ]
+        },
+        "desc": "Switching into skirmishers to counter an existing archer mass"
+    },
     "champi_vs_scouts": {
         "name": "Champi Scout vs FU Feudal Scouts",
         "a": {
@@ -170,4 +251,4 @@ export const scenarios = {
     },
 };
 
-export const featuredScenarios = ['champi_vs_scouts', 'test'];
+export const featuredScenarios = ['champi_vs_scouts', 'archer_vs_skirm'];

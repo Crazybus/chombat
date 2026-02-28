@@ -23025,7 +23025,7 @@ export const TECH_MAP: Record<string, number> = {
     "Ballistics": 93,
     "Chemistry": 47,
     "Husbandry": 39,
-    "Feudal Age": 102,
-    "Castle Age": 101,
+    "Feudal Age": 101,
+    "Castle Age": 102,
     "Imperial Age": 103
 };
