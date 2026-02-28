@@ -2,3 +2,4 @@ dat/
 node_modules/
 dist/
 .wrangler/
+main.js

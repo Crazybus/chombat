@@ -82,6 +82,7 @@ export interface ArmyState {
   c?: number; // count
   ps?: string; // preset id
   cv?: string; // civ id
+  age?: string; // age id
   tl?: TimelineStep[];
   bn?: { i: string; e: boolean[] }[]; // bonus tech states
   // Individual stat overrides

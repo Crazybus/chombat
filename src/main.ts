@@ -17,12 +17,11 @@ let defaults: Record<string, string> = {};
 let activeScenario: string | null = null;
 let allUnits: Record<string, UnitData> = {};
 let techsById: Record<number, TechData> = {};
-let useShortUrls = false; // Track if we're using short URLs
 
 // Rate limiting for share functionality
 const SHARE_RATE_LIMIT = {
-  perMinute: 1,
-  perDay: 100,
+  perMinute: 3,      // Allow 3 shares per minute (for active editing)
+  perDay: 1000,      // 1000 shares per day
   lastShareTime: 0,
   dailyCount: 0,
   dailyResetTime: 0,
@@ -48,7 +47,6 @@ function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?
     const retryAfter = Math.ceil((minuteMs - (now - SHARE_RATE_LIMIT.lastShareTime)) / 1000);
     return {
       allowed: false,
-      reason: 'Too many shares. Please wait before sharing again.',
       retryAfter,
     };
   }
@@ -58,7 +56,6 @@ function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?
     const retryAfter = Math.ceil((dayMs - (now - SHARE_RATE_LIMIT.dailyResetTime)) / (60 * 1000));
     return {
       allowed: false,
-      reason: 'Daily share limit reached. Please try again tomorrow.',
       retryAfter,
     };
   }
@@ -73,7 +70,7 @@ function recordShare() {
   const now = Date.now();
   SHARE_RATE_LIMIT.lastShareTime = now;
   SHARE_RATE_LIMIT.dailyCount++;
-  
+
   // Persist to localStorage
   localStorage.setItem('shareRateLimit', JSON.stringify({
     lastShareTime: SHARE_RATE_LIMIT.lastShareTime,
@@ -805,12 +802,8 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
   if (activeScenario) p.set('scenario', activeScenario);
   const json = JSON.stringify(s);
 
-  // Check if data is large enough to warrant using KV
-  const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
-  const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
-
-  // Use KV if forced, if we're already using short URLs, or if URL would be longer than 2000 characters
-  if (forceShorten || useShortUrls || clean.length > 2000) {
+  // Only use KV when explicitly forced (share button)
+  if (forceShorten) {
     try {
       const response = await fetch('/api/shorten', {
         method: 'POST',
@@ -821,26 +814,16 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
       if (response.ok) {
         const result = await response.json();
         const shortUrl = window.location.origin + window.location.pathname + '#' + result.id;
-        
-        // Only update current URL if not forced (i.e., auto-shortening for length)
-        if (!forceShorten) {
-          const newUrl = window.location.pathname + '#' + result.id;
-          history.replaceState(null, '', newUrl);
-          useShortUrls = true;
-        }
-        
         return shortUrl;
       }
       
       // Handle specific error cases
       if (response.status === 429) {
-        // Rate limit exceeded
         console.warn('KV write rate limit exceeded');
-        showToast('Share limit reached, copying long URL', 3000);
+        showToast('Share limit reached, using long URL', 3000);
       } else if (response.status === 507) {
-        // Insufficient storage
         console.warn('KV storage limit exceeded');
-        showToast('Storage limit reached, copying long URL', 3000);
+        showToast('Storage limit reached, using long URL', 3000);
       } else {
         console.warn('KV error:', response.status);
         showToast('Creating long URL instead', 2500);
@@ -850,18 +833,16 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
       showToast('Creating long URL instead', 2500);
     }
     
-    // Fallback: return long URL for forced cases (share button)
-    if (forceShorten) {
-      const longUrl = window.location.origin + window.location.pathname + '?' + clean;
-      return longUrl;
-    }
-  }
-
-  // Fall back to long URL (only for non-forced cases when not using short URLs)
-  if (!forceShorten && !useShortUrls) {
-    history.replaceState(null, '', '?' + clean);
+    // Fallback: return long URL
+    const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
+    const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
+    return window.location.origin + window.location.pathname + '?' + clean;
   }
   
+  // Normal changes: use long URL
+  const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
+  const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
+  history.replaceState(null, '', '?' + clean);
   return null;
 }
 
@@ -901,6 +882,9 @@ function getState(): SimulationState {
 
     const startVillsEl = document.getElementById(`${army}-prod-start-vills`) as HTMLInputElement;
     if (startVillsEl) s[army].sv = parseInt(startVillsEl.value) || 3;
+
+    const ageBtn = document.querySelector(`.army-age-controls[data-army="${army}"] .age-btn.active`) as HTMLElement;
+    if (ageBtn) s[army].age = ageBtn.dataset.age;
   });
   return s;
 }
@@ -917,7 +901,6 @@ async function loadState() {
         if (response.ok) {
           const result = await response.json();
           applyState(result.data, result.expiresAt);
-          useShortUrls = true; // Mark that we're using short URLs
           const daysUntilExpiry = Math.round((result.expiresAt - Date.now()) / (1000 * 60 * 60 * 24));
           if (daysUntilExpiry > 7) {
             showToast(`Matchup loaded! Expires in ${daysUntilExpiry} days`, 3000);
@@ -994,6 +977,15 @@ function applyState(state: any, expiresAt?: number) {
     if (armyState.sv !== undefined) {
       const el = document.getElementById(`${army}-prod-start-vills`) as HTMLInputElement;
       if (el) el.value = armyState.sv;
+    }
+    if (armyState.age !== undefined) {
+      const parent = document.querySelector(`.army-age-controls[data-army="${army}"]`);
+      if (parent) {
+        parent.querySelectorAll('.age-btn').forEach((btn: any) => {
+          if (btn.dataset.age === String(armyState.age)) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+      }
     }
   });
   updateCharts();
@@ -1119,9 +1111,10 @@ window.onload = async () => {
       const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
       const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
       const longUrl = window.location.origin + window.location.pathname + '?' + clean;
-      
+
       navigator.clipboard.writeText(longUrl).then(() => {
-        showToast(rateCheck.reason + ' Copied long URL instead.', 5000);
+        const waitSeconds = rateCheck.retryAfter ? `${Math.ceil(rateCheck.retryAfter)}s` : 'later';
+        showToast('Rate limit reached. Try again in ' + waitSeconds + '. Copied long URL.', 5000);
       });
       return;
     }
@@ -1140,7 +1133,7 @@ window.onload = async () => {
       }
 
       const urlToCopy = shortUrl || window.location.href;
-      
+
       navigator.clipboard.writeText(urlToCopy).then(() => {
         showToast('Link copied to clipboard!', 2500);
         btn.classList.remove('loading');
