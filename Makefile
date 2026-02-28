@@ -1,14 +1,22 @@
-.PHONY: deploy dev build format clean
+.PHONY: deploy preview dev build format clean data lint
 
 format:
-	npx prettier --write "*.js" "*.css" "*.html"
+	npx prettier --write "*.css" "*.html" "src/**/*.ts"
 
-build: clean format
+data:
+	python3 convert_units.py
+
+build: clean lint
 	mkdir -p dist
-	npx esbuild script.js units.js presets.js scenarios.js --minify --outdir=dist
+	npx esbuild src/main.ts --bundle --minify --outfile=main.js --platform=browser --target=es2022
+	cp main.js dist/main.js
 	npx esbuild styles.css --minify --outfile=dist/styles.css
 	cp index.html dist/index.html
 	cp _headers dist/_headers
+	cp -r img dist/img
+
+preview: build
+	npx wrangler pages deploy dist --project-name chombat
 
 deploy: build
 	npm cache clean --force
@@ -24,5 +32,11 @@ deploy: build
 dev: build
 	npx wrangler pages dev dist
 
+lint:
+	npx eslint .
+
 clean:
 	rm -rf dist
+
+test:
+	npx vitest run
