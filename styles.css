@@ -1636,6 +1636,74 @@ td {
   content: '...';
 }
 
+/* Autocomplete selected item */
+.preset-item.selected,
+.civ-item.selected {
+  background: var(--accent-color);
+  color: black;
+}
+
+/* Clickable unit name */
+.clickable-unit-name {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+
+.clickable-unit-name:hover {
+  background: var(--accent-color);
+  color: black;
+}
+
+/* Civ selector */
+.civ-selector {
+  position: relative;
+}
+
+.civ-label {
+  cursor: pointer;
+  padding: 5px 12px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.2s;
+  display: inline-block;
+  user-select: none;
+}
+
+.civ-label:hover {
+  background: var(--accent-color);
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Preset/unit list styling */
+.preset-list {
+  position: absolute;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 200px;
+}
+
+.preset-list .preset-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.preset-list .preset-item:hover {
+  background: var(--accent-color);
+  color: black;
+}
+
 /* Expiry info badge */
 .expiry-badge {
   display: inline-block;

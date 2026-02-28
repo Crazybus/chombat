@@ -20,8 +20,8 @@ let techsById: Record<number, TechData> = {};
 
 // Rate limiting for share functionality
 const SHARE_RATE_LIMIT = {
-  perMinute: 3,      // Allow 3 shares per minute (for active editing)
-  perDay: 1000,      // 1000 shares per day
+  perMinute: 20,     // Allow 20 shares per minute per user
+  perDay: 1000,      // 1000 shares per day total (shared pool for all users)
   lastShareTime: 0,
   dailyCount: 0,
   dailyResetTime: 0,
@@ -131,9 +131,23 @@ function onInputChange(manualChange: boolean = true) {
 }
 
 function getArmyData(army: 'a' | 'b'): UnitData | null {
-  const el = document.querySelector(`.preset-search[data-army="${army}"]`) as HTMLInputElement;
-  const id = el ? el.dataset.value : null;
-  if (!id || !allUnits[id]) return null;
+  // Get unit ID from the name header's dataset
+  const nameHeader = document.getElementById(`name-header-${army}`);
+  const id = nameHeader ? nameHeader.dataset.value : null;
+  
+  // If no preset is selected, try to find by unit name
+  if (!id) {
+    const nameInput = document.getElementById(`${army}-name`) as HTMLInputElement;
+    const unitName = nameInput ? nameInput.value : '';
+    // Find unit by name
+    const found = Object.entries(allUnits).find(([, u]) => u.name === unitName);
+    if (found) {
+      return { ...found[1], id: found[0] };
+    }
+    return null;
+  }
+  
+  if (!allUnits[id]) return null;
   return { ...allUnits[id], id: id };
 }
 
@@ -716,8 +730,14 @@ function applyAge(army: 'a' | 'b', age: string) {
 function loadPreset(army: 'a' | 'b', id: string) {
   const u = allUnits[id];
   if (!u) return;
-  const input = document.querySelector(`.preset-search[data-army="${army}"]`) as HTMLInputElement;
-  input.value = u.name; input.dataset.value = id;
+  
+  // Update the unit name header
+  const nameHeader = document.getElementById(`name-header-${army}`);
+  if (nameHeader) {
+    nameHeader.textContent = u.name;
+    nameHeader.dataset.value = id;
+  }
+  
   const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
   if (nameEl) nameEl.value = u.name;
 
@@ -788,12 +808,81 @@ function showToast(message: string, duration: number = 2000) {
 
 function exportScenario() {
   const s = getState();
-  navigator.clipboard.writeText(JSON.stringify(s, null, 2)).then(() => {
+  
+  // Create a clean, TypeScript-compatible export format
+  const exportData: SimulationState = {
+    a: cleanArmyState(s.a),
+    b: cleanArmyState(s.b),
+    desc: s.desc || '',
+  };
+  
+  const exportText = JSON.stringify(exportData, null, 2);
+  navigator.clipboard.writeText(exportText).then(() => {
     const btn = document.getElementById('export-btn') as HTMLElement;
     const original = btn.textContent;
-    btn.textContent = 'Copied!'; btn.style.color = 'var(--color-pos)';
-    setTimeout(() => { btn.textContent = original; btn.style.color = ''; }, 2000);
+    btn.textContent = 'Copied!';
+    btn.style.color = 'var(--color-pos)';
+    showToast('Scenario copied to clipboard! Ready to paste into scenarios.ts', 3000);
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.color = '';
+    }, 2000);
   });
+}
+
+/**
+ * Clean army state for export - removes undefined values and ensures proper types
+ */
+function cleanArmyState(state: any): any {
+  const cleaned: any = {};
+  
+  // Copy defined values
+  if (state.nm) cleaned.nm = state.nm;
+  if (state.c) cleaned.c = state.c;
+  if (state.ps) cleaned.ps = state.ps;
+  if (state.cv) cleaned.cv = state.cv;
+  if (state.age) cleaned.age = state.age;
+  
+  // Clean numeric overrides (only include if defined and non-zero)
+  const numericFields = ['h', 'am', 'ap', 'aa', 'ar', 'rl', 'n', 'as', 'ab', 'ad', 'af', 'aw', 'ag', 'da', 'df', 'dw', 'dg', 'e'];
+  numericFields.forEach(field => {
+    if (state[field] !== undefined && state[field] !== 0 && state[field] !== '') {
+      cleaned[field] = state[field];
+    }
+  });
+  
+  // Clean mc (micro control) - include even if 0
+  if (state.mc !== undefined) cleaned.mc = state.mc;
+  
+  // Clean timeline
+  if (state.tl && state.tl.length > 0) {
+    cleaned.tl = state.tl.map((step: any) => {
+      const cleanStep: any = { t: step.t };
+      if (step.n) cleanStep.n = step.n;
+      if (step.d !== undefined && step.d !== 0) cleanStep.d = step.d;
+      if (step.c !== undefined && step.c !== 1) cleanStep.c = step.c;
+      if (step.co !== undefined && step.co !== 0) cleanStep.co = step.co;
+      if (step.b) cleanStep.b = step.b;
+      if (step.v !== undefined) cleanStep.v = step.v;
+      if (step.i) cleanStep.i = step.i;
+      if (step.tr !== undefined) cleanStep.tr = step.tr;
+      if (step.f !== undefined) cleanStep.f = step.f;
+      if (step.w !== undefined) cleanStep.w = step.w;
+      if (step.g !== undefined) cleanStep.g = step.g;
+      if (step.bt !== undefined) cleanStep.bt = step.bt;
+      return cleanStep;
+    });
+  }
+  
+  // Clean bonus tech states
+  if (state.bn && state.bn.length > 0) {
+    cleaned.bn = state.bn.map((b: any) => ({
+      i: b.i,
+      e: b.e || [],
+    }));
+  }
+  
+  return cleaned;
 }
 
 async function syncURL(forceShorten: boolean = false): Promise<string | null> {
@@ -999,6 +1088,16 @@ window.onload = async () => {
   // Load rate limit state from localStorage
   loadRateLimitState();
 
+  // Initialize unit name headers with default values
+  (['a', 'b'] as const).forEach((army) => {
+    const nameHeader = document.getElementById(`name-header-${army}`);
+    const nameInput = document.getElementById(`${army}-name`) as HTMLInputElement;
+    if (nameHeader && nameInput) {
+      nameHeader.textContent = nameInput.value;
+      nameHeader.dataset.value = ''; // No preset selected initially
+    }
+  });
+
   // Load state from URL (hash or query params)
   await loadState();
 
@@ -1031,36 +1130,497 @@ window.onload = async () => {
 
   document.getElementById('scenario-desc')?.addEventListener('input', () => onInputChange(true));
 
-  document.querySelectorAll('.preset-search').forEach((input: any) => {
-    const render = () => {
-      const army = input.dataset.army, list = document.getElementById(`${army}-preset-list`) as HTMLElement, term = input.value.toLowerCase();
-      list.innerHTML = '';
-      Object.entries(allUnits).forEach(([id, u]) => {
-        if (u.name.toLowerCase().includes(term)) {
-          const item = document.createElement('div'); item.className = 'preset-item'; item.textContent = u.name;
-          item.addEventListener('click', () => { loadPreset(army, id); list.classList.add('hidden'); }); list.appendChild(item);
-        }
+/**
+ * Fuzzy match - checks if chars appear in order anywhere in the string
+ */
+function fuzzyMatch(text: string, pattern: string): boolean {
+  const textLower = text.toLowerCase();
+  const patternLower = pattern.toLowerCase();
+  let textIndex = 0;
+  
+  for (let i = 0; i < patternLower.length; i++) {
+    const charIndex = textLower.indexOf(patternLower[i], textIndex);
+    if (charIndex === -1) return false;
+    textIndex = charIndex + 1;
+  }
+  return true;
+}
+
+/**
+ * Setup autocomplete with fuzzy finding and keyboard navigation
+ */
+function setupAutocomplete(
+  input: HTMLInputElement,
+  items: Array<{ id: string; name: string }>,
+  onSelect: (id: string) => void,
+  listId: string
+) {
+  let hasCleared = false;
+  let selectedIndex = 0;
+  let filteredItems: Array<{ id: string; name: string }> = [];
+  let ignoreNextKeyup = false;
+
+  const list = document.getElementById(listId) as HTMLElement;
+
+  const render = (showAll: boolean = false, clearInput: boolean = false) => {
+    if (clearInput && !hasCleared) {
+      input.value = '';
+      hasCleared = true;
+    }
+    const term = showAll || clearInput ? '' : input.value.toLowerCase();
+    selectedIndex = 0;
+
+    // Filter with fuzzy matching
+    filteredItems = items.filter(item => {
+      if (!term) return true;
+      return fuzzyMatch(item.name, term);
+    });
+
+    // Sort by relevance (exact match first, then starts with, then contains)
+    if (term) {
+      filteredItems.sort((a, b) => {
+        const aLower = a.name.toLowerCase();
+        const bLower = b.name.toLowerCase();
+        if (aLower === term) return -1;
+        if (bLower === term) return 1;
+        if (aLower.startsWith(term)) return -1;
+        if (bLower.startsWith(term)) return 1;
+        return aLower.indexOf(term) - bLower.indexOf(term);
       });
-      if (list.children.length > 0) list.classList.remove('hidden'); else list.classList.add('hidden');
-    };
-    input.addEventListener('click', render); input.addEventListener('keyup', render);
-    input.addEventListener('blur', () => setTimeout(() => (document.getElementById(`${input.dataset.army}-preset-list`) as HTMLElement).classList.add('hidden'), 200));
+    }
+
+    list.innerHTML = '';
+    filteredItems.forEach((item, index) => {
+      const el = document.createElement('div');
+      el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
+      el.textContent = item.name;
+      el.addEventListener('click', () => {
+        onSelect(item.id);
+        list.classList.add('hidden');
+        hasCleared = false;
+      });
+      el.addEventListener('mouseenter', () => {
+        selectedIndex = index;
+        updateSelection();
+      });
+      list.appendChild(el);
+    });
+
+    if (filteredItems.length > 0) list.classList.remove('hidden');
+    else list.classList.add('hidden');
+  };
+
+  const updateSelection = () => {
+    Array.from(list.children).forEach((child, i) => {
+      if (i === selectedIndex) child.classList.add('selected');
+      else child.classList.remove('selected');
+    });
+    // Scroll selected into view
+    const selected = list.children[selectedIndex] as HTMLElement;
+    if (selected) {
+      selected.scrollIntoView({ block: 'nearest' });
+    }
+  };
+
+  const selectCurrent = () => {
+    if (filteredItems.length > 0 && selectedIndex >= 0 && selectedIndex < filteredItems.length) {
+      onSelect(filteredItems[selectedIndex].id);
+      list.classList.add('hidden');
+      hasCleared = false;
+      ignoreNextKeyup = true; // Prevent keyup from reopening
+    }
+  };
+
+  input.addEventListener('click', () => render(true));
+  input.addEventListener('focus', () => render(true));
+
+  input.addEventListener('keydown', (e: KeyboardEvent) => {
+    // Clear input once when typing starts
+    if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && input.dataset.value) {
+      render(true, true);
+      return;
+    }
+
+    // Navigate with arrow keys or j/k
+    if (e.key === 'ArrowDown' || (e.key === 'j' && !e.ctrlKey && !e.metaKey)) {
+      e.preventDefault();
+      if (filteredItems.length > 0) {
+        selectedIndex = (selectedIndex + 1) % filteredItems.length;
+        updateSelection();
+      }
+    } else if (e.key === 'ArrowUp' || (e.key === 'k' && !e.ctrlKey && !e.metaKey)) {
+      e.preventDefault();
+      if (filteredItems.length > 0) {
+        selectedIndex = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
+        updateSelection();
+      }
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      selectCurrent();
+    } else if (e.key === 'Tab') {
+      e.preventDefault();
+      selectCurrent();
+    }
   });
 
-  document.querySelectorAll('.civ-search').forEach((input: any) => {
-    const render = () => {
-      const army = input.dataset.army, list = document.getElementById(`${army}-civ-list`) as HTMLElement, term = input.value.toLowerCase();
-      list.innerHTML = '';
-      Object.keys(civs).forEach(c => {
-        if (c.toLowerCase().includes(term)) {
-          const item = document.createElement('div'); item.className = 'preset-item'; item.textContent = c;
-          item.addEventListener('click', () => { input.value = c; input.dataset.value = c; list.classList.add('hidden'); onInputChange(true); }); list.appendChild(item);
+  input.addEventListener('keyup', () => {
+    if (ignoreNextKeyup) {
+      ignoreNextKeyup = false;
+      return;
+    }
+    render(false);
+  });
+
+  input.addEventListener('blur', () => {
+    hasCleared = false;
+    setTimeout(() => list.classList.add('hidden'), 200);
+  });
+}
+
+  // Setup unit name click handlers (opens unit selector)
+  (['a', 'b'] as const).forEach((army) => {
+    const nameHeader = document.getElementById(`name-header-${army}`);
+    const list = document.getElementById(`${army}-preset-list`);
+    if (nameHeader && list) {
+      const units = Object.entries(allUnits).map(([id, u]) => ({ id, name: u.name }));
+      let searchTerm = '';
+      let isOpen = false;
+      let selectedIndex = 0;
+      
+      const renderUnitList = () => {
+        list.innerHTML = '';
+        const filteredItems = units.filter(item => {
+          if (!searchTerm) return true;
+          return fuzzyMatch(item.name, searchTerm);
+        });
+        
+        // Sort by relevance
+        if (searchTerm) {
+          filteredItems.sort((a, b) => {
+            const aLower = a.name.toLowerCase();
+            const bLower = b.name.toLowerCase();
+            if (aLower === searchTerm.toLowerCase()) return -1;
+            if (bLower === searchTerm.toLowerCase()) return 1;
+            if (aLower.startsWith(searchTerm.toLowerCase())) return -1;
+            if (bLower.startsWith(searchTerm.toLowerCase())) return 1;
+            return aLower.indexOf(searchTerm.toLowerCase()) - bLower.indexOf(searchTerm.toLowerCase());
+          });
+        }
+        
+        selectedIndex = 0; // Reset selection on re-render
+        
+        filteredItems.forEach((item, index) => {
+          const el = document.createElement('div');
+          el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
+          el.textContent = item.name;
+          el.dataset.index = index.toString();
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            loadPreset(army, item.id);
+            list.classList.add('hidden');
+            isOpen = false;
+            searchTerm = '';
+          });
+          el.addEventListener('mouseenter', () => {
+            selectedIndex = index;
+            updateSelection();
+          });
+          list.appendChild(el);
+        });
+        
+        if (filteredItems.length > 0) list.classList.remove('hidden');
+        else list.classList.add('hidden');
+      };
+      
+      const updateSelection = () => {
+        Array.from(list.children).forEach((child, i) => {
+          if (i === selectedIndex) child.classList.add('selected');
+          else child.classList.remove('selected');
+        });
+        // Scroll selected into view
+        const selected = list.children[selectedIndex] as HTMLElement;
+        if (selected) {
+          selected.scrollIntoView({ block: 'nearest' });
+        }
+      };
+      
+      const openList = () => {
+        renderUnitList();
+        updateSelection(); // Highlight first item
+        
+        // Position the list directly below the header
+        const rect = nameHeader.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        list.style.position = 'absolute';
+        list.style.top = (rect.height + 5) + 'px';
+        list.style.left = '0';
+        list.style.zIndex = '1000';
+        list.style.maxHeight = '300px';
+        list.style.overflowY = 'auto';
+        list.style.minWidth = '200px';
+        list.style.backgroundColor = 'var(--panel-bg)';
+        list.style.border = '1px solid var(--border-color)';
+        list.style.borderRadius = '4px';
+        list.style.boxShadow = 'var(--shadow)';
+        isOpen = true;
+      };
+      
+      nameHeader.addEventListener('click', (e) => {
+        e.stopPropagation();
+        searchTerm = '';
+        openList();
+      });
+      
+      // Global keyboard handler when list is open
+      const handleKeydown = (e: KeyboardEvent) => {
+        if (!isOpen) return;
+        
+        if (e.key === 'Escape') {
+          list.classList.add('hidden');
+          isOpen = false;
+          searchTerm = '';
+          return;
+        }
+        
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const selectedItem = list.querySelector('.preset-item.selected') as HTMLElement;
+          if (selectedItem) {
+            selectedItem.click();
+          } else {
+            const firstItem = list.querySelector('.preset-item') as HTMLElement;
+            if (firstItem) firstItem.click();
+          }
+          return;
+        }
+        
+        // Arrow navigation
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const items = list.querySelectorAll('.preset-item');
+          if (items.length > 0) {
+            selectedIndex = (selectedIndex + 1) % items.length;
+            updateSelection();
+          }
+          return;
+        }
+        
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const items = list.querySelectorAll('.preset-item');
+          if (items.length > 0) {
+            selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+            updateSelection();
+          }
+          return;
+        }
+        
+        // Typing - filter list
+        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          searchTerm += e.key;
+          renderUnitList();
+          updateSelection();
+          return;
+        }
+        
+        if (e.key === 'Backspace') {
+          searchTerm = searchTerm.slice(0, -1);
+          renderUnitList();
+          updateSelection();
+          return;
+        }
+      };
+      
+      document.addEventListener('keydown', handleKeydown);
+      
+      // Close when clicking outside
+      document.addEventListener('click', () => {
+        if (isOpen) {
+          list.classList.add('hidden');
+          isOpen = false;
+          searchTerm = '';
         }
       });
-      if (list.children.length > 0) list.classList.remove('hidden'); else list.classList.add('hidden');
-    };
-    input.addEventListener('click', render); input.addEventListener('keyup', render);
-    input.addEventListener('blur', () => setTimeout(() => (document.getElementById(`${input.dataset.army}-civ-list`) as HTMLElement).classList.add('hidden'), 200));
+    }
+  });
+
+  // Setup civ selector click handlers
+  (['a', 'b'] as const).forEach((army) => {
+    const civSelector = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
+    const list = document.getElementById(`${army}-civ-list`);
+    const civNameEl = document.getElementById(`${army}-civ-name`);
+    
+    if (civSelector && list && civNameEl) {
+      const civsList = Object.keys(civs).map(c => ({ id: c, name: c }));
+      let searchTerm = '';
+      let isOpen = false;
+      let selectedIndex = 0;
+      
+      // Set initial civ name
+      const firstCiv = Object.keys(civs)[0];
+      if (firstCiv) {
+        civNameEl.textContent = firstCiv;
+        civSelector.dataset.value = firstCiv;
+      }
+      
+      const renderCivList = () => {
+        list.innerHTML = '';
+        const filteredItems = civsList.filter(item => {
+          if (!searchTerm) return true;
+          return fuzzyMatch(item.name, searchTerm);
+        });
+        
+        // Sort by relevance
+        if (searchTerm) {
+          filteredItems.sort((a, b) => {
+            const aLower = a.name.toLowerCase();
+            const bLower = b.name.toLowerCase();
+            if (aLower === searchTerm.toLowerCase()) return -1;
+            if (bLower === searchTerm.toLowerCase()) return 1;
+            if (aLower.startsWith(searchTerm.toLowerCase())) return -1;
+            if (bLower.startsWith(searchTerm.toLowerCase())) return 1;
+            return aLower.indexOf(searchTerm.toLowerCase()) - bLower.indexOf(searchTerm.toLowerCase());
+          });
+        }
+        
+        selectedIndex = 0; // Reset selection on re-render
+        
+        filteredItems.forEach((item, index) => {
+          const el = document.createElement('div');
+          el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
+          el.textContent = item.name;
+          el.dataset.index = index.toString();
+          el.addEventListener('click', (e) => {
+            e.stopPropagation();
+            civNameEl.textContent = item.name;
+            civSelector.dataset.value = item.id;
+            list.classList.add('hidden');
+            isOpen = false;
+            searchTerm = '';
+            onInputChange(true);
+          });
+          el.addEventListener('mouseenter', () => {
+            selectedIndex = index;
+            updateCivSelection();
+          });
+          list.appendChild(el);
+        });
+        
+        if (filteredItems.length > 0) list.classList.remove('hidden');
+        else list.classList.add('hidden');
+      };
+      
+      const updateCivSelection = () => {
+        Array.from(list.children).forEach((child, i) => {
+          if (i === selectedIndex) child.classList.add('selected');
+          else child.classList.remove('selected');
+        });
+        // Scroll selected into view
+        const selected = list.children[selectedIndex] as HTMLElement;
+        if (selected) {
+          selected.scrollIntoView({ block: 'nearest' });
+        }
+      };
+      
+      const openCivList = () => {
+        renderCivList();
+        updateCivSelection(); // Highlight first item
+        
+        // Position the list directly below the selector
+        const rect = civSelector.getBoundingClientRect();
+        
+        list.style.position = 'absolute';
+        list.style.top = (rect.height + 5) + 'px';
+        list.style.left = '0';
+        list.style.zIndex = '1000';
+        list.style.maxHeight = '300px';
+        list.style.overflowY = 'auto';
+        list.style.minWidth = '200px';
+        list.style.backgroundColor = 'var(--panel-bg)';
+        list.style.border = '1px solid var(--border-color)';
+        list.style.borderRadius = '4px';
+        list.style.boxShadow = 'var(--shadow)';
+        isOpen = true;
+      };
+      
+      civSelector.addEventListener('click', (e) => {
+        e.stopPropagation();
+        searchTerm = '';
+        openCivList();
+      });
+      
+      // Global keyboard handler when list is open
+      const handleCivKeydown = (e: KeyboardEvent) => {
+        if (!isOpen) return;
+        
+        if (e.key === 'Escape') {
+          list.classList.add('hidden');
+          isOpen = false;
+          searchTerm = '';
+          return;
+        }
+        
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const selectedItem = list.querySelector('.preset-item.selected') as HTMLElement;
+          if (selectedItem) {
+            selectedItem.click();
+          } else {
+            const firstItem = list.querySelector('.preset-item') as HTMLElement;
+            if (firstItem) firstItem.click();
+          }
+          return;
+        }
+        
+        // Arrow navigation
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const items = list.querySelectorAll('.preset-item');
+          if (items.length > 0) {
+            selectedIndex = (selectedIndex + 1) % items.length;
+            updateCivSelection();
+          }
+          return;
+        }
+        
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const items = list.querySelectorAll('.preset-item');
+          if (items.length > 0) {
+            selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+            updateCivSelection();
+          }
+          return;
+        }
+        
+        // Typing - filter list
+        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          searchTerm += e.key;
+          renderCivList();
+          updateCivSelection();
+          return;
+        }
+        
+        if (e.key === 'Backspace') {
+          searchTerm = searchTerm.slice(0, -1);
+          renderCivList();
+          updateCivSelection();
+          return;
+        }
+      };
+      
+      document.addEventListener('keydown', handleCivKeydown);
+      
+      // Close when clicking outside
+      document.addEventListener('click', () => {
+        if (isOpen) {
+          list.classList.add('hidden');
+          isOpen = false;
+          searchTerm = '';
+        }
+      });
+    }
   });
 
   document.querySelectorAll('.age-btn').forEach((btn: any) => btn.addEventListener('click', () => {
@@ -1095,6 +1655,69 @@ window.onload = async () => {
   });
 
   document.getElementById('export-btn')?.addEventListener('click', exportScenario);
+
+  // Submit button - creates GitHub issue with scenario
+  document.getElementById('submit-btn')?.addEventListener('click', () => {
+    const s = getState();
+    const exportData: SimulationState = {
+      a: cleanArmyState(s.a),
+      b: cleanArmyState(s.b),
+      desc: s.desc || '',
+    };
+    
+    const scenarioJson = JSON.stringify(exportData, null, 2);
+    const title = `Scenario Submission: ${exportData.a.nm || 'Army A'} vs ${exportData.b.nm || 'Army B'}`;
+    
+    // Create issue body with scenario data
+    const body = `## Scenario Submission
+
+**Description:** ${exportData.desc || '_Add your description here_'}
+
+**Matchup:** ${exportData.a.nm || 'Army A'} vs ${exportData.b.nm || 'Army B'}
+
+**Civs:** ${exportData.a.cv || 'Any'} vs ${exportData.b.cv || 'Any'}
+
+**Notes:**
+- [ ] Balance issue
+- [ ] Fun/interesting matchup
+- [ ] Tournament scenario
+- [ ] Other: _please specify_
+
+## Scenario Data
+
+\`\`\`json
+${scenarioJson}
+\`\`\`
+
+---
+*Submitted via Chombat Combat Simulator*
+`;
+
+    // Create GitHub issue URL
+    const githubIssueUrl = `https://github.com/Crazybus/chombat/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+    
+    // Open in new tab
+    window.open(githubIssueUrl, '_blank');
+    
+    showToast('Opening GitHub issue... Please fill in the details and submit!', 3000);
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.classList.add(savedTheme);
+  }
+  themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark-theme');
+    if (isDark) {
+      document.documentElement.classList.remove('dark-theme');
+      localStorage.setItem('theme', 'light-theme');
+    } else {
+      document.documentElement.classList.add('dark-theme');
+      localStorage.setItem('theme', 'dark-theme');
+    }
+  });
 
   document.getElementById('share-btn')?.addEventListener('click', async () => {
     const btn = document.getElementById('share-btn') as HTMLElement;

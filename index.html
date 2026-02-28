@@ -27,6 +27,7 @@
         <li><button id="theme-toggle" class="nav-btn" title="Toggle Light/Dark Mode">🌓</button></li>
         <li><button id="export-btn" class="nav-btn">Export</button></li>
         <li><button id="share-btn" class="nav-btn">Share</button></li>
+        <li><button id="submit-btn" class="nav-btn" title="Submit scenario to the repo">Submit</button></li>
       </ul>
     </div>
   </nav>
@@ -51,19 +52,15 @@
       <section class="army-panel" id="army-a">
         <div class="header-row">
           <div class="name-edit-group">
-            <h2 id="name-header-a">Unit A</h2>
-            <button class="toggle-stats-btn" data-target="a-config">Edit</button>
+            <h2 id="name-header-a" class="clickable-unit-name" title="Click to change unit">Unit A</h2>
+            <button class="toggle-stats-btn" data-target="a-config">Stats</button>
           </div>
           <div style="display: flex; gap: 10px; align-items: center">
-            <div class="searchable-civ" data-army="a">
-              <input type="text" class="civ-search" data-army="a" placeholder="Select Civilization..."
-                style="width: 150px" />
+            <div class="civ-selector" data-army="a">
+              <span class="civ-label" title="Click to change civilization">⚔️ <span id="a-civ-name">Select Civ</span></span>
               <div id="a-civ-list" class="civ-list hidden"></div>
             </div>
-            <div class="searchable-preset" data-army="a">
-              <input type="text" class="preset-search" data-army="a" placeholder="Select Unit..." />
-              <div id="a-preset-list" class="preset-list hidden"></div>
-            </div>
+            <div id="a-preset-list" class="preset-list hidden"></div>
           </div>
           <div class="army-age-controls" data-army="a" style="margin-top: 10px; display: flex; gap: 5px">
             <button class="age-btn active" data-age="1">I</button>
@@ -269,19 +266,15 @@
       <section class="army-panel" id="army-b">
         <div class="header-row">
           <div class="name-edit-group">
-            <h2 id="name-header-b">Unit B</h2>
-            <button class="toggle-stats-btn" data-target="b-config">Edit</button>
+            <h2 id="name-header-b" class="clickable-unit-name" title="Click to change unit">Unit B</h2>
+            <button class="toggle-stats-btn" data-target="b-config">Stats</button>
           </div>
           <div style="display: flex; gap: 10px; align-items: center">
-            <div class="searchable-civ" data-army="b">
-              <input type="text" class="civ-search" data-army="b" placeholder="Select Civilization..."
-                style="width: 150px" />
+            <div class="civ-selector" data-army="b">
+              <span class="civ-label" title="Click to change civilization">⚔️ <span id="b-civ-name">Select Civ</span></span>
               <div id="b-civ-list" class="civ-list hidden"></div>
             </div>
-            <div class="searchable-preset" data-army="b">
-              <input type="text" class="preset-search" data-army="b" placeholder="Select Unit..." />
-              <div id="b-preset-list" class="preset-list hidden"></div>
-            </div>
+            <div id="b-preset-list" class="preset-list hidden"></div>
           </div>
           <div class="army-age-controls" data-army="b" style="margin-top: 10px; display: flex; gap: 5px">
             <button class="age-btn active" data-age="1">I</button>
