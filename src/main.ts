@@ -1392,7 +1392,8 @@ function getState(): SimulationState {
     const timeline = Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el: any) => ({
       t: el.dataset.type, n: el.querySelector('.step-name')?.value, d: el.querySelector('.step-delay')?.value,
       c: el.querySelector('.step-count')?.value, co: el.querySelector('.step-cost')?.value,
-      b: el.querySelector('.step-blocking')?.checked, v: el.querySelector('.step-value')?.value,
+      b: el.querySelector('.step-blocking')?.checked, prod: el.querySelector('.step-production')?.checked,
+      v: el.querySelector('.step-value')?.value,
       i: el.querySelector('.step-select')?.value, tr: el.querySelector('.step-train')?.value,
       f: el.querySelector('.step-f')?.value, w: el.querySelector('.step-w')?.value, g: el.querySelector('.step-g')?.value,
       bt: el.dataset.bt
