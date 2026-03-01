@@ -10,7 +10,13 @@ It uses a deterministic time-based simulation that accounts for attack reloads, 
 
 # Contributing
 
-Pull requests very welcome! Especially for adding missing unit data and interesting test scenarios. The site is static and requires no special dependencies to run and test.
+Pull requests are very welcome! If you are wanting to work on a bigger feature please open an issue first as the project is currently under rapid development.
+
+To develop locally run:
+
+```
+make dev
+```
 
 # Game Content Usage Disclaimer
 

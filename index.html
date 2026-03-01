@@ -15,15 +15,15 @@
     <div class="nav-content">
       <a href="/" class="nav-brand">
         <img src="/img/logo.png" alt="Chombat Logo" class="brand-logo" />
-        <span>CHOMBAT</span>
+        <span>CHOMBAT <span style="font-size: 0.7em; color: var(--text-dim); font-weight: normal;">(alpha)</span></span>
       </a>
       <ul>
         <li><a href="#">Units</a></li>
-        <li><a href="#section-comparison">Stats</a></li>
-        <li><a href="#section-battle">Battle Sim</a></li>
-        <li><a href="#section-production">Production</a></li>
-        <li><a href="#section-scaling">Scaling</a></li>
-        <li><a href="#section-about">About</a></li>
+        <li><a href="#comparison">Stats</a></li>
+        <li><a href="#battle">Battle Sim</a></li>
+        <li><a href="#production">Production</a></li>
+        <li><a href="#scaling">Scaling</a></li>
+        <li><a href="#about">About</a></li>
         <li><button id="theme-toggle" class="nav-btn" title="Toggle Light/Dark Mode">🌓</button></li>
         <li><button id="export-btn" class="nav-btn">Export</button></li>
         <li><button id="share-btn" class="nav-btn">Share</button></li>
@@ -42,7 +42,9 @@
         <input type="text" class="scenario-search" placeholder="Search more scenarios..." />
         <div class="scenario-list hidden"></div>
       </div>
+      <button id="new-scenario-btn" class="nav-btn" style="background: var(--color-pos); color: white;">+ New Scenario</button>
     </div>
+    <div id="scenario-name-header" class="scenario-name-header" title="Click to edit scenario name"></div>
     <div class="scenario-context">
       <textarea id="scenario-desc" placeholder="Add a description for this matchup scenario..."></textarea>
     </div>
@@ -477,9 +479,9 @@
     </div>
 
     <!-- SECTION: STAT COMPARISON -->
-    <div id="section-comparison" class="section-anchor"></div>
+    <div id="comparison" class="section-anchor"></div>
     <div class="section-header">
-      <a href="#section-comparison">
+      <a href="#comparison">
         <h2>Stat Comparison</h2>
       </a>
       <p>Direct 1v1 comparison of both units.</p>
@@ -500,9 +502,9 @@
     </div>
 
     <!-- SECTION 1 -->
-    <div id="section-battle" class="section-anchor"></div>
+    <div id="battle" class="section-anchor"></div>
     <div class="section-header">
-      <a href="#section-battle">
+      <a href="#battle">
         <h2>Battle Simulation</h2>
       </a>
       <p>
@@ -540,11 +542,11 @@
       <div id="stat-summary"></div>
       <div class="charts-grid">
         <div class="chart-wrapper">
-          <h4>Unit Counts Over Time</h4>
+          <h4>Unit Counts</h4>
           <div class="chart-container"><canvas id="countChart"></canvas></div>
         </div>
         <div class="chart-wrapper">
-          <h4>Total HP Over Time</h4>
+          <h4>Total HP</h4>
           <div class="chart-container"><canvas id="hpChart"></canvas></div>
         </div>
         <div class="chart-wrapper">
@@ -552,16 +554,16 @@
           <div class="chart-container"><canvas id="valueChart"></canvas></div>
         </div>
         <div class="chart-wrapper">
-          <h4>Cost Efficiency Ratio</h4>
-          <div class="chart-container"><canvas id="efficiencyChart"></canvas></div>
+          <h4>Damage Per Hit</h4>
+          <div class="chart-container"><canvas id="dpsChart"></canvas></div>
         </div>
       </div>
     </section>
 
     <!-- SECTION 3 -->
-    <div id="section-production" class="section-anchor"></div>
+    <div id="production" class="section-anchor"></div>
     <div class="section-header">
-      <a href="#section-production">
+      <a href="#production">
         <h2>Production Simulation</h2>
       </a>
       <p>
@@ -569,6 +571,8 @@
         construction time. If someone starts massing miltia in dark age, how long until you have enough scouts to win?
       </p>
     </div>
+    <button class="toggle-prod-section-btn" data-target="production-content">Edit Production Simulation</button>
+    <div class="production-content collapsed" id="production-content">
     <div class="production-race-controls">
       <div class="prod-group army-a-border">
         <div class="prod-header" style="display: flex; justify-content: space-between; align-items: center">
@@ -587,7 +591,7 @@
         <div class="production-timeline" id="pa-timeline">
           <!-- Steps will be added here -->
         </div>
-        <div class="add-step-controls">
+        <div class="add-step-controls" id="pa-add-steps">
           <button class="add-step-btn" data-army="a" data-type="villagers">Villagers</button>
           <button class="add-step-btn" data-army="a" data-type="building">Building</button>
           <button class="add-step-btn" data-army="a" data-type="production">Production</button>
@@ -598,7 +602,6 @@
           <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="4">IV</button>
         </div>
       </div>
-      <div class="prod-vs">VS</div>
       <div class="prod-group army-b-border">
         <div class="prod-header" style="display: flex; justify-content: space-between; align-items: center">
           <label id="prod-name-b">Unit B Production</label>
@@ -616,7 +619,7 @@
         <div class="production-timeline" id="pb-timeline">
           <!-- Steps will be added here -->
         </div>
-        <div class="add-step-controls">
+        <div class="add-step-controls" id="pb-add-steps">
           <button class="add-step-btn" data-army="b" data-type="villagers">Villagers</button>
           <button class="add-step-btn" data-army="b" data-type="building">Building</button>
           <button class="add-step-btn" data-army="b" data-type="production">Production</button>
@@ -627,6 +630,7 @@
           <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="4">IV</button>
         </div>
       </div>
+    </div>
     </div>
     <div class="results-area">
       <div class="charts-grid scaling-grid">
@@ -650,13 +654,17 @@
       <div class="matchup-report">
         <h3>Production Analysis</h3>
         <div id="production-report-text">Configure production stats above.</div>
+        <details class="event-log-details">
+          <summary class="event-log-summary">Show Event Log</summary>
+          <div class="event-log-container"></div>
+        </details>
       </div>
     </div>
 
     <!-- SECTION 2 -->
-    <div id="section-scaling" class="section-anchor"></div>
+    <div id="scaling" class="section-anchor"></div>
     <div class="section-header">
-      <a href="#section-scaling">
+      <a href="#scaling">
         <h2>Effectiveness Scaling</h2>
       </a>
       <p>Pop & Cost efficiency across different swarm ratios.</p>
@@ -703,9 +711,9 @@
       </div>
     </div>
 
-    <div id="section-about" class="section-anchor"></div>
+    <div id="about" class="section-anchor"></div>
     <div class="section-header">
-      <a href="#section-about">
+      <a href="#about">
         <h2>About Chombat</h2>
       </a>
     </div>
@@ -713,6 +721,9 @@
       <p>
         Chombat is an Age of Empires II combat simulator designed to help players understand the nuances of unit
         interactions, balance, production timing, micro impact, and unit scaling.
+      </p>
+      <p>
+        This project is currently in alpha state. I will do my best to maintain backwards compatability of shared scenarios but will make breaking changes if it is needed for new features. Any scenarios which have been submitted via the "submit" button will be tested and updated before releases of new versions.
       </p>
       <p>
         One of the specific design choices is to make the tool a template for testing out ideas and strategies. Some

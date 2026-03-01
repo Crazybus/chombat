@@ -9,6 +9,10 @@ export interface EconomyPoint {
   time: number;
   gathered: number;
   spent: number;
+  spentOnVillagers: number;
+  spentOnUnits: number;
+  spentOnBuildings: number;
+  spentOnTechs: number;
 }
 
 export interface ProductionResult {
@@ -36,6 +40,10 @@ export function calculateCount(
   let villagers = initialVillagers; // Start with specified vills
   let gatheredTotal = 0;
   let spentTotal = 0;
+  let spentOnVillagers = 0;
+  let spentOnUnits = 0;
+  let spentOnBuildings = 0;
+  let spentOnTechs = 0;
   const gatheringRate = 0.35; // Rough average res/sec/vill
   const economyHistory: EconomyPoint[] = [];
 
@@ -58,6 +66,7 @@ export function calculateCount(
         villagers++;
         villagerProgress -= 1;
         spentTotal += 50; // Cost of a villager
+        spentOnVillagers += 50;
       }
     }
 
@@ -74,7 +83,19 @@ export function calculateCount(
 
         // Cost application
         const unitCost = (step.f || 0) + (step.w || 0) + (step.g || 0);
-        spentTotal += (unitCost || step.co || 0) * count;
+        const stepCost = (unitCost || step.co || 0) * count;
+        spentTotal += stepCost;
+        
+        // Categorize spending
+        if (step.t === 'villagers') {
+          spentOnVillagers += stepCost;
+        } else if (step.t === 'building') {
+          spentOnBuildings += stepCost;
+        } else if (step.t === 'tech') {
+          spentOnTechs += stepCost;
+        } else if (step.t === 'production') {
+          spentOnUnits += stepCost;
+        }
 
         if (step.b) {
           if (step.t === 'age' || (step.t === 'tech' && step.bt === 109)) {
@@ -98,15 +119,22 @@ export function calculateCount(
         if (step.t === 'building' || step.t === 'prod' || step.t === 'villagers') {
           if (step.t === 'villagers') {
             villagers += (step.v || 0);
-          } else {
-            currentBuild += step.v || 0;
-            if (step.t === 'building' && (step.v || 0) > 0)
-              events.push({ time: s, msg: `Production Capacity +${step.v}` });
+          } else if (step.t === 'building') {
+            // Count buildings with production checkbox enabled
+            if (step.prod) {
+              currentBuild++;
+              events.push({ time: s, msg: `Production Capacity +1` });
+            }
+          } else if (step.t === 'prod') {
+            if (step.prod) {
+              currentBuild++;
+              events.push({ time: s, msg: `Production Capacity +1` });
+            }
           }
         } else if (step.t === 'production') {
-          currentBuild = step.v || currentBuild;
+          // Production step just sets the train time
           currentTrain = step.tr || currentTrain;
-          events.push({ time: s, msg: `Production set to ${currentBuild}x at ${currentTrain}s` });
+          events.push({ time: s, msg: `Production speed set to ${currentTrain}s` });
         } else if (step.t === 'cost') {
           currentCost = { f: step.f || 0, w: step.w || 0, g: step.g || 0 };
         }
@@ -122,17 +150,25 @@ export function calculateCount(
         const n = Math.floor(productionDebt);
         unitsCount += n;
         productionDebt -= n;
-        // Cost for produced units? 
-        // Note: TimelineStep 'cost' usually overrides the unit cost for the sim.
-        // We'll use currentCost if set, otherwise assume 100 for a placeholder if not in a step.
+        // Cost for produced units
         const c = currentCost.f + currentCost.w + currentCost.g;
-        spentTotal += n * (c || 100);
+        const unitCostTotal = n * (c || 100);
+        spentTotal += unitCostTotal;
+        spentOnUnits += unitCostTotal;
       }
     }
 
     // 5. Record economy
     if (s % 10 === 0) {
-      economyHistory.push({ time: s, gathered: gatheredTotal, spent: spentTotal });
+      economyHistory.push({ 
+        time: s, 
+        gathered: gatheredTotal, 
+        spent: spentTotal,
+        spentOnVillagers: spentOnVillagers,
+        spentOnUnits: spentOnUnits,
+        spentOnBuildings: spentOnBuildings,
+        spentOnTechs: spentOnTechs
+      });
     }
   }
 

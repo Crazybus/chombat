@@ -3903,6 +3903,7 @@ export const units: Record<string, UnitData> = {
         "id": "6",
         "class": 0,
         "bonuses": {
+            "0": 4,
             "28": 2,
             "27": 4,
             "21": 0,
@@ -7802,6 +7803,7 @@ export const units: Record<string, UnitData> = {
         "id": "7",
         "class": 0,
         "bonuses": {
+            "0": 3,
             "28": 0,
             "27": 3,
             "21": 0,

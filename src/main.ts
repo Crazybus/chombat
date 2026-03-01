@@ -17,46 +17,43 @@ let defaults: Record<string, string> = {};
 let activeScenario: string | null = null;
 let allUnits: Record<string, UnitData> = {};
 let techsById: Record<number, TechData> = {};
+let isLoadingScenario = false; // Flag to prevent clearing scenario during load
 
 // Rate limiting for share functionality
 const SHARE_RATE_LIMIT = {
-  perMinute: 20,     // Allow 20 shares per minute per user
-  perDay: 1000,      // 1000 shares per day total (shared pool for all users)
-  lastShareTime: 0,
-  dailyCount: 0,
-  dailyResetTime: 0,
+  perHour: 10,       // Allow 10 shares per hour (sliding window)
+  lastShareTimes: [] as number[], // Track timestamps of recent shares
 };
 
 /**
  * Check if share action is rate limited
  * Returns { allowed: boolean, reason?: string, retryAfter?: number }
+ * 
+ * Rate limiting is disabled for localhost development.
+ * Uses sliding window: max 10 shares per hour.
  */
 function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?: number } {
+  // Disable rate limiting for local development
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return { allowed: true };
+  }
+  
   const now = Date.now();
-  const minuteMs = 60 * 1000;
-  const dayMs = 24 * 60 * 60 * 1000;
-
-  // Reset daily counter if needed
-  if (now - SHARE_RATE_LIMIT.dailyResetTime > dayMs) {
-    SHARE_RATE_LIMIT.dailyCount = 0;
-    SHARE_RATE_LIMIT.dailyResetTime = now;
-  }
-
-  // Check per-minute limit
-  if (now - SHARE_RATE_LIMIT.lastShareTime < minuteMs) {
-    const retryAfter = Math.ceil((minuteMs - (now - SHARE_RATE_LIMIT.lastShareTime)) / 1000);
+  const hourMs = 60 * 60 * 1000;
+  
+  // Remove shares older than 1 hour (sliding window)
+  SHARE_RATE_LIMIT.lastShareTimes = SHARE_RATE_LIMIT.lastShareTimes.filter(
+    time => now - time < hourMs
+  );
+  
+  // Check if we've exceeded the hourly limit
+  if (SHARE_RATE_LIMIT.lastShareTimes.length >= SHARE_RATE_LIMIT.perHour) {
+    const oldestShare = SHARE_RATE_LIMIT.lastShareTimes[0];
+    const retryAfter = Math.ceil((hourMs - (now - oldestShare)) / (60 * 1000)); // minutes
     return {
       allowed: false,
-      retryAfter,
-    };
-  }
-
-  // Check per-day limit
-  if (SHARE_RATE_LIMIT.dailyCount >= SHARE_RATE_LIMIT.perDay) {
-    const retryAfter = Math.ceil((dayMs - (now - SHARE_RATE_LIMIT.dailyResetTime)) / (60 * 1000));
-    return {
-      allowed: false,
-      retryAfter,
+      reason: `Hourly share limit reached (${SHARE_RATE_LIMIT.perHour}/hour). Try again in ${retryAfter} minute(s).`,
+      retryAfter: retryAfter * 60, // return in seconds
     };
   }
 
@@ -68,14 +65,11 @@ function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?
  */
 function recordShare() {
   const now = Date.now();
-  SHARE_RATE_LIMIT.lastShareTime = now;
-  SHARE_RATE_LIMIT.dailyCount++;
-
+  SHARE_RATE_LIMIT.lastShareTimes.push(now);
+  
   // Persist to localStorage
   localStorage.setItem('shareRateLimit', JSON.stringify({
-    lastShareTime: SHARE_RATE_LIMIT.lastShareTime,
-    dailyCount: SHARE_RATE_LIMIT.dailyCount,
-    dailyResetTime: SHARE_RATE_LIMIT.dailyResetTime,
+    lastShareTimes: SHARE_RATE_LIMIT.lastShareTimes,
   }));
 }
 
@@ -87,9 +81,7 @@ function loadRateLimitState() {
     const stored = localStorage.getItem('shareRateLimit');
     if (stored) {
       const parsed = JSON.parse(stored);
-      SHARE_RATE_LIMIT.lastShareTime = parsed.lastShareTime || 0;
-      SHARE_RATE_LIMIT.dailyCount = parsed.dailyCount || 0;
-      SHARE_RATE_LIMIT.dailyResetTime = parsed.dailyResetTime || 0;
+      SHARE_RATE_LIMIT.lastShareTimes = parsed.lastShareTimes || [];
     }
   } catch (e) {
     console.error('Failed to load rate limit state:', e);
@@ -107,7 +99,14 @@ function getThemeColor(varName: string): string {
 }
 
 function onInputChange(manualChange: boolean = true) {
-  if (manualChange) activeScenario = null;
+  if (manualChange && !isLoadingScenario) {
+    // Clear scenario when user makes changes (custom scenario)
+    if (activeScenario) {
+      activeScenario = null;
+      updateFeaturedScenarioButtons();
+      history.replaceState(null, '', window.location.pathname);
+    }
+  }
 
   const updateLabel = (army: 'a' | 'b') => {
     const name = (document.getElementById(`${army}-name`) as HTMLInputElement)?.value || `Unit ${army.toUpperCase()}`;
@@ -259,12 +258,21 @@ function updateResultCard(res: CombatResult, nameA: string, nameB: string) {
 
 function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState, simRef: CombatSim) {
   const el = document.getElementById('comparison-body');
-  if (!el) return;
+  const summaryEl = document.getElementById('comparison-summary');
+  if (!el || !summaryEl) return;
 
   const uA = new Unit(simRef.dataA);
   const uB = new Unit(simRef.dataB);
   const baseA = allUnits[simRef.dataA.id];
   const baseB = allUnits[simRef.dataB.id];
+  const nameA = (cA as any).nm || dA.name;
+  const nameB = (cB as any).nm || dB.name;
+  
+  // Update table headers with actual unit names
+  const headerA = document.getElementById('comp-name-a');
+  const headerB = document.getElementById('comp-name-b');
+  if (headerA) headerA.textContent = nameA;
+  if (headerB) headerB.textContent = nameB;
 
   const formatWithBase = (total: number, base: number) => {
     const diff = total - base;
@@ -277,10 +285,14 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
     const isMelee = atk.range <= 1;
     const baseAtk = isMelee ? atk.matk : atk.patk;
     const baseArm = isMelee ? def.marm : def.parm;
+    
+    // Calculate bonus damage against defender's class
     let bonus = 0;
-    for (const [cls, amt] of Object.entries(atk.bonuses || {})) {
-      bonus += Math.max(0, amt - (def.armors[cls] || 0));
+    const defClass = String(def.class);
+    if (atk.bonuses && atk.bonuses[defClass]) {
+      bonus = atk.bonuses[defClass];
     }
+    
     return { base: baseAtk, arm: baseArm, bonus, net: Math.max(1, baseAtk - baseArm + bonus) };
   };
 
@@ -296,15 +308,58 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
     return u.isMelee() ? (baseData.marm || 0) : (baseData.parm || 0);
   };
 
+  // Calculate winner and remaining HP
+  const hitsToKillA = Math.ceil(uB.hpPerUnit / nA.net);
+  const hitsToKillB = Math.ceil(uA.hpPerUnit / nB.net);
+  const timeToKillA = hitsToKillA * uA.reload;
+  const timeToKillB = hitsToKillB * uB.reload;
+  
+  // Calculate remaining HP for winner
+  let winner = 'Draw';
+  let winnerColor = 'var(--text-color)';
+  let remainingInfo = '';
+  
+  if (timeToKillA < timeToKillB) {
+    // Army A wins (kills faster)
+    winner = nameA;
+    winnerColor = getThemeColor('--army-a-color');
+    // Army A only takes damage for the time it takes to kill Army B
+    const shotsBCanFire = Math.ceil(timeToKillA / uB.reload);
+    const damageTaken = shotsBCanFire * nB.net;
+    const remainingHp = Math.max(0, uA.hpPerUnit - damageTaken);
+    remainingInfo = `${remainingHp.toFixed(0)} HP remaining`;
+  } else if (timeToKillB < timeToKillA) {
+    // Army B wins (kills faster)
+    winner = nameB;
+    winnerColor = getThemeColor('--army-b-color');
+    // Army B only takes damage for the time it takes to kill Army A
+    const shotsACanFire = Math.ceil(timeToKillB / uA.reload);
+    const damageTaken = shotsACanFire * nA.net;
+    const remainingHp = Math.max(0, uB.hpPerUnit - damageTaken);
+    remainingInfo = `${remainingHp.toFixed(0)} HP remaining`;
+  }
+
+  // Update summary above table (same format as battle sim)
+  if (winner !== 'Draw') {
+    summaryEl.innerHTML = `<div style="text-align: center; padding: 15px; background: var(--panel-bg-alt); border-radius: 4px; margin-bottom: 15px;">
+      <span style="font-size: 1.3rem;">Winner: <span style="color: ${winnerColor}; font-weight: bold;">${winner}</span> with ${remainingInfo}</span>
+    </div>`;
+  } else {
+    summaryEl.innerHTML = `<div style="text-align: center; padding: 15px; background: var(--panel-bg-alt); border-radius: 4px; margin-bottom: 15px;">
+      <span style="font-size: 1.3rem;">Winner: <span style="color: var(--text-color); font-weight: bold;">Even fight</span></span>
+    </div>`;
+  }
+
   const rows = [
-    { label: 'HP', a: formatWithBase(uA.hpPerUnit, baseA?.hp || uA.hpPerUnit), b: formatWithBase(uB.hpPerUnit, baseB?.hp || uB.hpPerUnit) },
-    { label: 'Attack (Base)', a: formatWithBase(nA.base, getBaseAtk(uA, baseA)), b: formatWithBase(nB.base, getBaseAtk(uB, baseB)) },
+    { label: 'HP (base + upgrades)', a: formatWithBase(uA.hpPerUnit, baseA?.hp || uA.hpPerUnit), b: formatWithBase(uB.hpPerUnit, baseB?.hp || uB.hpPerUnit) },
+    { label: 'Attack (base + upgrades)', a: formatWithBase(nA.base, getBaseAtk(uA, baseA)), b: formatWithBase(nB.base, getBaseAtk(uB, baseB)) },
     { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0) },
-    { label: 'Opponent Arm', a: formatWithBase(nA.arm, getBaseArm(uB, baseB)), b: formatWithBase(nB.arm, getBaseArm(uA, baseA)), inv: true },
-    { label: 'Net Dmg/Hit', a: nA.net.toFixed(0), b: nB.net.toFixed(0) },
+    { label: 'Armor', a: formatWithBase(nA.arm, getBaseArm(uA, baseA)), b: formatWithBase(nB.arm, getBaseArm(uB, baseB)), inv: true },
+    { label: `Damage Per Hit`, a: `${nA.net.toFixed(0)} (${nA.base.toFixed(0)} - ${getBaseArm(uB, baseB).toFixed(0)} + ${nA.bonus.toFixed(0)})`, b: `${nB.net.toFixed(0)} (${nB.base.toFixed(0)} - ${getBaseArm(uA, baseA).toFixed(0)} + ${nB.bonus.toFixed(0)})` },
     { label: 'Hits to Kill', a: Math.ceil(uB.hpPerUnit / nA.net).toString(), b: Math.ceil(uA.hpPerUnit / nB.net).toString(), inv: true },
-    { label: 'Reload', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), inv: true },
-    { label: 'DPS (Eff)', a: (nA.net / uA.reload).toFixed(2), b: (nB.net / uB.reload).toFixed(2) },
+    { label: 'Time to Kill', a: timeToKillA.toFixed(1) + 's', b: timeToKillB.toFixed(1) + 's', inv: true },
+    { label: 'Attack Reload Time', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), inv: true },
+    { label: 'Damage Per Second', a: (nA.net / uA.reload).toFixed(2), b: (nB.net / uB.reload).toFixed(2) },
   ] as { label: string; a: string; b: string; inv?: boolean }[];
 
   el.innerHTML = rows.map((r) => {
@@ -333,10 +388,18 @@ function updateTimeCharts(history: any[], nameA: string, nameB: string) {
     });
   };
 
+  // Get unit costs for value calculation
+  const unitA = Object.values(allUnits).find(u => u.name === nameA);
+  const unitB = Object.values(allUnits).find(u => u.name === nameB);
+  const costA = unitA ? (unitA.f + unitA.w + unitA.g) : 0;
+  const costB = unitB ? (unitB.f + unitB.w + unitB.g) : 0;
+
   renderLineChart('countChart', [{ label: nameA, data: history.map(h => h.countA), borderColor: colorA }, { label: nameB, data: history.map(h => h.countB), borderColor: colorB }]);
   renderLineChart('hpChart', [{ label: nameA, data: history.map(h => h.hpA), borderColor: colorA }, { label: nameB, data: history.map(h => h.hpB), borderColor: colorB }]);
-  renderLineChart('valueChart', [{ label: nameA, data: history.map(h => h.valRemainingA), borderColor: colorA }, { label: nameB, data: history.map(h => h.valRemainingB), borderColor: colorB }]);
-  renderLineChart('efficiencyChart', [{ label: 'Cost Efficiency Ratio', data: history.map(h => (h.valLostA === 0 ? 1 : h.valLostB / h.valLostA)), borderColor: accent }]);
+  // Resource Value = unit count × resource cost
+  renderLineChart('valueChart', [{ label: nameA, data: history.map(h => h.countA * costA), borderColor: colorA }, { label: nameB, data: history.map(h => h.countB * costB), borderColor: colorB }]);
+  // Damage Per Hit = remaining units × damage per hit to enemy
+  renderLineChart('dpsChart', [{ label: nameA, data: history.map(h => h.dpsA), borderColor: colorA }, { label: nameB, data: history.map(h => h.dpsB), borderColor: colorB }]);
 }
 
 function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState) {
@@ -347,7 +410,7 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
     c: parseInt(el.querySelector('.step-count')?.value) || 1,
     co: parseFloat(el.querySelector('.step-cost')?.value) || 0,
     b: el.querySelector('.step-blocking')?.checked,
-    v: parseFloat(el.querySelector('.step-value')?.value) || 0,
+    prod: el.querySelector('.step-production')?.checked,
     tr: parseFloat(el.querySelector('.step-train')?.value) || 30,
     f: parseFloat(el.querySelector('.step-f')?.value),
     w: parseFloat(el.querySelector('.step-w')?.value),
@@ -393,8 +456,19 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
 
       if (!cross && data.advantage.length > 0) {
         const prev = data.advantage[data.advantage.length - 1];
-        if ((prev < 0 && adv > 0) || (prev > 0 && adv < 0))
-          cross = { time: t, cA: resA.count, cB: resB.count, win: adv > 0 ? nameA : nameB };
+        if ((prev < 0 && adv > 0) || (prev > 0 && adv < 0)) {
+          // Save economy data for breakdown
+          const economyA = resA.economyHistory[resA.economyHistory.length - 1];
+          const economyB = resB.economyHistory[resB.economyHistory.length - 1];
+          cross = { 
+            time: t, 
+            cA: resA.count, 
+            cB: resB.count, 
+            win: adv > 0 ? nameA : nameB,
+            economyA: economyA,
+            economyB: economyB
+          };
+        }
       }
     } else if (resA.count > 0) adv = 100; else if (resB.count > 0) adv = -100;
     data.advantage.push(adv);
@@ -403,15 +477,56 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
   renderProductionCharts(data, nameA, nameB);
 
   const report = document.getElementById('production-report-text');
-  if (report) {
+  const eventLogContainer = document.querySelector('.event-log-container');
+  if (report && eventLogContainer) {
     let msg = contact ? `<p>First units arrive at ${contact.time}s: <strong>${contact.cA} ${nameA}</strong> vs <strong>${contact.cB} ${nameB}</strong>.</p>` : '';
     if (cross) {
-      msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span><br>The <strong>${cross.win}</strong> player starts winning once they have massed <strong>${cross.win === nameA ? cross.cA : cross.cB} units</strong> vs the opponent's <strong>${cross.win === nameA ? cross.cB : cross.cA}</strong>.</p>`;
+      const formatCost = (cost: number) => Math.round(cost).toLocaleString();
+      const winnerUnits = cross.win === nameA ? cross.cA : cross.cB;
+      const loserUnits = cross.win === nameA ? cross.cB : cross.cA;
+      const winnerName = cross.win;
+      const loserName = cross.win === nameA ? nameB : nameA;
+      
+      msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span></p>`;
+      msg += `<p style="margin: 10px 0;">The <strong>${winnerName}</strong> player starts winning once they have massed <strong>${winnerUnits} ${winnerName}</strong> to beat the <strong>${loserUnits} ${loserName}</strong>.</p>`;
+      
+      // Resource investment breakdown table
+      const winnerEconomy = cross.win === nameA ? cross.economyA : cross.economyB;
+      const loserEconomy = cross.win === nameA ? cross.economyB : cross.economyA;
+      
+      msg += `<div style="margin: 15px 0;">`;
+      msg += `<h4 style="color: var(--accent-color); margin-bottom: 10px;">Resource Investment at ${cross.time}s</h4>`;
+      msg += `<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">`;
+      msg += `<thead><tr style="background: var(--panel-bg-alt);">`;
+      msg += `<th style="padding: 8px; text-align: left; border: 1px solid var(--border-dim);">Category</th>`;
+      msg += `<th style="padding: 8px; text-align: right; border: 1px solid var(--border-dim); color: ${getThemeColor('--army-a-color')};">${winnerName}</th>`;
+      msg += `<th style="padding: 8px; text-align: right; border: 1px solid var(--border-dim); color: ${getThemeColor('--army-b-color')};">${loserName}</th>`;
+      msg += `</tr></thead>`;
+      msg += `<tbody>`;
+      msg += `<tr><td style="padding: 8px; border: 1px solid var(--border-dim);">Villagers</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(winnerEconomy?.spentOnVillagers || 0)}</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(loserEconomy?.spentOnVillagers || 0)}</td></tr>`;
+      msg += `<tr><td style="padding: 8px; border: 1px solid var(--border-dim);">Units</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(winnerEconomy?.spentOnUnits || 0)}</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(loserEconomy?.spentOnUnits || 0)}</td></tr>`;
+      msg += `<tr><td style="padding: 8px; border: 1px solid var(--border-dim);">Buildings</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(winnerEconomy?.spentOnBuildings || 0)}</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(loserEconomy?.spentOnBuildings || 0)}</td></tr>`;
+      msg += `<tr><td style="padding: 8px; border: 1px solid var(--border-dim);">Technologies</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(winnerEconomy?.spentOnTechs || 0)}</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(loserEconomy?.spentOnTechs || 0)}</td></tr>`;
+      msg += `<tr style="background: var(--panel-bg-alt); font-weight: bold;">`;
+      msg += `<td style="padding: 8px; border: 1px solid var(--border-dim);">Total Investment</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(winnerEconomy?.spent || 0)}</td>`;
+      msg += `<td style="padding: 8px; text-align: right; border: 1px solid var(--border-dim);">${formatCost(loserEconomy?.spent || 0)}</td></tr>`;
+      msg += `</tbody></table>`;
+      msg += `</div>`;
     } else {
       msg += `<p><strong>Dominance:</strong> ${data.advantage[data.advantage.length - 1] > 0 ? nameA : nameB} maintains the lead.</p>`;
     }
+    report.innerHTML = msg;
 
-    msg += `<h4>Event Log</h4><div class="event-log-container">`;
+    // Build event log separately
     const resA_final = calculateCount(searchMax, tlA, baseCostA, contA);
     const resB_final = calculateCount(searchMax, tlB, baseCostB, contB);
     const combinedEvents = [
@@ -419,11 +534,15 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
       ...resB_final.events.map(e => ({ ...e, army: 'B', color: getThemeColor('--army-b-color') }))
     ].filter(e => e.time > 0).sort((a, b) => a.time - b.time);
 
-    combinedEvents.forEach(e => {
-      msg += `<div class="event-row"><span class="event-time">${e.time}s</span> <span style="color:${e.color}; font-weight:bold">[${e.army}]</span> ${e.msg}</div>`;
-    });
-    msg += `</div>`;
-    report.innerHTML = msg;
+    if (combinedEvents.length > 0) {
+      let eventHtml = '';
+      combinedEvents.forEach(e => {
+        eventHtml += `<div class="event-row"><span class="event-time">${e.time}s</span> <span style="color:${e.color}; font-weight:bold">[${e.army}]</span> ${e.msg}</div>`;
+      });
+      eventLogContainer.innerHTML = eventHtml;
+    } else {
+      eventLogContainer.innerHTML = '<p style="color: var(--text-dim); font-size: 0.85rem;">No events recorded</p>';
+    }
   }
 
   const renderReqs = (army: 'a' | 'b', cost: any, ups: number) => {
@@ -616,7 +735,7 @@ function addProductionStep(army: 'a' | 'b', type: string, data: any = {}) {
   if (type === 'cost') {
     bodyHtml = `<div class="step-field"><label>Food</label><input type="number" class="step-f" value="${data.f || 0}" style="width:40px;"></div><div class="step-field"><label>Wood</label><input type="number" class="step-w" value="${data.w || 0}" style="width:40px;"></div><div class="step-field"><label>Gold</label><input type="number" class="step-g" value="${data.g || 0}" style="width:40px;"></div>`;
   } else {
-    bodyHtml = `<div class="step-field"><label>Name</label><input type="text" class="step-name" value="${data.name || ''}" style="width:100px;"></div><div class="step-field"><label>Delay</label><input type="number" class="step-delay" value="${data.delay || 0}" style="width:45px;"></div><div class="step-field"><label>x</label><input type="number" class="step-count" value="${data.count || 1}" style="width:35px;"></div><div class="step-field"><label>Cost</label><input type="number" class="step-cost" value="${data.cost || 0}" style="width:45px;"></div><div class="step-field"><label>Block</label><input type="checkbox" class="step-blocking" ${data.isBlocking ? 'checked' : ''}></div><div class="step-field"><label>Value</label><input type="number" class="step-value" value="${data.value || 0}" style="width:40px;"></div>${type === 'production' ? `<div class="step-field"><label>Speed</label><input type="number" class="step-train" value="${data.train || 30}" style="width:40px;"></div>` : ''}`;
+    bodyHtml = `<div class="step-field"><label>Name</label><input type="text" class="step-name" value="${data.name || ''}" style="width:100px;"></div><div class="step-field"><label>Delay</label><input type="number" class="step-delay" value="${data.delay || 0}" style="width:45px;"></div><div class="step-field"><label>x</label><input type="number" class="step-count" value="${data.count || 1}" style="width:35px;"></div><div class="step-field"><label>Cost</label><input type="number" class="step-cost" value="${data.cost || 0}" style="width:45px;"></div><div class="step-field"><label>Block</label><input type="checkbox" class="step-blocking" ${data.isBlocking ? 'checked' : ''}></div><div class="step-field"><label>Production</label><input type="checkbox" class="step-production" ${data.production ? 'checked' : ''}></div>${type === 'production' ? `<div class="step-field"><label>Speed</label><input type="number" class="step-train" value="${data.train || 30}" style="width:40px;"></div>` : ''}`;
   }
 
   step.innerHTML = `<div class="step-header"><div class="step-drag-handle">::</div><span class="timeline-step-label">${type}</span><button class="remove-step-btn">&times;</button></div><div class="step-body">${select} ${bodyHtml}</div>`;
@@ -791,17 +910,90 @@ function loadPreset(army: 'a' | 'b', id: string) {
   onInputChange(false);
 }
 
+/**
+ * Update featured scenario buttons to highlight active scenario
+ */
+function updateFeaturedScenarioButtons() {
+  document.querySelectorAll('.scenario-btn').forEach((btn: any) => {
+    if (btn.dataset.scenarioId === activeScenario) {
+      btn.classList.add('active');
+      btn.style.background = 'var(--accent-color)';
+      btn.style.color = 'black';
+    } else {
+      btn.classList.remove('active');
+      btn.style.background = '';
+      btn.style.color = '';
+    }
+  });
+}
+
 function loadScenario(id: string) {
+  isLoadingScenario = true; // Prevent clearing scenario during load
+  
   const s = (scenarios as any)[id];
   console.log(`Loading scenario "${id}":`, s ? 'FOUND' : 'NOT FOUND');
-  
+
   if (!s) {
     console.error(`Scenario "${id}" not found! Available:`, Object.keys(scenarios));
     showToast(`Scenario "${id}" not found!`, 3000);
+    isLoadingScenario = false;
     return;
   }
   activeScenario = id;
   console.log(`Scenario "${id}" loaded successfully`);
+
+  // Update URL with scenario (clean URL, no data)
+  history.replaceState(null, '', '?scenario=' + id);
+
+  // Update featured scenario buttons to highlight active one
+  updateFeaturedScenarioButtons();
+
+  // Update scenario name header
+  const scenarioNameHeader = document.getElementById('scenario-name-header');
+  if (scenarioNameHeader) {
+    scenarioNameHeader.textContent = s.name || '';
+    scenarioNameHeader.style.display = s.name ? 'block' : 'none';
+    scenarioNameHeader.title = 'Click to edit scenario name';
+    
+    // Make scenario name editable on click
+    scenarioNameHeader.onclick = () => {
+      const currentName = scenarioNameHeader.textContent || '';
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.value = currentName;
+      input.className = 'scenario-name-input';
+      input.style.cssText = 'width: 100%; font-size: 1.3rem; font-weight: bold; text-align: center; padding: 10px; background: var(--panel-bg); color: var(--text-color); border: 2px solid var(--accent-color); border-radius: var(--border-radius);';
+      
+      scenarioNameHeader.innerHTML = '';
+      scenarioNameHeader.appendChild(input);
+      input.focus();
+      input.select();
+      
+      const saveName = () => {
+        const newName = input.value.trim() || currentName;
+        scenarioNameHeader.textContent = newName;
+        scenarioNameHeader.style.display = newName ? 'block' : 'none';
+
+        // Update description if it matches the old name
+        const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
+        if (descEl && (descEl.value === currentName || !descEl.value)) {
+          descEl.value = newName;
+        }
+
+        onInputChange(false); // Update charts and URL
+      };
+      
+      input.addEventListener('blur', saveName);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          input.blur();
+        } else if (e.key === 'Escape') {
+          scenarioNameHeader.textContent = currentName;
+          scenarioNameHeader.style.display = currentName ? 'block' : 'none';
+        }
+      });
+    };
+  }
   
   // Load description (or name if desc doesn't exist)
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
@@ -900,7 +1092,7 @@ function loadScenario(id: string) {
           count: step.c,
           cost: step.co,
           isBlocking: step.b,
-          value: step.v,
+          production: step.prod,
           id: step.i,
           train: step.tr,
           f: step.f,
@@ -922,6 +1114,8 @@ function loadScenario(id: string) {
   console.log('=== Calling updateCharts to refresh display ===');
   updateCharts();
   console.log('=== updateCharts complete ===');
+  
+  isLoadingScenario = false; // Re-enable scenario clearing
 }
 
 /**
@@ -941,21 +1135,121 @@ function showToast(message: string, duration: number = 2000) {
 
 function exportScenario() {
   const s = getState();
+
+  // Generate a scenario ID from the scenario name or description
+  const scenarioId = (s.name || s.desc || 'new_scenario')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/_+/g, '_')
+    .replace(/^_|_$/g, '')
+    .slice(0, 30);
+
+  // Use scenario name from state (already includes header text)
+  const scenarioName = s.name || 'New Scenario';
   
-  // Create a clean, TypeScript-compatible export format
-  const exportData: SimulationState = {
-    a: cleanArmyState(s.a),
-    b: cleanArmyState(s.b),
-    desc: s.desc || '',
+  // Helper to convert timeline steps to export format
+  const convertTimeline = (army: string) => {
+    const timeline = Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el: any) => {
+      const step: any = {
+        t: el.dataset.type,
+        n: el.querySelector('.step-name')?.value,
+        d: parseFloat(el.querySelector('.step-delay')?.value) || 0,
+        c: parseInt(el.querySelector('.step-count')?.value) || 1,
+        co: parseFloat(el.querySelector('.step-cost')?.value) || 0,
+      };
+      
+      // Add blocking if checked
+      const blocking = el.querySelector('.step-blocking')?.checked;
+      if (blocking) step.b = true;
+      
+      // Add production checkbox if checked
+      const production = el.querySelector('.step-production')?.checked;
+      if (production) step.prod = true;
+      
+      // Add villager count for villager steps
+      if (el.dataset.type === 'villagers') {
+        step.v = parseInt(el.querySelector('.step-value')?.value) || 0;
+      }
+      
+      // Add train time for production steps
+      if (el.dataset.type === 'production') {
+        step.tr = parseFloat(el.querySelector('.step-train')?.value) || 30;
+      }
+      
+      // Add building/tech ID
+      const id = el.querySelector('.step-select')?.value;
+      if (id) step.i = id;
+      
+      // Add building target
+      const bt = el.dataset.bt;
+      if (bt) step.bt = parseInt(bt);
+      
+      return step;
+    });
+    return timeline;
   };
   
-  const exportText = JSON.stringify(exportData, null, 2);
+  // Helper to convert bonuses to export format
+  const convertBonuses = (army: string) => {
+    const bonuses = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el: any) => {
+      const id = el.dataset.id;
+      const checks = Array.from(el.querySelectorAll('input')).map((cb: any) => cb.checked);
+      return { i: id, e: checks };
+    });
+    return bonuses;
+  };
+  
+  // Create export format with scenario ID for direct paste into scenarios file
+  const exportData: any = {
+    [scenarioId]: {
+      name: scenarioName,
+      desc: s.desc || '',
+      a: {
+        nm: s.a.nm,
+        c: s.a.c,
+        age: s.a.age,
+        h: s.a.h,
+        am: s.a.am,
+        ap: s.a.ap,
+        aa: s.a.aa,
+        ar: s.a.ar,
+        rl: s.a.rl,
+        n: s.a.n,
+        af: s.a.af,
+        aw: s.a.aw,
+        ag: s.a.ag,
+        tl: convertTimeline('a'),
+        bn: convertBonuses('a'),
+      },
+      b: {
+        nm: s.b.nm,
+        c: s.b.c,
+        age: s.b.age,
+        h: s.b.h,
+        am: s.b.am,
+        ap: s.b.ap,
+        aa: s.b.aa,
+        ar: s.b.ar,
+        rl: s.b.rl,
+        n: s.b.n,
+        af: s.b.af,
+        aw: s.b.aw,
+        ag: s.b.ag,
+        tl: convertTimeline('b'),
+        bn: convertBonuses('b'),
+      },
+    }
+  };
+
+  // Format as TypeScript export statement
+  const exportText = `export const ${scenarioId} = ${JSON.stringify(exportData[scenarioId], null, 4)};`;
+  
   navigator.clipboard.writeText(exportText).then(() => {
     const btn = document.getElementById('export-btn') as HTMLElement;
     const original = btn.textContent;
     btn.textContent = 'Copied!';
     btn.style.color = 'var(--color-pos)';
-    showToast('Scenario copied to clipboard! Ready to paste into scenarios.ts', 3000);
+    showToast(`Scenario "${scenarioId}" copied! Paste into src/data/scenarios/`, 4000);
     setTimeout(() => {
       btn.textContent = original;
       btn.style.color = '';
@@ -1019,10 +1313,13 @@ function cleanArmyState(state: any): any {
 }
 
 async function syncURL(forceShorten: boolean = false): Promise<string | null> {
-  const s = getState();
-  const p = new URLSearchParams();
-  if (activeScenario) p.set('scenario', activeScenario);
-  const json = JSON.stringify(s);
+  // Don't update URL during initial load
+  if (isLoadingScenario) {
+    return null;
+  }
+  
+  const currentState = getState();
+  const json = JSON.stringify(currentState);
 
   // Only use KV when explicitly forced (share button)
   if (forceShorten) {
@@ -1030,7 +1327,7 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
       const response = await fetch('/api/shorten', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: s }),
+        body: JSON.stringify({ data: currentState }),
       });
 
       if (response.ok) {
@@ -1038,7 +1335,7 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
         const shortUrl = window.location.origin + window.location.pathname + '#' + result.id;
         return shortUrl;
       }
-      
+
       // Handle specific error cases
       if (response.status === 429) {
         console.warn('KV write rate limit exceeded');
@@ -1054,17 +1351,19 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
       console.error('Failed to shorten URL:', e);
       showToast('Creating long URL instead', 2500);
     }
-    
-    // Fallback: return long URL
-    const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
-    const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
-    return window.location.origin + window.location.pathname + '?' + clean;
+
+    // Fallback: return long URL with full state
+    const params = new URLSearchParams();
+    params.set('data', json);
+    return window.location.origin + window.location.pathname + '?' + params.toString();
   }
-  
-  // Normal changes: use long URL
-  const encoded = p.toString() + (p.toString() ? '&' : '') + 'data=' + encodeURIComponent(json);
-  const clean = encoded.replace(/%22/g, '"').replace(/%7B/g, '{').replace(/%7D/g, '}').replace(/%3A/g, ':').replace(/%2C/g, ',').replace(/%5B/g, '[').replace(/%5D/g, ']');
-  history.replaceState(null, '', '?' + clean);
+
+  // Normal changes: clear scenario and use bare URL (custom scenario)
+  if (activeScenario) {
+    activeScenario = null;
+    updateFeaturedScenarioButtons();
+  }
+  history.replaceState(null, '', window.location.pathname);
   return null;
 }
 
@@ -1072,6 +1371,12 @@ function getState(): SimulationState {
   const s: any = { a: {}, b: {}, desc: '' };
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
   if (descEl) s.desc = descEl.value;
+  
+  // Include scenario name from header
+  const scenarioNameHeader = document.getElementById('scenario-name-header');
+  if (scenarioNameHeader && scenarioNameHeader.textContent) {
+    s.name = scenarioNameHeader.textContent.trim();
+  }
 
   (['a', 'b'] as const).forEach((army) => {
     for (const [field, key] of Object.entries(fieldMap)) {
@@ -1112,11 +1417,12 @@ function getState(): SimulationState {
 }
 
 async function loadState() {
-  // Check for short ID in hash first
+  const p = new URLSearchParams(window.location.search);
+
+  // 1. Check for short ID in hash (shared URLs from KV) - highest priority
   const hash = window.location.hash;
   if (hash && hash.length > 1 && !hash.startsWith('?')) {
     const shortId = hash.substring(1);
-    // Only treat as short ID if it looks like one (6-7 alphanumeric chars)
     if (/^[a-zA-Z0-9]{6,8}$/.test(shortId)) {
       try {
         const response = await fetch(`/api/resolve/${shortId}`);
@@ -1141,25 +1447,53 @@ async function loadState() {
     }
   }
 
-  // Fall back to query parameter loading
-  const p = new URLSearchParams(window.location.search);
+  // 2. Load from data parameter (custom shared state) - second priority
   const dataParam = p.get('data');
   if (dataParam) {
     try {
       const state = JSON.parse(dataParam);
       applyState(state);
+      // Keep the URL as-is with ?data=... for custom shared state
       return;
     } catch (e) { console.error('Failed to load state:', e); }
   }
-  if (p.has('scenario')) loadScenario(p.get('scenario')!);
+
+  // 3. Load from scenario (built-in scenarios) - third priority
+  const scenarioId = p.get('scenario');
+  if (scenarioId && (scenarios as any)[scenarioId]) {
+    console.log(`Loading scenario from scenario: ${scenarioId}`);
+    loadScenario(scenarioId);
+    return;
+  }
+
+  // 4. No URL params - redirect to first scenario (only on initial load)
+  if (featuredScenarios.length > 0 && !activeScenario && !dataParam && !hash) {
+    const firstScenario = featuredScenarios[0];
+    console.log(`No scenario loaded, redirecting to: ${firstScenario}`);
+    loadScenario(firstScenario);
+    return;
+  }
+  
   updateCharts();
 }
 
 function applyState(state: any, expiresAt?: number) {
+  isLoadingScenario = true; // Prevent clearing during load
+  
   if (state.desc) {
     const el = document.getElementById('scenario-desc') as HTMLTextAreaElement;
     if (el) el.value = state.desc;
   }
+
+  // Load scenario name
+  if (state.name) {
+    const scenarioNameHeader = document.getElementById('scenario-name-header');
+    if (scenarioNameHeader) {
+      scenarioNameHeader.textContent = state.name;
+      scenarioNameHeader.style.display = state.name ? 'block' : 'none';
+    }
+  }
+  
   (['a', 'b'] as const).forEach((army) => {
     const armyState = state[army];
     if (!armyState) return;
@@ -1180,7 +1514,7 @@ function applyState(state: any, expiresAt?: number) {
         container.innerHTML = '';
         armyState.tl.forEach((step: any) => addProductionStep(army, step.t, {
           type: step.t, name: step.n, delay: step.d, count: step.c, cost: step.co,
-          isBlocking: step.b, value: step.v, id: step.i, train: step.tr, f: step.f, w: step.w, g: step.g,
+          isBlocking: step.b, production: step.prod, id: step.i, train: step.tr, f: step.f, w: step.w, g: step.g,
           bt: step.bt
         }));
       }
@@ -1207,10 +1541,14 @@ function applyState(state: any, expiresAt?: number) {
           if (btn.dataset.age === String(armyState.age)) btn.classList.add('active');
           else btn.classList.remove('active');
         });
+        // Apply age bonuses
+        applyAge(army, String(armyState.age));
       }
     }
   });
   updateCharts();
+  
+  isLoadingScenario = false; // Re-enable scenario clearing
 }
 
 window.onload = async () => {
@@ -1231,15 +1569,8 @@ window.onload = async () => {
     }
   });
 
-  // Load state from URL (hash or query params)
+  // Load state from URL (scenario, hash, or data params)
   await loadState();
-
-  // Load first scenario by default if no URL params
-  if (!window.location.search && !window.location.hash && featuredScenarios.length > 0) {
-    const firstScenario = featuredScenarios[0];
-    console.log(`Loading default scenario: ${firstScenario}`);
-    loadScenario(firstScenario);
-  }
 
   // Render featured scenarios
   const scnContainer = document.getElementById('featured-scenarios-container');
@@ -1247,8 +1578,14 @@ window.onload = async () => {
     (featuredScenarios as string[]).forEach(id => {
       const s = (scenarios as any)[id]; if (!s) return;
       const btn = document.createElement('button'); btn.className = 'scenario-btn'; btn.textContent = s.name;
-      btn.addEventListener('click', () => loadScenario(id)); scnContainer.appendChild(btn);
+      btn.dataset.scenarioId = id;
+      btn.addEventListener('click', () => {
+        loadScenario(id);
+      });
+      scnContainer.appendChild(btn);
     });
+    // Highlight active scenario (call again after buttons are rendered)
+    updateFeaturedScenarioButtons();
   }
 
   const scnSearch = document.querySelector('.scenario-search') as HTMLInputElement;
@@ -1259,7 +1596,10 @@ window.onload = async () => {
       Object.entries(scenarios as any).forEach(([id, s]: [string, any]) => {
         if (s.name.toLowerCase().includes(term)) {
           const item = document.createElement('div'); item.className = 'scenario-item'; item.textContent = s.name;
-          item.addEventListener('click', () => { loadScenario(id); scnList.classList.add('hidden'); }); scnList.appendChild(item);
+          item.addEventListener('click', () => {
+            loadScenario(id, true); // Update URL with scenario
+            scnList.classList.add('hidden');
+          }); scnList.appendChild(item);
         }
       });
       if (scnList.children.length > 0) scnList.classList.remove('hidden'); else scnList.classList.add('hidden');
@@ -1269,6 +1609,84 @@ window.onload = async () => {
   }
 
   document.getElementById('scenario-desc')?.addEventListener('input', () => onInputChange(true));
+
+  // New scenario button
+  document.getElementById('new-scenario-btn')?.addEventListener('click', () => {
+    if (confirm('Create a new scenario? This will clear all current settings.')) {
+      createNewScenario();
+    }
+  });
+
+/**
+ * Create a new blank scenario with default values
+ */
+function createNewScenario() {
+  activeScenario = null;
+
+  // Clear scenario name and description
+  const scenarioNameHeader = document.getElementById('scenario-name-header');
+  if (scenarioNameHeader) {
+    scenarioNameHeader.textContent = 'New Scenario';
+    scenarioNameHeader.style.display = 'block';
+  }
+  
+  const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
+  if (descEl) descEl.value = 'Describe your scenario here...';
+  
+  // Reset both armies to defaults
+  (['a', 'b'] as const).forEach((army) => {
+    // Clear timeline
+    const tl = document.getElementById(`p${army}-timeline`);
+    if (tl) tl.innerHTML = '';
+    
+    // Clear bonuses
+    const bn = document.getElementById(`${army}-applied-bonuses`);
+    if (bn) bn.innerHTML = '';
+    
+    // Reset unit name
+    const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
+    if (nameEl) nameEl.value = `Unit ${army.toUpperCase()}`;
+    
+    // Reset name header
+    const header = document.getElementById(`name-header-${army}`);
+    if (header) header.textContent = `Unit ${army.toUpperCase()}`;
+    
+    // Reset civ
+    const civEl = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
+    const civNameEl = document.getElementById(`${army}-civ-name`);
+    if (civEl) civEl.dataset.value = '';
+    if (civNameEl) civNameEl.textContent = 'Select Civ';
+    
+    // Reset all stat inputs to defaults
+    for (const [field, key] of Object.entries(fieldMap)) {
+      const el = document.getElementById(`${army}-${field}`) as HTMLInputElement;
+      if (el && defaults[`${army}-${field}`] !== undefined) {
+        el.value = defaults[`${army}-${field}`];
+      }
+    }
+    
+    // Reset count
+    const countEl = document.getElementById(`${army}-count`) as HTMLInputElement;
+    if (countEl) countEl.value = '1';
+    
+    // Reset age buttons
+    const ageBtns = document.querySelectorAll(`.army-age-controls[data-army="${army}"] .age-btn`);
+    ageBtns.forEach((btn: any) => {
+      btn.classList.toggle('active', btn.dataset.age === '1');
+    });
+    
+    // Add default production step
+    addProductionStep(army, 'production', { name: 'Initial Production', value: 1, train: 30 });
+  });
+  
+  // Clear URL
+  history.replaceState(null, '', window.location.pathname);
+  
+  // Update charts
+  updateCharts();
+  
+  showToast('New scenario created!', 2000);
+}
 
 /**
  * Fuzzy match - checks if chars appear in order anywhere in the string
@@ -1785,6 +2203,18 @@ function setupAutocomplete(
     if (t) { t.classList.toggle('collapsed'); btn.textContent = t.classList.contains('collapsed') ? 'Edit' : 'Hide Stats'; }
   }));
 
+  // Production section toggle
+  document.querySelectorAll('.toggle-prod-section-btn').forEach((btn: any) => btn.addEventListener('click', () => {
+    const targets = btn.dataset.target.split(',');
+    targets.forEach((targetId: string) => {
+      const el = document.getElementById(targetId.trim());
+      if (el) {
+        el.classList.toggle('collapsed');
+      }
+    });
+    btn.textContent = btn.textContent === 'Edit Production Simulation' ? 'Hide Production Simulation' : 'Edit Production Simulation';
+  }));
+
   document.querySelectorAll('.bonus-search').forEach((input: any) => {
     input.addEventListener('keyup', () => {
       const army = input.dataset.army, list = document.querySelector(`.bonus-list[data-army="${army}"]`) as HTMLElement, term = input.value.toLowerCase();
@@ -1797,25 +2227,85 @@ function setupAutocomplete(
   document.getElementById('export-btn')?.addEventListener('click', exportScenario);
 
   // Submit button - creates GitHub issue with scenario
-  document.getElementById('submit-btn')?.addEventListener('click', () => {
+  document.getElementById('submit-btn')?.addEventListener('click', async () => {
     const s = getState();
-    const exportData: SimulationState = {
-      a: cleanArmyState(s.a),
-      b: cleanArmyState(s.b),
+
+    // Generate scenario ID from name or description
+    const scenarioId = (s.name || s.desc || 'new_scenario')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '_')
+      .replace(/_+/g, '_')
+      .replace(/^_|_$/g, '')
+      .slice(0, 30);
+
+    // Use scenario name from state
+    const scenarioName = s.name || 'New Scenario';
+
+    // Create scenario data for storage
+    const scenarioData = {
+      name: scenarioName,
       desc: s.desc || '',
+      a: {
+        nm: s.a.nm,
+        c: s.a.c,
+        age: s.a.age,
+        h: s.a.h,
+        am: s.a.am,
+        ap: s.a.ap,
+        aa: s.a.aa,
+        ar: s.a.ar,
+        rl: s.a.rl,
+        n: s.a.n,
+        af: s.a.af,
+        aw: s.a.aw,
+        ag: s.a.ag,
+      },
+      b: {
+        nm: s.b.nm,
+        c: s.b.c,
+        age: s.b.age,
+        h: s.b.h,
+        am: s.b.am,
+        ap: s.b.ap,
+        aa: s.b.aa,
+        ar: s.b.ar,
+        rl: s.b.rl,
+        n: s.b.n,
+        af: s.b.af,
+        aw: s.b.aw,
+        ag: s.b.ag,
+      },
     };
-    
-    const scenarioJson = JSON.stringify(exportData, null, 2);
-    const title = `Scenario Submission: ${exportData.a.nm || 'Army A'} vs ${exportData.b.nm || 'Army B'}`;
-    
-    // Create issue body with scenario data
+
+    // Generate short URL by calling the shorten API
+    let shortUrl = '';
+    try {
+      const response = await fetch('/api/shorten', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: scenarioData }),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        shortUrl = window.location.origin + '/#' + result.id;
+      }
+    } catch (e) {
+      console.error('Failed to create short URL:', e);
+      showToast('Failed to create shareable link', 3000);
+      return;
+    }
+
+    const title = `Scenario Submission: ${scenarioName}`;
+
+    // Create issue body with short URL
     const body = `## Scenario Submission
 
-**Description:** ${exportData.desc || '_Add your description here_'}
+**Scenario Name:** ${scenarioName}
 
-**Matchup:** ${exportData.a.nm || 'Army A'} vs ${exportData.b.nm || 'Army B'}
+**Description:** ${scenarioData.desc || '_Add your description here_'}
 
-**Civs:** ${exportData.a.cv || 'Any'} vs ${exportData.b.cv || 'Any'}
+**View Scenario:** ${shortUrl}
 
 **Notes:**
 - [ ] Balance issue
@@ -1823,23 +2313,17 @@ function setupAutocomplete(
 - [ ] Tournament scenario
 - [ ] Other: _please specify_
 
-## Scenario Data
-
-\`\`\`json
-${scenarioJson}
-\`\`\`
-
 ---
 *Submitted via Chombat Combat Simulator*
 `;
 
     // Create GitHub issue URL
     const githubIssueUrl = `https://github.com/Crazybus/chombat/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-    
+
     // Open in new tab
     window.open(githubIssueUrl, '_blank');
-    
-    showToast('Opening GitHub issue... Please fill in the details and submit!', 3000);
+
+    showToast('Opening GitHub issue with short URL...', 3000);
   });
 
   // Theme toggle

@@ -32,6 +32,11 @@ deploy: build
 dev: build
 	npx wrangler pages dev dist
 
+dev-no-kv: build
+	@echo "Starting local server without KV (full URLs only)..."
+	@echo "Share URLs will use ?data=... format instead of short URLs"
+	python3 -m http.server 8788 --directory dist
+
 lint:
 	npx eslint .
 
