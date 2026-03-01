@@ -111,10 +111,14 @@ export async function onRequest({ env, params }) {
         expiresAt,
         extended,
         newExpiresAt: extended ? undefined : expiresAt,
+        metadata: {
+          createdAt: parsed.createdAt,
+          accessedAt: now,
+        }
       }),
-      { 
-        status: 200, 
-        headers: { 'Content-Type': 'application/json' } 
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
       }
     );
   } catch (error) {
