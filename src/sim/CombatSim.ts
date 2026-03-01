@@ -40,104 +40,79 @@ export class CombatSim {
     allTechs: Record<number, TechData>,
     allUnits: Record<string, UnitData>
   ) {
-    this.dataA = this.applyBonuses({ ...armyA, ...configA }, configA.bn || [], 'a', allTechs, allUnits);
-    this.dataB = this.applyBonuses({ ...armyB, ...configB }, configB.bn || [], 'b', allTechs, allUnits);
-
-    // Ensure bonuses and armors are preserved
-    if (!this.dataA.bonuses && armyA.bonuses) this.dataA.bonuses = armyA.bonuses;
-    if (!this.dataA.armors && armyA.armors) this.dataA.armors = armyA.armors;
-    if (!this.dataB.bonuses && armyB.bonuses) this.dataB.bonuses = armyB.bonuses;
-    if (!this.dataB.armors && armyB.armors) this.dataB.armors = armyB.armors;
+    this.dataA = this.applyBonuses(armyA, configA, parseInt(configA.age || '1'), allTechs, allUnits);
+    this.dataB = this.applyBonuses(armyB, configB, parseInt(configB.age || '1'), allTechs, allUnits);
   }
 
-
-
   applyBonuses(
-    unitData: any,
-    bonusesState: { i: string; e: boolean[] }[],
-    armyLetter: string,
+    baseUnit: UnitData,
+    config: ArmyState,
+    ageId: number,
     allTechs: Record<number, TechData>,
     allUnits: Record<string, UnitData>
   ): any {
-    let newUnit = { ...unitData };
-    const uBase = allUnits[unitData.id] || unitData;
+    // 1. Start with a FRESH copy of base unit data
+    let newUnit = { ...baseUnit };
+    
+    // 2. Ensure we don't modify shared objects
+    newUnit.bonuses = { ...(baseUnit.bonuses || {}) };
+    newUnit.armors = { ...(baseUnit.armors || {}) };
 
+    // 3. Apply manual overrides from config
+    const overrides: Record<string, keyof ArmyState> = {
+      hp: 'h', matk: 'am', patk: 'ap', marm: 'aa', parm: 'ar', reload: 'rl', range: 'n',
+      atk_speed: 'as', bonus_red: 'ab', f: 'af', w: 'aw', g: 'ag',
+      disc_all: 'da', disc_f: 'df', disc_w: 'dw', disc_g: 'dg', eng: 'e', micro: 'mc'
+    };
+
+    for (const [unitKey, configKey] of Object.entries(overrides)) {
+      if ((config as any)[configKey] !== undefined) {
+        (newUnit as any)[unitKey] = (config as any)[configKey];
+      }
+    }
+
+    // 4. Apply tech bonuses from scratch
+    const bonusesState = config.bn || [];
     bonusesState.forEach((state) => {
       const b = allTechs[parseInt(state.i)];
       if (!b) return;
 
-      // If we are in browser, we check the checkboxes. If not (tests), we assume true.
-      const isEffectActive = (idx: number) => {
-        if (typeof document === 'undefined') return state.e[idx] !== false;
-        const cb = document.querySelector(
-          `#${armyLetter}-applied-bonuses .applied-bonus[data-id="${state.i}"] .applied-bonus-effect:nth-child(${idx + 1}) input`
-        ) as HTMLInputElement;
-        return cb ? cb.checked : state.e[idx] !== false;
-      };
-
       const effs = b.effects || [];
       effs.forEach((e, idx) => {
-        if (!isEffectActive(idx)) return;
+        const isActive = state.e && state.e[idx] !== undefined ? state.e[idx] : true;
+        if (!isActive) return;
 
-        if (shouldApplyEffect(e, uBase, effs)) {
+        if (shouldApplyEffect(e, baseUnit, effs)) {
           const val = e.v;
-
-          // Type-based mapping for this dataset:
-          // t: 0 -> Add HP
-          // t: 1 -> Add Attack
-          // t: 5 -> Mult Speed
-          // t: 10 -> Mult Reload (Rate of Fire)
-          // t: 12 -> Add Range
-          // t: 8/9 -> Class Armor/Attack (Encoded)
 
           if (e.t === 0) { // Add HP
             newUnit.hp += val;
-            if (newUnit.h !== undefined) newUnit.h += val;
           } else if (e.t === 1) { // Add Attack (Generic)
-            if (newUnit.matk > 0) {
-              newUnit.matk += val;
-              if (newUnit.am !== undefined) newUnit.am += val;
-            }
-            if (newUnit.patk > 0) {
-              newUnit.patk += val;
-              if (newUnit.ap !== undefined) newUnit.ap += val;
-            }
+            if (newUnit.matk > 0) newUnit.matk += val;
+            if (newUnit.patk > 0) newUnit.patk += val;
           } else if (e.t === 5) { // Mult Speed
-            if (newUnit.speed !== undefined) newUnit.speed *= val;
-            if (newUnit.s !== undefined) newUnit.s *= val;
+            if ((newUnit as any).speed !== undefined) (newUnit as any).speed *= val;
           } else if (e.t === 10) { // Mult Reload
             newUnit.reload *= val;
-            if (newUnit.rl !== undefined) newUnit.rl *= val;
           } else if (e.t === 12) { // Add Range
             newUnit.range += val;
-            if (newUnit.n !== undefined) newUnit.n += val;
           } else if (e.t === 8 || e.t === 9) {
             const { cls, amt } = decodeEncoded(val);
             if (e.t === 9) { // Class Attack
-              if (cls === 3) { // Pierce
-                if (newUnit.patk > 0) {
-                  newUnit.patk += amt;
-                  if (newUnit.ap !== undefined) newUnit.ap += amt;
-                }
-              } else if (cls === 4) { // Melee
-                if (newUnit.matk > 0) {
-                  newUnit.matk += amt;
-                  if (newUnit.am !== undefined) newUnit.am += amt;
-                }
+              if (cls === 3) {
+                if (newUnit.patk > 0) newUnit.patk += amt;
+              } else if (cls === 4) {
+                if (newUnit.matk > 0) newUnit.matk += amt;
               } else {
-                if (!newUnit.bonuses) newUnit.bonuses = { ...uBase.bonuses };
-                newUnit.bonuses[cls] = (newUnit.bonuses[cls] || 0) + amt;
+                newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
               }
             } else { // Class Armor
-              if (cls === 3) { // Pierce
+              if (cls === 3) {
                 newUnit.parm += amt;
-                if (newUnit.ar !== undefined) newUnit.ar += amt;
-              } else if (cls === 4) { // Melee
+              } else if (cls === 4) {
                 newUnit.marm += amt;
-                if (newUnit.aa !== undefined) newUnit.aa += amt;
               } else {
-                if (!newUnit.armors) newUnit.armors = { ...uBase.armors };
-                newUnit.armors[cls] = (newUnit.armors[cls] || 0) + amt;
+                newUnit.armors![cls] = (newUnit.armors![cls] || 0) + amt;
               }
             }
           }
@@ -145,26 +120,22 @@ export class CombatSim {
       });
     });
 
-    // Handle hidden auto-upgrades for Scouts and Eagles in Feudal Age+
-    const researchedIds = new Set(bonusesState.map(s => parseInt(s.i)));
-    let ageId = 1;
-    if (researchedIds.has(103)) ageId = 4; // Imperial
-    else if (researchedIds.has(101)) ageId = 3; // Castle
-    else if (researchedIds.has(102)) ageId = 2; // Feudal
-
+    // 5. Handle hidden auto-upgrades for Scouts and Eagles in Feudal Age+
     if (ageId >= 2) {
       const isScout = newUnit.id === '448' || newUnit.id === 'scout_cavalry';
       const isEagle = newUnit.id === '751' || newUnit.id === 'eagle_scout';
 
-      if (isScout && uBase.matk === 3) {
+      if (isScout && baseUnit.matk === 3) {
         newUnit.matk += 2; // 3 -> 5
-        if (newUnit.am !== undefined) newUnit.am += 2;
       }
-      if (isEagle && uBase.matk === 4) {
+      if (isEagle && baseUnit.matk === 4) {
         newUnit.matk += 3; // 4 -> 7
-        if (newUnit.am !== undefined) newUnit.am += 3;
       }
     }
+
+    // Ensure we keep the ID and Count
+    newUnit.id = baseUnit.id;
+    (newUnit as any).count = config.c;
 
     return newUnit;
   }
@@ -175,7 +146,6 @@ export class CombatSim {
     const baseAtk = isMelee ? attacker.matk : attacker.patk;
     let totalDmg = Math.max(1, baseAtk - baseArm);
 
-    // Apply bonuses based on defender's armors
     const attBonuses = attacker.bonuses || {};
     const defArmors = defender.armors || {};
 
@@ -203,8 +173,6 @@ export class CombatSim {
       const hpRatioA = eA.getTotalHp() / (eA.initialCount * eA.hpPerUnit) || 0;
       const hpRatioB = eB.getTotalHp() / (eB.initialCount * eB.hpPerUnit) || 0;
 
-      // Calculate damage per hit being dealt by the entire group
-      // This shows how much damage all units deal together in one attack
       const attackersA = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.eng / 100)));
       const attackersB = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.eng / 100)));
       const damagePerHitA = this.calculateDamage(eA, eB) * attackersA;

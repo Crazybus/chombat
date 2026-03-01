@@ -36,7 +36,7 @@ export class Unit {
     this.id = d.id;
     this.initialCount = parseFloat(String(d.c !== undefined ? d.c : (d.initialCount || 0)));
     this.currentCount = this.initialCount;
-    this.hpPerUnit = parseFloat(String(d.h !== undefined ? d.h : (d.hp || 1)));
+    this.hpPerUnit = parseFloat(String(d.hp !== undefined ? d.hp : (d.h || 1)));
     this.currentUnitHp = this.hpPerUnit;
 
     // Prioritize long-names if available (e.g. from applyBonuses result)

@@ -142,14 +142,14 @@ describe('CombatSim Stats', () => {
     });
 
     it('should apply Scout auto-upgrade in Feudal Age', () => {
-        const config = { bn: [{ i: '102', e: [true] }] } as any; // Feudal Age
-        const sim = new CombatSim(scout, archer, config, {} as any, { 102: { building: 109, effects: [] } } as any, { '448': scout });
+        const config = { age: '2', bn: [{ i: '102', e: [true] }] } as any; // Feudal Age
+        const sim = new CombatSim(scout, archer, config, { age: '1' } as any, { 102: { building: 109, effects: [] } } as any, { '448': scout });
         expect(sim.dataA.matk).toBe(5);
     });
 
     it('should apply Eagle auto-upgrade in Feudal Age', () => {
-        const config = { bn: [{ i: '102', e: [true] }] } as any; // Feudal Age
-        const sim = new CombatSim(eagle, archer, config, {} as any, { 102: { building: 109, effects: [] } } as any, { '751': eagle });
+        const config = { age: '2', bn: [{ i: '102', e: [true] }] } as any; // Feudal Age
+        const sim = new CombatSim(eagle, archer, config, { age: '1' } as any, { 102: { building: 109, effects: [] } } as any, { '751': eagle });
         expect(sim.dataA.matk).toBe(7);
     });
 

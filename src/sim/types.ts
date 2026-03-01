@@ -75,6 +75,7 @@ export interface TimelineStep {
   w?: number; // wood cost override
   g?: number; // gold cost override
   bt?: number; // building target (e.g. 109 for TC)
+  prod?: boolean; // produces units
 }
 
 export interface ArmyState {
@@ -85,6 +86,8 @@ export interface ArmyState {
   age?: string; // age id
   tl?: TimelineStep[];
   bn?: { i: string; e: boolean[] }[]; // bonus tech states
+  cont?: boolean; // continuous production
+  sv?: number; // start villagers
   // Individual stat overrides
   h?: number; am?: number; ap?: number; aa?: number; ar?: number;
   rl?: number; n?: number; as?: number; ab?: number; ad?: number;
@@ -96,4 +99,5 @@ export interface SimulationState {
   a: ArmyState;
   b: ArmyState;
   desc: string;
+  name?: string;
 }
