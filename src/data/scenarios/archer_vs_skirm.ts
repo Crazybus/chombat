@@ -36,13 +36,6 @@ export const archer_vs_skirm = {
         ],
         "bn": [
             {
-                "i": "494",
-                "e": [
-                    true,
-                    true
-                ]
-            },
-            {
                 "i": "199",
                 "e": [
                     true,
@@ -92,13 +85,6 @@ export const archer_vs_skirm = {
             }
         ],
         "bn": [
-            {
-                "i": "494",
-                "e": [
-                    true,
-                    true
-                ]
-            },
             {
                 "i": "199",
                 "e": [
