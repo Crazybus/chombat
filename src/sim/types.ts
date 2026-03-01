@@ -6,6 +6,7 @@ export interface UnitData {
   marm: number;
   parm: number;
   reload: number;
+  reloadBase?: number; // base reload before tech multipliers
   range: number;
   frame_delay?: number;
   f: number;
@@ -55,6 +56,7 @@ export interface BuildingData {
   s: number;
   time: number;
   id: string;
+  age?: number;
   requires: {
     techs: number[];
     buildings: number[];
@@ -75,6 +77,9 @@ export interface TimelineStep {
   w?: number; // wood cost override
   g?: number; // gold cost override
   bt?: number; // building target (e.g. 109 for TC)
+  prod?: boolean; // produces units
+  lim?: boolean; // limited production (exact count)
+  bi?: number; // block index (which facility to block)
 }
 
 export interface ArmyState {
@@ -85,6 +90,8 @@ export interface ArmyState {
   age?: string; // age id
   tl?: TimelineStep[];
   bn?: { i: string; e: boolean[] }[]; // bonus tech states
+  sv?: number; // start villagers
+  tr?: number; // training time override
   // Individual stat overrides
   h?: number; am?: number; ap?: number; aa?: number; ar?: number;
   rl?: number; n?: number; as?: number; ab?: number; ad?: number;
@@ -92,8 +99,19 @@ export interface ArmyState {
   dw?: number; dg?: number; e?: number; mc?: number;
 }
 
+export interface CivBonusEffect extends TechEffect {
+  age: number;
+}
+
+export interface CivBonus {
+  name: string;
+  effects: CivBonusEffect[];
+}
+
 export interface SimulationState {
   a: ArmyState;
   b: ArmyState;
   desc: string;
+  name?: string;
+  sid?: string; // current scenario id
 }

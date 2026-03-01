@@ -6,7 +6,7 @@
  * Response: { data: object, expiresAt: number, extended?: boolean }
  */
 
-import * as pako from 'pako';
+import { ungzip } from 'pako';
 
 // TTL settings (in days)
 const DEFAULT_TTL = 30;
@@ -23,7 +23,7 @@ function decompressData(compressedBase64) {
     compressed[i] = binary.charCodeAt(i);
   }
   // Decompress
-  const jsonString = pako.ungzip(compressed, { to: 'string' });
+  const jsonString = ungzip(compressed, { to: 'string' });
   return JSON.parse(jsonString);
 }
 
@@ -38,18 +38,15 @@ export async function onRequest({ env, params }) {
       );
     }
 
-    // Fetch from KV
-    let stored;
-    try {
-      stored = await env.MATCHUPS.get(id);
-    } catch (kvError) {
-      // Handle KV read errors (rate limits, etc.)
-      console.error('KV read error:', kvError);
+    if (!env.MATCHUPS) {
       return new Response(
-        JSON.stringify({ error: 'Service temporarily unavailable. Please try again.' }),
-        { status: 503, headers: { 'Content-Type': 'application/json' } }
+        JSON.stringify({ error: 'KV namespace MATCHUPS is not bound' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
+
+    // Fetch from KV
+    const stored = await env.MATCHUPS.get(id);
 
     if (!stored) {
       return new Response(
@@ -61,22 +58,12 @@ export async function onRequest({ env, params }) {
     const parsed = JSON.parse(stored);
     const { data: compressedData, expiresAt } = parsed;
 
-    // Check if expired (shouldn't happen due to KV TTL, but safety check)
-    if (expiresAt && Date.now() > expiresAt) {
-      // Clean up expired entry
-      await env.MATCHUPS.delete(id);
-      return new Response(
-        JSON.stringify({ error: 'Matchup has expired' }),
-        { status: 410, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
     // Sliding TTL: extend if within grace period
     const now = Date.now();
-    const gracePeriodStart = expiresAt - GRACE_PERIOD * 24 * 60 * 60 * 1000;
+    const gracePeriodStart = (expiresAt || 0) - GRACE_PERIOD * 24 * 60 * 60 * 1000;
     let extended = false;
 
-    if (now >= gracePeriodStart) {
+    if (expiresAt && now >= gracePeriodStart) {
       // Extend TTL
       const newExpiresAt = now + DEFAULT_TTL * 24 * 60 * 60 * 1000;
       const expirationTtl = DEFAULT_TTL * 24 * 60 * 60;
@@ -93,12 +80,11 @@ export async function onRequest({ env, params }) {
 
       extended = true;
     } else {
-      // Just update accessedAt without extending TTL
+      // Just update accessedAt
       const updated = {
         ...parsed,
         accessedAt: now,
       };
-      // Don't set expirationTtl to keep existing expiration
       await env.MATCHUPS.put(id, JSON.stringify(updated));
     }
 
@@ -108,13 +94,8 @@ export async function onRequest({ env, params }) {
     return new Response(
       JSON.stringify({
         data: decompressed,
-        expiresAt,
-        extended,
-        newExpiresAt: extended ? undefined : expiresAt,
-        metadata: {
-          createdAt: parsed.createdAt,
-          accessedAt: now,
-        }
+        expiresAt: extended ? (now + DEFAULT_TTL * 24 * 60 * 60 * 1000) : expiresAt,
+        extended
       }),
       {
         status: 200,
@@ -124,7 +105,7 @@ export async function onRequest({ env, params }) {
   } catch (error) {
     console.error('Error in /api/resolve:', error);
     return new Response(
-      JSON.stringify({ error: 'Failed to resolve matchup' }),
+      JSON.stringify({ error: 'Failed to resolve matchup', details: error.message }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }

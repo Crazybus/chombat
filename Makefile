@@ -1,25 +1,31 @@
-.PHONY: deploy preview dev build format clean data lint
+.PHONY: deploy preview dev build format clean data lint test dev-pages
 
-format:
-	npx prettier --write "*.css" "*.html" "src/**/*.ts"
+# Standard development server (Vite)
+dev:
+	npm run dev
 
+# Local Cloudflare Pages emulation
+dev-pages: build
+	npx wrangler pages dev dist
+
+# Generate unit data from source files
 data:
-	python3 convert_units.py
+	python3 utils/import_game_data.py
 
-build: clean lint
-	mkdir -p dist
-	npx esbuild src/main.ts --bundle --minify --outfile=main.js --platform=browser --target=es2022
-	cp main.js dist/main.js
-	npx esbuild styles.css --minify --outfile=dist/styles.css
-	cp index.html dist/index.html
-	cp _headers dist/_headers
-	cp -r img dist/img
+# Production build
+build: clean
+	npm run build
 
+# Code formatting
+format:
+	npx prettier --write .
+
+# Deployment to preview branch
 preview: build
 	npx wrangler pages deploy dist --project-name chombat
 
+# Production deployment
 deploy: build
-	npm cache clean --force
 	npx wrangler pages deploy dist --project-name chombat --branch production
 	@if [ -n "$$CLOUDFLARE_ZONE_ID" ] && [ -n "$$CLOUDFLARE_API_TOKEN" ]; then \
 		echo "Purging Cloudflare cache..."; \
@@ -29,19 +35,14 @@ deploy: build
 			--data '{"purge_everything":true}' | grep -q '"success":true' && echo "Cache purged successfully!" || echo "Cache purge failed."; \
 	fi
 
-dev: build
-	npx wrangler pages dev dist
-
-dev-no-kv: build
-	@echo "Starting local server without KV (full URLs only)..."
-	@echo "Share URLs will use ?data=... format instead of short URLs"
-	python3 -m http.server 8788 --directory dist
-
+# Linting
 lint:
-	npx eslint .
+	npm run lint
 
+# Cleanup
 clean:
 	rm -rf dist
 
+# Run unit tests
 test:
-	npx vitest run
+	npm test
