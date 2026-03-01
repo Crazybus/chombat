@@ -42,7 +42,8 @@
         <input type="text" class="scenario-search" placeholder="Search more scenarios..." />
         <div class="scenario-list hidden"></div>
       </div>
-      <button id="new-scenario-btn" class="nav-btn" style="background: var(--color-pos); color: white;">+ New Scenario</button>
+      <button id="new-scenario-btn" class="nav-btn" style="background: var(--color-pos); color: white;">+ New
+        Scenario</button>
     </div>
     <div id="scenario-name-header" class="scenario-name-header" title="Click to edit scenario name"></div>
     <div class="scenario-context">
@@ -59,7 +60,8 @@
           </div>
           <div style="display: flex; gap: 10px; align-items: center">
             <div class="civ-selector" data-army="a">
-              <span class="civ-label" title="Click to change civilization">⚔️ <span id="a-civ-name">Select Civ</span></span>
+              <span class="civ-label" title="Click to change civilization">⚔️ <span id="a-civ-name">Select
+                  Civ</span></span>
               <div id="a-civ-list" class="civ-list hidden"></div>
             </div>
             <div id="a-preset-list" class="preset-list hidden"></div>
@@ -246,17 +248,21 @@
           </div>
           <div class="efficiency-config">
             <h3>Engagement Efficiency</h3>
-            <div class="field">
-              <label title="Percentage of units that can attack at the same time">Engagement % <span
-                  id="a-eng-val">100%</span></label>
-              <input type="range" id="a-eng" min="1" max="100" value="100" />
+            <div class="efficiency-description">
+              Engagement % simulates units bumping or being unable to actively engage. The current implementation uses a
+              portion of the initial army size as a maximum cap for units that can attack at once.
             </div>
             <div class="field">
-              <label class="help-label">
-                Target Micro <span class="help-icon">?</span>
-                <span class="help-text">1: Focus Fire. 5: Perfect.</span>
-                <span id="a-micro-val" class="val-display">Perfect</span>
-              </label>
+              <label>Engagement % <span id="a-eng-val" class="val-display">100%</span></label>
+              <input type="range" id="a-eng" min="1" max="100" value="100" />
+            </div>
+            <div class="efficiency-description">
+              "Perfect" (Rehoboam style) optimizes to reduce overkill by dividing shots perfectly. "Focus Fire" (1
+              group)
+              makes all units attack a single target. 2/3/4 groups simulate splitting focus.
+            </div>
+            <div class="field">
+              <label>Target Micro <span id="a-micro-val" class="val-display">Perfect</span></label>
               <input type="range" id="a-groups-slider" min="1" max="5" value="5" />
               <input type="hidden" id="a-groups" value="0" />
             </div>
@@ -273,7 +279,8 @@
           </div>
           <div style="display: flex; gap: 10px; align-items: center">
             <div class="civ-selector" data-army="b">
-              <span class="civ-label" title="Click to change civilization">⚔️ <span id="b-civ-name">Select Civ</span></span>
+              <span class="civ-label" title="Click to change civilization">⚔️ <span id="b-civ-name">Select
+                  Civ</span></span>
               <div id="b-civ-list" class="civ-list hidden"></div>
             </div>
             <div id="b-preset-list" class="preset-list hidden"></div>
@@ -460,16 +467,21 @@
           </div>
           <div class="efficiency-config">
             <h3>Engagement Efficiency</h3>
-            <div class="field">
-              <label>Engagement % <span id="b-eng-val">100%</span></label>
-              <input type="range" id="b-eng" min="1" max="100" value="100" />
+            <div class="efficiency-description">
+              Engagement % simulates units bumping or being unable to actively engage. The current implementation uses a
+              portion of the initial army size as a maximum cap for units that can attack at once.
             </div>
             <div class="field">
-              <label class="help-label">
-                Target Micro <span class="help-icon">?</span>
-                <span class="help-text">1: Focus Fire. 5: Perfect.</span>
-                <span id="b-micro-val" class="val-display">Perfect</span>
-              </label>
+              <label>Engagement % <span id="b-eng-val" class="val-display">100%</span></label>
+              <input type="range" id="b-eng" min="1" max="100" value="100" />
+            </div>
+            <div class="efficiency-description">
+              "Perfect" (Rehoboam style) optimizes to reduce overkill by dividing shots perfectly. "Focus Fire" (1
+              group)
+              makes all units attack a single target. 2/3/4 groups simulate splitting focus.
+            </div>
+            <div class="field">
+              <label>Target Micro <span id="b-micro-val" class="val-display">Perfect</span></label>
               <input type="range" id="b-groups-slider" min="1" max="5" value="5" />
               <input type="hidden" id="b-groups" value="0" />
             </div>
@@ -573,64 +585,64 @@
     </div>
     <button class="toggle-prod-section-btn" data-target="production-content">Edit Production Simulation</button>
     <div class="production-content collapsed" id="production-content">
-    <div class="production-race-controls">
-      <div class="prod-group army-a-border">
-        <div class="prod-header" style="display: flex; justify-content: space-between; align-items: center">
-          <label id="prod-name-a">Unit A Production</label>
-          <div class="field-check">
-            <input type="checkbox" id="a-prod-cont" checked />
-            <label for="a-prod-cont" style="font-size: 0.75rem">Always Produce Villagers</label>
+      <div class="production-race-controls">
+        <div class="prod-group army-a-border">
+          <div class="prod-header" style="display: flex; justify-content: space-between; align-items: center">
+            <label id="prod-name-a">Unit A Production</label>
+            <div class="field-check">
+              <input type="checkbox" id="a-prod-cont" checked />
+              <label for="a-prod-cont" style="font-size: 0.75rem">Always Produce Villagers</label>
+            </div>
+            <div class="field-inline" style="display: flex; align-items: center; gap: 5px;">
+              <label style="font-size: 0.75rem">Start Vills:</label>
+              <input type="number" id="a-prod-start-vills" value="3"
+                style="width: 35px; height: 18px; font-size: 0.75rem;" />
+            </div>
           </div>
-          <div class="field-inline" style="display: flex; align-items: center; gap: 5px;">
-            <label style="font-size: 0.75rem">Start Vills:</label>
-            <input type="number" id="a-prod-start-vills" value="3"
-              style="width: 35px; height: 18px; font-size: 0.75rem;" />
+          <div class="prod-requirements" id="pa-req"></div>
+          <div class="production-timeline" id="pa-timeline">
+            <!-- Steps will be added here -->
+          </div>
+          <div class="add-step-controls" id="pa-add-steps">
+            <button class="add-step-btn" data-army="a" data-type="villagers">Villagers</button>
+            <button class="add-step-btn" data-army="a" data-type="building">Building</button>
+            <button class="add-step-btn" data-army="a" data-type="production">Production</button>
+            <button class="add-step-btn" data-army="a" data-type="tech">Tech</button>
+            <button class="add-step-btn" data-army="a" data-type="cost">Cost</button>
+            <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="2">II</button>
+            <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="3">III</button>
+            <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="4">IV</button>
           </div>
         </div>
-        <div class="prod-requirements" id="pa-req"></div>
-        <div class="production-timeline" id="pa-timeline">
-          <!-- Steps will be added here -->
-        </div>
-        <div class="add-step-controls" id="pa-add-steps">
-          <button class="add-step-btn" data-army="a" data-type="villagers">Villagers</button>
-          <button class="add-step-btn" data-army="a" data-type="building">Building</button>
-          <button class="add-step-btn" data-army="a" data-type="production">Production</button>
-          <button class="add-step-btn" data-army="a" data-type="tech">Tech</button>
-          <button class="add-step-btn" data-army="a" data-type="cost">Cost</button>
-          <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="2">II</button>
-          <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="3">III</button>
-          <button class="add-step-btn age-btn" data-army="a" data-type="age" data-val="4">IV</button>
+        <div class="prod-group army-b-border">
+          <div class="prod-header" style="display: flex; justify-content: space-between; align-items: center">
+            <label id="prod-name-b">Unit B Production</label>
+            <div class="field-check">
+              <input type="checkbox" id="b-prod-cont" checked />
+              <label for="b-prod-cont" style="font-size: 0.75rem">Always Produce Villagers</label>
+            </div>
+            <div class="field-inline" style="display: flex; align-items: center; gap: 5px;">
+              <label style="font-size: 0.75rem">Start Vills:</label>
+              <input type="number" id="b-prod-start-vills" value="3"
+                style="width: 35px; height: 18px; font-size: 0.75rem;" />
+            </div>
+          </div>
+          <div class="prod-requirements" id="pb-req"></div>
+          <div class="production-timeline" id="pb-timeline">
+            <!-- Steps will be added here -->
+          </div>
+          <div class="add-step-controls" id="pb-add-steps">
+            <button class="add-step-btn" data-army="b" data-type="villagers">Villagers</button>
+            <button class="add-step-btn" data-army="b" data-type="building">Building</button>
+            <button class="add-step-btn" data-army="b" data-type="production">Production</button>
+            <button class="add-step-btn" data-army="b" data-type="tech">Tech</button>
+            <button class="add-step-btn" data-army="b" data-type="cost">Cost</button>
+            <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="2">II</button>
+            <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="3">III</button>
+            <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="4">IV</button>
+          </div>
         </div>
       </div>
-      <div class="prod-group army-b-border">
-        <div class="prod-header" style="display: flex; justify-content: space-between; align-items: center">
-          <label id="prod-name-b">Unit B Production</label>
-          <div class="field-check">
-            <input type="checkbox" id="b-prod-cont" checked />
-            <label for="b-prod-cont" style="font-size: 0.75rem">Always Produce Villagers</label>
-          </div>
-          <div class="field-inline" style="display: flex; align-items: center; gap: 5px;">
-            <label style="font-size: 0.75rem">Start Vills:</label>
-            <input type="number" id="b-prod-start-vills" value="3"
-              style="width: 35px; height: 18px; font-size: 0.75rem;" />
-          </div>
-        </div>
-        <div class="prod-requirements" id="pb-req"></div>
-        <div class="production-timeline" id="pb-timeline">
-          <!-- Steps will be added here -->
-        </div>
-        <div class="add-step-controls" id="pb-add-steps">
-          <button class="add-step-btn" data-army="b" data-type="villagers">Villagers</button>
-          <button class="add-step-btn" data-army="b" data-type="building">Building</button>
-          <button class="add-step-btn" data-army="b" data-type="production">Production</button>
-          <button class="add-step-btn" data-army="b" data-type="tech">Tech</button>
-          <button class="add-step-btn" data-army="b" data-type="cost">Cost</button>
-          <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="2">II</button>
-          <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="3">III</button>
-          <button class="add-step-btn age-btn" data-army="b" data-type="age" data-val="4">IV</button>
-        </div>
-      </div>
-    </div>
     </div>
     <div class="results-area">
       <div class="charts-grid scaling-grid">
@@ -723,7 +735,9 @@
         interactions, balance, production timing, micro impact, and unit scaling.
       </p>
       <p>
-        This project is currently in alpha state. I will do my best to maintain backwards compatability of shared scenarios but will make breaking changes if it is needed for new features. Any scenarios which have been submitted via the "submit" button will be tested and updated before releases of new versions.
+        This project is currently in alpha state. I will do my best to maintain backwards compatability of shared
+        scenarios but will make breaking changes if it is needed for new features. Any scenarios which have been
+        submitted via the "submit" button will be tested and updated before releases of new versions.
       </p>
       <p>
         One of the specific design choices is to make the tool a template for testing out ideas and strategies. Some

@@ -190,14 +190,19 @@ function updateCharts() {
   const sim = new CombatSim(dA, dB, cA, cB, techsById, allUnits);
   const res = sim.run();
 
-  const nameA = (cA as any).nm || dA.name;
-  const nameB = (cB as any).nm || dB.name;
+  let nameA = (cA as any).nm || dA.name;
+  let nameB = (cB as any).nm || dB.name;
+
+  if (nameA === nameB) {
+    nameA = `P1: ${nameA}`;
+    nameB = `P2: ${nameB}`;
+  }
 
   updateResultCard(res, nameA, nameB);
   updateStatComparison(dA, dB, cA, cB, sim);
   updateUnitStatsSummary('a', { ...dA, ...cA } as any, res.dataA);
   updateUnitStatsSummary('b', { ...dB, ...cB } as any, res.dataB);
-  updateTimeCharts(res.history, nameA, nameB);
+  updateTimeCharts(res.history, nameA, nameB, dA, dB);
   updateProductionAnalysis(dA, dB, cA, cB);
   updateScalingAnalysis(dA, dB, cA, cB);
 }
@@ -265,8 +270,13 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
   const uB = new Unit(simRef.dataB);
   const baseA = allUnits[simRef.dataA.id];
   const baseB = allUnits[simRef.dataB.id];
-  const nameA = (cA as any).nm || dA.name;
-  const nameB = (cB as any).nm || dB.name;
+  let nameA = (cA as any).nm || dA.name;
+  let nameB = (cB as any).nm || dB.name;
+
+  if (nameA === nameB) {
+    nameA = `P1: ${nameA}`;
+    nameB = `P2: ${nameB}`;
+  }
 
   // Update table headers with actual unit names
   const headerA = document.getElementById('comp-name-a');
@@ -377,7 +387,7 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
   }).join('');
 }
 
-function updateTimeCharts(history: any[], nameA: string, nameB: string) {
+function updateTimeCharts(history: any[], nameA: string, nameB: string, dA: UnitData, dB: UnitData) {
   const labels = history.map((h) => h.time.toFixed(1) + 's');
   const colorA = getThemeColor('--army-a-color'), colorB = getThemeColor('--army-b-color'), accent = getThemeColor('--accent-color');
 
@@ -394,10 +404,8 @@ function updateTimeCharts(history: any[], nameA: string, nameB: string) {
   };
 
   // Get unit costs for value calculation
-  const unitA = Object.values(allUnits).find(u => u.name === nameA);
-  const unitB = Object.values(allUnits).find(u => u.name === nameB);
-  const costA = unitA ? (unitA.f + unitA.w + unitA.g) : 0;
-  const costB = unitB ? (unitB.f + unitB.w + unitB.g) : 0;
+  const costA = dA ? (dA.f || 0) + (dA.w || 0) + (dA.g || 0) : 0;
+  const costB = dB ? (dB.f || 0) + (dB.w || 0) + (dB.g || 0) : 0;
 
   renderLineChart('countChart', [{ label: nameA, data: history.map(h => h.countA), borderColor: colorA }, { label: nameB, data: history.map(h => h.countB), borderColor: colorB }]);
   renderLineChart('hpChart', [{ label: nameA, data: history.map(h => h.hpA), borderColor: colorA }, { label: nameB, data: history.map(h => h.hpB), borderColor: colorB }]);
@@ -433,7 +441,13 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
   const uA_unit = new Unit(dA as any), uB_unit = new Unit(dB as any);
   const baseCostA = uA_unit.getParsedCost(), baseCostB = uB_unit.getParsedCost();
 
-  const nameA = (cA as any).nm || dA.name, nameB = (cB as any).nm || dB.name;
+  let nameA = (cA as any).nm || dA.name;
+  let nameB = (cB as any).nm || dB.name;
+
+  if (nameA === nameB) {
+    nameA = `P1: ${nameA}`;
+    nameB = `P2: ${nameB}`;
+  }
   const data: any = { labels: [], countA: [], countB: [], advantage: [] };
   let contact: any = null, cross: any = null;
   let finalCostA = { f: 0, w: 0, g: 0 }, finalCostB = { f: 0, w: 0, g: 0 };
@@ -643,7 +657,13 @@ function renderEconomyChart(historyA: any[], historyB: any[]) {
 }
 
 function updateScalingAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB: ArmyState) {
-  const nameA = (cA as any).nm || dA.name, nameB = (cB as any).nm || dB.name;
+  let nameA = (cA as any).nm || dA.name;
+  let nameB = (cB as any).nm || dB.name;
+
+  if (nameA === nameB) {
+    nameA = `P1: ${nameA}`;
+    nameB = `P2: ${nameB}`;
+  }
   const scales = [1, 2, 3, 4, 5, 8, 10, 15, 20];
 
   const updateTitle = (id: string, text: string) => {
@@ -2442,7 +2462,7 @@ window.onload = async () => {
 
     const microSlider = document.getElementById(`${army}-groups-slider`) as HTMLInputElement;
     const microVal = document.getElementById(`${army}-micro-val`);
-    const microLabels: Record<string, string> = { '1': 'Focus Fire', '2': 'High', '3': 'Medium', '4': 'Low', '5': 'Perfect' };
+    const microLabels: Record<string, string> = { '1': 'Focus Fire (1 group)', '2': 'High (2 groups)', '3': 'Medium (3 groups)', '4': 'Low (4 groups)', '5': 'Perfect (no overkill)' };
     if (microSlider && microVal) {
       microVal.textContent = microLabels[microSlider.value] || microSlider.value;
       microSlider.addEventListener('input', () => { microVal.textContent = microLabels[microSlider.value] || microSlider.value; });
