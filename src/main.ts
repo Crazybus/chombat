@@ -37,15 +37,15 @@ function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?
   if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     return { allowed: true };
   }
-  
+
   const now = Date.now();
   const hourMs = 60 * 60 * 1000;
-  
+
   // Remove shares older than 1 hour (sliding window)
   SHARE_RATE_LIMIT.lastShareTimes = SHARE_RATE_LIMIT.lastShareTimes.filter(
     time => now - time < hourMs
   );
-  
+
   // Check if we've exceeded the hourly limit
   if (SHARE_RATE_LIMIT.lastShareTimes.length >= SHARE_RATE_LIMIT.perHour) {
     const oldestShare = SHARE_RATE_LIMIT.lastShareTimes[0];
@@ -66,7 +66,7 @@ function checkShareRateLimit(): { allowed: boolean; reason?: string; retryAfter?
 function recordShare() {
   const now = Date.now();
   SHARE_RATE_LIMIT.lastShareTimes.push(now);
-  
+
   // Persist to localStorage
   localStorage.setItem('shareRateLimit', JSON.stringify({
     lastShareTimes: SHARE_RATE_LIMIT.lastShareTimes,
@@ -133,12 +133,12 @@ function getArmyData(army: 'a' | 'b'): UnitData | null {
   // Get unit ID from the name header's dataset
   const nameHeader = document.getElementById(`name-header-${army}`);
   const id = nameHeader ? nameHeader.dataset.value : null;
-  
+
   // If we have a preset ID, use it
   if (id && allUnits[id]) {
     return { ...allUnits[id], id: id };
   }
-  
+
   // Otherwise, try to find by unit name from the header
   const unitName = nameHeader ? nameHeader.textContent : '';
   if (unitName) {
@@ -149,7 +149,7 @@ function getArmyData(army: 'a' | 'b'): UnitData | null {
       return { ...found[1], id: found[0] };
     }
   }
-  
+
   // Last resort: try the hidden name input
   const nameInput = document.getElementById(`${army}-name`) as HTMLInputElement;
   if (nameInput && nameInput.value) {
@@ -159,7 +159,7 @@ function getArmyData(army: 'a' | 'b'): UnitData | null {
       return { ...found[1], id: found[0] };
     }
   }
-  
+
   console.warn(`Could not find unit data for army ${army} (name="${unitName}")`);
   return null;
 }
@@ -267,7 +267,7 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
   const baseB = allUnits[simRef.dataB.id];
   const nameA = (cA as any).nm || dA.name;
   const nameB = (cB as any).nm || dB.name;
-  
+
   // Update table headers with actual unit names
   const headerA = document.getElementById('comp-name-a');
   const headerB = document.getElementById('comp-name-b');
@@ -285,14 +285,19 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
     const isMelee = atk.range <= 1;
     const baseAtk = isMelee ? atk.matk : atk.patk;
     const baseArm = isMelee ? def.marm : def.parm;
-    
-    // Calculate bonus damage against defender's class
+
+    // Calculate bonus damage against defender's armors
     let bonus = 0;
-    const defClass = String(def.class);
-    if (atk.bonuses && atk.bonuses[defClass]) {
-      bonus = atk.bonuses[defClass];
+    const attBonuses = atk.bonuses || {};
+    const defArmors = def.armors || {};
+
+    for (const [cls, amt] of Object.entries(attBonuses)) {
+      if (defArmors[cls] !== undefined) {
+        const defArm = defArmors[cls] || 0;
+        bonus += Math.max(0, amt - defArm);
+      }
     }
-    
+
     return { base: baseAtk, arm: baseArm, bonus, net: Math.max(1, baseAtk - baseArm + bonus) };
   };
 
@@ -313,12 +318,12 @@ function updateStatComparison(dA: UnitData, dB: UnitData, cA: ArmyState, cB: Arm
   const hitsToKillB = Math.ceil(uA.hpPerUnit / nB.net);
   const timeToKillA = hitsToKillA * uA.reload;
   const timeToKillB = hitsToKillB * uB.reload;
-  
+
   // Calculate remaining HP for winner
   let winner = 'Draw';
   let winnerColor = 'var(--text-color)';
   let remainingInfo = '';
-  
+
   if (timeToKillA < timeToKillB) {
     // Army A wins (kills faster)
     winner = nameA;
@@ -460,10 +465,10 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
           // Save economy data for breakdown
           const economyA = resA.economyHistory[resA.economyHistory.length - 1];
           const economyB = resB.economyHistory[resB.economyHistory.length - 1];
-          cross = { 
-            time: t, 
-            cA: resA.count, 
-            cB: resB.count, 
+          cross = {
+            time: t,
+            cA: resA.count,
+            cB: resB.count,
             win: adv > 0 ? nameA : nameB,
             economyA: economyA,
             economyB: economyB
@@ -486,14 +491,14 @@ function updateProductionAnalysis(dA: UnitData, dB: UnitData, cA: ArmyState, cB:
       const loserUnits = cross.win === nameA ? cross.cB : cross.cA;
       const winnerName = cross.win;
       const loserName = cross.win === nameA ? nameB : nameA;
-      
+
       msg += `<p><span style="color:var(--accent-color); font-weight:bold;">Tide Turns at ${cross.time}s!</span></p>`;
       msg += `<p style="margin: 10px 0;">The <strong>${winnerName}</strong> player starts winning once they have massed <strong>${winnerUnits} ${winnerName}</strong> to beat the <strong>${loserUnits} ${loserName}</strong>.</p>`;
-      
+
       // Resource investment breakdown table
       const winnerEconomy = cross.win === nameA ? cross.economyA : cross.economyB;
       const loserEconomy = cross.win === nameA ? cross.economyB : cross.economyA;
-      
+
       msg += `<div style="margin: 15px 0;">`;
       msg += `<h4 style="color: var(--accent-color); margin-bottom: 10px;">Resource Investment at ${cross.time}s</h4>`;
       msg += `<table style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">`;
@@ -857,7 +862,7 @@ function applyAge(army: 'a' | 'b', age: string) {
     });
     relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => addBonus(army, t.id.toString()));
   }
-  
+
   // Special case: Scout Cavalry gets +2 attack in Feudal Age+
   if (data.id === '448') {
     const matkEl = document.getElementById(`${army}-matk`) as HTMLInputElement;
@@ -865,21 +870,21 @@ function applyAge(army: 'a' | 'b', age: string) {
       matkEl.value = ageId >= 2 ? '5' : '3';
     }
   }
-  
+
   onInputChange(true);
 }
 
 function loadPreset(army: 'a' | 'b', id: string) {
   const u = allUnits[id];
   if (!u) return;
-  
+
   // Update the unit name header
   const nameHeader = document.getElementById(`name-header-${army}`);
   if (nameHeader) {
     nameHeader.textContent = u.name;
     nameHeader.dataset.value = id;
   }
-  
+
   const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
   if (nameEl) nameEl.value = u.name;
 
@@ -892,12 +897,12 @@ function loadPreset(army: 'a' | 'b', id: string) {
     if (el) {
       // @ts-ignore
       let value = u[k === 'food' ? 'f' : k === 'wood' ? 'w' : k === 'gold' ? 'g' : k];
-      
+
       // Special case: Scout Cavalry gets +2 attack in Feudal Age+
       if (id === '448' && k === 'matk' && currentAge >= 2) {
         value = 5; // Feudal Age+ Scout Cavalry has 5 attack
       }
-      
+
       el.value = value;
     }
   });
@@ -929,7 +934,7 @@ function updateFeaturedScenarioButtons() {
 
 function loadScenario(id: string) {
   isLoadingScenario = true; // Prevent clearing scenario during load
-  
+
   const s = (scenarios as any)[id];
   console.log(`Loading scenario "${id}":`, s ? 'FOUND' : 'NOT FOUND');
 
@@ -954,7 +959,7 @@ function loadScenario(id: string) {
     scenarioNameHeader.textContent = s.name || '';
     scenarioNameHeader.style.display = s.name ? 'block' : 'none';
     scenarioNameHeader.title = 'Click to edit scenario name';
-    
+
     // Make scenario name editable on click
     scenarioNameHeader.onclick = () => {
       const currentName = scenarioNameHeader.textContent || '';
@@ -963,12 +968,12 @@ function loadScenario(id: string) {
       input.value = currentName;
       input.className = 'scenario-name-input';
       input.style.cssText = 'width: 100%; font-size: 1.3rem; font-weight: bold; text-align: center; padding: 10px; background: var(--panel-bg); color: var(--text-color); border: 2px solid var(--accent-color); border-radius: var(--border-radius);';
-      
+
       scenarioNameHeader.innerHTML = '';
       scenarioNameHeader.appendChild(input);
       input.focus();
       input.select();
-      
+
       const saveName = () => {
         const newName = input.value.trim() || currentName;
         scenarioNameHeader.textContent = newName;
@@ -982,7 +987,7 @@ function loadScenario(id: string) {
 
         onInputChange(false); // Update charts and URL
       };
-      
+
       input.addEventListener('blur', saveName);
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -994,7 +999,7 @@ function loadScenario(id: string) {
       });
     };
   }
-  
+
   // Load description (or name if desc doesn't exist)
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
   if (descEl) descEl.value = s.desc || s.name || '';
@@ -1002,12 +1007,12 @@ function loadScenario(id: string) {
   (['a', 'b'] as const).forEach((army) => {
     const config = s[army];
     console.log(`Loading army ${army}:`, config ? 'OK' : 'MISSING');
-    
+
     if (!config) {
       console.error(`Scenario "${id}" missing army ${army} config!`);
       return;
     }
-    
+
     const tl = document.getElementById(`p${army}-timeline`);
     if (tl) {
       tl.innerHTML = '';
@@ -1114,7 +1119,7 @@ function loadScenario(id: string) {
   console.log('=== Calling updateCharts to refresh display ===');
   updateCharts();
   console.log('=== updateCharts complete ===');
-  
+
   isLoadingScenario = false; // Re-enable scenario clearing
 }
 
@@ -1146,7 +1151,7 @@ function exportScenario() {
 
   // Use scenario name from state (already includes header text)
   const scenarioName = s.name || 'New Scenario';
-  
+
   // Helper to convert timeline steps to export format
   const convertTimeline = (army: string) => {
     const timeline = Array.from(document.querySelectorAll(`#p${army}-timeline .timeline-step`)).map((el: any) => {
@@ -1157,38 +1162,38 @@ function exportScenario() {
         c: parseInt(el.querySelector('.step-count')?.value) || 1,
         co: parseFloat(el.querySelector('.step-cost')?.value) || 0,
       };
-      
+
       // Add blocking if checked
       const blocking = el.querySelector('.step-blocking')?.checked;
       if (blocking) step.b = true;
-      
+
       // Add production checkbox if checked
       const production = el.querySelector('.step-production')?.checked;
       if (production) step.prod = true;
-      
+
       // Add villager count for villager steps
       if (el.dataset.type === 'villagers') {
         step.v = parseInt(el.querySelector('.step-value')?.value) || 0;
       }
-      
+
       // Add train time for production steps
       if (el.dataset.type === 'production') {
         step.tr = parseFloat(el.querySelector('.step-train')?.value) || 30;
       }
-      
+
       // Add building/tech ID
       const id = el.querySelector('.step-select')?.value;
       if (id) step.i = id;
-      
+
       // Add building target
       const bt = el.dataset.bt;
       if (bt) step.bt = parseInt(bt);
-      
+
       return step;
     });
     return timeline;
   };
-  
+
   // Helper to convert bonuses to export format
   const convertBonuses = (army: string) => {
     const bonuses = Array.from(document.querySelectorAll(`#${army}-applied-bonuses .applied-bonus`)).map((el: any) => {
@@ -1198,7 +1203,7 @@ function exportScenario() {
     });
     return bonuses;
   };
-  
+
   // Create export format with scenario ID for direct paste into scenarios file
   const exportData: any = {
     [scenarioId]: {
@@ -1243,7 +1248,7 @@ function exportScenario() {
 
   // Format as TypeScript export statement
   const exportText = `export const ${scenarioId} = ${JSON.stringify(exportData[scenarioId], null, 4)};`;
-  
+
   navigator.clipboard.writeText(exportText).then(() => {
     const btn = document.getElementById('export-btn') as HTMLElement;
     const original = btn.textContent;
@@ -1300,7 +1305,7 @@ function cleanArmyState(state: any): any {
       return cleanStep;
     });
   }
-  
+
   // Clean bonus tech states
   if (state.bn && state.bn.length > 0) {
     cleaned.bn = state.bn.map((b: any) => ({
@@ -1308,7 +1313,7 @@ function cleanArmyState(state: any): any {
       e: b.e || [],
     }));
   }
-  
+
   return cleaned;
 }
 
@@ -1317,7 +1322,7 @@ async function syncURL(forceShorten: boolean = false): Promise<string | null> {
   if (isLoadingScenario) {
     return null;
   }
-  
+
   const currentState = getState();
   const json = JSON.stringify(currentState);
 
@@ -1371,7 +1376,7 @@ function getState(): SimulationState {
   const s: any = { a: {}, b: {}, desc: '' };
   const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
   if (descEl) s.desc = descEl.value;
-  
+
   // Include scenario name from header
   const scenarioNameHeader = document.getElementById('scenario-name-header');
   if (scenarioNameHeader && scenarioNameHeader.textContent) {
@@ -1474,13 +1479,13 @@ async function loadState() {
     loadScenario(firstScenario);
     return;
   }
-  
+
   updateCharts();
 }
 
 function applyState(state: any, expiresAt?: number) {
   isLoadingScenario = true; // Prevent clearing during load
-  
+
   if (state.desc) {
     const el = document.getElementById('scenario-desc') as HTMLTextAreaElement;
     if (el) el.value = state.desc;
@@ -1494,7 +1499,7 @@ function applyState(state: any, expiresAt?: number) {
       scenarioNameHeader.style.display = state.name ? 'block' : 'none';
     }
   }
-  
+
   (['a', 'b'] as const).forEach((army) => {
     const armyState = state[army];
     if (!armyState) return;
@@ -1548,7 +1553,7 @@ function applyState(state: any, expiresAt?: number) {
     }
   });
   updateCharts();
-  
+
   isLoadingScenario = false; // Re-enable scenario clearing
 }
 
@@ -1618,223 +1623,223 @@ window.onload = async () => {
     }
   });
 
-/**
- * Create a new blank scenario with default values
- */
-function createNewScenario() {
-  activeScenario = null;
+  /**
+   * Create a new blank scenario with default values
+   */
+  function createNewScenario() {
+    activeScenario = null;
 
-  // Clear scenario name and description
-  const scenarioNameHeader = document.getElementById('scenario-name-header');
-  if (scenarioNameHeader) {
-    scenarioNameHeader.textContent = 'New Scenario';
-    scenarioNameHeader.style.display = 'block';
-  }
-  
-  const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
-  if (descEl) descEl.value = 'Describe your scenario here...';
-  
-  // Reset both armies to defaults
-  (['a', 'b'] as const).forEach((army) => {
-    // Clear timeline
-    const tl = document.getElementById(`p${army}-timeline`);
-    if (tl) tl.innerHTML = '';
-    
-    // Clear bonuses
-    const bn = document.getElementById(`${army}-applied-bonuses`);
-    if (bn) bn.innerHTML = '';
-    
-    // Reset unit name
-    const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
-    if (nameEl) nameEl.value = `Unit ${army.toUpperCase()}`;
-    
-    // Reset name header
-    const header = document.getElementById(`name-header-${army}`);
-    if (header) header.textContent = `Unit ${army.toUpperCase()}`;
-    
-    // Reset civ
-    const civEl = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
-    const civNameEl = document.getElementById(`${army}-civ-name`);
-    if (civEl) civEl.dataset.value = '';
-    if (civNameEl) civNameEl.textContent = 'Select Civ';
-    
-    // Reset all stat inputs to defaults
-    for (const [field, key] of Object.entries(fieldMap)) {
-      const el = document.getElementById(`${army}-${field}`) as HTMLInputElement;
-      if (el && defaults[`${army}-${field}`] !== undefined) {
-        el.value = defaults[`${army}-${field}`];
+    // Clear scenario name and description
+    const scenarioNameHeader = document.getElementById('scenario-name-header');
+    if (scenarioNameHeader) {
+      scenarioNameHeader.textContent = 'New Scenario';
+      scenarioNameHeader.style.display = 'block';
+    }
+
+    const descEl = document.getElementById('scenario-desc') as HTMLTextAreaElement;
+    if (descEl) descEl.value = 'Describe your scenario here...';
+
+    // Reset both armies to defaults
+    (['a', 'b'] as const).forEach((army) => {
+      // Clear timeline
+      const tl = document.getElementById(`p${army}-timeline`);
+      if (tl) tl.innerHTML = '';
+
+      // Clear bonuses
+      const bn = document.getElementById(`${army}-applied-bonuses`);
+      if (bn) bn.innerHTML = '';
+
+      // Reset unit name
+      const nameEl = document.getElementById(`${army}-name`) as HTMLInputElement;
+      if (nameEl) nameEl.value = `Unit ${army.toUpperCase()}`;
+
+      // Reset name header
+      const header = document.getElementById(`name-header-${army}`);
+      if (header) header.textContent = `Unit ${army.toUpperCase()}`;
+
+      // Reset civ
+      const civEl = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
+      const civNameEl = document.getElementById(`${army}-civ-name`);
+      if (civEl) civEl.dataset.value = '';
+      if (civNameEl) civNameEl.textContent = 'Select Civ';
+
+      // Reset all stat inputs to defaults
+      for (const [field, key] of Object.entries(fieldMap)) {
+        const el = document.getElementById(`${army}-${field}`) as HTMLInputElement;
+        if (el && defaults[`${army}-${field}`] !== undefined) {
+          el.value = defaults[`${army}-${field}`];
+        }
       }
-    }
-    
-    // Reset count
-    const countEl = document.getElementById(`${army}-count`) as HTMLInputElement;
-    if (countEl) countEl.value = '1';
-    
-    // Reset age buttons
-    const ageBtns = document.querySelectorAll(`.army-age-controls[data-army="${army}"] .age-btn`);
-    ageBtns.forEach((btn: any) => {
-      btn.classList.toggle('active', btn.dataset.age === '1');
-    });
-    
-    // Add default production step
-    addProductionStep(army, 'production', { name: 'Initial Production', value: 1, train: 30 });
-  });
-  
-  // Clear URL
-  history.replaceState(null, '', window.location.pathname);
-  
-  // Update charts
-  updateCharts();
-  
-  showToast('New scenario created!', 2000);
-}
 
-/**
- * Fuzzy match - checks if chars appear in order anywhere in the string
- */
-function fuzzyMatch(text: string, pattern: string): boolean {
-  const textLower = text.toLowerCase();
-  const patternLower = pattern.toLowerCase();
-  let textIndex = 0;
-  
-  for (let i = 0; i < patternLower.length; i++) {
-    const charIndex = textLower.indexOf(patternLower[i], textIndex);
-    if (charIndex === -1) return false;
-    textIndex = charIndex + 1;
-  }
-  return true;
-}
+      // Reset count
+      const countEl = document.getElementById(`${army}-count`) as HTMLInputElement;
+      if (countEl) countEl.value = '1';
 
-/**
- * Setup autocomplete with fuzzy finding and keyboard navigation
- */
-function setupAutocomplete(
-  input: HTMLInputElement,
-  items: Array<{ id: string; name: string }>,
-  onSelect: (id: string) => void,
-  listId: string
-) {
-  let hasCleared = false;
-  let selectedIndex = 0;
-  let filteredItems: Array<{ id: string; name: string }> = [];
-  let ignoreNextKeyup = false;
-
-  const list = document.getElementById(listId) as HTMLElement;
-
-  const render = (showAll: boolean = false, clearInput: boolean = false) => {
-    if (clearInput && !hasCleared) {
-      input.value = '';
-      hasCleared = true;
-    }
-    const term = showAll || clearInput ? '' : input.value.toLowerCase();
-    selectedIndex = 0;
-
-    // Filter with fuzzy matching
-    filteredItems = items.filter(item => {
-      if (!term) return true;
-      return fuzzyMatch(item.name, term);
-    });
-
-    // Sort by relevance (exact match first, then starts with, then contains)
-    if (term) {
-      filteredItems.sort((a, b) => {
-        const aLower = a.name.toLowerCase();
-        const bLower = b.name.toLowerCase();
-        if (aLower === term) return -1;
-        if (bLower === term) return 1;
-        if (aLower.startsWith(term)) return -1;
-        if (bLower.startsWith(term)) return 1;
-        return aLower.indexOf(term) - bLower.indexOf(term);
+      // Reset age buttons
+      const ageBtns = document.querySelectorAll(`.army-age-controls[data-army="${army}"] .age-btn`);
+      ageBtns.forEach((btn: any) => {
+        btn.classList.toggle('active', btn.dataset.age === '1');
       });
-    }
 
-    list.innerHTML = '';
-    filteredItems.forEach((item, index) => {
-      const el = document.createElement('div');
-      el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
-      el.textContent = item.name;
-      el.addEventListener('click', () => {
-        onSelect(item.id);
+      // Add default production step
+      addProductionStep(army, 'production', { name: 'Initial Production', value: 1, train: 30 });
+    });
+
+    // Clear URL
+    history.replaceState(null, '', window.location.pathname);
+
+    // Update charts
+    updateCharts();
+
+    showToast('New scenario created!', 2000);
+  }
+
+  /**
+   * Fuzzy match - checks if chars appear in order anywhere in the string
+   */
+  function fuzzyMatch(text: string, pattern: string): boolean {
+    const textLower = text.toLowerCase();
+    const patternLower = pattern.toLowerCase();
+    let textIndex = 0;
+
+    for (let i = 0; i < patternLower.length; i++) {
+      const charIndex = textLower.indexOf(patternLower[i], textIndex);
+      if (charIndex === -1) return false;
+      textIndex = charIndex + 1;
+    }
+    return true;
+  }
+
+  /**
+   * Setup autocomplete with fuzzy finding and keyboard navigation
+   */
+  function setupAutocomplete(
+    input: HTMLInputElement,
+    items: Array<{ id: string; name: string }>,
+    onSelect: (id: string) => void,
+    listId: string
+  ) {
+    let hasCleared = false;
+    let selectedIndex = 0;
+    let filteredItems: Array<{ id: string; name: string }> = [];
+    let ignoreNextKeyup = false;
+
+    const list = document.getElementById(listId) as HTMLElement;
+
+    const render = (showAll: boolean = false, clearInput: boolean = false) => {
+      if (clearInput && !hasCleared) {
+        input.value = '';
+        hasCleared = true;
+      }
+      const term = showAll || clearInput ? '' : input.value.toLowerCase();
+      selectedIndex = 0;
+
+      // Filter with fuzzy matching
+      filteredItems = items.filter(item => {
+        if (!term) return true;
+        return fuzzyMatch(item.name, term);
+      });
+
+      // Sort by relevance (exact match first, then starts with, then contains)
+      if (term) {
+        filteredItems.sort((a, b) => {
+          const aLower = a.name.toLowerCase();
+          const bLower = b.name.toLowerCase();
+          if (aLower === term) return -1;
+          if (bLower === term) return 1;
+          if (aLower.startsWith(term)) return -1;
+          if (bLower.startsWith(term)) return 1;
+          return aLower.indexOf(term) - bLower.indexOf(term);
+        });
+      }
+
+      list.innerHTML = '';
+      filteredItems.forEach((item, index) => {
+        const el = document.createElement('div');
+        el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
+        el.textContent = item.name;
+        el.addEventListener('click', () => {
+          onSelect(item.id);
+          list.classList.add('hidden');
+          hasCleared = false;
+        });
+        el.addEventListener('mouseenter', () => {
+          selectedIndex = index;
+          updateSelection();
+        });
+        list.appendChild(el);
+      });
+
+      if (filteredItems.length > 0) list.classList.remove('hidden');
+      else list.classList.add('hidden');
+    };
+
+    const updateSelection = () => {
+      Array.from(list.children).forEach((child, i) => {
+        if (i === selectedIndex) child.classList.add('selected');
+        else child.classList.remove('selected');
+      });
+      // Scroll selected into view
+      const selected = list.children[selectedIndex] as HTMLElement;
+      if (selected) {
+        selected.scrollIntoView({ block: 'nearest' });
+      }
+    };
+
+    const selectCurrent = () => {
+      if (filteredItems.length > 0 && selectedIndex >= 0 && selectedIndex < filteredItems.length) {
+        onSelect(filteredItems[selectedIndex].id);
         list.classList.add('hidden');
         hasCleared = false;
-      });
-      el.addEventListener('mouseenter', () => {
-        selectedIndex = index;
-        updateSelection();
-      });
-      list.appendChild(el);
+        ignoreNextKeyup = true; // Prevent keyup from reopening
+      }
+    };
+
+    input.addEventListener('click', () => render(true));
+    input.addEventListener('focus', () => render(true));
+
+    input.addEventListener('keydown', (e: KeyboardEvent) => {
+      // Clear input once when typing starts
+      if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && input.dataset.value) {
+        render(true, true);
+        return;
+      }
+
+      // Navigate with arrow keys or j/k
+      if (e.key === 'ArrowDown' || (e.key === 'j' && !e.ctrlKey && !e.metaKey)) {
+        e.preventDefault();
+        if (filteredItems.length > 0) {
+          selectedIndex = (selectedIndex + 1) % filteredItems.length;
+          updateSelection();
+        }
+      } else if (e.key === 'ArrowUp' || (e.key === 'k' && !e.ctrlKey && !e.metaKey)) {
+        e.preventDefault();
+        if (filteredItems.length > 0) {
+          selectedIndex = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
+          updateSelection();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        selectCurrent();
+      } else if (e.key === 'Tab') {
+        e.preventDefault();
+        selectCurrent();
+      }
     });
 
-    if (filteredItems.length > 0) list.classList.remove('hidden');
-    else list.classList.add('hidden');
-  };
-
-  const updateSelection = () => {
-    Array.from(list.children).forEach((child, i) => {
-      if (i === selectedIndex) child.classList.add('selected');
-      else child.classList.remove('selected');
+    input.addEventListener('keyup', () => {
+      if (ignoreNextKeyup) {
+        ignoreNextKeyup = false;
+        return;
+      }
+      render(false);
     });
-    // Scroll selected into view
-    const selected = list.children[selectedIndex] as HTMLElement;
-    if (selected) {
-      selected.scrollIntoView({ block: 'nearest' });
-    }
-  };
 
-  const selectCurrent = () => {
-    if (filteredItems.length > 0 && selectedIndex >= 0 && selectedIndex < filteredItems.length) {
-      onSelect(filteredItems[selectedIndex].id);
-      list.classList.add('hidden');
+    input.addEventListener('blur', () => {
       hasCleared = false;
-      ignoreNextKeyup = true; // Prevent keyup from reopening
-    }
-  };
-
-  input.addEventListener('click', () => render(true));
-  input.addEventListener('focus', () => render(true));
-
-  input.addEventListener('keydown', (e: KeyboardEvent) => {
-    // Clear input once when typing starts
-    if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey && input.dataset.value) {
-      render(true, true);
-      return;
-    }
-
-    // Navigate with arrow keys or j/k
-    if (e.key === 'ArrowDown' || (e.key === 'j' && !e.ctrlKey && !e.metaKey)) {
-      e.preventDefault();
-      if (filteredItems.length > 0) {
-        selectedIndex = (selectedIndex + 1) % filteredItems.length;
-        updateSelection();
-      }
-    } else if (e.key === 'ArrowUp' || (e.key === 'k' && !e.ctrlKey && !e.metaKey)) {
-      e.preventDefault();
-      if (filteredItems.length > 0) {
-        selectedIndex = (selectedIndex - 1 + filteredItems.length) % filteredItems.length;
-        updateSelection();
-      }
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      selectCurrent();
-    } else if (e.key === 'Tab') {
-      e.preventDefault();
-      selectCurrent();
-    }
-  });
-
-  input.addEventListener('keyup', () => {
-    if (ignoreNextKeyup) {
-      ignoreNextKeyup = false;
-      return;
-    }
-    render(false);
-  });
-
-  input.addEventListener('blur', () => {
-    hasCleared = false;
-    setTimeout(() => list.classList.add('hidden'), 200);
-  });
-}
+      setTimeout(() => list.classList.add('hidden'), 200);
+    });
+  }
 
   // Setup unit name click handlers (opens unit selector)
   (['a', 'b'] as const).forEach((army) => {
@@ -1845,14 +1850,14 @@ function setupAutocomplete(
       let searchTerm = '';
       let isOpen = false;
       let selectedIndex = 0;
-      
+
       const renderUnitList = () => {
         list.innerHTML = '';
         const filteredItems = units.filter(item => {
           if (!searchTerm) return true;
           return fuzzyMatch(item.name, searchTerm);
         });
-        
+
         // Sort by relevance
         if (searchTerm) {
           filteredItems.sort((a, b) => {
@@ -1865,9 +1870,9 @@ function setupAutocomplete(
             return aLower.indexOf(searchTerm.toLowerCase()) - bLower.indexOf(searchTerm.toLowerCase());
           });
         }
-        
+
         selectedIndex = 0; // Reset selection on re-render
-        
+
         filteredItems.forEach((item, index) => {
           const el = document.createElement('div');
           el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
@@ -1886,11 +1891,11 @@ function setupAutocomplete(
           });
           list.appendChild(el);
         });
-        
+
         if (filteredItems.length > 0) list.classList.remove('hidden');
         else list.classList.add('hidden');
       };
-      
+
       const updateSelection = () => {
         Array.from(list.children).forEach((child, i) => {
           if (i === selectedIndex) child.classList.add('selected');
@@ -1902,15 +1907,15 @@ function setupAutocomplete(
           selected.scrollIntoView({ block: 'nearest' });
         }
       };
-      
+
       const openList = () => {
         renderUnitList();
         updateSelection(); // Highlight first item
-        
+
         // Position the list directly below the header
         const rect = nameHeader.getBoundingClientRect();
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
+
         list.style.position = 'absolute';
         list.style.top = (rect.height + 5) + 'px';
         list.style.left = '0';
@@ -1924,24 +1929,24 @@ function setupAutocomplete(
         list.style.boxShadow = 'var(--shadow)';
         isOpen = true;
       };
-      
+
       nameHeader.addEventListener('click', (e) => {
         e.stopPropagation();
         searchTerm = '';
         openList();
       });
-      
+
       // Global keyboard handler when list is open
       const handleKeydown = (e: KeyboardEvent) => {
         if (!isOpen) return;
-        
+
         if (e.key === 'Escape') {
           list.classList.add('hidden');
           isOpen = false;
           searchTerm = '';
           return;
         }
-        
+
         if (e.key === 'Enter') {
           e.preventDefault();
           const selectedItem = list.querySelector('.preset-item.selected') as HTMLElement;
@@ -1953,7 +1958,7 @@ function setupAutocomplete(
           }
           return;
         }
-        
+
         // Arrow navigation
         if (e.key === 'ArrowDown') {
           e.preventDefault();
@@ -1964,7 +1969,7 @@ function setupAutocomplete(
           }
           return;
         }
-        
+
         if (e.key === 'ArrowUp') {
           e.preventDefault();
           const items = list.querySelectorAll('.preset-item');
@@ -1974,7 +1979,7 @@ function setupAutocomplete(
           }
           return;
         }
-        
+
         // Typing - filter list
         if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
           searchTerm += e.key;
@@ -1982,7 +1987,7 @@ function setupAutocomplete(
           updateSelection();
           return;
         }
-        
+
         if (e.key === 'Backspace') {
           searchTerm = searchTerm.slice(0, -1);
           renderUnitList();
@@ -1990,9 +1995,9 @@ function setupAutocomplete(
           return;
         }
       };
-      
+
       document.addEventListener('keydown', handleKeydown);
-      
+
       // Close when clicking outside
       document.addEventListener('click', () => {
         if (isOpen) {
@@ -2009,27 +2014,27 @@ function setupAutocomplete(
     const civSelector = document.querySelector(`.civ-selector[data-army="${army}"]`) as HTMLElement;
     const list = document.getElementById(`${army}-civ-list`);
     const civNameEl = document.getElementById(`${army}-civ-name`);
-    
+
     if (civSelector && list && civNameEl) {
       const civsList = Object.keys(civs).map(c => ({ id: c, name: c }));
       let searchTerm = '';
       let isOpen = false;
       let selectedIndex = 0;
-      
+
       // Set initial civ name
       const firstCiv = Object.keys(civs)[0];
       if (firstCiv) {
         civNameEl.textContent = firstCiv;
         civSelector.dataset.value = firstCiv;
       }
-      
+
       const renderCivList = () => {
         list.innerHTML = '';
         const filteredItems = civsList.filter(item => {
           if (!searchTerm) return true;
           return fuzzyMatch(item.name, searchTerm);
         });
-        
+
         // Sort by relevance
         if (searchTerm) {
           filteredItems.sort((a, b) => {
@@ -2042,9 +2047,9 @@ function setupAutocomplete(
             return aLower.indexOf(searchTerm.toLowerCase()) - bLower.indexOf(searchTerm.toLowerCase());
           });
         }
-        
+
         selectedIndex = 0; // Reset selection on re-render
-        
+
         filteredItems.forEach((item, index) => {
           const el = document.createElement('div');
           el.className = 'preset-item' + (index === selectedIndex ? ' selected' : '');
@@ -2065,11 +2070,11 @@ function setupAutocomplete(
           });
           list.appendChild(el);
         });
-        
+
         if (filteredItems.length > 0) list.classList.remove('hidden');
         else list.classList.add('hidden');
       };
-      
+
       const updateCivSelection = () => {
         Array.from(list.children).forEach((child, i) => {
           if (i === selectedIndex) child.classList.add('selected');
@@ -2081,14 +2086,14 @@ function setupAutocomplete(
           selected.scrollIntoView({ block: 'nearest' });
         }
       };
-      
+
       const openCivList = () => {
         renderCivList();
         updateCivSelection(); // Highlight first item
-        
+
         // Position the list directly below the selector
         const rect = civSelector.getBoundingClientRect();
-        
+
         list.style.position = 'absolute';
         list.style.top = (rect.height + 5) + 'px';
         list.style.left = '0';
@@ -2102,24 +2107,24 @@ function setupAutocomplete(
         list.style.boxShadow = 'var(--shadow)';
         isOpen = true;
       };
-      
+
       civSelector.addEventListener('click', (e) => {
         e.stopPropagation();
         searchTerm = '';
         openCivList();
       });
-      
+
       // Global keyboard handler when list is open
       const handleCivKeydown = (e: KeyboardEvent) => {
         if (!isOpen) return;
-        
+
         if (e.key === 'Escape') {
           list.classList.add('hidden');
           isOpen = false;
           searchTerm = '';
           return;
         }
-        
+
         if (e.key === 'Enter') {
           e.preventDefault();
           const selectedItem = list.querySelector('.preset-item.selected') as HTMLElement;
@@ -2131,7 +2136,7 @@ function setupAutocomplete(
           }
           return;
         }
-        
+
         // Arrow navigation
         if (e.key === 'ArrowDown') {
           e.preventDefault();
@@ -2142,7 +2147,7 @@ function setupAutocomplete(
           }
           return;
         }
-        
+
         if (e.key === 'ArrowUp') {
           e.preventDefault();
           const items = list.querySelectorAll('.preset-item');
@@ -2152,7 +2157,7 @@ function setupAutocomplete(
           }
           return;
         }
-        
+
         // Typing - filter list
         if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
           searchTerm += e.key;
@@ -2160,7 +2165,7 @@ function setupAutocomplete(
           updateCivSelection();
           return;
         }
-        
+
         if (e.key === 'Backspace') {
           searchTerm = searchTerm.slice(0, -1);
           renderCivList();
@@ -2168,9 +2173,9 @@ function setupAutocomplete(
           return;
         }
       };
-      
+
       document.addEventListener('keydown', handleCivKeydown);
-      
+
       // Close when clicking outside
       document.addEventListener('click', () => {
         if (isOpen) {
@@ -2286,7 +2291,7 @@ function setupAutocomplete(
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ data: scenarioData }),
       });
-      
+
       if (response.ok) {
         const result = await response.json();
         shortUrl = window.location.origin + '/#' + result.id;
@@ -2330,7 +2335,7 @@ function setupAutocomplete(
   // Theme toggle
   const themeToggle = document.getElementById('theme-toggle');
   const savedTheme = localStorage.getItem('theme');
-  
+
   // Apply saved theme
   if (savedTheme === 'light-theme') {
     document.documentElement.classList.add('light-theme');
@@ -2339,7 +2344,7 @@ function setupAutocomplete(
     document.documentElement.classList.add('dark-theme');
     document.documentElement.classList.remove('light-theme');
   }
-  
+
   themeToggle?.addEventListener('click', () => {
     const isDark = document.documentElement.classList.contains('dark-theme');
     if (isDark) {
