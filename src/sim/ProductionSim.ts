@@ -85,7 +85,7 @@ export function calculateCount(
         const unitCost = (step.f || 0) + (step.w || 0) + (step.g || 0);
         const stepCost = (unitCost || step.co || 0) * count;
         spentTotal += stepCost;
-        
+
         // Categorize spending
         if (step.t === 'villagers') {
           spentOnVillagers += stepCost;
@@ -132,7 +132,8 @@ export function calculateCount(
             }
           }
         } else if (step.t === 'production') {
-          // Production step just sets the train time
+          // Production step just sets the train time and immediately provides production capacity
+          currentBuild += (step.v || 0);
           currentTrain = step.tr || currentTrain;
           events.push({ time: s, msg: `Production speed set to ${currentTrain}s` });
         } else if (step.t === 'cost') {
@@ -160,9 +161,9 @@ export function calculateCount(
 
     // 5. Record economy
     if (s % 10 === 0) {
-      economyHistory.push({ 
-        time: s, 
-        gathered: gatheredTotal, 
+      economyHistory.push({
+        time: s,
+        gathered: gatheredTotal,
         spent: spentTotal,
         spentOnVillagers: spentOnVillagers,
         spentOnUnits: spentOnUnits,
