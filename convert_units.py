@@ -16,6 +16,11 @@ TECH_MAP = {
 
 STANDARD_BUILDINGS = {12, 10, 87, 101, 45, 82, 30, 49, 1251, 1665}
 
+NON_RANKED_CIVS = {
+    'ACHAEMENIDS', 'ATHENIANS', 'SPARTANS', 'MACEDONIANS', 'THRACIANS', 
+    'MAPUCHE', 'MUISCA', 'TUPI', 'PURU', 'WEI', 'SHU', 'WU', 'KHITANS', 'JURCHENS'
+}
+
 RES_FOOD = 0
 RES_WOOD = 1
 RES_STONE = 2
@@ -54,6 +59,8 @@ def load_extra_data():
         for filename in sorted(os.listdir(dir_path)):
             if filename.endswith('.json'):
                 civ_name = filename.replace('.json', '')
+                if civ_name in NON_RANKED_CIVS:
+                    continue
                 civ_techs[civ_name] = []
                 with open(os.path.join(dir_path, filename), 'r') as f:
                     try:
@@ -66,16 +73,16 @@ def load_extra_data():
                                 age_id = node.get('Age ID', 1)
                                 
                                 if node_id and name:
-                                    if ntype == 'Research': 
+                                    if ntype == 'Research':
                                         tid = int(node_id)
                                         civ_techs[civ_name].append(tid)
                                         if tid not in tech_ages or age_id < tech_ages[tid]:
                                             tech_ages[tid] = age_id
-                                    
+
                                     if ntype in ['Unit', 'UnitUpgrade', 'UniqueUnit', 'RegionalUnit']:
                                         valid_unit_ids.add(node_id)
                                         if node_id not in unit_names or len(name) > len(unit_names[node_id]): unit_names[node_id] = name
-                                    elif ntype == 'Research':
+                                    elif ntype in ['Research', 'TechUpgrade']:
                                         valid_tech_ids.add(node_id)
                                         if node_id not in tech_names or len(name) > len(tech_names[node_id]): tech_names[node_id] = name
                                     elif ntype in ['BuildingTech', 'BuildingNonTech']:
@@ -125,10 +132,13 @@ def convert():
             if not unit: continue
             uid = str(unit.base_id)
             if uid in processed_ids: continue
-            
-            if uid in valid_unit_ids and unit.creatable and unit.type_50:
-                if getattr(unit, 'hide_in_editor', 0) == 1: continue
-                locations = unit.creatable.train_locations
+
+            # Include creatable units OR upgrade units that are in valid_unit_ids
+            name_check = unit_names.get(uid, unit.name)
+            is_valid_upgrade = uid in valid_unit_ids and (name_check.endswith('man') or 'Guard' in name_check or 'Elite' in name_check or 'Halberdier' in name_check or 'Pikeman' in name_check or 'Champion' in name_check or 'Hussar' in name_check or 'Paladin' in name_check or 'Cavalier' in name_check or 'Arbalester' in name_check)
+            if (uid in valid_unit_ids and unit.creatable and unit.type_50) or (is_valid_upgrade and unit.type_50):
+                locations = unit.creatable.train_locations if unit.creatable else None
+                if getattr(unit, 'hide_in_editor', 0) == 1 and not is_valid_upgrade: continue
                 if not locations or locations[0].unit_id == -1: continue
                 if locations[0].unit_id not in STANDARD_BUILDINGS: continue
 

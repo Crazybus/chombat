@@ -27,21 +27,6 @@ export const buildings: Record<string, BuildingData> = {
             "buildings": []
         }
     },
-    "bastion": {
-        "name": "Bastion",
-        "f": 0,
-        "w": 35,
-        "g": 0,
-        "s": 125,
-        "time": 50,
-        "id": "235",
-        "requires": {
-            "techs": [
-                63
-            ],
-            "buildings": []
-        }
-    },
     "blacksmith": {
         "name": "Blacksmith",
         "f": 0,
@@ -178,6 +163,21 @@ export const buildings: Record<string, BuildingData> = {
             "buildings": []
         }
     },
+    "keep": {
+        "name": "Keep",
+        "f": 0,
+        "w": 35,
+        "g": 0,
+        "s": 125,
+        "time": 50,
+        "id": "235",
+        "requires": {
+            "techs": [
+                63
+            ],
+            "buildings": []
+        }
+    },
     "lumber_camp": {
         "name": "Lumber Camp",
         "f": 0,
@@ -277,32 +277,6 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "72",
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "port": {
-        "name": "Port",
-        "f": 0,
-        "w": 125,
-        "g": 0,
-        "s": 0,
-        "time": 50,
-        "id": "2172",
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "shipyard": {
-        "name": "Shipyard",
-        "f": 0,
-        "w": 150,
-        "g": 0,
-        "s": 0,
-        "time": 50,
-        "id": "2119",
         "requires": {
             "techs": [],
             "buildings": []

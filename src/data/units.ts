@@ -40,6 +40,40 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
+    "arbalester": {
+        "name": "Arbalester",
+        "hp": 40,
+        "matk": 0,
+        "patk": 6,
+        "marm": 0,
+        "parm": 0,
+        "reload": 2.0,
+        "range": 5.0,
+        "frame_delay": 20,
+        "f": 0,
+        "w": 25,
+        "g": 45,
+        "trainTime": 27,
+        "building": 87,
+        "id": "492",
+        "class": 0,
+        "bonuses": {
+            "27": 3,
+            "21": 0,
+            "17": 0,
+            "13": 0
+        },
+        "armors": {
+            "4": 0,
+            "15": 0,
+            "3": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
     "archer": {
         "name": "Archer",
         "hp": 30,
@@ -263,81 +297,41 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "blackwood_archer": {
-        "name": "Blackwood Archer",
-        "hp": 20,
+    "bombard_cannon": {
+        "name": "Bombard Cannon",
+        "hp": 80,
         "matk": 0,
-        "patk": 4,
-        "marm": 0,
-        "parm": 0,
-        "reload": 1.5,
-        "range": 5.0,
-        "frame_delay": 15,
+        "patk": 40,
+        "marm": 2,
+        "parm": 5,
+        "reload": 6.5,
+        "range": 12.0,
+        "frame_delay": 7,
         "f": 0,
-        "w": 35,
-        "g": 45,
-        "trainTime": 14,
-        "building": 82,
-        "id": "2579",
-        "class": 0,
+        "w": 225,
+        "g": 225,
+        "trainTime": 56,
+        "building": 49,
+        "id": "36",
+        "class": 13,
         "bonuses": {
-            "27": 2,
-            "21": 0,
-            "1": 0,
-            "17": 0
+            "11": 200,
+            "16": 40,
+            "20": 20,
+            "13": 40,
+            "37": 40
         },
         "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
-            "19": 0,
-            "31": 0,
-            "40": 0
+            "4": 2,
+            "3": 5,
+            "20": 0,
+            "23": 0,
+            "31": 0
         },
         "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "bolas_rider": {
-        "name": "Bolas Rider",
-        "hp": 55,
-        "matk": 0,
-        "patk": 5,
-        "marm": 0,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 4.0,
-        "frame_delay": 19,
-        "f": 0,
-        "w": 45,
-        "g": 50,
-        "trainTime": 34,
-        "building": 87,
-        "id": "2569",
-        "class": 36,
-        "bonuses": {
-            "11": 0,
-            "17": 2,
-            "1": 0,
-            "27": 0,
-            "21": 0,
-            "39": -3,
-            "8": 2,
-            "30": 2
-        },
-        "armors": {
-            "4": 0,
-            "3": 1,
-            "19": 0,
-            "28": 0,
-            "15": 0,
-            "8": 0,
-            "31": 0,
-            "40": 0
-        },
-        "requires": {
-            "techs": [],
+            "techs": [
+                47
+            ],
             "buildings": []
         }
     },
@@ -538,43 +532,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "cao_cao": {
-        "name": "Cao Cao",
-        "hp": 475,
-        "matk": 14,
-        "patk": 0,
-        "marm": 3,
-        "parm": 3,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 500,
-        "w": 0,
-        "g": 500,
-        "trainTime": 60,
-        "building": 82,
-        "id": "1954",
-        "class": 12,
-        "bonuses": {
-            "11": 0,
-            "15": 3,
-            "38": 0,
-            "39": -3,
-            "20": 0
-        },
-        "armors": {
-            "8": 0,
-            "4": 3,
-            "3": 3,
-            "31": 0,
-            "36": 0,
-            "19": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "capped_ram": {
         "name": "Capped Ram",
         "hp": 200,
@@ -745,6 +702,43 @@ export const units: Record<string, UnitData> = {
             "3": 6,
             "31": 0,
             "60": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
+    "cavalier": {
+        "name": "Cavalier",
+        "hp": 120,
+        "matk": 12,
+        "patk": 0,
+        "marm": 2,
+        "parm": 2,
+        "reload": 1.7999999523162842,
+        "range": 0.0,
+        "frame_delay": 26,
+        "f": 60,
+        "w": 0,
+        "g": 75,
+        "trainTime": 30,
+        "building": 101,
+        "id": "283",
+        "class": 12,
+        "bonuses": {
+            "15": 0,
+            "11": 0,
+            "21": 0,
+            "38": 0,
+            "39": -3,
+            "20": 0,
+            "31": 0
+        },
+        "armors": {
+            "4": 2,
+            "8": 0,
+            "3": 2,
+            "31": 0
         },
         "requires": {
             "techs": [],
@@ -1041,43 +1035,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "companion_cavalry": {
-        "name": "Companion Cavalry",
-        "hp": 90,
-        "matk": 11,
-        "patk": 0,
-        "marm": 1,
-        "parm": 3,
-        "reload": 1.899999976158142,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 70,
-        "w": 0,
-        "g": 65,
-        "trainTime": 26,
-        "building": 82,
-        "id": "2382",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "19": 5
-        },
-        "armors": {
-            "4": 1,
-            "8": 0,
-            "3": 3,
-            "31": 0,
-            "19": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "composite_bowman": {
         "name": "Composite Bowman",
         "hp": 40,
@@ -1217,6 +1174,40 @@ export const units: Record<string, UnitData> = {
             "8": 0,
             "3": 2,
             "19": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
+    "crossbowman": {
+        "name": "Crossbowman",
+        "hp": 35,
+        "matk": 0,
+        "patk": 5,
+        "marm": 0,
+        "parm": 0,
+        "reload": 2.0,
+        "range": 5.0,
+        "frame_delay": 15,
+        "f": 0,
+        "w": 25,
+        "g": 45,
+        "trainTime": 27,
+        "building": 87,
+        "id": "24",
+        "class": 0,
+        "bonuses": {
+            "27": 3,
+            "21": 0,
+            "17": 0,
+            "13": 0
+        },
+        "armors": {
+            "4": 0,
+            "15": 0,
+            "3": 0,
             "31": 0
         },
         "requires": {
@@ -1627,84 +1618,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_blackwood_archer": {
-        "name": "Elite Blackwood Archer",
-        "hp": 25,
-        "matk": 0,
-        "patk": 4,
-        "marm": 0,
-        "parm": 0,
-        "reload": 1.5,
-        "range": 5.0,
-        "frame_delay": 15,
-        "f": 0,
-        "w": 35,
-        "g": 45,
-        "trainTime": 14,
-        "building": 82,
-        "id": "2581",
-        "class": 0,
-        "bonuses": {
-            "27": 2,
-            "21": 0,
-            "1": 0,
-            "17": 0
-        },
-        "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
-            "19": 0,
-            "31": 0,
-            "40": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_bolas_rider": {
-        "name": "Elite Bolas Rider",
-        "hp": 65,
-        "matk": 0,
-        "patk": 6,
-        "marm": 0,
-        "parm": 2,
-        "reload": 2.0,
-        "range": 5.0,
-        "frame_delay": 19,
-        "f": 0,
-        "w": 45,
-        "g": 50,
-        "trainTime": 28,
-        "building": 87,
-        "id": "2571",
-        "class": 36,
-        "bonuses": {
-            "11": 0,
-            "17": 2,
-            "1": 0,
-            "27": 0,
-            "21": 0,
-            "39": -3,
-            "8": 3,
-            "30": 3
-        },
-        "armors": {
-            "4": 0,
-            "3": 2,
-            "19": 0,
-            "28": 0,
-            "15": 0,
-            "8": 0,
-            "31": 0,
-            "40": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_boyar": {
         "name": "Elite Boyar",
         "hp": 130,
@@ -2040,43 +1953,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_companion_cavalry": {
-        "name": "Elite Companion CAvalry",
-        "hp": 120,
-        "matk": 13,
-        "patk": 0,
-        "marm": 1,
-        "parm": 4,
-        "reload": 1.899999976158142,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 70,
-        "w": 0,
-        "g": 65,
-        "trainTime": 26,
-        "building": 82,
-        "id": "2383",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "19": 7
-        },
-        "armors": {
-            "4": 1,
-            "8": 0,
-            "3": 4,
-            "31": 0,
-            "19": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_composite_bowman": {
         "name": "Elite Composite Bowman",
         "hp": 45,
@@ -2255,42 +2131,6 @@ export const units: Record<string, UnitData> = {
             "3": 2,
             "5": 0,
             "28": -4,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_fire_archer": {
-        "name": "Elite Fire Archer",
-        "hp": 40,
-        "matk": 0,
-        "patk": 6,
-        "marm": 0,
-        "parm": 0,
-        "reload": 3.5,
-        "range": 10.0,
-        "frame_delay": 10,
-        "f": 0,
-        "w": 45,
-        "g": 45,
-        "trainTime": 17,
-        "building": 82,
-        "id": "1970",
-        "class": 0,
-        "bonuses": {
-            "27": 2,
-            "21": 4,
-            "17": 0,
-            "20": 1,
-            "16": 4
-        },
-        "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
-            "19": 0,
             "31": 0
         },
         "requires": {
@@ -2487,156 +2327,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_guardsman": {
-        "name": "Elite Guardsman",
-        "hp": 60,
-        "matk": 6,
-        "patk": 0,
-        "marm": 0,
-        "parm": 0,
-        "reload": 3.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 35,
-        "w": 25,
-        "g": 0,
-        "trainTime": 22,
-        "building": 12,
-        "id": "359",
-        "class": 6,
-        "bonuses": {
-            "29": 1,
-            "21": 1,
-            "5": 28,
-            "8": 32,
-            "16": 17,
-            "30": 26,
-            "35": 7,
-            "15": 0
-        },
-        "armors": {
-            "27": 0,
-            "1": 0,
-            "4": 0,
-            "3": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_guecha_warrior": {
-        "name": "Elite Guecha Warrior",
-        "hp": 50,
-        "matk": 0,
-        "patk": 8,
-        "marm": 0,
-        "parm": 5,
-        "reload": 3.0,
-        "range": 4.0,
-        "frame_delay": 25,
-        "f": 0,
-        "w": 50,
-        "g": 60,
-        "trainTime": 17,
-        "building": 82,
-        "id": "2564",
-        "class": 0,
-        "bonuses": {
-            "28": 2,
-            "27": 2,
-            "21": 0,
-            "15": 4,
-            "17": 0,
-            "1": 0
-        },
-        "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 5,
-            "31": 0,
-            "38": 0,
-            "19": 0,
-            "40": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_hippeus": {
-        "name": "Elite Hippeus",
-        "hp": 100,
-        "matk": 11,
-        "patk": 0,
-        "marm": 2,
-        "parm": 5,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 60,
-        "w": 0,
-        "g": 30,
-        "trainTime": 17,
-        "building": 82,
-        "id": "2108",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 5,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 5,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_hoplite": {
-        "name": "Elite Hoplite",
-        "hp": 70,
-        "matk": 12,
-        "patk": 0,
-        "marm": 2,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.5,
-        "frame_delay": 0,
-        "f": 55,
-        "w": 0,
-        "g": 30,
-        "trainTime": 25,
-        "building": 12,
-        "id": "2111",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 2,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_huskarl": {
         "name": "Elite Huskarl",
         "hp": 70,
@@ -2673,6 +2363,44 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
+    "elite_huskarl_761": {
+        "name": "Elite Huskarl",
+        "hp": 70,
+        "matk": 12,
+        "patk": 0,
+        "marm": 0,
+        "parm": 8,
+        "reload": 2.0,
+        "range": 0.0,
+        "frame_delay": 0,
+        "f": 75,
+        "w": 0,
+        "g": 35,
+        "trainTime": 13,
+        "building": 82,
+        "id": "761",
+        "class": 6,
+        "bonuses": {
+            "29": 3,
+            "21": 3,
+            "15": 10,
+            "8": 0,
+            "30": 0
+        },
+        "armors": {
+            "1": 0,
+            "4": 0,
+            "3": 8,
+            "19": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [
+                16
+            ],
+            "buildings": []
+        }
+    },
     "elite_hussite_wagon": {
         "name": "Elite Hussite Wagon",
         "hp": 230,
@@ -2702,116 +2430,6 @@ export const units: Record<string, UnitData> = {
             "23": 0,
             "31": 0,
             "37": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_ibirapema_warrior": {
-        "name": "Elite Ibirapema Warrior",
-        "hp": 90,
-        "matk": 11,
-        "patk": 0,
-        "marm": 2,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 30,
-        "w": 0,
-        "g": 60,
-        "trainTime": 24,
-        "building": 12,
-        "id": "2584",
-        "class": 6,
-        "bonuses": {
-            "29": 3,
-            "21": 2,
-            "8": 0,
-            "30": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_immortal": {
-        "name": "Elite Immortal",
-        "hp": 60,
-        "matk": 12,
-        "patk": 0,
-        "marm": 1,
-        "parm": 3,
-        "reload": 1.7999999523162842,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 50,
-        "w": 0,
-        "g": 20,
-        "trainTime": 10,
-        "building": 82,
-        "id": "2102",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 0,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "4": 1,
-            "3": 3,
-            "15": 0,
-            "19": 0,
-            "31": 0,
-            "1": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_iron_pagoda": {
-        "name": "Elite Iron Pagoda",
-        "hp": 140,
-        "matk": 13,
-        "patk": 0,
-        "marm": 2,
-        "parm": 3,
-        "reload": 2.1500000953674316,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 80,
-        "w": 0,
-        "g": 55,
-        "trainTime": 14,
-        "building": 82,
-        "id": "1910",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 2,
-            "8": 0,
-            "3": 3,
-            "19": 0,
-            "31": 0
         },
         "requires": {
             "techs": [],
@@ -3037,35 +2655,36 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_kona": {
-        "name": "Elite Kona",
-        "hp": 145,
-        "matk": 11,
-        "patk": 0,
+    "elite_kipchak_1260": {
+        "name": "Elite Kipchak",
+        "hp": 45,
+        "matk": 0,
+        "patk": 5,
         "marm": 0,
-        "parm": 5,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 65,
+        "parm": 0,
+        "reload": 2.200000047683716,
+        "range": 4.0,
+        "frame_delay": 21,
+        "f": 0,
         "w": 0,
-        "g": 40,
-        "trainTime": 14,
+        "g": 0,
+        "trainTime": 12,
         "building": 82,
-        "id": "2568",
-        "class": 12,
+        "id": "1260",
+        "class": 36,
         "bonuses": {
-            "20": 0,
-            "11": 0,
+            "27": 1,
             "21": 0,
-            "38": 0,
             "39": -3,
-            "23": 5
+            "15": 0,
+            "38": 0
         },
         "armors": {
+            "28": 0,
             "4": 0,
-            "3": 5,
+            "15": 0,
             "8": 0,
+            "3": 0,
             "19": 0,
             "31": 0
         },
@@ -3090,6 +2709,44 @@ export const units: Record<string, UnitData> = {
         "trainTime": 16,
         "building": 82,
         "id": "1227",
+        "class": 12,
+        "bonuses": {
+            "15": 0,
+            "11": 0,
+            "21": 0,
+            "38": 0,
+            "39": -3,
+            "20": 0,
+            "31": 0
+        },
+        "armors": {
+            "4": 2,
+            "8": 0,
+            "3": 2,
+            "19": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
+    "elite_konnik_1255": {
+        "name": "Elite Konnik",
+        "hp": 120,
+        "matk": 14,
+        "patk": 0,
+        "marm": 2,
+        "parm": 2,
+        "reload": 2.4000000953674316,
+        "range": 0.0,
+        "frame_delay": 13,
+        "f": 60,
+        "w": 0,
+        "g": 70,
+        "trainTime": 16,
+        "building": 1251,
+        "id": "1255",
         "class": 12,
         "bonuses": {
             "15": 0,
@@ -3141,42 +2798,6 @@ export const units: Record<string, UnitData> = {
         "armors": {
             "4": 2,
             "8": 0,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_liao_dao": {
-        "name": "Elite Liao Dao",
-        "hp": 85,
-        "matk": 13,
-        "patk": 0,
-        "marm": 3,
-        "parm": 1,
-        "reload": 2.4000000953674316,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 40,
-        "w": 0,
-        "g": 40,
-        "trainTime": 12,
-        "building": 82,
-        "id": "1922",
-        "class": 6,
-        "bonuses": {
-            "29": 3,
-            "21": 3,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 3,
             "3": 1,
             "19": 0,
             "31": 0
@@ -3485,76 +3106,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_pattiyodha_longbowman": {
-        "name": "Elite Pattiyodha Longbowman",
-        "hp": 60,
-        "matk": 0,
-        "patk": 8,
-        "marm": 2,
-        "parm": 0,
-        "reload": 2.200000047683716,
-        "range": 4.0,
-        "frame_delay": 19,
-        "f": 0,
-        "w": 60,
-        "g": 35,
-        "trainTime": 16,
-        "building": 82,
-        "id": "2389",
-        "class": 0,
-        "bonuses": {
-            "27": 2,
-            "21": 0,
-            "17": 0,
-            "5": 4
-        },
-        "armors": {
-            "4": 2,
-            "15": 0,
-            "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_phalangite": {
-        "name": "Elite Phalangite",
-        "hp": 65,
-        "matk": 0,
-        "patk": 8,
-        "marm": 2,
-        "parm": 0,
-        "reload": 2.5,
-        "range": 1.7999999523162842,
-        "frame_delay": 19,
-        "f": 50,
-        "w": 0,
-        "g": 40,
-        "trainTime": 15,
-        "building": 12,
-        "id": "2385",
-        "class": 6,
-        "bonuses": {
-            "8": 10,
-            "21": 0,
-            "30": 6,
-            "5": 20
-        },
-        "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_plumed_archer": {
         "name": "Elite Plumed Archer",
         "hp": 65,
@@ -3664,41 +3215,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_rhomphaia_warrior": {
-        "name": "Elite Rhomphaia Warrior",
-        "hp": 60,
-        "matk": 10,
-        "patk": 0,
-        "marm": 1,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 50,
-        "w": 0,
-        "g": 40,
-        "trainTime": 13,
-        "building": 82,
-        "id": "2387",
-        "class": 6,
-        "bonuses": {
-            "29": 2,
-            "21": 8,
-            "8": 22,
-            "30": 18
-        },
-        "armors": {
-            "1": 0,
-            "4": 1,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_samurai": {
         "name": "Elite Samurai",
         "hp": 80,
@@ -3736,44 +3252,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_sannahya": {
-        "name": "Elite Sannahya",
-        "hp": 400,
-        "matk": 12,
-        "patk": 0,
-        "marm": 2,
-        "parm": 4,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 90,
-        "w": 0,
-        "g": 80,
-        "trainTime": 22,
-        "building": 101,
-        "id": "2391",
-        "class": 12,
-        "bonuses": {
-            "21": 0,
-            "13": 4,
-            "15": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0
-        },
-        "armors": {
-            "5": 0,
-            "4": 2,
-            "8": 0,
-            "3": 4,
-            "31": 0,
-            "19": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_serjeant": {
         "name": "Elite Serjeant",
         "hp": 85,
@@ -3790,6 +3268,42 @@ export const units: Record<string, UnitData> = {
         "trainTime": 12,
         "building": 82,
         "id": "1659",
+        "class": 6,
+        "bonuses": {
+            "29": 3,
+            "21": 3,
+            "8": 0,
+            "30": 0,
+            "15": 0
+        },
+        "armors": {
+            "1": 0,
+            "4": 6,
+            "3": 3,
+            "19": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
+    "elite_serjeant_1661": {
+        "name": "Elite Serjeant",
+        "hp": 85,
+        "matk": 11,
+        "patk": 0,
+        "marm": 6,
+        "parm": 3,
+        "reload": 2.0,
+        "range": 0.0,
+        "frame_delay": 0,
+        "f": 55,
+        "w": 0,
+        "g": 25,
+        "trainTime": 12,
+        "building": 1665,
+        "id": "1661",
         "class": 6,
         "bonuses": {
             "29": 3,
@@ -3903,7 +3417,6 @@ export const units: Record<string, UnitData> = {
         "id": "6",
         "class": 0,
         "bonuses": {
-            "0": 4,
             "28": 2,
             "27": 4,
             "21": 0,
@@ -3959,42 +3472,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_strategos": {
-        "name": "Elite Strategos",
-        "hp": 65,
-        "matk": 18,
-        "patk": 0,
-        "marm": 1,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 55,
-        "w": 0,
-        "g": 25,
-        "trainTime": 16,
-        "building": 82,
-        "id": "2105",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 0,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 1,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_tarkan": {
         "name": "Elite Tarkan",
         "hp": 150,
@@ -4036,40 +3513,46 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_temple_guard": {
-        "name": "Elite Temple Guard",
-        "hp": 115,
-        "matk": 14,
+    "elite_tarkan_887": {
+        "name": "Elite Tarkan",
+        "hp": 150,
+        "matk": 11,
         "patk": 0,
-        "marm": 2,
-        "parm": 2,
-        "reload": 2.0,
+        "marm": 1,
+        "parm": 4,
+        "reload": 1.899999976158142,
         "range": 0.0,
         "frame_delay": 0,
-        "f": 80,
+        "f": 60,
         "w": 0,
-        "g": 45,
-        "trainTime": 24,
-        "building": 12,
-        "id": "2587",
-        "class": 6,
+        "g": 60,
+        "trainTime": 14,
+        "building": 82,
+        "id": "887",
+        "class": 12,
         "bonuses": {
-            "8": 6,
-            "30": 4,
-            "5": 5,
-            "16": 4,
-            "21": 2
+            "26": 10,
+            "11": 10,
+            "15": 0,
+            "13": 12,
+            "22": 10,
+            "21": 0,
+            "38": 0,
+            "39": -3,
+            "20": 0,
+            "31": 0
         },
         "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 2,
+            "4": 1,
+            "8": 0,
+            "3": 4,
             "19": 0,
-            "31": 0,
-            "29": 0
+            "31": 0
         },
         "requires": {
-            "techs": [],
+            "techs": [
+                483
+            ],
             "buildings": []
         }
     },
@@ -4137,44 +3620,6 @@ export const units: Record<string, UnitData> = {
             "1": 0,
             "4": 1,
             "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_tiger_cavalry": {
-        "name": "Elite Tiger Cavalry",
-        "hp": 130,
-        "matk": 13,
-        "patk": 0,
-        "marm": 0,
-        "parm": 5,
-        "reload": 1.899999976158142,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 60,
-        "w": 0,
-        "g": 80,
-        "trainTime": 15,
-        "building": 82,
-        "id": "1951",
-        "class": 12,
-        "bonuses": {
-            "15": 7,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 0,
-            "8": 0,
-            "3": 5,
             "19": 0,
             "31": 0
         },
@@ -4251,44 +3696,6 @@ export const units: Record<string, UnitData> = {
             "1": 0,
             "4": 1,
             "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "elite_war_chariot": {
-        "name": "Elite War Chariot",
-        "hp": 125,
-        "matk": 10,
-        "patk": 0,
-        "marm": 2,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 0,
-        "w": 65,
-        "g": 65,
-        "trainTime": 24,
-        "building": 101,
-        "id": "2151",
-        "class": 12,
-        "bonuses": {
-            "1": 8,
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "31": 0
-        },
-        "armors": {
-            "4": 2,
-            "8": 0,
-            "3": 1,
             "19": 0,
             "31": 0
         },
@@ -4375,43 +3782,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "elite_white_feather_guard": {
-        "name": "Elite White Feather Guard",
-        "hp": 100,
-        "matk": 8,
-        "patk": 0,
-        "marm": 0,
-        "parm": 3,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 60,
-        "w": 0,
-        "g": 15,
-        "trainTime": 11,
-        "building": 82,
-        "id": "1961",
-        "class": 6,
-        "bonuses": {
-            "29": 4,
-            "21": 2,
-            "8": 8,
-            "30": 7,
-            "5": 8,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 0,
-            "3": 3,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "elite_woad_raider": {
         "name": "Elite Woad Raider",
         "hp": 85,
@@ -4482,42 +3852,6 @@ export const units: Record<string, UnitData> = {
             "techs": [
                 35
             ],
-            "buildings": []
-        }
-    },
-    "fire_archer": {
-        "name": "Fire Archer",
-        "hp": 35,
-        "matk": 0,
-        "patk": 5,
-        "marm": 0,
-        "parm": 0,
-        "reload": 3.5,
-        "range": 9.0,
-        "frame_delay": 10,
-        "f": 0,
-        "w": 45,
-        "g": 45,
-        "trainTime": 17,
-        "building": 82,
-        "id": "1968",
-        "class": 0,
-        "bonuses": {
-            "27": 2,
-            "21": 4,
-            "17": 0,
-            "20": 1,
-            "16": 3
-        },
-        "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
             "buildings": []
         }
     },
@@ -4922,47 +4256,10 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "grenadier": {
-        "name": "Grenadier",
-        "hp": 40,
-        "matk": 0,
-        "patk": 12,
-        "marm": 1,
-        "parm": 1,
-        "reload": 3.450000047683716,
-        "range": 6.0,
-        "frame_delay": 14,
-        "f": 35,
-        "w": 0,
-        "g": 65,
-        "trainTime": 21,
-        "building": 87,
-        "id": "1911",
-        "class": 44,
-        "bonuses": {
-            "27": 1,
-            "21": 4,
-            "17": 3,
-            "1": 9,
-            "32": -9
-        },
-        "armors": {
-            "4": 1,
-            "15": 0,
-            "3": 1,
-            "19": 0,
-            "31": 0,
-            "23": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "guardsman": {
-        "name": "Guardsman",
-        "hp": 55,
-        "matk": 4,
+    "halberdier": {
+        "name": "Halberdier",
+        "hp": 60,
+        "matk": 6,
         "patk": 0,
         "marm": 0,
         "parm": 0,
@@ -4974,15 +4271,15 @@ export const units: Record<string, UnitData> = {
         "g": 0,
         "trainTime": 22,
         "building": 12,
-        "id": "358",
+        "id": "359",
         "class": 6,
         "bonuses": {
             "29": 1,
             "21": 1,
-            "5": 25,
-            "8": 22,
-            "16": 16,
-            "30": 18,
+            "5": 28,
+            "8": 32,
+            "16": 17,
+            "30": 26,
             "35": 7,
             "15": 0
         },
@@ -4998,39 +4295,39 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "guecha_warrior": {
-        "name": "Guecha Warrior",
-        "hp": 50,
-        "matk": 0,
-        "patk": 6,
+    "halberdier_1788": {
+        "name": "Halberdier",
+        "hp": 60,
+        "matk": 6,
+        "patk": 0,
         "marm": 0,
-        "parm": 3,
+        "parm": 0,
         "reload": 3.0,
-        "range": 3.0,
-        "frame_delay": 25,
-        "f": 0,
-        "w": 50,
-        "g": 60,
-        "trainTime": 17,
-        "building": 82,
-        "id": "2562",
-        "class": 0,
+        "range": 0.0,
+        "frame_delay": 0,
+        "f": 35,
+        "w": 25,
+        "g": 0,
+        "trainTime": 22,
+        "building": 1665,
+        "id": "1788",
+        "class": 6,
         "bonuses": {
-            "28": 2,
-            "27": 2,
-            "21": 0,
-            "15": 3,
-            "17": 0,
-            "1": 0
+            "29": 1,
+            "21": 1,
+            "5": 28,
+            "8": 32,
+            "16": 17,
+            "30": 26,
+            "35": 7,
+            "15": 0
         },
         "armors": {
+            "27": 0,
+            "1": 0,
             "4": 0,
-            "15": 0,
-            "3": 3,
-            "31": 0,
-            "38": 0,
-            "19": 0,
-            "40": 0
+            "3": 0,
+            "31": 0
         },
         "requires": {
             "techs": [],
@@ -5185,44 +4482,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "heavy_hei_guang_cavalry": {
-        "name": "Heavy Hei Guang Cavalry",
-        "hp": 90,
-        "matk": 12,
-        "patk": 0,
-        "marm": 4,
-        "parm": 3,
-        "reload": 1.7999999523162842,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 65,
-        "w": 0,
-        "g": 65,
-        "trainTime": 28,
-        "building": 101,
-        "id": "1946",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "1": 1,
-            "31": 0
-        },
-        "armors": {
-            "4": 4,
-            "8": 0,
-            "3": 3,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "heavy_rocket_cart": {
         "name": "Heavy Rocket Cart",
         "hp": 65,
@@ -5286,116 +4545,6 @@ export const units: Record<string, UnitData> = {
             "4": 1,
             "3": 8,
             "20": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "hei_guang_cavalry": {
-        "name": "Hei Guang Cavalry",
-        "hp": 60,
-        "matk": 11,
-        "patk": 0,
-        "marm": 4,
-        "parm": 3,
-        "reload": 1.7999999523162842,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 65,
-        "w": 0,
-        "g": 65,
-        "trainTime": 28,
-        "building": 101,
-        "id": "1944",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "1": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 4,
-            "8": 0,
-            "3": 3,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "hippeus": {
-        "name": "Hippeus",
-        "hp": 90,
-        "matk": 9,
-        "patk": 0,
-        "marm": 2,
-        "parm": 4,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 60,
-        "w": 0,
-        "g": 30,
-        "trainTime": 19,
-        "building": 82,
-        "id": "2107",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 4,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 4,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "hoplite": {
-        "name": "Hoplite",
-        "hp": 55,
-        "matk": 10,
-        "patk": 0,
-        "marm": 1,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.5,
-        "frame_delay": 0,
-        "f": 55,
-        "w": 0,
-        "g": 30,
-        "trainTime": 28,
-        "building": 12,
-        "id": "2110",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 2,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 1,
-            "3": 1,
-            "19": 0,
             "31": 0
         },
         "requires": {
@@ -5581,78 +4730,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "ibirapema_warrior": {
-        "name": "Ibirapema Warrior",
-        "hp": 80,
-        "matk": 8,
-        "patk": 0,
-        "marm": 2,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 30,
-        "w": 0,
-        "g": 60,
-        "trainTime": 24,
-        "building": 12,
-        "id": "2582",
-        "class": 6,
-        "bonuses": {
-            "29": 2,
-            "21": 1,
-            "8": 0,
-            "30": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 2,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "immortal": {
-        "name": "Immortal",
-        "hp": 50,
-        "matk": 10,
-        "patk": 0,
-        "marm": 0,
-        "parm": 3,
-        "reload": 1.7999999523162842,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 50,
-        "w": 0,
-        "g": 20,
-        "trainTime": 12,
-        "building": 82,
-        "id": "2101",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 0,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "4": 0,
-            "3": 3,
-            "15": 0,
-            "19": 0,
-            "31": 0,
-            "1": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "imperial_camel_rider": {
         "name": "Imperial Camel Rider",
         "hp": 140,
@@ -5694,43 +4771,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "imperial_cavalry": {
-        "name": "Imperial Cavalry",
-        "hp": 160,
-        "matk": 14,
-        "patk": 0,
-        "marm": 2,
-        "parm": 3,
-        "reload": 1.899999976158142,
-        "range": 0.0,
-        "frame_delay": 13,
-        "f": 60,
-        "w": 0,
-        "g": 75,
-        "trainTime": 30,
-        "building": 101,
-        "id": "569",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 2,
-            "8": 0,
-            "3": 3,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "imperial_skirmisher": {
         "name": "Imperial Skirmisher",
         "hp": 35,
@@ -5762,44 +4802,6 @@ export const units: Record<string, UnitData> = {
             "3": 5,
             "31": 0,
             "38": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "iron_pagoda": {
-        "name": "Iron Pagoda",
-        "hp": 115,
-        "matk": 12,
-        "patk": 0,
-        "marm": 1,
-        "parm": 3,
-        "reload": 2.1500000953674316,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 80,
-        "w": 0,
-        "g": 55,
-        "trainTime": 14,
-        "building": 82,
-        "id": "1908",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 1,
-            "8": 0,
-            "3": 3,
-            "19": 0,
-            "31": 0
         },
         "requires": {
             "techs": [],
@@ -5871,42 +4873,6 @@ export const units: Record<string, UnitData> = {
             "19": 0,
             "23": 0,
             "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "jian_swordsman": {
-        "name": "Jian Swordsman",
-        "hp": 70,
-        "matk": 8,
-        "patk": 0,
-        "marm": 0,
-        "parm": 5,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 45,
-        "w": 0,
-        "g": 50,
-        "trainTime": 35,
-        "building": 12,
-        "id": "1974",
-        "class": 6,
-        "bonuses": {
-            "21": 2,
-            "8": 0,
-            "30": 0,
-            "15": 4
-        },
-        "armors": {
-            "1": 0,
-            "4": 0,
-            "3": 5,
-            "31": 0,
-            "29": 0,
-            "19": 0
         },
         "requires": {
             "techs": [],
@@ -6098,43 +5064,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "kona": {
-        "name": "Kona",
-        "hp": 125,
-        "matk": 9,
-        "patk": 0,
-        "marm": 0,
-        "parm": 3,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 65,
-        "w": 0,
-        "g": 40,
-        "trainTime": 14,
-        "building": 82,
-        "id": "2566",
-        "class": 12,
-        "bonuses": {
-            "20": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "23": 5
-        },
-        "armors": {
-            "4": 0,
-            "3": 3,
-            "19": 0,
-            "8": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "konnik": {
         "name": "Konnik",
         "hp": 100,
@@ -6166,40 +5095,6 @@ export const units: Record<string, UnitData> = {
             "8": 0,
             "3": 2,
             "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "laminated_bowman": {
-        "name": "Laminated Bowman",
-        "hp": 35,
-        "matk": 0,
-        "patk": 5,
-        "marm": 0,
-        "parm": 0,
-        "reload": 2.0,
-        "range": 5.0,
-        "frame_delay": 15,
-        "f": 0,
-        "w": 25,
-        "g": 45,
-        "trainTime": 27,
-        "building": 87,
-        "id": "24",
-        "class": 0,
-        "bonuses": {
-            "27": 3,
-            "21": 0,
-            "17": 0,
-            "13": 0
-        },
-        "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
             "31": 0
         },
         "requires": {
@@ -6281,42 +5176,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "liao_dao": {
-        "name": "Liao Dao",
-        "hp": 75,
-        "matk": 9,
-        "patk": 0,
-        "marm": 3,
-        "parm": 1,
-        "reload": 2.4000000953674316,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 40,
-        "w": 0,
-        "g": 40,
-        "trainTime": 12,
-        "building": 82,
-        "id": "1920",
-        "class": 6,
-        "bonuses": {
-            "29": 2,
-            "21": 2,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 3,
-            "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "light_cavalry": {
         "name": "Light Cavalry",
         "hp": 60,
@@ -6349,43 +5208,6 @@ export const units: Record<string, UnitData> = {
             "8": 0,
             "3": 2,
             "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "liu_bei": {
-        "name": "Liu Bei",
-        "hp": 425,
-        "matk": 15,
-        "patk": 0,
-        "marm": 3,
-        "parm": 3,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 500,
-        "w": 0,
-        "g": 500,
-        "trainTime": 60,
-        "building": 82,
-        "id": "1966",
-        "class": 6,
-        "bonuses": {
-            "11": 0,
-            "29": 3,
-            "38": 0,
-            "20": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 3,
-            "3": 3,
-            "31": 0,
-            "36": 0,
-            "19": 0
         },
         "requires": {
             "techs": [],
@@ -6790,44 +5612,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "mounted_trebuchet": {
-        "name": "Mounted Trebuchet",
-        "hp": 75,
-        "matk": 0,
-        "patk": 30,
-        "marm": 2,
-        "parm": 4,
-        "reload": 6.5,
-        "range": 10.0,
-        "frame_delay": 21,
-        "f": 175,
-        "w": 0,
-        "g": 175,
-        "trainTime": 46,
-        "building": 49,
-        "id": "1923",
-        "class": 12,
-        "bonuses": {
-            "11": 10,
-            "20": 0,
-            "37": 30,
-            "31": 0
-        },
-        "armors": {
-            "4": 2,
-            "3": 4,
-            "20": 0,
-            "31": 0,
-            "19": 0,
-            "37": 0,
-            "30": 0,
-            "39": -3
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "obuch": {
         "name": "Obuch",
         "hp": 80,
@@ -6934,65 +5718,36 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "palintonon_packed": {
-        "name": "Palintonon (Packed)",
-        "hp": 150,
-        "matk": 0,
-        "patk": 200,
+    "paladin": {
+        "name": "Paladin",
+        "hp": 160,
+        "matk": 14,
+        "patk": 0,
         "marm": 2,
-        "parm": 8,
-        "reload": 10.0,
-        "range": 16.0,
-        "frame_delay": 0,
-        "f": 0,
-        "w": 200,
-        "g": 200,
-        "trainTime": 50,
-        "building": 82,
-        "id": "331",
-        "class": 51,
+        "parm": 3,
+        "reload": 1.899999976158142,
+        "range": 0.0,
+        "frame_delay": 13,
+        "f": 60,
+        "w": 0,
+        "g": 75,
+        "trainTime": 30,
+        "building": 101,
+        "id": "569",
+        "class": 12,
         "bonuses": {
-            "11": 250
-        },
-        "armors": {
-            "4": 2,
-            "3": 8,
+            "15": 0,
+            "11": 0,
+            "21": 0,
+            "38": 0,
+            "39": -3,
             "20": 0,
             "31": 0
         },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "pattiyodha_longbowman": {
-        "name": "Pattiyodha Longbowman",
-        "hp": 50,
-        "matk": 0,
-        "patk": 7,
-        "marm": 0,
-        "parm": 0,
-        "reload": 2.200000047683716,
-        "range": 4.0,
-        "frame_delay": 19,
-        "f": 0,
-        "w": 60,
-        "g": 35,
-        "trainTime": 16,
-        "building": 82,
-        "id": "2388",
-        "class": 0,
-        "bonuses": {
-            "27": 2,
-            "21": 0,
-            "17": 0,
-            "5": 4
-        },
         "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
-            "19": 0,
+            "4": 2,
+            "8": 0,
+            "3": 3,
             "31": 0
         },
         "requires": {
@@ -7033,34 +5788,77 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "phalangite": {
-        "name": "Phalangite",
-        "hp": 50,
-        "matk": 0,
-        "patk": 6,
-        "marm": 1,
+    "pikeman": {
+        "name": "Pikeman",
+        "hp": 55,
+        "matk": 4,
+        "patk": 0,
+        "marm": 0,
         "parm": 0,
-        "reload": 2.5,
-        "range": 1.7999999523162842,
-        "frame_delay": 19,
-        "f": 50,
-        "w": 0,
-        "g": 40,
-        "trainTime": 19,
+        "reload": 3.0,
+        "range": 0.0,
+        "frame_delay": 0,
+        "f": 35,
+        "w": 25,
+        "g": 0,
+        "trainTime": 22,
         "building": 12,
-        "id": "2384",
+        "id": "358",
         "class": 6,
         "bonuses": {
-            "8": 6,
-            "21": 0,
-            "30": 4,
-            "5": 20
+            "29": 1,
+            "21": 1,
+            "5": 25,
+            "8": 22,
+            "16": 16,
+            "30": 18,
+            "35": 7,
+            "15": 0
         },
         "armors": {
+            "27": 0,
             "1": 0,
-            "4": 1,
+            "4": 0,
             "3": 0,
-            "19": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
+    "pikeman_1787": {
+        "name": "Pikeman",
+        "hp": 55,
+        "matk": 4,
+        "patk": 0,
+        "marm": 0,
+        "parm": 0,
+        "reload": 3.0,
+        "range": 0.0,
+        "frame_delay": 0,
+        "f": 35,
+        "w": 25,
+        "g": 0,
+        "trainTime": 22,
+        "building": 1665,
+        "id": "1787",
+        "class": 6,
+        "bonuses": {
+            "29": 1,
+            "21": 1,
+            "5": 25,
+            "8": 22,
+            "16": 16,
+            "30": 18,
+            "35": 7,
+            "15": 0
+        },
+        "armors": {
+            "27": 0,
+            "1": 0,
+            "4": 0,
+            "3": 0,
             "31": 0
         },
         "requires": {
@@ -7177,75 +5975,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "recurve_bowman": {
-        "name": "Recurve Bowman",
-        "hp": 40,
-        "matk": 0,
-        "patk": 6,
-        "marm": 0,
-        "parm": 0,
-        "reload": 2.0,
-        "range": 5.0,
-        "frame_delay": 20,
-        "f": 0,
-        "w": 25,
-        "g": 45,
-        "trainTime": 27,
-        "building": 87,
-        "id": "492",
-        "class": 0,
-        "bonuses": {
-            "27": 3,
-            "21": 0,
-            "17": 0,
-            "13": 0
-        },
-        "armors": {
-            "4": 0,
-            "15": 0,
-            "3": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "rhomphaia_warrior": {
-        "name": "Rhomphaia Warrior",
-        "hp": 60,
-        "matk": 8,
-        "patk": 0,
-        "marm": 0,
-        "parm": 0,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 50,
-        "w": 0,
-        "g": 40,
-        "trainTime": 13,
-        "building": 82,
-        "id": "2386",
-        "class": 6,
-        "bonuses": {
-            "29": 2,
-            "21": 6,
-            "8": 14,
-            "30": 12
-        },
-        "armors": {
-            "1": 0,
-            "4": 0,
-            "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "rocket_cart": {
         "name": "Rocket Cart",
         "hp": 45,
@@ -7313,44 +6042,6 @@ export const units: Record<string, UnitData> = {
             "3": 1,
             "19": 0,
             "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "sannahya": {
-        "name": "Sannahya",
-        "hp": 300,
-        "matk": 10,
-        "patk": 0,
-        "marm": 1,
-        "parm": 3,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 90,
-        "w": 0,
-        "g": 80,
-        "trainTime": 26,
-        "building": 101,
-        "id": "2390",
-        "class": 12,
-        "bonuses": {
-            "21": 0,
-            "13": 4,
-            "15": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0
-        },
-        "armors": {
-            "5": 0,
-            "4": 1,
-            "8": 0,
-            "3": 3,
-            "31": 0,
-            "19": 0
         },
         "requires": {
             "techs": [],
@@ -7431,7 +6122,7 @@ export const units: Record<string, UnitData> = {
     "scout_cavalry": {
         "name": "Scout Cavalry",
         "hp": 45,
-        "matk": 5,
+        "matk": 3,
         "patk": 0,
         "marm": 0,
         "parm": 2,
@@ -7494,43 +6185,6 @@ export const units: Record<string, UnitData> = {
             "4": 2,
             "3": 1,
             "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "shock_cavalry": {
-        "name": "Shock Cavalry",
-        "hp": 120,
-        "matk": 12,
-        "patk": 0,
-        "marm": 2,
-        "parm": 2,
-        "reload": 1.7999999523162842,
-        "range": 0.0,
-        "frame_delay": 26,
-        "f": 60,
-        "w": 0,
-        "g": 75,
-        "trainTime": 30,
-        "building": 101,
-        "id": "283",
-        "class": 12,
-        "bonuses": {
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 2,
-            "8": 0,
-            "3": 2,
             "31": 0
         },
         "requires": {
@@ -7610,44 +6264,6 @@ export const units: Record<string, UnitData> = {
         },
         "requires": {
             "techs": [],
-            "buildings": []
-        }
-    },
-    "siege_ballista": {
-        "name": "Siege Ballista",
-        "hp": 80,
-        "matk": 0,
-        "patk": 40,
-        "marm": 2,
-        "parm": 5,
-        "reload": 6.5,
-        "range": 12.0,
-        "frame_delay": 7,
-        "f": 0,
-        "w": 225,
-        "g": 225,
-        "trainTime": 56,
-        "building": 49,
-        "id": "36",
-        "class": 13,
-        "bonuses": {
-            "11": 200,
-            "16": 40,
-            "20": 20,
-            "13": 40,
-            "37": 40
-        },
-        "armors": {
-            "4": 2,
-            "3": 5,
-            "20": 0,
-            "23": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [
-                47
-            ],
             "buildings": []
         }
     },
@@ -7803,7 +6419,6 @@ export const units: Record<string, UnitData> = {
         "id": "7",
         "class": 0,
         "bonuses": {
-            "0": 3,
             "28": 0,
             "27": 3,
             "21": 0,
@@ -7898,6 +6513,45 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
+    "spearman_1786": {
+        "name": "Spearman",
+        "hp": 45,
+        "matk": 3,
+        "patk": 0,
+        "marm": 0,
+        "parm": 0,
+        "reload": 3.0,
+        "range": 0.0,
+        "frame_delay": 0,
+        "f": 35,
+        "w": 25,
+        "g": 0,
+        "trainTime": 22,
+        "building": 1665,
+        "id": "1786",
+        "class": 6,
+        "bonuses": {
+            "29": 1,
+            "21": 1,
+            "5": 15,
+            "8": 15,
+            "16": 9,
+            "30": 12,
+            "35": 0,
+            "15": 0
+        },
+        "armors": {
+            "27": 0,
+            "1": 0,
+            "4": 0,
+            "3": 0,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
     "steppe_lancer": {
         "name": "Steppe Lancer",
         "hp": 60,
@@ -7928,79 +6582,6 @@ export const units: Record<string, UnitData> = {
             "3": 1,
             "8": 0,
             "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "strategos": {
-        "name": "Strategos",
-        "hp": 60,
-        "matk": 15,
-        "patk": 0,
-        "marm": 1,
-        "parm": 0,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 55,
-        "w": 0,
-        "g": 25,
-        "trainTime": 16,
-        "building": 82,
-        "id": "2104",
-        "class": 6,
-        "bonuses": {
-            "29": 0,
-            "21": 0,
-            "8": 0,
-            "30": 0,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 1,
-            "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "sun_jian": {
-        "name": "Sun Jian",
-        "hp": 400,
-        "matk": 15,
-        "patk": 0,
-        "marm": 4,
-        "parm": 4,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 500,
-        "w": 0,
-        "g": 500,
-        "trainTime": 60,
-        "building": 82,
-        "id": "1978",
-        "class": 12,
-        "bonuses": {
-            "11": 0,
-            "15": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0
-        },
-        "armors": {
-            "8": 0,
-            "4": 4,
-            "3": 4,
-            "31": 0,
-            "36": 0,
-            "19": 0
         },
         "requires": {
             "techs": [],
@@ -8042,43 +6623,6 @@ export const units: Record<string, UnitData> = {
             "3": 3,
             "19": 0,
             "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "temple_guard": {
-        "name": "Temple Guard",
-        "hp": 100,
-        "matk": 12,
-        "patk": 0,
-        "marm": 1,
-        "parm": 1,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 80,
-        "w": 0,
-        "g": 45,
-        "trainTime": 28,
-        "building": 12,
-        "id": "2586",
-        "class": 6,
-        "bonuses": {
-            "8": 3,
-            "30": 2,
-            "5": 3,
-            "16": 2,
-            "21": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 1,
-            "3": 1,
-            "19": 0,
-            "31": 0,
-            "29": 0
         },
         "requires": {
             "techs": [],
@@ -8194,78 +6738,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "tiger_cavalry": {
-        "name": "Tiger Cavalry",
-        "hp": 115,
-        "matk": 11,
-        "patk": 0,
-        "marm": 0,
-        "parm": 4,
-        "reload": 1.899999976158142,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 60,
-        "w": 0,
-        "g": 80,
-        "trainTime": 15,
-        "building": 82,
-        "id": "1949",
-        "class": 12,
-        "bonuses": {
-            "15": 6,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "20": 0,
-            "31": 0
-        },
-        "armors": {
-            "4": 0,
-            "8": 0,
-            "3": 4,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "traction_trebuchet": {
-        "name": "Traction Trebuchet",
-        "hp": 115,
-        "matk": 0,
-        "patk": 50,
-        "marm": 1,
-        "parm": 8,
-        "reload": 11.0,
-        "range": 14.0,
-        "frame_delay": 20,
-        "f": 0,
-        "w": 175,
-        "g": 210,
-        "trainTime": 70,
-        "building": 49,
-        "id": "1942",
-        "class": 13,
-        "bonuses": {
-            "11": 230,
-            "20": 0,
-            "37": 0
-        },
-        "armors": {
-            "4": 1,
-            "3": 8,
-            "17": 0,
-            "20": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "trade_cog": {
         "name": "Trade Cog",
         "hp": 80,
@@ -8317,6 +6789,37 @@ export const units: Record<string, UnitData> = {
             "16": 0,
             "4": 0,
             "3": 2,
+            "31": 0
+        },
+        "requires": {
+            "techs": [],
+            "buildings": []
+        }
+    },
+    "trebuchet_packed": {
+        "name": "Trebuchet (Packed)",
+        "hp": 150,
+        "matk": 0,
+        "patk": 200,
+        "marm": 2,
+        "parm": 8,
+        "reload": 10.0,
+        "range": 16.0,
+        "frame_delay": 0,
+        "f": 0,
+        "w": 200,
+        "g": 200,
+        "trainTime": 50,
+        "building": 82,
+        "id": "331",
+        "class": 51,
+        "bonuses": {
+            "11": 250
+        },
+        "armors": {
+            "4": 2,
+            "3": 8,
+            "20": 0,
             "31": 0
         },
         "requires": {
@@ -8426,82 +6929,6 @@ export const units: Record<string, UnitData> = {
         "armors": {
             "1": 0,
             "4": 1,
-            "3": 0,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "war_chariot": {
-        "name": "War Chariot",
-        "hp": 65,
-        "matk": 0,
-        "patk": 8,
-        "marm": 0,
-        "parm": 5,
-        "reload": 6.5,
-        "range": 6.0,
-        "frame_delay": 3,
-        "f": 65,
-        "w": 0,
-        "g": 90,
-        "trainTime": 28,
-        "building": 49,
-        "id": "1962",
-        "class": 12,
-        "bonuses": {
-            "11": 2,
-            "21": 0,
-            "27": 0,
-            "39": -3,
-            "31": 0
-        },
-        "armors": {
-            "4": 0,
-            "8": 0,
-            "3": 5,
-            "20": 0,
-            "19": 0,
-            "31": 0,
-            "37": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "war_chariot_2150": {
-        "name": "War Chariot",
-        "hp": 100,
-        "matk": 8,
-        "patk": 0,
-        "marm": 1,
-        "parm": 0,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 0,
-        "w": 65,
-        "g": 65,
-        "trainTime": 24,
-        "building": 101,
-        "id": "2150",
-        "class": 12,
-        "bonuses": {
-            "1": 5,
-            "15": 0,
-            "11": 0,
-            "21": 0,
-            "38": 0,
-            "39": -3,
-            "31": 0
-        },
-        "armors": {
-            "4": 1,
-            "8": 0,
             "3": 0,
             "19": 0,
             "31": 0
@@ -8661,43 +7088,6 @@ export const units: Record<string, UnitData> = {
             "buildings": []
         }
     },
-    "white_feather_guard": {
-        "name": "White Feather Guard",
-        "hp": 95,
-        "matk": 7,
-        "patk": 0,
-        "marm": 0,
-        "parm": 2,
-        "reload": 2.0,
-        "range": 0.0,
-        "frame_delay": 0,
-        "f": 60,
-        "w": 0,
-        "g": 15,
-        "trainTime": 11,
-        "building": 82,
-        "id": "1959",
-        "class": 6,
-        "bonuses": {
-            "29": 4,
-            "21": 2,
-            "8": 8,
-            "30": 6,
-            "5": 8,
-            "15": 0
-        },
-        "armors": {
-            "1": 0,
-            "4": 0,
-            "3": 2,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
     "winged_hussar": {
         "name": "Winged Hussar",
         "hp": 80,
@@ -8765,45 +7155,6 @@ export const units: Record<string, UnitData> = {
             "1": 0,
             "4": 0,
             "3": 1,
-            "19": 0,
-            "31": 0
-        },
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    },
-    "xianbei_raider": {
-        "name": "Xianbei Raider",
-        "hp": 30,
-        "matk": 0,
-        "patk": 5,
-        "marm": 0,
-        "parm": 0,
-        "reload": 1.7999999523162842,
-        "range": 4.0,
-        "frame_delay": 35,
-        "f": 0,
-        "w": 65,
-        "g": 25,
-        "trainTime": 29,
-        "building": 87,
-        "id": "1952",
-        "class": 36,
-        "bonuses": {
-            "27": 3,
-            "21": 0,
-            "17": 0,
-            "39": -3,
-            "15": 0,
-            "1": 1
-        },
-        "armors": {
-            "28": 0,
-            "4": 0,
-            "15": 0,
-            "8": 0,
-            "3": 0,
             "19": 0,
             "31": 0
         },

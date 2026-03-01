@@ -76,6 +76,21 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
+    "agoge,_spartan_unique_tech": {
+        "name": "Agoge, Spartan Unique Tech",
+        "f": 500,
+        "w": 0,
+        "g": 400,
+        "time": 40,
+        "building": 82,
+        "id": 1131,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
+    },
     "all_ages": {
         "name": "All Ages",
         "f": 0,
@@ -90,21 +105,6 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 1
-    },
-    "amulet_protection": {
-        "name": "Amulet Protection",
-        "f": 0,
-        "w": 0,
-        "g": 175,
-        "time": 60,
-        "building": 104,
-        "id": 231,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
     },
     "anarchy": {
         "name": "Anarchy",
@@ -551,6 +551,21 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
+    "atonement": {
+        "name": "Atonement",
+        "f": 0,
+        "w": 0,
+        "g": 325,
+        "time": 40,
+        "building": 104,
+        "id": 319,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 3
+    },
     "auto_upgrade_scout_feudal_age": {
         "name": "Auto upgrade Scout Feudal Age",
         "f": 0,
@@ -619,29 +634,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 4
     },
-    "baggage_carriers": {
-        "name": "Baggage Carriers",
-        "f": 100,
-        "w": 0,
-        "g": 0,
-        "time": 40,
-        "building": 12,
-        "id": 215,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [
-            {
-                "t": 5,
-                "a": 6,
-                "v": 1.100000023841858,
-                "u": -1,
-                "c": -1
-            }
-        ],
-        "age": 3
-    },
     "ballista_elephant_make_avail": {
         "name": "Ballista Elephant (make avail)",
         "f": 0,
@@ -665,6 +657,21 @@ export const techs: Record<string, TechData> = {
         "time": 45,
         "building": 82,
         "id": 883,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 3
+    },
+    "ballistics": {
+        "name": "Ballistics",
+        "f": 0,
+        "w": 300,
+        "g": 175,
+        "time": 60,
+        "building": 209,
+        "id": 93,
         "requires": {
             "techs": [],
             "buildings": []
@@ -770,21 +777,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "bastion": {
-        "name": "Bastion",
-        "f": 500,
-        "w": 350,
-        "g": 0,
-        "time": 75,
-        "building": 209,
-        "id": 63,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
-    },
     "bat_ram_make_avail": {
         "name": "Bat Ram (make avail)",
         "f": 0,
@@ -799,21 +791,6 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 1
-    },
-    "battle_drills": {
-        "name": "Battle Drills",
-        "f": 300,
-        "w": 0,
-        "g": 100,
-        "time": 60,
-        "building": 12,
-        "id": 1173,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
     },
     "battle_elephant_make_avail": {
         "name": "Battle Elephant (make avail)",
@@ -905,8 +882,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "bessian_metalworking": {
-        "name": "Bessian Metalworking",
+    "bessian_metalworking,_thracian_unique_tech": {
+        "name": "Bessian Metalworking, Thracian Unique Tech",
         "f": 1100,
         "w": 0,
         "g": 700,
@@ -918,7 +895,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "bimaristan": {
         "name": "Bimaristan",
@@ -1759,7 +1736,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "bombard_make_avail": {
         "name": "Bombard (make avail)",
@@ -1992,7 +1969,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "byzantines": {
         "name": "Byzantines",
@@ -8692,7 +8669,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "camel_archer_make_avail": {
         "name": "Camel Archer (make avail)",
@@ -9326,6 +9303,36 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
+    "chemistry": {
+        "name": "Chemistry",
+        "f": 300,
+        "w": 0,
+        "g": 200,
+        "time": 100,
+        "building": 209,
+        "id": 47,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [
+            {
+                "t": 9,
+                "a": 0,
+                "v": 769.0,
+                "u": -1,
+                "c": -1
+            },
+            {
+                "t": 130,
+                "a": 4,
+                "v": -0.5,
+                "u": -1,
+                "c": -1
+            }
+        ],
+        "age": 3
+    },
     "chemistry_+_torsion": {
         "name": "Chemistry + Torsion",
         "f": 0,
@@ -9587,7 +9594,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "coinage": {
         "name": "Coinage",
@@ -9912,7 +9919,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "dark_age": {
         "name": "Dark Age",
@@ -9959,8 +9966,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "defensive_satrapy": {
-        "name": "Defensive Satrapy",
+    "defensive_satrapy_upgrade": {
+        "name": "Defensive Satrapy Upgrade",
         "f": 0,
         "w": 100,
         "g": 0,
@@ -9972,10 +9979,25 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 1
     },
-    "delian_league": {
-        "name": "Delian League",
+    "dekate,_athenian_unique_tech": {
+        "name": "Dekate, Athenian Unique Tech",
+        "f": 300,
+        "w": 0,
+        "g": 400,
+        "time": 40,
+        "building": 82,
+        "id": 1120,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
+    },
+    "delian_league,_athenian_unique_tech": {
+        "name": "Delian League, Athenian Unique Tech",
         "f": 0,
         "w": 500,
         "g": 300,
@@ -9987,7 +10009,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "demo_galley_make_avail": {
         "name": "Demo Galley (make avail)",
@@ -10072,8 +10094,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
-    "dii_plunderers": {
-        "name": "Dii Plunderers",
+    "dii_plunderers,_thracian_unique_tech": {
+        "name": "Dii Plunderers, Thracian Unique Tech",
         "f": 0,
         "w": 300,
         "g": 200,
@@ -10085,7 +10107,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "disable_spies_regicide_only": {
         "name": "Disable Spies (Regicide only)",
@@ -10101,21 +10123,6 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 1
-    },
-    "domestication": {
-        "name": "Domestication",
-        "f": 50,
-        "w": 100,
-        "g": 0,
-        "time": 20,
-        "building": 68,
-        "id": 1014,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 2
     },
     "donjon_built": {
         "name": "Donjon built",
@@ -10237,7 +10244,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "druzhina": {
         "name": "Druzhina",
@@ -10382,8 +10389,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
-    "economic_satrapy": {
-        "name": "Economic Satrapy",
+    "economic_satrapy_upgrade": {
+        "name": "Economic Satrapy Upgrade",
         "f": 75,
         "w": 125,
         "g": 0,
@@ -10395,10 +10402,10 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 1
     },
-    "eisphora": {
-        "name": "Eisphora",
+    "eisphora,_athenian_unique_tech": {
+        "name": "Eisphora, Athenian Unique Tech",
         "f": 500,
         "w": 0,
         "g": 350,
@@ -10410,7 +10417,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "elephant_archer_make_avail": {
         "name": "Elephant Archer (make avail)",
@@ -12062,8 +12069,23 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "ends_of_the_world": {
-        "name": "Ends of the World",
+    "enclosures": {
+        "name": "Enclosures",
+        "f": 100,
+        "w": 150,
+        "g": 0,
+        "time": 40,
+        "building": 68,
+        "id": 1013,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
+    },
+    "ends_of_the_world,_macedonian_unique_tech": {
+        "name": "Ends of the World, Macedonian Unique Tech",
         "f": 0,
         "w": 300,
         "g": 0,
@@ -12075,7 +12097,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "ephorate": {
         "name": "Ephorate",
@@ -12090,7 +12112,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "ethiopians": {
         "name": "Ethiopians",
@@ -12167,21 +12189,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "exorcism": {
-        "name": "Exorcism",
-        "f": 550,
-        "w": 0,
-        "g": 750,
-        "time": 60,
-        "building": 104,
-        "id": 45,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
-    },
     "fabric_shields": {
         "name": "Fabric Shields",
         "f": 600,
@@ -12197,14 +12204,14 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 4
     },
-    "fabric_shields_1366": {
-        "name": "Fabric Shields",
-        "f": 0,
-        "w": 450,
-        "g": 350,
-        "time": 45,
-        "building": 82,
-        "id": 1366,
+    "faith": {
+        "name": "Faith",
+        "f": 550,
+        "w": 0,
+        "g": 750,
+        "time": 60,
+        "building": 104,
+        "id": 45,
         "requires": {
             "techs": [],
             "buildings": []
@@ -12513,36 +12520,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "flaming_arrows": {
-        "name": "Flaming Arrows",
-        "f": 300,
-        "w": 0,
-        "g": 200,
-        "time": 100,
-        "building": 209,
-        "id": 47,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [
-            {
-                "t": 9,
-                "a": 0,
-                "v": 769.0,
-                "u": -1,
-                "c": -1
-            },
-            {
-                "t": 130,
-                "a": 4,
-                "v": -0.5,
-                "u": -1,
-                "c": -1
-            }
-        ],
-        "age": 3
-    },
     "flaming_camel_make_avail": {
         "name": "Flaming Camel (make avail)",
         "f": 0,
@@ -12759,8 +12736,8 @@ export const techs: Record<string, TechData> = {
         ],
         "age": 2
     },
-    "fortified_bastions": {
-        "name": "Fortified Bastions",
+    "fortifed_bastions": {
+        "name": "Fortifed Bastions",
         "f": 350,
         "w": 250,
         "g": 0,
@@ -12772,7 +12749,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "fortified_church_armenians": {
         "name": "Fortified Church (Armenians)",
@@ -13317,6 +13294,21 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
+    "grazing_grasslands": {
+        "name": "Grazing Grasslands",
+        "f": 175,
+        "w": 325,
+        "g": 0,
+        "time": 70,
+        "building": 68,
+        "id": 1012,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
+    },
     "great_wall": {
         "name": "Great Wall",
         "f": 0,
@@ -13840,8 +13832,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "helot_levies": {
-        "name": "Helot Levies",
+    "helot_levies,_spartan_unique_tech": {
+        "name": "Helot Levies, Spartan Unique Tech",
         "f": 0,
         "w": 500,
         "g": 300,
@@ -13861,22 +13853,7 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
-        "age": 3
-    },
-    "hemlock": {
-        "name": "Hemlock",
-        "f": 0,
-        "w": 0,
-        "g": 1000,
-        "time": 60,
-        "building": 104,
-        "id": 439,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
+        "age": 1
     },
     "herbal_medicine": {
         "name": "Herbal Medicine",
@@ -13922,6 +13899,21 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
+        "age": 1
+    },
+    "heresy": {
+        "name": "Heresy",
+        "f": 0,
+        "w": 0,
+        "g": 1000,
+        "time": 60,
+        "building": 104,
+        "id": 439,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
         "age": 3
     },
     "hero_shadow_tech": {
@@ -13982,7 +13974,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "hoardings": {
         "name": "Hoardings",
@@ -14043,6 +14035,21 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 4
+    },
+    "huaracas": {
+        "name": "Huaracas",
+        "f": 0,
+        "w": 450,
+        "g": 350,
+        "time": 45,
+        "building": 82,
+        "id": 1366,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
     },
     "hulk_make_avail": {
         "name": "Hulk (make avail)",
@@ -14170,7 +14177,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "ibirapema_warrior_make_avail": {
         "name": "Ibirapema Warrior (make avail)",
@@ -14186,6 +14193,21 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 1
+    },
+    "illumination": {
+        "name": "Illumination",
+        "f": 0,
+        "w": 0,
+        "g": 120,
+        "time": 65,
+        "building": 104,
+        "id": 233,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 4
     },
     "imperial_age": {
         "name": "Imperial Age",
@@ -14345,21 +14367,6 @@ export const techs: Record<string, TechData> = {
         "time": 40,
         "building": 82,
         "id": 492,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
-    },
-    "iphicratean_tactics": {
-        "name": "Iphicratean Tactics",
-        "f": 0,
-        "w": 500,
-        "g": 450,
-        "time": 50,
-        "building": 82,
-        "id": 1121,
         "requires": {
             "techs": [],
             "buildings": []
@@ -14562,29 +14569,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "karda": {
-        "name": "Karda",
-        "f": 600,
-        "w": 0,
-        "g": 550,
-        "time": 50,
-        "building": 82,
-        "id": 1113,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [
-            {
-                "t": 9,
-                "a": 12,
-                "v": 7938.0,
-                "u": -1,
-                "c": -1
-            }
-        ],
-        "age": 4
-    },
     "kasbah": {
         "name": "Kasbah",
         "f": 250,
@@ -14608,6 +14592,21 @@ export const techs: Record<string, TechData> = {
         "time": 60,
         "building": 82,
         "id": 59,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 4
+    },
+    "keep": {
+        "name": "Keep",
+        "f": 500,
+        "w": 350,
+        "g": 0,
+        "time": 75,
+        "building": 209,
+        "id": 63,
         "requires": {
             "techs": [],
             "buildings": []
@@ -14818,21 +14817,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "krypteia": {
-        "name": "Krypteia",
-        "f": 500,
-        "w": 0,
-        "g": 400,
-        "time": 40,
-        "building": 82,
-        "id": 1131,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
-    },
     "kshatriyas": {
         "name": "Kshatriyas",
         "f": 500,
@@ -14906,10 +14890,10 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
-        "age": 3
+        "age": 1
     },
-    "leaf_headed_shafts": {
-        "name": "Leaf-Headed Shafts",
+    "leaf_headed_shafts,_puru_unique_tech": {
+        "name": "Leaf-Headed Shafts, Puru Unique Tech",
         "f": 0,
         "w": 300,
         "g": 200,
@@ -14921,7 +14905,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "leather_archer_armor": {
         "name": "Leather Archer Armor",
@@ -15096,6 +15080,21 @@ export const techs: Record<string, TechData> = {
         "time": 0,
         "building": -1,
         "id": 1066,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
+    },
+    "livestock_husbandry": {
+        "name": "Livestock Husbandry",
+        "f": 50,
+        "w": 100,
+        "g": 0,
+        "time": 20,
+        "building": 68,
+        "id": 1014,
         "requires": {
             "techs": [],
             "buildings": []
@@ -15433,7 +15432,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "mameluke_make_avail": {
         "name": "Mameluke (make avail)",
@@ -15630,8 +15629,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
-    "military_satrapy": {
-        "name": "Military Satrapy",
+    "military_satrapy_upgrade": {
+        "name": "Military Satrapy Upgrade",
         "f": 0,
         "w": 125,
         "g": 75,
@@ -15643,7 +15642,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 1
     },
     "mine_has_been_built": {
         "name": "Mine has been built",
@@ -15681,7 +15680,22 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
-        "age": 4
+        "age": 1
+    },
+    "ming_kuang_armor_1081": {
+        "name": "Ming-Kuang Armor",
+        "f": 0,
+        "w": 600,
+        "g": 300,
+        "time": 40,
+        "building": 82,
+        "id": 1081,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
     },
     "missionary_avail": {
         "name": "Missionary (avail)",
@@ -15801,7 +15815,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "mounted_trebuchet_make_avail": {
         "name": "Mounted Trebuchet (make avail)",
@@ -15908,21 +15922,6 @@ export const techs: Record<string, TechData> = {
             }
         ],
         "age": 1
-    },
-    "mystery_cults": {
-        "name": "Mystery Cults",
-        "f": 0,
-        "w": 0,
-        "g": 200,
-        "time": 75,
-        "building": 104,
-        "id": 438,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
     },
     "new_research": {
         "name": "New Research",
@@ -17171,8 +17170,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "odomantian_raiders": {
-        "name": "Odomantian Raiders",
+    "odomantian_raiders,_thracian_unique_tech": {
+        "name": "Odomantian Raiders, Thracian Unique Tech",
         "f": 300,
         "w": 0,
         "g": 150,
@@ -17184,7 +17183,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "offensive_emplacement": {
         "name": "Offensive Emplacement",
@@ -17259,7 +17258,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "organ_gun_make_avail": {
         "name": "Organ Gun (make avail)",
@@ -17561,21 +17560,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
-    "pastoralism": {
-        "name": "Pastoralism",
-        "f": 100,
-        "w": 150,
-        "g": 0,
-        "time": 40,
-        "building": 68,
-        "id": 1013,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
-    },
     "pavise": {
         "name": "Pavise",
         "f": 0,
@@ -17606,8 +17590,8 @@ export const techs: Record<string, TechData> = {
         ],
         "age": 1
     },
-    "peloponnesian_league": {
-        "name": "Peloponnesian League",
+    "peloponnesian_league,_spartan_unique_tech": {
+        "name": "Peloponnesian League, Spartan Unique Tech",
         "f": 700,
         "w": 0,
         "g": 450,
@@ -17619,10 +17603,10 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
-    "peltasts": {
-        "name": "Peltasts",
+    "peltasts,_thracian_unique_tech": {
+        "name": "Peltasts, Thracian Unique Tech",
         "f": 0,
         "w": 800,
         "g": 900,
@@ -17634,7 +17618,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "perfusion": {
         "name": "Perfusion",
@@ -17681,8 +17665,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "pezhetairoi": {
-        "name": "Pezhetairoi",
+    "pezhetairoi,_macedonian_unique_tech": {
+        "name": "Pezhetairoi, Macedonian Unique Tech",
         "f": 500,
         "w": 0,
         "g": 450,
@@ -17694,7 +17678,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "pikeman": {
         "name": "Pikeman",
@@ -18145,21 +18129,6 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 1
-    },
-    "purification": {
-        "name": "Purification",
-        "f": 0,
-        "w": 0,
-        "g": 120,
-        "time": 65,
-        "building": 104,
-        "id": 233,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
     },
     "puru_static_bonuses": {
         "name": "Puru Static Bonuses",
@@ -18686,8 +18655,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 4
     },
-    "red_cliff_tactics": {
-        "name": "Red Cliff Tactics",
+    "red_cliffs_tactics": {
+        "name": "Red Cliffs Tactics",
         "f": 400,
         "w": 0,
         "g": 250,
@@ -18699,10 +18668,25 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
+        "age": 1
+    },
+    "redemption": {
+        "name": "Redemption",
+        "f": 0,
+        "w": 0,
+        "g": 475,
+        "time": 50,
+        "building": 104,
+        "id": 316,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
         "age": 3
     },
-    "reed_arrows": {
-        "name": "Reed Arrows",
+    "reed_arrows,_achaemenid_unique_tech": {
+        "name": "Reed Arrows, Achaemenid Unique Tech",
         "f": 400,
         "w": 0,
         "g": 300,
@@ -18714,7 +18698,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "rename_units": {
         "name": "Rename Units",
@@ -19084,20 +19068,28 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "sacrificial_dedication": {
-        "name": "Sacrificial Dedication",
-        "f": 0,
+    "sagaris,_achaemenid_unique_tech": {
+        "name": "Sagaris, Achaemenid Unique Tech",
+        "f": 600,
         "w": 0,
-        "g": 475,
+        "g": 550,
         "time": 50,
-        "building": 104,
-        "id": 316,
+        "building": 82,
+        "id": 1113,
         "requires": {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
-        "age": 3
+        "effects": [
+            {
+                "t": 9,
+                "a": 12,
+                "v": 7938.0,
+                "u": -1,
+                "c": -1
+            }
+        ],
+        "age": 1
     },
     "samurai_make_avail": {
         "name": "Samurai (make avail)",
@@ -19113,6 +19105,21 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 1
+    },
+    "sanctity": {
+        "name": "Sanctity",
+        "f": 0,
+        "w": 0,
+        "g": 175,
+        "time": 60,
+        "building": 104,
+        "id": 231,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 3
     },
     "sappers": {
         "name": "Sappers",
@@ -19196,8 +19203,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "sarissophoroi": {
-        "name": "Sarissophoroi",
+    "sarissophoroi,_macedonian_unique_tech": {
+        "name": "Sarissophoroi, Macedonian Unique Tech",
         "f": 300,
         "w": 0,
         "g": 500,
@@ -19209,7 +19216,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "savar": {
         "name": "Savar",
@@ -19344,7 +19351,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "scorpion": {
         "name": "Scorpion",
@@ -19376,8 +19383,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "scythed_chariots": {
-        "name": "Scythed Chariots",
+    "scythed_chariots,_achaemenid_unique_tech": {
+        "name": "Scythed Chariots, Achaemenid Unique Tech",
         "f": 0,
         "w": 500,
         "g": 500,
@@ -19389,7 +19396,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "second_change_of_government": {
         "name": "Second change of Government",
@@ -20079,7 +20086,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "shipyard_built": {
         "name": "Shipyard built",
@@ -20169,7 +20176,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 4
     },
     "siege_engineers_researched_for_vedic_teachings": {
         "name": "Siege Engineers Researched for Vedic Teachings",
@@ -20314,21 +20321,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 3
     },
-    "sitting_tiger": {
-        "name": "Sitting Tiger",
-        "f": 0,
-        "w": 600,
-        "g": 300,
-        "time": 40,
-        "building": 82,
-        "id": 1081,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
-    },
     "sitting_tiger_+_chemistry": {
         "name": "Sitting Tiger + Chemistry",
         "f": 0,
@@ -20344,8 +20336,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "skandhavaras": {
-        "name": "Skandhavaras",
+    "skandhavaras,_puru_unique_tech": {
+        "name": "Skandhavaras, Puru Unique Tech",
         "f": 0,
         "w": 800,
         "g": 900,
@@ -20357,7 +20349,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "skeuophoroi": {
         "name": "Skeuophoroi",
@@ -20372,7 +20364,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "skirmisher_make_avail": {
         "name": "Skirmisher (make avail)",
@@ -20494,8 +20486,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "sparabaras": {
-        "name": "Sparabaras",
+    "sparabaras,_achaemenid_unique_tech": {
+        "name": "Sparabaras, Achaemenid Unique Tech",
         "f": 350,
         "w": 0,
         "g": 300,
@@ -20507,7 +20499,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "spartans": {
         "name": "Spartans",
@@ -20643,6 +20635,29 @@ export const techs: Record<string, TechData> = {
         },
         "effects": [],
         "age": 4
+    },
+    "squires": {
+        "name": "Squires",
+        "f": 100,
+        "w": 0,
+        "g": 0,
+        "time": 40,
+        "building": 12,
+        "id": 215,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [
+            {
+                "t": 5,
+                "a": 6,
+                "v": 1.100000023841858,
+                "u": -1,
+                "c": -1
+            }
+        ],
+        "age": 3
     },
     "stable____age_two": {
         "name": "Stable -- Age Two",
@@ -21034,21 +21049,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "syncretism": {
-        "name": "Syncretism",
-        "f": 0,
-        "w": 0,
-        "g": 325,
-        "time": 40,
-        "building": 104,
-        "id": 319,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
-    },
     "szlachta_privileges": {
         "name": "Szlachta Privileges",
         "f": 500,
@@ -21109,21 +21109,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "target_practice": {
-        "name": "Target Practice",
-        "f": 0,
-        "w": 300,
-        "g": 175,
-        "time": 60,
-        "building": 209,
-        "id": 93,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 3
-    },
     "tarkan_make_avail": {
         "name": "Tarkan (make avail)",
         "f": 0,
@@ -21154,20 +21139,20 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "taxiarchs": {
-        "name": "Taxiarchs",
-        "f": 300,
-        "w": 0,
-        "g": 400,
-        "time": 40,
+    "taxiarchs,_athenian_unique_tech": {
+        "name": "Taxiarchs, Athenian Unique Tech",
+        "f": 0,
+        "w": 500,
+        "g": 450,
+        "time": 50,
         "building": 82,
-        "id": 1120,
+        "id": 1121,
         "requires": {
             "techs": [],
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "temple_guard_make_avail": {
         "name": "Temple Guard (make avail)",
@@ -21321,6 +21306,21 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
+    "theocracy": {
+        "name": "Theocracy",
+        "f": 0,
+        "w": 0,
+        "g": 200,
+        "time": 75,
+        "building": 104,
+        "id": 438,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 4
+    },
     "third_change_of_government": {
         "name": "Third change of Government",
         "f": 0,
@@ -21424,7 +21424,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
     "tiger_cavalry_make_avail": {
         "name": "Tiger Cavalry (make avail)",
@@ -21742,21 +21742,6 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "transhumance": {
-        "name": "Transhumance",
-        "f": 175,
-        "w": 325,
-        "g": 0,
-        "time": 70,
-        "building": 68,
-        "id": 1012,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        },
-        "effects": [],
-        "age": 4
-    },
     "treadmill_crane": {
         "name": "Treadmill Crane",
         "f": 0,
@@ -21838,7 +21823,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "tupi": {
         "name": "Tupi",
@@ -21938,6 +21923,21 @@ export const techs: Record<string, TechData> = {
         "time": 45,
         "building": 12,
         "id": 217,
+        "requires": {
+            "techs": [],
+            "buildings": []
+        },
+        "effects": [],
+        "age": 1
+    },
+    "two_handed_swordsman_1173": {
+        "name": "Two-Handed Swordsman",
+        "f": 300,
+        "w": 0,
+        "g": 100,
+        "time": 60,
+        "building": 12,
+        "id": 1173,
         "requires": {
             "techs": [],
             "buildings": []
@@ -22110,8 +22110,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "vadhavadha": {
-        "name": "Vadhavadha",
+    "vadhavadha,_puru_unique_tech": {
+        "name": "Vadhavadha, Puru Unique Tech",
         "f": 300,
         "w": 0,
         "g": 150,
@@ -22123,10 +22123,10 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
-    "vedic_teachings": {
-        "name": "Vedic Teachings",
+    "vedic_teachings,_puru_unique_tech": {
+        "name": "Vedic Teachings, Puru Unique Tech",
         "f": 1100,
         "w": 0,
         "g": 700,
@@ -22138,10 +22138,10 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 4
+        "age": 1
     },
-    "veteran_chiliarchs": {
-        "name": "Veteran Chiliarchs",
+    "veteran_chiliarchs,_macedonian_unique_tech": {
+        "name": "Veteran Chiliarchs, Macedonian Unique Tech",
         "f": 200,
         "w": 0,
         "g": 150,
@@ -22153,7 +22153,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "vietnamese": {
         "name": "Vietnamese",
@@ -22695,8 +22695,8 @@ export const techs: Record<string, TechData> = {
         "effects": [],
         "age": 1
     },
-    "xyphos": {
-        "name": "Xyphos",
+    "xyphos,_spartan_unique_tech": {
+        "name": "Xyphos, Spartan Unique Tech",
         "f": 300,
         "w": 0,
         "g": 250,
@@ -22708,7 +22708,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 1
     },
     "yasama": {
         "name": "Yasama",

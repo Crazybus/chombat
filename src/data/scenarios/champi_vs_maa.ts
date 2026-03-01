@@ -1,5 +1,5 @@
 export const champi_vs_maa = {
-    "name": "Champi Scout vs Man-at-arms",
+    "name": "Champi scout vs MAA",
     "desc": "All in dark age champi scout rush vs 19 pop no loom Man-at-arms",
     "a": {
         "nm": "Champi Scout",
