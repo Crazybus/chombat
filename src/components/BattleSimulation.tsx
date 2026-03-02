@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import { useSimulation } from '../context/SimulationContext';
 import { CombatSim } from '../sim/CombatSim';
+import { calculateEqualResources, calculateEqualProductionTime } from '../sim/ArmyAnalyzer';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
 import CombatCharts from './CombatCharts';
+import StatsSummary from './StatsSummary';
 
 const BattleSimulation: React.FC = () => {
   const { state, updateArmy, analysisA, analysisB } = useSimulation();
@@ -28,8 +30,22 @@ const BattleSimulation: React.FC = () => {
   const winA = res.armyA.totalHp > res.armyB.totalHp;
   const color = winA ? 'var(--army-a-color)' : 'var(--army-b-color)';
 
-  const ratioA = ((res.armyA.totalHp / res.armyA.initialTotalHp) * 100).toFixed(1);
-  const ratioB = ((res.armyB.totalHp / res.armyB.initialTotalHp) * 100).toFixed(1);
+  const ratioA = res.armyA.initialTotalHp > 0 ? ((res.armyA.totalHp / res.armyA.initialTotalHp) * 100).toFixed(1) : '0.0';
+  const ratioB = res.armyB.initialTotalHp > 0 ? ((res.armyB.totalHp / res.armyB.initialTotalHp) * 100).toFixed(1) : '0.0';
+
+  const survivorsA = isNaN(res.armyA.remaining) ? 0 : Math.ceil(res.armyA.remaining);
+  const survivorsB = isNaN(res.armyB.remaining) ? 0 : Math.ceil(res.armyB.remaining);
+  const duration = isNaN(res.duration) ? 0 : res.duration;
+
+  const setEqualResources = () => {
+    const newCountB = calculateEqualResources(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b);
+    updateArmy('b', { c: Math.max(1, newCountB) });
+  };
+
+  const setEqualProduction = () => {
+    const newCountB = calculateEqualProductionTime(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b);
+    updateArmy('b', { c: Math.max(1, newCountB) });
+  };
 
   return (
     <div id="battle" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
@@ -46,8 +62,16 @@ const BattleSimulation: React.FC = () => {
             <input type="number" value={state.a.c || 1} readOnly />
             <button className="count-btn" onClick={() => updateArmy('a', { c: (state.a.c || 1) + 1 })}>+</button>
           </div>
+          <div style={{ marginTop: '10px' }}>
+            <StatsSummary army="a" compact={true} />
+          </div>
         </div>
-        <div className="ratio-vs">VS</div>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualResources}>Equal Resources</button>
+          <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualProduction}>Equal Prod Time</button>
+        </div>
+
         <div className="counter-group">
           <label>{nameB} Count</label>
           <div className="counter-controls">
@@ -55,15 +79,18 @@ const BattleSimulation: React.FC = () => {
             <input type="number" value={state.b.c || 1} readOnly />
             <button className="count-btn" onClick={() => updateArmy('b', { c: (state.b.c || 1) + 1 })}>+</button>
           </div>
+          <div style={{ marginTop: '10px' }}>
+            <StatsSummary army="b" compact={true} />
+          </div>
         </div>
       </div>
 
       <section id="results" className="results-area" style={{ width: '100%' }}>
         <div id="overall-result" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center', color }}>
-          Winner: {winA ? nameA : nameB} ({res.duration.toFixed(1)}s)
+          Winner: {winA ? nameA : nameB} ({duration.toFixed(1)}s)
         </div>
         <div id="stat-summary" style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <p>{nameA} survivors: <strong>{Math.ceil(res.armyA.remaining)}</strong> ({ratioA}%) | {nameB} survivors: <strong>{Math.ceil(res.armyB.remaining)}</strong> ({ratioB}%)</p>
+          <p>{nameA} survivors: <strong>{String(survivorsA)}</strong> ({ratioA}%) | {nameB} survivors: <strong>{String(survivorsB)}</strong> ({ratioB}%)</p>
         </div>
         
         <CombatCharts history={res.history} nameA={nameA} nameB={nameB} />

@@ -1,0 +1,115 @@
+import React from 'react';
+import { useSimulation } from '../context/SimulationContext';
+import { ArmyAnalysis } from '../sim/ArmyAnalyzer';
+
+interface StatsSummaryProps {
+  army: 'a' | 'b';
+  compact?: boolean;
+}
+
+const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false }) => {
+  const { analysisA, analysisB, toggleBonus } = useSimulation();
+  const analysis = army === 'a' ? analysisA : analysisB;
+
+  const formatStat = (base: number, total: number) => {
+    const diff = Math.round(total - base);
+    return (
+      <>
+        <span>{Math.round(base)}</span>
+        {Math.abs(diff) >= 1 && (
+          <span className={diff > 0 ? 'stat-bonus' : 'stat-penalty'}>
+            {' '}{diff > 0 ? '+' : ''}{diff}
+          </span>
+        )}
+      </>
+    );
+  };
+
+  if (!analysis) return <div className="unit-stats-summary" />;
+  const { effectiveStats, modifiedBase } = analysis;
+
+  const isMelee = (effectiveStats.range || 0) <= 1;
+
+  return (
+    <div className="unit-stats-summary" style={compact ? { padding: '4px 8px', gap: '8px', border: 'none', background: 'transparent', marginBottom: 0, minHeight: 'auto' } : {}}>
+      <div className="stat-badge" title="HP">
+        <span className="stat-icon">❤️</span>
+        <span className="stat-text">{formatStat(modifiedBase.hp, effectiveStats.hp)}</span>
+      </div>
+      <div className="stat-badge" title={isMelee ? 'Melee Attack' : 'Pierce Attack'}>
+        <span className="stat-icon">{isMelee ? '⚔️' : '🏹'}</span>
+        <span className="stat-text">
+          {isMelee 
+            ? formatStat(modifiedBase.matk, effectiveStats.matk)
+            : formatStat(modifiedBase.patk, effectiveStats.patk)
+          }
+        </span>
+      </div>
+      <div className="stat-badge" title="Melee Armor">
+        <span className="stat-icon">🛡️</span>
+        <span className="stat-text">{formatStat(modifiedBase.marm, effectiveStats.marm)}</span>
+      </div>
+      <div className="stat-badge" title="Pierce Armor">
+        <span className="stat-icon">🛡️</span>
+        <span className="stat-text">{formatStat(modifiedBase.parm, effectiveStats.parm)}</span>
+      </div>
+      {effectiveStats.range > 1 && (
+        <div className="stat-badge" title="Range">
+          <span className="stat-icon">🎯</span>
+          <span className="stat-text">{formatStat(modifiedBase.range, effectiveStats.range)}</span>
+        </div>
+      )}
+      {!compact && <UnitStatsExplanation army={army} analysis={analysis} toggleBonus={toggleBonus} />}
+    </div>
+  );
+};
+
+const UnitStatsExplanation: React.FC<{ army: 'a' | 'b', analysis: ArmyAnalysis, toggleBonus: any }> = ({ army, analysis, toggleBonus }) => {
+  const { groups, unitName, ageName } = analysis;
+
+  return (
+    <div className="unit-explanation" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: '12px', borderTop: '1px solid var(--border-dim)', paddingTop: '12px', width: '100%' }}>
+      <div className="summary-line" style={{ fontWeight: 'bold', color: 'var(--text-color)', marginBottom: '8px', fontSize: '0.85rem' }}>
+        {ageName} {unitName}
+      </div>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px' }}>
+        {Object.entries(groups).map(([key, group]) => {
+          if (group.sources.length === 0) return null;
+          return (
+            <div key={key} className="stat-explanation-group" style={{ background: 'var(--panel-bg-alt)', padding: '8px', borderRadius: '4px', border: '1px solid var(--border-dim)' }}>
+              <div style={{ fontWeight: 'bold', color: 'var(--accent-color)', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span>{group.icon}</span> {group.label}
+              </div>
+              <ul style={{ margin: 0, paddingLeft: '16px', listStyleType: 'disc' }}>
+                {group.sources.map((src, i) => {
+                  const isTech = src.type === 'tech';
+                  const isActive = src.isActive !== false;
+                  
+                  return (
+                    <li 
+                      key={i} 
+                      style={{ 
+                        marginBottom: '2px', 
+                        cursor: isTech ? 'pointer' : 'default',
+                        textDecoration: isActive ? 'none' : 'line-through',
+                        opacity: isActive ? 1 : 0.5,
+                        transition: 'all 0.2s'
+                      }}
+                      onClick={() => isTech && src.techId && toggleBonus(army, src.techId)}
+                      title={isTech ? 'Click to toggle this upgrade' : undefined}
+                    >
+                      <span>{src.name === 'Manual Override' ? '' : src.name + ': '}<span className={src.isBonus ? 'stat-bonus' : 'stat-penalty'} style={{ fontWeight: 'bold' }}>{src.label}</span></span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default StatsSummary;

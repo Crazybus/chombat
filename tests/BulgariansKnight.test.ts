@@ -44,7 +44,7 @@ describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
       { i: stirrupsId, e: stirrups.effects.map(() => true) }
     ];
     
-    const analysis = analyzeArmy({ ps: 'knight', age: '3', cv: civKey, bn }, { 'knight': knight }, techsById, {});
+    const analysis = analyzeArmy({ ps: 'knight', age: ageId.toString(), cv: civKey, bn }, { 'knight': knight }, techsById);
     
     // Knight base reload: 1.8. 
     // Stirrups: Attack speed x1.33 (In dataset this is reload * 0.75)

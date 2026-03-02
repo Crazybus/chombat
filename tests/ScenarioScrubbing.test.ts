@@ -34,7 +34,6 @@ describe('Scenario Scrubbing', () => {
   });
 
   it('should scrub redundant overrides for a fully upgraded Feudal Scout', () => {
-    const scoutBase = units['scout_cavalry'];
     // Full Feudal upgrades: Forging (+1 Atk), Scale Barding (+1/+1 Arm), Bloodlines (+20 HP)
     // Plus Scout auto-upgrade in Feudal (+2 Atk)
     // Total should be: HP 65, Atk 6, Arm 1/3

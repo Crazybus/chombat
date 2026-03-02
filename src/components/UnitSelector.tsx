@@ -71,7 +71,23 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // ... (handleKeyDown stays same)
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsOpen(false);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex(prev => (prev + 1) % filteredUnits.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex(prev => (prev - 1 + filteredUnits.length) % filteredUnits.length);
+    } else if (e.key === 'Enter') {
+      if (filteredUnits[selectedIndex]) {
+        onSelect(filteredUnits[selectedIndex].id);
+        setIsOpen(false);
+        setSearchTerm('');
+      }
+    }
+  };
 
   const handleToggle = (e: React.MouseEvent) => {
     e.preventDefault();

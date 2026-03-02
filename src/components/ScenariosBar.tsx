@@ -14,17 +14,23 @@ const ScenariosBar: React.FC = () => {
         {featuredScenarios.map(id => {
           const scenario = (scenarios as any)[id];
           if (!scenario) return null;
+          const isActive = state.sid === id;
           return (
             <button
               key={id}
-              className={`scenario-btn ${state.name === scenario.name ? 'active' : ''}`}
-              style={state.name === scenario.name ? { background: 'var(--accent-color)', color: 'black' } : {}}
+              className={`scenario-btn ${isActive ? 'active' : ''}`}
+              style={isActive ? { background: 'var(--accent-color)', color: 'black' } : {}}
               onClick={() => loadScenario(id)}
             >
               {scenario.name}
             </button>
           );
         })}
+        {state.name === 'Shared Scenario' && !state.sid && (
+          <button className="scenario-btn active" style={{ background: 'var(--accent-color)', color: 'black' }}>
+            🔗 Shared Scenario
+          </button>
+        )}
       </div>
 
       <div className="searchable-scenario">

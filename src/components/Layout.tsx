@@ -10,7 +10,7 @@ import { useSimulation } from '../context/SimulationContext';
 
 const Layout: React.FC = () => {
   const { state, showToast, setState } = useSimulation();
-  const { syncURL, getCleanState } = useSyncURL();
+  const { syncURL, getCleanState } = useSyncURL(state, setState);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
   }, [isDarkMode]);
 
   const handleShare = async () => {
-    const url = await syncURL(true);
+    const url = syncURL(true);
     if (url) {
       navigator.clipboard.writeText(url).then(() => {
         showToast('Shared URL copied to clipboard!');

@@ -1,6 +1,7 @@
 import { ArmyState, UnitData, TechData } from './types';
 import { CombatSim } from './CombatSim';
-import { getEffectLabel, shouldApplyEffect, decodeEncoded, COMBAT_BUILDINGS, shouldApplyTech } from './TechLogic';
+import { Unit } from './Unit';
+import { getEffectLabel, decodeEncoded, COMBAT_BUILDINGS, shouldApplyTech } from './TechLogic';
 import { GENERIC_CIV } from '../data/civs';
 import { buildings } from '../data/buildings';
 import { techs } from '../data/techs';
@@ -127,7 +128,7 @@ export function applyManualOverrides(baseUnit: UnitData, armyState: ArmyState): 
 
 export function getManualOverrideSources(ageResolvedBase: UnitData, armyState: ArmyState): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
-  Object.entries(fieldLabelMap).forEach(([configKey, label]) => {
+  Object.entries(fieldLabelMap).forEach(([configKey]) => {
     const val = (armyState as any)[configKey];
     if (val !== undefined) {
       const unitKey = unitKeyMap[configKey];
@@ -137,14 +138,14 @@ export function getManualOverrideSources(ageResolvedBase: UnitData, armyState: A
         const diff = parseFloat(String(val)) - parseFloat(String(baseVal || 0));
         const diffLabel = diff >= 0 ? `+${diff}` : `${diff}`;
         if (!sources[group]) sources[group] = [];
-        sources[group].push({ name: 'Manual Override', label: `Base stat changed: ${diffLabel}`, isBonus: diff > 0, type: 'override' });
+        sources[group].push({ name: 'Manual Override', label: diffLabel, isBonus: diff > 0, type: 'override' });
       }
     }
   });
   return sources;
 }
 
-export function getTechBonusSources(baseUnit: UnitData, armyState: ArmyState, techsById: Record<number, TechData>, bonuses: Record<string, any>): Record<string, StatSource[]> {
+export function getTechBonusSources(armyState: ArmyState, techsById: Record<number, TechData>, bonuses: Record<string, any>): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
   armyState.bn?.forEach(bState => {
     const tech = techsById[parseInt(bState.i)] || (bonuses as any)[bState.i];
@@ -215,6 +216,27 @@ export function getRecommendedTechs(unit: UnitData, ageId: number, civKey: strin
   });
 }
 
+export function calculateEqualResources(countA: number, unitA: UnitData, stateA: ArmyState, unitB: UnitData, stateB: ArmyState): number {
+  const uA = new CombatSim(unitA, unitA, stateA, stateA, {}, {}).dataA;
+  const uB = new CombatSim(unitB, unitB, stateB, stateB, {}, {}).dataB;
+  
+  // Use the Unit class to get parsed costs including discounts
+  const costA = new Unit({ ...unitA, ...stateA, ...uA } as any).getParsedCost().total;
+  const costB = new Unit({ ...unitB, ...stateB, ...uB } as any).getParsedCost().total;
+  
+  if (costB <= 0) return countA;
+  return Math.round((countA * costA) / costB);
+}
+
+export function calculateEqualProductionTime(countA: number, unitA: UnitData, stateA: ArmyState, unitB: UnitData, _stateB: ArmyState): number {
+  // Production time uses the trainTime of the base unit, potentially modified by techs (tr in state)
+  const timeA = stateA.tr || unitA.trainTime || 30;
+  const timeB = _stateB.tr || unitB.trainTime || 30;
+  
+  if (timeB <= 0) return countA;
+  return Math.round((countA * timeA) / timeB);
+}
+
 export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyAnalysis | null {
   const baseUnit = resolveBaseUnit(armyState, allUnits);
   const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
@@ -239,15 +261,15 @@ export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitD
     other: { label: 'Misc', icon: '⚙️', sources: [] },
   };
   const overrideSources = getManualOverrideSources(naturalBase, armyState);
-  const techSources = getTechBonusSources(baseUnit, armyState, activeTechs, allBonuses);
-  
+  const techSources = getTechBonusSources(armyState, activeTechs, allBonuses);
+
   [overrideSources, techSources].forEach(sourceSet => {
     Object.entries(sourceSet).forEach(([group, items]) => {
       if (groups[group]) groups[group].sources.push(...items);
     });
   });
   return { baseUnit, naturalBase, modifiedBase, effectiveStats: finalEffective, groups, unitName: baseUnit.name, ageName: getAgeName(armyState.age || '1') };
-}
+  }
 
 export function scrubArmy(army: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyState {
   const normalized = { ...army };

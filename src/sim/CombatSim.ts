@@ -38,10 +38,10 @@ export class CombatSim {
     configA: ArmyState,
     configB: ArmyState,
     allTechs: Record<number, TechData>,
-    allUnits: Record<string, UnitData>
+    _allUnits: Record<string, UnitData>
   ) {
-    this.dataA = this.applyBonuses(armyA, configA, parseInt(configA.age || '1'), allTechs, allUnits);
-    this.dataB = this.applyBonuses(armyB, configB, parseInt(configB.age || '1'), allTechs, allUnits);
+    this.dataA = this.applyBonuses(armyA, configA, parseInt(configA.age || '1'), allTechs, _allUnits);
+    this.dataB = this.applyBonuses(armyB, configB, parseInt(configB.age || '1'), allTechs, _allUnits);
   }
 
   applyBonuses(
@@ -49,7 +49,7 @@ export class CombatSim {
     config: ArmyState,
     ageId: number,
     allTechs: Record<number, TechData>,
-    allUnits: Record<string, UnitData>
+    _allUnits: Record<string, UnitData>
   ): any {
     // 1. Start with a FRESH copy of base unit data
     let newUnit = { ...baseUnit };
@@ -136,7 +136,7 @@ export class CombatSim {
 
     // Apply the accumulated reload multiplier
     newUnit.reload *= reloadMult;
-    newUnit.reloadBase *= reloadMult;
+    newUnit.reloadBase = (newUnit.reloadBase || baseUnit.reload) * reloadMult;
 
     // 5. Handle hidden auto-upgrades for Scouts and Eagles in Feudal Age+
     if (ageId >= 2) {

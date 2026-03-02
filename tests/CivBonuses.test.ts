@@ -33,7 +33,7 @@ describe('Civilization-Specific Tech Filtering (Explicit)', () => {
 
     // Stats: Base (5) + Fletching (1) + Bodkin (1) + Chemistry (1) = 8
     const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { 'crossbowman': crossbow }, techsById, {});
+    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { 'crossbowman': crossbow }, techsById);
     expect(analysis?.effectiveStats.patk).toBe(8);
   });
 
@@ -59,7 +59,7 @@ describe('Civilization-Specific Tech Filtering (Explicit)', () => {
 
     // Stats: Base (5) + Fletching (1) + Bodkin (1) = 7
     const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { 'crossbowman': crossbow }, techsById, {});
+    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { 'crossbowman': crossbow }, techsById);
     expect(analysis?.effectiveStats.patk).toBe(7);
   });
 
@@ -83,7 +83,7 @@ describe('Civilization-Specific Tech Filtering (Explicit)', () => {
 
     // Stats: Base (5) + Fletching (1) + Bodkin (1) = 7
     const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { 'crossbowman': crossbow }, techsById, {});
+    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { 'crossbowman': crossbow }, techsById);
     expect(analysis?.effectiveStats.patk).toBe(7);
   });
 });

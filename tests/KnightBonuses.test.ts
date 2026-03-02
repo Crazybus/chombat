@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { analyzeArmy, getRecommendedTechs } from '../src/sim/ArmyAnalyzer';
 import { units } from '../src/data/units';
 import { techs } from '../src/data/techs';
-import { civs, GENERIC_CIV } from '../src/data/civs';
+import { GENERIC_CIV } from '../src/data/civs';
 import { TechData } from '../src/sim/types';
 
 describe('Knight Bonuses (Real Data)', () => {
@@ -43,7 +43,7 @@ describe('Knight Bonuses (Real Data)', () => {
     const recommended = getRecommendedTechs(knight, 3, GENERIC_CIV, techsById, {});
     const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
     
-    const analysis = analyzeArmy({ ps: 'knight', age: '3', bn }, { 'knight': knight }, techsById, {});
+    const analysis = analyzeArmy({ ps: 'knight', age: '3', bn }, { 'knight': knight }, techsById);
     
     expect(analysis).not.toBeNull();
     expect(analysis?.effectiveStats.hp).toBe(120);

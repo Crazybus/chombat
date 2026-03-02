@@ -40,7 +40,7 @@ describe('Castle Age Archer Bonuses (Real Data)', () => {
     const recommended = getRecommendedTechs(archer, 3, GENERIC_CIV, techsById, {});
     const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
     
-    const analysis = analyzeArmy({ ps: 'archer', age: '3', bn }, { 'archer': archer }, techsById, {});
+    const analysis = analyzeArmy({ ps: 'archer', age: '3', bn }, { 'archer': archer }, techsById);
     
     expect(analysis).not.toBeNull();
     // Archer (4) + Fletching (1) + Bodkin (1) = 6

@@ -1,5 +1,11 @@
 import { UnitData, ArmyState } from './types';
 
+export const parseStat = (val: any, def: number) => {
+  if (val === undefined || val === null || val === '') return def;
+  const p = parseFloat(String(val));
+  return isNaN(p) ? def : p;
+};
+
 export class Unit {
   name: string;
   id: string;
@@ -33,11 +39,7 @@ export class Unit {
   constructor(data: UnitData & ArmyState) {
     const d = data as any;
     
-    const parse = (val: any, def: number) => {
-      if (val === undefined || val === null || val === '') return def;
-      const p = parseFloat(String(val));
-      return isNaN(p) ? def : p;
-    };
+    const parse = parseStat;
 
     this.name = d.nm || d.name || 'Unit';
     this.id = d.id;

@@ -5,7 +5,6 @@ import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
 import { civs, GENERIC_CIV } from '../data/civs';
-import { COMBAT_BUILDINGS, shouldApplyTech } from '../sim/TechLogic';
 import { analyzeArmy, ArmyAnalysis, getRecommendedTechs, scrubArmy } from '../sim/ArmyAnalyzer';
 import { buildings } from '../data/buildings';
 
@@ -35,6 +34,7 @@ const initialState: SimulationState = {
   a: { ...defaultArmy },
   b: { ...defaultArmy },
   desc: '',
+  sid: undefined
 };
 
 const SimulationContext = createContext<SimulationContextType | undefined>(undefined);
@@ -63,7 +63,8 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const updateArmy = (army: 'a' | 'b', updates: Partial<ArmyState>) => {
     setState(prev => ({
       ...prev,
-      [army]: { ...prev[army], ...updates }
+      [army]: { ...prev[army], ...updates },
+      sid: undefined // Mark as modified from scenario
     }));
   };
 
@@ -86,7 +87,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         }
         return b;
       });
-      return { ...prev, [army]: { ...armyState, bn: newBonuses } };
+      return { ...prev, [army]: { ...armyState, bn: newBonuses }, sid: undefined };
     });
   };
 
@@ -94,7 +95,6 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const armyState = state[army];
     const allUnits: Record<string, UnitData> = { ...units, ...presets };
     
-    // Find unit by ps or by name
     let data = armyState.ps ? allUnits[armyState.ps] : null;
     if (!data && armyState.nm) {
       data = Object.values(allUnits).find(u => u.name === armyState.nm) || null;
@@ -109,23 +109,22 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }
 
     const availableTechs: Record<number, number> = civKey ? (civs as any)[civKey] || {} : {};
-    
     const techsById: Record<number, TechData> = {};
     Object.values(techs).forEach(t => techsById[t.id] = t);
 
-    // Clear and re-apply bonuses
     const newBonuses: { i: string; e: boolean[] }[] = [];
-
     if (ageId > 1) {
       const relevantTechs = getRecommendedTechs(data, ageId, civKey, techsById, availableTechs);
-
       relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
         newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
       });
     }
 
-    let overrides: Partial<ArmyState> = { age, cv: civKey, bn: newBonuses };
-    updateArmy(army, overrides);
+    setState(prev => ({
+      ...prev,
+      [army]: { ...prev[army], age, cv: civKey, bn: newBonuses },
+      sid: undefined
+    }));
   };
 
   const loadPreset = (army: 'a' | 'b', id: string) => {
@@ -151,7 +150,6 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     Object.values(techs).forEach(t => techsById[t.id] = t);
     const availableTechs: Record<number, number> = currentCiv ? (civs as any)[currentCiv] || {} : {};
 
-    // 1. Build Production Building
     const bId = u.building ? u.building.toString() : '87'; 
     const bData = (buildings as any)[bId] || Object.values(buildings).find(b => b.id === bId);
     if (bData) {
@@ -161,34 +159,33 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       });
     }
 
-    // 2. Research All Upgrades (Sequential, Blocking Units)
     if (ageId > 1) {
       const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
       relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
         newArmyState.bn?.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
-        
         newArmyState.tl?.push({
           t: 'tech', n: t.name, d: t.time || 40, c: 1, co: (t.f||0)+(t.w||0)+(t.g||0),
-          i: t.id.toString(), bt: t.building.toString(), b: true // Blocks unit prod
+          i: t.id.toString(), bt: t.building, b: true
         });
       });
     }
 
-    // 3. Start Infinite Production (Immediate)
-    newArmyState.tl?.push({ t: 'production', n: `Infinite ${u.name}`, v: 1, tr: u.trainTime, inf: true, d: 0 });
+    newArmyState.tl?.push({ t: 'production', n: `${u.name} Production`, v: 1, tr: u.trainTime, lim: false, d: 0 });
 
-    setState(prev => ({ ...prev, [army]: newArmyState }));
+    setState(prev => ({ ...prev, [army]: newArmyState, sid: undefined }));
   };
 
   const resetToNewScenario = () => {
-    // Initial state should also have sensible defaults
+    const archer = units['archer'];
+    const skirm = units['skirmisher'];
+    
     setState({
-      a: { ...defaultArmy, ps: 'archer', nm: 'Archer' },
-      b: { ...defaultArmy, ps: 'skirmisher', nm: 'Skirmisher' },
+      a: { ...defaultArmy, ps: 'archer', nm: archer.name },
+      b: { ...defaultArmy, ps: 'skirmisher', nm: skirm.name },
       desc: 'New scenario description...',
       name: 'New Scenario',
+      sid: 'new'
     });
-    // Trigger loadPreset to fill timeline
     loadPreset('a', 'archer');
     loadPreset('b', 'skirmisher');
   };
@@ -205,13 +202,15 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         b: scrubArmy(scenario.b, allUnits, techsById),
         desc: scenario.desc || '',
         name: scenario.name,
+        sid: id
       });
     }
   };
 
-  // Initial load: Load first featured scenario if no state exists
+  // Initial load: Only load default if URL is empty
   useEffect(() => {
-    if (!state.a.ps && featuredScenarios.length > 0) {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.get('s') && !state.a.ps && featuredScenarios.length > 0) {
       loadScenario(featuredScenarios[0]);
     }
   }, []);
