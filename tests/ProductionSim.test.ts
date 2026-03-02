@@ -25,7 +25,6 @@ describe('ProductionSim', () => {
       const steps: TimelineStep[] = [
         { t: 'production', n: 'Start Archers', v: 1, tr: 30, lim: false, d: 0 }
       ];
-      // At 35s, at least 1 unit should be produced (35 ticks / 30s per unit)
       const res = calculateCount(35, steps, baseArcher);
       expect(res.count).toBeGreaterThan(0);
     });
@@ -38,9 +37,19 @@ describe('ProductionSim', () => {
       ];
       
       expect(calculateCount(50, steps, baseArcher).count).toBe(0);
-      // Building (50) + Tech (30) + Train (30) = 110s for first unit.
-      // Use 120s to be safe.
       expect(calculateCount(120, steps, baseArcher).count).toBeGreaterThan(0);
+    });
+
+    it('should track unit costs in economy history', () => {
+      const steps: TimelineStep[] = [
+        { t: 'production', n: 'Start Archers', v: 1, tr: 30, lim: false, d: 0 }
+      ];
+      // 30s per unit. At 65s, 2 units should be produced.
+      const res = calculateCount(65, steps, baseArcher);
+      expect(res.count).toBe(2);
+      const lastPoint = res.economyHistory[res.economyHistory.length - 1];
+      // Archer cost: 70 resources. 2 units = 140 spent on units.
+      expect(lastPoint.spentOnUnits).toBe(140);
     });
   });
 

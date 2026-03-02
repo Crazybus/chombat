@@ -21,18 +21,19 @@ interface SimulationContextType {
   applyAgeBonuses: (army: 'a' | 'b', age: string, civOverride?: string) => void;
   clearOverrides: (army: 'a' | 'b') => void;
   toggleBonus: (army: 'a' | 'b', techId: string) => void;
+  swapArmies: () => void;
 }
 
 const defaultArmy: ArmyState = {
-  c: 1,
+  c: 10,
   age: '1',
-  tl: [{ t: 'production', n: 'Initial Production', c: 1, tr: 30 }],
+  tl: [{ t: 'production', n: 'Archer Production', c: 1, tr: 35, lim: false }],
   bn: [],
 };
 
 const initialState: SimulationState = {
-  a: { ...defaultArmy },
-  b: { ...defaultArmy },
+  a: { ...defaultArmy, nm: 'Archer', ps: 'archer' },
+  b: { ...defaultArmy, nm: 'Skirmisher', ps: 'skirmisher', tl: [{ t: 'production', n: 'Skirmisher Production', c: 1, tr: 22, lim: false }] },
   desc: '',
   sid: undefined
 };
@@ -64,7 +65,16 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setState(prev => ({
       ...prev,
       [army]: { ...prev[army], ...updates },
-      sid: undefined // Mark as modified from scenario
+      sid: undefined 
+    }));
+  };
+
+  const swapArmies = () => {
+    setState(prev => ({
+      ...prev,
+      a: prev.b,
+      b: prev.a,
+      sid: undefined
     }));
   };
 
@@ -159,16 +169,18 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       });
     }
 
+    const newBonuses: { i: string; e: boolean[] }[] = [];
     if (ageId > 1) {
       const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
       relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
-        newArmyState.bn?.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
+        newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
         newArmyState.tl?.push({
           t: 'tech', n: t.name, d: t.time || 40, c: 1, co: (t.f||0)+(t.w||0)+(t.g||0),
           i: t.id.toString(), bt: t.building, b: true
         });
       });
     }
+    newArmyState.bn = newBonuses;
 
     newArmyState.tl?.push({ t: 'production', n: `${u.name} Production`, v: 1, tr: u.trainTime, lim: false, d: 0 });
 
@@ -177,11 +189,10 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const resetToNewScenario = () => {
     const archer = units['archer'];
-    const skirm = units['skirmisher'];
     
     setState({
       a: { ...defaultArmy, ps: 'archer', nm: archer.name },
-      b: { ...defaultArmy, ps: 'skirmisher', nm: skirm.name },
+      b: { ...defaultArmy, nm: 'skirmisher', ps: 'skirmisher', tl: [{ t: 'production', n: 'Skirmisher Production', c: 1, tr: 22, lim: false }] },
       desc: 'New scenario description...',
       name: 'New Scenario',
       sid: 'new'
@@ -207,7 +218,6 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }
   };
 
-  // Initial load: Only load default if URL is empty
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (!params.get('s') && !state.a.ps && featuredScenarios.length > 0) {
@@ -228,7 +238,8 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       resetToNewScenario, 
       applyAgeBonuses, 
       clearOverrides, 
-      toggleBonus 
+      toggleBonus,
+      swapArmies
     }}>
       {children}
       {toast && (

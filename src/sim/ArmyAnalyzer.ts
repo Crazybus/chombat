@@ -229,12 +229,35 @@ export function calculateEqualResources(countA: number, unitA: UnitData, stateA:
 }
 
 export function calculateEqualProductionTime(countA: number, unitA: UnitData, stateA: ArmyState, unitB: UnitData, _stateB: ArmyState): number {
-  // Production time uses the trainTime of the base unit, potentially modified by techs (tr in state)
   const timeA = stateA.tr || unitA.trainTime || 30;
   const timeB = _stateB.tr || unitB.trainTime || 30;
   
   if (timeB <= 0) return countA;
   return Math.round((countA * timeA) / timeB);
+}
+
+export function calculateEqualFight(
+  countA: number, 
+  unitA: UnitData, 
+  stateA: ArmyState, 
+  unitB: UnitData, 
+  stateB: ArmyState,
+  techsById: Record<number, TechData>,
+  allUnits: Record<string, UnitData>
+): number {
+  let bestB = 1;
+
+  // Simple linear search to find the "tipping point"
+  for (let b = 1; b <= 200; b++) {
+    const sim = new CombatSim(unitA, unitB, { ...stateA, c: countA }, { ...stateB, c: b }, techsById, allUnits);
+    const res = sim.run();
+    if (res.armyA.totalHp > res.armyB.totalHp) {
+      bestB = b;
+    } else {
+      break; // B won, so previous B was the limit
+    }
+  }
+  return bestB;
 }
 
 export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyAnalysis | null {

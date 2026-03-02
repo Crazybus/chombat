@@ -39,6 +39,7 @@ const ProductionSimulation: React.FC = () => {
   const { state, analysisA, analysisB } = useSimulation();
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [showLog, setShowLog] = useState(false);
+  const [maxTime, setMaxTime] = useState(1800); // Default 30 mins
 
   const techsById = useMemo(() => {
     const map: Record<number, any> = {};
@@ -49,14 +50,14 @@ const ProductionSimulation: React.FC = () => {
   const result: ProductionAnalysisResult | null = useMemo(() => {
     if (!analysisA || !analysisB) return null;
     const allUnits = { ...units, ...presets };
-    return analyzeProduction(state.a, state.b, analysisA.baseUnit, analysisB.baseUnit, techsById, allUnits);
-  }, [state.a, state.b, analysisA, analysisB, techsById]);
+    return analyzeProduction(state.a, state.b, analysisA.baseUnit, analysisB.baseUnit, techsById, allUnits, maxTime);
+  }, [state.a, state.b, analysisA, analysisB, techsById, maxTime]);
 
   if (!result || !analysisA || !analysisB) return null;
   const { 
     finalResA, finalResB, labels, countA, countB, advantage, 
-    tideTurnsAt, winnerAtTideTurn, countAtTideTurnA, countAtTideTurnB, 
-    economyA, economyB, firstUnitsAt, countAtFirstA, countAtFirstB 
+    tideTurnsAt, economyA, economyB, 
+    mergedEvents
   } = result;
 
   const nameA = analysisA.unitName;
@@ -118,10 +119,9 @@ const ProductionSimulation: React.FC = () => {
     ]
   };
 
-  // Create annotations for events
   const createAnnotations = (events: any[], color: string) => {
     const annotations: any = {};
-    events.filter(e => e.msg.startsWith('Started:') || e.msg.includes('Production slot')).forEach((e, i) => {
+    events.filter(e => e.msg.startsWith('Started:') || e.msg.includes('production started')).forEach((e, i) => {
       const timeStr = Math.floor(e.time / 60) + 'm' + (e.time % 60 ? (e.time % 60) + 's' : '');
       const labelIdx = labels.indexOf(timeStr);
       if (labelIdx === -1) return;
@@ -133,11 +133,7 @@ const ProductionSimulation: React.FC = () => {
         borderColor: color,
         borderWidth: 1,
         borderDash: [2, 2],
-        label: {
-          display: false, 
-          content: e.msg,
-          position: 'start'
-        }
+        label: { display: false, content: e.msg, position: 'start' }
       };
     });
     return annotations;
@@ -158,11 +154,32 @@ const ProductionSimulation: React.FC = () => {
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}m ${s % 60}s`;
 
+  const importantEvents = mergedEvents.filter(e => e.important);
+
   return (
     <div id="production" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
-        <h2>Production Simulation</h2>
-        <p>Define your build order and see when the tide turns.</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+          <div style={{ textAlign: 'left' }}>
+            <h2>Production Simulation</h2>
+            <p>Define your build order and see when the tide turns.</p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>Sim Duration:</span>
+            <select 
+              value={maxTime} 
+              onChange={(e) => setMaxTime(parseInt(e.target.value))}
+              style={{ background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-dim)', padding: '4px 8px', borderRadius: '4px' }}
+            >
+              <option value={600}>10 Mins</option>
+              <option value={900}>15 Mins</option>
+              <option value={1200}>20 Mins</option>
+              <option value={1800}>30 Mins</option>
+              <option value={2700}>45 Mins</option>
+              <option value={3600}>60 Mins</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div className="build-orders-overview" style={{ marginBottom: '15px' }}>
@@ -206,69 +223,76 @@ const ProductionSimulation: React.FC = () => {
         </div>
 
         <div className="matchup-report" style={{ marginTop: '20px', background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-          <h3 style={{ borderBottom: '1px solid var(--border-dim)', paddingBottom: '10px', marginBottom: '15px', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Production Analysis</h3>
-          <div id="production-report-text" style={{ lineHeight: '1.6' }}>
-            {firstUnitsAt !== null && (
-              <p style={{ marginBottom: '10px', fontSize: '1rem' }}>
-                First units arrive at <strong>{formatTime(firstUnitsAt)}</strong>: <strong>{countAtFirstA} {nameA}</strong> vs <strong>{countAtFirstB} {nameB}</strong>.
-              </p>
-            )}
-
-            {tideTurnsAt !== null ? (
-              <>
-                <h4 style={{ color: 'var(--accent-color)', marginTop: '15px', fontSize: '1.1rem' }}>Tide Turns at {formatTime(tideTurnsAt)}!</h4>
-                <p style={{ marginBottom: '20px' }}>
-                  The <strong>{winnerAtTideTurn}</strong> player starts winning once they have massed <strong>{winnerAtTideTurn === nameA ? countAtTideTurnA : countAtTideTurnB} {winnerAtTideTurn}</strong> to beat the <strong>{winnerAtTideTurn === nameA ? countAtTideTurnB : countAtTideTurnA} {winnerAtTideTurn === nameA ? nameB : nameA}</strong>.
-                </p>
-              </>
-            ) : (
-              <p style={{ textAlign: 'center', color: 'var(--text-dim)', margin: '20px 0' }}>The <strong>{winnerAtTideTurn}</strong> maintain the advantage throughout the entire 30 minute window.</p>
-            )}
-
-            <div className="investment-table-container" style={{ marginTop: '25px' }}>
-              <h4 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1rem' }}>Resource Investment at {formatTime(tideTurnsAt || 1800)}</h4>
-              <table className="investment-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
-                    <th style={{ padding: '10px 8px' }}>Category</th>
-                    <th style={{ padding: '10px 8px', textAlign: 'right', color: 'var(--army-a-color)' }}>{nameA}</th>
-                    <th style={{ padding: '10px 8px', textAlign: 'right', color: 'var(--army-b-color)' }}>{nameB}</th>
-                  </tr>
-                </thead>
+          <h3 style={{ borderBottom: '1px solid var(--border-dim)', paddingBottom: '10px', marginBottom: '15px', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Important Events</h3>
+          
+          <div className="important-events-timeline" style={{ marginBottom: '25px' }}>
+            {importantEvents.length > 0 ? (
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <tbody>
-                  {(() => {
-                    const idx = tideTurnsAt !== null ? Math.floor(tideTurnsAt / 15) : economyA.length - 1;
-                    const ecoA = economyA[idx] || economyA[economyA.length - 1];
-                    const ecoB = economyB[idx] || economyB[economyB.length - 1];
-                    const rows = [
-                      { label: 'Villagers', a: ecoA.spentOnVillagers, b: ecoB.spentOnVillagers },
-                      { label: 'Units', a: ecoA.spentOnUnits, b: ecoB.spentOnUnits },
-                      { label: 'Buildings', a: ecoA.spentOnBuildings, b: ecoB.spentOnBuildings },
-                      { label: 'Technologies', a: ecoA.spentOnTechs, b: ecoB.spentOnTechs },
-                    ];
-                    const totalA = rows.reduce((acc, r) => acc + r.a, 0);
-                    const totalB = rows.reduce((acc, r) => acc + r.b, 0);
-                    const fmt = (n: number) => n.toLocaleString();
-                    return (
-                      <>
-                        {rows.map((r, i) => (
-                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <td style={{ padding: '10px 8px', color: 'var(--text-dim)' }}>{r.label}</td>
-                            <td style={{ padding: '10px 8px', textAlign: 'right' }}>{fmt(r.a)}</td>
-                            <td style={{ padding: '10px 8px', textAlign: 'right' }}>{fmt(r.b)}</td>
-                          </tr>
-                        ))}
-                        <tr style={{ fontWeight: 'bold', borderTop: '2px solid var(--border-dim)', background: 'rgba(255,255,255,0.02)' }}>
-                          <td style={{ padding: '12px 8px' }}>Total Investment</td>
-                          <td style={{ padding: '12px 8px', textAlign: 'right' }}>{fmt(totalA)}</td>
-                          <td style={{ padding: '12px 8px', textAlign: 'right' }}>{fmt(totalB)}</td>
-                        </tr>
-                      </>
-                    );
-                  })()}
+                  {importantEvents.map((e, i) => (
+                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                      <td style={{ padding: '10px 8px', color: 'var(--text-dim)', width: '80px' }}>{formatTime(e.time)}</td>
+                      <td style={{ padding: '10px 8px', fontWeight: 'bold', width: '120px' }}>
+                        {e.army === 'a' ? <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span> : e.army === 'b' ? <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span> : <span style={{ color: 'var(--accent-color)' }}>System</span>}
+                      </td>
+                      <td style={{ padding: '10px 8px' }}>{e.msg}</td>
+                      <td style={{ padding: '10px 8px', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                        <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>Eco:</span> <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span>/<span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
+                        {' '}<span style={{ fontSize: '0.8rem', opacity: 0.7 }}>Mil:</span> <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span>/<span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
-            </div>
+            ) : (
+              <p style={{ color: 'var(--text-dim)', textAlign: 'center' }}>No major events detected.</p>
+            )}
+          </div>
+
+          <div className="investment-table-container">
+            <h4 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1rem' }}>Resource Investment at {formatTime(tideTurnsAt || maxTime)}</h4>
+            <table className="investment-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+              <thead>
+                <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
+                  <th style={{ padding: '10px 8px' }}>Category</th>
+                  <th style={{ padding: '10px 8px', textAlign: 'right', color: 'var(--army-a-color)' }}>{nameA}</th>
+                  <th style={{ padding: '10px 8px', textAlign: 'right', color: 'var(--army-b-color)' }}>{nameB}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(() => {
+                  const stepVal = 15;
+                  const idx = tideTurnsAt !== null ? Math.floor(tideTurnsAt / stepVal) : economyA.length - 1;
+                  const ecoA = economyA[idx] || economyA[economyA.length - 1];
+                  const ecoB = economyB[idx] || economyB[economyB.length - 1];
+                  const rows = [
+                    { label: 'Villagers', a: ecoA.spentOnVillagers, b: ecoB.spentOnVillagers },
+                    { label: 'Units', a: ecoA.spentOnUnits, b: ecoB.spentOnUnits },
+                    { label: 'Buildings', a: ecoA.spentOnBuildings, b: ecoB.spentOnBuildings },
+                    { label: 'Technologies', a: ecoA.spentOnTechs, b: ecoB.spentOnTechs },
+                  ];
+                  const totalA = rows.reduce((acc, r) => acc + r.a, 0);
+                  const totalB = rows.reduce((acc, r) => acc + r.b, 0);
+                  const fmt = (n: number) => n.toLocaleString();
+                  return (
+                    <>
+                      {rows.map((r, i) => (
+                        <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                          <td style={{ padding: '10px 8px', color: 'var(--text-dim)' }}>{r.label}</td>
+                          <td style={{ padding: '10px 8px', textAlign: 'right' }}>{fmt(r.a)}</td>
+                          <td style={{ padding: '10px 8px', textAlign: 'right' }}>{fmt(r.b)}</td>
+                        </tr>
+                      ))}
+                      <tr style={{ fontWeight: 'bold', borderTop: '2px solid var(--border-dim)', background: 'rgba(255,255,255,0.02)' }}>
+                        <td style={{ padding: '12px 8px' }}>Total Investment</td>
+                        <td style={{ padding: '12px 8px', textAlign: 'right' }}>{fmt(totalA)}</td>
+                        <td style={{ padding: '12px 8px', textAlign: 'right' }}>{fmt(totalB)}</td>
+                      </tr>
+                    </>
+                  );
+                })()}
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -279,14 +303,44 @@ const ProductionSimulation: React.FC = () => {
             onClick={() => setShowLog(!showLog)}
           >
             <span style={{ transform: showLog ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s', display: 'inline-block' }}>▶</span>
-            {showLog ? 'Hide' : 'Show'} Event Log
+            {showLog ? 'Hide' : 'Show'} Full Event Timeline
           </button>
           {showLog && (
-            <div className="event-log" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', marginTop: '10px', maxHeight: '400px', overflowY: 'auto', border: '1px solid var(--border-dim)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                <EventList events={finalResA.events} name={nameA} color="var(--army-a-color)" />
-                <EventList events={finalResB.events} name={nameB} color="var(--army-b-color)" />
-              </div>
+            <div className="event-timeline-table-container" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', marginTop: '10px', maxHeight: '600px', overflowY: 'auto', border: '1px solid var(--border-dim)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
+                    <th style={{ padding: '8px' }}>Time</th>
+                    <th style={{ padding: '8px' }}>Side</th>
+                    <th style={{ padding: '8px', textAlign: 'center' }}>Eco (V/V)</th>
+                    <th style={{ padding: '8px', textAlign: 'center' }}>Mil (U/U)</th>
+                    <th style={{ padding: '8px' }}>Event</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mergedEvents.map((e: any, i: number) => (
+                    <tr key={i} className="event-row" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                      <td style={{ padding: '8px', color: 'var(--text-dim)', whiteSpace: 'nowrap' }}>{formatTime(e.time)}</td>
+                      <td style={{ padding: '8px', fontWeight: 'bold' }}>
+                        {e.army === 'a' ? (
+                          <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span>
+                        ) : e.army === 'b' ? (
+                          <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span>
+                        ) : (
+                          <span style={{ color: 'var(--accent-color)' }}>System</span>
+                        )}
+                      </td>
+                      <td style={{ padding: '8px', textAlign: 'center' }}>
+                        <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
+                      </td>
+                      <td style={{ padding: '8px', textAlign: 'center' }}>
+                        <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
+                      </td>
+                      <td style={{ padding: '8px' }}>{e.msg}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>
@@ -295,89 +349,85 @@ const ProductionSimulation: React.FC = () => {
   );
 };
 
-const EventList: React.FC<{ events: any[], name: string, color: string }> = ({ events, name, color }) => (
-  <div>
-    <h4 style={{ color, marginBottom: '10px', borderBottom: '1px solid var(--border-dim)' }}>{name} Events</h4>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.8rem' }}>
-      {events.map((e, i) => (
-        <div key={i} style={{ display: 'flex', gap: '10px' }}>
-          <span style={{ color: 'var(--text-dim)', minWidth: '50px' }}>{Math.floor(e.time / 60)}m {e.time % 60}s</span>
-          <span>{e.msg}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
 const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any[], onEdit: () => void }> = ({ army, name, timeline, onEdit }) => (
   <div 
     className="build-order-summary" 
     onClick={onEdit}
     style={{ 
       background: 'rgba(0,0,0,0.15)', 
-      padding: '8px 12px', 
+      padding: '12px', 
       borderRadius: '4px', 
       marginBottom: '8px', 
       fontSize: '0.85rem', 
       color: 'var(--text-dim)',
       borderLeft: `3px solid var(--army-${army}-color)`,
       display: 'flex',
-      flexWrap: 'wrap',
-      gap: '6px',
-      alignItems: 'center',
+      flexDirection: 'column',
+      gap: '8px',
       cursor: 'pointer',
-      transition: 'background 0.2s'
+      transition: 'all 0.2s'
     }}
-    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
-    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.15)'}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+      e.currentTarget.style.transform = 'translateY(-1px)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.background = 'rgba(0,0,0,0.15)';
+      e.currentTarget.style.transform = 'none';
+    }}
   >
-    <span 
-      style={{ 
-        background: 'var(--btn-bg)', 
-        border: '1px solid var(--border-dim)', 
-        color: 'var(--text-color)', 
-        borderRadius: '3px', 
-        padding: '2px 6px', 
-        fontSize: '0.7rem', 
-        marginRight: '5px'
-      }}
-      title="Edit Build Order"
-    >
-      ✏️
-    </span>
-    <strong style={{ color: `var(--army-${army}-color)`, marginRight: '5px' }}>{name}:</strong>
-    
-    <div style={{ marginRight: '10px' }}>
-      <StatsSummary army={army} compact={true} />
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+      <span 
+        style={{ 
+          background: 'var(--btn-bg)', 
+          border: '1px solid var(--border-dim)', 
+          color: 'var(--text-color)', 
+          borderRadius: '3px', 
+          padding: '2px 6px', 
+          fontSize: '0.7rem', 
+          marginRight: '5px'
+        }}
+        title="Toggle Build Order Editor"
+      >
+        ✏️
+      </span>
+      <strong style={{ color: `var(--army-${army}-color)`, marginRight: '5px' }}>{name}:</strong>
+      <div style={{ flex: 1, minWidth: '200px' }}>
+        <StatsSummary army={army} compact={true} hoverExpand={true} />
+      </div>
     </div>
 
-    {timeline && timeline.length > 0 ? (
-      timeline.map((step: any, i: number) => {
-        let label = "";
-        const n = (step.n || "").toLowerCase();
-        switch (step.t) {
-          case 'villagers': label = `👨‍🌾${step.c || 1} villagers`; break;
-          case 'building': label = n; break;
-          case 'tech': label = n; break;
-          case 'production': label = `⚔️ ${n}`; break;
-          case 'units': case 'wait': label = `🎯wait ${step.c || 0}`; break;
-          case 'delay': label = `⏳${step.d || 0}s`; break;
-          default: label = n;
-        }
-        return (
-          <React.Fragment key={i}>
-            <span style={{ color: 'var(--text-color)' }}>{label}</span>
-            {i < (timeline?.length || 0) - 1 && <span style={{ opacity: 0.3 }}>→</span>}
-          </React.Fragment>
-        );
-      })
-    ) : (
-      <span style={{ fontStyle: 'italic', opacity: 0.5 }}>Empty build order - 1 facility production assumed.</span>
-    )}
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', paddingLeft: '25px', opacity: 0.8 }}>
+      {timeline && timeline.length > 0 ? (
+        timeline.map((step: any, i: number) => {
+          let label = "";
+          const n = (step.n || "").toLowerCase();
+          switch (step.t) {
+            case 'villagers': label = `👨‍🌾${step.c || 1} villagers`; break;
+            case 'building': label = n; break;
+            case 'tech': label = n; break;
+            case 'production': 
+              label = n.includes('production') ? `⚔️ ${n}` : `⚔️ ${n} production`; 
+              break;
+            case 'units': case 'wait': label = `🎯wait ${step.c || 0}`; break;
+            case 'delay': label = `⏳${step.d || 0}s`; break;
+            default: label = n;
+          }
+          return (
+            <React.Fragment key={i}>
+              <span style={{ color: 'var(--text-color)' }}>{label}</span>
+              {i < (timeline?.length || 0) - 1 && <span style={{ opacity: 0.3 }}>→</span>}
+            </React.Fragment>
+          );
+        })
+      ) : (
+        <span style={{ fontStyle: 'italic', opacity: 0.5 }}>Empty build order - 1 facility production assumed.</span>
+      )}
+    </div>
   </div>
 );
 
-const GRID_TEMPLATE = "30px 60px 1fr 50px 50px 90px 50px 30px";
+const GRID_TEMPLATE = "30px 70px 1fr 100px 100px 100px 100px 60px 30px";
 
 const TechButton: React.FC<{ id: number, label: string, onClick: (id: number) => void }> = ({ id, label, onClick }) => (
   <button 
@@ -467,10 +517,10 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           <button className="add-step-btn" onClick={() => addStep('villagers', { name: 'Villagers', v: 1, d: 25, lim: false })}>+ Vills</button>
           <button className="add-step-btn" onClick={() => addStep('delay', { name: 'Idle Time', d: 30, lim: true })}>+ Delay</button>
           <button className="add-step-btn" onClick={() => addStep('units', { name: 'Wait for units', c: 5, lim: true })}>+ Wait</button>
-          <button className="add-step-btn" onClick={() => addStep('production', { name: 'Unit Production', v: 1, tr: 30, lim: false, d: 0 })}>+ Production</button>
+          <button className="add-step-btn" onClick={() => addStep('production', { name: `${name} Production`, v: 1, tr: 30, lim: false, d: 0 })}>+ {name} Production</button>
         </div>
 
-        <div style={{ display: 'flex', gap: '15px', marginBottom: '15px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        <div style={{ display: 'flex', gap: '10px', marginBottom: '15px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Ages</span>
             <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
@@ -503,10 +553,12 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Cavalry</span>
             <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Cavalry Armor" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🏇</span>
+              <span title="Cavalry Armor & HP" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🏇</span>
               <TechButton id={81} label="II" onClick={addTechById} />
               <TechButton id={82} label="III" onClick={addTechById} />
               <TechButton id={80} label="IV" onClick={addTechById} />
+              <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)', margin: '0 2px' }} />
+              <TechButton id={435} label="❤️" onClick={addTechById} />
             </div>
           </div>
 
@@ -523,24 +575,17 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
               <TechButton id={219} label="IV" onClick={addTechById} />
             </div>
           </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Stable</span>
-            <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Stable (Bloodlines)" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>❤️</span>
-              <TechButton id={435} label="II" onClick={addTechById} />
-            </div>
-          </div>
         </div>
 
-        <div className="timeline-table-header" style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', padding: '0 8px 8px 8px', borderBottom: '1px solid var(--border-dim)', marginBottom: '8px', fontSize: '0.7rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>
+        <div className="timeline-table-header" style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', padding: '0 8px 8px 8px', borderBottom: '1px solid var(--border-dim)', marginBottom: '8px', fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>
           <div></div>
           <div title="The type of action (Building, Tech, Production, etc.)">Type</div>
           <div title="Custom name for this step">Name</div>
-          <div title="Duration in seconds. For Age Up/Tech/Building, this is the build time.">Sec</div>
-          <div title="Quantity or Multiplier. For buildings, this is how many to build at once.">Qty</div>
-          <div title="Which production facility this action blocks while in progress.">Block</div>
-          <div title="Once (Limited): If checked, this step will block the build order until the exact count is produced. If unchecked, production starts immediately and continues infinitely.">Once</div>
+          <div style={{ textAlign: 'center' }} title="Duration in seconds. For Age Up/Tech/Building, this is the build time.">Sec</div>
+          <div style={{ textAlign: 'center' }} title="Quantity or Multiplier. For buildings, this is how many to build at once.">Qty</div>
+          <div style={{ textAlign: 'center' }} title="Total resource cost for this step.">Cost</div>
+          <div style={{ textAlign: 'center' }} title="Which production facility this action blocks while in progress.">Block</div>
+          <div style={{ textAlign: 'center' }} title="Once (Limited): If checked, this step will block the build order until the exact count is produced. If unchecked, production starts immediately and continues infinitely.">Once</div>
           <div></div>
         </div>
 
@@ -561,6 +606,13 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
 const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step: any }> = ({ id, army, index, step }) => {
   const { updateArmy, state } = useSimulation();
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const timerRef = useRef<any>(null);
+  const intervalRef = useRef<any>(null);
+  const stepRef = useRef(step);
+
+  useEffect(() => {
+    stepRef.current = step;
+  }, [step]);
 
   const style = { transform: CSS.Transform.toString(transform), transition };
 
@@ -570,6 +622,29 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
     newList[index] = { ...newList[index], ...updates };
     updateArmy(army, { tl: newList });
   };
+
+  const startRepeating = (field: string, dir: number, stepVal: number = 1) => {
+    const doStep = () => {
+      const currentVal = parseFloat(String(stepRef.current[field] || 0));
+      const next = currentVal + (dir * stepVal);
+      const rounded = Math.round(next * 100) / 100;
+      update({ [field]: rounded });
+    };
+
+    doStep();
+    timerRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(doStep, 50);
+    }, 500);
+  };
+
+  const stopRepeating = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  useEffect(() => {
+    return () => stopRepeating();
+  }, []);
 
   const remove = () => {
     const currentList = state[army].tl || [];
@@ -598,14 +673,17 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
     }
   }, [step.t]);
 
+  const isTCActive = !!(step.b && step.bt === 109);
+  const isUnitActive = !!(step.b && step.bt !== 109 && step.b);
+
   return (
     <div ref={setNodeRef} style={style} className="timeline-row" >
-      <div style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', alignItems: 'center', padding: '4px 8px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: index % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', alignItems: 'center', padding: '8px 8px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: index % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
         <div {...attributes} {...listeners} style={{ cursor: 'grab', color: 'var(--text-dim)' }}>⠿</div>
         
         <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <span>{typeIcon}</span>
-          <span style={{ fontSize: '0.6rem', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
+          <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
+          <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
         </div>
 
         <div>
@@ -618,7 +696,8 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
           />
         </div>
         
-        <div>
+        <div className="stepper compact">
+          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'tr' : 'd', -1, step.t === 'production' ? 1 : 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>−</button>
           <input 
             type="number" 
             value={step.t === 'production' ? (step.tr || 0) : (step.d || 0)} 
@@ -628,11 +707,13 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               else update({ d: val });
             }} 
             className="compact-input"
-            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'right' }} 
+            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
           />
+          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
         </div>
 
-        <div>
+        <div className="stepper compact">
+          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'v' : 'c', -1)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>−</button>
           {step.t === 'production' ? (
             <input 
               type="number" 
@@ -640,7 +721,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               onChange={(e) => update({ v: parseInt(e.target.value) || 1 })} 
               className="compact-input"
               title="Multiplier / Capacity"
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'right' }} 
+              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
             />
           ) : (
             <input 
@@ -648,31 +729,44 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               value={step.c || 1} 
               onChange={(e) => update({ c: parseInt(e.target.value) || 1 })} 
               className="compact-input"
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'right' }} 
+              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
             />
           )}
+          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'v' : 'c', 1)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
         </div>
 
-        <div style={{ display: 'flex', gap: '2px' }}>
+        <div className="stepper compact">
+          <button className="step-btn" onMouseDown={() => startRepeating('co', -1, 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>−</button>
+          <input 
+            type="number" 
+            value={step.co || 0} 
+            onChange={(e) => update({ co: parseInt(e.target.value) || 0 })} 
+            className="compact-input"
+            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
+          />
+          <button className="step-btn" onMouseDown={() => startRepeating('co', 1, 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
+        </div>
+
+        <div style={{ display: 'flex', gap: '4px', justifyContent: 'center' }}>
           {(step.t === 'tech' || step.t === 'building' || step.t === 'production') ? (
             <>
               <button 
-                className={`tiny-toggle-btn ${step.b && step.bt === 109 ? 'active' : ''}`}
+                className={`tiny-toggle-btn ${isTCActive ? 'active' : ''}`}
                 style={{ 
-                  fontSize: '0.6rem', padding: '2px 4px', borderRadius: '3px', border: '1px solid var(--border-dim)',
-                  background: (step.b && step.bt === 109) ? 'var(--accent-color)' : 'transparent',
-                  color: (step.b && step.bt === 109) ? 'white' : 'var(--text-dim)',
-                  cursor: 'pointer'
+                  fontSize: '0.7rem', padding: '4px 6px', borderRadius: '4px', border: '1px solid var(--border-dim)',
+                  background: isTCActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
+                  color: isTCActive ? 'black' : 'var(--text-dim)',
+                  cursor: 'pointer', fontWeight: 'bold'
                 }}
                 onClick={() => toggleBlock(109)}
               >TC</button>
               <button 
-                className={`tiny-toggle-btn ${step.b && step.bt !== 109 && step.b ? 'active' : ''}`}
+                className={`tiny-toggle-btn ${isUnitActive ? 'active' : ''}`}
                 style={{ 
-                  fontSize: '0.6rem', padding: '2px 4px', borderRadius: '3px', border: '1px solid var(--border-dim)',
-                  background: (step.b && step.bt !== 109 && step.b) ? 'var(--accent-color)' : 'transparent',
-                  color: (step.b && step.bt !== 109 && step.b) ? 'white' : 'var(--text-dim)',
-                  cursor: 'pointer'
+                  fontSize: '0.7rem', padding: '4px 6px', borderRadius: '4px', border: '1px solid var(--border-dim)',
+                  background: isUnitActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
+                  color: isUnitActive ? 'black' : 'var(--text-dim)',
+                  cursor: 'pointer', fontWeight: 'bold'
                 }}
                 onClick={() => toggleBlock(101)}
               >UNIT</button>
@@ -687,10 +781,11 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               onClick={() => update({ lim: !step.lim })}
               title="Toggle Limited Production (Produce exactly X and wait)"
               style={{
-                width: '18px', height: '18px', borderRadius: '4px', border: '1px solid var(--border-dim)',
+                width: '22px', height: '22px', borderRadius: '4px', border: '1px solid var(--border-dim)',
                 background: step.lim ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
                 cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '0.7rem', color: step.lim ? 'white' : 'transparent', transition: 'all 0.2s'
+                fontSize: '0.9rem', color: step.lim ? 'black' : 'transparent', transition: 'all 0.2s',
+                fontWeight: 'bold'
               }}
             >
               ✓

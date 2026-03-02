@@ -83,84 +83,91 @@ const EffectivenessScaling: React.FC = () => {
   const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    scales: { y: { min: 0, max: 100 } },
-    elements: { line: { tension: 0.2 }, point: { radius: 2 } }
+    animation: { duration: 0 },
+    scales: { 
+      y: { min: 0, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } },
+      x: { grid: { color: 'rgba(255,255,255,0.05)' } }
+    },
+    plugins: {
+      legend: { position: 'top' as const },
+    },
+    elements: { line: { tension: 0.2, borderWidth: 2 }, point: { radius: 2 } }
   };
 
   const createChartData = (res: any) => ({
     labels: res.labels,
     datasets: [
-      { label: nameA + ' % HP', data: res.hpA, borderColor: 'var(--army-a-color)' },
-      { label: nameB + ' % HP', data: res.hpB, borderColor: 'var(--army-b-color)' },
+      { label: nameA + ' % HP', data: res.hpA, borderColor: 'var(--army-a-color)', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: false },
+      { label: nameB + ' % HP', data: res.hpB, borderColor: 'var(--army-b-color)', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: false },
     ]
   });
 
   return (
-    <div id="scaling" className="section-anchor">
+    <div id="scaling" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
         <h2>Effectiveness Scaling</h2>
         <p>Pop & Cost efficiency across different swarm ratios.</p>
       </div>
 
-      <div className="results-area">
-        <div className="scaling-analysis-layout">
+      <div className="results-area" style={{ width: '100%' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
           {/* 1vX Section */}
-          <div className="side-by-side">
-            <div className="table-container">
-              <h3>1 {nameA} vs X {nameB}</h3>
-              <table>
+          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '30px', alignItems: 'start' }}>
+            <div className="table-container" style={{ background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+              <h3 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1.1rem' }}>1 {nameA} vs X {nameB}</h3>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <thead>
-                  <tr>
-                    <th>Ratio</th>
-                    <th>Result</th>
+                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
+                    <th style={{ padding: '10px' }}>Ratio</th>
+                    <th style={{ padding: '10px' }}>Winner</th>
                   </tr>
                 </thead>
                 <tbody>
                   {res1vX.table.map((row: any, i: number) => (
-                    <tr key={i}>
-                      <td>{row.ratio}</td>
-                      <td style={{ color: row.winA ? 'var(--army-a-color)' : 'var(--army-b-color)', fontWeight: 'bold' }}>
-                        {row.winner} ({row.hp}% HP)
+                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                      <td style={{ padding: '10px' }}>{row.ratio}</td>
+                      <td style={{ padding: '10px', color: row.winA ? 'var(--army-a-color)' : 'var(--army-b-color)', fontWeight: 'bold' }}>
+                        {row.winner} <span style={{ opacity: 0.7, fontWeight: 'normal', fontSize: '0.8rem' }}>({row.hp}% HP)</span>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="chart-wrapper">
-              <h4>1 {nameA} vs X {nameB} Scaling</h4>
-              <div className="chart-container">
+            <div className="chart-wrapper" style={{ height: '400px', background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+              <h4 style={{ marginBottom: '15px', color: 'var(--text-dim)', textAlign: 'center' }}>Efficiency Curve: 1 {nameA} vs X {nameB}</h4>
+              <div className="chart-container" style={{ height: 'calc(100% - 40px)' }}>
                 <Line data={createChartData(res1vX)} options={commonOptions} />
               </div>
             </div>
           </div>
 
           {/* Xv1 Section */}
-          <div className="side-by-side">
-            <div className="table-container">
-              <h3>1 {nameB} vs X {nameA}</h3>
-              <table>
+          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '30px', alignItems: 'start' }}>
+            <div className="table-container" style={{ background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+              <h3 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1.1rem' }}>X {nameA} vs 1 {nameB}</h3>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <thead>
-                  <tr>
-                    <th>Ratio</th>
-                    <th>Result</th>
+                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
+                    <th style={{ padding: '10px' }}>Ratio</th>
+                    <th style={{ padding: '10px' }}>Winner</th>
                   </tr>
                 </thead>
                 <tbody>
                   {resXv1.table.map((row: any, i: number) => (
-                    <tr key={i}>
-                      <td>{row.ratio}</td>
-                      <td style={{ color: row.winA ? 'var(--army-a-color)' : 'var(--army-b-color)', fontWeight: 'bold' }}>
-                        {row.winner} ({row.hp}% HP)
+                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                      <td style={{ padding: '10px' }}>{row.ratio}</td>
+                      <td style={{ padding: '10px', color: row.winA ? 'var(--army-a-color)' : 'var(--army-b-color)', fontWeight: 'bold' }}>
+                        {row.winner} <span style={{ opacity: 0.7, fontWeight: 'normal', fontSize: '0.8rem' }}>({row.hp}% HP)</span>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="chart-wrapper">
-              <h4>1 {nameB} vs X {nameA} Scaling</h4>
-              <div className="chart-container">
+            <div className="chart-wrapper" style={{ height: '400px', background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+              <h4 style={{ marginBottom: '15px', color: 'var(--text-dim)', textAlign: 'center' }}>Efficiency Curve: X {nameA} vs 1 {nameB}</h4>
+              <div className="chart-container" style={{ height: 'calc(100% - 40px)' }}>
                 <Line data={createChartData(resXv1)} options={commonOptions} />
               </div>
             </div>

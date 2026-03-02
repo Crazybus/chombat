@@ -12,17 +12,13 @@ const StatComparison: React.FC = () => {
   const result = useMemo(() => {
     if (!analysisA || !analysisB) return null;
 
-    // Use the already calculated effective stats from analysis
-    // For 1v1 comparison, we ensure count is 1
     const configA = { ...state.a, c: 1 };
     const configB = { ...state.b, c: 1 };
     
-    // We still need to run a 1v1 sim to get ttK and winner
     const techsById: Record<number, any> = {};
     Object.values(techs).forEach(t => techsById[t.id] = t);
     const allUnits = { ...units, ...presets };
 
-    // Use analysisA.baseUnit and analysisB.baseUnit which are already age-resolved
     const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
     const res = sim.run();
     
@@ -71,8 +67,11 @@ const StatComparison: React.FC = () => {
   const getBaseAtk = (u: Unit, b: any) => u.isMelee() ? b.matk : b.patk;
   const getBaseArm = (u: Unit, b: any) => u.isMelee() ? b.marm : b.parm;
 
-  const timeToKillA = Math.ceil(uB.hpPerUnit / nA.net) * uA.reload;
-  const timeToKillB = Math.ceil(uA.hpPerUnit / nB.net) * uB.reload;
+  const hitsToKillA = Math.ceil(uB.hpPerUnit / nA.net);
+  const hitsToKillB = Math.ceil(uA.hpPerUnit / nB.net);
+  const timeToKillA = hitsToKillA * uA.reload;
+  const timeToKillB = hitsToKillB * uB.reload;
+  const duration = res.duration;
 
   let winner = 'Draw';
   let winnerColor = 'var(--text-color)';
@@ -94,7 +93,8 @@ const StatComparison: React.FC = () => {
     { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0) },
     { label: 'Armor', a: formatWithBase(nA.arm, getBaseArm(uA, baseA)), b: formatWithBase(nB.arm, getBaseArm(uB, baseB)), inv: true },
     { label: 'Damage Per Hit', a: `${nA.net.toFixed(0)} (${nA.base.toFixed(0)} - ${nA.arm.toFixed(0)} + ${nA.bonus.toFixed(0)})`, b: `${nB.net.toFixed(0)} (${nB.base.toFixed(0)} - ${nB.arm.toFixed(0)} + ${nB.bonus.toFixed(0)})` },
-    { label: 'Hits to Kill', a: Math.ceil(uB.hpPerUnit / nA.net).toString(), b: Math.ceil(uA.hpPerUnit / nB.net).toString(), inv: true },
+    { label: 'Hits to Kill', a: hitsToKillA.toString(), b: hitsToKillB.toString(), inv: true },
+    { label: 'Hits Performed', a: (winner === nameA ? hitsToKillA : Math.floor(duration / uA.reload)).toString(), b: (winner === nameB ? hitsToKillB : Math.floor(duration / uB.reload)).toString() },
     { label: 'Time to Kill', a: timeToKillA.toFixed(1) + 's', b: timeToKillB.toFixed(1) + 's', inv: true },
     { label: 'Attack Reload Time', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), inv: true },
     { label: 'Damage Per Second', a: (nA.net / uA.reload).toFixed(2), b: (nB.net / uB.reload).toFixed(2) },
@@ -126,23 +126,23 @@ const StatComparison: React.FC = () => {
           </div>
 
           {/* Rows */}
-          {rows.map(r => {
+          {rows.map((r, i) => {
             const vA = parseFloat(String(r.a));
             const vB = parseFloat(String(r.b));
             const diff = vA - vB;
             
-            let dClass = 'diff-neutral';
-            if (diff > 0) dClass = r.inv ? 'diff-neg' : 'diff-pos';
-            else if (diff < 0) dClass = r.inv ? 'diff-pos' : 'diff-neg';
+            let diffColor = 'var(--text-dim)';
+            if (diff > 0) diffColor = r.inv ? 'var(--danger-color)' : 'var(--success-color)';
+            else if (diff < 0) diffColor = r.inv ? 'var(--success-color)' : 'var(--danger-color)';
 
             const diffDisplay = diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') || r.label.includes('Time') || r.label.includes('Reload') ? 2 : 0);
 
             return (
-              <div key={r.label} className="duel-row" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 1fr 120px', gap: '10px', padding: '12px 10px', background: 'var(--panel-bg)', borderRadius: '4px', borderBottom: '1px solid var(--border-dim)', alignItems: 'center' }}>
+              <div key={r.label} className="duel-row" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 1fr 120px', gap: '10px', padding: '12px 10px', background: i % 2 === 0 ? 'var(--panel-bg)' : 'var(--panel-bg-alt)', borderRadius: '4px', borderBottom: '1px solid var(--border-dim)', alignItems: 'center' }}>
                 <div style={{ textAlign: 'left', fontWeight: 'bold', color: 'var(--text-dim)' }}>{r.label}</div>
                 <div style={{ textAlign: 'center', fontSize: '1.1rem' }}>{r.a}</div>
                 <div style={{ textAlign: 'center' }}>
-                  <span className={dClass} style={{ padding: '4px 12px', borderRadius: '12px', fontWeight: 'bold', fontSize: '0.9rem', background: 'rgba(0,0,0,0.1)' }}>
+                  <span style={{ padding: '4px 12px', borderRadius: '12px', fontWeight: 'bold', fontSize: '0.9rem', background: 'rgba(0,0,0,0.1)', color: diffColor }}>
                     {diffDisplay}
                   </span>
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useSimulation } from '../context/SimulationContext';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
@@ -39,38 +39,44 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
   return (
     <section className="army-panel" id={`army-${army}`}>
       <div className="header-row">
-        <div className="name-edit-group">
-          <UnitSelector army={army} onSelect={(id) => loadPreset(army, id)} />
-          <button
-            className="toggle-stats-btn"
-            onClick={() => setIsConfigCollapsed(!isConfigCollapsed)}
-            style={{ 
-              padding: '2px 6px', 
-              fontSize: '0.8rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
-            title={isConfigCollapsed ? 'Edit Unit Stats' : 'Close Editor'}
-          >
-            {isConfigCollapsed ? '✏️' : 'Done'}
-          </button>        </div>
-        
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-          <CivSelector army={army} />
-        </div>
-
-        <div className="army-age-controls" style={{ marginTop: '10px', display: 'flex', gap: '5px' }}>
-          {['1', '2', '3', '4'].map(age => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+          <div className="name-edit-group">
+            <UnitSelector army={army} onSelect={(id) => loadPreset(army, id)} />
             <button
-              key={age}
-              className={`age-btn ${armyState.age === age ? 'active' : ''}`}
-              onClick={() => handleAgeChange(age)}
+              className="toggle-stats-btn"
+              onClick={() => setIsConfigCollapsed(!isConfigCollapsed)}
+              style={{ 
+                padding: '2px 6px', 
+                fontSize: '0.8rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              title={isConfigCollapsed ? 'Edit Unit Stats' : 'Close Editor'}
             >
-              {age === '1' ? 'I' : age === '2' ? 'II' : age === '3' ? 'III' : 'IV'}
+              {isConfigCollapsed ? '✏️' : 'Done'}
             </button>
-          ))}
+          </div>
         </div>
+        
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
+          <CivSelector army={army} />
+          <div className="army-age-controls" style={{ display: 'flex', gap: '5px' }}>
+            {['1', '2', '3', '4'].map(age => (
+              <button
+                key={age}
+                className={`age-btn ${armyState.age === age ? 'active' : ''}`}
+                onClick={() => handleAgeChange(age)}
+              >
+                {age === '1' ? 'I' : age === '2' ? 'II' : age === '3' ? 'III' : 'IV'}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '15px', marginBottom: '15px' }}>
+        <StatsSummary army={army} showName={true} />
       </div>
 
       <div className={`unit-config ${isConfigCollapsed ? 'collapsed' : ''}`} id={`${army}-config`}>
@@ -132,8 +138,6 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
           </div>
         </div>
       </div>
-
-      <StatsSummary army={army} />
     </section>
   );
 };
@@ -148,10 +152,40 @@ interface StatFieldProps {
 
 const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }) => {
   const { updateArmy } = useSimulation();
+  const timerRef = useRef<any>(null);
+  const intervalRef = useRef<any>(null);
+  const valRef = useRef(value);
   
+  useEffect(() => {
+    valRef.current = value;
+  }, [value]);
+
   const handleChange = (newVal: number) => {
-    updateArmy(army, { [field]: newVal });
+    const rounded = Math.round(newVal * 100) / 100;
+    updateArmy(army, { [field]: rounded });
   };
+
+  const startRepeating = (dir: number) => {
+    const doStep = () => {
+      const currentVal = (parseFloat(String(valRef.current || 0)));
+      const next = currentVal + (dir * step);
+      handleChange(next);
+    };
+
+    doStep();
+    timerRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(doStep, 50);
+    }, 500);
+  };
+
+  const stopRepeating = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  useEffect(() => {
+    return () => stopRepeating();
+  }, []);
 
   const currentVal = parseFloat(String(value || 0));
 
@@ -159,14 +193,30 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
     <div className="field">
       <label>{label}</label>
       <div className="stepper">
-        <button className="step-btn" onClick={() => handleChange(currentVal - step)}>−</button>
+        <button 
+          className="step-btn" 
+          onMouseDown={() => startRepeating(-1)}
+          onMouseUp={stopRepeating}
+          onMouseLeave={stopRepeating}
+          onTouchStart={() => startRepeating(-1)}
+          onTouchEnd={stopRepeating}
+          onClick={(e) => { e.preventDefault(); }} 
+        >−</button>
         <input 
           type="number" 
           value={currentVal} 
           onChange={(e) => handleChange(parseFloat(e.target.value) || 0)} 
           step={step}
         />
-        <button className="step-btn" onClick={() => handleChange(currentVal + step)}>+</button>
+        <button 
+          className="step-btn" 
+          onMouseDown={() => startRepeating(1)}
+          onMouseUp={stopRepeating}
+          onMouseLeave={stopRepeating}
+          onTouchStart={() => startRepeating(1)}
+          onTouchEnd={stopRepeating}
+          onClick={(e) => { e.preventDefault(); }}
+        >+</button>
       </div>
     </div>
   );

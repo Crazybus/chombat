@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
 import { useSimulation } from '../context/SimulationContext';
 import { CombatSim } from '../sim/CombatSim';
-import { calculateEqualResources, calculateEqualProductionTime } from '../sim/ArmyAnalyzer';
+import { calculateEqualResources, calculateEqualProductionTime, calculateEqualFight } from '../sim/ArmyAnalyzer';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
@@ -37,6 +37,10 @@ const BattleSimulation: React.FC = () => {
   const survivorsB = isNaN(res.armyB.remaining) ? 0 : Math.ceil(res.armyB.remaining);
   const duration = isNaN(res.duration) ? 0 : res.duration;
 
+  const techsById: Record<number, any> = {};
+  Object.values(techs).forEach(t => techsById[t.id] = t);
+  const allUnits = { ...units, ...presets };
+
   const setEqualResources = () => {
     const newCountB = calculateEqualResources(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b);
     updateArmy('b', { c: Math.max(1, newCountB) });
@@ -44,6 +48,11 @@ const BattleSimulation: React.FC = () => {
 
   const setEqualProduction = () => {
     const newCountB = calculateEqualProductionTime(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b);
+    updateArmy('b', { c: Math.max(1, newCountB) });
+  };
+
+  const setEqualFight = () => {
+    const newCountB = calculateEqualFight(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b, techsById, allUnits);
     updateArmy('b', { c: Math.max(1, newCountB) });
   };
 
@@ -55,34 +64,15 @@ const BattleSimulation: React.FC = () => {
       </div>
 
       <div className="ratio-bar">
-        <div className="counter-group">
-          <label>{nameA} Count</label>
-          <div className="counter-controls">
-            <button className="count-btn" onClick={() => updateArmy('a', { c: Math.max(1, (state.a.c || 1) - 1) })}>−</button>
-            <input type="number" value={state.a.c || 1} readOnly />
-            <button className="count-btn" onClick={() => updateArmy('a', { c: (state.a.c || 1) + 1 })}>+</button>
-          </div>
-          <div style={{ marginTop: '10px' }}>
-            <StatsSummary army="a" compact={true} />
-          </div>
-        </div>
+        <ArmyCounter army="a" analysis={analysisA} count={state.a.c || 1} />
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '140px' }}>
           <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualResources}>Equal Resources</button>
           <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualProduction}>Equal Prod Time</button>
+          <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualFight}>Equal Fight</button>
         </div>
 
-        <div className="counter-group">
-          <label>{nameB} Count</label>
-          <div className="counter-controls">
-            <button className="count-btn" onClick={() => updateArmy('b', { c: Math.max(1, (state.b.c || 1) - 1) })}>−</button>
-            <input type="number" value={state.b.c || 1} readOnly />
-            <button className="count-btn" onClick={() => updateArmy('b', { c: (state.b.c || 1) + 1 })}>+</button>
-          </div>
-          <div style={{ marginTop: '10px' }}>
-            <StatsSummary army="b" compact={true} />
-          </div>
-        </div>
+        <ArmyCounter army="b" analysis={analysisB} count={state.b.c || 1} />
       </div>
 
       <section id="results" className="results-area" style={{ width: '100%' }}>
@@ -95,6 +85,85 @@ const BattleSimulation: React.FC = () => {
         
         <CombatCharts history={res.history} nameA={nameA} nameB={nameB} />
       </section>
+    </div>
+  );
+};
+
+const ArmyCounter: React.FC<{ army: 'a' | 'b', analysis: any, count: number }> = ({ army, analysis, count }) => {
+  const { updateArmy } = useSimulation();
+  const timerRef = useRef<any>(null);
+  const intervalRef = useRef<any>(null);
+  const countRef = useRef(count);
+
+  useEffect(() => {
+    countRef.current = count;
+  }, [count]);
+
+  const handleChange = (newVal: number) => {
+    updateArmy(army, { c: Math.max(1, newVal) });
+  };
+
+  const startRepeating = (dir: number) => {
+    const doStep = () => {
+      handleChange(countRef.current + dir);
+    };
+    doStep();
+    timerRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(doStep, 50);
+    }, 500);
+  };
+
+  const stopRepeating = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  const scrollToUnits = () => {
+    document.getElementById('units')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="counter-group">
+      <label 
+        onClick={scrollToUnits}
+        style={{ 
+          color: `var(--army-${army}-color)`, 
+          cursor: 'pointer', 
+          fontWeight: 'bold',
+          fontSize: '1.1rem',
+          textDecoration: 'underline',
+          textDecorationStyle: 'dotted',
+          marginBottom: '5px'
+        }}
+      >
+        {analysis.unitName}
+      </label>
+      <div className="counter-controls">
+        <button 
+          className="count-btn" 
+          onMouseDown={() => startRepeating(-1)}
+          onMouseUp={stopRepeating}
+          onMouseLeave={stopRepeating}
+          onTouchStart={() => startRepeating(-1)}
+          onTouchEnd={stopRepeating}
+        >−</button>
+        <input 
+          type="number" 
+          value={count} 
+          onChange={(e) => handleChange(parseInt(e.target.value) || 1)} 
+        />
+        <button 
+          className="count-btn" 
+          onMouseDown={() => startRepeating(1)}
+          onMouseUp={stopRepeating}
+          onMouseLeave={stopRepeating}
+          onTouchStart={() => startRepeating(1)}
+          onTouchEnd={stopRepeating}
+        >+</button>
+      </div>
+      <div style={{ marginTop: '10px', width: '100%' }}>
+        <StatsSummary army={army} compact={true} hoverExpand={true} />
+      </div>
     </div>
   );
 };
