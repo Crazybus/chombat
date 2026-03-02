@@ -10,13 +10,14 @@ import { CombatSim } from '../sim/CombatSim';
 import { techs } from '../data/techs';
 import { bonuses } from '../data/bonuses';
 import { getEffectLabel } from '../sim/TechLogic';
+import { analyzeArmy, ArmyAnalysis } from '../sim/ArmyAnalyzer';
 
 interface ArmyPanelProps {
   army: 'a' | 'b';
 }
 
 const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
-  const { state, updateArmy, loadPreset, applyAgeBonuses } = useSimulation();
+  const { state, updateArmy, loadPreset, applyAgeBonuses, clearOverrides } = useSimulation();
   const armyState = state[army];
   const [isConfigCollapsed, setIsConfigCollapsed] = useState(true);
 
@@ -72,11 +73,21 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
       <div className={`unit-config ${isConfigCollapsed ? 'collapsed' : ''}`} id={`${army}-config`}>
         <div className="field">
           <label>Unit Name Override</label>
-          <input 
-            type="text" 
-            value={armyState.nm || ''} 
-            onChange={(e) => handleStatChange('nm', e.target.value)}
-          />
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <input 
+              type="text" 
+              value={armyState.nm || ''} 
+              onChange={(e) => handleStatChange('nm', e.target.value)}
+              style={{ flex: 1 }}
+            />
+            <button 
+              className="nav-btn" 
+              style={{ padding: '2px 8px', fontSize: '0.7rem', background: 'var(--panel-bg-alt)' }}
+              onClick={() => clearOverrides(army)}
+            >
+              Reset Overrides
+            </button>
+          </div>
         </div>
         
         <div className="grid-fields">
@@ -124,8 +135,6 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
   );
 };
 
-import { analyzeArmy, ArmyAnalysis } from '../sim/ArmyAnalyzer';
-
 const StatsSummary: React.FC<{ army: 'a' | 'b' }> = ({ army }) => {
   const { state } = useSimulation();
   const armyState = state[army];
@@ -137,7 +146,7 @@ const StatsSummary: React.FC<{ army: 'a' | 'b' }> = ({ army }) => {
   }, []);
 
   const analysis = useMemo(() => {
-    return analyzeArmy(armyState, allUnits, techsById, bonuses);
+    return analyzeArmy(armyState, allUnits, techsById);
   }, [armyState, allUnits, techsById]);
 
   const formatStat = (base: number, total: number) => {
@@ -155,10 +164,9 @@ const StatsSummary: React.FC<{ army: 'a' | 'b' }> = ({ army }) => {
   };
 
   if (!analysis) return <div className="unit-stats-summary" />;
-  const { effectiveStats, modifiedBase } = analysis;
+  const { effectiveStats, modifiedBase, baseUnit } = analysis;
 
   const isMelee = (effectiveStats.range || 0) <= 1;
-  const baseAtk = isMelee ? modifiedBase.matk : modifiedBase.patk;
 
   return (
     <div className="unit-stats-summary">
@@ -189,12 +197,13 @@ const StatsSummary: React.FC<{ army: 'a' | 'b' }> = ({ army }) => {
           <span className="stat-text">{formatStat(modifiedBase.range, effectiveStats.range)}</span>
         </div>
       )}
-      <UnitStatsExplanation analysis={analysis} />
+      <UnitStatsExplanation army={army} analysis={analysis} />
     </div>
   );
 };
 
-const UnitStatsExplanation: React.FC<{ analysis: ArmyAnalysis }> = ({ analysis }) => {
+const UnitStatsExplanation: React.FC<{ army: 'a' | 'b', analysis: ArmyAnalysis }> = ({ army, analysis }) => {
+  const { toggleBonus } = useSimulation();
   const { groups, unitName, ageName } = analysis;
 
   return (
@@ -212,11 +221,27 @@ const UnitStatsExplanation: React.FC<{ analysis: ArmyAnalysis }> = ({ analysis }
                 <span>{group.icon}</span> {group.label}
               </div>
               <ul style={{ margin: 0, paddingLeft: '16px', listStyleType: 'disc' }}>
-                {group.sources.map((src, i) => (
-                  <li key={i} style={{ marginBottom: '2px' }}>
-                    <span>{src.name === 'Manual Override' ? '' : src.name + ': '}<span className={src.isBonus ? 'stat-bonus' : 'stat-penalty'} style={{ fontWeight: 'bold' }}>{src.label}</span></span>
-                  </li>
-                ))}
+                {group.sources.map((src, i) => {
+                  const isTech = src.type === 'tech';
+                  const isActive = src.isActive !== false;
+                  
+                  return (
+                    <li 
+                      key={i} 
+                      style={{ 
+                        marginBottom: '2px', 
+                        cursor: isTech ? 'pointer' : 'default',
+                        textDecoration: isActive ? 'none' : 'line-through',
+                        opacity: isActive ? 1 : 0.5,
+                        transition: 'all 0.2s'
+                      }}
+                      onClick={() => isTech && src.techId && toggleBonus(army, src.techId)}
+                      title={isTech ? 'Click to toggle this upgrade' : undefined}
+                    >
+                      <span>{src.name === 'Manual Override' ? '' : src.name + ': '}<span className={src.isBonus ? 'stat-bonus' : 'stat-penalty'} style={{ fontWeight: 'bold' }}>{src.label}</span></span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           );

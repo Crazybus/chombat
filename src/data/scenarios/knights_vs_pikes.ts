@@ -2,16 +2,10 @@ export const knights_vs_pikes = {
     "name": "Knights vs Pikes",
     "desc": "3 barracks pikes to catch up to a player with double stable knights and 8 on the field. Was Nili wrong all along?",
     "a": {
+        "ps": "knight",
         "nm": "Knight",
-        "c": "20",
+        "c": 20,
         "age": "3",
-        "h": "100",
-        "am": "10",
-        "aa": "0",
-        "ar": "2",
-        "rl": "1.7999999523162842",
-        "af": "45",
-        "ag": "25",
         "tl": [
             {
                 "t": "production",
@@ -64,15 +58,10 @@ export const knights_vs_pikes = {
         ]
     },
     "b": {
+        "ps": "pikeman",
         "nm": "Pikeman",
-        "c": "20",
+        "c": 20,
         "age": "3",
-        "h": "55",
-        "am": "4",
-        "ar": "2",
-        "rl": "3",
-        "af": "80",
-        "aw": "0",
         "tl": [
             {
                 "t": "production",

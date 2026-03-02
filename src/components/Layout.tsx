@@ -10,7 +10,7 @@ import { useSimulation } from '../context/SimulationContext';
 
 const Layout: React.FC = () => {
   const { state, showToast, setState } = useSimulation();
-  const { syncURL } = useSyncURL();
+  const { syncURL, getCleanState } = useSyncURL();
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
@@ -28,8 +28,9 @@ const Layout: React.FC = () => {
   };
 
   const handleExport = () => {
+    const cleanState = getCleanState();
     // Generate scenario ID from name or desc
-    const scenarioName = state.name || 'new_scenario';
+    const scenarioName = cleanState.name || 'new_scenario';
     const scenarioId = scenarioName
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '_')
@@ -37,7 +38,7 @@ const Layout: React.FC = () => {
       .replace(/^_|_$/g, '')
       .slice(0, 30);
 
-    const exportText = `export const ${scenarioId} = ${JSON.stringify(state, null, 4)};`;
+    const exportText = `export const ${scenarioId} = ${JSON.stringify(cleanState, null, 4)};`;
     navigator.clipboard.writeText(exportText).then(() => {
       showToast(`Scenario "${scenarioId}" copied! Paste into src/data/scenarios/`);
     });

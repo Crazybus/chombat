@@ -2,19 +2,10 @@ export const archer_vs_skirm = {
     "name": "Archer vs Skirm",
     "desc": "Switching into skirmishers to counter an existing archer mass",
     "a": {
+        "ps": "archer",
         "nm": "Archer",
-        "c": "10",
+        "c": 10,
         "age": "2",
-        "h": "30",
-        "am": "0",
-        "ap": "4",
-        "aa": "0",
-        "ar": "0",
-        "rl": "2",
-        "n": "4",
-        "af": "0",
-        "aw": "25",
-        "ag": "45",
         "tl": [
             {
                 "t": "building",
@@ -53,17 +44,10 @@ export const archer_vs_skirm = {
         ]
     },
     "b": {
+        "ps": "skirmisher",
         "nm": "Skirmisher",
-        "c": "6",
+        "c": 6,
         "age": "2",
-        "h": "30",
-        "am": "0",
-        "ap": "2",
-        "ar": "3",
-        "rl": "3",
-        "n": "4",
-        "af": "25",
-        "aw": "35",
         "tl": [
             {
                 "t": "building",

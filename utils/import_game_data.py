@@ -43,9 +43,11 @@ def clean_key(name):
     return name.lower().replace(' ', '_').replace('(', '').replace(')', '').replace('-', '_').replace('.', '').replace("'", '').replace('/', '_')
 
 def load_extra_data():
-    dir_path = 'dat/CivTechTrees'
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    dir_path = os.path.join(project_root, 'dat/CivTechTrees')
     if not os.path.exists(dir_path):
-        dir_path = 'chombat/dat/CivTechTrees'
+        dir_path = os.path.join(project_root, 'chombat/dat/CivTechTrees')
     
     unit_names = {}
     tech_names = {}
@@ -123,12 +125,20 @@ def extract_effects(eff_obj):
     return effects
 
 def convert():
-    dat_path = 'dat/empires2_x2_p1.dat'
+    # Resolve project root from utils/ directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    
+    dat_path = os.path.join(project_root, 'dat/empires2_x2_p1.dat')
     if not os.path.exists(dat_path):
-        dat_path = 'chombat/dat/empires2_x2_p1.dat'
+        dat_path = os.path.join(project_root, 'chombat/dat/empires2_x2_p1.dat')
 
     print(f"Loading extra data from Tech Trees...")
     unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages, building_ages = load_extra_data()
+
+    # (dat path is already handled above, but let's pass it if needed or ensure current dir is correct)
+    # The load_extra_data also uses relative paths, let's fix it there too if needed.
+
 
     print(f"Loading {dat_path}...")
     dat = DatFile.parse(dat_path)
@@ -262,8 +272,7 @@ def convert():
     techs_out = dict(sorted(techs_out.items(), key=lambda x: x[1]['name']))
     buildings_out = dict(sorted(buildings_out.items(), key=lambda x: x[1]['name']))
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    src_data_dir = os.path.join(script_dir, 'src', 'data')
+    src_data_dir = os.path.join(project_root, 'src', 'data')
     os.makedirs(src_data_dir, exist_ok=True)
 
     with open(os.path.join(src_data_dir, 'units.ts'), 'w') as f:

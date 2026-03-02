@@ -10,7 +10,7 @@ dev-pages: build
 
 # Generate unit data from source files
 data:
-	python3 convert_units.py
+	python3 utils/import_game_data.py
 
 # Production build
 build: clean

@@ -1,12 +1,19 @@
 import { ArmyState, UnitData, TechData } from './types';
 import { CombatSim } from './CombatSim';
 import { getEffectLabel, shouldApplyEffect, decodeEncoded, COMBAT_BUILDINGS, shouldApplyTech } from './TechLogic';
+import { civs, GENERIC_CIV } from '../data/civs';
+import { buildings } from '../data/buildings';
+import { bonuses as allBonuses } from '../data/bonuses';
+
+// --- Interfaces ---
 
 export interface StatSource {
   name: string;
   label: string;
   isBonus: boolean;
   type: 'tech' | 'override' | 'auto';
+  techId?: string;
+  isActive?: boolean;
 }
 
 export interface StatGroup {
@@ -24,6 +31,8 @@ export interface ArmyAnalysis {
   ageName: string;
 }
 
+// --- Maps & Helpers ---
+
 const fieldLabelMap: Record<string, string> = {
   h: 'HP', am: 'Melee Atk', ap: 'Pierce Atk', aa: 'Melee Arm', ar: 'Pierce Arm',
   rl: 'Reload', n: 'Range', as: 'Atk Speed', ab: 'Bonus Red'
@@ -39,6 +48,9 @@ const unitKeyMap: Record<string, string> = {
   rl: 'reload', n: 'range', as: 'atk_speed', ab: 'bonus_red'
 };
 
+const buildingsById: Record<string, any> = {};
+Object.values(buildings).forEach(b => buildingsById[b.id] = b);
+
 export function getAgeName(age: string) {
   switch (age) {
     case '1': return 'Dark Age';
@@ -49,35 +61,78 @@ export function getAgeName(age: string) {
   }
 }
 
+function getTrueAge(t: TechData): number {
+  const overrides: Record<number, number> = {
+    47: 4,  // Chemistry is standardly Imperial (4)
+    93: 3,  // Ballistics is standardly Castle (3)
+  };
+  return overrides[t.id] || t.age;
+}
+
+function isCombatTech(t: TechData): boolean {
+  const essentialCombatTechIds = [93, 47];
+  if (essentialCombatTechIds.includes(t.id)) return true;
+
+  const buildingOnlyIds = [50, 194, 322, 608, 602, 213, 221, 203, 48];
+  if (buildingOnlyIds.includes(t.id)) return false;
+
+  const buildingRelatedClasses = [11, 21, 27];
+  if (t.effects && t.effects.length > 0) {
+    const hasBuildingEffect = t.effects.some(e => {
+      const { cls } = decodeEncoded(e.v);
+      const targetClass = e.c !== -1 ? e.c : (e.t === 8 || e.t === 9 ? e.a : -1);
+      return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
+    });
+    if (hasBuildingEffect) return false;
+    return t.effects.some(e => [0, 3, 4, 5, 6, 8, 9, 12].includes(e.a));
+  }
+  return false;
+}
+
+// --- Main Library Functions ---
+
 export function resolveBaseUnit(armyState: ArmyState, allUnits: Record<string, UnitData>): UnitData {
   let baseUnit = armyState.ps ? allUnits[armyState.ps] : null;
   if (!baseUnit && armyState.nm) {
     baseUnit = Object.values(allUnits).find(u => u.name === armyState.nm) || null;
   }
 
-  if (baseUnit) return { ...baseUnit };
+  if (!baseUnit) {
+    return {
+      name: armyState.nm || 'Custom Unit',
+      hp: armyState.h || 0, matk: armyState.am || 0, patk: armyState.ap || 0,
+      marm: armyState.aa || 0, parm: armyState.ar || 0, reload: armyState.rl || 2,
+      range: armyState.n || 0, id: 'custom', class: -1,
+      f: armyState.af || 0, w: armyState.aw || 0, g: armyState.ag || 0, trainTime: 30
+    };
+  }
 
-  return {
-    name: armyState.nm || 'Custom Unit',
-    hp: armyState.h || 0,
-    matk: armyState.am || 0,
-    patk: armyState.ap || 0,
-    marm: armyState.aa || 0,
-    parm: armyState.ar || 0,
-    reload: armyState.rl || 2,
-    range: armyState.n || 0,
-    id: 'custom',
-    class: -1,
-    f: armyState.af || 0, w: armyState.aw || 0, g: armyState.ag || 0,
-    trainTime: 30
-  };
+  // Clone to avoid modifying shared data
+  let resolved = { ...baseUnit };
+  resolved.bonuses = { ...(baseUnit.bonuses || {}) };
+  resolved.armors = { ...(baseUnit.armors || {}) };
+
+  // Apply hidden auto-upgrades based on AGE ID
+  // These are considered part of the "unit base" for that age
+  const ageId = parseInt(armyState.age || '1');
+  if (ageId >= 2) {
+    const isScout = resolved.id === '448' || resolved.id === 'scout_cavalry';
+    const isEagle = resolved.id === '751' || resolved.id === 'eagle_scout';
+    if (isScout && resolved.matk === 3) {
+      resolved.matk = 5;
+    }
+    if (isEagle && resolved.matk === 4) {
+      resolved.matk = 7;
+    }
+  }
+
+  return resolved;
 }
 
 export function applyManualOverrides(baseUnit: UnitData, armyState: ArmyState): any {
   const modified = { ...baseUnit };
   modified.bonuses = { ...(baseUnit.bonuses || {}) };
   modified.armors = { ...(baseUnit.armors || {}) };
-
   Object.entries(unitKeyMap).forEach(([configKey, unitKey]) => {
     if ((armyState as any)[configKey] !== undefined) {
       (modified as any)[unitKey] = (armyState as any)[configKey];
@@ -88,197 +143,87 @@ export function applyManualOverrides(baseUnit: UnitData, armyState: ArmyState): 
 
 export function getManualOverrideSources(baseUnit: UnitData, armyState: ArmyState): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
-  
   Object.entries(fieldLabelMap).forEach(([configKey, label]) => {
     const val = (armyState as any)[configKey];
     if (val !== undefined) {
       const unitKey = unitKeyMap[configKey];
       const baseVal = (baseUnit as any)[unitKey];
-      
       if (baseVal === undefined || parseFloat(String(val)) !== parseFloat(String(baseVal))) {
         const group = fieldToGroupMap[configKey];
         const diff = parseFloat(String(val)) - parseFloat(String(baseVal || 0));
         const diffLabel = diff >= 0 ? `+${diff}` : `${diff}`;
-        
         if (!sources[group]) sources[group] = [];
-        sources[group].push({
-          name: 'Manual Override',
-          label: `Base stat changed: ${diffLabel}`,
-          isBonus: diff > 0,
-          type: 'override'
-        });
+        sources[group].push({ name: 'Manual Override', label: `Base stat changed: ${diffLabel}`, isBonus: diff > 0, type: 'override' });
       }
     }
   });
   return sources;
 }
 
-export function getTechBonusSources(
-  baseUnit: UnitData, 
-  armyState: ArmyState, 
-  techsById: Record<number, TechData>,
-  bonuses: Record<string, any>
-): Record<string, StatSource[]> {
+export function getTechBonusSources(baseUnit: UnitData, armyState: ArmyState, techsById: Record<number, TechData>, bonuses: Record<string, any>): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
-
   armyState.bn?.forEach(bState => {
     const tech = techsById[parseInt(bState.i)] || (bonuses as any)[bState.i];
     if (!tech || !tech.effects) return;
-    
-    const seenGroupLabels = new Set<string>();
+    const seenLabels = new Set<string>();
     
     const techEffects = tech.effects.map((e: any, idx: number) => {
-      if (!bState.e || !bState.e[idx]) return null;
+      // We process ALL effects now, but track their active state
       let label = getEffectLabel(e);
       if (!label) return null;
-      
       label = label.replace(/(\d+\.\d{3,})/g, (match) => parseFloat(match).toFixed(2));
-      
       let group = 'other';
       if (e.t === 0) group = 'hp';
       else if (e.t === 1 || e.t === 9) group = 'atk';
       else if (e.t === 8) {
         const { cls } = decodeEncoded(e.v);
-        if (cls === 4) group = 'marm';
-        else if (cls === 3) group = 'parm';
+        if (cls === 4) group = 'marm'; else if (cls === 3) group = 'parm';
       } else if (e.t === 12 || e.a === 3) group = 'range';
+      return { e, label, group, idx };
+    }).filter(x => x !== null) as { e: any, label: string, group: string, idx: number }[];
 
-      return { e, label, group };
-    }).filter(x => x !== null) as { e: any, label: string, group: string }[];
-
-    techEffects.forEach(({ e, label, group }) => {
-      if (e.t === 1 && techEffects.some(other => other.e.t === 9 && other.group === group)) {
-        return;
-      }
-
+    techEffects.forEach(({ e, label, group, idx }) => {
+      if (e.t === 1 && techEffects.some(other => other.e.t === 9 && other.group === group)) return;
       const attrStripRegex = /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload)\s?/i;
       const cleanLabel = label.replace(attrStripRegex, '').trim();
-
       let finalLabel = cleanLabel;
       if (group === 'other') {
-        const attrNames: Record<number, string> = {
-          130: 'Accuracy',
-          10: 'Fire Rate',
-          5: 'Speed',
-          1: 'Speed',
-          2: 'Speed',
-          23: 'Projectile Speed'
-        };
+        const attrNames: Record<number, string> = { 130: 'Accuracy', 10: 'Fire Rate', 5: 'Speed', 1: 'Speed', 2: 'Speed', 23: 'Projectile Speed' };
         const attrName = attrNames[e.a] || attrNames[e.t] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;
       }
-      
       const groupLabel = `${group}-${finalLabel}`;
-      if (seenGroupLabels.has(groupLabel)) return;
-      seenGroupLabels.add(groupLabel);
-
+      if (seenLabels.has(groupLabel)) return;
+      seenLabels.add(groupLabel);
       if (!sources[group]) sources[group] = [];
-      sources[group].push({
-        name: tech.name,
-        label: finalLabel,
-        isBonus: !finalLabel.includes('-'),
-        type: 'tech'
+      sources[group].push({ 
+        name: tech.name, 
+        label: finalLabel, 
+        isBonus: !finalLabel.includes('-'), 
+        type: 'tech',
+        techId: bState.i,
+        isActive: bState.e[idx] !== false
       });
     });
   });
   return sources;
 }
 
-export function getAutoUpgradeSources(baseUnit: UnitData, age: string): Record<string, StatSource[]> {
-  const sources: Record<string, StatSource[]> = {};
-  const ageId = parseInt(age || '1');
-  
-  if (ageId >= 2) {
-    const isScout = baseUnit.id === '448' || baseUnit.id === 'scout_cavalry';
-    const isEagle = baseUnit.id === '751' || baseUnit.id === 'eagle_scout';
-    if (isScout && baseUnit.matk === 3) {
-      if (!sources.atk) sources.atk = [];
-      sources.atk.push({ name: 'Unit Auto-upgrade', label: '+2 Melee Attack', isBonus: true, type: 'auto' });
-    }
-    if (isEagle && baseUnit.matk === 4) {
-      if (!sources.atk) sources.atk = [];
-      sources.atk.push({ name: 'Unit Auto-upgrade', label: '+3 Melee Attack', isBonus: true, type: 'auto' });
-    }
-  }
-  return sources;
+export function getAutoUpgradeSources(baseUnit: UnitData, age: string, originalStaticBase: UnitData): Record<string, StatSource[]> {
+  // We no longer need to explain auto-upgrades as they are now considered part of the 
+  // unit base for that specific age.
+  return {};
 }
 
-import { civs, GENERIC_CIV } from '../data/civs';
-
-// ... (existing interfaces)
-
-import { buildings } from '../data/buildings';
-
-const buildingsById: Record<string, any> = {};
-Object.values(buildings).forEach(b => buildingsById[b.id] = b);
-
-function getTrueAge(t: TechData): number {
-  // Base age from tech data (generic)
-  const overrides: Record<number, number> = {
-    47: 4,  // Chemistry is standardly Imperial (4)
-    93: 3,  // Ballistics is standardly Castle (3)
-  };
-  return overrides[t.id] || t.age;
-}
-
-function isCombatTech(t: TechData): boolean {
-  // Explicitly allow known essential combat techs that might have no effects in dataset
-  const essentialCombatTechIds = [
-    93, // Ballistics
-    47, // Chemistry
-  ];
-  if (essentialCombatTechIds.includes(t.id)) return true;
-
-  // Explicitly exclude known building-only techs
-  const buildingOnlyIds = [
-    50,  // Masonry
-    194, // Architecture
-    322, // Murder Holes
-    608, // Hoardings
-    602, // Stronghold
-    213, // Fortified Wall
-    221, // Guard Tower
-    203, // Keep
-    48,  // Bombard Tower
-  ];
-  if (buildingOnlyIds.includes(t.id)) return false;
-
-  // Filter out technologies that apply to building-related armor classes.
-  // Class 11 = Building, 21 = Wall, 27 = Castle
-  const buildingRelatedClasses = [11, 21, 27];
-  
-  if (t.effects && t.effects.length > 0) {
-    // If ANY effect targets a building class, exclude it from unit recommendations
-    const hasBuildingEffect = t.effects.some(e => {
-      const { cls } = decodeEncoded(e.v);
-      const targetClass = e.c !== -1 ? e.c : (e.t === 8 || e.t === 9 ? e.a : -1);
-      return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
-    });
-
-    if (hasBuildingEffect) return false;
-
-    // Must also have at least one combat-related attribute target
-    return t.effects.some(e => [0, 3, 4, 5, 6, 8, 9, 12].includes(e.a));
-  }
-
-  return false;
-}
-
-export function getRecommendedTechs(
-  unit: UnitData,
-  ageId: number,
-  civKey: string | undefined,
-  techsById: Record<number, TechData>,
-  availableCivTechs: Record<number, number> // tech_id -> age_id
-): TechData[] {
+export function getRecommendedTechs(unit: UnitData, ageId: number, civKey: string | undefined, techsById: Record<number, TechData>, availableCivTechs: Record<number, number>): TechData[] {
   return Object.values(techsById).filter((t) => {
     if (!COMBAT_BUILDINGS.includes(t.building)) return false;
     if (!isCombatTech(t)) return false;
 
     // 1. GLOBAL STRICT FILTERING:
-    // Castle (82): Exclude from generic recommended unit techs to avoid clutter.
-    // If a civ is selected, we allow it (it will be filtered by civ tree availability later).
-    if (t.building === 82 && (!civKey || civKey === GENERIC_CIV)) return false;
+    // Castle (82): ALWAYS exclude from recommended unit techs.
+    // Unique techs should be added manually by the user if needed.
+    if (t.building === 82) return false;
 
     // University (209/49): only Ballistics (93) and Chemistry (47) are relevant for standard units
     if (t.building === 209 || t.building === 49) {
@@ -288,11 +233,8 @@ export function getRecommendedTechs(
     // 2. Resolve Tech Age for this civ
     let effectiveTechAge = getTrueAge(t);
     if (civKey && civKey !== GENERIC_CIV) {
-      if (availableCivTechs[t.id] !== undefined) {
-        effectiveTechAge = availableCivTechs[t.id];
-      } else {
-        return false; // Not in civ tree
-      }
+      if (availableCivTechs[t.id] !== undefined) effectiveTechAge = availableCivTechs[t.id];
+      else return false;
     } else {
       // ADDITIONAL filtering for Generic mode:
       if (t.id > 1000) return false;
@@ -301,36 +243,77 @@ export function getRecommendedTechs(
     // 3. Resolve Building Age
     // University (209) is Castle Age (3), Blacksmith (103) is Feudal (2), etc.
     const b = buildingsById[t.building.toString()];
-    const buildingAge = b ? (b.age || 1) : 
-                       (t.building === 209 || t.building === 49 ? 3 : // University fallback
-                        t.building === 103 ? 2 : // Blacksmith fallback
-                        t.building === 101 ? 3 : // Stable fallback
-                        t.building === 87 ? 2 : // Archery Range fallback
-                        t.building === 12 ? 1 : // Barracks fallback
-                        1);
-
-    // 4. Logic: Both tech and building must be available
+    const buildingAge = b ? (b.age || 1) : (t.building === 209 || t.building === 49 ? 3 : t.building === 103 ? 2 : t.building === 101 ? 3 : t.building === 87 ? 2 : t.building === 12 ? 1 : 1);
     if (effectiveTechAge > ageId) return false;
     if (buildingAge > ageId) return false;
-
-    // 5. Unit-specific applicability
-    // shouldApplyTech checks if ANY of the tech's effects match the unit
     return shouldApplyTech(t, unit);
   });
 }
 
-export function analyzeArmy(
-  armyState: ArmyState,
-  allUnits: Record<string, UnitData>,
-  techsById: Record<number, TechData>,
-  bonuses: Record<string, any>
-): ArmyAnalysis | null {
-  const baseUnit = resolveBaseUnit(armyState, allUnits);
-  const modifiedBase = applyManualOverrides(baseUnit, armyState);
-  
-  const sim = new CombatSim(baseUnit, baseUnit, armyState, armyState, techsById, allUnits);
-  const effectiveStats = sim.dataA;
+export function scrubArmy(
+  army: ArmyState, 
+  allUnits: Record<string, UnitData>, 
+  techsById: Record<number, TechData>
+): ArmyState {
+  // 1. Normalize strings to numbers
+  const normalized = { ...army };
+  const numericFields: (keyof ArmyState)[] = [
+    'c', 'h', 'am', 'ap', 'aa', 'ar', 'rl', 'n', 'as', 'ab', 'ad',
+    'af', 'aw', 'ag', 'da', 'df', 'dw', 'dg', 'e', 'mc'
+  ];
+  numericFields.forEach(field => {
+    if (normalized[field] !== undefined) {
+      (normalized as any)[field] = parseFloat(String(normalized[field]));
+    }
+  });
 
+  // 2. Resolve unit
+  const u = normalized.ps ? allUnits[normalized.ps] : (normalized.nm ? Object.values(allUnits).find(x => x.name === normalized.nm) : null);
+  if (!u) return normalized;
+
+  // 3. Create a CLEAN state without overrides to see what stats SHOULD be
+  const cleanState: ArmyState = {
+    ps: normalized.ps,
+    nm: normalized.nm,
+    age: normalized.age,
+    cv: normalized.cv,
+    bn: normalized.bn
+  };
+
+  // 4. Calculate "natural" effective stats (without our manual changes)
+  const analysis = analyzeArmy(cleanState, allUnits, techsById);
+  if (!analysis) return normalized;
+
+  const { effectiveStats } = analysis;
+  const scrubbed = { ...normalized };
+  
+  const mapping: Record<string, string> = {
+    h: 'hp', am: 'matk', ap: 'patk', aa: 'marm', ar: 'parm',
+    rl: 'reload', n: 'range', as: 'atk_speed', ab: 'bonus_red'
+  };
+
+  // 5. Remove overrides if they match the "natural" calculated effective stats
+  Object.entries(mapping).forEach(([configKey, statKey]) => {
+    const overrideVal = (normalized as any)[configKey];
+    const naturalVal = effectiveStats[statKey];
+    
+    if (overrideVal !== undefined) {
+      if (Math.abs(parseFloat(String(overrideVal)) - parseFloat(String(naturalVal || 0))) < 0.01) {
+        delete (scrubbed as any)[configKey];
+      }
+    }
+  });
+
+  return scrubbed;
+}
+
+export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyAnalysis | null {
+  const staticBase = armyState.ps ? allUnits[armyState.ps] : (armyState.nm ? Object.values(allUnits).find(u => u.name === armyState.nm) : null);
+  const resolvedBase = resolveBaseUnit(armyState, allUnits);
+  const modifiedBase = applyManualOverrides(resolvedBase, armyState);
+  
+  const sim = new CombatSim(resolvedBase, resolvedBase, armyState, armyState, techsById, allUnits);
+  const effectiveStats = sim.dataA;
   const groups: Record<string, StatGroup> = {
     hp: { label: 'HP', icon: '❤️', sources: [] },
     atk: { label: 'Attack', icon: '⚔️', sources: [] },
@@ -339,25 +322,13 @@ export function analyzeArmy(
     range: { label: 'Range', icon: '🎯', sources: [] },
     other: { label: 'Misc', icon: '⚙️', sources: [] },
   };
-
-  const overrideSources = getManualOverrideSources(baseUnit, armyState);
-  const techSources = getTechBonusSources(baseUnit, armyState, techsById, bonuses);
-  const autoSources = getAutoUpgradeSources(baseUnit, armyState.age || '1');
-
+  const overrideSources = getManualOverrideSources(resolvedBase, armyState);
+  const techSources = getTechBonusSources(resolvedBase, armyState, techsById, allBonuses);
+  const autoSources = getAutoUpgradeSources(resolvedBase, armyState.age || '1', staticBase || resolvedBase);
   [overrideSources, techSources, autoSources].forEach(sourceSet => {
     Object.entries(sourceSet).forEach(([group, items]) => {
-      if (groups[group]) {
-        groups[group].sources.push(...items);
-      }
+      if (groups[group]) groups[group].sources.push(...items);
     });
   });
-
-  return {
-    baseUnit,
-    modifiedBase,
-    effectiveStats,
-    groups,
-    unitName: baseUnit.name,
-    ageName: getAgeName(armyState.age || '1')
-  };
+  return { baseUnit: resolvedBase, modifiedBase, effectiveStats, groups, unitName: resolvedBase.name, ageName: getAgeName(armyState.age || '1') };
 }

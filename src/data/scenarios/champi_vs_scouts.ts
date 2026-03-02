@@ -2,16 +2,10 @@ export const champi_vs_scouts = {
     "name": "Champi Scout vs FU Scouts",
     "desc": "All in dark age champi scout rush vs a theoretical perfect 18 pop constant scout production into fully upgraded feudal scouts.",
     "a": {
+        "ps": "champi_scout",
         "nm": "Champi Scout",
-        "c": "11",
+        "c": 11,
         "age": "1",
-        "h": "35",
-        "am": "4",
-        "aa": "0",
-        "ar": "2",
-        "rl": "2",
-        "af": "45",
-        "ag": "25",
         "tl": [
             {
                 "t": "villagers",
@@ -35,15 +29,10 @@ export const champi_vs_scouts = {
         "bn": []
     },
     "b": {
+        "ps": "scout_cavalry",
         "nm": "Scout Cavalry",
-        "c": "5",
+        "c": 5,
         "age": "2",
-        "h": "45",
-        "am": "5",
-        "ar": "2",
-        "rl": "2",
-        "af": "80",
-        "aw": "0",
         "tl": [
             {
                 "t": "villagers",
@@ -141,5 +130,5 @@ export const champi_vs_scouts = {
                 ]
             }
         ]
-    },
+    }
 };

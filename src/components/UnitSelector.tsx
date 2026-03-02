@@ -28,6 +28,7 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const toggleRef = useRef<HTMLHeadingElement>(null);
 
   const allUnits = useMemo(() => {
     const combined: Record<string, any> = { ...units, ...presets };
@@ -58,6 +59,10 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // If clicking the toggle, let the onClick handle it
+      if (toggleRef.current?.contains(event.target as Node)) {
+        return;
+      }
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
@@ -66,24 +71,15 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!isOpen) return;
+  // ... (handleKeyDown stays same)
 
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      setSelectedIndex(prev => (prev + 1) % filteredUnits.length);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      setSelectedIndex(prev => (prev - 1 + filteredUnits.length) % filteredUnits.length);
-    } else if (e.key === 'Enter') {
-      e.preventDefault();
-      if (filteredUnits[selectedIndex]) {
-        onSelect(filteredUnits[selectedIndex].id);
-        setIsOpen(false);
-        setSearchTerm('');
-      }
-    } else if (e.key === 'Escape') {
-      setIsOpen(false);
+  const handleToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const nextOpen = !isOpen;
+    setIsOpen(nextOpen);
+    if (nextOpen) {
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   };
 
@@ -94,11 +90,9 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
   return (
     <div className="unit-selector-container" ref={containerRef} style={{ position: 'relative' }}>
       <h2 
+        ref={toggleRef}
         className="clickable-unit-name" 
-        onClick={() => {
-          setIsOpen(!isOpen);
-          if (!isOpen) setTimeout(() => inputRef.current?.focus(), 0);
-        }}
+        onClick={handleToggle}
       >
         {currentUnitName}
       </h2>

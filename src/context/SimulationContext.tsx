@@ -4,9 +4,9 @@ import { scenarios, featuredScenarios } from '../data/scenarios';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
-import { civs } from '../data/civs';
+import { civs, GENERIC_CIV } from '../data/civs';
 import { COMBAT_BUILDINGS, shouldApplyTech } from '../sim/TechLogic';
-import { analyzeArmy, ArmyAnalysis, getRecommendedTechs } from '../sim/ArmyAnalyzer';
+import { analyzeArmy, ArmyAnalysis, getRecommendedTechs, scrubArmy } from '../sim/ArmyAnalyzer';
 
 interface SimulationContextType {
 // ... (rest remains same)
@@ -18,6 +18,8 @@ interface SimulationContextType {
   showToast: (msg: string) => void;
   resetToNewScenario: () => void;
   applyAgeBonuses: (army: 'a' | 'b', age: string, civOverride?: string) => void;
+  clearOverrides: (army: 'a' | 'b') => void;
+  toggleBonus: (army: 'a' | 'b', techId: string) => void;
 }
 
 const defaultArmy: ArmyState = {
@@ -49,6 +51,29 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       ...prev,
       [army]: { ...prev[army], ...updates }
     }));
+  };
+
+  const clearOverrides = (army: 'a' | 'b') => {
+    updateArmy(army, {
+      h: undefined, am: undefined, ap: undefined, aa: undefined, ar: undefined,
+      rl: undefined, n: undefined, as: undefined, ab: undefined, ad: undefined,
+      af: undefined, aw: undefined, ag: undefined, da: undefined, df: undefined,
+      dw: undefined, dg: undefined, e: undefined, mc: undefined
+    });
+  };
+
+  const toggleBonus = (army: 'a' | 'b', techId: string) => {
+    setState(prev => {
+      const armyState = prev[army];
+      const newBonuses = armyState.bn?.map(b => {
+        if (b.i === techId) {
+          const allActive = b.e.every(x => x);
+          return { ...b, e: b.e.map(() => !allActive) };
+        }
+        return b;
+      });
+      return { ...prev, [army]: { ...armyState, bn: newBonuses } };
+    });
   };
 
   const applyAgeBonuses = (army: 'a' | 'b', age: string, civOverride?: string) => {
@@ -147,33 +172,12 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const scenario = (scenarios as any)[id];
     if (scenario) {
       const allUnits: Record<string, UnitData> = { ...units, ...presets };
+      const techsById: Record<number, TechData> = {};
+      Object.values(techs).forEach(t => techsById[t.id] = t);
       
-      const scrubArmy = (army: ArmyState): ArmyState => {
-        const u = army.ps ? allUnits[army.ps] : (army.nm ? Object.values(allUnits).find(x => x.name === army.nm) : null);
-        if (!u) return { ...army };
-
-        const scrubbed = { ...army };
-        const mapping: Record<string, keyof UnitData> = {
-          h: 'hp', am: 'matk', ap: 'patk', aa: 'marm', ar: 'parm',
-          rl: 'reload', n: 'range', as: 'atk_speed', ab: 'bonus_red',
-          af: 'f', aw: 'w', ag: 'g'
-        };
-
-        Object.entries(mapping).forEach(([configKey, unitKey]) => {
-          const val = (army as any)[configKey];
-          const baseVal = (u as any)[unitKey];
-          // If the override in scenario is identical to unit base, remove it to prevent double counting
-          // if techs are also applied. Or just to keep state clean.
-          if (val !== undefined && parseFloat(String(val)) === parseFloat(String(baseVal || 0))) {
-            delete (scrubbed as any)[configKey];
-          }
-        });
-        return scrubbed;
-      };
-
       setState({
-        a: scrubArmy(scenario.a),
-        b: scrubArmy(scenario.b),
+        a: scrubArmy(scenario.a, allUnits, techsById),
+        b: scrubArmy(scenario.b, allUnits, techsById),
         desc: scenario.desc || '',
         name: scenario.name,
       });
@@ -188,7 +192,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, []);
 
   return (
-    <SimulationContext.Provider value={{ state, setState, updateArmy, loadScenario, loadPreset, showToast, resetToNewScenario, applyAgeBonuses }}>
+    <SimulationContext.Provider value={{ state, setState, updateArmy, loadScenario, loadPreset, showToast, resetToNewScenario, applyAgeBonuses, clearOverrides, toggleBonus }}>
       {children}
       {toast && (
         <div className="share-toast" style={{ position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)', zIndex: 10000 }}>
