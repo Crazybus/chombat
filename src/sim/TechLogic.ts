@@ -77,8 +77,9 @@ export function matchesClass(e: any, u: UnitData): boolean {
 export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): boolean {
     if (!matchesUnit(e, u) || !matchesClass(e, u)) return false;
 
-    // Range/Accuracy/Reload check: don't apply these bonuses to melee units
-    if (e.t === 12 || e.a === 3 || e.a === 130 || e.t === 130 || e.a === 10) {
+    // Range/Accuracy check: don't apply these bonuses to melee units
+    // Attribute 3 is Range, 130 is Accuracy, 12 is also Range in some contexts
+    if (e.a === 3 || e.a === 130 || e.t === 12 || e.t === 130) {
         if ((u.range || 0) <= 1) return false;
     }
 

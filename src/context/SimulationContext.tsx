@@ -7,6 +7,7 @@ import { techs } from '../data/techs';
 import { civs, GENERIC_CIV } from '../data/civs';
 import { COMBAT_BUILDINGS, shouldApplyTech } from '../sim/TechLogic';
 import { analyzeArmy, ArmyAnalysis, getRecommendedTechs, scrubArmy } from '../sim/ArmyAnalyzer';
+import { buildings } from '../data/buildings';
 
 interface SimulationContextType {
   state: SimulationState;
@@ -123,11 +124,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       });
     }
 
-    // Special case: Scout Cavalry gets +2 attack in Feudal Age+
-    // Note: We no longer set am override here to prevent state corruption.
-    // It is handled dynamically in CombatSim.applyBonuses based on ageId.
     let overrides: Partial<ArmyState> = { age, cv: civKey, bn: newBonuses };
-
     updateArmy(army, overrides);
   };
 
@@ -136,9 +133,9 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const u = allUnits[id];
     if (!u) return;
 
-    // 1. First update the unit and clear overrides
     const currentAge = state[army].age || '1';
     const currentCiv = state[army].cv || GENERIC_CIV;
+    const ageId = parseInt(currentAge);
 
     const newArmyState: ArmyState = {
       ...state[army],
@@ -146,39 +143,54 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       nm: u.name,
       h: undefined, am: undefined, ap: undefined, aa: undefined, ar: undefined,
       rl: undefined, n: undefined, af: undefined, aw: undefined, ag: undefined,
-      tl: [{ t: 'production', n: 'Initial Production', c: 1, tr: u.trainTime }],
-      bn: [], // Temp clear to calculate fresh
+      bn: [], 
+      tl: []
     };
 
-    // 2. Calculate the new bonuses for the NEW unit at the CURRENT age
-    const ageId = parseInt(currentAge);
-    const availableTechs: Record<number, number> = currentCiv ? (civs as any)[currentCiv] || {} : {};
     const techsById: Record<number, TechData> = {};
     Object.values(techs).forEach(t => techsById[t.id] = t);
+    const availableTechs: Record<number, number> = currentCiv ? (civs as any)[currentCiv] || {} : {};
 
-    const newBonuses: { i: string; e: boolean[] }[] = [];
-    if (ageId > 1) {
-      const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
-      relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
-        newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
+    // 1. Build Production Building
+    const bId = u.building ? u.building.toString() : '87'; 
+    const bData = (buildings as any)[bId] || Object.values(buildings).find(b => b.id === bId);
+    if (bData) {
+      newArmyState.tl?.push({
+        t: 'building', n: bData.name, d: bData.time || 50, c: 1, co: (bData.f||0)+(bData.w||0)+(bData.g||0)+(bData.s||0),
+        prod: true, i: bId, b: false
       });
     }
 
-    newArmyState.bn = newBonuses;
+    // 2. Research All Upgrades (Sequential, Blocking Units)
+    if (ageId > 1) {
+      const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
+      relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
+        newArmyState.bn?.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
+        
+        newArmyState.tl?.push({
+          t: 'tech', n: t.name, d: t.time || 40, c: 1, co: (t.f||0)+(t.w||0)+(t.g||0),
+          i: t.id.toString(), bt: t.building.toString(), b: true // Blocks unit prod
+        });
+      });
+    }
 
-    setState(prev => ({
-      ...prev,
-      [army]: newArmyState
-    }));
+    // 3. Start Infinite Production (Immediate)
+    newArmyState.tl?.push({ t: 'production', n: `Infinite ${u.name}`, v: 1, tr: u.trainTime, inf: true, d: 0 });
+
+    setState(prev => ({ ...prev, [army]: newArmyState }));
   };
 
   const resetToNewScenario = () => {
+    // Initial state should also have sensible defaults
     setState({
       a: { ...defaultArmy, ps: 'archer', nm: 'Archer' },
       b: { ...defaultArmy, ps: 'skirmisher', nm: 'Skirmisher' },
       desc: 'New scenario description...',
       name: 'New Scenario',
     });
+    // Trigger loadPreset to fill timeline
+    loadPreset('a', 'archer');
+    loadPreset('b', 'skirmisher');
   };
 
   const loadScenario = (id: string) => {

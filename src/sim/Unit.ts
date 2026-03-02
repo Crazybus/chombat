@@ -51,12 +51,18 @@ export class Unit {
     this.patk = parse(d.patk !== undefined ? d.patk : d.ap, 0);
     this.marm = parse(d.marm !== undefined ? d.marm : d.aa, 0);
     this.parm = parse(d.parm !== undefined ? d.parm : d.ar, 0);
-    this.reloadBase = parse(d.reload !== undefined ? d.reload : d.rl, 2);
+    this.reloadBase = parse(d.reloadBase !== undefined ? d.reloadBase : d.rl, 2);
     this.range = parse(d.range !== undefined ? d.range : d.n, 0);
     this.atk_speed = parse(d.atk_speed !== undefined ? d.atk_speed : d.as, 0);
     this.bonus_red = parse(d.bonus_red !== undefined ? d.bonus_red : d.ab, 0);
 
-    this.reload = this.reloadBase / (1 + this.atk_speed / 100);
+    // If reload was pre-calculated (e.g. by applyBonuses), use it. 
+    // Otherwise calculate from base and speed.
+    if (d.reload !== undefined) {
+      this.reload = parse(d.reload, 2);
+    } else {
+      this.reload = this.reloadBase / (1 + this.atk_speed / 100);
+    }
     this.attackCooldown = 0;
 
     this.f = parse(d.f !== undefined ? d.f : d.af, 0);

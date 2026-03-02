@@ -1,4 +1,5 @@
-import { TimelineStep } from './types';
+import { TimelineStep, ArmyState, UnitData, TechData } from './types';
+import { CombatSim } from './CombatSim';
 
 export interface ProductionEvent {
   time: number;
@@ -23,9 +24,6 @@ export interface ProductionResult {
   economyHistory: EconomyPoint[];
 }
 
-import { CombatSim } from './CombatSim';
-import { ArmyState, UnitData, TechData } from './types';
-
 export interface ProductionAnalysisResult {
   labels: string[];
   countA: number[];
@@ -35,6 +33,10 @@ export interface ProductionAnalysisResult {
   economyB: EconomyPoint[];
   finalResA: ProductionResult;
   finalResB: ProductionResult;
+  tideTurnsAt: number | null;
+  winnerAtTideTurn: string | null;
+  countAtTideTurnA: number | null;
+  countAtTideTurnB: number | null;
 }
 
 export function analyzeProduction(
@@ -50,11 +52,17 @@ export function analyzeProduction(
   const result: any = { 
     labels: [], countA: [], countB: [], advantage: [], 
     economyA: [], economyB: [], 
-    finalResA: null, finalResB: null 
+    finalResA: null, finalResB: null,
+    tideTurnsAt: null,
+    winnerAtTideTurn: null,
+    countAtTideTurnA: null,
+    countAtTideTurnB: null
   };
 
   const baseCostA = { f: unitA.f, w: unitA.w, g: unitA.g };
   const baseCostB = { f: unitB.f, w: unitB.w, g: unitB.g };
+
+  let currentWinner: 'a' | 'b' | null = null;
 
   for (let t = 0; t <= maxTime; t += step) {
     const resA = calculateCount(t, stateA.tl || [], baseCostA, stateA.cont, stateA.sv);
@@ -82,6 +90,15 @@ export function analyzeProduction(
     }
     result.advantage.push(adv);
 
+    const winner = adv > 0 ? 'a' : (adv < 0 ? 'b' : null);
+    if (winner && currentWinner && winner !== currentWinner && result.tideTurnsAt === null) {
+      result.tideTurnsAt = t;
+      result.winnerAtTideTurn = winner === 'a' ? unitA.name : unitB.name;
+      result.countAtTideTurnA = resA.count;
+      result.countAtTideTurnB = resB.count;
+    }
+    if (winner && !currentWinner) currentWinner = winner;
+
     if (t + step > maxTime) {
       result.finalResA = resA;
       result.finalResB = resB;
@@ -94,153 +111,146 @@ export function analyzeProduction(
 export function calculateCount(
   t: number,
   timelineSteps: TimelineStep[],
-  initialCost: { f: number; w: number; g: number } = { f: 0, w: 0, g: 0 },
-  continuousVillagers: boolean = false,
+  unitBaseCost: { f: number; w: number; g: number } = { f: 0, w: 0, g: 0 },
+  initialContinuousVillagers: boolean = false,
   initialVillagers: number = 3
 ): ProductionResult {
   let unitsCount = 0;
-  let currentBuild = 0;
-  let productionDebt = 0;
-  let currentTrain = 30;
-  let currentCost = { ...initialCost };
+  let villagers = initialVillagers || 3;
+  
+  // Starting state
+  let militaryCapacity = 0;
+  let tcCapacity = 1;
+  let tcContinuous = initialContinuousVillagers;
+  let militaryContinuous = false;
+  let trainTime = 30;
+  let currentUnitCost = { ...unitBaseCost };
 
-  // Economy tracking
-  let villagers = initialVillagers; // Start with specified vills
+  // If no timeline, assume 1 facility producing infinite
+  if (timelineSteps.length === 0) {
+    militaryCapacity = 1;
+    militaryContinuous = true;
+  }
+
+  // Resource Tracking
   let gatheredTotal = 0;
   let spentTotal = 0;
   let spentOnVillagers = 0;
   let spentOnUnits = 0;
   let spentOnBuildings = 0;
   let spentOnTechs = 0;
-  const gatheringRate = 0.35; // Rough average res/sec/vill
+  const gatheringRate = 0.35;
   const economyHistory: EconomyPoint[] = [];
 
-  // TC management
-  let tcBlockedUntil = -1;
-  let villagerProgress = 0;
+  // TC and Military production progress
+  let tcProgress = 0;
+  let milProgress = 0;
 
-  const steps = JSON.parse(JSON.stringify(timelineSteps)) as (TimelineStep & { started?: boolean; startTime?: number; wasActuallyBlocking?: boolean; unblockTime?: number })[];
-  let stepIdx = 0;
+  const steps = JSON.parse(JSON.stringify(timelineSteps)) as (TimelineStep & { started?: boolean; startTime?: number; finished?: boolean })[];
+  let currentStepIdx = 0;
   const events: ProductionEvent[] = [];
 
   for (let s = 0; s <= t; s++) {
     // 1. Gather resources
     gatheredTotal += villagers * gatheringRate;
 
-    // 2. Continuous Villagers logic
-    if (continuousVillagers && s >= tcBlockedUntil) {
-      villagerProgress += 1 / 25; // 25s train time
-      if (villagerProgress >= 1) {
-        villagers++;
-        villagerProgress -= 1;
-        spentTotal += 50; // Cost of a villager
-        spentOnVillagers += 50;
-      }
-    }
-
-    // 3. Process Timeline Steps
-    while (stepIdx < steps.length) {
-      const step = steps[stepIdx];
-      const count = step.c || 1;
-      const delay = (step.d || 0) * count;
-
+    // 2. Process Build Order
+    if (currentStepIdx < steps.length) {
+      const step = steps[currentStepIdx];
+      
       if (!step.started) {
-        step.started = true;
-        step.startTime = s;
-        events.push({ time: s, msg: `Started: ${step.n || step.t} (at ${unitsCount} units)` });
-
-        // Cost application
-        const unitCost = (step.f || 0) + (step.w || 0) + (step.g || 0);
-        const stepCost = (unitCost || step.co || 0) * count;
-        spentTotal += stepCost;
-
-        // Categorize spending
-        if (step.t === 'villagers') {
-          spentOnVillagers += stepCost;
-        } else if (step.t === 'building') {
-          spentOnBuildings += stepCost;
-        } else if (step.t === 'tech') {
-          spentOnTechs += stepCost;
-        } else if (step.t === 'production') {
-          spentOnUnits += stepCost;
-        }
-
-        if (step.b) {
-          if (step.t === 'age' || (step.t === 'tech' && step.bt === 109)) {
-            tcBlockedUntil = s + delay;
+        if (step.t === 'units' || step.t === 'wait') {
+          if (unitsCount >= (step.c || 0)) {
+            events.push({ time: s, msg: `Goal reached: ${step.c} units. [${unitsCount} units]` });
+            currentStepIdx++;
           }
-          if (currentBuild > 0) {
-            step.unblockTime = s + delay;
-            currentBuild = Math.max(0, currentBuild - 1);
-            step.wasActuallyBlocking = true;
+        } else {
+          const count = step.c || 1;
+          const cost = ((step.f || 0) + (step.w || 0) + (step.g || 0) + (step.co || 0)) * count;
+          if (gatheredTotal - spentTotal >= cost) {
+            step.started = true;
+            step.startTime = s;
+            spentTotal += cost;
+            if (step.t === 'villagers') spentOnVillagers += cost;
+            else if (step.t === 'building') spentOnBuildings += cost;
+            else if (step.t === 'tech') spentOnTechs += cost;
+            else if (step.t === 'production') spentOnUnits += cost;
+            
+            const blockingMsg = step.b ? ` (Blocking ${step.bt === 109 ? 'Vills' : 'Units'})` : '';
+            events.push({ time: s, msg: `Started: ${step.n || step.t}${blockingMsg} [${unitsCount} units]` });
           }
         }
       }
 
-      if (s >= (step.startTime || 0) + delay) {
-        if (step.wasActuallyBlocking) {
-          currentBuild++;
-          step.wasActuallyBlocking = false;
-        }
-        events.push({ time: s, msg: `Finished: ${step.n || step.t}` });
-
-        if (step.t === 'building' || step.t === 'prod' || step.t === 'villagers') {
-          if (step.t === 'villagers') {
-            villagers += (step.v || 0);
-          } else if (step.t === 'building') {
-            // Count buildings with production checkbox enabled
-            if (step.prod) {
-              currentBuild++;
-              events.push({ time: s, msg: `Production Capacity +1` });
-            }
-          } else if (step.t === 'prod') {
-            if (step.prod) {
-              currentBuild++;
-              events.push({ time: s, msg: `Production Capacity +1` });
-            }
+      // Check for finish
+      if (step && step.started && !step.finished) {
+        const count = step.c || 1;
+        const duration = (step.d || 0) * count;
+        if (s >= (step.startTime || 0) + duration) {
+          step.finished = true;
+          events.push({ time: s, msg: `Finished: ${step.n || step.t} [${unitsCount} units]` });
+          if (step.t === 'building') {
+            if (step.prod) militaryCapacity += count;
+            if (step.bt === 109) tcCapacity += count;
+          } else if (step.t === 'villagers') {
+            villagers += count;
+            if (step.inf) tcContinuous = true;
+          } else if (step.t === 'production') {
+            trainTime = step.tr || trainTime;
+            militaryCapacity += (step.v || 0);
+            if (step.inf) militaryContinuous = true;
           }
-        } else if (step.t === 'production') {
-          // Production step just sets the train time and immediately provides production capacity
-          currentBuild += (step.v || 0);
-          currentTrain = step.tr || currentTrain;
-          events.push({ time: s, msg: `Production speed set to ${currentTrain}s` });
-        } else if (step.t === 'cost') {
-          currentCost = { f: step.f || 0, w: step.w || 0, g: step.g || 0 };
+          currentStepIdx++;
         }
-        stepIdx++;
-      } else break;
-    }
-
-    // 4. Military Production
-    if (currentBuild > 0 && currentTrain > 0) {
-      const rate = currentBuild / currentTrain;
-      productionDebt += rate;
-      if (productionDebt >= 1) {
-        const n = Math.floor(productionDebt);
-        unitsCount += n;
-        productionDebt -= n;
-        // Cost for produced units
-        const c = currentCost.f + currentCost.w + currentCost.g;
-        const unitCostTotal = n * (c || 100);
-        spentTotal += unitCostTotal;
-        spentOnUnits += unitCostTotal;
       }
     }
 
-    // 5. Record economy
+    // 3. Determine active capacity (taking blocking into account)
+    let activeTCs = tcCapacity;
+    let activeMilitary = militaryCapacity;
+    const runningStep = steps[currentStepIdx];
+    if (runningStep && runningStep.started && !runningStep.finished && runningStep.b) {
+      if (runningStep.bt === 109) activeTCs = Math.max(0, activeTCs - 1);
+      else activeMilitary = Math.max(0, activeMilitary - 1);
+    }
+
+    // 4. Production execution
+    if (activeTCs > 0 && tcContinuous) {
+      tcProgress += activeTCs * (1 / 25); 
+      while (tcProgress >= 0.9999) {
+        villagers++;
+        tcProgress -= 1;
+        const cost = 50;
+        spentTotal += cost;
+        spentOnVillagers += cost;
+      }
+    }
+
+    if (activeMilitary > 0 && militaryContinuous && trainTime > 0) {
+      milProgress += activeMilitary * (1 / trainTime);
+      while (milProgress >= 0.9999) {
+        unitsCount++;
+        milProgress -= 1;
+        const unitCost = currentUnitCost.f + currentUnitCost.w + currentUnitCost.g;
+        const cost = (unitCost || 100);
+        spentTotal += cost;
+        spentOnUnits += cost;
+      }
+    }
+
     if (s % 10 === 0) {
       economyHistory.push({
         time: s,
         gathered: gatheredTotal,
         spent: spentTotal,
-        spentOnVillagers: spentOnVillagers,
-        spentOnUnits: spentOnUnits,
-        spentOnBuildings: spentOnBuildings,
-        spentOnTechs: spentOnTechs
+        spentOnVillagers,
+        spentOnUnits,
+        spentOnBuildings,
+        spentOnTechs
       });
     }
   }
 
-  const unitsPerSecond = currentTrain > 0 ? currentBuild / currentTrain : 0;
-  return { count: unitsCount, cost: currentCost, events, unitsPerSecond, economyHistory };
+  const unitsPerSecond = trainTime > 0 ? (militaryCapacity * (militaryContinuous ? 1 : 0)) / trainTime : 0;
+  return { count: unitsCount, cost: currentUnitCost, events, unitsPerSecond, economyHistory };
 }

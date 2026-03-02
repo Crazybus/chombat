@@ -22,6 +22,7 @@ const StatComparison: React.FC = () => {
     Object.values(techs).forEach(t => techsById[t.id] = t);
     const allUnits = { ...units, ...presets };
 
+    // Use analysisA.baseUnit and analysisB.baseUnit which are already age-resolved
     const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
     const res = sim.run();
     
@@ -29,8 +30,8 @@ const StatComparison: React.FC = () => {
       res,
       uA: new Unit(sim.dataA),
       uB: new Unit(sim.dataB),
-      baseA: analysisA.baseUnit,
-      baseB: analysisB.baseUnit,
+      baseA: analysisA.naturalBase,
+      baseB: analysisB.naturalBase,
       nameA: analysisA.unitName,
       nameB: analysisB.unitName,
     };
@@ -77,7 +78,6 @@ const StatComparison: React.FC = () => {
   let winnerColor = 'var(--text-color)';
   let remainingInfo = '';
 
-  const winA = res.armyA.totalHp > res.armyB.totalHp;
   if (res.armyA.totalHp > res.armyB.totalHp) {
     winner = nameA;
     winnerColor = 'var(--army-a-color)';

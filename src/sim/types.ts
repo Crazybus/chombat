@@ -77,6 +77,8 @@ export interface TimelineStep {
   g?: number; // gold cost override
   bt?: number; // building target (e.g. 109 for TC)
   prod?: boolean; // produces units
+  inf?: boolean; // infinite production
+  bi?: number; // block index (which facility to block)
 }
 
 export interface ArmyState {

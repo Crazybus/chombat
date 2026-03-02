@@ -25,8 +25,9 @@ export interface StatGroup {
 
 export interface ArmyAnalysis {
   baseUnit: UnitData;
-  modifiedBase: any;
-  effectiveStats: any;
+  naturalBase: any; // Stats with current age (auto-upgrades) but NO techs or manual overrides
+  modifiedBase: any; // Stats with current age + manual overrides but NO techs
+  effectiveStats: any; // Final stats with everything applied
   groups: Record<string, StatGroup>;
   unitName: string;
   ageName: string;
@@ -109,19 +110,7 @@ export function resolveBaseUnit(armyState: ArmyState, allUnits: Record<string, U
       f: armyState.af || 0, w: armyState.aw || 0, g: armyState.ag || 0, trainTime: 30
     };
   }
-
-  let resolved = { ...baseUnit };
-  resolved.bonuses = { ...(baseUnit.bonuses || {}) };
-  resolved.armors = { ...(baseUnit.armors || {}) };
-
-  const ageId = parseInt(armyState.age || '1');
-  if (ageId >= 2) {
-    const isScout = resolved.id === '448' || resolved.id === 'scout_cavalry';
-    const isEagle = resolved.id === '751' || resolved.id === 'eagle_scout';
-    if (isScout && resolved.matk === 3) resolved.matk = 5;
-    if (isEagle && resolved.matk === 4) resolved.matk = 7;
-  }
-  return resolved;
+  return { ...baseUnit };
 }
 
 export function applyManualOverrides(baseUnit: UnitData, armyState: ArmyState): any {
@@ -136,13 +125,13 @@ export function applyManualOverrides(baseUnit: UnitData, armyState: ArmyState): 
   return modified;
 }
 
-export function getManualOverrideSources(baseUnit: UnitData, armyState: ArmyState): Record<string, StatSource[]> {
+export function getManualOverrideSources(ageResolvedBase: UnitData, armyState: ArmyState): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
   Object.entries(fieldLabelMap).forEach(([configKey, label]) => {
     const val = (armyState as any)[configKey];
     if (val !== undefined) {
       const unitKey = unitKeyMap[configKey];
-      const baseVal = (baseUnit as any)[unitKey];
+      const baseVal = (ageResolvedBase as any)[unitKey];
       if (baseVal === undefined || parseFloat(String(val)) !== parseFloat(String(baseVal))) {
         const group = fieldToGroupMap[configKey];
         const diff = parseFloat(String(val)) - parseFloat(String(baseVal || 0));
@@ -202,16 +191,12 @@ export function getTechBonusSources(baseUnit: UnitData, armyState: ArmyState, te
   return sources;
 }
 
-export function getAutoUpgradeSources(baseUnit: UnitData, age: string, originalStaticBase: UnitData): Record<string, StatSource[]> {
-  return {};
-}
-
 export function getRecommendedTechs(unit: UnitData, ageId: number, civKey: string | undefined, techsById: Record<number, TechData>, availableCivTechs: Record<number, number>): TechData[] {
   const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
   return Object.values(activeTechs).filter((t) => {
     if (!COMBAT_BUILDINGS.includes(t.building)) return false;
     if (!isCombatTech(t)) return false;
-    if (t.building === 82 && (!civKey || civKey === GENERIC_CIV)) return false;
+    if (t.building === 82) return false;
     if (t.building === 209 || t.building === 49) {
       if (t.id !== 93 && t.id !== 47) return false;
     }
@@ -231,12 +216,20 @@ export function getRecommendedTechs(unit: UnitData, ageId: number, civKey: strin
 }
 
 export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyAnalysis | null {
-  const staticBase = armyState.ps ? allUnits[armyState.ps] : (armyState.nm ? Object.values(allUnits).find(u => u.name === armyState.nm) : null);
-  const resolvedBase = resolveBaseUnit(armyState, allUnits);
-  const modifiedBase = applyManualOverrides(resolvedBase, armyState);
+  const baseUnit = resolveBaseUnit(armyState, allUnits);
   const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
-  const sim = new CombatSim(resolvedBase, resolvedBase, armyState, armyState, activeTechs, allUnits);
-  const effectiveStats = sim.dataA;
+  
+  // 1. Natural Base (Current Age auto-upgrades but NO techs/overrides)
+  const simNatural = new CombatSim(baseUnit, baseUnit, { age: armyState.age }, { age: armyState.age }, activeTechs, allUnits);
+  const naturalBase = simNatural.dataA;
+
+  // 2. Modified Base (Resolved Base + Overrides)
+  const modifiedBase = applyManualOverrides(naturalBase, armyState);
+
+  // 3. Final Effective (Everything)
+  const simFinal = new CombatSim(baseUnit, baseUnit, armyState, armyState, activeTechs, allUnits);
+  const finalEffective = { ...simFinal.dataA, count: armyState.c !== undefined ? armyState.c : 1 };
+
   const groups: Record<string, StatGroup> = {
     hp: { label: 'HP', icon: '❤️', sources: [] },
     atk: { label: 'Attack', icon: '⚔️', sources: [] },
@@ -245,16 +238,15 @@ export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitD
     range: { label: 'Range', icon: '🎯', sources: [] },
     other: { label: 'Misc', icon: '⚙️', sources: [] },
   };
-  const overrideSources = getManualOverrideSources(resolvedBase, armyState);
-  const techSources = getTechBonusSources(resolvedBase, armyState, activeTechs, allBonuses);
-  const autoSources = getAutoUpgradeSources(resolvedBase, armyState.age || '1', staticBase || resolvedBase);
-  [overrideSources, techSources, autoSources].forEach(sourceSet => {
+  const overrideSources = getManualOverrideSources(naturalBase, armyState);
+  const techSources = getTechBonusSources(baseUnit, armyState, activeTechs, allBonuses);
+  
+  [overrideSources, techSources].forEach(sourceSet => {
     Object.entries(sourceSet).forEach(([group, items]) => {
       if (groups[group]) groups[group].sources.push(...items);
     });
   });
-  const finalEffective = { ...effectiveStats, count: armyState.c !== undefined ? armyState.c : 1 };
-  return { baseUnit: resolvedBase, modifiedBase, effectiveStats: finalEffective, groups, unitName: resolvedBase.name, ageName: getAgeName(armyState.age || '1') };
+  return { baseUnit, naturalBase, modifiedBase, effectiveStats: finalEffective, groups, unitName: baseUnit.name, ageName: getAgeName(armyState.age || '1') };
 }
 
 export function scrubArmy(army: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyState {

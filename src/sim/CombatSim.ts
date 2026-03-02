@@ -58,7 +58,7 @@ export class CombatSim {
     newUnit.bonuses = { ...(baseUnit.bonuses || {}) };
     newUnit.armors = { ...(baseUnit.armors || {}) };
 
-    // Initialize with standard names if not present
+    // Initialize with standard names
     newUnit.hp = baseUnit.hp;
     newUnit.matk = baseUnit.matk;
     newUnit.patk = baseUnit.patk;
@@ -66,6 +66,7 @@ export class CombatSim {
     newUnit.parm = baseUnit.parm;
     newUnit.reload = baseUnit.reload;
     newUnit.range = baseUnit.range;
+    newUnit.reloadBase = baseUnit.reload;
 
     // 3. Apply manual overrides from config
     const overrides: Record<string, keyof ArmyState> = {
@@ -77,11 +78,14 @@ export class CombatSim {
     for (const [unitKey, configKey] of Object.entries(overrides)) {
       if ((config as any)[configKey] !== undefined) {
         (newUnit as any)[unitKey] = (config as any)[configKey];
+        if (unitKey === 'reload') newUnit.reloadBase = (config as any)[configKey];
       }
     }
 
     // 4. Apply tech bonuses from scratch
     const bonusesState = config.bn || [];
+    let reloadMult = 1.0;
+
     bonusesState.forEach((state) => {
       const b = allTechs[parseInt(state.i)];
       if (!b) return;
@@ -101,8 +105,9 @@ export class CombatSim {
             if (newUnit.patk > 0) newUnit.patk += val;
           } else if (e.t === 5) { // Mult Speed
             if ((newUnit as any).speed !== undefined) (newUnit as any).speed *= val;
+            if (e.a === 10) reloadMult *= val; // faster attack (uses Attr 10)
           } else if (e.t === 10) { // Mult Reload
-            newUnit.reload *= val;
+            reloadMult *= val;
           } else if (e.t === 12) { // Add Range
             newUnit.range += val;
           } else if (e.t === 8 || e.t === 9) {
@@ -128,6 +133,10 @@ export class CombatSim {
         }
       });
     });
+
+    // Apply the accumulated reload multiplier
+    newUnit.reload *= reloadMult;
+    newUnit.reloadBase *= reloadMult;
 
     // 5. Handle hidden auto-upgrades for Scouts and Eagles in Feudal Age+
     if (ageId >= 2) {

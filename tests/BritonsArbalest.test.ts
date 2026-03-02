@@ -28,24 +28,19 @@ describe('Imperial Age Britons Arbalest (Real Data)', () => {
       'Leather Archer Armor',
       'Padded Archer Armor',
       'Ring Archer Armor'
-      // Note: Britons DON'T get Thumb Ring, so it should be absent
+      // Yeomen is manual-only now
     ].sort();
 
     expect(names).toEqual(expected);
   });
 
-  it('should result in exactly 10 pierce attack and 11 range (with Britons bonus)', () => {
+  it('should result in exactly 10 pierce attack and 8 range (with techs only)', () => {
     const ageId = 4;
     const civKey = 'BRITONS';
     const availableTechs = civs[civKey] || {};
     
     const recommended = getRecommendedTechs(arbalest, ageId, civKey, techsById, availableTechs);
     const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    
-    // Britons have civ bonus: Foot archers (except skirms) +1 range in Castle, +1 range in Imperial (Total +2)
-    // We haven't implemented automated civ stat bonuses yet, only techs.
-    // So for now, we expect techs only: Base (6) + Fletching (1) + Bodkin (1) + Bracer (1) + Chemistry (1) = 10 Attack
-    // Range: Base (5) + Fletching (1) + Bodkin (1) + Bracer (1) = 8 Range
     
     const analysis = analyzeArmy({ ps: 'arbalester', age: '4', cv: civKey, bn }, { 'arbalester': arbalest }, techsById, {});
     

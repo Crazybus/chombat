@@ -36,9 +36,9 @@ describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
     const ageId = 3;
     const civKey = 'BULGARIANS';
     
-    // Manually add Stirrups (ID 722)
-    const stirrupsId = '722';
-    const stirrups = techsById[722];
+    // Manually add Stirrups (ID 685)
+    const stirrupsId = '685';
+    const stirrups = techsById[685];
     
     const bn = [
       { i: stirrupsId, e: stirrups.effects.map(() => true) }
