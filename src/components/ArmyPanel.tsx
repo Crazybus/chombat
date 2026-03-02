@@ -136,18 +136,8 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
 };
 
 const StatsSummary: React.FC<{ army: 'a' | 'b' }> = ({ army }) => {
-  const { state } = useSimulation();
-  const armyState = state[army];
-  const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
-  const techsById = useMemo(() => {
-    const map: Record<number, any> = {};
-    Object.values(techs).forEach(t => map[t.id] = t);
-    return map;
-  }, []);
-
-  const analysis = useMemo(() => {
-    return analyzeArmy(armyState, allUnits, techsById);
-  }, [armyState, allUnits, techsById]);
+  const { analysisA, analysisB } = useSimulation();
+  const analysis = army === 'a' ? analysisA : analysisB;
 
   const formatStat = (base: number, total: number) => {
     const diff = Math.round(total - base);

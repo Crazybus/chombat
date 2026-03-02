@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { SimulationState, ArmyState, UnitData, TechData } from '../sim/types';
 import { scenarios, featuredScenarios } from '../data/scenarios';
 import { units } from '../data/units';
@@ -9,8 +9,9 @@ import { COMBAT_BUILDINGS, shouldApplyTech } from '../sim/TechLogic';
 import { analyzeArmy, ArmyAnalysis, getRecommendedTechs, scrubArmy } from '../sim/ArmyAnalyzer';
 
 interface SimulationContextType {
-// ... (rest remains same)
   state: SimulationState;
+  analysisA: ArmyAnalysis | null;
+  analysisB: ArmyAnalysis | null;
   setState: React.Dispatch<React.SetStateAction<SimulationState>>;
   updateArmy: (army: 'a' | 'b', updates: Partial<ArmyState>) => void;
   loadScenario: (id: string) => void;
@@ -40,6 +41,18 @@ const SimulationContext = createContext<SimulationContextType | undefined>(undef
 export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<SimulationState>(initialState);
   const [toast, setToast] = useState<string | null>(null);
+
+  const analysisA = useMemo(() => {
+    const techsById: Record<number, TechData> = {};
+    Object.values(techs).forEach(t => techsById[t.id] = t);
+    return analyzeArmy(state.a, units, techsById);
+  }, [state.a]);
+
+  const analysisB = useMemo(() => {
+    const techsById: Record<number, TechData> = {};
+    Object.values(techs).forEach(t => techsById[t.id] = t);
+    return analyzeArmy(state.b, units, techsById);
+  }, [state.b]);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -192,7 +205,20 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   }, []);
 
   return (
-    <SimulationContext.Provider value={{ state, setState, updateArmy, loadScenario, loadPreset, showToast, resetToNewScenario, applyAgeBonuses, clearOverrides, toggleBonus }}>
+    <SimulationContext.Provider value={{ 
+      state, 
+      analysisA, 
+      analysisB, 
+      setState, 
+      updateArmy, 
+      loadScenario, 
+      loadPreset, 
+      showToast, 
+      resetToNewScenario, 
+      applyAgeBonuses, 
+      clearOverrides, 
+      toggleBonus 
+    }}>
       {children}
       {toast && (
         <div className="share-toast" style={{ position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)', zIndex: 10000 }}>

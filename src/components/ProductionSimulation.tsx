@@ -5,91 +5,79 @@ import { CombatSim } from '../sim/CombatSim';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { analyzeProduction, ProductionAnalysisResult } from '../sim/ProductionSim';
+
+// Register once at module level
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 
 const ProductionSimulation: React.FC = () => {
-  const { state } = useSimulation();
+  const { state, analysisA, analysisB } = useSimulation();
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
   const techsById = useMemo(() => {
     const map: Record<number, any> = {};
     Object.values(techs).forEach(t => map[t.id] = t);
     return map;
   }, []);
 
-  const searchMax = 1800;
-  const step = 10;
+  const result: ProductionAnalysisResult | null = useMemo(() => {
+    if (!analysisA || !analysisB) return null;
+    const allUnits = { ...units, ...presets };
+    return analyzeProduction(state.a, state.b, analysisA.baseUnit, analysisB.baseUnit, techsById, allUnits);
+  }, [state.a, state.b, analysisA, analysisB, techsById]);
 
-  const results = useMemo(() => {
-    const data: any = { labels: [], countA: [], countB: [], advantage: [], economyA: [], economyB: [] };
-    
-    const dA = allUnits[state.a.ps || ''] || allUnits['archer'];
-    const dB = allUnits[state.b.ps || ''] || allUnits['skirmisher'];
-    
-    const baseCostA = { f: dA.f, w: dA.w, g: dA.g };
-    const baseCostB = { f: dB.f, w: dB.w, g: dB.g };
+  if (!result || !analysisA || !analysisB) return null;
+  const { finalResA, finalResB, labels, countA, countB, advantage } = result;
 
-    let finalResA: ProductionResult | null = null;
-    let finalResB: ProductionResult | null = null;
-
-    for (let t = 0; t <= searchMax; t += step) {
-      const resA = calculateCount(t, state.a.tl || [], baseCostA, state.a.cont, state.a.sv);
-      const resB = calculateCount(t, state.b.tl || [], baseCostB, state.b.cont, state.b.sv);
-      
-      data.labels.push(t + 's');
-      data.countA.push(resA.count);
-      data.countB.push(resB.count);
-      data.economyA.push(resA.economyHistory[resA.economyHistory.length - 1]);
-      data.economyB.push(resB.economyHistory[resB.economyHistory.length - 1]);
-
-      let adv = 0;
-      if (resA.count > 0 || resB.count > 0) {
-        if (resA.count > 0 && resB.count > 0) {
-          const sim = new CombatSim(dA, dB, { ...state.a, c: resA.count }, { ...state.b, c: resB.count }, techsById, allUnits);
-          const combatRes = sim.run();
-          adv = combatRes.armyA.totalHp > combatRes.armyB.totalHp 
-            ? (combatRes.armyA.totalHp / combatRes.armyA.initialTotalHp) * 100 
-            : -(combatRes.armyB.totalHp / combatRes.armyB.initialTotalHp) * 100;
-        } else if (resA.count > 0) {
-          adv = 100;
-        } else {
-          adv = -100;
-        }
-      }
-      data.advantage.push(adv);
-
-      if (t === searchMax) {
-        finalResA = resA;
-        finalResB = resB;
-      }
-    }
-
-    return { data, finalResA, finalResB, nameA: state.a.nm || dA.name, nameB: state.b.nm || dB.name };
-  }, [state.a, state.b, allUnits, techsById]);
-
-  const { data, finalResA, finalResB, nameA, nameB } = results;
+  const nameA = analysisA.unitName;
+  const nameB = analysisB.unitName;
 
   const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    elements: { line: { tension: 0 }, point: { radius: 0 } }
+    animation: { duration: 0 },
+    scales: { 
+      x: { ticks: { maxTicksLimit: 12 } },
+      y: { grid: { color: 'rgba(255,255,255,0.05)' } }
+    },
+    elements: { line: { tension: 0.1 }, point: { radius: 0 } }
   };
 
   const growthData = {
-    labels: data.labels,
+    labels,
     datasets: [
-      { label: nameA, data: data.countA, borderColor: 'var(--army-a-color)' },
-      { label: nameB, data: data.countB, borderColor: 'var(--army-b-color)' },
+      { label: nameA, data: countA, borderColor: 'var(--army-a-color)', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
+      { label: nameB, data: countB, borderColor: 'var(--army-b-color)', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
     ]
   };
 
   const advantageData = {
-    labels: data.labels,
+    labels,
     datasets: [
       { 
-        label: 'Advantage (+A / -B)', 
-        data: data.advantage, 
+        label: 'Advantage % (+A / -B)', 
+        data: advantage, 
         borderColor: 'var(--accent-color)',
         fill: { target: 'origin', above: 'rgba(52, 152, 219, 0.2)', below: 'rgba(231, 76, 60, 0.2)' }
       },
@@ -97,7 +85,7 @@ const ProductionSimulation: React.FC = () => {
   };
 
   return (
-    <div id="production" className="section-anchor">
+    <div id="production" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
         <h2>Production Simulation</h2>
         <p>Factor in production timing and delays.</p>
@@ -107,35 +95,47 @@ const ProductionSimulation: React.FC = () => {
         {isCollapsed ? 'Edit Production Simulation' : 'Done Editing'}
       </button>
 
-      <div className={`production-content ${isCollapsed ? 'collapsed' : ''}`}>
-        <div className="production-race-controls">
+      <div className={`production-content ${isCollapsed ? 'collapsed' : ''}`} style={{ marginBottom: '20px' }}>
+        <div className="production-race-controls" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
            <TimelineEditor army="a" name={nameA} />
            <TimelineEditor army="b" name={nameB} />
         </div>
       </div>
 
-      <div className="results-area">
-        <div className="charts-grid scaling-grid">
-          <div className="chart-wrapper">
-            <h4>Army Growth</h4>
-            <div className="chart-container"><Line data={growthData} options={commonOptions} /></div>
+      <div className="results-area" style={{ width: '100%' }}>
+        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))', gap: '20px', width: '100%' }}>
+          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Army Growth over Time</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={growthData} options={commonOptions} /></div>
           </div>
-          <div className="chart-wrapper">
-            <h4>Battle Advantage</h4>
-            <div className="chart-container">
+          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Battle Advantage % (+A / -B)</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}>
               <Line 
                 data={advantageData} 
-                options={{ ...commonOptions, scales: { y: { min: -100, max: 100 } }, elements: { line: { tension: 0.2 } } }} 
+                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: -100, max: 100 } } }} 
               />
             </div>
           </div>
         </div>
 
-        <div className="matchup-report">
-          <h3>Production Analysis</h3>
+        <div className="matchup-report" style={{ marginTop: '20px', background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+          <h3 style={{ borderBottom: '1px solid var(--border-dim)', paddingBottom: '10px', marginBottom: '15px' }}>Production Analysis</h3>
           <div id="production-report-text">
             {finalResA && finalResB && (
-              <p>Final counts at {searchMax}s: <strong>{finalResA.count} {nameA}</strong> vs <strong>{finalResB.count} {nameB}</strong></p>
+              <div style={{ display: 'flex', justifyContent: 'space-around', textAlign: 'center' }}>
+                <div>
+                  <h4 style={{ color: 'var(--army-a-color)' }}>{nameA}</h4>
+                  <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{finalResA.count}</p>
+                  <p style={{ color: 'var(--text-dim)' }}>units at 30 min</p>
+                </div>
+                <div style={{ alignSelf: 'center', fontSize: '2rem', color: 'var(--text-dim)' }}>VS</div>
+                <div>
+                  <h4 style={{ color: 'var(--army-b-color)' }}>{nameB}</h4>
+                  <p style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{finalResB.count}</p>
+                  <p style={{ color: 'var(--text-dim)' }}>units at 30 min</p>
+                </div>
+              </div>
             )}
           </div>
         </div>

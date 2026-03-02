@@ -4,32 +4,51 @@ import { CombatSim } from '../sim/CombatSim';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-const EffectivenessScaling: React.FC = () => {
-  const { state } = useSimulation();
-  
-  const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
-  const techsById = useMemo(() => {
-    const map: Record<number, any> = {};
-    Object.values(techs).forEach(t => map[t.id] = t);
-    return map;
-  }, []);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+);
 
+const EffectivenessScaling: React.FC = () => {
+  const { state, analysisA, analysisB } = useSimulation();
+  
   const scales = [1, 2, 3, 4, 5, 8, 10, 15, 20];
-  const nameA = state.a.nm || (allUnits[state.a.ps || '']?.name) || 'Unit A';
-  const nameB = state.b.nm || (allUnits[state.b.ps || '']?.name) || 'Unit B';
 
   const runScaling = (mode: '1vX' | 'Xv1') => {
+    if (!analysisA || !analysisB) return { labels: [], hpA: [], hpB: [], table: [] };
     const results: any = { labels: scales, hpA: [], hpB: [], table: [] };
-    const dA = allUnits[state.a.ps || ''] || allUnits['archer'];
-    const dB = allUnits[state.b.ps || ''] || allUnits['skirmisher'];
+    
+    const techsById: Record<number, any> = {};
+    Object.values(techs).forEach(t => techsById[t.id] = t);
+    const allUnits = { ...units, ...presets };
+
+    const nameA = analysisA.unitName;
+    const nameB = analysisB.unitName;
 
     scales.forEach((s) => {
       const cntA = mode === '1vX' ? 1 : s;
       const cntB = mode === 'Xv1' ? 1 : s;
       
-      const sim = new CombatSim(dA, dB, { ...state.a, c: cntA }, { ...state.b, c: cntB }, techsById, allUnits);
+      const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, { ...state.a, c: cntA }, { ...state.b, c: cntB }, techsById, allUnits);
       const res = sim.run();
 
       const hA = (res.armyA.totalHp / res.armyA.initialTotalHp) * 100;
@@ -54,8 +73,12 @@ const EffectivenessScaling: React.FC = () => {
     return results;
   };
 
-  const res1vX = useMemo(() => runScaling('1vX'), [state.a, state.b, allUnits, techsById]);
-  const resXv1 = useMemo(() => runScaling('Xv1'), [state.a, state.b, allUnits, techsById]);
+  const res1vX = useMemo(() => runScaling('1vX'), [state.a, state.b, analysisA, analysisB]);
+  const resXv1 = useMemo(() => runScaling('Xv1'), [state.a, state.b, analysisA, analysisB]);
+
+  if (!analysisA || !analysisB) return null;
+  const nameA = analysisA.unitName;
+  const nameB = analysisB.unitName;
 
   const commonOptions = {
     responsive: true,

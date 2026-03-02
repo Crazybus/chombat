@@ -32,38 +32,45 @@ export class Unit {
 
   constructor(data: UnitData & ArmyState) {
     const d = data as any;
+    
+    const parse = (val: any, def: number) => {
+      if (val === undefined || val === null || val === '') return def;
+      const p = parseFloat(String(val));
+      return isNaN(p) ? def : p;
+    };
+
     this.name = d.nm || d.name || 'Unit';
     this.id = d.id;
-    this.initialCount = parseFloat(String(d.c !== undefined ? d.c : (d.initialCount || 0)));
+    this.initialCount = parse(d.count !== undefined ? d.count : (d.c !== undefined ? d.c : d.initialCount), 1);
     this.currentCount = this.initialCount;
-    this.hpPerUnit = parseFloat(String(d.hp !== undefined ? d.hp : (d.h || 1)));
+    this.hpPerUnit = parse(d.hp !== undefined ? d.hp : d.h, 1);
     this.currentUnitHp = this.hpPerUnit;
 
     // Prioritize long-names if available (e.g. from applyBonuses result)
-    this.matk = parseFloat(String(d.matk !== undefined ? d.matk : (d.am || 0)));
-    this.patk = parseFloat(String(d.patk !== undefined ? d.patk : (d.ap || 0)));
-    this.marm = parseFloat(String(d.marm !== undefined ? d.marm : (d.aa || 0)));
-    this.parm = parseFloat(String(d.parm !== undefined ? d.parm : (d.ar || 0)));
-    this.reloadBase = parseFloat(String(d.reload !== undefined ? d.reload : (d.rl || 2)));
-    this.range = parseFloat(String(d.range !== undefined ? d.range : (d.n || 0)));
-    this.atk_speed = parseFloat(String(d.atk_speed !== undefined ? d.atk_speed : (d.as || 0)));
-    this.bonus_red = parseFloat(String(d.bonus_red !== undefined ? d.bonus_red : (d.ab || 0)));
+    this.matk = parse(d.matk !== undefined ? d.matk : d.am, 0);
+    this.patk = parse(d.patk !== undefined ? d.patk : d.ap, 0);
+    this.marm = parse(d.marm !== undefined ? d.marm : d.aa, 0);
+    this.parm = parse(d.parm !== undefined ? d.parm : d.ar, 0);
+    this.reloadBase = parse(d.reload !== undefined ? d.reload : d.rl, 2);
+    this.range = parse(d.range !== undefined ? d.range : d.n, 0);
+    this.atk_speed = parse(d.atk_speed !== undefined ? d.atk_speed : d.as, 0);
+    this.bonus_red = parse(d.bonus_red !== undefined ? d.bonus_red : d.ab, 0);
 
     this.reload = this.reloadBase / (1 + this.atk_speed / 100);
     this.attackCooldown = 0;
 
-    this.f = parseFloat(String(d.f !== undefined ? d.f : (d.af || 0)));
-    this.w = parseFloat(String(d.w !== undefined ? d.w : (d.aw || 0)));
-    this.g = parseFloat(String(d.g !== undefined ? d.g : (d.ag || 0)));
-    this.disc_all = parseFloat(String(d.disc_all !== undefined ? d.disc_all : (d.da || 0)));
-    this.disc_f = parseFloat(String(d.disc_f !== undefined ? d.disc_f : (d.df || 0)));
-    this.disc_w = parseFloat(String(d.disc_w !== undefined ? d.disc_w : (d.dw || 0)));
-    this.disc_g = parseFloat(String(d.disc_g !== undefined ? d.disc_g : (d.dg || 0)));
-    this.eng = parseFloat(String(d.eng !== undefined ? d.eng : (d.e || 100)));
+    this.f = parse(d.f !== undefined ? d.f : d.af, 0);
+    this.w = parse(d.w !== undefined ? d.w : d.aw, 0);
+    this.g = parse(d.g !== undefined ? d.g : d.ag, 0);
+    this.disc_all = parse(d.disc_all !== undefined ? d.disc_all : d.da, 0);
+    this.disc_f = parse(d.disc_f !== undefined ? d.disc_f : d.df, 0);
+    this.disc_w = parse(d.disc_w !== undefined ? d.disc_w : d.dw, 0);
+    this.disc_g = parse(d.disc_g !== undefined ? d.disc_g : d.dg, 0);
+    this.eng = parse(d.eng !== undefined ? d.eng : d.e, 100);
     this.class = d.class;
     this.bonuses = d.bonuses || {};
     this.armors = d.armors || {};
-    this.micro = parseFloat(String(d.mc !== undefined ? d.mc : 5));
+    this.micro = parse(d.micro !== undefined ? d.micro : (d.mc !== undefined ? d.mc : 5), 5);
   }
 
   isMelee(): boolean {

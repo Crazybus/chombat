@@ -255,15 +255,19 @@ export function scrubArmy(
   allUnits: Record<string, UnitData>, 
   techsById: Record<number, TechData>
 ): ArmyState {
-  // 1. Normalize strings to numbers
+  // 1. Normalize strings to numbers safely
   const normalized = { ...army };
   const numericFields: (keyof ArmyState)[] = [
     'c', 'h', 'am', 'ap', 'aa', 'ar', 'rl', 'n', 'as', 'ab', 'ad',
-    'af', 'aw', 'ag', 'da', 'df', 'dw', 'dg', 'e', 'mc'
+    'af', 'aw', 'ag', 'da', 'df', 'dw', 'dg', 'e', 'mc', 'sv'
   ];
   numericFields.forEach(field => {
-    if (normalized[field] !== undefined) {
-      (normalized as any)[field] = parseFloat(String(normalized[field]));
+    const val = normalized[field];
+    if (val !== undefined && val !== null && val !== '') {
+      const parsed = parseFloat(String(val));
+      if (!isNaN(parsed)) {
+        (normalized as any)[field] = parsed;
+      }
     }
   });
 
@@ -330,5 +334,9 @@ export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitD
       if (groups[group]) groups[group].sources.push(...items);
     });
   });
-  return { baseUnit: resolvedBase, modifiedBase, effectiveStats, groups, unitName: resolvedBase.name, ageName: getAgeName(armyState.age || '1') };
+  
+  // Ensure count is preserved in the effective stats returned by analysis
+  const finalEffective = { ...effectiveStats, count: armyState.c !== undefined ? armyState.c : 1 };
+
+  return { baseUnit: resolvedBase, modifiedBase, effectiveStats: finalEffective, groups, unitName: resolvedBase.name, ageName: getAgeName(armyState.age || '1') };
 }

@@ -7,38 +7,37 @@ import { presets } from '../data/presets';
 import { techs } from '../data/techs';
 
 const StatComparison: React.FC = () => {
-  const { state } = useSimulation();
-  
-  const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
-  const techsById = useMemo(() => {
-    const map: Record<number, any> = {};
-    Object.values(techs).forEach(t => map[t.id] = t);
-    return map;
-  }, []);
+  const { state, analysisA, analysisB } = useSimulation();
 
   const result = useMemo(() => {
-    const dA = allUnits[state.a.ps || ''] || allUnits['archer'];
-    const dB = allUnits[state.b.ps || ''] || allUnits['skirmisher'];
-    
-    // Create configs for sim (without counts for 1v1 comparison)
+    if (!analysisA || !analysisB) return null;
+
+    // Use the already calculated effective stats from analysis
+    // For 1v1 comparison, we ensure count is 1
     const configA = { ...state.a, c: 1 };
     const configB = { ...state.b, c: 1 };
     
-    const sim = new CombatSim(dA, dB, configA, configB, techsById, allUnits);
+    // We still need to run a 1v1 sim to get ttK and winner
+    const techsById: Record<number, any> = {};
+    Object.values(techs).forEach(t => techsById[t.id] = t);
+    const allUnits = { ...units, ...presets };
+
+    const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
     const res = sim.run();
     
     return {
       res,
       uA: new Unit(sim.dataA),
       uB: new Unit(sim.dataB),
-      baseA: dA,
-      baseB: dB,
-      nameA: state.a.nm || dA.name,
-      nameB: state.b.nm || dB.name,
+      baseA: analysisA.baseUnit,
+      baseB: analysisB.baseUnit,
+      nameA: analysisA.unitName,
+      nameB: analysisB.unitName,
     };
-  }, [state.a, state.b, allUnits, techsById]);
+  }, [analysisA, analysisB, state.a, state.b]);
 
-  const { uA, uB, nameA, nameB, baseA, baseB } = result;
+  if (!result || !analysisA || !analysisB) return null;
+  const { res, uA, uB, nameA, nameB, baseA, baseB } = result;
 
   const formatWithBase = (total: number, base: number) => {
     const diff = total - base;
@@ -47,7 +46,7 @@ const StatComparison: React.FC = () => {
   };
 
   const getNetDmg = (atk: Unit, def: Unit) => {
-    const isMelee = atk.range <= 1;
+    const isMelee = atk.isMelee();
     const baseAtk = isMelee ? atk.matk : atk.patk;
     const baseArm = isMelee ? def.marm : def.parm;
 
@@ -68,14 +67,8 @@ const StatComparison: React.FC = () => {
   const nA = getNetDmg(uA, uB);
   const nB = getNetDmg(uB, uA);
 
-  const getBaseAtk = (u: Unit, baseData: any) => {
-    if (!baseData) return u.isMelee() ? u.matk : u.patk;
-    return u.isMelee() ? (baseData.matk || 0) : (baseData.patk || 0);
-  };
-  const getBaseArm = (u: Unit, baseData: any) => {
-    if (!baseData) return u.isMelee() ? u.marm : u.parm;
-    return u.isMelee() ? (baseData.marm || 0) : (baseData.parm || 0);
-  };
+  const getBaseAtk = (u: Unit, b: any) => u.isMelee() ? b.matk : b.patk;
+  const getBaseArm = (u: Unit, b: any) => u.isMelee() ? b.marm : b.parm;
 
   const timeToKillA = Math.ceil(uB.hpPerUnit / nA.net) * uA.reload;
   const timeToKillB = Math.ceil(uA.hpPerUnit / nB.net) * uB.reload;
@@ -84,18 +77,15 @@ const StatComparison: React.FC = () => {
   let winnerColor = 'var(--text-color)';
   let remainingInfo = '';
 
-  if (timeToKillA < timeToKillB) {
+  const winA = res.armyA.totalHp > res.armyB.totalHp;
+  if (res.armyA.totalHp > res.armyB.totalHp) {
     winner = nameA;
     winnerColor = 'var(--army-a-color)';
-    const shotsBCanFire = Math.ceil(timeToKillA / uB.reload);
-    const remainingHp = Math.max(0, uA.hpPerUnit - shotsBCanFire * nB.net);
-    remainingInfo = `${remainingHp.toFixed(0)} HP remaining`;
-  } else if (timeToKillB < timeToKillA) {
+    remainingInfo = `${res.armyA.totalHp.toFixed(0)} HP remaining`;
+  } else if (res.armyB.totalHp > res.armyA.totalHp) {
     winner = nameB;
     winnerColor = 'var(--army-b-color)';
-    const shotsACanFire = Math.ceil(timeToKillB / uA.reload);
-    const remainingHp = Math.max(0, uB.hpPerUnit - shotsACanFire * nA.net);
-    remainingInfo = `${remainingHp.toFixed(0)} HP remaining`;
+    remainingInfo = `${res.armyB.totalHp.toFixed(0)} HP remaining`;
   }
 
   const rows = [
@@ -103,7 +93,7 @@ const StatComparison: React.FC = () => {
     { label: 'Attack (base + upgrades)', a: formatWithBase(nA.base, getBaseAtk(uA, baseA)), b: formatWithBase(nB.base, getBaseAtk(uB, baseB)) },
     { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0) },
     { label: 'Armor', a: formatWithBase(nA.arm, getBaseArm(uA, baseA)), b: formatWithBase(nB.arm, getBaseArm(uB, baseB)), inv: true },
-    { label: 'Damage Per Hit', a: `${nA.net.toFixed(0)} (${nA.base.toFixed(0)} - ${getBaseArm(uB, baseB).toFixed(0)} + ${nA.bonus.toFixed(0)})`, b: `${nB.net.toFixed(0)} (${nB.base.toFixed(0)} - ${getBaseArm(uA, baseA).toFixed(0)} + ${nB.bonus.toFixed(0)})` },
+    { label: 'Damage Per Hit', a: `${nA.net.toFixed(0)} (${nA.base.toFixed(0)} - ${nA.arm.toFixed(0)} + ${nA.bonus.toFixed(0)})`, b: `${nB.net.toFixed(0)} (${nB.base.toFixed(0)} - ${nB.arm.toFixed(0)} + ${nB.bonus.toFixed(0)})` },
     { label: 'Hits to Kill', a: Math.ceil(uB.hpPerUnit / nA.net).toString(), b: Math.ceil(uA.hpPerUnit / nB.net).toString(), inv: true },
     { label: 'Time to Kill', a: timeToKillA.toFixed(1) + 's', b: timeToKillB.toFixed(1) + 's', inv: true },
     { label: 'Attack Reload Time', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), inv: true },
@@ -111,48 +101,56 @@ const StatComparison: React.FC = () => {
   ];
 
   return (
-    <div id="comparison" className="section-anchor">
+    <div id="comparison" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
         <h2>Stat Comparison</h2>
-        <p>Direct 1v1 comparison of both units.</p>
+        <p>Direct 1v1 comparison: <strong>{nameA}</strong> vs <strong>{nameB}</strong></p>
       </div>
-      <div className="results-area">
+      
+      <div className="results-area" style={{ width: '100%' }}>
         <div id="comparison-summary">
-           <div style={{ textAlign: 'center', padding: '15px', background: 'var(--panel-bg-alt)', borderRadius: '4px', marginBottom: '15px' }}>
-            <span style={{ fontSize: '1.3rem' }}>
-              Winner: <span style={{ color: winnerColor, fontWeight: 'bold' }}>{winner}</span> {remainingInfo && `with ${remainingInfo}`}
+           <div style={{ textAlign: 'center', padding: '15px', background: 'var(--panel-bg-alt)', borderRadius: '4px', marginBottom: '20px', border: '1px solid var(--border-dim)' }}>
+            <span style={{ fontSize: '1.4rem' }}>
+              Winner: <span style={{ color: winnerColor, fontWeight: 'bold' }}>{winner}</span> {remainingInfo && `(${remainingInfo})`}
             </span>
           </div>
         </div>
-        <table className="comparison-table">
-          <thead>
-            <tr>
-              <th>Attribute</th>
-              <th>{nameA}</th>
-              <th>{nameB}</th>
-              <th>Diff</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map(r => {
-              const vA = parseFloat(String(r.a));
-              const vB = parseFloat(String(r.b));
-              const diff = vA - vB;
-              let dClass = 'diff-neutral';
-              if (diff > 0) dClass = r.inv ? 'diff-neg' : 'diff-pos';
-              else if (diff < 0) dClass = r.inv ? 'diff-pos' : 'diff-neg';
-              
-              return (
-                <tr key={r.label}>
-                  <td>{r.label}</td>
-                  <td>{r.a}</td>
-                  <td>{r.b}</td>
-                  <td className={dClass}>{diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') || r.label.includes('Time') || r.label.includes('Reload') ? 2 : 0)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+
+        <div className="stat-duel-table" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {/* Header */}
+          <div className="duel-row duel-header" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 1fr 120px', gap: '10px', padding: '10px', fontWeight: 'bold', borderBottom: '2px solid var(--border-dim)', textAlign: 'center' }}>
+            <div style={{ textAlign: 'left' }}>Attribute</div>
+            <div style={{ color: 'var(--army-a-color)' }}>{nameA}</div>
+            <div>Difference</div>
+            <div style={{ color: 'var(--army-b-color)' }}>{nameB}</div>
+          </div>
+
+          {/* Rows */}
+          {rows.map(r => {
+            const vA = parseFloat(String(r.a));
+            const vB = parseFloat(String(r.b));
+            const diff = vA - vB;
+            
+            let dClass = 'diff-neutral';
+            if (diff > 0) dClass = r.inv ? 'diff-neg' : 'diff-pos';
+            else if (diff < 0) dClass = r.inv ? 'diff-pos' : 'diff-neg';
+
+            const diffDisplay = diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') || r.label.includes('Time') || r.label.includes('Reload') ? 2 : 0);
+
+            return (
+              <div key={r.label} className="duel-row" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 1fr 120px', gap: '10px', padding: '12px 10px', background: 'var(--panel-bg)', borderRadius: '4px', borderBottom: '1px solid var(--border-dim)', alignItems: 'center' }}>
+                <div style={{ textAlign: 'left', fontWeight: 'bold', color: 'var(--text-dim)' }}>{r.label}</div>
+                <div style={{ textAlign: 'center', fontSize: '1.1rem' }}>{r.a}</div>
+                <div style={{ textAlign: 'center' }}>
+                  <span className={dClass} style={{ padding: '4px 12px', borderRadius: '12px', fontWeight: 'bold', fontSize: '0.9rem', background: 'rgba(0,0,0,0.1)' }}>
+                    {diffDisplay}
+                  </span>
+                </div>
+                <div style={{ textAlign: 'center', fontSize: '1.1rem' }}>{r.b}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

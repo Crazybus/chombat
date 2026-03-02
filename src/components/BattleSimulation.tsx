@@ -7,25 +7,23 @@ import { techs } from '../data/techs';
 import CombatCharts from './CombatCharts';
 
 const BattleSimulation: React.FC = () => {
-  const { state, updateArmy } = useSimulation();
+  const { state, updateArmy, analysisA, analysisB } = useSimulation();
   
-  const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
-  const techsById = useMemo(() => {
-    const map: Record<number, any> = {};
-    Object.values(techs).forEach(t => map[t.id] = t);
-    return map;
-  }, []);
-
   const res = useMemo(() => {
-    const dA = allUnits[state.a.ps || ''] || allUnits['archer'];
-    const dB = allUnits[state.b.ps || ''] || allUnits['skirmisher'];
-    
-    const sim = new CombatSim(dA, dB, state.a, state.b, techsById, allUnits);
-    return sim.run();
-  }, [state.a, state.b, allUnits, techsById]);
+    if (!analysisA || !analysisB) return null;
 
-  const nameA = state.a.nm || (allUnits[state.a.ps || '']?.name) || 'Unit A';
-  const nameB = state.b.nm || (allUnits[state.b.ps || '']?.name) || 'Unit B';
+    const techsByIdMap: Record<number, any> = {};
+    Object.values(techs).forEach(t => techsByIdMap[t.id] = t);
+    const allUnits = { ...units, ...presets };
+
+    const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, state.a, state.b, techsByIdMap, allUnits);
+    return sim.run();
+  }, [state.a, state.b, analysisA, analysisB]);
+
+  if (!res || !analysisA || !analysisB) return null;
+
+  const nameA = analysisA.unitName;
+  const nameB = analysisB.unitName;
 
   const winA = res.armyA.totalHp > res.armyB.totalHp;
   const color = winA ? 'var(--army-a-color)' : 'var(--army-b-color)';
@@ -34,7 +32,7 @@ const BattleSimulation: React.FC = () => {
   const ratioB = ((res.armyB.totalHp / res.armyB.initialTotalHp) * 100).toFixed(1);
 
   return (
-    <div id="battle" className="section-anchor">
+    <div id="battle" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
         <h2>Battle Simulation</h2>
         <p>Simulated combat results based on specific army sizes.</p>
@@ -60,11 +58,11 @@ const BattleSimulation: React.FC = () => {
         </div>
       </div>
 
-      <section id="results" className="results-area">
+      <section id="results" className="results-area" style={{ width: '100%' }}>
         <div id="overall-result" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center', color }}>
           Winner: {winA ? nameA : nameB} ({res.duration.toFixed(1)}s)
         </div>
-        <div id="stat-summary" style={{ textAlign: 'center' }}>
+        <div id="stat-summary" style={{ textAlign: 'center', marginBottom: '20px' }}>
           <p>{nameA} survivors: <strong>{Math.ceil(res.armyA.remaining)}</strong> ({ratioA}%) | {nameB} survivors: <strong>{Math.ceil(res.armyB.remaining)}</strong> ({ratioB}%)</p>
         </div>
         

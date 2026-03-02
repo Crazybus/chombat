@@ -23,6 +23,74 @@ export interface ProductionResult {
   economyHistory: EconomyPoint[];
 }
 
+import { CombatSim } from './CombatSim';
+import { ArmyState, UnitData, TechData } from './types';
+
+export interface ProductionAnalysisResult {
+  labels: string[];
+  countA: number[];
+  countB: number[];
+  advantage: number[];
+  economyA: EconomyPoint[];
+  economyB: EconomyPoint[];
+  finalResA: ProductionResult;
+  finalResB: ProductionResult;
+}
+
+export function analyzeProduction(
+  stateA: ArmyState,
+  stateB: ArmyState,
+  unitA: UnitData,
+  unitB: UnitData,
+  techsById: Record<number, TechData>,
+  allUnits: Record<string, UnitData>,
+  maxTime: number = 1800,
+  step: number = 15
+): ProductionAnalysisResult {
+  const result: any = { 
+    labels: [], countA: [], countB: [], advantage: [], 
+    economyA: [], economyB: [], 
+    finalResA: null, finalResB: null 
+  };
+
+  const baseCostA = { f: unitA.f, w: unitA.w, g: unitA.g };
+  const baseCostB = { f: unitB.f, w: unitB.w, g: unitB.g };
+
+  for (let t = 0; t <= maxTime; t += step) {
+    const resA = calculateCount(t, stateA.tl || [], baseCostA, stateA.cont, stateA.sv);
+    const resB = calculateCount(t, stateB.tl || [], baseCostB, stateB.cont, stateB.sv);
+    
+    result.labels.push(Math.floor(t / 60) + 'm' + (t % 60 ? (t % 60) + 's' : ''));
+    result.countA.push(resA.count);
+    result.countB.push(resB.count);
+    result.economyA.push(resA.economyHistory[resA.economyHistory.length - 1]);
+    result.economyB.push(resB.economyHistory[resB.economyHistory.length - 1]);
+
+    let adv = 0;
+    if (resA.count > 0 || resB.count > 0) {
+      if (resA.count > 0 && resB.count > 0) {
+        const sim = new CombatSim(unitA, unitB, { ...stateA, c: resA.count }, { ...stateB, c: resB.count }, techsById, allUnits);
+        const combatRes = sim.run();
+        adv = combatRes.armyA.totalHp > combatRes.armyB.totalHp 
+          ? (combatRes.armyA.totalHp / combatRes.armyA.initialTotalHp) * 100 
+          : -(combatRes.armyB.totalHp / combatRes.armyB.initialTotalHp) * 100;
+      } else if (resA.count > 0) {
+        adv = 100;
+      } else {
+        adv = -100;
+      }
+    }
+    result.advantage.push(adv);
+
+    if (t + step > maxTime) {
+      result.finalResA = resA;
+      result.finalResB = resB;
+    }
+  }
+
+  return result;
+}
+
 export function calculateCount(
   t: number,
   timelineSteps: TimelineStep[],
