@@ -58,6 +58,15 @@ export class CombatSim {
     newUnit.bonuses = { ...(baseUnit.bonuses || {}) };
     newUnit.armors = { ...(baseUnit.armors || {}) };
 
+    // Initialize with standard names if not present
+    newUnit.hp = baseUnit.hp;
+    newUnit.matk = baseUnit.matk;
+    newUnit.patk = baseUnit.patk;
+    newUnit.marm = baseUnit.marm;
+    newUnit.parm = baseUnit.parm;
+    newUnit.reload = baseUnit.reload;
+    newUnit.range = baseUnit.range;
+
     // 3. Apply manual overrides from config
     const overrides: Record<string, keyof ArmyState> = {
       hp: 'h', matk: 'am', patk: 'ap', marm: 'aa', parm: 'ar', reload: 'rl', range: 'n',

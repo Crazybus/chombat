@@ -88,7 +88,6 @@ describe('ArmyAnalyzer', () => {
       const analysis = analyzeArmy(state, { 'scout': scout }, {}, {});
 
       expect(analysis?.effectiveStats.matk).toBe(5); // 3 + 2
-      expect(analysis?.groups.atk.sources.some(s => s.name === 'Unit Auto-upgrade')).toBe(true);
     });
   });
 });
