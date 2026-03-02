@@ -50,6 +50,8 @@ export const useSyncURL = () => {
             const result = await response.json();
             setState(result.data);
             showToast('Matchup loaded from shared link');
+            // Clear hash so refresh doesn't keep reloading
+            window.location.hash = '';
             return;
           }
         } catch (e) {

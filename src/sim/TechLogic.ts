@@ -77,8 +77,8 @@ export function matchesClass(e: any, u: UnitData): boolean {
 export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): boolean {
     if (!matchesUnit(e, u) || !matchesClass(e, u)) return false;
 
-    // Range check: don't apply range bonuses to melee units
-    if (e.t === 12 || e.a === 3) {
+    // Range/Accuracy/Reload check: don't apply these bonuses to melee units
+    if (e.t === 12 || e.a === 3 || e.a === 130 || e.t === 130 || e.a === 10) {
         if ((u.range || 0) <= 1) return false;
     }
 
@@ -103,15 +103,39 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
 }
 
 export function shouldApplyTech(t: TechData, u: UnitData): boolean {
+    // Essential combat techs still need to be relevant to the unit type
+    if (t.id === 93) { // Ballistics
+        // Only for units with range > 1
+        return (u.range || 0) > 1;
+    }
+    if (t.id === 47) { // Chemistry
+        // Usually for ranged units, but technically applies to many things.
+        // In our sim, we only show it if the unit has some base attack it could add to.
+        return (u.range || 0) > 1 || u.class === 20; // Ranged or Ship
+    }
+
     if (!t.effects || t.effects.length === 0) return false;
     const effs = t.effects;
 
-    // Stable tech (101) safety
+    // Building-specific safety filters
+    // 1. Stable techs (101) only for Cavalry (12), Elephants (28), or units with Cavalry class (8)
     if (t.building === 101) {
         const CAV_CLASSES = ['8', '12', '28'];
         const armors = u.armors || {};
-        if (!Object.keys(armors).some(c => CAV_CLASSES.includes(c))) return false;
+        if (u.class !== 12 && u.class !== 8 && u.class !== 28 && !Object.keys(armors).some(c => CAV_CLASSES.includes(c))) {
+            return false;
+        }
     }
+
+    // 2. Barracks techs (12) only for Infantry (6)
+    if (t.building === 12) {
+        if (u.class !== 6) {
+            return false;
+        }
+    }
+
+    // 3. Thumb Ring (437) specific safety: strictly only for units with range > 1.
+    if (t.id === 437 && (u.range || 0) <= 1) return false;
 
     // Strict Filtering: If a tech has ANY class-constrained effects, 
     // the unit MUST match at least one of the intended targets.

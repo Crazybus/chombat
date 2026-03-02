@@ -9,6 +9,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "87",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -22,6 +23,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "12",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -35,6 +37,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "103",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -48,6 +51,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 125,
         "time": 50,
         "id": "236",
+        "age": 4,
         "requires": {
             "techs": [
                 64
@@ -63,6 +67,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 650,
         "time": 50,
         "id": "82",
+        "age": 3,
         "requires": {
             "techs": [],
             "buildings": []
@@ -76,6 +81,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "45",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -89,6 +95,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "50",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -102,6 +109,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "199",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -115,6 +123,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 5,
         "time": 50,
         "id": "155",
+        "age": 3,
         "requires": {
             "techs": [
                 194
@@ -130,6 +139,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 30,
         "time": 50,
         "id": "487",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -143,6 +153,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 125,
         "time": 50,
         "id": "234",
+        "age": 3,
         "requires": {
             "techs": [
                 140
@@ -158,6 +169,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "70",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -171,6 +183,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 125,
         "time": 50,
         "id": "235",
+        "age": 4,
         "requires": {
             "techs": [
                 63
@@ -186,6 +199,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "562",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -199,6 +213,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "84",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -212,6 +227,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "68",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -225,6 +241,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "584",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -238,6 +255,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "104",
+        "age": 3,
         "requires": {
             "techs": [],
             "buildings": []
@@ -251,6 +269,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 5,
         "time": 50,
         "id": "598",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -264,6 +283,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "792",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -277,6 +297,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "72",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -290,6 +311,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "49",
+        "age": 3,
         "requires": {
             "techs": [],
             "buildings": []
@@ -303,6 +325,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "101",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -316,6 +339,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 5,
         "time": 50,
         "id": "117",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -329,6 +353,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 100,
         "time": 50,
         "id": "109",
+        "age": 1,
         "requires": {
             "techs": [],
             "buildings": []
@@ -342,6 +367,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 100,
         "time": 50,
         "id": "621",
+        "age": 3,
         "requires": {
             "techs": [],
             "buildings": []
@@ -355,6 +381,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 0,
         "time": 50,
         "id": "209",
+        "age": 3,
         "requires": {
             "techs": [],
             "buildings": []
@@ -368,6 +395,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 125,
         "time": 50,
         "id": "79",
+        "age": 2,
         "requires": {
             "techs": [],
             "buildings": []
@@ -381,6 +409,7 @@ export const buildings: Record<string, BuildingData> = {
         "s": 1000,
         "time": 50,
         "id": "276",
+        "age": 4,
         "requires": {
             "techs": [],
             "buildings": []

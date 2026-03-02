@@ -6,8 +6,10 @@ import { presets } from '../data/presets';
 import { techs } from '../data/techs';
 import { civs } from '../data/civs';
 import { COMBAT_BUILDINGS, shouldApplyTech } from '../sim/TechLogic';
+import { analyzeArmy, ArmyAnalysis, getRecommendedTechs } from '../sim/ArmyAnalyzer';
 
 interface SimulationContextType {
+// ... (rest remains same)
   state: SimulationState;
   setState: React.Dispatch<React.SetStateAction<SimulationState>>;
   updateArmy: (army: 'a' | 'b', updates: Partial<ArmyState>) => void;
@@ -67,7 +69,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       return;
     }
 
-    const availableTechs = civKey ? (civs as any)[civKey] || [] : [];
+    const availableTechs: Record<number, number> = civKey ? (civs as any)[civKey] || {} : {};
     
     const techsById: Record<number, TechData> = {};
     Object.values(techs).forEach(t => techsById[t.id] = t);
@@ -76,25 +78,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const newBonuses: { i: string; e: boolean[] }[] = [];
 
     if (ageId > 1) {
-      const relevantTechs = Object.values(techsById).filter((t) => {
-        if (!COMBAT_BUILDINGS.includes(t.building)) return false;
-        
-        // If civ is selected, it must be in the available list.
-        // If NO civ is selected, we only allow "common" techs (those that appear in most civs).
-        // For simplicity, if no civ is selected, we'll exclude techs that are NOT in the generic pool.
-        // A better check: techs with building -1 or those specifically marked as unique are usually excluded.
-        // In the AoE2 dataset, unique techs are usually in the Castle (82).
-        if (civKey) {
-          if (!availableTechs.includes(t.id)) return false;
-        } else {
-          // If no civ selected, exclude civ-specific unique techs.
-          // Most unique techs are in the Castle (82) or have IDs > 1000.
-          if (t.building === 82 || t.id > 1000) return false;
-        }
-
-        if (t.age > ageId) return false;
-        return shouldApplyTech(t, data);
-      });
+      const relevantTechs = getRecommendedTechs(data, ageId, civKey, techsById, availableTechs);
 
       relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
         newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
@@ -114,25 +98,40 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const u = allUnits[id];
     if (!u) return;
 
-    // Only set the preset ID and Name. 
-    // We don't set h, am, ap, etc. unless they are explicitly overriden by the user.
-    // This allows UnitStatsExplanation to correctly identify what is a manual change.
-    updateArmy(army, {
+    // 1. First update the unit and clear overrides
+    const currentAge = state[army].age || '1';
+    const currentCiv = state[army].cv || GENERIC_CIV;
+
+    const newArmyState: ArmyState = {
+      ...state[army],
       ps: id,
       nm: u.name,
-      h: undefined,
-      am: undefined,
-      ap: undefined,
-      aa: undefined,
-      ar: undefined,
-      rl: undefined,
-      n: undefined,
-      af: undefined,
-      aw: undefined,
-      ag: undefined,
+      h: undefined, am: undefined, ap: undefined, aa: undefined, ar: undefined,
+      rl: undefined, n: undefined, af: undefined, aw: undefined, ag: undefined,
       tl: [{ t: 'production', n: 'Initial Production', c: 1, tr: u.trainTime }],
-      bn: [], // Reset bonuses for new unit
-    });
+      bn: [], // Temp clear to calculate fresh
+    };
+
+    // 2. Calculate the new bonuses for the NEW unit at the CURRENT age
+    const ageId = parseInt(currentAge);
+    const availableTechs: Record<number, number> = currentCiv ? (civs as any)[currentCiv] || {} : {};
+    const techsById: Record<number, TechData> = {};
+    Object.values(techs).forEach(t => techsById[t.id] = t);
+
+    const newBonuses: { i: string; e: boolean[] }[] = [];
+    if (ageId > 1) {
+      const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
+      relevantTechs.sort((a, b) => (a.age - b.age) || (a.id - b.id)).forEach((t) => {
+        newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
+      });
+    }
+
+    newArmyState.bn = newBonuses;
+
+    setState(prev => ({
+      ...prev,
+      [army]: newArmyState
+    }));
   };
 
   const resetToNewScenario = () => {
@@ -147,9 +146,34 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const loadScenario = (id: string) => {
     const scenario = (scenarios as any)[id];
     if (scenario) {
+      const allUnits: Record<string, UnitData> = { ...units, ...presets };
+      
+      const scrubArmy = (army: ArmyState): ArmyState => {
+        const u = army.ps ? allUnits[army.ps] : (army.nm ? Object.values(allUnits).find(x => x.name === army.nm) : null);
+        if (!u) return { ...army };
+
+        const scrubbed = { ...army };
+        const mapping: Record<string, keyof UnitData> = {
+          h: 'hp', am: 'matk', ap: 'patk', aa: 'marm', ar: 'parm',
+          rl: 'reload', n: 'range', as: 'atk_speed', ab: 'bonus_red',
+          af: 'f', aw: 'w', ag: 'g'
+        };
+
+        Object.entries(mapping).forEach(([configKey, unitKey]) => {
+          const val = (army as any)[configKey];
+          const baseVal = (u as any)[unitKey];
+          // If the override in scenario is identical to unit base, remove it to prevent double counting
+          // if techs are also applied. Or just to keep state clean.
+          if (val !== undefined && parseFloat(String(val)) === parseFloat(String(baseVal || 0))) {
+            delete (scrubbed as any)[configKey];
+          }
+        });
+        return scrubbed;
+      };
+
       setState({
-        a: scenario.a,
-        b: scenario.b,
+        a: scrubArmy(scenario.a),
+        b: scrubArmy(scenario.b),
         desc: scenario.desc || '',
         name: scenario.name,
       });

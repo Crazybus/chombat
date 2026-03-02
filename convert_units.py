@@ -14,7 +14,7 @@ TECH_MAP = {
     "Feudal Age": 101, "Castle Age": 102, "Imperial Age": 103
 }
 
-STANDARD_BUILDINGS = {12, 10, 87, 101, 45, 82, 30, 49, 1251, 1665}
+STANDARD_BUILDINGS = {12, 10, 87, 101, 45, 82, 30, 49, 1251, 1665, 209}
 
 NON_RANKED_CIVS = {
     'ACHAEMENIDS', 'ATHENIANS', 'SPARTANS', 'MACEDONIANS', 'THRACIANS', 
@@ -27,6 +27,8 @@ RES_STONE = 2
 RES_GOLD = 3
 ARM_PIERCE = 3
 ARM_MELEE = 4
+
+VALID_ATTRS = {0, 3, 4, 5, 6, 8, 9, 12}
 
 def get_cost(resource_costs):
     cost = {"f": 0, "w": 0, "g": 0, "s": 0}
@@ -54,6 +56,7 @@ def load_extra_data():
     prereqs = {}
     civ_techs = {}
     tech_ages = {}
+    building_ages = {}
     
     if os.path.exists(dir_path):
         for filename in sorted(os.listdir(dir_path)):
@@ -61,7 +64,7 @@ def load_extra_data():
                 civ_name = filename.replace('.json', '')
                 if civ_name in NON_RANKED_CIVS:
                     continue
-                civ_techs[civ_name] = []
+                civ_techs[civ_name] = {} # TechID -> AgeID
                 with open(os.path.join(dir_path, filename), 'r') as f:
                     try:
                         data = json.load(f)
@@ -71,13 +74,15 @@ def load_extra_data():
                                 name = node.get('Name')
                                 ntype = node.get('Node Type')
                                 age_id = node.get('Age ID', 1)
+                                status = node.get('Node Status')
                                 
                                 if node_id and name:
                                     if ntype == 'Research':
-                                        tid = int(node_id)
-                                        civ_techs[civ_name].append(tid)
-                                        if tid not in tech_ages or age_id < tech_ages[tid]:
-                                            tech_ages[tid] = age_id
+                                        if status != 'NotAvailable':
+                                            tid = int(node_id)
+                                            civ_techs[civ_name][tid] = age_id
+                                            if tid not in tech_ages or age_id > tech_ages[tid]:
+                                                tech_ages[tid] = age_id
 
                                     if ntype in ['Unit', 'UnitUpgrade', 'UniqueUnit', 'RegionalUnit']:
                                         valid_unit_ids.add(node_id)
@@ -87,6 +92,7 @@ def load_extra_data():
                                         if node_id not in tech_names or len(name) > len(tech_names[node_id]): tech_names[node_id] = name
                                     elif ntype in ['BuildingTech', 'BuildingNonTech']:
                                         valid_building_ids.add(node_id)
+                                        building_ages[node_id] = age_id
                                         if node_id not in building_names or len(name) > len(building_names[node_id]): building_names[node_id] = name
                                 
                                 # Prereqs
@@ -101,14 +107,20 @@ def load_extra_data():
                                         if pid not in prereqs[node_id]['buildings']: prereqs[node_id]['buildings'].append(pid)
                     except Exception as e:
                         print(f"Error reading {filename}: {e}")
-    return unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages
+    return unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages, building_ages
 
-def decode_val(val):
-    iv = int(val)
-    amt = iv & 0xFF
-    if amt >= 128: amt -= 256
-    cls = iv >> 8
-    return cls, amt
+def extract_effects(eff_obj):
+    effects = []
+    for cmd in eff_obj.effect_commands:
+        if cmd.type in [0, 4, 5]:
+            u_id = cmd.a if cmd.type == 0 else -1
+            c_id = cmd.a if cmd.type in [4, 5] else -1
+            attr_id = cmd.b
+            mode = cmd.c
+            val = cmd.d
+            if attr_id in VALID_ATTRS:
+                effects.append({"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id})
+    return effects
 
 def convert():
     dat_path = 'dat/empires2_x2_p1.dat'
@@ -116,7 +128,7 @@ def convert():
         dat_path = 'chombat/dat/empires2_x2_p1.dat'
 
     print(f"Loading extra data from Tech Trees...")
-    unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages = load_extra_data()
+    unit_names, tech_names, building_names, valid_unit_ids, valid_tech_ids, valid_building_ids, prereqs, civ_techs, tech_ages, building_ages = load_extra_data()
 
     print(f"Loading {dat_path}...")
     dat = DatFile.parse(dat_path)
@@ -124,8 +136,9 @@ def convert():
     units_out = {}
     techs_out = {}
     buildings_out = {}
+    civ_bonuses_out = {}
     
-    # Extract Units & Buildings from ALL civs
+    # Extract Units & Buildings
     processed_ids = set()
     for civ in dat.civs:
         for unit in civ.units:
@@ -133,7 +146,6 @@ def convert():
             uid = str(unit.base_id)
             if uid in processed_ids: continue
 
-            # Include creatable units OR upgrade units that are in valid_unit_ids
             name_check = unit_names.get(uid, unit.name)
             is_valid_upgrade = uid in valid_unit_ids and (name_check.endswith('man') or 'Guard' in name_check or 'Elite' in name_check or 'Halberdier' in name_check or 'Pikeman' in name_check or 'Champion' in name_check or 'Hussar' in name_check or 'Paladin' in name_check or 'Cavalier' in name_check or 'Arbalester' in name_check)
             if (uid in valid_unit_ids and unit.creatable and unit.type_50) or (is_valid_upgrade and unit.type_50):
@@ -182,11 +194,12 @@ def convert():
                 buildings_out[key] = {
                     "name": name, "f": cost["f"], "w": cost["w"], "g": cost["g"], "s": cost["s"],
                     "time": 50,
-                    "id": uid, "requires": prereqs.get(uid, {'techs': [], 'buildings': []})
+                    "id": uid, "age": building_ages.get(uid, 1),
+                    "requires": prereqs.get(uid, {'techs': [], 'buildings': []})
                 }
                 processed_ids.add(uid)
 
-    # Extract Techs and their Effects
+    # Extract Techs
     for tid, tech in enumerate(dat.techs):
         if not tech or not tech.name or tech.name.startswith('Fake'): continue
         locations = tech.research_locations
@@ -198,17 +211,7 @@ def convert():
         
         effects_out = []
         if tech.effect_id != -1 and tech.effect_id < len(dat.effects):
-            eff_obj = dat.effects[tech.effect_id]
-            for cmd in eff_obj.effect_commands:
-                if cmd.type in [0, 4, 5]:
-                    u_id = cmd.a if cmd.type == 0 else -1
-                    c_id = cmd.a if cmd.type in [4, 5] else -1
-                    attr_id = cmd.b
-                    mode = cmd.c
-                    val = cmd.d
-                    
-                    if attr_id in [0, 3, 4, 5, 6, 8, 9, 12]:
-                        effects_out.append({"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id})
+            effects_out = extract_effects(dat.effects[tech.effect_id])
 
         if key in techs_out: key = f"{key}_{tid}"
         techs_out[key] = {
@@ -218,6 +221,42 @@ def convert():
             "effects": effects_out,
             "age": tech_ages.get(tid, 1)
         }
+
+    # Extract Civ Bonuses
+    for civ in dat.civs:
+        civ_name = civ.name.strip().upper()
+        if civ_name in NON_RANKED_CIVS: continue
+        
+        bonus_effects = []
+        # Check all possible tech_tree_ids (Genie dat files sometimes have multiple)
+        # Actually, civ.tech_tree_id is the primary one for DE.
+        if civ.tech_tree_id != -1 and civ.tech_tree_id < len(dat.effects):
+            main_eff_obj = dat.effects[civ.tech_tree_id]
+            # Recursively explore 101 'Apply Effect' commands
+            def crawl_effects(eff_id, age_id):
+                if eff_id == -1 or eff_id >= len(dat.effects): return
+                eff_obj = dat.effects[eff_id]
+                for cmd in eff_obj.effect_commands:
+                    if cmd.type == 101:
+                        # cmd.b is age req
+                        new_age = max(age_id, int(cmd.b) + 1)
+                        crawl_effects(int(cmd.a), new_age)
+                    elif cmd.type in [0, 4, 5]:
+                        u_id = cmd.a if cmd.type == 0 else -1
+                        c_id = cmd.a if cmd.type in [4, 5] else -1
+                        attr_id = cmd.b
+                        mode = cmd.c
+                        val = cmd.d
+                        if attr_id in VALID_ATTRS:
+                            bonus_effects.append({"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id, "age": age_id})
+            
+            crawl_effects(civ.tech_tree_id, 1)
+
+        if bonus_effects:
+            civ_bonuses_out[civ_name] = {
+                "name": civ_name.capitalize() + " Bonuses",
+                "effects": bonus_effects
+            }
 
     units_out = dict(sorted(units_out.items(), key=lambda x: x[1]['name']))
     techs_out = dict(sorted(techs_out.items(), key=lambda x: x[1]['name']))
@@ -238,9 +277,13 @@ def convert():
         f.write("import { BuildingData } from '../sim/types';\n\n")
         f.write("export const buildings: Record<string, BuildingData> = " + json.dumps(buildings_out, indent=4) + ";")
     with open(os.path.join(src_data_dir, 'civs.ts'), 'w') as f:
-        f.write("export const civs: Record<string, number[]> = " + json.dumps(civ_techs, indent=4) + ";")
+        f.write("export const GENERIC_CIV = 'GENERIC';\n\n")
+        f.write("export const civs: Record<string, Record<number, number>> = " + json.dumps(civ_techs, indent=4) + ";")
+    with open(os.path.join(src_data_dir, 'bonuses.ts'), 'w') as f:
+        f.write("import { CivBonus } from '../sim/types';\n\n")
+        f.write("export const bonuses: Record<string, CivBonus> = " + json.dumps(civ_bonuses_out, indent=4) + ";")
 
-    print(f"Successfully converted {len(units_out)} units, {len(techs_out)} techs, {len(buildings_out)} buildings, and {len(civ_techs)} civilizations to TypeScript.")
+    print(f"Successfully converted {len(units_out)} units, {len(techs_out)} techs, {len(buildings_out)} buildings, and {len(civ_techs)} civilizations, and {len(civ_bonuses_out)} civ bonuses to TypeScript.")
 
 if __name__ == "__main__":
     convert()

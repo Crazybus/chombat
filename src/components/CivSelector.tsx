@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useSimulation } from '../context/SimulationContext';
-import { civs } from '../data/civs';
+import { civs, GENERIC_CIV } from '../data/civs';
 
 interface CivSelectorProps {
   army: 'a' | 'b';
@@ -32,9 +32,14 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
   }, []);
 
   const handleSelect = (civ: string) => {
-    applyAgeBonuses(army, armyState.age || '1', civ);
+    applyAgeBonuses(army, armyState.age || '1', civ || GENERIC_CIV);
     setIsOpen(false);
     setSearchTerm('');
+  };
+
+  const formatCivName = (name: string) => {
+    if (!name || name === GENERIC_CIV) return 'Generic';
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
   };
 
   return (
@@ -45,7 +50,7 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
         onClick={() => setIsOpen(!isOpen)}
         style={{ cursor: 'pointer' }}
       >
-        ⚔️ <span>{armyState.cv || 'Select Civ'}</span>
+        ⚔️ <span>{formatCivName(armyState.cv || GENERIC_CIV)}</span>
       </span>
 
       {isOpen && (
@@ -60,14 +65,14 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
             style={{ width: '100%', padding: '8px', marginBottom: '4px', background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-color)' }}
           />
           <div style={{ maxHeight: '250px', overflowY: 'auto' }}>
-            <div className="preset-item" onClick={() => handleSelect('')}>None (All Techs)</div>
+            <div className="preset-item" onClick={() => handleSelect(GENERIC_CIV)}>None (All Techs)</div>
             {filteredCivs.map(name => (
               <div 
                 key={name} 
                 className="preset-item"
                 onClick={() => handleSelect(name)}
               >
-                {name}
+                {formatCivName(name)}
               </div>
             ))}
           </div>

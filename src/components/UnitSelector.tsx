@@ -120,7 +120,8 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
               <div
                 key={u.id}
                 className={`preset-item ${index === selectedIndex ? 'selected' : ''}`}
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   onSelect(u.id);
                   setIsOpen(false);
                   setSearchTerm('');

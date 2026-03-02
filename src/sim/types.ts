@@ -55,6 +55,7 @@ export interface BuildingData {
   s: number;
   time: number;
   id: string;
+  age?: number;
   requires: {
     techs: number[];
     buildings: number[];
@@ -93,6 +94,15 @@ export interface ArmyState {
   rl?: number; n?: number; as?: number; ab?: number; ad?: number;
   af?: number; aw?: number; ag?: number; da?: number; df?: number;
   dw?: number; dg?: number; e?: number; mc?: number;
+}
+
+export interface CivBonusEffect extends TechEffect {
+  age: number;
+}
+
+export interface CivBonus {
+  name: string;
+  effects: CivBonusEffect[];
 }
 
 export interface SimulationState {
