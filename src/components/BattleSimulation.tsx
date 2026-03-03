@@ -10,12 +10,12 @@ import StatsSummary from './StatsSummary';
 
 const BattleSimulation: React.FC = () => {
   const { state, updateArmy, analysisA, analysisB } = useSimulation();
-  
+
   const res = useMemo(() => {
     if (!analysisA || !analysisB) return null;
 
     const techsByIdMap: Record<number, any> = {};
-    Object.values(techs).forEach(t => techsByIdMap[t.id] = t);
+    Object.values(techs).forEach((t) => (techsByIdMap[t.id] = t));
     const allUnits = { ...units, ...presets };
 
     const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, state.a, state.b, techsByIdMap, allUnits);
@@ -30,15 +30,17 @@ const BattleSimulation: React.FC = () => {
   const winA = res.armyA.totalHp > res.armyB.totalHp;
   const color = winA ? 'var(--army-a-color)' : 'var(--army-b-color)';
 
-  const ratioA = res.armyA.initialTotalHp > 0 ? ((res.armyA.totalHp / res.armyA.initialTotalHp) * 100).toFixed(1) : '0.0';
-  const ratioB = res.armyB.initialTotalHp > 0 ? ((res.armyB.totalHp / res.armyB.initialTotalHp) * 100).toFixed(1) : '0.0';
+  const ratioA =
+    res.armyA.initialTotalHp > 0 ? ((res.armyA.totalHp / res.armyA.initialTotalHp) * 100).toFixed(1) : '0.0';
+  const ratioB =
+    res.armyB.initialTotalHp > 0 ? ((res.armyB.totalHp / res.armyB.initialTotalHp) * 100).toFixed(1) : '0.0';
 
   const survivorsA = isNaN(res.armyA.remaining) ? 0 : Math.ceil(res.armyA.remaining);
   const survivorsB = isNaN(res.armyB.remaining) ? 0 : Math.ceil(res.armyB.remaining);
   const duration = isNaN(res.duration) ? 0 : res.duration;
 
   const techsById: Record<number, any> = {};
-  Object.values(techs).forEach(t => techsById[t.id] = t);
+  Object.values(techs).forEach((t) => (techsById[t.id] = t));
   const allUnits = { ...units, ...presets };
 
   const setEqualResources = () => {
@@ -47,12 +49,26 @@ const BattleSimulation: React.FC = () => {
   };
 
   const setEqualProduction = () => {
-    const newCountB = calculateEqualProductionTime(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b);
+    const newCountB = calculateEqualProductionTime(
+      state.a.c || 1,
+      analysisA.baseUnit,
+      state.a,
+      analysisB.baseUnit,
+      state.b,
+    );
     updateArmy('b', { c: Math.max(1, newCountB) });
   };
 
   const setEqualFight = () => {
-    const newCountB = calculateEqualFight(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b, techsById, allUnits);
+    const newCountB = calculateEqualFight(
+      state.a.c || 1,
+      analysisA.baseUnit,
+      state.a,
+      analysisB.baseUnit,
+      state.b,
+      techsById,
+      allUnits,
+    );
     updateArmy('b', { c: Math.max(1, newCountB) });
   };
 
@@ -65,31 +81,50 @@ const BattleSimulation: React.FC = () => {
 
       <div className="ratio-bar">
         <ArmyCounter army="a" analysis={analysisA} count={state.a.c || 1} />
-        
+
         <div className="simulation-actions">
-          <button className="nav-btn secondary" onClick={setEqualResources}>Equal Resources</button>
-          <button className="nav-btn secondary" onClick={setEqualProduction}>Equal Prod Time</button>
-          <button className="nav-btn secondary" onClick={setEqualFight}>Equal Fight</button>
+          <button className="nav-btn secondary" onClick={setEqualResources}>
+            Equal Resources
+          </button>
+          <button className="nav-btn secondary" onClick={setEqualProduction}>
+            Equal Prod Time
+          </button>
+          <button className="nav-btn secondary" onClick={setEqualFight}>
+            Equal Fight
+          </button>
         </div>
 
         <ArmyCounter army="b" analysis={analysisB} count={state.b.c || 1} />
       </div>
 
       <section id="results" className="results-area" style={{ width: '100%' }}>
-        <div id="overall-result" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center', color, overflowWrap: 'anywhere' }}>
+        <div
+          id="overall-result"
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            marginBottom: '15px',
+            textAlign: 'center',
+            color,
+            overflowWrap: 'anywhere',
+          }}
+        >
           Winner: {winA ? nameA : nameB} ({duration.toFixed(1)}s)
         </div>
         <div id="stat-summary" style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <p>{nameA} survivors: <strong>{String(survivorsA)}</strong> ({ratioA}%) | {nameB} survivors: <strong>{String(survivorsB)}</strong> ({ratioB}%)</p>
+          <p>
+            {nameA} survivors: <strong>{String(survivorsA)}</strong> ({ratioA}%) | {nameB} survivors:{' '}
+            <strong>{String(survivorsB)}</strong> ({ratioB}%)
+          </p>
         </div>
-        
+
         <CombatCharts history={res.history} nameA={nameA} nameB={nameB} />
       </section>
     </div>
   );
 };
 
-const ArmyCounter: React.FC<{ army: 'a' | 'b', analysis: any, count: number }> = ({ army, analysis, count }) => {
+const ArmyCounter: React.FC<{ army: 'a' | 'b'; analysis: any; count: number }> = ({ army, analysis, count }) => {
   const { updateArmy } = useSimulation();
   const timerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
@@ -124,16 +159,16 @@ const ArmyCounter: React.FC<{ army: 'a' | 'b', analysis: any, count: number }> =
 
   return (
     <div className="counter-group">
-      <label 
+      <label
         onClick={scrollToUnits}
-        style={{ 
-          color: `var(--army-${army}-color)`, 
-          cursor: 'pointer', 
+        style={{
+          color: `var(--army-${army}-color)`,
+          cursor: 'pointer',
           fontWeight: 'bold',
           fontSize: '1.1rem',
           textDecoration: 'underline',
           textDecorationStyle: 'dotted',
-          marginBottom: '5px'
+          marginBottom: '5px',
         }}
       >
         {analysis.unitName}
@@ -141,21 +176,27 @@ const ArmyCounter: React.FC<{ army: 'a' | 'b', analysis: any, count: number }> =
       <div className="counter-controls">
         <button
           className="count-btn"
-          onPointerDown={(e) => { e.preventDefault(); startRepeating(-1); }}
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(-1);
+          }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
-        >−</button>
-        <input
-          type="number"
-          value={count}
-          onChange={(e) => handleChange(parseInt(e.target.value) || 1)}
-        />
+        >
+          −
+        </button>
+        <input type="number" value={count} onChange={(e) => handleChange(parseInt(e.target.value) || 1)} />
         <button
           className="count-btn"
-          onPointerDown={(e) => { e.preventDefault(); startRepeating(1); }}
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(1);
+          }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
-        >+</button>
+        >
+          +
+        </button>
       </div>
 
       <div style={{ marginTop: '10px', width: '100%' }}>

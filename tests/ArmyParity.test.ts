@@ -7,7 +7,7 @@ describe('Army Parity Logic', () => {
   const pikeman = units['pikeman']; // Cost: 35f, 25w (60 total)
 
   it('should calculate equal resources correctly', () => {
-    // 10 Knights = 1350 resources. 
+    // 10 Knights = 1350 resources.
     // 1350 / 60 = 22.5 -> 23 Pikemen
     const count = calculateEqualResources(10, knight, { age: '3' }, pikeman, { age: '3' });
     expect(count).toBe(23);

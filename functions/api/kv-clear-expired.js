@@ -8,10 +8,10 @@ export async function onRequestPost({ env }) {
     const now = Date.now();
     let deleted = 0;
     let cursor = undefined;
-    
+
     do {
       const response = await env.MATCHUPS.list({ cursor, limit: 1000 });
-      
+
       for (const key of response.keys) {
         try {
           const value = await env.MATCHUPS.get(key.name);
@@ -26,22 +26,19 @@ export async function onRequestPost({ env }) {
           console.error(`Error processing key ${key.name}:`, e);
         }
       }
-      
+
       cursor = response.cursor;
     } while (cursor);
 
-    return new Response(
-      JSON.stringify({ deleted }),
-      { 
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return new Response(JSON.stringify({ deleted }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     console.error('Error clearing expired keys:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to clear expired keys' }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'Failed to clear expired keys' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

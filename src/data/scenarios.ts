@@ -7,12 +7,18 @@ import { red_phos_rc_ratha_vs_skirm } from './scenarios/red_phos_fc_rather_vs_sk
 
 // Combine all scenarios into single object
 export const scenarios = {
-    archer_vs_skirm,
-    champi_vs_scouts,
-    champi_vs_maa,
-    knights_vs_pikes,
-    red_phos_rc_ratha_vs_skirm,
+  archer_vs_skirm,
+  champi_vs_scouts,
+  champi_vs_maa,
+  knights_vs_pikes,
+  red_phos_rc_ratha_vs_skirm,
 };
 
 // List of featured scenarios to show as buttons
-export const featuredScenarios = ['champi_vs_scouts', 'archer_vs_skirm', 'champi_vs_maa', 'knights_vs_pikes', 'red_phos_rc_ratha_vs_skirm'];
+export const featuredScenarios = [
+  'champi_vs_scouts',
+  'archer_vs_skirm',
+  'champi_vs_maa',
+  'knights_vs_pikes',
+  'red_phos_rc_ratha_vs_skirm',
+];

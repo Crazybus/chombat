@@ -27,14 +27,18 @@ Chombat is a static web application for simulating Age of Empires II combat and 
 ## Key Components
 
 ### CombatSim Class
+
 The core simulation engine. It runs a deterministic, time-based loop (0.05s ticks) to calculate combat outcomes. It accounts for:
+
 - Attack reloads and speed bonuses.
 - Melee vs. Pierce armor.
 - Engagement efficiency.
 - Target micro (overkill avoidance).
 
 ### Production Timeline
+
 Simulates army growth sequentially. Unlike the combat sim, it processes steps one by one:
+
 - **Sequential Processing**: Each step (tech, building, wait) must finish its delay before the next step starts.
 - **Blocking**: Technology steps can optionally "block" a production building, reducing output while researching.
 - **Dynamic Updates**: Changing the order of steps (via drag-and-drop) immediately recalculates the growth curve.

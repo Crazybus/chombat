@@ -7,17 +7,17 @@ import { TechData } from '../src/sim/types';
 
 describe('Imperial Age Britons Arbalest (Real Data)', () => {
   const arbalest = units['arbalester'];
-  
+
   const techsById: Record<number, TechData> = {};
-  Object.values(techs).forEach(t => techsById[t.id] = t);
+  Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
   it('should apply exactly expected techs to a Britons Arbalest', () => {
     const ageId = 4; // Imperial
     const civKey = 'BRITONS';
     const availableTechs = civs[civKey] || {};
-    
+
     const recommended = getRecommendedTechs(arbalest, ageId, civKey, techsById, availableTechs);
-    const names = recommended.map(t => t.name).sort();
+    const names = recommended.map((t) => t.name).sort();
 
     const expected = [
       'Ballistics',
@@ -27,7 +27,7 @@ describe('Imperial Age Britons Arbalest (Real Data)', () => {
       'Fletching',
       'Leather Archer Armor',
       'Padded Archer Armor',
-      'Ring Archer Armor'
+      'Ring Archer Armor',
       // Yeomen is manual-only now
     ].sort();
 
@@ -38,13 +38,13 @@ describe('Imperial Age Britons Arbalest (Real Data)', () => {
     const ageId = 4;
     const civKey = 'BRITONS';
     const availableTechs = civs[civKey] || {};
-    
+
     const recommended = getRecommendedTechs(arbalest, ageId, civKey, techsById, availableTechs);
-    const bn = recommended.map(t => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    
-    const analysis = analyzeArmy({ ps: 'arbalester', age: '4', cv: civKey, bn }, { 'arbalester': arbalest }, techsById);
-    
+    const bn = recommended.map((t) => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
+
+    const analysis = analyzeArmy({ ps: 'arbalester', age: '4', cv: civKey, bn }, { arbalester: arbalest }, techsById);
+
     expect(analysis?.effectiveStats.patk).toBe(10);
-    expect(analysis?.effectiveStats.range).toBe(8); 
+    expect(analysis?.effectiveStats.range).toBe(8);
   });
 });

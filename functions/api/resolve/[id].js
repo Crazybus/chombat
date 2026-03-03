@@ -32,27 +32,27 @@ export async function onRequest({ env, params }) {
     const { id } = params;
 
     if (!id) {
-      return new Response(
-        JSON.stringify({ error: 'Missing ID parameter' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Missing ID parameter' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     if (!env.MATCHUPS) {
-      return new Response(
-        JSON.stringify({ error: 'KV namespace MATCHUPS is not bound' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'KV namespace MATCHUPS is not bound' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Fetch from KV
     const stored = await env.MATCHUPS.get(id);
 
     if (!stored) {
-      return new Response(
-        JSON.stringify({ error: 'Matchup not found or expired' }),
-        { status: 404, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Matchup not found or expired' }), {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const parsed = JSON.parse(stored);
@@ -94,19 +94,19 @@ export async function onRequest({ env, params }) {
     return new Response(
       JSON.stringify({
         data: decompressed,
-        expiresAt: extended ? (now + DEFAULT_TTL * 24 * 60 * 60 * 1000) : expiresAt,
-        extended
+        expiresAt: extended ? now + DEFAULT_TTL * 24 * 60 * 60 * 1000 : expiresAt,
+        extended,
       }),
       {
         status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      }
+        headers: { 'Content-Type': 'application/json' },
+      },
     );
   } catch (error) {
     console.error('Error in /api/resolve:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to resolve matchup', details: error.message }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'Failed to resolve matchup', details: error.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

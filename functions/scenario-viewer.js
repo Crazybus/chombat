@@ -400,6 +400,6 @@ const HTML_CONTENT = `<!doctype html>
 
 export async function onRequest() {
   return new Response(HTML_CONTENT, {
-    headers: { 'Content-Type': 'text/html' }
+    headers: { 'Content-Type': 'text/html' },
   });
 }

@@ -38,7 +38,7 @@ export class CombatSim {
     configA: ArmyState,
     configB: ArmyState,
     allTechs: Record<number, TechData>,
-    _allUnits: Record<string, UnitData>
+    _allUnits: Record<string, UnitData>,
   ) {
     this.dataA = this.applyBonuses(armyA, configA, parseInt(configA.age || '1'), allTechs, _allUnits);
     this.dataB = this.applyBonuses(armyB, configB, parseInt(configB.age || '1'), allTechs, _allUnits);
@@ -49,11 +49,11 @@ export class CombatSim {
     config: ArmyState,
     ageId: number,
     allTechs: Record<number, TechData>,
-    _allUnits: Record<string, UnitData>
+    _allUnits: Record<string, UnitData>,
   ): any {
     // 1. Start with a FRESH copy of base unit data
     let newUnit = { ...baseUnit };
-    
+
     // 2. Ensure we don't modify shared objects
     newUnit.bonuses = { ...(baseUnit.bonuses || {}) };
     newUnit.armors = { ...(baseUnit.armors || {}) };
@@ -66,13 +66,30 @@ export class CombatSim {
     newUnit.parm = baseUnit.parm;
     newUnit.reload = baseUnit.reload;
     newUnit.range = baseUnit.range;
+    newUnit.speed = baseUnit.speed || 1.0;
     newUnit.reloadBase = baseUnit.reload;
 
     // 3. Apply manual overrides from config
     const overrides: Record<string, keyof ArmyState> = {
-      hp: 'h', matk: 'am', patk: 'ap', marm: 'aa', parm: 'ar', reload: 'rl', range: 'n',
-      atk_speed: 'as', bonus_red: 'ab', f: 'af', w: 'aw', g: 'ag',
-      disc_all: 'da', disc_f: 'df', disc_w: 'dw', disc_g: 'dg', eng: 'e', micro: 'mc'
+      hp: 'h',
+      matk: 'am',
+      patk: 'ap',
+      marm: 'aa',
+      parm: 'ar',
+      reload: 'rl',
+      range: 'n',
+      atk_speed: 'as',
+      bonus_red: 'ab',
+      speed: 'speed',
+      f: 'af',
+      w: 'aw',
+      g: 'ag',
+      disc_all: 'da',
+      disc_f: 'df',
+      disc_w: 'dw',
+      disc_g: 'dg',
+      eng: 'e',
+      micro: 'mc',
     };
 
     for (const [unitKey, configKey] of Object.entries(overrides)) {
@@ -98,21 +115,31 @@ export class CombatSim {
         if (shouldApplyEffect(e, baseUnit, effs)) {
           const val = e.v;
 
-          if (e.t === 0) { // Add HP
+          if (e.t === 0) {
+            // Add HP
             newUnit.hp += val;
-          } else if (e.t === 1) { // Add Attack (Generic)
+          } else if (e.t === 1) {
+            // Add Attack (Generic)
             if (newUnit.matk > 0) newUnit.matk += val;
             if (newUnit.patk > 0) newUnit.patk += val;
-          } else if (e.t === 5) { // Mult Speed
-            if ((newUnit as any).speed !== undefined) (newUnit as any).speed *= val;
+            if (e.a === 5) newUnit.speed += val; // Add Speed (uses Attr 5)
+          } else if (e.t === 2) {
+            // Mult Stat
+            if (e.a === 5) newUnit.speed *= val; // Mult Speed (uses Attr 5)
+          } else if (e.t === 5) {
+            // Mult Speed (Legacy/Old mapping, also usually Attr 5 in some datasets)
+            if (newUnit.speed !== undefined) newUnit.speed *= val;
             if (e.a === 10) reloadMult *= val; // faster attack (uses Attr 10)
-          } else if (e.t === 10) { // Mult Reload
+          } else if (e.t === 10) {
+            // Mult Reload
             reloadMult *= val;
-          } else if (e.t === 12) { // Add Range
+          } else if (e.t === 12) {
+            // Add Range
             newUnit.range += val;
           } else if (e.t === 8 || e.t === 9) {
             const { cls, amt } = decodeEncoded(val);
-            if (e.t === 9) { // Class Attack
+            if (e.t === 9) {
+              // Class Attack
               if (cls === 3) {
                 if (newUnit.patk > 0) newUnit.patk += amt;
               } else if (cls === 4) {
@@ -120,7 +147,8 @@ export class CombatSim {
               } else {
                 newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
               }
-            } else { // Class Armor
+            } else {
+              // Class Armor
               if (cls === 3) {
                 newUnit.parm += amt;
               } else if (cls === 4) {
@@ -246,7 +274,7 @@ export class CombatSim {
       history: this.history,
       duration: this.time,
       dataA: this.dataA,
-      dataB: this.dataB
+      dataB: this.dataB,
     };
   }
 

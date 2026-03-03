@@ -7,7 +7,7 @@ import { ArmyState, TechData } from '../src/sim/types';
 describe('Scenario Scrubbing', () => {
   const allUnits = units;
   const techsById: Record<number, TechData> = {};
-  Object.values(techs).forEach(t => techsById[t.id] = t);
+  Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
   it('should scrub redundant overrides for a Dark Age Champi Scout', () => {
     // A scenario might have been saved with manual overrides that match the base stats
@@ -20,7 +20,7 @@ describe('Scenario Scrubbing', () => {
       ap: champiBase.patk, // Matches base
       aa: champiBase.marm, // Matches base
       ar: champiBase.parm, // Matches base
-      bn: []
+      bn: [],
     };
 
     const scrubbed = scrubArmy(rawScenarioArmy, allUnits, techsById);
@@ -37,7 +37,7 @@ describe('Scenario Scrubbing', () => {
     // Full Feudal upgrades: Forging (+1 Atk), Scale Barding (+1/+1 Arm), Bloodlines (+20 HP)
     // Plus Scout auto-upgrade in Feudal (+2 Atk)
     // Total should be: HP 65, Atk 6, Arm 1/3
-    
+
     const rawScenarioArmy: ArmyState = {
       ps: 'scout_cavalry',
       age: '2',
@@ -48,8 +48,8 @@ describe('Scenario Scrubbing', () => {
       bn: [
         { i: '67', e: [true, true] }, // Forging
         { i: '81', e: [true, true] }, // Scale Barding
-        { i: '435', e: [true] }       // Bloodlines
-      ]
+        { i: '435', e: [true] }, // Bloodlines
+      ],
     };
 
     const scrubbed = scrubArmy(rawScenarioArmy, allUnits, techsById);
@@ -68,7 +68,7 @@ describe('Scenario Scrubbing', () => {
       ps: 'champi_scout',
       age: '1',
       h: champiBase.hp + 10, // INTENTIONAL OVERRIDE
-      bn: []
+      bn: [],
     };
 
     const scrubbed = scrubArmy(rawScenarioArmy, allUnits, techsById);

@@ -16,9 +16,7 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
   const civNames = useMemo(() => Object.keys(civs).sort(), []);
 
   const filteredCivs = useMemo(() => {
-    return civNames.filter(name => 
-      !searchTerm || name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    return civNames.filter((name) => !searchTerm || name.toLowerCase().includes(searchTerm.toLowerCase()));
   }, [civNames, searchTerm]);
 
   useEffect(() => {
@@ -44,11 +42,7 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
 
   return (
     <div className="civ-selector" ref={containerRef} style={{ position: 'relative' }}>
-      <button 
-        className="nav-btn secondary"
-        title="Click to change civilization"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <button className="nav-btn secondary" title="Click to change civilization" onClick={() => setIsOpen(!isOpen)}>
         <span>🏰 {formatCivName(armyState.cv || GENERIC_CIV)}</span>
         <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>▼</span>
       </button>
@@ -64,13 +58,11 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
             autoFocus
           />
           <div style={{ maxHeight: '250px', overflowY: 'auto' }}>
-            <div className="preset-item" onClick={() => handleSelect(GENERIC_CIV)}>None (All Techs)</div>
-            {filteredCivs.map(name => (
-              <div 
-                key={name} 
-                className="preset-item"
-                onClick={() => handleSelect(name)}
-              >
+            <div className="preset-item" onClick={() => handleSelect(GENERIC_CIV)}>
+              None (All Techs)
+            </div>
+            {filteredCivs.map((name) => (
+              <div key={name} className="preset-item" onClick={() => handleSelect(name)}>
                 {formatCivName(name)}
               </div>
             ))}
