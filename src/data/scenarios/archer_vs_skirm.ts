@@ -1,14 +1,28 @@
 export const archer_vs_skirm = {
-    "name": "Archer vs Skirm",
-    "desc": "Switching into skirmishers to counter an existing archer mass",
     "a": {
         "ps": "archer",
         "nm": "Archer",
         "c": 10,
         "age": "2",
         "tl": [
-            { "t": "villagers", "n": "Villagers", "v": 1, "d": 25, "lim": false },
-            { "t": "tech", "n": "Feudal Age", "d": 130, "c": 1, "co": 500, "i": "101", "bt": 109, "b": true, "lim": true },
+            {
+                "t": "villagers",
+                "n": "Villagers",
+                "v": 1,
+                "d": 25,
+                "lim": false
+            },
+            {
+                "t": "tech",
+                "n": "Feudal Age",
+                "d": 130,
+                "c": 1,
+                "co": 500,
+                "i": "101",
+                "bt": 109,
+                "b": true,
+                "lim": true
+            },
             {
                 "t": "building",
                 "n": "Archery Range",
@@ -29,8 +43,18 @@ export const archer_vs_skirm = {
             }
         ],
         "bn": [
-            { "i": "199", "e": [true] },
-            { "i": "211", "e": [true] }
+            {
+                "i": "199",
+                "e": [
+                    true
+                ]
+            },
+            {
+                "i": "211",
+                "e": [
+                    true
+                ]
+            }
         ]
     },
     "b": {
@@ -39,8 +63,24 @@ export const archer_vs_skirm = {
         "c": 6,
         "age": "2",
         "tl": [
-            { "t": "villagers", "n": "Villagers", "v": 1, "d": 25, "lim": false },
-            { "t": "tech", "n": "Feudal Age", "d": 130, "c": 1, "co": 500, "i": "101", "bt": 109, "b": true, "lim": true },
+            {
+                "t": "villagers",
+                "n": "Villagers",
+                "v": 1,
+                "d": 25,
+                "lim": false
+            },
+            {
+                "t": "tech",
+                "n": "Feudal Age",
+                "d": 130,
+                "c": 1,
+                "co": 500,
+                "i": "101",
+                "bt": 109,
+                "b": true,
+                "lim": true
+            },
             {
                 "t": "building",
                 "n": "Archery Range",
@@ -49,6 +89,15 @@ export const archer_vs_skirm = {
                 "co": 175,
                 "prod": true,
                 "i": "87"
+            },
+            {
+                "t": "delay",
+                "n": "Idle Time",
+                "d": 200,
+                "c": 1,
+                "co": 0,
+                "lim": true,
+                "name": "Idle Time"
             },
             {
                 "t": "production",
@@ -62,8 +111,20 @@ export const archer_vs_skirm = {
             }
         ],
         "bn": [
-            { "i": "199", "e": [true] },
-            { "i": "211", "e": [true] }
+            {
+                "i": "199",
+                "e": [
+                    true
+                ]
+            },
+            {
+                "i": "211",
+                "e": [
+                    true
+                ]
+            }
         ]
-    }
+    },
+    "name": "Archer vs Skirm",
+    "desc": "Switching into skirmishers to counter an existing archer mass"
 };

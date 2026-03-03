@@ -294,6 +294,113 @@ export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitD
   return { baseUnit, naturalBase, modifiedBase, effectiveStats: finalEffective, groups, unitName: baseUnit.name, ageName: getAgeName(armyState.age || '1') };
   }
 
+// --- Duel Analysis ---
+
+export interface DuelAnalysisRow {
+  label: string;
+  a: string;
+  b: string;
+  valA: number;
+  valB: number;
+}
+
+export interface DuelAnalysis {
+  winner: string;
+  winnerColor: string;
+  remainingInfo: string;
+  rows: DuelAnalysisRow[];
+  nameA: string;
+  nameB: string;
+}
+
+export function analyzeDuel(
+  stateA: ArmyState,
+  stateB: ArmyState,
+  analysisA: ArmyAnalysis,
+  analysisB: ArmyAnalysis,
+  techsById: Record<number, TechData>,
+  allUnits: Record<string, UnitData>
+): DuelAnalysis {
+  const configA = { ...stateA, c: 1 };
+  const configB = { ...stateB, c: 1 };
+  
+  const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
+  const res = sim.run();
+  
+  const uA = new Unit(sim.dataA);
+  const uB = new Unit(sim.dataB);
+  const baseA = analysisA.naturalBase;
+  const baseB = analysisB.naturalBase;
+  const nameA = analysisA.unitName;
+  const nameB = analysisB.unitName;
+
+  const formatWithBase = (total: number, base: number) => {
+    const diff = total - base;
+    if (Math.abs(diff) < 0.01) return total.toFixed(0);
+    return `${total.toFixed(0)} (${base.toFixed(0)} + ${diff.toFixed(0)})`;
+  };
+
+  const getNetDmg = (atk: Unit, def: Unit) => {
+    const isMelee = atk.isMelee();
+    const baseAtk = isMelee ? atk.matk : atk.patk;
+    const baseArm = isMelee ? def.marm : def.parm;
+
+    let bonus = 0;
+    const attBonuses = atk.bonuses || {};
+    const defArmors = def.armors || {};
+
+    for (const [cls, amt] of Object.entries(attBonuses)) {
+      if (defArmors[cls] !== undefined) {
+        const defArm = defArmors[cls] || 0;
+        bonus += Math.max(0, amt - defArm);
+      }
+    }
+
+    return { base: baseAtk, arm: baseArm, bonus, net: Math.max(1, baseAtk - baseArm + bonus) };
+  };
+
+  const nA = getNetDmg(uA, uB);
+  const nB = getNetDmg(uB, uA);
+
+  const getBaseAtk = (u: Unit, b: any) => u.isMelee() ? b.matk : b.patk;
+  const getBaseArm = (u: Unit, b: any) => u.isMelee() ? b.marm : b.parm;
+
+  const hitsToKillA = Math.ceil(uB.hpPerUnit / nA.net);
+  const hitsToKillB = Math.ceil(uA.hpPerUnit / nB.net);
+  const timeToKillA = hitsToKillA * uA.reload;
+  const timeToKillB = hitsToKillB * uB.reload;
+  const duration = res.duration;
+
+  let winner = 'Draw';
+  let winnerColor = 'var(--text-color)';
+  let remainingInfo = '';
+
+  if (res.armyA.totalHp > res.armyB.totalHp) {
+    winner = nameA;
+    winnerColor = 'var(--army-a-color)';
+    remainingInfo = `${res.armyA.totalHp.toFixed(0)} HP remaining`;
+  } else if (res.armyB.totalHp > res.armyA.totalHp) {
+    winner = nameB;
+    winnerColor = 'var(--army-b-color)';
+    remainingInfo = `${res.armyB.totalHp.toFixed(0)} HP remaining`;
+  }
+
+  const rows: DuelAnalysisRow[] = [
+    { label: 'HP (base + upgrades)', a: formatWithBase(uA.hpPerUnit, baseA?.hp || uA.hpPerUnit), b: formatWithBase(uB.hpPerUnit, baseB?.hp || uB.hpPerUnit), valA: uA.hpPerUnit, valB: uB.hpPerUnit },
+    { label: 'Attack (base + upgrades)', a: formatWithBase(nA.base, getBaseAtk(uA, baseA)), b: formatWithBase(nB.base, getBaseAtk(uB, baseB)), valA: nA.base, valB: nB.base },
+    { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0), valA: nA.bonus, valB: nB.bonus },
+    { label: 'Armor', a: formatWithBase(nA.arm, getBaseArm(uA, baseA)), b: formatWithBase(nB.arm, getBaseArm(uB, baseB)), valA: nA.arm, valB: nB.arm },
+    { label: 'Damage Per Hit', a: `${nA.net.toFixed(0)} (${nA.base.toFixed(0)} - ${nA.arm.toFixed(0)} + ${nA.bonus.toFixed(0)})`, b: `${nB.net.toFixed(0)} (${nB.base.toFixed(0)} - ${nB.arm.toFixed(0)} + ${nB.bonus.toFixed(0)})`, valA: nA.net, valB: nB.net },
+    { label: 'Hits to Kill', a: hitsToKillA.toString(), b: hitsToKillB.toString(), valA: hitsToKillA, valB: hitsToKillB },
+    { label: 'Hits Performed', a: (winner === nameA ? hitsToKillA : Math.floor(duration / uA.reload)).toString(), b: (winner === nameB ? hitsToKillB : Math.floor(duration / uB.reload)).toString(), valA: winner === nameA ? hitsToKillA : Math.floor(duration / uA.reload), valB: winner === nameB ? hitsToKillB : Math.floor(duration / uB.reload) },
+    { label: 'Time to Kill', a: timeToKillA.toFixed(1) + 's', b: timeToKillB.toFixed(1) + 's', valA: timeToKillA, valB: timeToKillB },
+    { label: 'Attack Reload Time', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), valA: uA.reload, valB: uB.reload },
+    { label: 'Damage Per Second', a: (nA.net / uA.reload).toFixed(2), b: (nB.net / uB.reload).toFixed(2), valA: nA.net / uA.reload, valB: nB.net / uB.reload },
+  ];
+
+  return { winner, winnerColor, remainingInfo, rows, nameA, nameB };
+}
+
 export function scrubArmy(army: ArmyState, allUnits: Record<string, UnitData>, techsById: Record<number, TechData>): ArmyState {
   const normalized = { ...army };
   const numericFields: (keyof ArmyState)[] = ['c', 'h', 'am', 'ap', 'aa', 'ar', 'rl', 'n', 'as', 'ab', 'ad', 'af', 'aw', 'ag', 'da', 'df', 'dw', 'dg', 'e', 'mc', 'sv'];

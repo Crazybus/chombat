@@ -28,6 +28,7 @@
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   --color-pos: #2ecc71;
   --color-neg: #e74c3c;
+  --success-color: #2ecc71;
   --danger-color: #e74c3c;
 }
 
