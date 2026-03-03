@@ -184,8 +184,8 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
 
     doStep();
     timerRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(doStep, 50);
-    }, 500);
+      intervalRef.current = setInterval(doStep, 80);
+    }, 600);
   };
 
   const stopRepeating = () => {
@@ -203,30 +203,25 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
     <div className="field">
       <label>{label}</label>
       <div className="stepper">
-        <button 
-          className="step-btn" 
-          onMouseDown={() => startRepeating(-1)}
-          onMouseUp={stopRepeating}
-          onMouseLeave={stopRepeating}
-          onTouchStart={() => startRepeating(-1)}
-          onTouchEnd={stopRepeating}
-          onClick={(e) => { e.preventDefault(); }} 
+        <button
+          className="step-btn"
+          onPointerDown={(e) => { e.preventDefault(); startRepeating(-1); }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
         >−</button>
-        <input 
-          type="number" 
-          value={currentVal} 
-          onChange={(e) => handleChange(parseFloat(e.target.value) || 0)} 
+        <input
+          type="number"
+          value={currentVal}
+          onChange={(e) => handleChange(parseFloat(e.target.value) || 0)}
           step={step}
         />
-        <button 
-          className="step-btn" 
-          onMouseDown={() => startRepeating(1)}
-          onMouseUp={stopRepeating}
-          onMouseLeave={stopRepeating}
-          onTouchStart={() => startRepeating(1)}
-          onTouchEnd={stopRepeating}
-          onClick={(e) => { e.preventDefault(); }}
+        <button
+          className="step-btn"
+          onPointerDown={(e) => { e.preventDefault(); startRepeating(1); }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
         >+</button>
+
       </div>
     </div>
   );

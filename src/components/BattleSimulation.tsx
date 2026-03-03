@@ -109,8 +109,8 @@ const ArmyCounter: React.FC<{ army: 'a' | 'b', analysis: any, count: number }> =
     };
     doStep();
     timerRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(doStep, 50);
-    }, 500);
+      intervalRef.current = setInterval(doStep, 80);
+    }, 600);
   };
 
   const stopRepeating = () => {
@@ -139,28 +139,25 @@ const ArmyCounter: React.FC<{ army: 'a' | 'b', analysis: any, count: number }> =
         {analysis.unitName}
       </label>
       <div className="counter-controls">
-        <button 
-          className="count-btn" 
-          onMouseDown={() => startRepeating(-1)}
-          onMouseUp={stopRepeating}
-          onMouseLeave={stopRepeating}
-          onTouchStart={() => startRepeating(-1)}
-          onTouchEnd={stopRepeating}
+        <button
+          className="count-btn"
+          onPointerDown={(e) => { e.preventDefault(); startRepeating(-1); }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
         >−</button>
-        <input 
-          type="number" 
-          value={count} 
-          onChange={(e) => handleChange(parseInt(e.target.value) || 1)} 
+        <input
+          type="number"
+          value={count}
+          onChange={(e) => handleChange(parseInt(e.target.value) || 1)}
         />
-        <button 
-          className="count-btn" 
-          onMouseDown={() => startRepeating(1)}
-          onMouseUp={stopRepeating}
-          onMouseLeave={stopRepeating}
-          onTouchStart={() => startRepeating(1)}
-          onTouchEnd={stopRepeating}
+        <button
+          className="count-btn"
+          onPointerDown={(e) => { e.preventDefault(); startRepeating(1); }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
         >+</button>
       </div>
+
       <div style={{ marginTop: '10px', width: '100%' }}>
         <StatsSummary army={army} compact={true} hoverExpand={true} />
       </div>
