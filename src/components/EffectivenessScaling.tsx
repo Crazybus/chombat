@@ -146,9 +146,9 @@ const EffectivenessScaling: React.FC = () => {
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', width: '100%' }}>
           {/* 1vX Section */}
-          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '20px', minHeight: '420px' }}>
+          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', minHeight: '420px', width: '100%' }}>
             <div className="table-container" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               <h3 style={{ color: 'var(--accent-color)', marginBottom: '10px', fontSize: '1rem' }}>1 {nameA} vs X {nameB}</h3>
               <div style={{ flex: 1, overflowY: 'auto' }}>
@@ -181,7 +181,7 @@ const EffectivenessScaling: React.FC = () => {
           </div>
 
           {/* Xv1 Section */}
-          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '20px', minHeight: '420px' }}>
+          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', minHeight: '420px', width: '100%' }}>
             <div className="table-container" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
               <h3 style={{ color: 'var(--accent-color)', marginBottom: '10px', fontSize: '1rem' }}>X {nameA} vs 1 {nameB}</h3>
               <div style={{ flex: 1, overflowY: 'auto' }}>

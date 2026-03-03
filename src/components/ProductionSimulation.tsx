@@ -94,16 +94,20 @@ const ProductionSimulation: React.FC = () => {
     labels,
     datasets: [
       { 
-        label: 'Battle Advantage % (+A / -B)', 
-        data: advantage, 
+        label: nameA + ' Advantage %', 
+        data: advantage.map(v => v > 0 ? v : 0), 
         borderColor: '#3498db', 
-        segment: {
-          borderColor: (ctx: any) => {
-            const val = ctx.p0.parsed.y;
-            return val >= 0 ? '#3498db' : '#e74c3c';
-          }
-        },
-        fill: { target: 'origin', above: 'rgba(52, 152, 219, 0.2)', below: 'rgba(231, 76, 60, 0.2)' }
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        pointRadius: 0
+      },
+      { 
+        label: nameB + ' Advantage %', 
+        data: advantage.map(v => v < 0 ? Math.abs(v) : 0), 
+        borderColor: '#e74c3c', 
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        pointRadius: 0
       },
     ]
   };
@@ -111,32 +115,72 @@ const ProductionSimulation: React.FC = () => {
   const gatheredData = {
     labels,
     datasets: [
-      { label: nameA + ': Gathered', data: economyA.map(e => e.gathered), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
-      { label: nameB + ': Gathered', data: economyB.map(e => e.gathered), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+      { 
+        label: nameA + ' Gathered Lead', 
+        data: economyA.map((e, i) => e.gathered > economyB[i].gathered ? e.gathered - economyB[i].gathered : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB + ' Gathered Lead', 
+        data: economyA.map((e, i) => economyB[i].gathered > e.gathered ? economyB[i].gathered - e.gathered : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
     ]
   };
 
   const spentData = {
     labels,
     datasets: [
-      { label: nameA + ': Investment', data: economyA.map(e => e.spent), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
-      { label: nameB + ': Investment', data: economyB.map(e => e.spent), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+      { 
+        label: nameA + ' Investment Lead', 
+        data: economyA.map((e, i) => e.spent > economyB[i].spent ? e.spent - economyB[i].spent : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB + ' Investment Lead', 
+        data: economyA.map((e, i) => economyB[i].spent > e.spent ? economyB[i].spent - e.spent : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
     ]
   };
 
   const floatData = {
     labels,
     datasets: [
-      { label: nameA + ': Floating', data: economyA.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
-      { label: nameB + ': Floating', data: economyB.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+      { 
+        label: nameA + ' Float Lead', 
+        data: economyA.map((e, i) => {
+          const fA = e.gathered - e.spent;
+          const fB = economyB[i].gathered - economyB[i].spent;
+          return fA > fB ? fA - fB : 0;
+        }), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB + ' Float Lead', 
+        data: economyA.map((e, i) => {
+          const fA = e.gathered - e.spent;
+          const fB = economyB[i].gathered - economyB[i].spent;
+          return fB > fA ? fB - fA : 0;
+        }), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
     ]
   };
 
   const villData = {
     labels,
     datasets: [
-      { label: nameA + ': Vills', data: economyA.map(e => e.vills), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
-      { label: nameB + ': Vills', data: economyB.map(e => e.vills), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+      { 
+        label: nameA + ' Vill Lead', 
+        data: economyA.map((e, i) => e.vills > economyB[i].vills ? e.vills - economyB[i].vills : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB + ' Vill Lead', 
+        data: economyA.map((e, i) => economyB[i].vills > e.vills ? economyB[i].vills - e.vills : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
     ]
   };
 
@@ -238,34 +282,34 @@ const ProductionSimulation: React.FC = () => {
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
-        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px', width: '100%' }}>
+        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', width: '100%' }}>
           <div className="chart-wrapper" style={{ height: '300px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
             <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Army Growth over Time</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={growthData} options={commonOptions} /></div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Battle Advantage % (+A / -B)</h4>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Battle Advantage Lead % (+A / -B)</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}>
               <Line 
                 data={advantageData} 
-                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: -100, max: 100 } } }} 
+                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: 0, max: 100 } } }} 
               />
             </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Gathered Resources</h4>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Gathered Resources Lead (+A / -B)</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={gatheredData} options={commonOptions} /></div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Total Investment</h4>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Total Investment Lead (+A / -B)</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={spentData} options={commonOptions} /></div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources</h4>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources Lead (+A / -B)</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={floatData} options={balanceOptions} /></div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Villager Count</h4>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Villager Count Lead (+A / -B)</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={villData} options={commonOptions} /></div>
           </div>
         </div>

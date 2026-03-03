@@ -194,18 +194,10 @@ const Layout: React.FC = () => {
           <ArmyPanel army="b" />
         </div>
 
-        <div id="comparison" className="section-anchor" style={{ scrollMarginTop: '80px' }}>
-          <StatComparison />
-        </div>
-        <div id="battle" className="section-anchor" style={{ scrollMarginTop: '80px' }}>
-          <BattleSimulation />
-        </div>
-        <div id="production" className="section-anchor" style={{ scrollMarginTop: '80px' }}>
-          <ProductionSimulation />
-        </div>
-        <div id="scaling" className="section-anchor" style={{ scrollMarginTop: '80px' }}>
-          <EffectivenessScaling />
-        </div>
+        <StatComparison />
+        <BattleSimulation />
+        <ProductionSimulation />
+        <EffectivenessScaling />
 
         <div id="about" className="section-anchor" style={{ scrollMarginTop: '80px' }}>
           <div className="section-header">
