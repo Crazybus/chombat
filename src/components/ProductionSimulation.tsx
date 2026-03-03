@@ -745,8 +745,8 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
 
     doStep();
     timerRef.current = setTimeout(() => {
-      intervalRef.current = setInterval(doStep, 50);
-    }, 500);
+      intervalRef.current = setInterval(doStep, 80);
+    }, 600);
   };
 
   const stopRepeating = () => {
@@ -815,7 +815,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
         </div>
         
         <div className="stepper compact">
-          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'tr' : 'd', -1, step.t === 'production' ? 1 : 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>−</button>
+          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'tr' : 'd', -1, step.t === 'production' ? 1 : 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>−</button>
           <input 
             type="number" 
             value={step.t === 'production' ? (step.tr || 0) : (step.d || 0)} 
@@ -827,11 +827,11 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
             className="compact-input"
             style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
           />
-          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
+          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>+</button>
         </div>
 
         <div className="stepper compact">
-          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'v' : 'c', -1)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>−</button>
+          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'v' : 'c', -1); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>−</button>
           {step.t === 'production' ? (
             <input 
               type="number" 
@@ -850,11 +850,11 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
             />
           )}
-          <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'v' : 'c', 1)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
+          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'v' : 'c', 1); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>+</button>
         </div>
 
         <div className="stepper compact">
-          <button className="step-btn" onMouseDown={() => startRepeating('co', -1, 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>−</button>
+          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating('co', -1, 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>−</button>
           <input 
             type="number" 
             value={step.co || 0} 
@@ -862,7 +862,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
             className="compact-input"
             style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
           />
-          <button className="step-btn" onMouseDown={() => startRepeating('co', 1, 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
+          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating('co', 1, 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>+</button>
         </div>
 
         <div style={{ display: 'flex', gap: '2px', justifyContent: 'center' }}>
