@@ -36,9 +36,10 @@ ChartJS.register(
 );
 
 const ProductionSimulation: React.FC = () => {
-  const { state, analysisA, analysisB } = useSimulation();
-  const [isCollapsed, setIsCollapsed] = useState(true);
-  const [showLog, setShowLog] = useState(false);
+  const { state, analysisA, analysisB, loadPreset } = useSimulation();
+  const [isCollapsedA, setIsCollapsedA] = useState(true);
+  const [isCollapsedB, setIsCollapsedB] = useState(true);
+  const [showFullLog, setShowFullLog] = useState(false);
   const [maxTime, setMaxTime] = useState(1800); // Default 30 mins
 
   const techsById = useMemo(() => {
@@ -95,7 +96,7 @@ const ProductionSimulation: React.FC = () => {
       { 
         label: 'Battle Advantage % (+A / -B)', 
         data: advantage, 
-        borderColor: '#3498db', // Fallback
+        borderColor: '#3498db', 
         segment: {
           borderColor: (ctx: any) => {
             const val = ctx.p0.parsed.y;
@@ -121,7 +122,9 @@ const ProductionSimulation: React.FC = () => {
     labels,
     datasets: [
       { label: 'A: Float', data: economyA.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#3498db', fill: false },
+      { label: 'A: Vills', data: economyA.map(e => e.vills), borderColor: '#3498db', borderDash: [2, 2], fill: false, pointRadius: 0, borderWidth: 1 },
       { label: 'B: Float', data: economyB.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#e74c3c', fill: false },
+      { label: 'B: Vills', data: economyB.map(e => e.vills), borderColor: '#e74c3c', borderDash: [2, 2], fill: false, pointRadius: 0, borderWidth: 1 },
     ]
   };
 
@@ -160,7 +163,7 @@ const ProductionSimulation: React.FC = () => {
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}m ${s % 60}s`;
 
-  const importantEvents = mergedEvents.filter(e => e.important);
+  const displayedEvents = showFullLog ? mergedEvents : mergedEvents.filter(e => e.important);
 
   return (
     <div id="production" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
@@ -189,18 +192,37 @@ const ProductionSimulation: React.FC = () => {
       </div>
 
       <div className="build-orders-overview" style={{ marginBottom: '15px' }}>
-        <BuildOrderSummary army="a" name={nameA} timeline={state.a.tl || []} onEdit={() => setIsCollapsed(!isCollapsed)} />
-        <BuildOrderSummary army="b" name={nameB} timeline={state.b.tl || []} onEdit={() => setIsCollapsed(!isCollapsed)} />
-      </div>
-
-      <div className={`production-content ${isCollapsed ? 'collapsed' : ''}`} style={{ marginBottom: '20px' }}>
-        <div className="production-race-controls" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-           <TimelineEditor army="a" name={nameA} />
-           <TimelineEditor army="b" name={nameB} />
+        <BuildOrderSummary 
+          army="a" 
+          name={nameA} 
+          timeline={state.a.tl || []} 
+          onEdit={() => setIsCollapsedA(!isCollapsedA)} 
+          onReset={() => state.a.ps && loadPreset('a', state.a.ps)}
+        />
+        <div className={`production-content ${isCollapsedA ? 'collapsed' : ''}`} style={{ marginBottom: isCollapsedA ? '0' : '20px' }}>
+          <TimelineEditor army="a" name={nameA} />
+          {!isCollapsedA && (
+            <button className="toggle-prod-section-btn" style={{ marginTop: '10px', width: '100%' }} onClick={() => setIsCollapsedA(true)}>
+              Close Side A Build Order Editor
+            </button>
+          )}
         </div>
-        <button className="toggle-prod-section-btn" style={{ marginTop: '20px' }} onClick={() => setIsCollapsed(true)}>
-          Close Build Order Editor
-        </button>
+
+        <BuildOrderSummary 
+          army="b" 
+          name={nameB} 
+          timeline={state.b.tl || []} 
+          onEdit={() => setIsCollapsedB(!isCollapsedB)} 
+          onReset={() => state.b.ps && loadPreset('b', state.b.ps)}
+        />
+        <div className={`production-content ${isCollapsedB ? 'collapsed' : ''}`} style={{ marginBottom: isCollapsedB ? '0' : '20px' }}>
+          <TimelineEditor army="b" name={nameB} />
+          {!isCollapsedB && (
+            <button className="toggle-prod-section-btn" style={{ marginTop: '10px', width: '100%' }} onClick={() => setIsCollapsedB(true)}>
+              Close Side B Build Order Editor
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
@@ -223,36 +245,59 @@ const ProductionSimulation: React.FC = () => {
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={economyData} options={commonOptions} /></div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources (Balance)</h4>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources & Eco Units</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={balanceData} options={balanceOptions} /></div>
           </div>
         </div>
 
         <div className="matchup-report" style={{ marginTop: '20px', background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-          <h3 style={{ borderBottom: '1px solid var(--border-dim)', paddingBottom: '10px', marginBottom: '15px', color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Important Events</h3>
+          <div style={{ borderBottom: '1px solid var(--border-dim)', paddingBottom: '10px', marginBottom: '15px' }}>
+            <h3 style={{ margin: 0, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Events</h3>
+          </div>
           
-          <div className="important-events-timeline" style={{ marginBottom: '25px' }}>
-            {importantEvents.length > 0 ? (
+          <div className="event-timeline-table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
+            {displayedEvents.length > 0 ? (
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)', fontSize: '0.75rem', textTransform: 'uppercase' }}>
+                    <th style={{ padding: '8px' }}>Time</th>
+                    <th style={{ padding: '8px' }}>Side</th>
+                    <th style={{ padding: '8px', textAlign: 'center' }}>Eco (V/V)</th>
+                    <th style={{ padding: '8px', textAlign: 'center' }}>Mil (U/U)</th>
+                    <th style={{ padding: '8px' }}>Event</th>
+                  </tr>
+                </thead>
                 <tbody>
-                  {importantEvents.map((e, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  {displayedEvents.map((e, i) => (
+                    <tr key={i} className="event-row" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: e.important ? 'rgba(243, 156, 18, 0.05)' : (i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent') }}>
                       <td style={{ padding: '10px 8px', color: 'var(--text-dim)', width: '80px' }}>{formatTime(e.time)}</td>
                       <td style={{ padding: '10px 8px', fontWeight: 'bold', width: '120px' }}>
                         {e.army === 'a' ? <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span> : e.army === 'b' ? <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span> : <span style={{ color: 'var(--accent-color)' }}>System</span>}
                       </td>
-                      <td style={{ padding: '10px 8px' }}>{e.msg}</td>
-                      <td style={{ padding: '10px 8px', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                        <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>Eco:</span> <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span>/<span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
-                        {' '}<span style={{ fontSize: '0.8rem', opacity: 0.7 }}>Mil:</span> <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span>/<span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
+                      <td style={{ padding: '10px 8px', textAlign: 'center' }}>
+                        <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
                       </td>
+                      <td style={{ padding: '10px 8px', textAlign: 'center' }}>
+                        <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
+                      </td>
+                      <td style={{ padding: '10px 8px', fontWeight: e.important ? 'bold' : 'normal' }}>{e.msg}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             ) : (
-              <p style={{ color: 'var(--text-dim)', textAlign: 'center' }}>No major events detected.</p>
+              <p style={{ color: 'var(--text-dim)', textAlign: 'center' }}>No events detected.</p>
             )}
+          </div>
+
+          <div style={{ marginTop: '10px' }}>
+            <button 
+              className="nav-btn secondary" 
+              style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '10px', background: 'rgba(255,255,255,0.03)' }}
+              onClick={() => setShowFullLog(!showFullLog)}
+            >
+              <span>{showFullLog ? '🔼 Show Important Events Only' : '🔽 Show All Simulation Events'}</span>
+            </button>
           </div>
 
           <div className="investment-table-container">
@@ -301,61 +346,12 @@ const ProductionSimulation: React.FC = () => {
             </table>
           </div>
         </div>
-
-        <div className="event-log-container" style={{ marginTop: '20px' }}>
-          <button 
-            className="nav-btn" 
-            style={{ width: '100%', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '8px', background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: '10px 0', fontSize: '1rem' }} 
-            onClick={() => setShowLog(!showLog)}
-          >
-            <span style={{ transform: showLog ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s', display: 'inline-block' }}>▶</span>
-            {showLog ? 'Hide' : 'Show'} Full Event Timeline
-          </button>
-          {showLog && (
-            <div className="event-timeline-table-container" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', marginTop: '10px', maxHeight: '600px', overflowY: 'auto', border: '1px solid var(--border-dim)' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
-                <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
-                    <th style={{ padding: '8px' }}>Time</th>
-                    <th style={{ padding: '8px' }}>Side</th>
-                    <th style={{ padding: '8px', textAlign: 'center' }}>Eco (V/V)</th>
-                    <th style={{ padding: '8px', textAlign: 'center' }}>Mil (U/U)</th>
-                    <th style={{ padding: '8px' }}>Event</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {mergedEvents.map((e: any, i: number) => (
-                    <tr key={i} className="event-row" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-                      <td style={{ padding: '8px', color: 'var(--text-dim)', whiteSpace: 'nowrap' }}>{formatTime(e.time)}</td>
-                      <td style={{ padding: '8px', fontWeight: 'bold' }}>
-                        {e.army === 'a' ? (
-                          <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span>
-                        ) : e.army === 'b' ? (
-                          <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span>
-                        ) : (
-                          <span style={{ color: 'var(--accent-color)' }}>System</span>
-                        )}
-                      </td>
-                      <td style={{ padding: '8px', textAlign: 'center' }}>
-                        <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
-                      </td>
-                      <td style={{ padding: '8px', textAlign: 'center' }}>
-                        <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
-                      </td>
-                      <td style={{ padding: '8px' }}>{e.msg}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
 };
 
-const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any[], onEdit: () => void }> = ({ army, name, timeline, onEdit }) => (
+const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any[], onEdit: () => void, onReset: () => void }> = ({ army, name, timeline, onEdit, onReset }) => (
   <div 
     className="build-order-summary" 
     onClick={onEdit}
@@ -401,6 +397,14 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
       <div style={{ flex: 1, minWidth: '200px' }}>
         <StatsSummary army={army} compact={true} hoverExpand={true} />
       </div>
+      <button 
+        className="small-action-btn" 
+        onClick={(e) => { e.stopPropagation(); onReset(); }}
+        title="Refresh to default build order plan for this unit"
+        style={{ fontSize: '0.7rem', padding: '4px 8px', marginLeft: 'auto' }}
+      >
+        🔄 Refresh Plan
+      </button>
     </div>
 
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', paddingLeft: '25px', opacity: 0.8 }}>
@@ -447,8 +451,9 @@ const TechButton: React.FC<{ id: number, label: string, onClick: (id: number) =>
 );
 
 const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, name }) => {
-  const { state, updateArmy } = useSimulation();
+  const { state, updateArmy, loadPreset, analysisA, analysisB } = useSimulation();
   const armyState = state[army];
+  const unitBuildingId = (army === 'a' ? analysisA?.baseUnit?.building : analysisB?.baseUnit?.building) || 87;
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -486,7 +491,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
       co: (t.f||0)+(t.w||0)+(t.g||0),
       i: t.id.toString(),
       bt: t.building,
-      b: true,
+      b: (t.building === unitBuildingId || t.building === 109),
       lim: true // Techs are inherently "Once"
     });
   };
@@ -506,6 +511,16 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
     <div className={`prod-group army-${army}-border`} style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
       <div className="prod-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
         <h3 style={{ margin: 0 }}>{name}</h3>
+        {armyState.ps && (
+          <button 
+            className="nav-btn secondary" 
+            onClick={() => loadPreset(army, armyState.ps!)}
+            title="Refresh to default build order plan for this unit"
+            style={{ fontSize: '0.75rem', padding: '4px 12px' }}
+          >
+            🔄 Refresh Default Plan
+          </button>
+        )}
       </div>
       
       <div style={{ marginBottom: '15px' }}>
@@ -520,7 +535,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
             options={Object.values(techs).map(t => ({ i: t.id.toString(), name: t.name, time: t.time, cost: (t.f||0)+(t.w||0)+(t.g||0), bt: t.building, lim: true }))}
             onSelect={(t) => addStep('tech', t)}
           />
-          <button className="add-step-btn" onClick={() => addStep('villagers', { name: 'Villagers', v: 1, d: 25, lim: false })}>+ Vills</button>
+          <button className="add-step-btn" onClick={() => addStep('villagers', { name: 'Villagers', v: 1, d: 25, lim: false, cost: 50 })}>+ Vills</button>
           <button className="add-step-btn" onClick={() => addStep('delay', { name: 'Idle Time', d: 30, lim: true })}>+ Delay</button>
           <button className="add-step-btn" onClick={() => addStep('units', { name: 'Wait for units', c: 5, lim: true })}>+ Wait</button>
           <button className="add-step-btn" onClick={() => addStep('production', { name: `${name} Production`, v: 1, tr: 30, lim: false, d: 0 })}>+ {name} Production</button>
@@ -571,11 +586,12 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Archers</span>
             <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Archer Upgrades" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🏹</span>
+              <span title="Archer Attack" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🏹</span>
               <TechButton id={199} label="II" onClick={addTechById} />
               <TechButton id={200} label="III" onClick={addTechById} />
               <TechButton id={201} label="IV" onClick={addTechById} />
               <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)', margin: '0 2px' }} />
+              <span title="Archer Armor" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🛡️</span>
               <TechButton id={211} label="II" onClick={addTechById} />
               <TechButton id={212} label="III" onClick={addTechById} />
               <TechButton id={219} label="IV" onClick={addTechById} />
@@ -599,7 +615,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           <SortableContext items={(armyState.tl || []).map((_, i) => `step-${army}-${i}`)} strategy={verticalListSortingStrategy}>
             <div className="production-timeline-table" style={{ display: 'flex', flexDirection: 'column' }}>
               {armyState.tl?.map((step, idx) => (
-                <SortableStep key={idx} id={`step-${army}-${idx}`} army={army} index={idx} step={step} />
+                <SortableStep key={idx} id={`step-${army}-${idx}`} army={army} index={idx} step={step} unitBuildingId={unitBuildingId} />
               ))}
             </div>
           </SortableContext>
@@ -609,7 +625,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   );
 };
 
-const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step: any }> = ({ id, army, index, step }) => {
+const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step: any, unitBuildingId: number }> = ({ id, army, index, step, unitBuildingId }) => {
   const { updateArmy, state } = useSimulation();
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
   const timerRef = useRef<any>(null);
@@ -680,7 +696,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
   }, [step.t]);
 
   const isTCActive = !!(step.b && step.bt === 109);
-  const isUnitActive = !!(step.b && step.bt !== 109 && step.b);
+  const isUnitActive = !!(step.b && step.bt === unitBuildingId && step.b);
 
   return (
     <div ref={setNodeRef} style={style} className="timeline-row" >
@@ -727,7 +743,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               onChange={(e) => update({ v: parseInt(e.target.value) || 1 })} 
               className="compact-input"
               title="Multiplier / Capacity"
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
+              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-color)', textAlign: 'center' }} 
             />
           ) : (
             <input 
@@ -735,7 +751,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               value={step.c || 1} 
               onChange={(e) => update({ c: parseInt(e.target.value) || 1 })} 
               className="compact-input"
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
+              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-color)', textAlign: 'center' }} 
             />
           )}
           <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'v' : 'c', 1)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
@@ -774,7 +790,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
                   color: isUnitActive ? 'black' : 'var(--text-dim)',
                   cursor: 'pointer', fontWeight: 'bold'
                 }}
-                onClick={() => toggleBlock(101)}
+                onClick={() => toggleBlock(unitBuildingId)}
               >UNIT</button>
             </>
           ) : null}

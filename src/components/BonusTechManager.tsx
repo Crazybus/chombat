@@ -121,7 +121,7 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
                       <div key={idx} className="applied-bonus-effect">
                         <input
                           type="checkbox"
-                          checked={item.e[idx]}
+                          checked={!!item.e[idx]}
                           onChange={() => toggleEffect(item.i, idx)}
                         />
                         <label>{label}</label>

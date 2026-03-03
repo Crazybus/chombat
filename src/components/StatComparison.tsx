@@ -91,12 +91,12 @@ const StatComparison: React.FC = () => {
     { label: 'HP (base + upgrades)', a: formatWithBase(uA.hpPerUnit, baseA?.hp || uA.hpPerUnit), b: formatWithBase(uB.hpPerUnit, baseB?.hp || uB.hpPerUnit) },
     { label: 'Attack (base + upgrades)', a: formatWithBase(nA.base, getBaseAtk(uA, baseA)), b: formatWithBase(nB.base, getBaseAtk(uB, baseB)) },
     { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0) },
-    { label: 'Armor', a: formatWithBase(nA.arm, getBaseArm(uA, baseA)), b: formatWithBase(nB.arm, getBaseArm(uB, baseB)), inv: true },
+    { label: 'Armor', a: formatWithBase(nA.arm, getBaseArm(uA, baseA)), b: formatWithBase(nB.arm, getBaseArm(uB, baseB)) },
     { label: 'Damage Per Hit', a: `${nA.net.toFixed(0)} (${nA.base.toFixed(0)} - ${nA.arm.toFixed(0)} + ${nA.bonus.toFixed(0)})`, b: `${nB.net.toFixed(0)} (${nB.base.toFixed(0)} - ${nB.arm.toFixed(0)} + ${nB.bonus.toFixed(0)})` },
-    { label: 'Hits to Kill', a: hitsToKillA.toString(), b: hitsToKillB.toString(), inv: true },
+    { label: 'Hits to Kill', a: hitsToKillA.toString(), b: hitsToKillB.toString() },
     { label: 'Hits Performed', a: (winner === nameA ? hitsToKillA : Math.floor(duration / uA.reload)).toString(), b: (winner === nameB ? hitsToKillB : Math.floor(duration / uB.reload)).toString() },
-    { label: 'Time to Kill', a: timeToKillA.toFixed(1) + 's', b: timeToKillB.toFixed(1) + 's', inv: true },
-    { label: 'Attack Reload Time', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2), inv: true },
+    { label: 'Time to Kill', a: timeToKillA.toFixed(1) + 's', b: timeToKillB.toFixed(1) + 's' },
+    { label: 'Attack Reload Time', a: uA.reload.toFixed(2), b: uB.reload.toFixed(2) },
     { label: 'Damage Per Second', a: (nA.net / uA.reload).toFixed(2), b: (nB.net / uB.reload).toFixed(2) },
   ];
 
@@ -132,8 +132,8 @@ const StatComparison: React.FC = () => {
             const diff = vA - vB;
             
             let diffColor = 'var(--text-dim)';
-            if (diff > 0) diffColor = r.inv ? 'var(--danger-color)' : 'var(--success-color)';
-            else if (diff < 0) diffColor = r.inv ? 'var(--success-color)' : 'var(--danger-color)';
+            if (diff > 0) diffColor = 'var(--success-color)';
+            else if (diff < 0) diffColor = 'var(--danger-color)';
 
             const diffDisplay = diff === 0 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') || r.label.includes('Time') || r.label.includes('Reload') ? 2 : 0);
 

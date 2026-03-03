@@ -40,37 +40,47 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
     <section className="army-panel" id={`army-${army}`}>
       <div className="header-row">
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-          <div className="name-edit-group">
+          <div className="name-edit-group" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <UnitSelector army={army} onSelect={(id) => loadPreset(army, id)} />
             <button
-              className="toggle-stats-btn"
+              className="nav-btn secondary"
               onClick={() => setIsConfigCollapsed(!isConfigCollapsed)}
               style={{ 
-                padding: '2px 6px', 
-                fontSize: '0.8rem',
+                padding: '4px 10px', 
+                fontSize: '0.75rem',
+                height: '32px',
+                whiteSpace: 'nowrap',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                gap: '5px'
               }}
-              title={isConfigCollapsed ? 'Edit Unit Stats' : 'Close Editor'}
+              title={isConfigCollapsed ? 'Modify Unit Stats' : 'Close Editor'}
             >
-              {isConfigCollapsed ? '✏️' : 'Done'}
+              {isConfigCollapsed ? '⚙️ Modify Stats' : 'Done'}
             </button>
           </div>
         </div>
         
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
-          <CivSelector army={army} />
-          <div className="army-age-controls" style={{ display: 'flex', gap: '5px' }}>
-            {['1', '2', '3', '4'].map(age => (
-              <button
-                key={age}
-                className={`age-btn ${armyState.age === age ? 'active' : ''}`}
-                onClick={() => handleAgeChange(age)}
-              >
-                {age === '1' ? 'I' : age === '2' ? 'II' : age === '3' ? 'III' : 'IV'}
-              </button>
-            ))}
+        <div style={{ display: 'flex', gap: '15px', alignItems: 'center', marginTop: '10px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Civ:</span>
+            <CivSelector army={army} />
+          </div>
+          
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Age:</span>
+            <div className="army-age-controls" style={{ display: 'flex', gap: '5px' }}>
+              {['1', '2', '3', '4'].map(age => (
+                <button
+                  key={age}
+                  className={`age-btn ${armyState.age === age ? 'active' : ''}`}
+                  onClick={() => handleAgeChange(age)}
+                  title={`Age ${age}`}
+                >
+                  {age === '1' ? 'I' : age === '2' ? 'II' : age === '3' ? 'III' : 'IV'}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

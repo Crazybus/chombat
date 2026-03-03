@@ -44,14 +44,24 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
 
   return (
     <div className="civ-selector" ref={containerRef} style={{ position: 'relative' }}>
-      <span 
-        className="civ-label" 
+      <button 
+        className="nav-btn secondary"
         title="Click to change civilization"
         onClick={() => setIsOpen(!isOpen)}
-        style={{ cursor: 'pointer' }}
+        style={{ 
+          height: '32px', 
+          padding: '0 12px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '8px',
+          background: 'var(--panel-bg-alt)',
+          border: '1px solid var(--border-color)',
+          fontSize: '0.85rem'
+        }}
       >
-        ⚔️ <span>{formatCivName(armyState.cv || GENERIC_CIV)}</span>
-      </span>
+        <span>🏰 {formatCivName(armyState.cv || GENERIC_CIV)}</span>
+        <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>▼</span>
+      </button>
 
       {isOpen && (
         <div className="civ-list" style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 1000, minWidth: '200px' }}>
