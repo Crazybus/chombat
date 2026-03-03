@@ -1796,7 +1796,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 3
     },
     "bow_saw_requirement": {
         "name": "Bow Saw requirement",
@@ -8759,7 +8759,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 3
     },
     "caravanserai_make_avail": {
         "name": "Caravanserai (make avail)",
@@ -9331,7 +9331,7 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
-        "age": 3
+        "age": 4
     },
     "chemistry_+_torsion": {
         "name": "Chemistry + Torsion",
@@ -9814,7 +9814,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 4
     },
     "crop_rotation_requirement": {
         "name": "Crop Rotation requirement",
@@ -10167,7 +10167,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 1
+        "age": 2
     },
     "dragon_ship": {
         "name": "Dragon Ship",
@@ -12503,7 +12503,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 1
+        "age": 2
     },
     "fishing_ship": {
         "name": "Fishing Ship",
@@ -13202,7 +13202,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 3
     },
     "gillnets_requirement": {
         "name": "Gillnets requirement",
@@ -13232,7 +13232,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 1
+        "age": 2
     },
     "gold_shaft_mining": {
         "name": "Gold Shaft Mining",
@@ -13247,7 +13247,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 3
     },
     "gold_shaft_mining_requirement": {
         "name": "Gold Shaft Mining requirement",
@@ -13450,7 +13450,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 4
     },
     "gurjaras": {
         "name": "Gurjaras",
@@ -13540,7 +13540,7 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
-        "age": 2
+        "age": 3
     },
     "hand_cart_requirement": {
         "name": "Hand Cart requirement",
@@ -13753,7 +13753,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 3
     },
     "heavy_plow_requirement": {
         "name": "Heavy Plow requirement",
@@ -14004,7 +14004,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 1
+        "age": 2
     },
     "houfnice": {
         "name": "Houfnice",
@@ -17558,7 +17558,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 4
     },
     "pavise": {
         "name": "Pavise",
@@ -20800,7 +20800,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 1
+        "age": 2
     },
     "stone_mining_food_generation_increase,_puru_civ_bonus": {
         "name": "Stone Mining food generation increase, Puru Civ Bonus",
@@ -20845,7 +20845,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 2
+        "age": 3
     },
     "stone_shaft_mining_food_generation_increase,_puru_civ_bonus": {
         "name": "Stone Shaft Mining food generation increase, Puru Civ Bonus",
@@ -21973,7 +21973,7 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [],
-        "age": 3
+        "age": 4
     },
     "two_man_saw_requirement": {
         "name": "Two-Man Saw requirement",
@@ -22408,7 +22408,7 @@ export const techs: Record<string, TechData> = {
                 "c": -1
             }
         ],
-        "age": 1
+        "age": 2
     },
     "white_feather_guard_make_avail": {
         "name": "White Feather Guard (make avail)",

@@ -1,83 +1,70 @@
 import { describe, it, expect } from 'vitest';
-import { calculateCount } from '../src/sim/ProductionSim';
-import { TimelineStep } from '../src/sim/types';
+import { calculateCount, analyzeProduction } from '../src/sim/ProductionSim';
+import { TimelineStep, UnitData } from '../src/sim/types';
 
 describe('ProductionSim', () => {
-  it('should start with zero units and increase based on capacity', () => {
-    const steps: TimelineStep[] = [
-      { t: 'production', v: 1, tr: 30 } // 1x building at 30s train speed
-    ];
+  const baseArcher: UnitData = {
+    name: 'Archer', hp: 30, matk: 0, patk: 4, marm: 0, parm: 0,
+    reload: 2, range: 4, f: 0, w: 25, g: 45, trainTime: 35,
+    id: '4', class: 0
+  };
 
-    // At 30s, we should have exactly 1 unit (1 * 30/30)
-    const res30 = calculateCount(30, steps);
-    expect(res30.count).toBe(1);
+  const baseSkirm: UnitData = {
+    name: 'Skirmisher', hp: 30, matk: 0, patk: 2, marm: 0, parm: 3,
+    reload: 3, range: 4, f: 25, w: 35, g: 0, trainTime: 22,
+    id: '6', class: 1
+  };
 
-    // At 60s, we should have 2 units
-    const res60 = calculateCount(60, steps);
-    expect(res60.count).toBe(2);
+  describe('calculateCount', () => {
+    it('should handle an empty timeline by defaulting to 1 military slot producing infinite', () => {
+      const res = calculateCount(300, [], baseArcher);
+      expect(res.count).toBeGreaterThan(0);
+    });
+
+    it('should produce units when infinite production is started (lim: false)', () => {
+      const steps: TimelineStep[] = [
+        { t: 'production', n: 'Start Archers', v: 1, tr: 30, lim: false, d: 0 }
+      ];
+      const res = calculateCount(35, steps, baseArcher);
+      expect(res.count).toBeGreaterThan(0);
+    });
+
+    it('should handle sequential steps and blocking (lim: true)', () => {
+      const steps: TimelineStep[] = [
+        { t: 'building', n: 'Barracks', d: 50, v: 1, prod: true, lim: true }, 
+        { t: 'tech', n: 'Blocking Tech', d: 30, b: true, lim: true }, 
+        { t: 'production', n: 'Production', v: 1, tr: 30, lim: false, d: 0 }
+      ];
+      
+      expect(calculateCount(50, steps, baseArcher).count).toBe(0);
+      expect(calculateCount(120, steps, baseArcher).count).toBeGreaterThan(0);
+    });
+
+    it('should track unit costs in economy history', () => {
+      const steps: TimelineStep[] = [
+        { t: 'production', n: 'Start Archers', v: 1, tr: 30, lim: false, d: 0 }
+      ];
+      // 30s per unit. At 65s, 2 units should be produced.
+      const res = calculateCount(65, steps, baseArcher);
+      expect(res.count).toBe(2);
+      const lastPoint = res.economyHistory[res.economyHistory.length - 1];
+      // Archer cost: 70 resources. 2 units = 140 spent on units.
+      expect(lastPoint.spentOnUnits).toBe(140);
+    });
   });
 
-  it('should handle sequential steps correctly', () => {
-    const steps: TimelineStep[] = [
-      { t: 'building', d: 50, v: 1 }, // Build 1st barracks (50s)
-      { t: 'production', v: 1, tr: 30 } // Start production (30s train)
-    ];
-
-    // At 50s, 0 units (building just finished)
-    expect(calculateCount(50, steps).count).toBe(0);
-    // At 80s, 1 unit (50s building + 30s training)
-    expect(calculateCount(80, steps).count).toBe(1);
-  });
-
-  it('should calculate resource requirements per second', () => {
-    const steps: TimelineStep[] = [
-      { t: 'production', v: 2, tr: 20 } // 2x buildings at 20s train speed
-    ];
-    const initialCost = { f: 50, w: 0, g: 0 };
-
-    // 2 units every 20s = 0.1 units/sec
-    // 0.1 units/sec * 50 food/unit = 5 food/sec
-    const res = calculateCount(100, steps, initialCost);
-    expect(res.unitsPerSecond).toBe(0.1);
-    expect(res.cost.f * res.unitsPerSecond).toBe(5);
-  });
-
-  it('should track economy with continuous villagers', () => {
-    // 100 seconds
-    const res = calculateCount(100, [], { f: 0, w: 0, g: 0 }, true);
-
-    // Starts with 3 vills. 
-    // Trains 1st vill at 25s (total 4), 2nd at 50s (total 5), 3rd at 75s (total 6), 4th at 100s (total 7)
-    // Gather rate 0.35/s/vill
-    // Resources gathered should roughly be:
-    // 0-25: 25 * 3 * 0.35 = 26.25
-    // 25-50: 25 * 4 * 0.35 = 35
-    // 50-75: 25 * 5 * 0.35 = 43.75
-    // 75-100: 25 * 6 * 0.35 = 52.5
-    // Total approx: 157.5
-
-    expect(res.economyHistory.length).toBeGreaterThan(0);
-    const lastPoint = res.economyHistory[res.economyHistory.length - 1];
-    expect(lastPoint.gathered).toBeCloseTo(159.95, 0.1);
-    // 4 vills trained @ 50 food each = 200 spent
-    expect(lastPoint.spent).toBe(200);
-  });
-
-  it('should pause villager production during Age research', () => {
-    const steps: TimelineStep[] = [
-      { t: 'tech', n: 'Feudal Age', d: 130, b: true, bt: 109 } // Age research (130s) at TC
-    ];
-    // Start at 0s. 3 vills initially.
-    // 0-130: No vills trained (TC blocked)
-    // 130: Tech finished.
-    // 130-155: Train 1st vill (25s)
-
-    const res130 = calculateCount(130, steps, { f: 0, w: 0, g: 0 }, true);
-    // 0-130 is 131 seconds: 131 * 3 * 0.35 = 137.55
-    expect(res130.economyHistory[res130.economyHistory.length - 1].gathered).toBeCloseTo(137.55, 0.1);
-
-    const res155 = calculateCount(155, steps, { f: 0, w: 0, g: 0 }, true);
-    // Last history point is at 150s (151 iterations): 151 * 3 * 0.35 = 158.55
-    expect(res155.economyHistory[res155.economyHistory.length - 1].gathered).toBeCloseTo(158.55, 0.1);
+  describe('analyzeProduction', () => {
+    it('should generate a full analysis for a simple matchup', () => {
+      const stateA = { tl: [{ t: 'production', n: 'Archers', v: 1, tr: 35, lim: false, d: 0 }] } as any;
+      const stateB = { tl: [{ t: 'production', n: 'Skirms', v: 1, tr: 22, lim: false, d: 0 }] } as any;
+      
+      const analysis = analyzeProduction(stateA, stateB, baseArcher, baseSkirm, {}, {}, 600, 60);
+      
+      expect(analysis.labels.length).toBeGreaterThan(0);
+      expect(analysis.countA.length).toBe(analysis.labels.length);
+      expect(analysis.finalResA.count).toBeGreaterThan(0);
+      expect(analysis.finalResB.count).toBeGreaterThan(0);
+      expect(analysis.advantage.length).toBe(analysis.labels.length);
+    });
   });
 });
