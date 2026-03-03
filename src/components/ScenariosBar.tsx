@@ -5,18 +5,29 @@ import { featuredScenarios, scenarios } from '../data/scenarios';
 const ScenariosBar: React.FC = () => {
   const { state, loadScenario, resetToNewScenario } = useSimulation();
   const [search, setSearch] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const allScenarios = Object.entries(scenarios).map(([id, s]: [string, any]) => ({ id, ...s }));
-  const filtered = search.length > 1 
+  const filtered = search.length >= 1 
     ? allScenarios.filter(s => s.name.toLowerCase().includes(search.toLowerCase()))
     : [];
 
   return (
-    <div className="scenarios-bar" style={{ display: 'flex', gap: '10px', alignItems: 'center', width: '100%', flexWrap: 'nowrap' }}>
-      <span style={{ fontWeight: 'bold', color: 'var(--accent-color)', fontSize: '0.8rem', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-        Scenarios:
-      </span>
-      <div id="featured-scenarios-container" style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '5px' }}>
+    <div className="scenarios-bar">
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', width: '100%', flexWrap: 'wrap' }}>
+        <span className="scenarios-label">
+          Scenarios:
+        </span>
+        <button 
+          className="small-action-btn" 
+          onClick={() => setIsExpanded(!isExpanded)}
+          style={{ padding: '2px 8px', fontSize: '0.7rem' }}
+        >
+          {isExpanded ? 'Collapse' : 'Show All'}
+        </button>
+      </div>
+      
+      <div id="featured-scenarios-container" className={`featured-scenarios ${isExpanded ? 'expanded' : ''}`}>
         {featuredScenarios.map(id => {
           const scenario = (scenarios as any)[id];
           if (!scenario) return null;
@@ -25,19 +36,6 @@ const ScenariosBar: React.FC = () => {
             <button
               key={id}
               className={`scenario-btn ${isActive ? 'active' : ''}`}
-              style={{
-                background: isActive ? 'var(--accent-color)' : 'var(--btn-bg)',
-                color: isActive ? 'black' : 'var(--btn-text)',
-                borderColor: isActive ? 'var(--accent-color)' : 'var(--border-color)',
-                fontWeight: isActive ? 'bold' : 'normal',
-                whiteSpace: 'nowrap',
-                height: '32px',
-                padding: '0 12px',
-                borderRadius: '4px',
-                border: '1px solid var(--border-color)',
-                cursor: 'pointer',
-                fontSize: '0.85rem'
-              }}
               onClick={() => loadScenario(id)}
             >
               {scenario.name}
@@ -45,38 +43,27 @@ const ScenariosBar: React.FC = () => {
           );
         })}
         {state.name === 'Shared Scenario' && !state.sid && (
-          <button className="scenario-btn active" style={{ background: 'var(--accent-color)', color: 'black', fontWeight: 'bold', height: '32px', whiteSpace: 'nowrap' }}>
+          <button className="scenario-btn active">
             🔗 Shared Scenario
           </button>
         )}
       </div>
 
-      <div className="searchable-scenario" style={{ flex: 1, display: 'flex', gap: '8px', position: 'relative' }}>
+      <div className="searchable-scenario">
         <input 
           type="text" 
           className="scenario-search" 
-          placeholder="Search more scenarios..." 
+          placeholder="Search scenarios..." 
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ 
-            flex: 1, 
-            height: '32px', 
-            background: 'var(--input-bg)', 
-            color: 'var(--text-color)', 
-            border: '1px solid var(--border-color)', 
-            borderRadius: '4px', 
-            padding: '0 12px',
-            fontSize: '0.85rem'
-          }} 
         />
         {filtered.length > 0 && (
-          <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, background: 'var(--panel-bg)', border: '1px solid var(--border-color)', zIndex: 1000, boxShadow: '0 4px 12px rgba(0,0,0,0.5)', borderRadius: '4px', marginTop: '5px', maxHeight: '300px', overflowY: 'auto' }}>
+          <div className="scenario-list">
             {filtered.map(s => (
               <div 
                 key={s.id} 
                 onClick={() => { loadScenario(s.id); setSearch(''); }}
-                style={{ padding: '10px', cursor: 'pointer', borderBottom: '1px solid var(--border-dim)' }}
-                className="preset-item"
+                className="scenario-item"
               >
                 {s.name}
               </div>
@@ -86,7 +73,7 @@ const ScenariosBar: React.FC = () => {
         <button 
           id="new-scenario-btn" 
           className="nav-btn" 
-          style={{ background: 'var(--color-pos)', color: 'white', height: '32px', padding: '0 15px', whiteSpace: 'nowrap' }}
+          style={{ background: 'var(--color-pos)', color: 'white' }}
           onClick={() => {
             if (window.confirm('Create a new scenario? This will clear all current settings.')) {
               resetToNewScenario();

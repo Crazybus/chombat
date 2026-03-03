@@ -97,6 +97,7 @@ const EffectivenessScaling: React.FC = () => {
     responsive: true,
     maintainAspectRatio: false,
     animation: { duration: 0 },
+    interaction: { intersect: false, mode: 'index' as const },
     scales: { 
       y: { 
         min: 0, 
@@ -105,17 +106,23 @@ const EffectivenessScaling: React.FC = () => {
         ticks: { color: '#888', font: { size: 10 } }
       },
       x: { 
-        grid: { color: 'rgba(255,255,255,0.05)' },
-        ticks: { color: '#888', font: { size: 10 } }
+        grid: { color: 'rgba(255,255,255,0.05)' }, 
+        ticks: { 
+          color: '#888', 
+          maxTicksLimit: 8, 
+          maxRotation: 45, 
+          minRotation: 0,
+          font: { size: 10 } 
+        } 
       }
     },
     plugins: {
       legend: { 
         position: 'top' as const,
-        labels: { color: '#e0e0e0', boxWidth: 10, font: { size: 11 } }
+        labels: { color: '#e0e0e0', font: { size: 11 } }
       },
     },
-    elements: { line: { tension: 0.2, borderWidth: 2 }, point: { radius: 3, hoverRadius: 5 } }
+    elements: { line: { tension: 0.1, borderWidth: 2 }, point: { radius: 0 } }
   };
 
   const createChartData = (res: any) => ({
@@ -125,19 +132,18 @@ const EffectivenessScaling: React.FC = () => {
         label: nameA + ' % HP', 
         data: res.hpA, 
         borderColor: '#3498db', 
-        backgroundColor: 'rgba(52, 152, 219, 0.1)', 
+        backgroundColor: 'rgba(52, 152, 219, 0.2)', 
         fill: true 
       },
       { 
         label: nameB + ' % HP', 
         data: res.hpB, 
         borderColor: '#e74c3c', 
-        backgroundColor: 'rgba(231, 76, 60, 0.1)', 
+        backgroundColor: 'rgba(231, 76, 60, 0.2)', 
         fill: true 
       },
     ]
   });
-
   return (
     <div id="scaling" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
@@ -146,15 +152,15 @@ const EffectivenessScaling: React.FC = () => {
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', width: '100%' }}>
           {/* 1vX Section */}
-          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '20px', height: '420px' }}>
-            <div className="table-container" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-              <h3 style={{ color: 'var(--accent-color)', marginBottom: '10px', fontSize: '1rem' }}>1 {nameA} vs X {nameB}</h3>
+          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', minHeight: '420px', width: '100%' }}>
+            <div className="chart-wrapper" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              <h3 style={{ color: 'var(--accent-color)', marginBottom: '8px', fontSize: '0.95rem' }}>1 {nameA} vs X {nameB}</h3>
               <div style={{ flex: 1, overflowY: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)', position: 'sticky', top: 0, background: 'var(--panel-bg)', zIndex: 1 }}>
+                    <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)', position: 'sticky', top: 0, background: '#111', zIndex: 1 }}>
                       <th style={{ padding: '8px' }}>Ratio</th>
                       <th style={{ padding: '8px' }}>Survival Result</th>
                     </tr>
@@ -172,8 +178,8 @@ const EffectivenessScaling: React.FC = () => {
                 </table>
               </div>
             </div>
-            <div className="chart-wrapper" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-              <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)', textAlign: 'center', fontSize: '0.9rem' }}>Efficiency Curve</h4>
+            <div className="chart-wrapper" style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
+              <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', textAlign: 'center', fontSize: '0.9rem' }}>Efficiency Curve</h4>
               <div className="chart-container" style={{ flex: 1, position: 'relative', minHeight: 0 }}>
                 <Line data={createChartData(res1vX)} options={commonOptions} />
               </div>
@@ -181,13 +187,13 @@ const EffectivenessScaling: React.FC = () => {
           </div>
 
           {/* Xv1 Section */}
-          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '20px', height: '420px' }}>
-            <div className="table-container" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-              <h3 style={{ color: 'var(--accent-color)', marginBottom: '10px', fontSize: '1rem' }}>X {nameA} vs 1 {nameB}</h3>
+          <div className="scaling-section" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', minHeight: '420px', width: '100%' }}>
+            <div className="chart-wrapper" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+              <h3 style={{ color: 'var(--accent-color)', marginBottom: '8px', fontSize: '0.95rem' }}>X {nameA} vs 1 {nameB}</h3>
               <div style={{ flex: 1, overflowY: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.8rem' }}>
                   <thead>
-                    <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)', position: 'sticky', top: 0, background: 'var(--panel-bg)', zIndex: 1 }}>
+                    <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)', position: 'sticky', top: 0, background: '#111', zIndex: 1 }}>
                       <th style={{ padding: '8px' }}>Ratio</th>
                       <th style={{ padding: '8px' }}>Survival Result</th>
                     </tr>
@@ -205,8 +211,8 @@ const EffectivenessScaling: React.FC = () => {
                 </table>
               </div>
             </div>
-            <div className="chart-wrapper" style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-              <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)', textAlign: 'center', fontSize: '0.9rem' }}>Efficiency Curve</h4>
+            <div className="chart-wrapper" style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
+              <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', textAlign: 'center', fontSize: '0.9rem' }}>Efficiency Curve</h4>
               <div className="chart-container" style={{ flex: 1, position: 'relative', minHeight: 0 }}>
                 <Line data={createChartData(resXv1)} options={commonOptions} />
               </div>

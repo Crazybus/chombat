@@ -39,8 +39,8 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
   return (
     <section className="army-panel" id={`army-${army}`}>
       <div className="header-row">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-          <div className="name-edit-group" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div className="header-row-group">
+          <div className="header-row-item">
             <UnitSelector army={army} onSelect={(id) => loadPreset(army, id)} />
             <button
               className="nav-btn secondary"
@@ -61,15 +61,15 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
           </div>
         </div>
         
-        <div style={{ display: 'flex', gap: '15px', alignItems: 'center', marginTop: '10px', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Civ:</span>
+        <div className="header-row-group">
+          <div className="header-row-item">
+            <span className="stat-label">Civ:</span>
             <CivSelector army={army} />
           </div>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Age:</span>
-            <div className="army-age-controls" style={{ display: 'flex', gap: '5px' }}>
+          <div className="header-row-item">
+            <span className="stat-label">Age:</span>
+            <div className="army-age-controls">
               {['1', '2', '3', '4'].map(age => (
                 <button
                   key={age}

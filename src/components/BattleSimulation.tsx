@@ -66,17 +66,17 @@ const BattleSimulation: React.FC = () => {
       <div className="ratio-bar">
         <ArmyCounter army="a" analysis={analysisA} count={state.a.c || 1} />
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '140px' }}>
-          <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualResources}>Equal Resources</button>
-          <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualProduction}>Equal Prod Time</button>
-          <button className="nav-btn" style={{ background: 'var(--btn-bg)', color: 'var(--text-color)', fontSize: '0.7rem' }} onClick={setEqualFight}>Equal Fight</button>
+        <div className="simulation-actions">
+          <button className="nav-btn secondary" onClick={setEqualResources}>Equal Resources</button>
+          <button className="nav-btn secondary" onClick={setEqualProduction}>Equal Prod Time</button>
+          <button className="nav-btn secondary" onClick={setEqualFight}>Equal Fight</button>
         </div>
 
         <ArmyCounter army="b" analysis={analysisB} count={state.b.c || 1} />
       </div>
 
       <section id="results" className="results-area" style={{ width: '100%' }}>
-        <div id="overall-result" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center', color }}>
+        <div id="overall-result" style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '15px', textAlign: 'center', color, overflowWrap: 'anywhere' }}>
           Winner: {winA ? nameA : nameB} ({duration.toFixed(1)}s)
         </div>
         <div id="stat-summary" style={{ textAlign: 'center', marginBottom: '20px' }}>

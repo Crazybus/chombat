@@ -52,6 +52,20 @@ export interface ProductionAnalysisResult {
   mergedEvents: ProductionEvent[];
 }
 
+export function smooth(arr: number[], windowSize: number = 5): number[] {
+  const result: number[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    let sum = 0;
+    let count = 0;
+    for (let j = Math.max(0, i - windowSize + 1); j <= i; j++) {
+      sum += arr[j];
+      count++;
+    }
+    result.push(sum / count);
+  }
+  return result;
+}
+
 export function analyzeProduction(
   stateA: ArmyState,
   stateB: ArmyState,
@@ -270,16 +284,17 @@ export function calculateCount(
             continue;
           }
         } else {
-          const count = (step.t === 'building' || step.t === 'villagers') ? (step.c || 1) : 1;
-          const cost = ((step.f || 0) + (step.w || 0) + (step.g || 0) + (step.co || 0)) * count;
+          // Buildings and Techs spend upfront. Villagers and Production spend per-unit in the loop.
+          const count = step.t === 'building' ? (step.c || 1) : 1;
+          const isUpfront = step.t === 'building' || step.t === 'tech';
+          const cost = isUpfront ? (((step.f || 0) + (step.w || 0) + (step.g || 0) + (step.co || 0)) * count) : 0;
+          
           if (gatheredTotal - spentTotal >= cost) {
             step.started = true;
             step.startTime = s;
             spentTotal += cost;
-            if (step.t === 'villagers') spentOnVillagers += cost;
-            else if (step.t === 'building') spentOnBuildings += cost;
+            if (step.t === 'building') spentOnBuildings += cost;
             else if (step.t === 'tech') spentOnTechs += cost;
-            else if (step.t === 'production') spentOnUnits += cost;
             
             if (step.lim || step.b) {
               let msg = "";
@@ -321,8 +336,7 @@ export function calculateCount(
             if (step.prod) militaryCapacity += count;
             if (step.bt === 109) tcCapacity += count;
           } else if (step.t === 'villagers') {
-            if (step.lim) villagers += count;
-            else tcContinuous = true;
+            if (!step.lim) tcContinuous = true;
           } else if (step.t === 'production') {
             trainTime = step.tr || trainTime;
             militaryCapacity += (step.v || 0);
@@ -348,8 +362,12 @@ export function calculateCount(
     let activeMilitary = militaryCapacity;
     const runningStep = steps[currentStepIdx];
     if (runningStep && runningStep.started && !runningStep.finished && runningStep.b) {
-      if (runningStep.bt === 109) activeTCs = Math.max(0, activeTCs - 1);
-      else activeMilitary = Math.max(0, activeMilitary - 1);
+      // Production/Villager steps shouldn't block themselves from using the capacity they need
+      if (runningStep.bt === 109) {
+        if (runningStep.t !== 'villagers') activeTCs = Math.max(0, activeTCs - 1);
+      } else {
+        if (runningStep.t !== 'production') activeMilitary = Math.max(0, activeMilitary - 1);
+      }
     }
 
     if (activeTCs > 0) {
@@ -361,8 +379,9 @@ export function calculateCount(
     while (tcProgress >= 0.99) {
       villagers++;
       tcProgress -= 1;
-      spentTotal += 50;
-      spentOnVillagers += 50;
+      const vCost = (runningStep?.t === 'villagers' && runningStep.co !== undefined) ? runningStep.co : 50;
+      spentTotal += vCost;
+      spentOnVillagers += vCost;
     }
 
     if (activeMilitary > 0 && trainTime > 0) {

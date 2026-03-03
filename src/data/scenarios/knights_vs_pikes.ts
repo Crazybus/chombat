@@ -7,7 +7,7 @@ export const knights_vs_pikes = {
         "c": 20,
         "age": "3",
         "tl": [
-            { "t": "villagers", "n": "Villagers", "v": 1, "d": 25, "lim": false },
+            { "t": "villagers", "n": "Villagers", "v": 1, "d": 25, "lim": false, "co": 50 },
             { "t": "tech", "n": "Feudal Age", "d": 130, "c": 1, "co": 500, "i": "101", "bt": 109, "b": true, "lim": true },
             { "t": "tech", "n": "Castle Age", "d": 160, "c": 1, "co": 1000, "i": "102", "bt": 109, "b": true, "lim": true },
             { "t": "building", "n": "Stable", "d": 50, "c": 2, "co": 350, "prod": true, "i": "101" },
@@ -25,7 +25,7 @@ export const knights_vs_pikes = {
         "c": 20,
         "age": "3",
         "tl": [
-            { "t": "villagers", "n": "Villagers", "v": 1, "d": 25, "lim": false },
+            { "t": "villagers", "n": "Villagers", "v": 1, "d": 25, "lim": false, "co": 50 },
             { "t": "tech", "n": "Feudal Age", "d": 130, "c": 1, "co": 500, "i": "101", "bt": 109, "b": true, "lim": true },
             { "t": "tech", "n": "Castle Age", "d": 160, "c": 1, "co": 1000, "i": "102", "bt": 109, "b": true, "lim": true },
             { "t": "building", "n": "Barracks", "d": 50, "c": 3, "co": 525, "prod": true, "i": "87" },
