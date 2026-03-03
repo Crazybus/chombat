@@ -7,6 +7,7 @@ import { techs } from '../data/techs';
 import { civs, GENERIC_CIV } from '../data/civs';
 import { analyzeArmy, ArmyAnalysis, getRecommendedTechs, scrubArmy } from '../sim/ArmyAnalyzer';
 import { buildings } from '../data/buildings';
+import { useSyncURL } from '../hooks/useSyncURL';
 
 interface SimulationContextType {
   state: SimulationState;
@@ -78,6 +79,7 @@ const SimulationContext = createContext<SimulationContextType | undefined>(undef
 export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<SimulationState>(initialState);
   const [toast, setToast] = useState<string | null>(null);
+  const { clearURL, setScenarioInURL } = useSyncURL(state, setState);
 
   const analysisA = useMemo(() => {
     const techsById: Record<number, TechData> = {};
@@ -97,6 +99,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const updateArmy = (army: 'a' | 'b', updates: Partial<ArmyState>) => {
+    clearURL();
     setState(prev => ({
       ...prev,
       [army]: { ...prev[army], ...updates },
@@ -105,6 +108,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const swapArmies = () => {
+    clearURL();
     setState(prev => ({
       ...prev,
       a: prev.b,
@@ -114,6 +118,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const clearOverrides = (army: 'a' | 'b') => {
+    clearURL();
     updateArmy(army, {
       h: undefined, am: undefined, ap: undefined, aa: undefined, ar: undefined,
       rl: undefined, n: undefined, as: undefined, ab: undefined, ad: undefined,
@@ -123,6 +128,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const toggleBonus = (army: 'a' | 'b', techId: string) => {
+    clearURL();
     setState(prev => {
       const armyState = prev[army];
       const newBonuses = armyState.bn?.map(b => {
@@ -137,6 +143,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const applyAgeBonuses = (army: 'a' | 'b', age: string, civOverride?: string) => {
+    clearURL();
     const armyState = state[army];
     const allUnits: Record<string, UnitData> = { ...units, ...presets };
     
@@ -173,6 +180,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const loadPreset = (army: 'a' | 'b', id: string) => {
+    clearURL();
     const allUnits: Record<string, UnitData> = { ...units, ...presets };
     const u = allUnits[id];
     if (!u) return;
@@ -248,6 +256,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const resetToNewScenario = () => {
+    clearURL();
     const archer = units['archer'];
     
     setState({
@@ -290,6 +299,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const loadScenario = (id: string) => {
+    setScenarioInURL(id);
     const scenario = (scenarios as any)[id];
     if (scenario) {
       const allUnits: Record<string, UnitData> = { ...units, ...presets };
@@ -308,7 +318,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (!params.get('s') && !state.a.ps && featuredScenarios.length > 0) {
+    if (!params.get('s') && !params.get('id') && !params.get('scenario') && !state.a.ps && featuredScenarios.length > 0) {
       loadScenario(featuredScenarios[0]);
     }
   }, []);

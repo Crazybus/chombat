@@ -6,7 +6,7 @@
  * Response: { id: string, expiresAt: number }
  */
 
-import * as pako from 'pako';
+import { gzip } from 'pako';
 
 // Base62 characters for short IDs
 const CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -29,7 +29,7 @@ function generateId(length = 6) {
  */
 function compressData(data) {
   const jsonString = JSON.stringify(data);
-  const compressed = pako.gzip(jsonString);
+  const compressed = gzip(jsonString);
   // Convert Uint8Array to base64
   let binary = '';
   for (let i = 0; i < compressed.length; i++) {
@@ -40,6 +40,13 @@ function compressData(data) {
 
 export async function onRequestPost({ env, request }) {
   try {
+    if (!env.MATCHUPS) {
+      return new Response(
+        JSON.stringify({ error: 'KV namespace MATCHUPS is not bound' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const { data, ttl = 30 } = await request.json();
 
     if (!data) {
@@ -78,29 +85,11 @@ export async function onRequestPost({ env, request }) {
     };
 
     // Set TTL in seconds (Cloudflare KV expects seconds)
-    const expirationTtl = ttl * 24 * 60 * 60;
+    const expirationTtl = Math.max(60, ttl * 24 * 60 * 60);
 
-    try {
-      await env.MATCHUPS.put(id, JSON.stringify(value), {
-        expirationTtl,
-      });
-    } catch (kvError) {
-      // Handle KV write errors (rate limits, storage limits, etc.)
-      console.error('KV write error:', kvError);
-      const errorMessage = kvError.message || String(kvError);
-      if (errorMessage.includes('rate limit') || errorMessage.includes('too many requests')) {
-        return new Response(
-          JSON.stringify({ error: 'Rate limit exceeded. Please try again in a minute.' }),
-          { status: 429, headers: { 'Content-Type': 'application/json' } }
-        );
-      } else if (errorMessage.includes('storage') || errorMessage.includes('quota')) {
-        return new Response(
-          JSON.stringify({ error: 'Storage limit reached. Please try again later.' }),
-          { status: 507, headers: { 'Content-Type': 'application/json' } }
-        );
-      }
-      throw kvError; // Re-throw for generic error handling
-    }
+    await env.MATCHUPS.put(id, JSON.stringify(value), {
+      expirationTtl,
+    });
 
     return new Response(
       JSON.stringify({ id, expiresAt }),
@@ -111,21 +100,8 @@ export async function onRequestPost({ env, request }) {
     );
   } catch (error) {
     console.error('Error in /api/shorten:', error);
-    // Check for specific error types
-    const errorMessage = error.message || String(error);
-    if (errorMessage.includes('rate limit')) {
-      return new Response(
-        JSON.stringify({ error: 'Rate limit exceeded. Please try again in a minute.' }),
-        { status: 429, headers: { 'Content-Type': 'application/json' } }
-      );
-    } else if (errorMessage.includes('storage') || errorMessage.includes('quota')) {
-      return new Response(
-        JSON.stringify({ error: 'Storage limit reached. Please try again later.' }),
-        { status: 507, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
     return new Response(
-      JSON.stringify({ error: 'Failed to shorten URL' }),
+      JSON.stringify({ error: 'Failed to shorten URL', details: error.message }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }

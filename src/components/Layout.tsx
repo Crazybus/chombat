@@ -46,7 +46,7 @@ const Layout: React.FC = () => {
   }, []);
 
   const handleShare = async () => {
-    const url = syncURL(true);
+    const url = await syncURL(true);
     if (url) {
       navigator.clipboard.writeText(url).then(() => {
         showToast('Shared URL copied to clipboard!');

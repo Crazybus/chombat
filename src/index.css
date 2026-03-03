@@ -838,6 +838,42 @@ tr:hover,
   font-weight: bold;
 }
 
+/* Searchable Lists (Dropdowns) */
+.preset-list, .civ-list, .scenario-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--panel-bg) !important;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  z-index: 9999 !important;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.preset-item, .civ-item, .scenario-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-dim);
+  transition: background-color 0.2s;
+  background-color: var(--panel-bg);
+}
+
+.preset-item:hover, .civ-item:hover, .scenario-item:hover {
+  background-color: var(--panel-bg-alt);
+  color: var(--accent-color);
+}
+
+.preset-item.selected, .civ-item.selected {
+  background-color: var(--panel-bg-alt);
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
 .toggle-prod-section-btn {
   width: 100%;
   padding: 10px;
