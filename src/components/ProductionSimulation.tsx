@@ -93,9 +93,15 @@ const ProductionSimulation: React.FC = () => {
     labels,
     datasets: [
       { 
-        label: 'Advantage % (+A / -B)', 
+        label: 'Battle Advantage % (+A / -B)', 
         data: advantage, 
-        borderColor: 'var(--accent-color)',
+        borderColor: '#3498db', // Fallback
+        segment: {
+          borderColor: (ctx: any) => {
+            const val = ctx.p0.parsed.y;
+            return val >= 0 ? '#3498db' : '#e74c3c';
+          }
+        },
         fill: { target: 'origin', above: 'rgba(52, 152, 219, 0.2)', below: 'rgba(231, 76, 60, 0.2)' }
       },
     ]
