@@ -30,20 +30,21 @@ const StatComparison: React.FC = () => {
       
       <div className="results-area" style={{ width: '100%' }}>
         <div id="comparison-summary">
-           <div style={{ textAlign: 'center', padding: '15px', background: 'var(--panel-bg-alt)', borderRadius: '4px', marginBottom: '20px', border: '1px solid var(--border-dim)' }}>
+           <div style={{ textAlign: 'center', padding: '15px', background: 'var(--panel-bg-alt)', borderRadius: '4px', marginBottom: '20px', border: '1px solid var(--border-dim)', overflowWrap: 'anywhere' }}>
+
             <span style={{ fontSize: '1.4rem' }}>
               Winner: <span style={{ color: winnerColor, fontWeight: 'bold' }}>{winner}</span> {remainingInfo && `(${remainingInfo})`}
             </span>
           </div>
         </div>
 
-        <div className="stat-duel-table" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div className="stat-duel-table">
           {/* Header */}
-          <div className="duel-row duel-header" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 1fr 120px', gap: '10px', padding: '10px', fontWeight: 'bold', borderBottom: '2px solid var(--border-dim)', textAlign: 'center' }}>
-            <div style={{ textAlign: 'left' }}>Attribute</div>
-            <div style={{ color: 'var(--army-a-color)' }}>{nameA}</div>
-            <div>Difference</div>
-            <div style={{ color: 'var(--army-b-color)' }}>{nameB}</div>
+          <div className="duel-row duel-header">
+            <div className="duel-attribute">Attribute</div>
+            <div className="duel-val" style={{ color: 'var(--army-a-color)' }}>{nameA}</div>
+            <div className="duel-val" style={{ color: 'var(--army-b-color)' }}>{nameB}</div>
+            <div className="duel-diff">Difference</div>
           </div>
 
           {/* Rows */}
@@ -57,15 +58,15 @@ const StatComparison: React.FC = () => {
             const diffDisplay = Math.abs(diff) < 0.001 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') || r.label.includes('Time') || r.label.includes('Reload') ? 2 : 0);
 
             return (
-              <div key={r.label} className="duel-row" style={{ display: 'grid', gridTemplateColumns: '1fr 120px 1fr 120px', gap: '10px', padding: '12px 10px', background: i % 2 === 0 ? 'var(--panel-bg)' : 'var(--panel-bg-alt)', borderRadius: '4px', borderBottom: '1px solid var(--border-dim)', alignItems: 'center' }}>
-                <div style={{ textAlign: 'left', fontWeight: 'bold', color: 'var(--text-dim)' }}>{r.label}</div>
-                <div style={{ textAlign: 'center', fontSize: '1.1rem' }}>{r.a}</div>
-                <div style={{ textAlign: 'center' }}>
-                  <span style={{ padding: '4px 12px', borderRadius: '12px', fontWeight: 'bold', fontSize: '0.9rem', background: 'rgba(0,0,0,0.1)', color: diffColor }}>
+              <div key={r.label} className="duel-row" style={{ background: i % 2 === 0 ? 'var(--panel-bg)' : 'var(--panel-bg-alt)' }}>
+                <div className="duel-attribute">{r.label}</div>
+                <div className="duel-val">{r.a}</div>
+                <div className="duel-val">{r.b}</div>
+                <div className="duel-diff">
+                  <span className="diff-badge" style={{ color: diffColor }}>
                     {diffDisplay}
                   </span>
                 </div>
-                <div style={{ textAlign: 'center', fontSize: '1.1rem' }}>{r.b}</div>
               </div>
             );
           })}

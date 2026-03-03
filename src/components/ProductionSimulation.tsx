@@ -18,7 +18,7 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { Line } from 'react-chartjs-2';
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import StatsSummary from './StatsSummary';
@@ -108,23 +108,35 @@ const ProductionSimulation: React.FC = () => {
     ]
   };
 
-  const economyData = {
+  const gatheredData = {
     labels,
     datasets: [
-      { label: 'A: Gathered', data: economyA.map(e => e.gathered), borderColor: '#3498db', borderDash: [5, 5], fill: false },
-      { label: 'A: Spent', data: economyA.map(e => e.spent), borderColor: '#3498db', fill: false },
-      { label: 'B: Gathered', data: economyB.map(e => e.gathered), borderColor: '#e74c3c', borderDash: [5, 5], fill: false },
-      { label: 'B: Spent', data: economyB.map(e => e.spent), borderColor: '#e74c3c', fill: false },
+      { label: nameA + ': Gathered', data: economyA.map(e => e.gathered), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
+      { label: nameB + ': Gathered', data: economyB.map(e => e.gathered), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
     ]
   };
 
-  const balanceData = {
+  const spentData = {
     labels,
     datasets: [
-      { label: 'A: Float', data: economyA.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#3498db', fill: false },
-      { label: 'A: Vills', data: economyA.map(e => e.vills), borderColor: '#3498db', borderDash: [2, 2], fill: false, pointRadius: 0, borderWidth: 1 },
-      { label: 'B: Float', data: economyB.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#e74c3c', fill: false },
-      { label: 'B: Vills', data: economyB.map(e => e.vills), borderColor: '#e74c3c', borderDash: [2, 2], fill: false, pointRadius: 0, borderWidth: 1 },
+      { label: nameA + ': Investment', data: economyA.map(e => e.spent), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
+      { label: nameB + ': Investment', data: economyB.map(e => e.spent), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+    ]
+  };
+
+  const floatData = {
+    labels,
+    datasets: [
+      { label: nameA + ': Floating', data: economyA.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
+      { label: nameB + ': Floating', data: economyB.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+    ]
+  };
+
+  const villData = {
+    labels,
+    datasets: [
+      { label: nameA + ': Vills', data: economyA.map(e => e.vills), borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
+      { label: nameB + ': Vills', data: economyB.map(e => e.vills), borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
     ]
   };
 
@@ -226,7 +238,7 @@ const ProductionSimulation: React.FC = () => {
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
-        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '20px', width: '100%' }}>
+        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px', width: '100%' }}>
           <div className="chart-wrapper" style={{ height: '300px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
             <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Army Growth over Time</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={growthData} options={commonOptions} /></div>
@@ -241,12 +253,20 @@ const ProductionSimulation: React.FC = () => {
             </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Economy (Gathered vs Spent)</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={economyData} options={commonOptions} /></div>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Gathered Resources</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={gatheredData} options={commonOptions} /></div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources & Eco Units</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={balanceData} options={balanceOptions} /></div>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Total Investment</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={spentData} options={commonOptions} /></div>
+          </div>
+          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={floatData} options={balanceOptions} /></div>
+          </div>
+          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Villager Count</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={villData} options={commonOptions} /></div>
           </div>
         </div>
 
@@ -255,7 +275,7 @@ const ProductionSimulation: React.FC = () => {
             <h3 style={{ margin: 0, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Events</h3>
           </div>
           
-          <div className="event-timeline-table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
+          <div className="responsive-table-container" style={{ maxHeight: '600px' }}>
             {displayedEvents.length > 0 ? (
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <thead>
@@ -300,7 +320,7 @@ const ProductionSimulation: React.FC = () => {
             </button>
           </div>
 
-          <div className="investment-table-container">
+          <div className="responsive-table-container">
             <h4 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1rem' }}>Resource Investment at {formatTime(tideTurnsAt || maxTime)}</h4>
             <table className="investment-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
               <thead>
@@ -437,8 +457,6 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
   </div>
 );
 
-const GRID_TEMPLATE = "30px 70px 1fr 100px 100px 100px 100px 60px 30px";
-
 const TechButton: React.FC<{ id: number, label: string, onClick: (id: number) => void }> = ({ id, label, onClick }) => (
   <button 
     className="small-action-btn" 
@@ -456,7 +474,8 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   const unitBuildingId = (army === 'a' ? analysisA?.baseUnit?.building : analysisB?.baseUnit?.building) || 87;
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 300, tolerance: 10 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
@@ -599,7 +618,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           </div>
         </div>
 
-        <div className="timeline-table-header" style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', padding: '0 8px 8px 8px', borderBottom: '1px solid var(--border-dim)', marginBottom: '8px', fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>
+        <div className="timeline-header">
           <div></div>
           <div title="The type of action (Building, Tech, Production, etc.)">Type</div>
           <div title="Custom name for this step">Name</div>
@@ -627,7 +646,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
 
 const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step: any, unitBuildingId: number }> = ({ id, army, index, step, unitBuildingId }) => {
   const { updateArmy, state } = useSimulation();
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const timerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
   const stepRef = useRef(step);
@@ -636,7 +655,14 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
     stepRef.current = step;
   }, [step]);
 
-  const style = { transform: CSS.Transform.toString(transform), transition };
+  const style = { 
+    transform: CSS.Transform.toString(transform), 
+    transition,
+    zIndex: isDragging ? 1000 : 1,
+    position: 'relative' as const,
+    background: isDragging ? 'var(--panel-bg-alt)' : undefined,
+    opacity: isDragging ? 0.8 : 1
+  };
 
   const update = (updates: any) => {
     const currentList = state[army].tl || [];
@@ -700,13 +726,19 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
 
   return (
     <div ref={setNodeRef} style={style} className="timeline-row" >
-      <div style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', alignItems: 'center', padding: '8px 8px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: index % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-        <div {...attributes} {...listeners} style={{ cursor: 'grab', color: 'var(--text-dim)' }}>⠿</div>
-        
-        <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
-          <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
-        </div>
+      <div 
+        {...attributes} 
+        {...listeners} 
+        className="drag-handle"
+        title="Drag to reorder"
+      >
+        ⠿
+      </div>
+      
+      <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+        <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
+        <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
+      </div>
 
         <div>
           <input 
@@ -819,7 +851,6 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
           onClick={remove} 
           style={{ background: 'transparent', border: 'none', color: 'var(--danger-color)', cursor: 'pointer', fontSize: '1rem', padding: 0 }}
         >×</button>
-      </div>
     </div>
   );
 };

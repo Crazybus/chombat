@@ -79,7 +79,7 @@ const CombatCharts: React.FC<CombatChartsProps> = ({ history, nameA, nameB }) =>
 
   return (
     <div className="charts-area" style={{ width: '100%', marginTop: '20px' }}>
-      <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '20px', width: '100%' }}>
+      <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '20px', width: '100%' }}>
         <div className="chart-wrapper" style={{ height: '300px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
           <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Unit Counts</h4>
           <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}>

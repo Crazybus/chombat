@@ -104,7 +104,7 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
   const currentUnitName = currentUnitId ? unitMap[currentUnitId]?.name : state[army].nm || `Unit ${army.toUpperCase()}`;
 
   return (
-    <div className="unit-selector-container" ref={containerRef} style={{ position: 'relative' }}>
+    <div className="unit-selector-container" ref={containerRef}>
       <h2 
         ref={toggleRef}
         className="clickable-unit-name" 
@@ -114,16 +114,15 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
       </h2>
 
       {isOpen && (
-        <div className="preset-list" style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 1000, minWidth: '250px' }}>
+        <div className="preset-list">
           <input
             ref={inputRef}
             type="text"
-            className="unit-search-input"
+            className="search-input"
             placeholder="Search units..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyDown}
-            style={{ width: '100%', padding: '8px', marginBottom: '4px', background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-color)' }}
           />
           <div className="unit-list-scroll" style={{ maxHeight: '300px', overflowY: 'auto' }}>
             {filteredUnits.map((u, index) => (
