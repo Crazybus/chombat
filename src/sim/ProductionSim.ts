@@ -12,7 +12,7 @@ export interface ProductionEvent {
   important?: boolean;
 }
 
-export interface EconomyPoint {
+export interface EconomyTick {
   time: number;
   gathered: number;
   spent: number;
@@ -20,6 +20,7 @@ export interface EconomyPoint {
   spentOnUnits: number;
   spentOnBuildings: number;
   spentOnTechs: number;
+  vills: number;
 }
 
 export interface ProductionResult {
@@ -28,7 +29,7 @@ export interface ProductionResult {
   cost: { f: number; w: number; g: number };
   events: { time: number; msg: string; vills: number; units: number; important?: boolean }[];
   unitsPerSecond: number;
-  economyHistory: EconomyPoint[];
+  economyHistory: EconomyTick[];
   stateAtTime: { vills: number; units: number }[];
 }
 
@@ -37,8 +38,8 @@ export interface ProductionAnalysisResult {
   countA: number[];
   countB: number[];
   advantage: number[];
-  economyA: EconomyPoint[];
-  economyB: EconomyPoint[];
+  economyA: EconomyTick[];
+  economyB: EconomyTick[];
   finalResA: ProductionResult;
   finalResB: ProductionResult;
   tideTurnsAt: number | null;
@@ -239,7 +240,7 @@ export function calculateCount(
   let spentOnUnits = 0;
   let spentOnBuildings = 0;
   let spentOnTechs = 0;
-  const economyHistory: EconomyPoint[] = [];
+  const economyHistory: EconomyTick[] = [];
   const stateAtTime: { vills: number; units: number }[] = [];
 
   let tcProgress = 0;
@@ -386,7 +387,8 @@ export function calculateCount(
     if (s % 10 === 0 || s === t) {
       economyHistory.push({
         time: s, gathered: gatheredTotal, spent: spentTotal,
-        spentOnVillagers, spentOnUnits, spentOnBuildings, spentOnTechs
+        spentOnVillagers, spentOnUnits, spentOnBuildings, spentOnTechs,
+        vills: villagers
       });
     }
     gatheredTotal += villagers * gatheringRate;
