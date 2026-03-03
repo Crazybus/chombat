@@ -31,6 +31,7 @@
   --color-neg: #e74c3c;
   --success-color: #2ecc71;
   --danger-color: #e74c3c;
+  --chart-bg: #111;
 }
 
 /* Auto Light Theme */
@@ -52,6 +53,7 @@
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --color-pos: #28a745;
     --color-neg: #cb2431;
+    --chart-bg: #ffffff;
   }
 }
 
@@ -73,6 +75,12 @@
   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --color-pos: #28a745;
   --color-neg: #cb2431;
+  --chart-bg: #ffffff;
+}
+
+.light-theme .unit-breakdown-popup {
+  background: #ffffff !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
 
 .dark-theme {
@@ -90,6 +98,7 @@
   --btn-hover: #555;
   --nav-bg: rgba(45, 45, 45, 0.95);
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --chart-bg: #111;
 }
 
 html, body {
@@ -440,8 +449,8 @@ main {
 /* Results Area */
 .results-area {
   width: 100%;
-  background: var(--panel-bg);
-  padding: 15px 20px;
+  background: #1a1a1a;
+  padding: 15px 0;
   border-radius: var(--border-radius);
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -453,6 +462,8 @@ main {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.1);
 }
 
 .responsive-table-container table {
@@ -633,14 +644,12 @@ main {
 }
 
 .scenarios-bar {
-  width: 100%;
-  max-width: 100%;
   margin-bottom: 10px;
   display: flex;
   gap: 10px;
   align-items: center;
   background: var(--panel-bg);
-  padding: 10px 12px;
+  padding: 10px 15px;
   border-radius: var(--border-radius);
   flex-wrap: wrap;
 }
@@ -657,10 +666,11 @@ main {
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) rgba(0, 0, 0, 0.1);
 }
 
 .featured-scenarios.expanded {
@@ -668,8 +678,24 @@ main {
   overflow-x: visible;
 }
 
-.featured-scenarios::-webkit-scrollbar {
-  display: none;
+/* Ensure scrollbars are visible on mobile/webkit */
+.featured-scenarios::-webkit-scrollbar,
+.responsive-table-container::-webkit-scrollbar {
+  height: 6px;
+  display: block;
+}
+
+.featured-scenarios::-webkit-scrollbar-track,
+.responsive-table-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.featured-scenarios::-webkit-scrollbar-thumb,
+.responsive-table-container::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 3px;
+  opacity: 0.5;
 }
 
 .scenario-btn {
@@ -753,7 +779,6 @@ main {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .duel-row {
@@ -761,10 +786,17 @@ main {
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
   padding: 12px 10px;
-  background: var(--panel-bg);
-  border-radius: 4px;
   border-bottom: 1px solid var(--border-dim);
   align-items: center;
+  width: 100%;
+}
+
+.duel-row:nth-child(even) {
+  background: var(--panel-bg-alt);
+}
+
+.duel-row:nth-child(odd) {
+  background: var(--panel-bg);
 }
 
 .duel-header {
@@ -859,10 +891,15 @@ main {
 }
 
 .chart-wrapper {
-  background: var(--panel-bg-alt);
-  padding: 15px;
+  background: var(--chart-bg) !important;
+  padding: 10px 15px;
   border-radius: 6px;
   border: 1px solid var(--border-dim);
+}
+
+.chart-wrapper h4 {
+  text-align: center;
+  margin-top: 0;
 }
 
 .chart-container {
@@ -994,10 +1031,10 @@ main {
   left: 50%;
   transform: translateX(-50%);
   z-index: 2000;
-  background: var(--panel-bg);
+  background: var(--panel-bg) !important;
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.8);
   padding: 15px;
   width: 450px;
   max-width: 90vw;
@@ -1116,7 +1153,7 @@ main {
 
 .timeline-row {
   display: grid;
-  grid-template-columns: 30px 60px 1fr 70px 70px 70px 70px 50px 30px;
+  grid-template-columns: 30px 60px 1fr 85px 85px 85px 95px 50px 30px;
   gap: 8px;
   align-items: center;
   padding: 8px;
@@ -1125,7 +1162,7 @@ main {
 
 .timeline-header {
   display: grid;
-  grid-template-columns: 30px 60px 1fr 70px 70px 70px 70px 50px 30px;
+  grid-template-columns: 30px 60px 1fr 85px 85px 85px 95px 50px 30px;
   gap: 8px;
   padding: 0 8px 8px 8px;
   border-bottom: 1px solid var(--border-dim);

@@ -152,7 +152,7 @@ const Layout: React.FC = () => {
       <main className="section-anchor">
         <div id="units" style={{ height: '1px', scrollMarginTop: '150px' }}></div>
         
-        <div className="non-sticky-scenarios" style={{ marginBottom: '20px' }}>
+        <div className="results-area" style={{ padding: '10px 15px', marginBottom: '20px' }}>
           <ScenariosBar />
         </div>
 

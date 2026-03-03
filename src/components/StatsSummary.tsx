@@ -110,9 +110,11 @@ export const UnitStatsExplanation: React.FC<{ army: 'a' | 'b', analysis: ArmyAna
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 150px), 1fr))', gap: '12px' }}>
         {Object.entries(groups).map(([key, group]) => {
-          if (group.sources.length === 0) return null;
+          const isCore = ['hp', 'atk', 'marm', 'parm'].includes(key);
+          if (group.sources.length === 0 && !isCore) return null;
+          
           return (
-            <div key={key} className="stat-explanation-group" style={{ background: 'var(--panel-bg-alt)', padding: '6px', borderRadius: '4px', border: '1px solid var(--border-dim)' }}>
+            <div key={key} className="stat-explanation-group" style={{ background: 'var(--panel-bg-alt)', padding: '6px', borderRadius: '4px', border: '1px solid var(--border-dim)', minHeight: '60px' }}>
               <div style={{ fontWeight: 'bold', color: 'var(--accent-color)', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <span>{group.icon}</span> {group.label}
               </div>

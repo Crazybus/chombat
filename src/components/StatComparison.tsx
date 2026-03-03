@@ -48,7 +48,7 @@ const StatComparison: React.FC = () => {
           </div>
 
           {/* Rows */}
-          {rows.map((r, i) => {
+          {rows.map((r) => {
             const diff = r.valA - r.valB;
             
             let diffColor = 'var(--text-dim)';
@@ -58,7 +58,7 @@ const StatComparison: React.FC = () => {
             const diffDisplay = Math.abs(diff) < 0.001 ? '−' : (diff > 0 ? '+' : '') + diff.toFixed(r.label.includes('DPS') || r.label.includes('Time') || r.label.includes('Reload') ? 2 : 0);
 
             return (
-              <div key={r.label} className="duel-row" style={{ background: i % 2 === 0 ? 'var(--panel-bg)' : 'var(--panel-bg-alt)' }}>
+              <div key={r.label} className="duel-row">
                 <div className="duel-attribute">{r.label}</div>
                 <div className="duel-val">{r.a}</div>
                 <div className="duel-val">{r.b}</div>

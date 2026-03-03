@@ -8,7 +8,7 @@ const ScenariosBar: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const allScenarios = Object.entries(scenarios).map(([id, s]: [string, any]) => ({ id, ...s }));
-  const filtered = search.length > 1 
+  const filtered = search.length >= 1 
     ? allScenarios.filter(s => s.name.toLowerCase().includes(search.toLowerCase()))
     : [];
 
@@ -53,7 +53,7 @@ const ScenariosBar: React.FC = () => {
         <input 
           type="text" 
           className="scenario-search" 
-          placeholder="Search more scenarios..." 
+          placeholder="Search scenarios..." 
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
