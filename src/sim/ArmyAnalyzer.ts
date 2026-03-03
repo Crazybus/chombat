@@ -275,9 +275,10 @@ export function analyzeArmy(armyState: ArmyState, allUnits: Record<string, UnitD
   const simFinal = new CombatSim(baseUnit, baseUnit, armyState, armyState, activeTechs, allUnits);
   const finalEffective = { ...simFinal.dataA, count: armyState.c !== undefined ? armyState.c : 1 };
 
+  const isMelee = (finalEffective.range || 0) <= 1;
   const groups: Record<string, StatGroup> = {
     hp: { label: 'HP', icon: '❤️', sources: [] },
-    atk: { label: 'Attack', icon: '⚔️', sources: [] },
+    atk: { label: 'Attack', icon: isMelee ? '⚔️' : '🏹', sources: [] },
     marm: { label: 'Melee Armor', icon: '🛡️', sources: [] },
     parm: { label: 'Pierce Armor', icon: '🛡️', sources: [] },
     range: { label: 'Range', icon: '🎯', sources: [] },

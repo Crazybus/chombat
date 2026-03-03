@@ -48,31 +48,20 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
         className="nav-btn secondary"
         title="Click to change civilization"
         onClick={() => setIsOpen(!isOpen)}
-        style={{ 
-          height: '32px', 
-          padding: '0 12px', 
-          display: 'flex', 
-          alignItems: 'center', 
-          gap: '8px',
-          background: 'var(--panel-bg-alt)',
-          border: '1px solid var(--border-color)',
-          fontSize: '0.85rem'
-        }}
       >
         <span>🏰 {formatCivName(armyState.cv || GENERIC_CIV)}</span>
         <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>▼</span>
       </button>
 
       {isOpen && (
-        <div className="civ-list" style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 1000, minWidth: '200px' }}>
+        <div className="civ-list">
           <input
             type="text"
-            className="civ-search-input"
+            className="search-input"
             placeholder="Search civs..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             autoFocus
-            style={{ width: '100%', padding: '8px', marginBottom: '4px', background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-color)' }}
           />
           <div style={{ maxHeight: '250px', overflowY: 'auto' }}>
             <div className="preset-item" onClick={() => handleSelect(GENERIC_CIV)}>None (All Techs)</div>

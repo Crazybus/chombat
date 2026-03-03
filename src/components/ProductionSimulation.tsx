@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { useSimulation } from '../context/SimulationContext';
-import { analyzeProduction, ProductionAnalysisResult } from '../sim/ProductionSim';
+import { analyzeProduction, ProductionAnalysisResult, smooth } from '../sim/ProductionSim';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
@@ -18,7 +18,7 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { Line } from 'react-chartjs-2';
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import StatsSummary from './StatsSummary';
@@ -71,13 +71,22 @@ const ProductionSimulation: React.FC = () => {
     interaction: { intersect: false, mode: 'index' as const },
     scales: { 
       x: { 
-        ticks: { maxTicksLimit: 12 },
+        ticks: { 
+          maxTicksLimit: 8,
+          maxRotation: 45,
+          minRotation: 0,
+          font: { size: 10 },
+          color: '#888'
+        },
         grid: { color: 'rgba(255,255,255,0.05)' }
       },
-      y: { grid: { color: 'rgba(255,255,255,0.05)' } }
+      y: { 
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: '#888', font: { size: 10 } }
+      }
     },
     plugins: {
-      legend: { position: 'top' as const },
+      legend: { position: 'top' as const, labels: { color: '#e0e0e0', font: { size: 11 } } },
     },
     elements: { line: { tension: 0.1, borderWidth: 2 }, point: { radius: 0 } }
   };
@@ -85,8 +94,8 @@ const ProductionSimulation: React.FC = () => {
   const growthData = {
     labels,
     datasets: [
-      { label: nameA, data: countA, borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.1)', fill: true },
-      { label: nameB, data: countB, borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.1)', fill: true },
+      { label: nameA, data: countA, borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, stepped: true },
+      { label: nameB, data: countB, borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, stepped: true },
     ]
   };
 
@@ -94,37 +103,92 @@ const ProductionSimulation: React.FC = () => {
     labels,
     datasets: [
       { 
-        label: 'Battle Advantage % (+A / -B)', 
-        data: advantage, 
+        label: nameA + ' Advantage %', 
+        data: advantage.map(v => v > 0 ? v : 0), 
         borderColor: '#3498db', 
-        segment: {
-          borderColor: (ctx: any) => {
-            const val = ctx.p0.parsed.y;
-            return val >= 0 ? '#3498db' : '#e74c3c';
-          }
-        },
-        fill: { target: 'origin', above: 'rgba(52, 152, 219, 0.2)', below: 'rgba(231, 76, 60, 0.2)' }
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        pointRadius: 0
+      },
+      { 
+        label: nameB + ' Advantage %', 
+        data: advantage.map(v => v < 0 ? Math.abs(v) : 0), 
+        borderColor: '#e74c3c', 
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        pointRadius: 0
       },
     ]
   };
 
-  const economyData = {
+  const gatheredDiff = economyA.map((e, i) => e.gathered - economyB[i].gathered);
+  const spentDiff = economyA.map((e, i) => e.spent - economyB[i].spent);
+  const floatA = economyA.map(e => e.gathered - e.spent);
+  const floatB = economyB.map(e => e.gathered - e.spent);
+  const floatDiff = floatA.map((f, i) => f - floatB[i]);
+  const villDiff = economyA.map((e, i) => e.vills - economyB[i].vills);
+
+  const gatheredData = {
     labels,
     datasets: [
-      { label: 'A: Gathered', data: economyA.map(e => e.gathered), borderColor: '#3498db', borderDash: [5, 5], fill: false },
-      { label: 'A: Spent', data: economyA.map(e => e.spent), borderColor: '#3498db', fill: false },
-      { label: 'B: Gathered', data: economyB.map(e => e.gathered), borderColor: '#e74c3c', borderDash: [5, 5], fill: false },
-      { label: 'B: Spent', data: economyB.map(e => e.spent), borderColor: '#e74c3c', fill: false },
+      { 
+        label: nameA, 
+        data: smooth(gatheredDiff, 10).map(v => v > 0 ? v : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB, 
+        data: smooth(gatheredDiff, 10).map(v => v < 0 ? Math.abs(v) : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
     ]
   };
 
-  const balanceData = {
+  const spentData = {
     labels,
     datasets: [
-      { label: 'A: Float', data: economyA.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#3498db', fill: false },
-      { label: 'A: Vills', data: economyA.map(e => e.vills), borderColor: '#3498db', borderDash: [2, 2], fill: false, pointRadius: 0, borderWidth: 1 },
-      { label: 'B: Float', data: economyB.map(e => Math.max(0, e.gathered - e.spent)), borderColor: '#e74c3c', fill: false },
-      { label: 'B: Vills', data: economyB.map(e => e.vills), borderColor: '#e74c3c', borderDash: [2, 2], fill: false, pointRadius: 0, borderWidth: 1 },
+      { 
+        label: nameA, 
+        data: smooth(spentDiff, 10).map(v => v > 0 ? v : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB, 
+        data: smooth(spentDiff, 10).map(v => v < 0 ? Math.abs(v) : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
+    ]
+  };
+
+  const floatData = {
+    labels,
+    datasets: [
+      { 
+        label: nameA, 
+        data: smooth(floatDiff, 10).map(v => v > 0 ? v : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      },
+      { 
+        label: nameB, 
+        data: smooth(floatDiff, 10).map(v => v < 0 ? Math.abs(v) : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      },
+    ]
+  };
+
+  const villData = {
+    labels,
+    datasets: [
+      { 
+        label: nameA, 
+        data: villDiff.map(v => v > 0 ? Math.round(v) : 0), 
+        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0, stepped: true
+      },
+      { 
+        label: nameB, 
+        data: villDiff.map(v => v < 0 ? Math.round(Math.abs(v)) : 0), 
+        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0, stepped: true
+      },
     ]
   };
 
@@ -168,27 +232,24 @@ const ProductionSimulation: React.FC = () => {
   return (
     <div id="production" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="section-header">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-          <div style={{ textAlign: 'left' }}>
-            <h2>Production Simulation</h2>
-            <p>Define your build order and see when the tide turns.</p>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>Sim Duration:</span>
-            <select 
-              value={maxTime} 
-              onChange={(e) => setMaxTime(parseInt(e.target.value))}
-              style={{ background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-dim)', padding: '4px 8px', borderRadius: '4px' }}
-            >
-              <option value={600}>10 Mins</option>
-              <option value={900}>15 Mins</option>
-              <option value={1200}>20 Mins</option>
-              <option value={1800}>30 Mins</option>
-              <option value={2700}>45 Mins</option>
-              <option value={3600}>60 Mins</option>
-            </select>
-          </div>
-        </div>
+        <h2>Production Simulation</h2>
+        <p>Define your build order and see when the tide turns.</p>
+      </div>
+
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+        <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 'bold', textTransform: 'uppercase' }}>Sim Duration:</span>
+        <select 
+          value={maxTime} 
+          onChange={(e) => setMaxTime(parseInt(e.target.value))}
+          style={{ background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-dim)', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' }}
+        >
+          <option value={600}>10 Mins</option>
+          <option value={900}>15 Mins</option>
+          <option value={1200}>20 Mins</option>
+          <option value={1800}>30 Mins</option>
+          <option value={2700}>45 Mins</option>
+          <option value={3600}>60 Mins</option>
+        </select>
       </div>
 
       <div className="build-orders-overview" style={{ marginBottom: '15px' }}>
@@ -226,27 +287,35 @@ const ProductionSimulation: React.FC = () => {
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
-        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '20px', width: '100%' }}>
-          <div className="chart-wrapper" style={{ height: '300px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Army Growth over Time</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={growthData} options={commonOptions} /></div>
+        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', width: '100%' }}>
+          <div className="chart-wrapper" style={{ height: '350px' }}>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Army Count</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={growthData} options={commonOptions} /></div>
           </div>
-          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Battle Advantage % (+A / -B)</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}>
+          <div className="chart-wrapper" style={{ height: '350px' }}>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Battle Advantage %</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
               <Line 
                 data={advantageData} 
-                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: -100, max: 100 } } }} 
+                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: 0, max: 100 } } }} 
               />
             </div>
           </div>
-          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Economy (Gathered vs Spent)</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={economyData} options={commonOptions} /></div>
+          <div className="chart-wrapper" style={{ height: '350px' }}>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Gathered Resources Difference</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={gatheredData} options={commonOptions} /></div>
           </div>
-          <div className="chart-wrapper" style={{ height: '350px', background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-            <h4 style={{ marginBottom: '10px', color: 'var(--text-dim)' }}>Floating Resources & Eco Units</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 30px)' }}><Line data={balanceData} options={balanceOptions} /></div>
+          <div className="chart-wrapper" style={{ height: '350px' }}>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Total Investment Difference</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={spentData} options={commonOptions} /></div>
+          </div>
+          <div className="chart-wrapper" style={{ height: '350px' }}>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Floating Resources Difference</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={floatData} options={balanceOptions} /></div>
+          </div>
+          <div className="chart-wrapper" style={{ height: '350px' }}>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Villager Count Difference</h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={villData} options={commonOptions} /></div>
           </div>
         </div>
 
@@ -255,7 +324,7 @@ const ProductionSimulation: React.FC = () => {
             <h3 style={{ margin: 0, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Events</h3>
           </div>
           
-          <div className="event-timeline-table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
+          <div className="responsive-table-container" style={{ maxHeight: '600px' }}>
             {displayedEvents.length > 0 ? (
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <thead>
@@ -269,7 +338,7 @@ const ProductionSimulation: React.FC = () => {
                 </thead>
                 <tbody>
                   {displayedEvents.map((e, i) => (
-                    <tr key={i} className="event-row" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: e.important ? 'rgba(243, 156, 18, 0.05)' : (i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent') }}>
+                    <tr key={i} className="event-row" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
                       <td style={{ padding: '10px 8px', color: 'var(--text-dim)', width: '80px' }}>{formatTime(e.time)}</td>
                       <td style={{ padding: '10px 8px', fontWeight: 'bold', width: '120px' }}>
                         {e.army === 'a' ? <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span> : e.army === 'b' ? <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span> : <span style={{ color: 'var(--accent-color)' }}>System</span>}
@@ -300,7 +369,7 @@ const ProductionSimulation: React.FC = () => {
             </button>
           </div>
 
-          <div className="investment-table-container">
+          <div className="responsive-table-container">
             <h4 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1rem' }}>Resource Investment at {formatTime(tideTurnsAt || maxTime)}</h4>
             <table className="investment-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
               <thead>
@@ -437,8 +506,6 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
   </div>
 );
 
-const GRID_TEMPLATE = "30px 70px 1fr 100px 100px 100px 100px 60px 30px";
-
 const TechButton: React.FC<{ id: number, label: string, onClick: (id: number) => void }> = ({ id, label, onClick }) => (
   <button 
     className="small-action-btn" 
@@ -456,13 +523,14 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   const unitBuildingId = (army === 'a' ? analysisA?.baseUnit?.building : analysisB?.baseUnit?.building) || 87;
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 300, tolerance: 10 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
 
   const addStep = (type: string, data: any = {}) => {
     // Normalize properties
-    const newStep = { 
+    const newStep: any = { 
       t: type, 
       n: data.name || type, 
       d: data.time !== undefined ? data.time : 30, 
@@ -473,6 +541,21 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
       lim: false, // Default to infinite/continuous
       ...data 
     };
+
+    if (type === 'villagers') {
+      newStep.n = 'Villagers';
+      newStep.d = 25;
+      newStep.co = 50;
+      newStep.lim = true;
+    } else if (type === 'production') {
+      const unit = army === 'a' ? analysisA?.baseUnit : analysisB?.baseUnit;
+      newStep.n = (unit?.name || 'Unit') + ' Production';
+      newStep.d = unit?.trainTime || 20;
+      newStep.tr = unit?.trainTime || 20;
+      newStep.v = 1;
+      newStep.co = unit ? (unit.f + unit.w + unit.g) : 0;
+    }
+
     // Remove redundant/wrong properties
     delete (newStep as any).time;
     delete (newStep as any).cost;
@@ -599,7 +682,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           </div>
         </div>
 
-        <div className="timeline-table-header" style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', padding: '0 8px 8px 8px', borderBottom: '1px solid var(--border-dim)', marginBottom: '8px', fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>
+        <div className="timeline-header">
           <div></div>
           <div title="The type of action (Building, Tech, Production, etc.)">Type</div>
           <div title="Custom name for this step">Name</div>
@@ -627,7 +710,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
 
 const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step: any, unitBuildingId: number }> = ({ id, army, index, step, unitBuildingId }) => {
   const { updateArmy, state } = useSimulation();
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const timerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
   const stepRef = useRef(step);
@@ -636,7 +719,14 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
     stepRef.current = step;
   }, [step]);
 
-  const style = { transform: CSS.Transform.toString(transform), transition };
+  const style = { 
+    transform: CSS.Transform.toString(transform), 
+    transition,
+    zIndex: isDragging ? 1000 : 1,
+    position: 'relative' as const,
+    background: isDragging ? 'var(--panel-bg-alt)' : undefined,
+    opacity: isDragging ? 0.8 : 1
+  };
 
   const update = (updates: any) => {
     const currentList = state[army].tl || [];
@@ -700,13 +790,19 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
 
   return (
     <div ref={setNodeRef} style={style} className="timeline-row" >
-      <div style={{ display: 'grid', gridTemplateColumns: GRID_TEMPLATE, gap: '8px', alignItems: 'center', padding: '8px 8px', borderBottom: '1px solid rgba(255,255,255,0.05)', background: index % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-        <div {...attributes} {...listeners} style={{ cursor: 'grab', color: 'var(--text-dim)' }}>⠿</div>
-        
-        <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
-          <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
-        </div>
+      <div 
+        {...attributes} 
+        {...listeners} 
+        className="drag-handle"
+        title="Drag to reorder"
+      >
+        ⠿
+      </div>
+      
+      <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
+        <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
+        <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
+      </div>
 
         <div>
           <input 
@@ -729,7 +825,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               else update({ d: val });
             }} 
             className="compact-input"
-            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
+            style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
           />
           <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
         </div>
@@ -743,7 +839,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               onChange={(e) => update({ v: parseInt(e.target.value) || 1 })} 
               className="compact-input"
               title="Multiplier / Capacity"
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-color)', textAlign: 'center' }} 
+              style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
             />
           ) : (
             <input 
@@ -751,7 +847,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
               value={step.c || 1} 
               onChange={(e) => update({ c: parseInt(e.target.value) || 1 })} 
               className="compact-input"
-              style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-color)', textAlign: 'center' }} 
+              style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
             />
           )}
           <button className="step-btn" onMouseDown={() => startRepeating(step.t === 'production' ? 'v' : 'c', 1)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
@@ -764,37 +860,38 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
             value={step.co || 0} 
             onChange={(e) => update({ co: parseInt(e.target.value) || 0 })} 
             className="compact-input"
-            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-dim)', textAlign: 'center' }} 
+            style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
           />
           <button className="step-btn" onMouseDown={() => startRepeating('co', 1, 5)} onMouseUp={stopRepeating} onMouseLeave={stopRepeating}>+</button>
         </div>
 
-        <div style={{ display: 'flex', gap: '4px', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '2px', justifyContent: 'center' }}>
           {(step.t === 'tech' || step.t === 'building' || step.t === 'production') ? (
             <>
               <button 
                 className={`tiny-toggle-btn ${isTCActive ? 'active' : ''}`}
                 style={{ 
-                  fontSize: '0.7rem', padding: '4px 6px', borderRadius: '4px', border: '1px solid var(--border-dim)',
+                  fontSize: '0.65rem', padding: '2px 4px', borderRadius: '3px', border: '1px solid var(--border-dim)',
                   background: isTCActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
                   color: isTCActive ? 'black' : 'var(--text-dim)',
-                  cursor: 'pointer', fontWeight: 'bold'
+                  cursor: 'pointer', fontWeight: 'bold', width: '38px', height: '24px', lineHeight: 1
                 }}
                 onClick={() => toggleBlock(109)}
               >TC</button>
               <button 
                 className={`tiny-toggle-btn ${isUnitActive ? 'active' : ''}`}
                 style={{ 
-                  fontSize: '0.7rem', padding: '4px 6px', borderRadius: '4px', border: '1px solid var(--border-dim)',
+                  fontSize: '0.65rem', padding: '2px 4px', borderRadius: '3px', border: '1px solid var(--border-dim)',
                   background: isUnitActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
                   color: isUnitActive ? 'black' : 'var(--text-dim)',
-                  cursor: 'pointer', fontWeight: 'bold'
+                  cursor: 'pointer', fontWeight: 'bold', width: '38px', height: '24px', lineHeight: 1
                 }}
                 onClick={() => toggleBlock(unitBuildingId)}
               >UNIT</button>
             </>
           ) : null}
         </div>
+
 
         <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
           {(step.t === 'villagers' || step.t === 'production') ? (
@@ -819,7 +916,6 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
           onClick={remove} 
           style={{ background: 'transparent', border: 'none', color: 'var(--danger-color)', cursor: 'pointer', fontSize: '1rem', padding: 0 }}
         >×</button>
-      </div>
     </div>
   );
 };
