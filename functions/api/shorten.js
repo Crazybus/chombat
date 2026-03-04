@@ -41,28 +41,28 @@ function compressData(data) {
 export async function onRequestPost({ env, request }) {
   try {
     if (!env.MATCHUPS) {
-      return new Response(
-        JSON.stringify({ error: 'KV namespace MATCHUPS is not bound' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'KV namespace MATCHUPS is not bound' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     const { data, ttl = 30 } = await request.json();
 
     if (!data) {
-      return new Response(
-        JSON.stringify({ error: 'Missing "data" field' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
+      return new Response(JSON.stringify({ error: 'Missing "data" field' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
     }
 
     // Compress the data
     const compressed = compressData(data);
-    
+
     // Generate unique ID
     let id = generateId(6);
     let attempts = 0;
-    
+
     // Ensure ID is unique (collision check)
     while (await env.MATCHUPS.get(id)) {
       id = generateId(6);
@@ -75,7 +75,7 @@ export async function onRequestPost({ env, request }) {
 
     // Calculate expiration timestamp
     const expiresAt = Date.now() + ttl * 24 * 60 * 60 * 1000;
-    
+
     // Store in KV with metadata
     const value = {
       data: compressed,
@@ -91,18 +91,15 @@ export async function onRequestPost({ env, request }) {
       expirationTtl,
     });
 
-    return new Response(
-      JSON.stringify({ id, expiresAt }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' }
-      }
-    );
+    return new Response(JSON.stringify({ id, expiresAt }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   } catch (error) {
     console.error('Error in /api/shorten:', error);
-    return new Response(
-      JSON.stringify({ error: 'Failed to shorten URL', details: error.message }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } }
-    );
+    return new Response(JSON.stringify({ error: 'Failed to shorten URL', details: error.message }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

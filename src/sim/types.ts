@@ -18,6 +18,7 @@ export interface UnitData {
   class: number;
   bonuses?: Record<string, number>;
   armors?: Record<string, number>;
+  speed?: number;
   requires?: {
     techs: number[];
     buildings: number[];
@@ -93,10 +94,26 @@ export interface ArmyState {
   sv?: number; // start villagers
   tr?: number; // training time override
   // Individual stat overrides
-  h?: number; am?: number; ap?: number; aa?: number; ar?: number;
-  rl?: number; n?: number; as?: number; ab?: number; ad?: number;
-  af?: number; aw?: number; ag?: number; da?: number; df?: number;
-  dw?: number; dg?: number; e?: number; mc?: number;
+  h?: number;
+  am?: number;
+  ap?: number;
+  aa?: number;
+  ar?: number;
+  rl?: number;
+  n?: number;
+  as?: number;
+  ab?: number;
+  ad?: number;
+  af?: number;
+  aw?: number;
+  ag?: number;
+  da?: number;
+  df?: number;
+  dw?: number;
+  dg?: number;
+  e?: number;
+  mc?: number;
+  speed?: number;
 }
 
 export interface CivBonusEffect extends TechEffect {

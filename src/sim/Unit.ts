@@ -21,6 +21,7 @@ export class Unit {
   range: number;
   atk_speed: number;
   bonus_red: number;
+  speed: number;
   reload: number;
   attackCooldown: number;
   f: number;
@@ -38,12 +39,12 @@ export class Unit {
 
   constructor(data: UnitData & ArmyState) {
     const d = data as any;
-    
+
     const parse = parseStat;
 
     this.name = d.nm || d.name || 'Unit';
     this.id = d.id;
-    this.initialCount = parse(d.count !== undefined ? d.count : (d.c !== undefined ? d.c : d.initialCount), 1);
+    this.initialCount = parse(d.count !== undefined ? d.count : d.c !== undefined ? d.c : d.initialCount, 1);
     this.currentCount = this.initialCount;
     this.hpPerUnit = parse(d.hp !== undefined ? d.hp : d.h, 1);
     this.currentUnitHp = this.hpPerUnit;
@@ -57,8 +58,9 @@ export class Unit {
     this.range = parse(d.range !== undefined ? d.range : d.n, 0);
     this.atk_speed = parse(d.atk_speed !== undefined ? d.atk_speed : d.as, 0);
     this.bonus_red = parse(d.bonus_red !== undefined ? d.bonus_red : d.ab, 0);
+    this.speed = parse(d.speed !== undefined ? d.speed : d.speed, 1.0);
 
-    // If reload was pre-calculated (e.g. by applyBonuses), use it. 
+    // If reload was pre-calculated (e.g. by applyBonuses), use it.
     // Otherwise calculate from base and speed.
     if (d.reload !== undefined) {
       this.reload = parse(d.reload, 2);
@@ -78,7 +80,7 @@ export class Unit {
     this.class = d.class;
     this.bonuses = d.bonuses || {};
     this.armors = d.armors || {};
-    this.micro = parse(d.micro !== undefined ? d.micro : (d.mc !== undefined ? d.mc : 5), 5);
+    this.micro = parse(d.micro !== undefined ? d.micro : d.mc !== undefined ? d.mc : 5, 5);
   }
 
   isMelee(): boolean {

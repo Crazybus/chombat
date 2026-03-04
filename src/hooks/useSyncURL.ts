@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SimulationState, TechData, UnitData } from '../sim/types';
 import { scrubArmy } from '../sim/ArmyAnalyzer';
@@ -27,54 +27,54 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
         const loaded = allScenarios[scenarioId];
         const allUnits: Record<string, UnitData> = { ...units, ...presets };
         const techsById: Record<number, TechData> = {};
-        Object.values(techs).forEach(t => techsById[t.id] = t);
+        Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
         setState({
           a: scrubArmy(loaded.a, allUnits, techsById),
           b: scrubArmy(loaded.b, allUnits, techsById),
           desc: loaded.desc || '',
           name: loaded.name || 'Shared Scenario',
-          sid: scenarioId
+          sid: scenarioId,
         });
       } else if (shortId) {
         // Resolve short ID from API
         fetch(`/api/resolve/${shortId}`)
-          .then(async res => {
+          .then(async (res) => {
             const result = await res.json();
             if (res.ok && result.data) {
               const loaded = result.data;
               const allUnits: Record<string, UnitData> = { ...units, ...presets };
               const techsById: Record<number, TechData> = {};
-              Object.values(techs).forEach(t => techsById[t.id] = t);
+              Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
               setState({
                 a: scrubArmy(loaded.a, allUnits, techsById),
                 b: scrubArmy(loaded.b, allUnits, techsById),
                 desc: loaded.desc || '',
                 name: loaded.name || 'Shared Scenario',
-                sid: loaded.sid
+                sid: loaded.sid,
               });
             } else {
               console.error('Failed to resolve short URL:', result.error || res.statusText);
             }
           })
-          .catch(err => console.error('Error fetching short URL:', err));
+          .catch((err) => console.error('Error fetching short URL:', err));
       } else if (base64Data) {
         try {
           const bin = atob(base64Data.replace(/-/g, '+').replace(/_/g, '/'));
-          const json = inflate(new Uint8Array([...bin].map(c => c.charCodeAt(0))), { to: 'string' });
+          const json = inflate(new Uint8Array([...bin].map((c) => c.charCodeAt(0))), { to: 'string' });
           const loaded = JSON.parse(json);
-          
+
           const allUnits: Record<string, UnitData> = { ...units, ...presets };
           const techsById: Record<number, TechData> = {};
-          Object.values(techs).forEach(t => techsById[t.id] = t);
+          Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
           setState({
             a: scrubArmy(loaded.a, allUnits, techsById),
             b: scrubArmy(loaded.b, allUnits, techsById),
             desc: loaded.desc || '',
             name: loaded.name || 'Shared Scenario',
-            sid: loaded.sid
+            sid: loaded.sid,
           });
         } catch (e) {
           console.error('Failed to load scenario from base64 URL', e);
@@ -87,13 +87,13 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
   // Save to URL
   const syncURL = async (explicit = false) => {
     if (!explicit) return;
-    
+
     const exportData = {
       a: state.a,
       b: state.b,
       name: state.name,
       desc: state.desc,
-      sid: state.sid
+      sid: state.sid,
     };
 
     try {
@@ -101,7 +101,7 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
       const response = await fetch('/api/shorten', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: exportData })
+        body: JSON.stringify({ data: exportData }),
       });
 
       if (response.ok) {
@@ -125,7 +125,7 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
         .replace(/\+/g, '-')
         .replace(/\//g, '_')
         .replace(/=+$/, '');
-      
+
       const url = `${window.location.origin}${window.location.pathname}?s=${base64}`;
       navigate(`?s=${base64}`, { replace: true });
       return url;
@@ -151,7 +151,7 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
       b: state.b,
       name: state.name,
       desc: state.desc,
-      sid: state.sid
+      sid: state.sid,
     };
   };
 

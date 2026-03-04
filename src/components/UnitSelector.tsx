@@ -36,18 +36,35 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
   }, []);
 
   const filteredUnits = useMemo(() => {
-    const filtered = allUnits.filter(u => !searchTerm || fuzzyMatch(u.name, searchTerm));
-    
+    const filtered = allUnits.filter((u) => !searchTerm || fuzzyMatch(u.name, searchTerm));
+
     if (searchTerm) {
       const termLower = searchTerm.toLowerCase();
       filtered.sort((a, b) => {
         const aLower = a.name.toLowerCase();
         const bLower = b.name.toLowerCase();
+
+        // 1. Exact match
         if (aLower === termLower) return -1;
         if (bLower === termLower) return 1;
-        if (aLower.startsWith(termLower)) return -1;
-        if (bLower.startsWith(termLower)) return 1;
-        return aLower.indexOf(termLower) - bLower.indexOf(termLower);
+
+        // 2. Starts with (prefix)
+        const aStarts = aLower.startsWith(termLower);
+        const bStarts = bLower.startsWith(termLower);
+        if (aStarts && !bStarts) return -1;
+        if (!aStarts && bStarts) return 1;
+
+        // 3. Contains substring (lower indexOf is better)
+        const aIndex = aLower.indexOf(termLower);
+        const bIndex = bLower.indexOf(termLower);
+        if (aIndex !== -1 && bIndex === -1) return -1;
+        if (aIndex === -1 && bIndex !== -1) return 1;
+        if (aIndex !== -1 && bIndex !== -1) {
+          if (aIndex !== bIndex) return aIndex - bIndex;
+        }
+
+        // 4. Fallback to name sort
+        return aLower.localeCompare(bLower);
       });
     }
     return filtered;
@@ -76,10 +93,10 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
       setIsOpen(false);
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setSelectedIndex(prev => (prev + 1) % filteredUnits.length);
+      setSelectedIndex((prev) => (prev + 1) % filteredUnits.length);
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setSelectedIndex(prev => (prev - 1 + filteredUnits.length) % filteredUnits.length);
+      setSelectedIndex((prev) => (prev - 1 + filteredUnits.length) % filteredUnits.length);
     } else if (e.key === 'Enter') {
       if (filteredUnits[selectedIndex]) {
         onSelect(filteredUnits[selectedIndex].id);
@@ -105,11 +122,7 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
 
   return (
     <div className="unit-selector-container" ref={containerRef}>
-      <h2 
-        ref={toggleRef}
-        className="clickable-unit-name" 
-        onClick={handleToggle}
-      >
+      <h2 ref={toggleRef} className="clickable-unit-name" onClick={handleToggle}>
         {currentUnitName}
       </h2>
 

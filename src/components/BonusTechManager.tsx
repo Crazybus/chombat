@@ -14,21 +14,21 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
   const { state, updateArmy } = useSimulation();
   const [searchTerm, setSearchTerm] = useState('');
   const [isListOpen, setIsListOpen] = useState(false);
-  
+
   const armyState = state[army];
   const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
   const currentUnit = armyState.ps ? allUnits[armyState.ps] : null;
 
   const techsById = useMemo(() => {
     const map: Record<number, any> = {};
-    Object.values(techs).forEach(t => map[t.id] = t);
+    Object.values(techs).forEach((t) => (map[t.id] = t));
     return map;
   }, []);
 
   const availableBonuses = useMemo(() => {
     const combined: Record<string, any> = { ...techs, ...bonuses };
     return Object.entries(combined)
-      .filter(([_id, b]) => {
+      .filter(([, b]) => {
         if (searchTerm && !b.name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
         if (!currentUnit) return true;
         // Basic filtering to show relevant techs
@@ -42,7 +42,7 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
     if (!b) return;
 
     // Prevent duplicates
-    if (armyState.bn?.some(item => item.i === id)) return;
+    if (armyState.bn?.some((item) => item.i === id)) return;
 
     const effects = b.effects || [];
     const effectsState = effects.map(() => true);
@@ -54,12 +54,12 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
   };
 
   const removeBonus = (id: string) => {
-    const newBonuses = armyState.bn?.filter(item => item.i !== id) || [];
+    const newBonuses = armyState.bn?.filter((item) => item.i !== id) || [];
     updateArmy(army, { bn: newBonuses });
   };
 
   const toggleEffect = (bonusId: string, effectIndex: number) => {
-    const newBonuses = armyState.bn?.map(item => {
+    const newBonuses = armyState.bn?.map((item) => {
       if (item.i === bonusId) {
         const newE = [...item.e];
         newE[effectIndex] = !newE[effectIndex];
@@ -86,8 +86,11 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
           onFocus={() => setIsListOpen(true)}
         />
         {isListOpen && searchTerm && (
-          <div className="bonus-list" style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 100, width: '100%' }}>
-            {availableBonuses.map(b => (
+          <div
+            className="bonus-list"
+            style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 100, width: '100%' }}
+          >
+            {availableBonuses.map((b) => (
               <div key={b.id} className="preset-item" onClick={() => addBonus(b.id)}>
                 {b.name}
               </div>
@@ -97,7 +100,7 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
       </div>
 
       <div className="applied-bonuses">
-        {armyState.bn?.map(item => {
+        {armyState.bn?.map((item) => {
           const b = techsById[parseInt(item.i)] || (bonuses as any)[item.i];
           if (!b) return null;
 
@@ -112,25 +115,23 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
                   {effs.map((e: any, idx: number) => {
                     const label = getEffectLabel(e);
                     if (!label || seenLabels.has(label)) return null;
-                    
+
                     const applies = currentUnit ? shouldApplyEffect(e, currentUnit, effs) : true;
                     if (!applies) return null;
 
                     seenLabels.add(label);
                     return (
                       <div key={idx} className="applied-bonus-effect">
-                        <input
-                          type="checkbox"
-                          checked={!!item.e[idx]}
-                          onChange={() => toggleEffect(item.i, idx)}
-                        />
+                        <input type="checkbox" checked={!!item.e[idx]} onChange={() => toggleEffect(item.i, idx)} />
                         <label>{label}</label>
                       </div>
                     );
                   })}
                 </div>
               </div>
-              <button className="remove-bonus-btn" onClick={() => removeBonus(item.i)}>&times;</button>
+              <button className="remove-bonus-btn" onClick={() => removeBonus(item.i)}>
+                &times;
+              </button>
             </div>
           );
         })}

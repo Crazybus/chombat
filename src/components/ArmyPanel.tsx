@@ -45,14 +45,14 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
             <button
               className="nav-btn secondary"
               onClick={() => setIsConfigCollapsed(!isConfigCollapsed)}
-              style={{ 
-                padding: '4px 10px', 
+              style={{
+                padding: '4px 10px',
                 fontSize: '0.75rem',
                 height: '32px',
                 whiteSpace: 'nowrap',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '5px'
+                gap: '5px',
               }}
               title={isConfigCollapsed ? 'Modify Unit Stats' : 'Close Editor'}
             >
@@ -60,17 +60,17 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
             </button>
           </div>
         </div>
-        
+
         <div className="header-row-group">
           <div className="header-row-item">
             <span className="stat-label">Civ:</span>
             <CivSelector army={army} />
           </div>
-          
+
           <div className="header-row-item">
             <span className="stat-label">Age:</span>
             <div className="army-age-controls">
-              {['1', '2', '3', '4'].map(age => (
+              {['1', '2', '3', '4'].map((age) => (
                 <button
                   key={age}
                   className={`age-btn ${armyState.age === age ? 'active' : ''}`}
@@ -93,14 +93,14 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
         <div className="field">
           <label>Unit Name Override</label>
           <div style={{ display: 'flex', gap: '8px' }}>
-            <input 
-              type="text" 
-              value={armyState.nm || ''} 
+            <input
+              type="text"
+              value={armyState.nm || ''}
               onChange={(e) => handleStatChange('nm', e.target.value)}
               style={{ flex: 1 }}
             />
-            <button 
-              className="nav-btn" 
+            <button
+              className="nav-btn"
               style={{ padding: '2px 8px', fontSize: '0.7rem', background: 'var(--panel-bg-alt)' }}
               onClick={() => clearOverrides(army)}
             >
@@ -108,10 +108,16 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
             </button>
           </div>
         </div>
-        
+
         <div className="grid-fields">
           <StatField army={army} label="HP" field="h" value={armyState.h || currentUnit?.hp || 0} step={5} />
-          <StatField army={army} label="Reload (s)" field="rl" value={armyState.rl || currentUnit?.reload || 0} step={0.1} />
+          <StatField
+            army={army}
+            label="Reload (s)"
+            field="rl"
+            value={armyState.rl || currentUnit?.reload || 0}
+            step={0.1}
+          />
           <StatField army={army} label="M. Attack" field="am" value={armyState.am || currentUnit?.matk || 0} step={1} />
           <StatField army={army} label="M. Armor" field="aa" value={armyState.aa || currentUnit?.marm || 0} step={1} />
           <StatField army={army} label="P. Attack" field="ap" value={armyState.ap || currentUnit?.patk || 0} step={1} />
@@ -129,20 +135,26 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
         <div className="efficiency-config">
           <h3>Engagement Efficiency</h3>
           <div className="field">
-            <label>Engagement % <span className="val-display">{armyState.e || 100}%</span></label>
-            <input 
-              type="range" 
-              min="1" max="100" 
-              value={armyState.e || 100} 
+            <label>
+              Engagement % <span className="val-display">{armyState.e || 100}%</span>
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value={armyState.e || 100}
               onChange={(e) => handleStatChange('e', parseInt(e.target.value))}
             />
           </div>
           <div className="field">
-            <label>Target Micro <span className="val-display">{getMicroLabel(armyState.mc || 5)}</span></label>
-            <input 
-              type="range" 
-              min="1" max="5" 
-              value={armyState.mc || 5} 
+            <label>
+              Target Micro <span className="val-display">{getMicroLabel(armyState.mc || 5)}</span>
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              value={armyState.mc || 5}
               onChange={(e) => handleStatChange('mc', parseInt(e.target.value))}
             />
           </div>
@@ -165,7 +177,7 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
   const timerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
   const valRef = useRef(value);
-  
+
   useEffect(() => {
     valRef.current = value;
   }, [value]);
@@ -177,8 +189,8 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
 
   const startRepeating = (dir: number) => {
     const doStep = () => {
-      const currentVal = (parseFloat(String(valRef.current || 0)));
-      const next = currentVal + (dir * step);
+      const currentVal = parseFloat(String(valRef.current || 0));
+      const next = currentVal + dir * step;
       handleChange(next);
     };
 
@@ -205,10 +217,15 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
       <div className="stepper">
         <button
           className="step-btn"
-          onPointerDown={(e) => { e.preventDefault(); startRepeating(-1); }}
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(-1);
+          }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
-        >−</button>
+        >
+          −
+        </button>
         <input
           type="number"
           value={currentVal}
@@ -217,11 +234,15 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
         />
         <button
           className="step-btn"
-          onPointerDown={(e) => { e.preventDefault(); startRepeating(1); }}
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(1);
+          }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
-        >+</button>
-
+        >
+          +
+        </button>
       </div>
     </div>
   );

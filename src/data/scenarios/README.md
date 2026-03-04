@@ -62,10 +62,10 @@ To show your scenario as a button on the main page, add it to the `featuredScena
 
 ```typescript
 export const featuredScenarios = [
-    'champi_vs_scouts',
-    'archer_vs_skirm',
-    'champi_vs_maa',
-    'your_new_scenario',  // Add here
+  'champi_vs_scouts',
+  'archer_vs_skirm',
+  'champi_vs_maa',
+  'your_new_scenario', // Add here
 ];
 ```
 
@@ -85,6 +85,7 @@ When you click Export in the UI, you get JSON ready to paste:
 ```
 
 Just:
+
 1. Create `src/data/scenarios/your_scenario_id.ts`
 2. Paste the JSON (remove outer braces, keep the inner object)
 3. Add `export const your_scenario_id = ` before the object

@@ -74,26 +74,31 @@ export function analyzeProduction(
   techsById: Record<number, TechData>,
   allUnits: Record<string, UnitData>,
   maxTime: number = 1800,
-  step: number = 15
+  step: number = 15,
 ): ProductionAnalysisResult {
-  const baseCostA = { 
-    f: stateA.af !== undefined ? stateA.af : (unitA.f || 0), 
-    w: stateA.aw !== undefined ? stateA.aw : (unitA.w || 0), 
-    g: stateA.ag !== undefined ? stateA.ag : (unitA.g || 0) 
+  const baseCostA = {
+    f: stateA.af !== undefined ? stateA.af : unitA.f || 0,
+    w: stateA.aw !== undefined ? stateA.aw : unitA.w || 0,
+    g: stateA.ag !== undefined ? stateA.ag : unitA.g || 0,
   };
-  const baseCostB = { 
-    f: stateB.af !== undefined ? stateB.af : (unitB.f || 0), 
-    w: stateB.aw !== undefined ? stateB.aw : (unitB.w || 0), 
-    g: stateB.ag !== undefined ? stateB.ag : (unitB.g || 0) 
+  const baseCostB = {
+    f: stateB.af !== undefined ? stateB.af : unitB.f || 0,
+    w: stateB.aw !== undefined ? stateB.aw : unitB.w || 0,
+    g: stateB.ag !== undefined ? stateB.ag : unitB.g || 0,
   };
 
   const resA = calculateCount(maxTime, stateA.tl || [], baseCostA, stateA.sv);
   const resB = calculateCount(maxTime, stateB.tl || [], baseCostB, stateB.sv);
 
-  const result: any = { 
-    labels: [], countA: [], countB: [], advantage: [], 
-    economyA: [], economyB: [], 
-    finalResA: resA, finalResB: resB,
+  const result: any = {
+    labels: [],
+    countA: [],
+    countB: [],
+    advantage: [],
+    economyA: [],
+    economyB: [],
+    finalResA: resA,
+    finalResB: resB,
     tideTurnsAt: null,
     winnerAtTideTurn: null,
     countAtTideTurnA: null,
@@ -101,7 +106,7 @@ export function analyzeProduction(
     firstUnitsAt: null,
     countAtFirstA: null,
     countAtFirstB: null,
-    mergedEvents: []
+    mergedEvents: [],
   };
 
   let currentWinner: 'a' | 'b' | null = null;
@@ -109,8 +114,8 @@ export function analyzeProduction(
   for (let t = 0; t <= maxTime; t += step) {
     const sA = resA.stateAtTime[t] || { vills: resA.villagers, units: resA.count };
     const sB = resB.stateAtTime[t] || { vills: resB.villagers, units: resB.count };
-    const ecoA = resA.economyHistory.find(e => e.time >= t) || resA.economyHistory[resA.economyHistory.length-1];
-    const ecoB = resB.economyHistory.find(e => e.time >= t) || resB.economyHistory[resB.economyHistory.length-1];
+    const ecoA = resA.economyHistory.find((e) => e.time >= t) || resA.economyHistory[resA.economyHistory.length - 1];
+    const ecoB = resB.economyHistory.find((e) => e.time >= t) || resB.economyHistory[resB.economyHistory.length - 1];
 
     result.labels.push(Math.floor(t / 60) + 'm' + (t % 60 ? (t % 60) + 's' : ''));
     result.countA.push(sA.units);
@@ -118,7 +123,7 @@ export function analyzeProduction(
     result.economyA.push(ecoA);
     result.economyB.push(ecoB);
 
-    if (result.firstUnitsAt === null && (sA.units > 0 && sB.units > 0)) {
+    if (result.firstUnitsAt === null && sA.units > 0 && sB.units > 0) {
       result.firstUnitsAt = t;
       result.countAtFirstA = sA.units;
       result.countAtFirstB = sB.units;
@@ -127,17 +132,25 @@ export function analyzeProduction(
     let adv = 0;
     if (sA.units > 0 || sB.units > 0) {
       if (sA.units > 0 && sB.units > 0) {
-        const sim = new CombatSim(unitA, unitB, { ...stateA, c: sA.units }, { ...stateB, c: sB.units }, techsById, allUnits);
+        const sim = new CombatSim(
+          unitA,
+          unitB,
+          { ...stateA, c: sA.units },
+          { ...stateB, c: sB.units },
+          techsById,
+          allUnits,
+        );
         const combatRes = sim.run();
-        adv = combatRes.armyA.totalHp > combatRes.armyB.totalHp 
-          ? (combatRes.armyA.totalHp / combatRes.armyA.initialTotalHp) * 100 
-          : -(combatRes.armyB.totalHp / combatRes.armyB.initialTotalHp) * 100;
+        adv =
+          combatRes.armyA.totalHp > combatRes.armyB.totalHp
+            ? (combatRes.armyA.totalHp / combatRes.armyA.initialTotalHp) * 100
+            : -(combatRes.armyB.totalHp / combatRes.armyB.initialTotalHp) * 100;
       } else if (sA.units > 0) adv = 100;
       else adv = -100;
     }
     result.advantage.push(adv);
 
-    const winner = adv > 0 ? 'a' : (adv < 0 ? 'b' : null);
+    const winner = adv > 0 ? 'a' : adv < 0 ? 'b' : null;
     if (winner && currentWinner && winner !== currentWinner && result.tideTurnsAt === null) {
       result.tideTurnsAt = t;
       result.winnerAtTideTurn = winner === 'a' ? unitA.name : unitB.name;
@@ -152,22 +165,30 @@ export function analyzeProduction(
   }
 
   const allEvents: ProductionEvent[] = [];
-  resA.events.forEach(e => {
+  resA.events.forEach((e) => {
     const sB = resB.stateAtTime[e.time] || { vills: resB.villagers, units: resB.count };
-    allEvents.push({ 
-      time: e.time, msg: e.msg, army: 'a', 
-      villsA: e.vills, unitsA: e.units, 
-      villsB: sB.vills, unitsB: sB.units,
-      important: e.important
+    allEvents.push({
+      time: e.time,
+      msg: e.msg,
+      army: 'a',
+      villsA: e.vills,
+      unitsA: e.units,
+      villsB: sB.vills,
+      unitsB: sB.units,
+      important: e.important,
     });
   });
-  resB.events.forEach(e => {
+  resB.events.forEach((e) => {
     const sA = resA.stateAtTime[e.time] || { vills: resA.villagers, units: resA.count };
-    allEvents.push({ 
-      time: e.time, msg: e.msg, army: 'b', 
-      villsB: e.vills, unitsB: e.units, 
-      villsA: sA.vills, unitsA: sA.units,
-      important: e.important
+    allEvents.push({
+      time: e.time,
+      msg: e.msg,
+      army: 'b',
+      villsB: e.vills,
+      unitsB: e.units,
+      villsA: sA.vills,
+      unitsA: sA.units,
+      important: e.important,
     });
   });
 
@@ -179,9 +200,11 @@ export function analyzeProduction(
       time: t,
       msg: `The tide turns! ${result.winnerAtTideTurn} takes the lead.`,
       army: 'system',
-      villsA: sA.vills, unitsA: sA.units,
-      villsB: sB.vills, unitsB: sB.units,
-      important: true
+      villsA: sA.vills,
+      unitsA: sA.units,
+      villsB: sB.vills,
+      unitsB: sB.units,
+      important: true,
     });
   }
 
@@ -190,31 +213,35 @@ export function analyzeProduction(
   const sBFinal = resB.stateAtTime[maxTime] || { vills: resB.villagers, units: resB.count };
   allEvents.push({
     time: maxTime,
-    msg: result.tideTurnsAt === null ? "Final Standings" : "End of simulation",
+    msg: result.tideTurnsAt === null ? 'Final Standings' : 'End of simulation',
     army: 'system',
-    villsA: sAFinal.vills, unitsA: sAFinal.units,
-    villsB: sBFinal.vills, unitsB: sBFinal.units,
-    important: result.tideTurnsAt === null
+    villsA: sAFinal.vills,
+    unitsA: sAFinal.units,
+    villsB: sBFinal.vills,
+    unitsB: sBFinal.units,
+    important: result.tideTurnsAt === null,
   });
 
   let lastEventTime = 0;
-  const sorted = allEvents.sort((a, b) => a.time - b.time || (a.army === 'system' ? 1 : (a.army === 'a' ? -1 : 1)));
+  const sorted = allEvents.sort((a, b) => a.time - b.time || (a.army === 'system' ? 1 : a.army === 'a' ? -1 : 1));
   const withPeriodic: ProductionEvent[] = [];
-  
+
   for (let t = 0; t <= maxTime; t++) {
-    const eventsAtT = sorted.filter(e => e.time === t);
+    const eventsAtT = sorted.filter((e) => e.time === t);
     if (eventsAtT.length > 0) {
-      eventsAtT.forEach(e => withPeriodic.push(e));
+      eventsAtT.forEach((e) => withPeriodic.push(e));
       lastEventTime = t;
     } else if (t - lastEventTime >= 300) {
       const sA = resA.stateAtTime[t] || { vills: resA.villagers, units: resA.count };
       const sB = resB.stateAtTime[t] || { vills: resB.villagers, units: resB.count };
       withPeriodic.push({
         time: t,
-        msg: "Status Update",
+        msg: 'Status Update',
         army: 'system',
-        villsA: sA.vills, unitsA: sA.units,
-        villsB: sB.vills, unitsB: sB.units
+        villsA: sA.vills,
+        unitsA: sA.units,
+        villsB: sB.vills,
+        unitsB: sB.units,
       });
       lastEventTime = t;
     }
@@ -229,12 +256,12 @@ export function calculateCount(
   t: number,
   timelineSteps: TimelineStep[],
   unitBaseCost: { f: number; w: number; g: number } = { f: 0, w: 0, g: 0 },
-  initialVillagers: number = 3
+  initialVillagers: number = 3,
 ): ProductionResult {
   let unitsCount = 0;
-  const hasVillProduction = timelineSteps.some(s => s.t === 'villagers');
-  let villagers = hasVillProduction ? (initialVillagers || 3) : 0;
-  
+  const hasVillProduction = timelineSteps.some((s) => s.t === 'villagers');
+  let villagers = hasVillProduction ? initialVillagers || 3 : 0;
+
   let militaryCapacity = 0;
   let tcCapacity = 1;
   let tcContinuous = false;
@@ -260,7 +287,11 @@ export function calculateCount(
   let tcProgress = 0;
   let milProgress = 0;
 
-  const steps = JSON.parse(JSON.stringify(timelineSteps)) as (TimelineStep & { started?: boolean; startTime?: number; finished?: boolean })[];
+  const steps = JSON.parse(JSON.stringify(timelineSteps)) as (TimelineStep & {
+    started?: boolean;
+    startTime?: number;
+    finished?: boolean;
+  })[];
   let currentStepIdx = 0;
   const events: { time: number; msg: string; vills: number; units: number; important?: boolean }[] = [];
 
@@ -285,33 +316,38 @@ export function calculateCount(
           }
         } else {
           // Buildings and Techs spend upfront. Villagers and Production spend per-unit in the loop.
-          const count = step.t === 'building' ? (step.c || 1) : 1;
+          const count = step.t === 'building' ? step.c || 1 : 1;
           const isUpfront = step.t === 'building' || step.t === 'tech';
-          const cost = isUpfront ? (((step.f || 0) + (step.w || 0) + (step.g || 0) + (step.co || 0)) * count) : 0;
-          
+          const cost = isUpfront ? ((step.f || 0) + (step.w || 0) + (step.g || 0) + (step.co || 0)) * count : 0;
+
           if (gatheredTotal - spentTotal >= cost) {
             step.started = true;
             step.startTime = s;
             spentTotal += cost;
             if (step.t === 'building') spentOnBuildings += cost;
             else if (step.t === 'tech') spentOnTechs += cost;
-            
+
             if (step.lim || step.b) {
-              let msg = "";
+              let msg = '';
               if (step.t === 'villagers') msg = `Creating ${count} villagers`;
               else if (step.t === 'building') msg = `Building ${count} ${step.n || step.t}`;
               else if (step.t === 'tech') msg = `Started researching ${step.n}`;
               else if (step.t === 'production') msg = `Producing ${count} ${step.n}`;
               else msg = `Started: ${step.n || step.t}`;
-              
-              const important = (step.t === 'tech' && (step.n || "").toLowerCase().includes('age'));
+
+              const important = step.t === 'tech' && (step.n || '').toLowerCase().includes('age');
               events.push({ time: s, msg, vills: villagers, units: unitsCount, important });
             } else if (step.t === 'production') {
-              events.push({ time: s, msg: `${step.n || 'Unit production'} started`, vills: villagers, units: unitsCount });
+              events.push({
+                time: s,
+                msg: `${step.n || 'Unit production'} started`,
+                vills: villagers,
+                units: unitsCount,
+              });
             }
 
             const duration = step.lim ? (step.d || 0) * count : 0;
-            if (duration === 0) { } else break;
+            if (duration !== 0) break;
           } else break;
         }
       }
@@ -322,13 +358,13 @@ export function calculateCount(
         if (s >= (step.startTime || 0) + duration) {
           step.finished = true;
           if (step.lim || step.b || step.t === 'tech') {
-            let msg = "";
+            let msg = '';
             if (step.t === 'building') msg = `Built ${count} ${step.n || step.t}`;
             else if (step.t === 'tech') msg = `Researched ${step.n}`;
             else if (step.t === 'villagers') msg = `Created ${count} villagers`;
             else msg = `Finished: ${step.n || step.t}`;
-            
-            const important = (step.t === 'tech' && (step.n || "").toLowerCase().includes('age'));
+
+            const important = step.t === 'tech' && (step.n || '').toLowerCase().includes('age');
             events.push({ time: s, msg, vills: villagers, units: unitsCount, important });
           }
 
@@ -339,7 +375,7 @@ export function calculateCount(
             if (!step.lim) tcContinuous = true;
           } else if (step.t === 'production') {
             trainTime = step.tr || trainTime;
-            militaryCapacity += (step.v || 0);
+            militaryCapacity += step.v || 0;
             if (!step.lim) militaryContinuous = true;
             if (step.f !== undefined) currentUnitCost.f = step.f;
             if (step.w !== undefined) currentUnitCost.w = step.w;
@@ -348,12 +384,14 @@ export function calculateCount(
               const total = (currentUnitCost.f || 0) + (currentUnitCost.w || 0) + (currentUnitCost.g || 0);
               if (total > 0) {
                 const ratio = step.co / total;
-                currentUnitCost.f *= ratio; currentUnitCost.w *= ratio; currentUnitCost.g *= ratio;
+                currentUnitCost.f *= ratio;
+                currentUnitCost.w *= ratio;
+                currentUnitCost.g *= ratio;
               } else currentUnitCost.g = step.co;
             }
           }
           currentStepIdx++;
-          processing = true; 
+          processing = true;
         }
       }
     }
@@ -373,13 +411,13 @@ export function calculateCount(
     if (activeTCs > 0) {
       const isActiveStep = runningStep?.started && !runningStep.finished && runningStep.t === 'villagers';
       if (tcContinuous || isActiveStep) {
-        tcProgress += activeTCs * (1 / 25); 
+        tcProgress += activeTCs * (1 / 25);
       }
     }
     while (tcProgress >= 0.99) {
       villagers++;
       tcProgress -= 1;
-      const vCost = (runningStep?.t === 'villagers' && runningStep.co !== undefined) ? runningStep.co : 50;
+      const vCost = runningStep?.t === 'villagers' && runningStep.co !== undefined ? runningStep.co : 50;
       spentTotal += vCost;
       spentOnVillagers += vCost;
     }
@@ -399,15 +437,20 @@ export function calculateCount(
 
       if (!firstUnitProduced && unitsCount > 0) {
         firstUnitProduced = true;
-        events.push({ time: s, msg: "First unit produced!", vills: villagers, units: unitsCount, important: true });
+        events.push({ time: s, msg: 'First unit produced!', vills: villagers, units: unitsCount, important: true });
       }
     }
 
     if (s % 10 === 0 || s === t) {
       economyHistory.push({
-        time: s, gathered: gatheredTotal, spent: spentTotal,
-        spentOnVillagers, spentOnUnits, spentOnBuildings, spentOnTechs,
-        vills: villagers
+        time: s,
+        gathered: gatheredTotal,
+        spent: spentTotal,
+        spentOnVillagers,
+        spentOnUnits,
+        spentOnBuildings,
+        spentOnTechs,
+        vills: villagers,
       });
     }
     gatheredTotal += villagers * gatheringRate;

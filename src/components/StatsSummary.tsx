@@ -9,7 +9,12 @@ interface StatsSummaryProps {
   showName?: boolean;
 }
 
-const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false, hoverExpand = false, showName = false }) => {
+const StatsSummary: React.FC<StatsSummaryProps> = ({
+  army,
+  compact = false,
+  hoverExpand = false,
+  showName = false,
+}) => {
   const { analysisA, analysisB } = useSimulation();
   const [isHovered, setIsHovered] = useState(false);
   const analysis = army === 'a' ? analysisA : analysisB;
@@ -21,7 +26,9 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false, hove
         <span>{Math.round(base)}</span>
         {Math.abs(diff) >= 1 && (
           <span className={diff > 0 ? 'stat-bonus' : 'stat-penalty'}>
-            {' '}{diff > 0 ? '+' : ''}{diff}
+            {' '}
+            {diff > 0 ? '+' : ''}
+            {diff}
           </span>
         )}
       </>
@@ -36,19 +43,28 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false, hove
   const showBreakdown = hoverExpand ? isHovered : !compact;
 
   return (
-    <div 
+    <div
       className="stats-summary-container"
       onMouseEnter={() => hoverExpand && setIsHovered(true)}
       onMouseLeave={() => hoverExpand && setIsHovered(false)}
       style={{ position: 'relative', width: '100%' }}
     >
-      <div 
-        className="unit-stats-summary" 
+      <div
+        className="unit-stats-summary"
         style={{
-          ...(compact ? { padding: '4px 8px', gap: '8px', border: 'none', background: 'transparent', marginBottom: 0, minHeight: 'auto' } : {}),
+          ...(compact
+            ? {
+                padding: '4px 8px',
+                gap: '8px',
+                border: 'none',
+                background: 'transparent',
+                marginBottom: 0,
+                minHeight: 'auto',
+              }
+            : {}),
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start'
+          alignItems: 'flex-start',
         }}
       >
         {showName && (
@@ -64,10 +80,9 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false, hove
           <div className="stat-badge" title={isMelee ? 'Melee Attack' : 'Pierce Attack'} style={{ padding: '4px 6px' }}>
             <span className="stat-icon">{isMelee ? '⚔️' : '🏹'}</span>
             <span className="stat-text">
-              {isMelee 
+              {isMelee
                 ? formatStat(modifiedBase.matk, effectiveStats.matk)
-                : formatStat(modifiedBase.patk, effectiveStats.patk)
-              }
+                : formatStat(modifiedBase.patk, effectiveStats.patk)}
             </span>
           </div>
           <div className="stat-badge" title="Melee Armor" style={{ padding: '4px 6px' }}>
@@ -88,7 +103,7 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false, hove
       </div>
 
       {showBreakdown && (
-        <div className={hoverExpand ? "unit-breakdown-popup" : "unit-breakdown-inline"}>
+        <div className={hoverExpand ? 'unit-breakdown-popup' : 'unit-breakdown-inline'}>
           <UnitStatsExplanation army={army} analysis={analysis} hideHeader={true} />
         </div>
       )}
@@ -96,48 +111,95 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({ army, compact = false, hove
   );
 };
 
-export const UnitStatsExplanation: React.FC<{ army: 'a' | 'b', analysis: ArmyAnalysis, hideHeader?: boolean }> = ({ army, analysis, hideHeader = false }) => {
+export const UnitStatsExplanation: React.FC<{ army: 'a' | 'b'; analysis: ArmyAnalysis; hideHeader?: boolean }> = ({
+  army,
+  analysis,
+  hideHeader = false,
+}) => {
   const { toggleBonus } = useSimulation();
   const { groups, unitName, ageName } = analysis;
 
   return (
-    <div className="unit-explanation" style={{ fontSize: '0.75rem', color: 'var(--text-dim)', marginTop: hideHeader ? '0' : '12px', borderTop: hideHeader ? 'none' : '1px solid var(--border-dim)', paddingTop: hideHeader ? '0' : '12px', width: '100%' }}>
+    <div
+      className="unit-explanation"
+      style={{
+        fontSize: '0.75rem',
+        color: 'var(--text-dim)',
+        marginTop: hideHeader ? '0' : '12px',
+        borderTop: hideHeader ? 'none' : '1px solid var(--border-dim)',
+        paddingTop: hideHeader ? '0' : '12px',
+        width: '100%',
+      }}
+    >
       {!hideHeader && (
-        <div className="summary-line" style={{ fontWeight: 'bold', color: 'var(--text-color)', marginBottom: '8px', fontSize: '0.85rem' }}>
+        <div
+          className="summary-line"
+          style={{ fontWeight: 'bold', color: 'var(--text-color)', marginBottom: '8px', fontSize: '0.85rem' }}
+        >
           {ageName} {unitName}
         </div>
       )}
-      
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 150px), 1fr))', gap: '12px' }}>
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 150px), 1fr))',
+          gap: '12px',
+        }}
+      >
         {Object.entries(groups).map(([key, group]) => {
           const isCore = ['hp', 'atk', 'marm', 'parm'].includes(key);
           if (group.sources.length === 0 && !isCore) return null;
-          
+
           return (
-            <div key={key} className="stat-explanation-group" style={{ background: 'var(--panel-bg-alt)', padding: '6px', borderRadius: '4px', border: '1px solid var(--border-dim)', minHeight: '60px' }}>
-              <div style={{ fontWeight: 'bold', color: 'var(--accent-color)', marginBottom: '2px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <div
+              key={key}
+              className="stat-explanation-group"
+              style={{
+                background: 'var(--panel-bg-alt)',
+                padding: '6px',
+                borderRadius: '4px',
+                border: '1px solid var(--border-dim)',
+                minHeight: '60px',
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: 'bold',
+                  color: 'var(--accent-color)',
+                  marginBottom: '2px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+              >
                 <span>{group.icon}</span> {group.label}
               </div>
               <ul style={{ margin: 0, paddingLeft: '14px', listStyleType: 'disc' }}>
                 {group.sources.map((src, i) => {
                   const isTech = src.type === 'tech';
                   const isActive = src.isActive !== false;
-                  
+
                   return (
-                    <li 
-                      key={i} 
-                      style={{ 
-                        marginBottom: '2px', 
+                    <li
+                      key={i}
+                      style={{
+                        marginBottom: '2px',
                         cursor: isTech ? 'pointer' : 'default',
                         textDecoration: isActive ? 'none' : 'line-through',
                         opacity: isActive ? 1 : 0.5,
                         transition: 'all 0.2s',
-                        pointerEvents: 'auto' // Allow toggling even in hover popup
+                        pointerEvents: 'auto', // Allow toggling even in hover popup
                       }}
                       onClick={() => isTech && src.techId && toggleBonus(army, src.techId)}
                       title={isTech ? 'Click to toggle this upgrade' : undefined}
                     >
-                      <span>{src.name === 'Manual Override' ? '' : src.name + ': '}<span className={src.isBonus ? 'stat-bonus' : 'stat-penalty'} style={{ fontWeight: 'bold' }}>{src.label}</span></span>
+                      <span>
+                        {src.name === 'Manual Override' ? '' : src.name + ': '}
+                        <span className={src.isBonus ? 'stat-bonus' : 'stat-penalty'} style={{ fontWeight: 'bold' }}>
+                          {src.label}
+                        </span>
+                      </span>
                     </li>
                   );
                 })}

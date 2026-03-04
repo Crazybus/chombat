@@ -18,8 +18,22 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import { Line } from 'react-chartjs-2';
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
-import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable,
+} from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import StatsSummary from './StatsSummary';
 
@@ -32,7 +46,7 @@ ChartJS.register(
   Tooltip,
   Legend,
   Filler,
-  annotationPlugin
+  annotationPlugin,
 );
 
 const ProductionSimulation: React.FC = () => {
@@ -44,7 +58,7 @@ const ProductionSimulation: React.FC = () => {
 
   const techsById = useMemo(() => {
     const map: Record<number, any> = {};
-    Object.values(techs).forEach(t => map[t.id] = t);
+    Object.values(techs).forEach((t) => (map[t.id] = t));
     return map;
   }, []);
 
@@ -55,11 +69,8 @@ const ProductionSimulation: React.FC = () => {
   }, [state.a, state.b, analysisA, analysisB, techsById, maxTime]);
 
   if (!result || !analysisA || !analysisB) return null;
-  const { 
-    finalResA, finalResB, labels, countA, countB, advantage, 
-    tideTurnsAt, economyA, economyB, 
-    mergedEvents
-  } = result;
+  const { finalResA, finalResB, labels, countA, countB, advantage, tideTurnsAt, economyA, economyB, mergedEvents } =
+    result;
 
   const nameA = analysisA.unitName;
   const nameB = analysisB.unitName;
@@ -69,146 +80,188 @@ const ProductionSimulation: React.FC = () => {
     maintainAspectRatio: false,
     animation: { duration: 0 },
     interaction: { intersect: false, mode: 'index' as const },
-    scales: { 
-      x: { 
-        ticks: { 
+    scales: {
+      x: {
+        ticks: {
           maxTicksLimit: 8,
           maxRotation: 45,
           minRotation: 0,
           font: { size: 10 },
-          color: '#888'
+          color: '#888',
         },
-        grid: { color: 'rgba(255,255,255,0.05)' }
-      },
-      y: { 
         grid: { color: 'rgba(255,255,255,0.05)' },
-        ticks: { color: '#888', font: { size: 10 } }
-      }
+      },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: '#888', font: { size: 10 } },
+      },
     },
     plugins: {
       legend: { position: 'top' as const, labels: { color: '#e0e0e0', font: { size: 11 } } },
     },
-    elements: { line: { tension: 0.1, borderWidth: 2 }, point: { radius: 0 } }
+    elements: { line: { tension: 0.1, borderWidth: 2 }, point: { radius: 0 } },
   };
 
   const growthData = {
     labels,
     datasets: [
-      { label: nameA, data: countA, borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, stepped: true },
-      { label: nameB, data: countB, borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, stepped: true },
-    ]
+      {
+        label: nameA,
+        data: countA,
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        stepped: true,
+      },
+      {
+        label: nameB,
+        data: countB,
+        borderColor: '#e74c3c',
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        stepped: true,
+      },
+    ],
   };
 
   const advantageData = {
     labels,
     datasets: [
-      { 
-        label: nameA + ' Advantage %', 
-        data: advantage.map(v => v > 0 ? v : 0), 
-        borderColor: '#3498db', 
+      {
+        label: nameA + ' Advantage %',
+        data: advantage.map((v) => (v > 0 ? v : 0)),
+        borderColor: '#3498db',
         backgroundColor: 'rgba(52, 152, 219, 0.2)',
         fill: true,
-        pointRadius: 0
+        pointRadius: 0,
       },
-      { 
-        label: nameB + ' Advantage %', 
-        data: advantage.map(v => v < 0 ? Math.abs(v) : 0), 
-        borderColor: '#e74c3c', 
+      {
+        label: nameB + ' Advantage %',
+        data: advantage.map((v) => (v < 0 ? Math.abs(v) : 0)),
+        borderColor: '#e74c3c',
         backgroundColor: 'rgba(231, 76, 60, 0.2)',
         fill: true,
-        pointRadius: 0
+        pointRadius: 0,
       },
-    ]
+    ],
   };
 
   const gatheredDiff = economyA.map((e, i) => e.gathered - economyB[i].gathered);
   const spentDiff = economyA.map((e, i) => e.spent - economyB[i].spent);
-  const floatA = economyA.map(e => e.gathered - e.spent);
-  const floatB = economyB.map(e => e.gathered - e.spent);
+  const floatA = economyA.map((e) => e.gathered - e.spent);
+  const floatB = economyB.map((e) => e.gathered - e.spent);
   const floatDiff = floatA.map((f, i) => f - floatB[i]);
   const villDiff = economyA.map((e, i) => e.vills - economyB[i].vills);
 
   const gatheredData = {
     labels,
     datasets: [
-      { 
-        label: nameA, 
-        data: smooth(gatheredDiff, 10).map(v => v > 0 ? v : 0), 
-        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      {
+        label: nameA,
+        data: smooth(gatheredDiff, 10).map((v) => (v > 0 ? v : 0)),
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        pointRadius: 0,
       },
-      { 
-        label: nameB, 
-        data: smooth(gatheredDiff, 10).map(v => v < 0 ? Math.abs(v) : 0), 
-        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      {
+        label: nameB,
+        data: smooth(gatheredDiff, 10).map((v) => (v < 0 ? Math.abs(v) : 0)),
+        borderColor: '#e74c3c',
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        pointRadius: 0,
       },
-    ]
+    ],
   };
 
   const spentData = {
     labels,
     datasets: [
-      { 
-        label: nameA, 
-        data: smooth(spentDiff, 10).map(v => v > 0 ? v : 0), 
-        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      {
+        label: nameA,
+        data: smooth(spentDiff, 10).map((v) => (v > 0 ? v : 0)),
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        pointRadius: 0,
       },
-      { 
-        label: nameB, 
-        data: smooth(spentDiff, 10).map(v => v < 0 ? Math.abs(v) : 0), 
-        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      {
+        label: nameB,
+        data: smooth(spentDiff, 10).map((v) => (v < 0 ? Math.abs(v) : 0)),
+        borderColor: '#e74c3c',
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        pointRadius: 0,
       },
-    ]
+    ],
   };
 
   const floatData = {
     labels,
     datasets: [
-      { 
-        label: nameA, 
-        data: smooth(floatDiff, 10).map(v => v > 0 ? v : 0), 
-        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0
+      {
+        label: nameA,
+        data: smooth(floatDiff, 10).map((v) => (v > 0 ? v : 0)),
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        pointRadius: 0,
       },
-      { 
-        label: nameB, 
-        data: smooth(floatDiff, 10).map(v => v < 0 ? Math.abs(v) : 0), 
-        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0
+      {
+        label: nameB,
+        data: smooth(floatDiff, 10).map((v) => (v < 0 ? Math.abs(v) : 0)),
+        borderColor: '#e74c3c',
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        pointRadius: 0,
       },
-    ]
+    ],
   };
 
   const villData = {
     labels,
     datasets: [
-      { 
-        label: nameA, 
-        data: villDiff.map(v => v > 0 ? Math.round(v) : 0), 
-        borderColor: '#3498db', backgroundColor: 'rgba(52, 152, 219, 0.2)', fill: true, pointRadius: 0, stepped: true
+      {
+        label: nameA,
+        data: villDiff.map((v) => (v > 0 ? Math.round(v) : 0)),
+        borderColor: '#3498db',
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        fill: true,
+        pointRadius: 0,
+        stepped: true,
       },
-      { 
-        label: nameB, 
-        data: villDiff.map(v => v < 0 ? Math.round(Math.abs(v)) : 0), 
-        borderColor: '#e74c3c', backgroundColor: 'rgba(231, 76, 60, 0.2)', fill: true, pointRadius: 0, stepped: true
+      {
+        label: nameB,
+        data: villDiff.map((v) => (v < 0 ? Math.round(Math.abs(v)) : 0)),
+        borderColor: '#e74c3c',
+        backgroundColor: 'rgba(231, 76, 60, 0.2)',
+        fill: true,
+        pointRadius: 0,
+        stepped: true,
       },
-    ]
+    ],
   };
 
   const createAnnotations = (events: any[], color: string) => {
     const annotations: any = {};
-    events.filter(e => e.msg.startsWith('Started:') || e.msg.includes('production started')).forEach((e, i) => {
-      const timeStr = Math.floor(e.time / 60) + 'm' + (e.time % 60 ? (e.time % 60) + 's' : '');
-      const labelIdx = labels.indexOf(timeStr);
-      if (labelIdx === -1) return;
+    events
+      .filter((e) => e.msg.startsWith('Started:') || e.msg.includes('production started'))
+      .forEach((e, i) => {
+        const timeStr = Math.floor(e.time / 60) + 'm' + (e.time % 60 ? (e.time % 60) + 's' : '');
+        const labelIdx = labels.indexOf(timeStr);
+        if (labelIdx === -1) return;
 
-      annotations[`line${color}-${i}`] = {
-        type: 'line',
-        xMin: labelIdx,
-        xMax: labelIdx,
-        borderColor: color,
-        borderWidth: 1,
-        borderDash: [2, 2],
-        label: { display: false, content: e.msg, position: 'start' }
-      };
-    });
+        annotations[`line${color}-${i}`] = {
+          type: 'line',
+          xMin: labelIdx,
+          xMax: labelIdx,
+          borderColor: color,
+          borderWidth: 1,
+          borderDash: [2, 2],
+          label: { display: false, content: e.msg, position: 'start' },
+        };
+      });
     return annotations;
   };
 
@@ -220,14 +273,14 @@ const ProductionSimulation: React.FC = () => {
         annotations: {
           ...createAnnotations(finalResA.events, 'rgba(52, 152, 219, 0.3)'),
           ...createAnnotations(finalResB.events, 'rgba(231, 76, 60, 0.3)'),
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   const formatTime = (s: number) => `${Math.floor(s / 60)}m ${s % 60}s`;
 
-  const displayedEvents = showFullLog ? mergedEvents : mergedEvents.filter(e => e.important);
+  const displayedEvents = showFullLog ? mergedEvents : mergedEvents.filter((e) => e.important);
 
   return (
     <div id="production" className="section-anchor" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
@@ -236,12 +289,23 @@ const ProductionSimulation: React.FC = () => {
         <p>Define your build order and see when the tide turns.</p>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
-        <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 'bold', textTransform: 'uppercase' }}>Sim Duration:</span>
-        <select 
-          value={maxTime} 
+      <div
+        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginBottom: '20px' }}
+      >
+        <span style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 'bold', textTransform: 'uppercase' }}>
+          Sim Duration:
+        </span>
+        <select
+          value={maxTime}
           onChange={(e) => setMaxTime(parseInt(e.target.value))}
-          style={{ background: 'var(--input-bg)', color: 'var(--text-color)', border: '1px solid var(--border-dim)', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' }}
+          style={{
+            background: 'var(--input-bg)',
+            color: 'var(--text-color)',
+            border: '1px solid var(--border-dim)',
+            padding: '6px 12px',
+            borderRadius: '4px',
+            cursor: 'pointer',
+          }}
         >
           <option value={600}>10 Mins</option>
           <option value={900}>15 Mins</option>
@@ -253,33 +317,47 @@ const ProductionSimulation: React.FC = () => {
       </div>
 
       <div className="build-orders-overview" style={{ marginBottom: '15px' }}>
-        <BuildOrderSummary 
-          army="a" 
-          name={nameA} 
-          timeline={state.a.tl || []} 
-          onEdit={() => setIsCollapsedA(!isCollapsedA)} 
+        <BuildOrderSummary
+          army="a"
+          name={nameA}
+          timeline={state.a.tl || []}
+          onEdit={() => setIsCollapsedA(!isCollapsedA)}
           onReset={() => state.a.ps && loadPreset('a', state.a.ps)}
         />
-        <div className={`production-content ${isCollapsedA ? 'collapsed' : ''}`} style={{ marginBottom: isCollapsedA ? '0' : '20px' }}>
+        <div
+          className={`production-content ${isCollapsedA ? 'collapsed' : ''}`}
+          style={{ marginBottom: isCollapsedA ? '0' : '20px' }}
+        >
           <TimelineEditor army="a" name={nameA} />
           {!isCollapsedA && (
-            <button className="toggle-prod-section-btn" style={{ marginTop: '10px', width: '100%' }} onClick={() => setIsCollapsedA(true)}>
+            <button
+              className="toggle-prod-section-btn"
+              style={{ marginTop: '10px', width: '100%' }}
+              onClick={() => setIsCollapsedA(true)}
+            >
               Close Side A Build Order Editor
             </button>
           )}
         </div>
 
-        <BuildOrderSummary 
-          army="b" 
-          name={nameB} 
-          timeline={state.b.tl || []} 
-          onEdit={() => setIsCollapsedB(!isCollapsedB)} 
+        <BuildOrderSummary
+          army="b"
+          name={nameB}
+          timeline={state.b.tl || []}
+          onEdit={() => setIsCollapsedB(!isCollapsedB)}
           onReset={() => state.b.ps && loadPreset('b', state.b.ps)}
         />
-        <div className={`production-content ${isCollapsedB ? 'collapsed' : ''}`} style={{ marginBottom: isCollapsedB ? '0' : '20px' }}>
+        <div
+          className={`production-content ${isCollapsedB ? 'collapsed' : ''}`}
+          style={{ marginBottom: isCollapsedB ? '0' : '20px' }}
+        >
           <TimelineEditor army="b" name={nameB} />
           {!isCollapsedB && (
-            <button className="toggle-prod-section-btn" style={{ marginTop: '10px', width: '100%' }} onClick={() => setIsCollapsedB(true)}>
+            <button
+              className="toggle-prod-section-btn"
+              style={{ marginTop: '10px', width: '100%' }}
+              onClick={() => setIsCollapsedB(true)}
+            >
               Close Side B Build Order Editor
             </button>
           )}
@@ -287,48 +365,93 @@ const ProductionSimulation: React.FC = () => {
       </div>
 
       <div className="results-area" style={{ width: '100%' }}>
-        <div className="charts-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '20px', width: '100%' }}>
+        <div
+          className="charts-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))',
+            gap: '20px',
+            width: '100%',
+          }}
+        >
           <div className="chart-wrapper" style={{ height: '350px' }}>
             <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Army Count</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={growthData} options={commonOptions} /></div>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
+              <Line data={growthData} options={commonOptions} />
+            </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px' }}>
             <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Battle Advantage %</h4>
             <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
-              <Line 
-                data={advantageData} 
-                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: 0, max: 100 } } }} 
+              <Line
+                data={advantageData}
+                options={{ ...commonOptions, scales: { ...commonOptions.scales, y: { min: 0, max: 100 } } }}
               />
             </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px' }}>
-            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Gathered Resources Difference</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={gatheredData} options={commonOptions} /></div>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+              Gathered Resources Difference
+            </h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
+              <Line data={gatheredData} options={commonOptions} />
+            </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px' }}>
-            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Total Investment Difference</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={spentData} options={commonOptions} /></div>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+              Total Investment Difference
+            </h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
+              <Line data={spentData} options={commonOptions} />
+            </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px' }}>
-            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Floating Resources Difference</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={floatData} options={balanceOptions} /></div>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+              Floating Resources Difference
+            </h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
+              <Line data={floatData} options={balanceOptions} />
+            </div>
           </div>
           <div className="chart-wrapper" style={{ height: '350px' }}>
-            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>Villager Count Difference</h4>
-            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}><Line data={villData} options={commonOptions} /></div>
+            <h4 style={{ marginBottom: '8px', color: 'var(--text-dim)', fontSize: '0.9rem' }}>
+              Villager Count Difference
+            </h4>
+            <div className="chart-container" style={{ height: 'calc(100% - 25px)' }}>
+              <Line data={villData} options={commonOptions} />
+            </div>
           </div>
         </div>
 
-        <div className="matchup-report" style={{ marginTop: '20px', background: 'var(--panel-bg-alt)', padding: '20px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
+        <div
+          className="matchup-report"
+          style={{
+            marginTop: '20px',
+            background: 'var(--panel-bg-alt)',
+            padding: '20px',
+            borderRadius: '8px',
+            border: '1px solid var(--border-dim)',
+          }}
+        >
           <div style={{ borderBottom: '1px solid var(--border-dim)', paddingBottom: '10px', marginBottom: '15px' }}>
-            <h3 style={{ margin: 0, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>Events</h3>
+            <h3 style={{ margin: 0, color: 'var(--accent-color)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+              Events
+            </h3>
           </div>
-          
+
           <div className="responsive-table-container" style={{ maxHeight: '600px' }}>
             {displayedEvents.length > 0 ? (
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)', fontSize: '0.75rem', textTransform: 'uppercase' }}>
+                  <tr
+                    style={{
+                      borderBottom: '1px solid var(--border-dim)',
+                      textAlign: 'left',
+                      color: 'var(--text-dim)',
+                      fontSize: '0.75rem',
+                      textTransform: 'uppercase',
+                    }}
+                  >
                     <th style={{ padding: '8px' }}>Time</th>
                     <th style={{ padding: '8px' }}>Side</th>
                     <th style={{ padding: '8px', textAlign: 'center' }}>Eco (V/V)</th>
@@ -338,16 +461,33 @@ const ProductionSimulation: React.FC = () => {
                 </thead>
                 <tbody>
                   {displayedEvents.map((e, i) => (
-                    <tr key={i} className="event-row" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-                      <td style={{ padding: '10px 8px', color: 'var(--text-dim)', width: '80px' }}>{formatTime(e.time)}</td>
+                    <tr
+                      key={i}
+                      className="event-row"
+                      style={{
+                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                        background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                      }}
+                    >
+                      <td style={{ padding: '10px 8px', color: 'var(--text-dim)', width: '80px' }}>
+                        {formatTime(e.time)}
+                      </td>
                       <td style={{ padding: '10px 8px', fontWeight: 'bold', width: '120px' }}>
-                        {e.army === 'a' ? <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span> : e.army === 'b' ? <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span> : <span style={{ color: 'var(--accent-color)' }}>System</span>}
+                        {e.army === 'a' ? (
+                          <span style={{ color: 'var(--army-a-color)' }}>{nameA}</span>
+                        ) : e.army === 'b' ? (
+                          <span style={{ color: 'var(--army-b-color)' }}>{nameB}</span>
+                        ) : (
+                          <span style={{ color: 'var(--accent-color)' }}>System</span>
+                        )}
                       </td>
                       <td style={{ padding: '10px 8px', textAlign: 'center' }}>
-                        <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
+                        <span style={{ color: 'var(--army-a-color)' }}>{e.villsA}</span> /{' '}
+                        <span style={{ color: 'var(--army-b-color)' }}>{e.villsB}</span>
                       </td>
                       <td style={{ padding: '10px 8px', textAlign: 'center' }}>
-                        <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span> / <span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
+                        <span style={{ color: 'var(--army-a-color)' }}>{e.unitsA}</span> /{' '}
+                        <span style={{ color: 'var(--army-b-color)' }}>{e.unitsB}</span>
                       </td>
                       <td style={{ padding: '10px 8px', fontWeight: e.important ? 'bold' : 'normal' }}>{e.msg}</td>
                     </tr>
@@ -360,9 +500,17 @@ const ProductionSimulation: React.FC = () => {
           </div>
 
           <div style={{ marginTop: '10px' }}>
-            <button 
-              className="nav-btn secondary" 
-              style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '10px', background: 'rgba(255,255,255,0.03)' }}
+            <button
+              className="nav-btn secondary"
+              style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '10px',
+                background: 'rgba(255,255,255,0.03)',
+              }}
               onClick={() => setShowFullLog(!showFullLog)}
             >
               <span>{showFullLog ? '🔼 Show Important Events Only' : '🔽 Show All Simulation Events'}</span>
@@ -370,10 +518,17 @@ const ProductionSimulation: React.FC = () => {
           </div>
 
           <div className="responsive-table-container">
-            <h4 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1rem' }}>Resource Investment at {formatTime(tideTurnsAt || maxTime)}</h4>
-            <table className="investment-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}>
+            <h4 style={{ color: 'var(--accent-color)', marginBottom: '15px', fontSize: '1rem' }}>
+              Resource Investment at {formatTime(tideTurnsAt || maxTime)}
+            </h4>
+            <table
+              className="investment-table"
+              style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem' }}
+            >
               <thead>
-                <tr style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}>
+                <tr
+                  style={{ borderBottom: '1px solid var(--border-dim)', textAlign: 'left', color: 'var(--text-dim)' }}
+                >
                   <th style={{ padding: '10px 8px' }}>Category</th>
                   <th style={{ padding: '10px 8px', textAlign: 'right', color: 'var(--army-a-color)' }}>{nameA}</th>
                   <th style={{ padding: '10px 8px', textAlign: 'right', color: 'var(--army-b-color)' }}>{nameB}</th>
@@ -397,13 +552,25 @@ const ProductionSimulation: React.FC = () => {
                   return (
                     <>
                       {rows.map((r, i) => (
-                        <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                        <tr
+                          key={i}
+                          style={{
+                            borderBottom: '1px solid rgba(255,255,255,0.05)',
+                            background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                          }}
+                        >
                           <td style={{ padding: '10px 8px', color: 'var(--text-dim)' }}>{r.label}</td>
                           <td style={{ padding: '10px 8px', textAlign: 'right' }}>{fmt(r.a)}</td>
                           <td style={{ padding: '10px 8px', textAlign: 'right' }}>{fmt(r.b)}</td>
                         </tr>
                       ))}
-                      <tr style={{ fontWeight: 'bold', borderTop: '2px solid var(--border-dim)', background: 'rgba(255,255,255,0.02)' }}>
+                      <tr
+                        style={{
+                          fontWeight: 'bold',
+                          borderTop: '2px solid var(--border-dim)',
+                          background: 'rgba(255,255,255,0.02)',
+                        }}
+                      >
                         <td style={{ padding: '12px 8px' }}>Total Investment</td>
                         <td style={{ padding: '12px 8px', textAlign: 'right' }}>{fmt(totalA)}</td>
                         <td style={{ padding: '12px 8px', textAlign: 'right' }}>{fmt(totalB)}</td>
@@ -420,23 +587,29 @@ const ProductionSimulation: React.FC = () => {
   );
 };
 
-const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any[], onEdit: () => void, onReset: () => void }> = ({ army, name, timeline, onEdit, onReset }) => (
-  <div 
-    className="build-order-summary" 
+const BuildOrderSummary: React.FC<{
+  army: 'a' | 'b';
+  name: string;
+  timeline: any[];
+  onEdit: () => void;
+  onReset: () => void;
+}> = ({ army, name, timeline, onEdit, onReset }) => (
+  <div
+    className="build-order-summary"
     onClick={onEdit}
-    style={{ 
-      background: 'rgba(0,0,0,0.15)', 
-      padding: '12px', 
-      borderRadius: '4px', 
-      marginBottom: '8px', 
-      fontSize: '0.85rem', 
+    style={{
+      background: 'rgba(0,0,0,0.15)',
+      padding: '12px',
+      borderRadius: '4px',
+      marginBottom: '8px',
+      fontSize: '0.85rem',
       color: 'var(--text-dim)',
       borderLeft: `3px solid var(--army-${army}-color)`,
       display: 'flex',
       flexDirection: 'column',
       gap: '8px',
       cursor: 'pointer',
-      transition: 'all 0.2s'
+      transition: 'all 0.2s',
     }}
     onMouseEnter={(e) => {
       e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
@@ -448,15 +621,15 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
     }}
   >
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-      <span 
-        style={{ 
-          background: 'var(--btn-bg)', 
-          border: '1px solid var(--border-dim)', 
-          color: 'var(--text-color)', 
-          borderRadius: '3px', 
-          padding: '2px 6px', 
-          fontSize: '0.7rem', 
-          marginRight: '5px'
+      <span
+        style={{
+          background: 'var(--btn-bg)',
+          border: '1px solid var(--border-dim)',
+          color: 'var(--text-color)',
+          borderRadius: '3px',
+          padding: '2px 6px',
+          fontSize: '0.7rem',
+          marginRight: '5px',
         }}
         title="Toggle Build Order Editor"
       >
@@ -466,9 +639,12 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
       <div style={{ flex: 1, minWidth: '200px' }}>
         <StatsSummary army={army} compact={true} hoverExpand={true} />
       </div>
-      <button 
-        className="small-action-btn" 
-        onClick={(e) => { e.stopPropagation(); onReset(); }}
+      <button
+        className="small-action-btn"
+        onClick={(e) => {
+          e.stopPropagation();
+          onReset();
+        }}
         title="Refresh to default build order plan for this unit"
         style={{ fontSize: '0.7rem', padding: '4px 8px', marginLeft: 'auto' }}
       >
@@ -476,21 +652,35 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
       </button>
     </div>
 
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', paddingLeft: '25px', opacity: 0.8 }}>
+    <div
+      style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', paddingLeft: '25px', opacity: 0.8 }}
+    >
       {timeline && timeline.length > 0 ? (
         timeline.map((step: any, i: number) => {
-          let label = "";
-          const n = (step.n || "").toLowerCase();
+          let label = '';
+          const n = (step.n || '').toLowerCase();
           switch (step.t) {
-            case 'villagers': label = `👨‍🌾${step.c || 1} villagers`; break;
-            case 'building': label = n; break;
-            case 'tech': label = n; break;
-            case 'production': 
-              label = n.includes('production') ? `⚔️ ${n}` : `⚔️ ${n} production`; 
+            case 'villagers':
+              label = `👨‍🌾${step.c || 1} villagers`;
               break;
-            case 'units': case 'wait': label = `🎯wait ${step.c || 0}`; break;
-            case 'delay': label = `⏳${step.d || 0}s`; break;
-            default: label = n;
+            case 'building':
+              label = n;
+              break;
+            case 'tech':
+              label = n;
+              break;
+            case 'production':
+              label = n.includes('production') ? `⚔️ ${n}` : `⚔️ ${n} production`;
+              break;
+            case 'units':
+            case 'wait':
+              label = `🎯wait ${step.c || 0}`;
+              break;
+            case 'delay':
+              label = `⏳${step.d || 0}s`;
+              break;
+            default:
+              label = n;
           }
           return (
             <React.Fragment key={i}>
@@ -506,18 +696,21 @@ const BuildOrderSummary: React.FC<{ army: 'a' | 'b', name: string, timeline: any
   </div>
 );
 
-const TechButton: React.FC<{ id: number, label: string, onClick: (id: number) => void }> = ({ id, label, onClick }) => (
-  <button 
-    className="small-action-btn" 
-    style={{ minWidth: '25px', padding: '2px 4px' }} 
-    onClick={(e) => { e.stopPropagation(); onClick(id); }}
+const TechButton: React.FC<{ id: number; label: string; onClick: (id: number) => void }> = ({ id, label, onClick }) => (
+  <button
+    className="small-action-btn"
+    style={{ minWidth: '25px', padding: '2px 4px' }}
+    onClick={(e) => {
+      e.stopPropagation();
+      onClick(id);
+    }}
     title={(techs as any)[id]?.name || `Tech ${id}`}
   >
     {label}
   </button>
 );
 
-const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, name }) => {
+const TimelineEditor: React.FC<{ army: 'a' | 'b'; name: string }> = ({ army, name }) => {
   const { state, updateArmy, loadPreset, analysisA, analysisB } = useSimulation();
   const armyState = state[army];
   const unitBuildingId = (army === 'a' ? analysisA?.baseUnit?.building : analysisB?.baseUnit?.building) || 87;
@@ -525,21 +718,21 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
     useSensor(TouchSensor, { activationConstraint: { delay: 300, tolerance: 10 } }),
-    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
 
   const addStep = (type: string, data: any = {}) => {
     // Normalize properties
-    const newStep: any = { 
-      t: type, 
-      n: data.name || type, 
-      d: data.time !== undefined ? data.time : 30, 
-      c: 1, 
+    const newStep: any = {
+      t: type,
+      n: data.name || type,
+      d: data.time !== undefined ? data.time : 30,
+      c: 1,
       co: data.cost || 0,
       i: data.i || data.id?.toString(),
       bt: data.bt !== undefined ? parseInt(data.bt.toString()) : undefined,
       lim: false, // Default to infinite/continuous
-      ...data 
+      ...data,
     };
 
     if (type === 'villagers') {
@@ -553,7 +746,7 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
       newStep.d = unit?.trainTime || 20;
       newStep.tr = unit?.trainTime || 20;
       newStep.v = 1;
-      newStep.co = unit ? (unit.f + unit.w + unit.g) : 0;
+      newStep.co = unit ? unit.f + unit.w + unit.g : 0;
     }
 
     // Remove redundant/wrong properties
@@ -565,17 +758,17 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   };
 
   const addTechById = (id: number) => {
-    const t = (techs as any)[id] || Object.values(techs).find(x => x.id === id);
+    const t = (techs as any)[id] || Object.values(techs).find((x) => x.id === id);
     if (!t) return;
     addStep('tech', {
       n: t.name,
       d: t.time || 40,
       c: 1,
-      co: (t.f||0)+(t.w||0)+(t.g||0),
+      co: (t.f || 0) + (t.w || 0) + (t.g || 0),
       i: t.id.toString(),
       bt: t.building,
-      b: (t.building === unitBuildingId || t.building === 109),
-      lim: true // Techs are inherently "Once"
+      b: t.building === unitBuildingId || t.building === 109,
+      lim: true, // Techs are inherently "Once"
     });
   };
 
@@ -591,12 +784,23 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   };
 
   return (
-    <div className={`prod-group army-${army}-border`} style={{ background: 'var(--panel-bg)', padding: '15px', borderRadius: '8px', border: '1px solid var(--border-dim)' }}>
-      <div className="prod-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+    <div
+      className={`prod-group army-${army}-border`}
+      style={{
+        background: 'var(--panel-bg)',
+        padding: '15px',
+        borderRadius: '8px',
+        border: '1px solid var(--border-dim)',
+      }}
+    >
+      <div
+        className="prod-header"
+        style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}
+      >
         <h3 style={{ margin: 0 }}>{name}</h3>
         {armyState.ps && (
-          <button 
-            className="nav-btn secondary" 
+          <button
+            className="nav-btn secondary"
             onClick={() => loadPreset(army, armyState.ps!)}
             title="Refresh to default build order plan for this unit"
             style={{ fontSize: '0.75rem', padding: '4px 12px' }}
@@ -605,39 +809,119 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           </button>
         )}
       </div>
-      
+
       <div style={{ marginBottom: '15px' }}>
-        <div className="add-step-controls" style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '10px' }}>
-          <AutocompleteSelector 
-            label="+ Building" 
-            options={Object.values(buildings).map(b => ({ i: b.id, name: b.name, time: b.time, cost: (b.f||0)+(b.w||0)+(b.g||0)+(b.s||0), prod: true, bt: parseInt(b.id), lim: true }))}
+        <div
+          className="add-step-controls"
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '10px' }}
+        >
+          <AutocompleteSelector
+            label="+ Building"
+            options={Object.values(buildings).map((b) => ({
+              i: b.id,
+              name: b.name,
+              time: b.time,
+              cost: (b.f || 0) + (b.w || 0) + (b.g || 0) + (b.s || 0),
+              prod: true,
+              bt: parseInt(b.id),
+              lim: true,
+            }))}
             onSelect={(b) => addStep('building', b)}
           />
-          <AutocompleteSelector 
-            label="+ Tech" 
-            options={Object.values(techs).map(t => ({ i: t.id.toString(), name: t.name, time: t.time, cost: (t.f||0)+(t.w||0)+(t.g||0), bt: t.building, lim: true }))}
+          <AutocompleteSelector
+            label="+ Tech"
+            options={Object.values(techs).map((t) => ({
+              i: t.id.toString(),
+              name: t.name,
+              time: t.time,
+              cost: (t.f || 0) + (t.w || 0) + (t.g || 0),
+              bt: t.building,
+              lim: true,
+            }))}
             onSelect={(t) => addStep('tech', t)}
           />
-          <button className="add-step-btn" onClick={() => addStep('villagers', { name: 'Villagers', v: 1, d: 25, lim: false, cost: 50 })}>+ Vills</button>
-          <button className="add-step-btn" onClick={() => addStep('delay', { name: 'Idle Time', d: 30, lim: true })}>+ Delay</button>
-          <button className="add-step-btn" onClick={() => addStep('units', { name: 'Wait for units', c: 5, lim: true })}>+ Wait</button>
-          <button className="add-step-btn" onClick={() => addStep('production', { name: `${name} Production`, v: 1, tr: 30, lim: false, d: 0 })}>+ {name} Production</button>
+          <button
+            className="add-step-btn"
+            onClick={() => addStep('villagers', { name: 'Villagers', v: 1, d: 25, lim: false, cost: 50 })}
+          >
+            + Vills
+          </button>
+          <button className="add-step-btn" onClick={() => addStep('delay', { name: 'Idle Time', d: 30, lim: true })}>
+            + Delay
+          </button>
+          <button
+            className="add-step-btn"
+            onClick={() => addStep('units', { name: 'Wait for units', c: 5, lim: true })}
+          >
+            + Wait
+          </button>
+          <button
+            className="add-step-btn"
+            onClick={() => addStep('production', { name: `${name} Production`, v: 1, tr: 30, lim: false, d: 0 })}
+          >
+            + {name} Production
+          </button>
         </div>
 
         <div style={{ display: 'flex', gap: '10px', marginBottom: '15px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Ages</span>
-            <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <button className="small-action-btn" onClick={() => addTechById(101)}>II</button>
-              <button className="small-action-btn" onClick={() => addTechById(102)}>III</button>
-              <button className="small-action-btn" onClick={() => addTechById(103)}>IV</button>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                color: 'var(--text-dim)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Ages
+            </span>
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                background: 'rgba(0,0,0,0.2)',
+                padding: '4px',
+                borderRadius: '4px',
+              }}
+            >
+              <button className="small-action-btn" onClick={() => addTechById(101)}>
+                II
+              </button>
+              <button className="small-action-btn" onClick={() => addTechById(102)}>
+                III
+              </button>
+              <button className="small-action-btn" onClick={() => addTechById(103)}>
+                IV
+              </button>
             </div>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Melee</span>
-            <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Melee Attack (Sword/Horse)" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>⚔️</span>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                color: 'var(--text-dim)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Melee
+            </span>
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                background: 'rgba(0,0,0,0.2)',
+                padding: '4px',
+                borderRadius: '4px',
+              }}
+            >
+              <span
+                title="Melee Attack (Sword/Horse)"
+                style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}
+              >
+                ⚔️
+              </span>
               <TechButton id={67} label="II" onClick={addTechById} />
               <TechButton id={68} label="III" onClick={addTechById} />
               <TechButton id={74} label="IV" onClick={addTechById} />
@@ -645,9 +929,31 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Infantry</span>
-            <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Infantry Armor" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🛡️</span>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                color: 'var(--text-dim)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Infantry
+            </span>
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                background: 'rgba(0,0,0,0.2)',
+                padding: '4px',
+                borderRadius: '4px',
+              }}
+            >
+              <span
+                title="Infantry Armor"
+                style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}
+              >
+                🛡️
+              </span>
               <TechButton id={75} label="II" onClick={addTechById} />
               <TechButton id={76} label="III" onClick={addTechById} />
               <TechButton id={77} label="IV" onClick={addTechById} />
@@ -655,9 +961,31 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Cavalry</span>
-            <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Cavalry Armor & HP" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🏇</span>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                color: 'var(--text-dim)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Cavalry
+            </span>
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                background: 'rgba(0,0,0,0.2)',
+                padding: '4px',
+                borderRadius: '4px',
+              }}
+            >
+              <span
+                title="Cavalry Armor & HP"
+                style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}
+              >
+                🏇
+              </span>
               <TechButton id={81} label="II" onClick={addTechById} />
               <TechButton id={82} label="III" onClick={addTechById} />
               <TechButton id={80} label="IV" onClick={addTechById} />
@@ -667,14 +995,41 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Archers</span>
-            <div style={{ display: 'flex', gap: '4px', background: 'rgba(0,0,0,0.2)', padding: '4px', borderRadius: '4px' }}>
-              <span title="Archer Attack" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🏹</span>
+            <span
+              style={{
+                fontSize: '0.65rem',
+                color: 'var(--text-dim)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px',
+              }}
+            >
+              Archers
+            </span>
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                background: 'rgba(0,0,0,0.2)',
+                padding: '4px',
+                borderRadius: '4px',
+              }}
+            >
+              <span
+                title="Archer Attack"
+                style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}
+              >
+                🏹
+              </span>
               <TechButton id={199} label="II" onClick={addTechById} />
               <TechButton id={200} label="III" onClick={addTechById} />
               <TechButton id={201} label="IV" onClick={addTechById} />
               <div style={{ width: '1px', background: 'rgba(255,255,255,0.1)', margin: '0 2px' }} />
-              <span title="Archer Armor" style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}>🛡️</span>
+              <span
+                title="Archer Armor"
+                style={{ fontSize: '0.9rem', width: '20px', opacity: 0.7, textAlign: 'center' }}
+              >
+                🛡️
+              </span>
               <TechButton id={211} label="II" onClick={addTechById} />
               <TechButton id={212} label="III" onClick={addTechById} />
               <TechButton id={219} label="IV" onClick={addTechById} />
@@ -686,19 +1041,48 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
           <div></div>
           <div title="The type of action (Building, Tech, Production, etc.)">Type</div>
           <div title="Custom name for this step">Name</div>
-          <div style={{ textAlign: 'center' }} title="Duration in seconds. For Age Up/Tech/Building, this is the build time.">Sec</div>
-          <div style={{ textAlign: 'center' }} title="Quantity or Multiplier. For buildings, this is how many to build at once.">Qty</div>
-          <div style={{ textAlign: 'center' }} title="Total resource cost for this step.">Cost</div>
-          <div style={{ textAlign: 'center' }} title="Which production facility this action blocks while in progress.">Block</div>
-          <div style={{ textAlign: 'center' }} title="Once (Limited): If checked, this step will block the build order until the exact count is produced. If unchecked, production starts immediately and continues infinitely.">Once</div>
+          <div
+            style={{ textAlign: 'center' }}
+            title="Duration in seconds. For Age Up/Tech/Building, this is the build time."
+          >
+            Sec
+          </div>
+          <div
+            style={{ textAlign: 'center' }}
+            title="Quantity or Multiplier. For buildings, this is how many to build at once."
+          >
+            Qty
+          </div>
+          <div style={{ textAlign: 'center' }} title="Total resource cost for this step.">
+            Cost
+          </div>
+          <div style={{ textAlign: 'center' }} title="Which production facility this action blocks while in progress.">
+            Block
+          </div>
+          <div
+            style={{ textAlign: 'center' }}
+            title="Once (Limited): If checked, this step will block the build order until the exact count is produced. If unchecked, production starts immediately and continues infinitely."
+          >
+            Once
+          </div>
           <div></div>
         </div>
 
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-          <SortableContext items={(armyState.tl || []).map((_, i) => `step-${army}-${i}`)} strategy={verticalListSortingStrategy}>
+          <SortableContext
+            items={(armyState.tl || []).map((_, i) => `step-${army}-${i}`)}
+            strategy={verticalListSortingStrategy}
+          >
             <div className="production-timeline-table" style={{ display: 'flex', flexDirection: 'column' }}>
               {armyState.tl?.map((step, idx) => (
-                <SortableStep key={idx} id={`step-${army}-${idx}`} army={army} index={idx} step={step} unitBuildingId={unitBuildingId} />
+                <SortableStep
+                  key={idx}
+                  id={`step-${army}-${idx}`}
+                  army={army}
+                  index={idx}
+                  step={step}
+                  unitBuildingId={unitBuildingId}
+                />
               ))}
             </div>
           </SortableContext>
@@ -708,7 +1092,13 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b', name: string }> = ({ army, nam
   );
 };
 
-const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step: any, unitBuildingId: number }> = ({ id, army, index, step, unitBuildingId }) => {
+const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step: any; unitBuildingId: number }> = ({
+  id,
+  army,
+  index,
+  step,
+  unitBuildingId,
+}) => {
   const { updateArmy, state } = useSimulation();
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const timerRef = useRef<any>(null);
@@ -719,13 +1109,13 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
     stepRef.current = step;
   }, [step]);
 
-  const style = { 
-    transform: CSS.Transform.toString(transform), 
+  const style = {
+    transform: CSS.Transform.toString(transform),
     transition,
     zIndex: isDragging ? 1000 : 1,
     position: 'relative' as const,
     background: isDragging ? 'var(--panel-bg-alt)' : undefined,
-    opacity: isDragging ? 0.8 : 1
+    opacity: isDragging ? 0.8 : 1,
   };
 
   const update = (updates: any) => {
@@ -738,7 +1128,7 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
   const startRepeating = (field: string, dir: number, stepVal: number = 1) => {
     const doStep = () => {
       const currentVal = parseFloat(String(stepRef.current[field] || 0));
-      const next = currentVal + (dir * stepVal);
+      const next = currentVal + dir * stepVal;
       const rounded = Math.round(next * 100) / 100;
       update({ [field]: rounded });
     };
@@ -775,13 +1165,20 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
 
   const typeIcon = useMemo(() => {
     switch (step.t) {
-      case 'villagers': return '👨‍🌾';
-      case 'building': return '🏠';
-      case 'tech': return '🧪';
-      case 'production': return '⚔️';
-      case 'units': return '🎯';
-      case 'delay': return '⏳';
-      default: return '❓';
+      case 'villagers':
+        return '👨‍🌾';
+      case 'building':
+        return '🏠';
+      case 'tech':
+        return '🧪';
+      case 'production':
+        return '⚔️';
+      case 'units':
+        return '🎯';
+      case 'delay':
+        return '⏳';
+      default:
+        return '❓';
     }
   }, [step.t]);
 
@@ -789,144 +1186,273 @@ const SortableStep: React.FC<{ id: string, army: 'a' | 'b', index: number, step:
   const isUnitActive = !!(step.b && step.bt === unitBuildingId && step.b);
 
   return (
-    <div ref={setNodeRef} style={style} className="timeline-row" >
-      <div 
-        {...attributes} 
-        {...listeners} 
-        className="drag-handle"
-        title="Drag to reorder"
-      >
+    <div ref={setNodeRef} style={style} className="timeline-row">
+      <div {...attributes} {...listeners} className="drag-handle" title="Drag to reorder">
         ⠿
       </div>
-      
+
       <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
         <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
-        <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>{step.t.slice(0,4)}</span>
+        <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>
+          {step.t.slice(0, 4)}
+        </span>
       </div>
 
-        <div>
-          <input 
-            type="text" 
-            value={step.n || ''} 
-            onChange={(e) => update({ n: e.target.value })} 
+      <div>
+        <input
+          type="text"
+          value={step.n || ''}
+          onChange={(e) => update({ n: e.target.value })}
+          className="compact-input"
+          style={{
+            width: '100%',
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-color)',
+            fontSize: '0.85rem',
+          }}
+        />
+      </div>
+
+      <div className="stepper compact">
+        <button
+          className="step-btn"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(step.t === 'production' ? 'tr' : 'd', -1, step.t === 'production' ? 1 : 5);
+          }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
+        >
+          −
+        </button>
+        <input
+          type="number"
+          value={step.t === 'production' ? step.tr || 0 : step.d || 0}
+          onChange={(e) => {
+            const val = parseInt(e.target.value) || 0;
+            if (step.t === 'production') update({ tr: val, d: val });
+            else update({ d: val });
+          }}
+          className="compact-input"
+          style={{
+            width: '50px',
+            background: 'rgba(0,0,0,0.2)',
+            border: 'none',
+            color: 'var(--text-color)',
+            textAlign: 'center',
+            fontWeight: 'bold',
+          }}
+        />
+        <button
+          className="step-btn"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5);
+          }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
+        >
+          +
+        </button>
+      </div>
+
+      <div className="stepper compact">
+        <button
+          className="step-btn"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(step.t === 'production' ? 'v' : 'c', -1);
+          }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
+        >
+          −
+        </button>
+        {step.t === 'production' ? (
+          <input
+            type="number"
+            value={step.v || 1}
+            onChange={(e) => update({ v: parseInt(e.target.value) || 1 })}
             className="compact-input"
-            style={{ width: '100%', background: 'transparent', border: 'none', color: 'var(--text-color)', fontSize: '0.85rem' }} 
+            title="Multiplier / Capacity"
+            style={{
+              width: '50px',
+              background: 'rgba(0,0,0,0.2)',
+              border: 'none',
+              color: 'var(--text-color)',
+              textAlign: 'center',
+              fontWeight: 'bold',
+            }}
           />
-        </div>
-        
-        <div className="stepper compact">
-          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'tr' : 'd', -1, step.t === 'production' ? 1 : 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>−</button>
-          <input 
-            type="number" 
-            value={step.t === 'production' ? (step.tr || 0) : (step.d || 0)} 
-            onChange={(e) => {
-              const val = parseInt(e.target.value) || 0;
-              if (step.t === 'production') update({ tr: val, d: val });
-              else update({ d: val });
-            }} 
+        ) : (
+          <input
+            type="number"
+            value={step.c || 1}
+            onChange={(e) => update({ c: parseInt(e.target.value) || 1 })}
             className="compact-input"
-            style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
+            style={{
+              width: '50px',
+              background: 'rgba(0,0,0,0.2)',
+              border: 'none',
+              color: 'var(--text-color)',
+              textAlign: 'center',
+              fontWeight: 'bold',
+            }}
           />
-          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>+</button>
-        </div>
+        )}
+        <button
+          className="step-btn"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating(step.t === 'production' ? 'v' : 'c', 1);
+          }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
+        >
+          +
+        </button>
+      </div>
 
-        <div className="stepper compact">
-          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'v' : 'c', -1); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>−</button>
-          {step.t === 'production' ? (
-            <input 
-              type="number" 
-              value={step.v || 1} 
-              onChange={(e) => update({ v: parseInt(e.target.value) || 1 })} 
-              className="compact-input"
-              title="Multiplier / Capacity"
-              style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
-            />
-          ) : (
-            <input 
-              type="number" 
-              value={step.c || 1} 
-              onChange={(e) => update({ c: parseInt(e.target.value) || 1 })} 
-              className="compact-input"
-              style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
-            />
-          )}
-          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating(step.t === 'production' ? 'v' : 'c', 1); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>+</button>
-        </div>
+      <div className="stepper compact">
+        <button
+          className="step-btn"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating('co', -1, 5);
+          }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
+        >
+          −
+        </button>
+        <input
+          type="number"
+          value={step.co || 0}
+          onChange={(e) => update({ co: parseInt(e.target.value) || 0 })}
+          className="compact-input"
+          style={{
+            width: '50px',
+            background: 'rgba(0,0,0,0.2)',
+            border: 'none',
+            color: 'var(--text-color)',
+            textAlign: 'center',
+            fontWeight: 'bold',
+          }}
+        />
+        <button
+          className="step-btn"
+          onPointerDown={(e) => {
+            e.preventDefault();
+            startRepeating('co', 1, 5);
+          }}
+          onPointerUp={stopRepeating}
+          onPointerLeave={stopRepeating}
+        >
+          +
+        </button>
+      </div>
 
-        <div className="stepper compact">
-          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating('co', -1, 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>−</button>
-          <input 
-            type="number" 
-            value={step.co || 0} 
-            onChange={(e) => update({ co: parseInt(e.target.value) || 0 })} 
-            className="compact-input"
-            style={{ width: '50px', background: 'rgba(0,0,0,0.2)', border: 'none', color: 'var(--text-color)', textAlign: 'center', fontWeight: 'bold' }} 
-          />
-          <button className="step-btn" onPointerDown={(e) => { e.preventDefault(); startRepeating('co', 1, 5); }} onPointerUp={stopRepeating} onPointerLeave={stopRepeating}>+</button>
-        </div>
-
-        <div style={{ display: 'flex', gap: '2px', justifyContent: 'center' }}>
-          {(step.t === 'tech' || step.t === 'building' || step.t === 'production') ? (
-            <>
-              <button 
-                className={`tiny-toggle-btn ${isTCActive ? 'active' : ''}`}
-                style={{ 
-                  fontSize: '0.65rem', padding: '2px 4px', borderRadius: '3px', border: '1px solid var(--border-dim)',
-                  background: isTCActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
-                  color: isTCActive ? 'black' : 'var(--text-dim)',
-                  cursor: 'pointer', fontWeight: 'bold', width: '38px', height: '24px', lineHeight: 1
-                }}
-                onClick={() => toggleBlock(109)}
-              >TC</button>
-              <button 
-                className={`tiny-toggle-btn ${isUnitActive ? 'active' : ''}`}
-                style={{ 
-                  fontSize: '0.65rem', padding: '2px 4px', borderRadius: '3px', border: '1px solid var(--border-dim)',
-                  background: isUnitActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
-                  color: isUnitActive ? 'black' : 'var(--text-dim)',
-                  cursor: 'pointer', fontWeight: 'bold', width: '38px', height: '24px', lineHeight: 1
-                }}
-                onClick={() => toggleBlock(unitBuildingId)}
-              >UNIT</button>
-            </>
-          ) : null}
-        </div>
-
-
-        <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
-          {(step.t === 'villagers' || step.t === 'production') ? (
-            <div 
-              className={`custom-checkbox ${step.lim ? 'checked' : ''}`}
-              onClick={() => update({ lim: !step.lim })}
-              title="Toggle Limited Production (Produce exactly X and wait)"
+      <div style={{ display: 'flex', gap: '2px', justifyContent: 'center' }}>
+        {step.t === 'tech' || step.t === 'building' || step.t === 'production' ? (
+          <>
+            <button
+              className={`tiny-toggle-btn ${isTCActive ? 'active' : ''}`}
               style={{
-                width: '22px', height: '22px', borderRadius: '4px', border: '1px solid var(--border-dim)',
-                background: step.lim ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
-                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '0.9rem', color: step.lim ? 'black' : 'transparent', transition: 'all 0.2s',
-                fontWeight: 'bold'
+                fontSize: '0.65rem',
+                padding: '2px 4px',
+                borderRadius: '3px',
+                border: '1px solid var(--border-dim)',
+                background: isTCActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
+                color: isTCActive ? 'black' : 'var(--text-dim)',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                width: '38px',
+                height: '24px',
+                lineHeight: 1,
               }}
+              onClick={() => toggleBlock(109)}
             >
-              ✓
-            </div>
-          ) : null}
-        </div>
+              TC
+            </button>
+            <button
+              className={`tiny-toggle-btn ${isUnitActive ? 'active' : ''}`}
+              style={{
+                fontSize: '0.65rem',
+                padding: '2px 4px',
+                borderRadius: '3px',
+                border: '1px solid var(--border-dim)',
+                background: isUnitActive ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
+                color: isUnitActive ? 'black' : 'var(--text-dim)',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                width: '38px',
+                height: '24px',
+                lineHeight: 1,
+              }}
+              onClick={() => toggleBlock(unitBuildingId)}
+            >
+              UNIT
+            </button>
+          </>
+        ) : null}
+      </div>
 
-        <button 
-          onClick={remove} 
-          style={{ background: 'transparent', border: 'none', color: 'var(--danger-color)', cursor: 'pointer', fontSize: '1rem', padding: 0 }}
-        >×</button>
+      <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
+        {step.t === 'villagers' || step.t === 'production' ? (
+          <div
+            className={`custom-checkbox ${step.lim ? 'checked' : ''}`}
+            onClick={() => update({ lim: !step.lim })}
+            title="Toggle Limited Production (Produce exactly X and wait)"
+            style={{
+              width: '22px',
+              height: '22px',
+              borderRadius: '4px',
+              border: '1px solid var(--border-dim)',
+              background: step.lim ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.9rem',
+              color: step.lim ? 'black' : 'transparent',
+              transition: 'all 0.2s',
+              fontWeight: 'bold',
+            }}
+          >
+            ✓
+          </div>
+        ) : null}
+      </div>
+
+      <button
+        onClick={remove}
+        style={{
+          background: 'transparent',
+          border: 'none',
+          color: 'var(--danger-color)',
+          cursor: 'pointer',
+          fontSize: '1rem',
+          padding: 0,
+        }}
+      >
+        ×
+      </button>
     </div>
   );
 };
 
-const AutocompleteSelector: React.FC<{ label: string, options: any[], onSelect: (opt: any) => void }> = ({ label, options, onSelect }) => {
+const AutocompleteSelector: React.FC<{ label: string; options: any[]; onSelect: (opt: any) => void }> = ({
+  label,
+  options,
+  onSelect,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState('');
   const buttonRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const filtered = options.filter(o => o.name.toLowerCase().includes(search.toLowerCase())).slice(0, 50);
+  const filtered = options.filter((o) => o.name.toLowerCase().includes(search.toLowerCase())).slice(0, 50);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -943,34 +1469,51 @@ const AutocompleteSelector: React.FC<{ label: string, options: any[], onSelect: 
 
   return (
     <div style={{ position: 'relative' }}>
-      <button ref={buttonRef} className="add-step-btn" onClick={() => setIsOpen(!isOpen)}>{label}</button>
+      <button ref={buttonRef} className="add-step-btn" onClick={() => setIsOpen(!isOpen)}>
+        {label}
+      </button>
       {isOpen && rect && (
-        <div 
+        <div
           ref={listRef}
-          className="preset-list" 
-          style={{ 
-            display: 'block', 
-            position: 'fixed', 
+          className="preset-list"
+          style={{
+            display: 'block',
+            position: 'fixed',
             top: rect.top - 305 > 0 ? rect.top - 305 : rect.bottom + 5,
-            left: rect.left, 
-            zIndex: 10000, 
-            minWidth: '250px', 
-            maxHeight: '300px', 
+            left: rect.left,
+            zIndex: 10000,
+            minWidth: '250px',
+            maxHeight: '300px',
             overflowY: 'auto',
             boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
-            border: '1px solid var(--border-color)'
+            border: '1px solid var(--border-color)',
           }}
         >
-          <input 
-            type="text" 
-            autoFocus 
-            placeholder="Search..." 
-            value={search} 
+          <input
+            type="text"
+            autoFocus
+            placeholder="Search..."
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
-            style={{ width: '100%', padding: '10px', background: 'var(--input-bg)', color: 'var(--text-color)', border: 'none', borderBottom: '1px solid var(--border-dim)' }}
+            style={{
+              width: '100%',
+              padding: '10px',
+              background: 'var(--input-bg)',
+              color: 'var(--text-color)',
+              border: 'none',
+              borderBottom: '1px solid var(--border-dim)',
+            }}
           />
           {filtered.map((o, i) => (
-            <div key={i} className="preset-item" onClick={() => { onSelect(o); setIsOpen(false); setSearch(''); }}>
+            <div
+              key={i}
+              className="preset-item"
+              onClick={() => {
+                onSelect(o);
+                setIsOpen(false);
+                setSearch('');
+              }}
+            >
               {o.name}
             </div>
           ))}

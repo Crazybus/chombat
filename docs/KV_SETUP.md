@@ -14,6 +14,7 @@ This implementation adds Cloudflare KV-based URL shortening for sharing large ma
 ### 1. KV Namespace (Already Created)
 
 The KV namespaces have been created:
+
 - **Production**: `MATCHUPS` (id: `8248986926fd41b3aafb00e747f6ea71`)
 - **Preview**: `MATCHUPS_preview` (id: `5367f69afe25491c9e0ae01d2c36eb01`)
 
@@ -65,6 +66,7 @@ preview_id = "5367f69afe25491c9e0ae01d2c36eb01"
 ### POST /api/shorten
 
 **Request:**
+
 ```json
 {
   "data": { ... matchup state ... },
@@ -73,6 +75,7 @@ preview_id = "5367f69afe25491c9e0ae01d2c36eb01"
 ```
 
 **Response:**
+
 ```json
 {
   "id": "abc123",
@@ -83,6 +86,7 @@ preview_id = "5367f69afe25491c9e0ae01d2c36eb01"
 ### GET /api/resolve/:id
 
 **Response (200 OK):**
+
 ```json
 {
   "data": { ... matchup state ... },
@@ -92,6 +96,7 @@ preview_id = "5367f69afe25491c9e0ae01d2c36eb01"
 ```
 
 **Response (404 Not Found):**
+
 ```json
 {
   "error": "Matchup not found or expired"
@@ -126,6 +131,7 @@ make deploy
 - **1 GB storage** included
 
 Assuming:
+
 - 100 shares/day (writes)
 - 500 views/day (reads)
 - ~1 KB per matchup (compressed)
@@ -135,14 +141,17 @@ You should stay well within the free tier limits.
 ## Troubleshooting
 
 ### "Matchup not found or expired"
+
 - The matchup has expired (30+ days without views)
 - Re-share the matchup to create a new short URL
 
 ### "Failed to shorten URL"
+
 - Check Cloudflare dashboard for KV quota
 - Verify KV binding in `wrangler.toml`
 - Check Wrangler logs for errors
 
 ### Long URLs still appearing
+
 - The URL might be under 2000 characters (not worth shortening)
 - Check browser console for API errors
