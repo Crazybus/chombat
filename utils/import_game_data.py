@@ -365,6 +365,9 @@ def convert():
 
         if key not in techs_out:
             key = f"{key}_{tid}"
+
+        age = tech_ages.get(tid, 1)
+        
         techs_out[key] = {
             "name": name,
             "f": cost["f"],
@@ -375,17 +378,18 @@ def convert():
             "id": tid,
             "requires": prereqs.get(tid_str, {"techs": [], "buildings": []}),
             "effects": effects_out,
-            "age": tech_ages.get(tid, 1),
+            "age": age,
             "civ": tech.civ
         }
 
         # If a tech is associated with a civ, add to civs
         if tech.civ > 0:
-            # use civ id as index
-            civ_name = dat.civs[tech.civ].name.upper()
-            if civ_name not in NON_RANKED_CIVS:
-                civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
-                civ_techs[civ_name][tid] = tech_ages.get(tid, 1)
+            civ_name = dat.civs[tech.civ].name.strip().upper()
+            if civ_name in NON_RANKED_CIVS:
+                continue
+
+            civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
+            civ_techs[civ_name][tid] = age
 
     # Extract Civ Bonuses
     for civ in dat.civs:
@@ -410,7 +414,7 @@ def convert():
                         # cmd.b is age req
                         new_age = max(age_id, int(cmd.b) + 1)
                         crawl_effects(int(cmd.a), new_age)
-                    elif cmd.type in [0, 4, 5]:
+                    elif cmd.type in [0, 4, 5]: # Attribute modifiers
                         u_id = cmd.a if cmd.type == 0 else -1
                         c_id = cmd.a if cmd.type in [4, 5] else -1
                         attr_id = cmd.b
