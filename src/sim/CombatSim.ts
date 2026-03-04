@@ -122,10 +122,10 @@ export class CombatSim {
             // Add Attack (Generic)
             if (newUnit.matk > 0) newUnit.matk += val;
             if (newUnit.patk > 0) newUnit.patk += val;
-            if (e.a === 5) newUnit.speed += val; // Add Speed (uses Attr 5)
+            if (e.a === 5 && newUnit.speed !== undefined) newUnit.speed += val; // Add Speed (uses Attr 5)
           } else if (e.t === 2) {
             // Mult Stat
-            if (e.a === 5) newUnit.speed *= val; // Mult Speed (uses Attr 5)
+            if (e.a === 5 && newUnit.speed !== undefined) newUnit.speed *= val; // Mult Speed (uses Attr 5)
           } else if (e.t === 5) {
             // Mult Speed (Legacy/Old mapping, also usually Attr 5 in some datasets)
             if (newUnit.speed !== undefined) newUnit.speed *= val;

@@ -17,7 +17,7 @@ build: clean
 	npm run build
 
 # Hook target to run all important steps before commiting
-hook: test format lint
+hook: build test format lint
 
 # Code formatting
 format:
