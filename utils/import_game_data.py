@@ -41,6 +41,15 @@ NON_RANKED_CIVS = {
     "PURU",
 }
 
+NAME_CONVERSIONS = {
+    'BRITISH': 'BRITONS',
+    'MAYAN': 'MAYANS',
+    'BYZANTINE': 'BYZANTINES',
+    'MAGYARS': 'MAGYAR',
+    'FRENCH': 'FRANKS',
+    'HINDUSTANIS': 'INDIANS'
+}
+
 RES_FOOD = 0
 RES_WOOD = 1
 RES_STONE = 2
@@ -294,7 +303,7 @@ def convert():
                 cost = get_cost(unit.creatable.resource_costs)
                 name = unit_names.get(uid, unit.name)
                 key = clean_key(name)
-                if key in units_out:
+                if key not in units_out:
                     key = f"{key}_{uid}"
                 units_out[key] = {
                     "name": name,
@@ -323,7 +332,7 @@ def convert():
                 cost = get_cost(unit.creatable.resource_costs)
                 name = building_names.get(uid, unit.name)
                 key = clean_key(name)
-                if key in buildings_out:
+                if key not in buildings_out:
                     key = f"{key}_{uid}"
                 buildings_out[key] = {
                     "name": name,
@@ -354,7 +363,7 @@ def convert():
         if tech.effect_id != -1 and tech.effect_id < len(dat.effects):
             effects_out = extract_effects(dat.effects[tech.effect_id])
 
-        if key in techs_out:
+        if key not in techs_out:
             key = f"{key}_{tid}"
         techs_out[key] = {
             "name": name,
@@ -367,11 +376,21 @@ def convert():
             "requires": prereqs.get(tid_str, {"techs": [], "buildings": []}),
             "effects": effects_out,
             "age": tech_ages.get(tid, 1),
+            "civ": tech.civ
         }
+
+        # If a tech is associated with a civ, add to civs
+        if tech.civ > 0:
+            # use civ id as index
+            civ_name = dat.civs[tech.civ].name.upper()
+            if civ_name not in NON_RANKED_CIVS:
+                civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
+                civ_techs[civ_name][tid] = tech_ages.get(tid, 1)
 
     # Extract Civ Bonuses
     for civ in dat.civs:
         civ_name = civ.name.strip().upper()
+        civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
         if civ_name in NON_RANKED_CIVS:
             continue
 
