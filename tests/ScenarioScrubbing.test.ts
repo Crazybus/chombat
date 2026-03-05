@@ -11,7 +11,7 @@ describe('Scenario Scrubbing', () => {
 
   it('should scrub redundant overrides for a Dark Age Champi Scout', () => {
     // A scenario might have been saved with manual overrides that match the base stats
-    const champiBase = units['champi_scout'];
+    const champiBase = units['champi_scout_2550'];
     const rawScenarioArmy: ArmyState = {
       nm: 'Champi Scout',
       age: '1',
@@ -39,7 +39,7 @@ describe('Scenario Scrubbing', () => {
     // Total should be: HP 65, Atk 6, Arm 1/3
 
     const rawScenarioArmy: ArmyState = {
-      ps: 'scout_cavalry',
+      ps: 'scout_cavalry_448',
       age: '2',
       h: 65, // Base 45 + 20
       am: 6, // Base 3 + 2 (auto) + 1 (forging)
@@ -63,9 +63,9 @@ describe('Scenario Scrubbing', () => {
   });
 
   it('should KEEP meaningful overrides', () => {
-    const champiBase = units['champi_scout'];
+    const champiBase = units['champi_scout_2550'];
     const rawScenarioArmy: ArmyState = {
-      ps: 'champi_scout',
+      ps: 'champi_scout_2550',
       age: '1',
       h: champiBase.hp + 10, // INTENTIONAL OVERRIDE
       bn: [],

@@ -6,7 +6,7 @@ import { TechData } from '../src/sim/types';
 import { CombatSim } from '../src/sim/CombatSim';
 
 describe('Villager Loom Recommendation', () => {
-  const villager = units['villager'];
+  const villager = units['villager_83'];
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
 

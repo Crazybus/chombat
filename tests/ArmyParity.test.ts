@@ -3,8 +3,8 @@ import { calculateEqualResources, calculateEqualProductionTime } from '../src/si
 import { units } from '../src/data/units';
 
 describe('Army Parity Logic', () => {
-  const knight = units['knight']; // Cost: 60f, 75g (135 total)
-  const pikeman = units['pikeman']; // Cost: 35f, 25w (60 total)
+  const knight = units['knight_38']; // Cost: 60f, 75g (135 total)
+  const pikeman = units['pikeman_358']; // Cost: 35f, 25w (60 total)
 
   it('should calculate equal resources correctly', () => {
     // 10 Knights = 1350 resources.

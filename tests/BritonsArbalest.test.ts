@@ -6,7 +6,7 @@ import { civs } from '../src/data/civs';
 import { TechData } from '../src/sim/types';
 
 describe('Imperial Age Britons Arbalest (Real Data)', () => {
-  const arbalest = units['arbalester'];
+  const arbalest = units['arbalester_492'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));

@@ -6,7 +6,7 @@ import { civs, GENERIC_CIV } from '../src/data/civs';
 import { TechData } from '../src/sim/types';
 
 describe('Civilization-Specific Tech Filtering (Explicit)', () => {
-  const crossbow = units['crossbowman'];
+  const crossbow = units['crossbowman_24'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));

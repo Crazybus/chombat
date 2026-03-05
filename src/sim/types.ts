@@ -47,6 +47,7 @@ export interface TechData {
   };
   effects: TechEffect[];
   age: number;
+  civ: number;
 }
 
 export interface BuildingData {

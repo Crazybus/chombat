@@ -5,8 +5,8 @@ import { techs } from '../src/data/techs';
 import { TechData } from '../src/sim/types';
 
 describe('Battle Simulation', () => {
-  const archer = units['archer'];
-  const skirm = units['skirmisher'];
+  const archer = units['archer_4'];
+  const skirm = units['skirmisher_7'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
