@@ -45,7 +45,7 @@ NAME_CONVERSIONS = {
     'BRITISH': 'BRITONS',
     'MAYAN': 'MAYANS',
     'BYZANTINE': 'BYZANTINES',
-    'MAGYARS': 'MAGYAR',
+    'MAGYAR': 'MAGYARS',
     'FRENCH': 'FRANKS',
     'HINDUSTANIS': 'INDIANS'
 }
@@ -111,6 +111,7 @@ def load_extra_data():
                 civ_name = filename.replace(".json", "")
                 if civ_name in NON_RANKED_CIVS:
                     continue
+                civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
                 civ_techs[civ_name] = {}  # TechID -> AgeID
                 with open(os.path.join(dir_path, filename), "r") as f:
                     try:
