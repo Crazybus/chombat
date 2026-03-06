@@ -1,6 +1,7 @@
 import { Unit } from './Unit';
 import { UnitData, ArmyState, TechData } from './types';
 import { decodeEncoded, shouldApplyEffect } from './TechLogic';
+import { EFFECT_ATTRIBUTES, EFFECT_COMMAND_TYPES } from '../data/effect_constants';
 
 export interface BattleTick {
   time: number;
@@ -68,6 +69,7 @@ export class CombatSim {
     newUnit.range = baseUnit.range;
     newUnit.speed = baseUnit.speed || 1.0;
     newUnit.reloadBase = baseUnit.reload;
+    newUnit.accuracy_percent = baseUnit.accuracy_percent;
 
     // 3. Apply manual overrides from config
     const overrides: Record<string, keyof ArmyState> = {
@@ -114,40 +116,26 @@ export class CombatSim {
 
         if (shouldApplyEffect(e, baseUnit, effs)) {
           const val = e.v;
-
-          if (e.t === 0) {
-            // Add HP
-            newUnit.hp += val;
-          } else if (e.t === 1) {
-            // Add Attack (Generic)
-            if (newUnit.matk > 0) newUnit.matk += val;
-            if (newUnit.patk > 0) newUnit.patk += val;
-            if (e.a === 5 && newUnit.speed !== undefined) newUnit.speed += val; // Add Speed (uses Attr 5)
-          } else if (e.t === 2) {
-            // Mult Stat
-            if (e.a === 5 && newUnit.speed !== undefined) newUnit.speed *= val; // Mult Speed (uses Attr 5)
-          } else if (e.t === 5) {
-            // Mult Speed (Legacy/Old mapping, also usually Attr 5 in some datasets)
-            if (newUnit.speed !== undefined) newUnit.speed *= val;
-            if (e.a === 10) reloadMult *= val; // faster attack (uses Attr 10)
-          } else if (e.t === 10) {
-            // Mult Reload
-            reloadMult *= val;
-          } else if (e.t === 12) {
-            // Add Range
-            newUnit.range += val;
-          } else if (e.t === 8 || e.t === 9) {
-            const { cls, amt } = decodeEncoded(val);
-            if (e.t === 9) {
-              // Class Attack
-              if (cls === 3) {
-                if (newUnit.patk > 0) newUnit.patk += amt;
-              } else if (cls === 4) {
-                if (newUnit.matk > 0) newUnit.matk += amt;
-              } else {
-                newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
-              }
-            } else {
+          console.log(e);
+          if (e.t === EFFECT_COMMAND_TYPES.attribute_modifier_set) {
+            // Command type 0
+            if (e.a == EFFECT_ATTRIBUTES.hp) {
+              newUnit.hp = val;
+            }
+            if (e.a == EFFECT_ATTRIBUTES.accuracy) {
+              newUnit.accuracy_percent = val;
+            }
+            if (e.a == EFFECT_ATTRIBUTES.min_range) {
+              newUnit.hp = val;
+            }
+          } else if (e.t == EFFECT_COMMAND_TYPES.attribute_modifier_add) {
+            // Command type 4
+            if (e.a == EFFECT_ATTRIBUTES.hp) {
+              newUnit.hp += val;
+            } else if (e.a == EFFECT_ATTRIBUTES.speed) {
+              if (newUnit.speed !== undefined) newUnit.speed += val;
+            } else if (e.a == EFFECT_ATTRIBUTES.armor) {
+              const { cls, amt } = decodeEncoded(val);
               // Class Armor
               if (cls === 3) {
                 newUnit.parm += amt;
@@ -156,6 +144,43 @@ export class CombatSim {
               } else {
                 newUnit.armors![cls] = (newUnit.armors![cls] || 0) + amt;
               }
+            } else if (e.a == EFFECT_ATTRIBUTES.attack) {
+              const { cls, amt } = decodeEncoded(val);
+              // Class Attack
+              if (cls === 3) {
+                if (newUnit.patk > 0) newUnit.patk += amt;
+              } else if (cls === 4) {
+                if (newUnit.matk > 0) newUnit.matk += amt;
+              } else {
+                newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
+              }
+            } else if (e.a == EFFECT_ATTRIBUTES.accuracy) {
+              if (newUnit.accuracy_percent !== undefined) newUnit.accuracy_percent += val;
+            } else if (e.a == EFFECT_ATTRIBUTES.max_range) {
+              if (newUnit.range !== undefined) newUnit.range += val;
+            }
+          } else if (e.t == EFFECT_COMMAND_TYPES.attribute_modifier_multiply) {
+            // Command type 5
+            // Add Attack (Generic)
+            if (e.a == EFFECT_ATTRIBUTES.hp) {
+              // eg. Effect 285 - C-Bonus, Cavalry +20% HP
+              newUnit.hp *= val;
+            } else if (e.a == EFFECT_ATTRIBUTES.speed) {
+              // eg. Effect 204 - Squires
+              if (newUnit.speed !== undefined) newUnit.speed *= val;
+            } else if (e.a == EFFECT_ATTRIBUTES.attack) {
+              const { cls, amt } = decodeEncoded(val);
+              // Class Attack
+              if (cls === 3) {
+                if (newUnit.patk > 0) newUnit.patk *= amt;
+              } else if (cls === 4) {
+                if (newUnit.matk > 0) newUnit.matk *= amt;
+              } else {
+                newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
+              }
+            } else if (e.a == EFFECT_ATTRIBUTES.reload) {
+              // eg. Effect 612 - Archers fire 15% faster
+              reloadMult *= val;
             }
           }
         }

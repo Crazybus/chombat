@@ -1,7 +1,7 @@
 import { UnitData } from '../sim/types';
 
 export const units: Record<string, UnitData> = {
-  arambai_1126: {
+  arambai: {
     name: 'Arambai',
     hp: 60,
     matk: 0,
@@ -11,6 +11,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 20,
     f: 0,
     w: 75,
     g: 60,
@@ -40,7 +41,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  arbalester_492: {
+  arbalester: {
     name: 'Arbalester',
     hp: 40,
     matk: 0,
@@ -50,6 +51,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 20,
+    accuracy_percent: 90,
     f: 0,
     w: 25,
     g: 45,
@@ -74,7 +76,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  archer_4: {
+  archer: {
     name: 'Archer',
     hp: 30,
     matk: 0,
@@ -84,6 +86,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 15,
+    accuracy_percent: 80,
     f: 0,
     w: 25,
     g: 45,
@@ -108,7 +111,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  armored_elephant_1744: {
+  armored_elephant: {
     name: 'Armored Elephant',
     hp: 180,
     matk: 4,
@@ -118,6 +121,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 120,
     w: 0,
     g: 95,
@@ -146,7 +150,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  ballista_elephant_1120: {
+  ballista_elephant: {
     name: 'Ballista Elephant',
     hp: 250,
     matk: 0,
@@ -156,6 +160,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.5,
     range: 5.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 100,
     w: 0,
     g: 80,
@@ -189,7 +194,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  battering_ram_1258: {
+  battering_ram: {
     name: 'Battering Ram',
     hp: 175,
     matk: 2,
@@ -199,6 +204,7 @@ export const units: Record<string, UnitData> = {
     reload: 5.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 160,
     g: 75,
@@ -222,7 +228,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  battle_elephant_1132: {
+  battle_elephant: {
     name: 'Battle Elephant',
     hp: 250,
     matk: 12,
@@ -232,6 +238,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 20,
+    accuracy_percent: 100,
     f: 100,
     w: 0,
     g: 70,
@@ -261,7 +268,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  berserk_692: {
+  berserk: {
     name: 'Berserk',
     hp: 54,
     matk: 12,
@@ -271,6 +278,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 20,
@@ -297,7 +305,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  blackwood_archer_2579: {
+  blackwood_archer: {
     name: 'Blackwood Archer',
     hp: 20,
     matk: 0,
@@ -307,6 +315,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.5,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 80,
     f: 0,
     w: 35,
     g: 45,
@@ -333,7 +342,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  bolas_rider_2569: {
+  bolas_rider: {
     name: 'Bolas Rider',
     hp: 55,
     matk: 0,
@@ -343,6 +352,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 19,
+    accuracy_percent: 90,
     f: 0,
     w: 45,
     g: 50,
@@ -375,7 +385,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  bombard_cannon_36: {
+  bombard_cannon: {
     name: 'Bombard Cannon',
     hp: 80,
     matk: 0,
@@ -385,6 +395,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.5,
     range: 12.0,
     frame_delay: 7,
+    accuracy_percent: 100,
     f: 0,
     w: 225,
     g: 225,
@@ -411,7 +422,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  boyar_876: {
+  boyar: {
     name: 'Boyar',
     hp: 100,
     matk: 12,
@@ -421,6 +432,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 70,
@@ -449,7 +461,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  camel_archer_1007: {
+  camel_archer: {
     name: 'Camel Archer',
     hp: 55,
     matk: 0,
@@ -459,6 +471,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 15,
+    accuracy_percent: 95,
     f: 0,
     w: 50,
     g: 60,
@@ -492,7 +505,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  camel_rider_329: {
+  camel_rider: {
     name: 'Camel Rider',
     hp: 100,
     matk: 6,
@@ -502,6 +515,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 20,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 60,
@@ -532,7 +546,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  camel_scout_1755: {
+  camel_scout: {
     name: 'Camel Scout',
     hp: 70,
     matk: 2,
@@ -542,6 +556,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 60,
@@ -572,7 +587,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  cannon_galleon_420: {
+  cannon_galleon: {
     name: 'Cannon Galleon',
     hp: 120,
     matk: 0,
@@ -582,6 +597,7 @@ export const units: Record<string, UnitData> = {
     reload: 10.0,
     range: 13.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 200,
     g: 150,
@@ -606,7 +622,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  cao_cao_1954: {
+  cao_cao: {
     name: 'Cao Cao',
     hp: 475,
     matk: 14,
@@ -616,6 +632,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 500,
     w: 0,
     g: 500,
@@ -643,7 +660,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  capped_ram_422: {
+  capped_ram: {
     name: 'Capped Ram',
     hp: 200,
     matk: 3,
@@ -653,6 +670,7 @@ export const units: Record<string, UnitData> = {
     reload: 5.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 160,
     g: 75,
@@ -676,7 +694,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  caravel_1004: {
+  caravel: {
     name: 'Caravel',
     hp: 130,
     matk: 0,
@@ -686,6 +704,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 6.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 90,
     g: 43,
@@ -712,7 +731,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  carrack_2628: {
+  carrack: {
     name: 'Carrack',
     hp: 135,
     matk: 4,
@@ -722,6 +741,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.5,
     range: 1.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 75,
     g: 35,
@@ -745,7 +765,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  cataphract_40: {
+  cataphract: {
     name: 'Cataphract',
     hp: 110,
     matk: 9,
@@ -755,6 +775,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 75,
@@ -784,7 +805,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  catapult_galleon_2633: {
+  catapult_galleon: {
     name: 'Catapult Galleon',
     hp: 140,
     matk: 0,
@@ -794,6 +815,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.0,
     range: 12.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 225,
     g: 100,
@@ -817,7 +839,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  cavalier_283: {
+  cavalier: {
     name: 'Cavalier',
     hp: 120,
     matk: 12,
@@ -827,6 +849,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 26,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 75,
@@ -854,7 +877,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  cavalry_archer_39: {
+  cavalry_archer: {
     name: 'Cavalry Archer',
     hp: 50,
     matk: 0,
@@ -864,6 +887,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 35,
+    accuracy_percent: 50,
     f: 0,
     w: 40,
     g: 60,
@@ -892,7 +916,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  centurion_1790: {
+  centurion: {
     name: 'Centurion',
     hp: 110,
     matk: 13,
@@ -902,6 +926,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 75,
     w: 0,
     g: 85,
@@ -929,7 +954,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  chakram_thrower_1741: {
+  chakram_thrower: {
     name: 'Chakram Thrower',
     hp: 40,
     matk: 0,
@@ -939,6 +964,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 30,
@@ -966,7 +992,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  champi_runner_2588: {
+  champi_runner: {
     name: 'Champi Runner',
     hp: 40,
     matk: 5,
@@ -976,6 +1002,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 25,
@@ -1002,7 +1029,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  champi_scout_2550: {
+  champi_scout: {
     name: 'Champi Scout',
     hp: 35,
     matk: 4,
@@ -1012,6 +1039,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 25,
@@ -1038,7 +1066,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  champi_warrior_2552: {
+  champi_warrior: {
     name: 'Champi Warrior',
     hp: 55,
     matk: 9,
@@ -1048,6 +1076,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 25,
@@ -1074,7 +1103,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  champion_567: {
+  champion: {
     name: 'Champion',
     hp: 70,
     matk: 14,
@@ -1084,6 +1113,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 20,
@@ -1109,7 +1139,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  chu_ko_nu_73: {
+  chu_ko_nu: {
     name: 'Chu Ko Nu',
     hp: 45,
     matk: 0,
@@ -1119,6 +1149,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 4.0,
     frame_delay: 19,
+    accuracy_percent: 85,
     f: 0,
     w: 40,
     g: 35,
@@ -1144,7 +1175,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  composite_bowman_1800: {
+  composite_bowman: {
     name: 'Composite Bowman',
     hp: 40,
     matk: 0,
@@ -1154,6 +1185,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 0,
     w: 35,
     g: 45,
@@ -1178,7 +1210,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  condottiero_882: {
+  condottiero: {
     name: 'Condottiero',
     hp: 80,
     matk: 10,
@@ -1188,6 +1220,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 35,
@@ -1215,7 +1248,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  conquistador_771: {
+  conquistador: {
     name: 'Conquistador',
     hp: 55,
     matk: 0,
@@ -1225,6 +1258,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.9000000953674316,
     range: 6.0,
     frame_delay: 13,
+    accuracy_percent: 65,
     f: 70,
     w: 0,
     g: 60,
@@ -1252,7 +1286,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  coustillier_1655: {
+  coustillier: {
     name: 'Coustillier',
     hp: 115,
     matk: 8,
@@ -1262,6 +1296,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 55,
@@ -1290,7 +1325,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  crossbowman_24: {
+  crossbowman: {
     name: 'Crossbowman',
     hp: 35,
     matk: 0,
@@ -1300,6 +1335,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 85,
     f: 0,
     w: 25,
     g: 45,
@@ -1324,7 +1360,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  demolition_raft_1104: {
+  demolition_raft: {
     name: 'Demolition Raft',
     hp: 40,
     matk: 75,
@@ -1334,6 +1370,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 80,
@@ -1355,7 +1392,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  demolition_ship_527: {
+  demolition_ship: {
     name: 'Demolition Ship',
     hp: 50,
     matk: 95,
@@ -1365,6 +1402,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 80,
@@ -1386,7 +1424,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  dragon_ship_1302: {
+  dragon_ship: {
     name: 'Dragon Ship',
     hp: 135,
     matk: 0,
@@ -1396,6 +1434,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.25,
     range: 3.0,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 75,
     g: 45,
@@ -1421,7 +1460,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  dromon_1795: {
+  dromon: {
     name: 'Dromon',
     hp: 125,
     matk: 0,
@@ -1431,6 +1470,7 @@ export const units: Record<string, UnitData> = {
     reload: 8.0,
     range: 12.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 175,
     g: 150,
@@ -1456,7 +1496,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  eagle_scout_751: {
+  eagle_scout: {
     name: 'Eagle Scout',
     hp: 50,
     matk: 4,
@@ -1466,6 +1506,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 20,
     w: 0,
     g: 50,
@@ -1494,7 +1535,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  eagle_warrior_753: {
+  eagle_warrior: {
     name: 'Eagle Warrior',
     hp: 55,
     matk: 7,
@@ -1504,6 +1545,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 20,
     w: 0,
     g: 50,
@@ -1532,7 +1574,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elephant_archer_873: {
+  elephant_archer: {
     name: 'Elephant Archer',
     hp: 230,
     matk: 0,
@@ -1542,6 +1584,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 12,
+    accuracy_percent: 70,
     f: 60,
     w: 0,
     g: 80,
@@ -1570,7 +1613,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_arambai_1128: {
+  elite_arambai: {
     name: 'Elite Arambai',
     hp: 65,
     matk: 0,
@@ -1580,6 +1623,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 30,
     f: 0,
     w: 75,
     g: 60,
@@ -1609,7 +1653,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_ballista_elephant_1122: {
+  elite_ballista_elephant: {
     name: 'Elite Ballista Elephant',
     hp: 280,
     matk: 0,
@@ -1619,6 +1663,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.5,
     range: 5.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 100,
     w: 0,
     g: 80,
@@ -1652,7 +1697,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_battle_elephant_1134: {
+  elite_battle_elephant: {
     name: 'Elite Battle Elephant',
     hp: 300,
     matk: 14,
@@ -1662,6 +1707,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 100,
     w: 0,
     g: 70,
@@ -1691,7 +1737,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_berserk_694: {
+  elite_berserk: {
     name: 'Elite Berserk',
     hp: 62,
     matk: 14,
@@ -1701,6 +1747,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 20,
@@ -1727,7 +1774,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_blackwood_archer_2581: {
+  elite_blackwood_archer: {
     name: 'Elite Blackwood Archer',
     hp: 25,
     matk: 0,
@@ -1737,6 +1784,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.5,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 90,
     f: 0,
     w: 35,
     g: 45,
@@ -1763,7 +1811,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_bolas_rider_2571: {
+  elite_bolas_rider: {
     name: 'Elite Bolas Rider',
     hp: 65,
     matk: 0,
@@ -1773,6 +1821,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 19,
+    accuracy_percent: 95,
     f: 0,
     w: 45,
     g: 50,
@@ -1805,7 +1854,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_boyar_878: {
+  elite_boyar: {
     name: 'Elite Boyar',
     hp: 130,
     matk: 14,
@@ -1815,6 +1864,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 70,
@@ -1843,7 +1893,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_camel_archer_1009: {
+  elite_camel_archer: {
     name: 'Elite Camel Archer',
     hp: 60,
     matk: 0,
@@ -1853,6 +1903,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 15,
+    accuracy_percent: 95,
     f: 0,
     w: 50,
     g: 60,
@@ -1886,7 +1937,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_cannon_galleon_691: {
+  elite_cannon_galleon: {
     name: 'Elite Cannon Galleon',
     hp: 150,
     matk: 0,
@@ -1896,6 +1947,7 @@ export const units: Record<string, UnitData> = {
     reload: 10.0,
     range: 15.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 200,
     g: 150,
@@ -1920,7 +1972,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_caravel_1006: {
+  elite_caravel: {
     name: 'Elite Caravel',
     hp: 150,
     matk: 0,
@@ -1930,6 +1982,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 7.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 90,
     g: 43,
@@ -1956,7 +2009,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_cataphract_553: {
+  elite_cataphract: {
     name: 'Elite Cataphract',
     hp: 150,
     matk: 12,
@@ -1966,6 +2019,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7000000476837158,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 75,
@@ -1995,7 +2049,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_centurion_1792: {
+  elite_centurion: {
     name: 'Elite Centurion',
     hp: 155,
     matk: 15,
@@ -2005,6 +2059,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 75,
     w: 0,
     g: 85,
@@ -2032,7 +2087,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_chakram_thrower_1743: {
+  elite_chakram_thrower: {
     name: 'Elite Chakram Thrower',
     hp: 50,
     matk: 0,
@@ -2042,6 +2097,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 6.0,
     frame_delay: 15,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 30,
@@ -2069,7 +2125,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_champi_warrior_2554: {
+  elite_champi_warrior: {
     name: 'Elite Champi Warrior',
     hp: 65,
     matk: 11,
@@ -2079,6 +2135,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 25,
@@ -2105,7 +2162,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_chu_ko_nu_559: {
+  elite_chu_ko_nu: {
     name: 'Elite Chu Ko Nu',
     hp: 50,
     matk: 0,
@@ -2115,6 +2172,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 4.0,
     frame_delay: 19,
+    accuracy_percent: 85,
     f: 0,
     w: 40,
     g: 35,
@@ -2140,7 +2198,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_composite_bowman_1802: {
+  elite_composite_bowman: {
     name: 'Elite Composite Bowman',
     hp: 45,
     matk: 0,
@@ -2150,6 +2208,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 0,
     w: 35,
     g: 45,
@@ -2174,7 +2233,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_conquistador_773: {
+  elite_conquistador: {
     name: 'Elite Conquistador',
     hp: 70,
     matk: 0,
@@ -2184,6 +2243,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.9000000953674316,
     range: 6.0,
     frame_delay: 13,
+    accuracy_percent: 70,
     f: 70,
     w: 0,
     g: 60,
@@ -2211,7 +2271,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_coustillier_1657: {
+  elite_coustillier: {
     name: 'Elite Coustillier',
     hp: 145,
     matk: 11,
@@ -2221,6 +2281,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 55,
@@ -2249,7 +2310,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_eagle_warrior_752: {
+  elite_eagle_warrior: {
     name: 'Elite Eagle Warrior',
     hp: 60,
     matk: 9,
@@ -2259,6 +2320,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 20,
     w: 0,
     g: 50,
@@ -2287,7 +2349,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_elephant_archer_875: {
+  elite_elephant_archer: {
     name: 'Elite Elephant Archer',
     hp: 280,
     matk: 0,
@@ -2297,6 +2359,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 24,
+    accuracy_percent: 85,
     f: 60,
     w: 0,
     g: 80,
@@ -2325,7 +2388,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_fire_archer_1970: {
+  elite_fire_archer: {
     name: 'Elite Fire Archer',
     hp: 40,
     matk: 0,
@@ -2335,6 +2398,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.5,
     range: 10.0,
     frame_delay: 10,
+    accuracy_percent: 85,
     f: 0,
     w: 45,
     g: 45,
@@ -2361,7 +2425,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_fire_lancer_1903: {
+  elite_fire_lancer: {
     name: 'Elite Fire Lancer',
     hp: 85,
     matk: 10,
@@ -2371,6 +2435,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 45,
@@ -2400,7 +2465,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_gbeto_1015: {
+  elite_gbeto: {
     name: 'Elite Gbeto',
     hp: 50,
     matk: 0,
@@ -2410,6 +2475,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 6.0,
     frame_delay: 30,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 40,
@@ -2436,7 +2502,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_genitour_1012: {
+  elite_genitour: {
     name: 'Elite Genitour',
     hp: 55,
     matk: 0,
@@ -2446,6 +2512,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 4.0,
     frame_delay: 12,
+    accuracy_percent: 90,
     f: 40,
     w: 35,
     g: 0,
@@ -2478,7 +2545,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_genoese_crossbowman_868: {
+  elite_genoese_crossbowman: {
     name: 'Elite Genoese Crossbowman',
     hp: 50,
     matk: 0,
@@ -2488,6 +2555,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 15,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 40,
@@ -2514,7 +2582,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_ghulam_1749: {
+  elite_ghulam: {
     name: 'Elite Ghulam',
     hp: 70,
     matk: 11,
@@ -2524,6 +2592,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 30,
     w: 0,
     g: 45,
@@ -2550,7 +2619,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_guecha_warrior_2564: {
+  elite_guecha_warrior: {
     name: 'Elite Guecha Warrior',
     hp: 50,
     matk: 0,
@@ -2560,6 +2629,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 4.0,
     frame_delay: 25,
+    accuracy_percent: 90,
     f: 0,
     w: 50,
     g: 60,
@@ -2589,7 +2659,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_huskarl_555: {
+  elite_huskarl: {
     name: 'Elite Huskarl',
     hp: 70,
     matk: 12,
@@ -2599,6 +2669,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 75,
     w: 0,
     g: 35,
@@ -2635,6 +2706,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 75,
     w: 0,
     g: 35,
@@ -2661,7 +2733,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_hussite_wagon_1706: {
+  elite_hussite_wagon: {
     name: 'Elite Hussite Wagon',
     hp: 230,
     matk: 0,
@@ -2671,6 +2743,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 6.0,
     frame_delay: 20,
+    accuracy_percent: 90,
     f: 0,
     w: 110,
     g: 70,
@@ -2696,7 +2769,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_ibirapema_warrior_2584: {
+  elite_ibirapema_warrior: {
     name: 'Elite Ibirapema Warrior',
     hp: 90,
     matk: 11,
@@ -2706,6 +2779,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 30,
     w: 0,
     g: 60,
@@ -2731,7 +2805,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_iron_pagoda_1910: {
+  elite_iron_pagoda: {
     name: 'Elite Iron Pagoda',
     hp: 140,
     matk: 13,
@@ -2741,6 +2815,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.1500000953674316,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 55,
@@ -2769,7 +2844,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_jaguar_warrior_726: {
+  elite_jaguar_warrior: {
     name: 'Elite Jaguar Warrior',
     hp: 75,
     matk: 19,
@@ -2779,6 +2854,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 30,
@@ -2806,7 +2882,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_janissary_557: {
+  elite_janissary: {
     name: 'Elite Janissary',
     hp: 40,
     matk: 0,
@@ -2816,6 +2892,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 8.0,
     frame_delay: 0,
+    accuracy_percent: 65,
     f: 60,
     w: 0,
     g: 55,
@@ -2840,7 +2917,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_kamayuk_881: {
+  elite_kamayuk: {
     name: 'Elite Kamayuk',
     hp: 80,
     matk: 8,
@@ -2850,6 +2927,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 1.0,
     frame_delay: 24,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 30,
@@ -2876,7 +2954,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_karambit_warrior_1125: {
+  elite_karambit_warrior: {
     name: 'Elite Karambit Warrior',
     hp: 40,
     matk: 8,
@@ -2886,6 +2964,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 25,
     w: 0,
     g: 15,
@@ -2912,7 +2991,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_keshik_1230: {
+  elite_keshik: {
     name: 'Elite Keshik',
     hp: 145,
     matk: 11,
@@ -2922,6 +3001,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 40,
@@ -2950,7 +3030,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_kipchak_1233: {
+  elite_kipchak: {
     name: 'Elite Kipchak',
     hp: 45,
     matk: 0,
@@ -2960,6 +3040,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.200000047683716,
     range: 4.0,
     frame_delay: 21,
+    accuracy_percent: 90,
     f: 0,
     w: 60,
     g: 35,
@@ -2998,6 +3079,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.200000047683716,
     range: 4.0,
     frame_delay: 21,
+    accuracy_percent: 90,
     f: 0,
     w: 0,
     g: 0,
@@ -3026,7 +3108,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_kona_2568: {
+  elite_kona: {
     name: 'Elite Kona',
     hp: 145,
     matk: 11,
@@ -3036,6 +3118,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 40,
@@ -3063,7 +3146,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_konnik_1227: {
+  elite_konnik: {
     name: 'Elite Konnik',
     hp: 120,
     matk: 14,
@@ -3073,6 +3156,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.4000000953674316,
     range: 0.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 70,
@@ -3111,6 +3195,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.4000000953674316,
     range: 0.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 70,
@@ -3139,7 +3224,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_leitis_1236: {
+  elite_leitis: {
     name: 'Elite Leitis',
     hp: 130,
     matk: 16,
@@ -3149,6 +3234,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 50,
@@ -3177,7 +3263,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_liao_dao_1922: {
+  elite_liao_dao: {
     name: 'Elite Liao Dao',
     hp: 85,
     matk: 13,
@@ -3187,6 +3273,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.4000000953674316,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 40,
     w: 0,
     g: 40,
@@ -3213,7 +3300,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_longboat_533: {
+  elite_longboat: {
     name: 'Elite Longboat',
     hp: 130,
     matk: 0,
@@ -3223,6 +3310,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 7.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 100,
     g: 50,
@@ -3249,7 +3337,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_longbowman_530: {
+  elite_longbowman: {
     name: 'Elite Longbowman',
     hp: 40,
     matk: 0,
@@ -3259,6 +3347,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 6.0,
     frame_delay: 10,
+    accuracy_percent: 80,
     f: 0,
     w: 35,
     g: 40,
@@ -3283,7 +3372,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_magyar_huszar_871: {
+  elite_magyar_huszar: {
     name: 'Elite Magyar Huszar',
     hp: 90,
     matk: 11,
@@ -3293,6 +3382,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 0,
     g: 45,
@@ -3321,7 +3411,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_mameluke_556: {
+  elite_mameluke: {
     name: 'Elite Mameluke',
     hp: 80,
     matk: 0,
@@ -3331,6 +3421,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 3.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 85,
@@ -3361,7 +3452,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_mangudai_561: {
+  elite_mangudai: {
     name: 'Elite Mangudai',
     hp: 60,
     matk: 0,
@@ -3371,6 +3462,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0999999046325684,
     range: 4.0,
     frame_delay: 23,
+    accuracy_percent: 95,
     f: 0,
     w: 55,
     g: 65,
@@ -3401,7 +3493,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_monaspa_1805: {
+  elite_monaspa: {
     name: 'Elite Monaspa',
     hp: 80,
     matk: 14,
@@ -3411,6 +3503,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 45,
@@ -3439,7 +3532,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_obuch_1703: {
+  elite_obuch: {
     name: 'Elite Obuch',
     hp: 95,
     matk: 10,
@@ -3449,6 +3542,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 20,
@@ -3475,7 +3569,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_organ_gun_1003: {
+  elite_organ_gun: {
     name: 'Elite Organ Gun',
     hp: 70,
     matk: 0,
@@ -3485,6 +3579,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 7.0,
     frame_delay: 12,
+    accuracy_percent: 0,
     f: 0,
     w: 80,
     g: 70,
@@ -3512,7 +3607,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_plumed_archer_765: {
+  elite_plumed_archer: {
     name: 'Elite Plumed Archer',
     hp: 65,
     matk: 0,
@@ -3522,6 +3617,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 5.0,
     frame_delay: 15,
+    accuracy_percent: 90,
     f: 0,
     w: 55,
     g: 55,
@@ -3547,7 +3643,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_ratha_1761: {
+  elite_ratha: {
     name: 'Elite Ratha',
     hp: 115,
     matk: 0,
@@ -3557,6 +3653,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 14,
+    accuracy_percent: 90,
     f: 0,
     w: 60,
     g: 60,
@@ -3586,7 +3683,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_rattan_archer_1131: {
+  elite_rattan_archer: {
     name: 'Elite Rattan Archer',
     hp: 45,
     matk: 0,
@@ -3596,6 +3693,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 23,
+    accuracy_percent: 90,
     f: 0,
     w: 50,
     g: 45,
@@ -3621,7 +3719,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_samurai_560: {
+  elite_samurai: {
     name: 'Elite Samurai',
     hp: 80,
     matk: 12,
@@ -3631,6 +3729,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 30,
@@ -3658,7 +3757,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_serjeant_1659: {
+  elite_serjeant: {
     name: 'Elite Serjeant',
     hp: 85,
     matk: 11,
@@ -3668,6 +3767,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 25,
@@ -3704,6 +3804,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 25,
@@ -3730,7 +3831,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_shotel_warrior_1018: {
+  elite_shotel_warrior: {
     name: 'Elite Shotel Warrior',
     hp: 50,
     matk: 18,
@@ -3740,6 +3841,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 30,
@@ -3767,7 +3869,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_shrivamsha_rider_1753: {
+  elite_shrivamsha_rider: {
     name: 'Elite Shrivamsha Rider',
     hp: 70,
     matk: 11,
@@ -3777,6 +3879,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 30,
@@ -3805,7 +3908,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_skirmisher_6: {
+  elite_skirmisher: {
     name: 'Elite Skirmisher',
     hp: 35,
     matk: 0,
@@ -3815,6 +3918,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 5.0,
     frame_delay: 19,
+    accuracy_percent: 90,
     f: 25,
     w: 35,
     g: 0,
@@ -3842,7 +3946,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_steppe_lancer_1372: {
+  elite_steppe_lancer: {
     name: 'Elite Steppe Lancer',
     hp: 80,
     matk: 11,
@@ -3852,6 +3956,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 1.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 40,
@@ -3878,7 +3983,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_tarkan_757: {
+  elite_tarkan: {
     name: 'Elite Tarkan',
     hp: 150,
     matk: 11,
@@ -3888,6 +3993,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 60,
@@ -3929,6 +4035,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 60,
@@ -3960,7 +4067,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_temple_guard_2587: {
+  elite_temple_guard: {
     name: 'Elite Temple Guard',
     hp: 115,
     matk: 14,
@@ -3970,6 +4077,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 45,
@@ -3997,7 +4105,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_teutonic_knight_554: {
+  elite_teutonic_knight: {
     name: 'Elite Teutonic Knight',
     hp: 110,
     matk: 17,
@@ -4007,6 +4115,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 85,
     w: 0,
     g: 30,
@@ -4033,7 +4142,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_throwing_axeman_531: {
+  elite_throwing_axeman: {
     name: 'Elite Throwing Axeman',
     hp: 70,
     matk: 0,
@@ -4043,6 +4152,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 28,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 25,
@@ -4069,7 +4179,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_tiger_cavalry_1951: {
+  elite_tiger_cavalry: {
     name: 'Elite Tiger Cavalry',
     hp: 130,
     matk: 13,
@@ -4079,6 +4189,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 80,
@@ -4107,7 +4218,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_turtle_ship_832: {
+  elite_turtle_ship: {
     name: 'Elite Turtle Ship',
     hp: 350,
     matk: 0,
@@ -4117,6 +4228,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 7.0,
     frame_delay: 1,
+    accuracy_percent: 100,
     f: 0,
     w: 190,
     g: 130,
@@ -4147,7 +4259,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_urumi_swordsman_1737: {
+  elite_urumi_swordsman: {
     name: 'Elite Urumi Swordsman',
     hp: 65,
     matk: 11,
@@ -4157,6 +4269,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 20,
@@ -4183,7 +4296,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_war_elephant_558: {
+  elite_war_elephant: {
     name: 'Elite War Elephant',
     hp: 600,
     matk: 20,
@@ -4193,6 +4306,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 170,
     w: 0,
     g: 85,
@@ -4223,7 +4337,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_war_wagon_829: {
+  elite_war_wagon: {
     name: 'Elite War Wagon',
     hp: 200,
     matk: 0,
@@ -4233,6 +4347,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.5,
     range: 5.0,
     frame_delay: 32,
+    accuracy_percent: 100,
     f: 0,
     w: 200,
     g: 60,
@@ -4261,7 +4376,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_white_feather_guard_1961: {
+  elite_white_feather_guard: {
     name: 'Elite White Feather Guard',
     hp: 100,
     matk: 8,
@@ -4271,6 +4386,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 15,
@@ -4298,7 +4414,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  elite_woad_raider_534: {
+  elite_woad_raider: {
     name: 'Elite Woad Raider',
     hp: 85,
     matk: 15,
@@ -4308,6 +4424,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 25,
@@ -4334,7 +4451,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  fast_fire_ship_532: {
+  fast_fire_ship: {
     name: 'Fast Fire Ship',
     hp: 140,
     matk: 0,
@@ -4344,6 +4461,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.25,
     range: 2.5,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 75,
     g: 45,
@@ -4369,7 +4487,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  fire_archer_1968: {
+  fire_archer: {
     name: 'Fire Archer',
     hp: 35,
     matk: 0,
@@ -4379,6 +4497,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.5,
     range: 9.0,
     frame_delay: 10,
+    accuracy_percent: 80,
     f: 0,
     w: 45,
     g: 45,
@@ -4405,7 +4524,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  fire_galley_1103: {
+  fire_galley: {
     name: 'Fire Galley',
     hp: 110,
     matk: 0,
@@ -4415,6 +4534,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.25,
     range: 2.5,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 75,
     g: 45,
@@ -4440,7 +4560,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  fire_lancer_1901: {
+  fire_lancer: {
     name: 'Fire Lancer',
     hp: 65,
     matk: 9,
@@ -4450,6 +4570,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 45,
@@ -4479,7 +4600,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  fire_ship_529: {
+  fire_ship: {
     name: 'Fire Ship',
     hp: 120,
     matk: 0,
@@ -4489,6 +4610,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.25,
     range: 2.5,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 75,
     g: 45,
@@ -4514,7 +4636,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  fishing_ship_13: {
+  fishing_ship: {
     name: 'Fishing Ship',
     hp: 50,
     matk: 0,
@@ -4524,6 +4646,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 75,
     g: 0,
@@ -4544,7 +4667,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  flaming_camel_1263: {
+  flaming_camel: {
     name: 'Flaming Camel',
     hp: 55,
     matk: 20,
@@ -4554,6 +4677,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 75,
     w: 0,
     g: 30,
@@ -4582,7 +4706,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  galleon_442: {
+  galleon: {
     name: 'Galleon',
     hp: 155,
     matk: 0,
@@ -4592,6 +4716,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 7.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 90,
     g: 30,
@@ -4617,7 +4742,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  galley_539: {
+  galley: {
     name: 'Galley',
     hp: 110,
     matk: 0,
@@ -4627,6 +4752,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 5.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 90,
     g: 30,
@@ -4652,7 +4778,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  gbeto_1013: {
+  gbeto: {
     name: 'Gbeto',
     hp: 40,
     matk: 0,
@@ -4662,6 +4788,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 30,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 40,
@@ -4688,7 +4815,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  genitour_1010: {
+  genitour: {
     name: 'Genitour',
     hp: 50,
     matk: 0,
@@ -4698,6 +4825,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 4.0,
     frame_delay: 12,
+    accuracy_percent: 90,
     f: 40,
     w: 35,
     g: 0,
@@ -4730,7 +4858,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  genoese_crossbowman_866: {
+  genoese_crossbowman: {
     name: 'Genoese Crossbowman',
     hp: 45,
     matk: 0,
@@ -4740,6 +4868,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 15,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 40,
@@ -4766,7 +4895,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  ghulam_1747: {
+  ghulam: {
     name: 'Ghulam',
     hp: 60,
     matk: 9,
@@ -4776,6 +4905,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 30,
     w: 0,
     g: 45,
@@ -4802,7 +4932,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  grenadier_1911: {
+  grenadier: {
     name: 'Grenadier',
     hp: 40,
     matk: 0,
@@ -4812,6 +4942,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 6.0,
     frame_delay: 14,
+    accuracy_percent: 0,
     f: 35,
     w: 0,
     g: 65,
@@ -4839,7 +4970,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  guecha_warrior_2562: {
+  guecha_warrior: {
     name: 'Guecha Warrior',
     hp: 50,
     matk: 0,
@@ -4849,6 +4980,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 3.0,
     frame_delay: 25,
+    accuracy_percent: 90,
     f: 0,
     w: 50,
     g: 60,
@@ -4878,7 +5010,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  halberdier_359: {
+  halberdier: {
     name: 'Halberdier',
     hp: 60,
     matk: 6,
@@ -4888,6 +5020,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 25,
     g: 0,
@@ -4927,6 +5060,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 25,
     g: 0,
@@ -4956,7 +5090,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  hand_cannoneer_5: {
+  hand_cannoneer: {
     name: 'Hand Cannoneer',
     hp: 40,
     matk: 0,
@@ -4966,6 +5100,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 7.0,
     frame_delay: 15,
+    accuracy_percent: 75,
     f: 45,
     w: 0,
     g: 50,
@@ -4992,7 +5127,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  heavy_camel_rider_330: {
+  heavy_camel_rider: {
     name: 'Heavy Camel Rider',
     hp: 120,
     matk: 7,
@@ -5002,6 +5137,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 20,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 60,
@@ -5033,7 +5169,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  heavy_cavalry_archer_474: {
+  heavy_cavalry_archer: {
     name: 'Heavy Cavalry Archer',
     hp: 60,
     matk: 0,
@@ -5043,6 +5179,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 46,
+    accuracy_percent: 80,
     f: 0,
     w: 40,
     g: 60,
@@ -5071,7 +5208,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  heavy_demolition_ship_528: {
+  heavy_demolition_ship: {
     name: 'Heavy Demolition Ship',
     hp: 70,
     matk: 120,
@@ -5081,6 +5218,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 45,
     g: 80,
@@ -5102,7 +5240,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  heavy_hei_guang_cavalry_1946: {
+  heavy_hei_guang_cavalry: {
     name: 'Heavy Hei Guang Cavalry',
     hp: 90,
     matk: 12,
@@ -5112,6 +5250,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 65,
@@ -5140,7 +5279,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  heavy_rocket_cart_1907: {
+  heavy_rocket_cart: {
     name: 'Heavy Rocket Cart',
     hp: 65,
     matk: 0,
@@ -5150,6 +5289,7 @@ export const units: Record<string, UnitData> = {
     reload: 5.349999904632568,
     range: 8.0,
     frame_delay: 1,
+    accuracy_percent: 100,
     f: 0,
     w: 135,
     g: 155,
@@ -5176,7 +5316,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  heavy_scorpion_542: {
+  heavy_scorpion: {
     name: 'Heavy Scorpion',
     hp: 60,
     matk: 0,
@@ -5186,6 +5326,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.5999999046325684,
     range: 7.0,
     frame_delay: 6,
+    accuracy_percent: 100,
     f: 0,
     w: 75,
     g: 75,
@@ -5210,7 +5351,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  hei_guang_cavalry_1944: {
+  hei_guang_cavalry: {
     name: 'Hei Guang Cavalry',
     hp: 60,
     matk: 11,
@@ -5220,6 +5361,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 65,
@@ -5248,7 +5390,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  houfnice_1709: {
+  houfnice: {
     name: 'Houfnice',
     hp: 90,
     matk: 0,
@@ -5258,6 +5400,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.5,
     range: 12.0,
     frame_delay: 7,
+    accuracy_percent: 100,
     f: 0,
     w: 225,
     g: 225,
@@ -5284,7 +5427,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  hulk_2626: {
+  hulk: {
     name: 'Hulk',
     hp: 90,
     matk: 4,
@@ -5294,6 +5437,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.75,
     range: 1.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 75,
     g: 35,
@@ -5317,7 +5461,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  huskarl_41: {
+  huskarl: {
     name: 'Huskarl',
     hp: 60,
     matk: 10,
@@ -5327,6 +5471,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 75,
     w: 0,
     g: 35,
@@ -5353,7 +5498,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  hussar_441: {
+  hussar: {
     name: 'Hussar',
     hp: 75,
     matk: 7,
@@ -5363,6 +5508,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 0,
@@ -5391,7 +5537,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  hussite_wagon_1704: {
+  hussite_wagon: {
     name: 'Hussite Wagon',
     hp: 160,
     matk: 0,
@@ -5401,6 +5547,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 6.0,
     frame_delay: 20,
+    accuracy_percent: 85,
     f: 0,
     w: 110,
     g: 70,
@@ -5426,7 +5573,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  ibirapema_warrior_2582: {
+  ibirapema_warrior: {
     name: 'Ibirapema Warrior',
     hp: 80,
     matk: 8,
@@ -5436,6 +5583,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 30,
     w: 0,
     g: 60,
@@ -5461,7 +5609,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  imperial_camel_rider_207: {
+  imperial_camel_rider: {
     name: 'Imperial Camel Rider',
     hp: 140,
     matk: 8,
@@ -5471,6 +5619,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 20,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 60,
@@ -5502,7 +5651,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  imperial_skirmisher_1155: {
+  imperial_skirmisher: {
     name: 'Imperial Skirmisher',
     hp: 35,
     matk: 0,
@@ -5512,6 +5661,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 5.0,
     frame_delay: 19,
+    accuracy_percent: 95,
     f: 25,
     w: 35,
     g: 0,
@@ -5539,7 +5689,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  iron_pagoda_1908: {
+  iron_pagoda: {
     name: 'Iron Pagoda',
     hp: 115,
     matk: 12,
@@ -5549,6 +5699,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.1500000953674316,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 55,
@@ -5577,7 +5728,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  jaguar_warrior_725: {
+  jaguar_warrior: {
     name: 'Jaguar Warrior',
     hp: 65,
     matk: 15,
@@ -5587,6 +5738,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 30,
@@ -5614,7 +5766,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  janissary_46: {
+  janissary: {
     name: 'Janissary',
     hp: 35,
     matk: 0,
@@ -5624,6 +5776,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 7.0,
     frame_delay: 12,
+    accuracy_percent: 50,
     f: 60,
     w: 0,
     g: 55,
@@ -5648,7 +5801,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  jian_swordsman_1974: {
+  jian_swordsman: {
     name: 'Jian Swordsman',
     hp: 70,
     matk: 8,
@@ -5658,6 +5811,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 50,
@@ -5684,7 +5838,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  kamayuk_879: {
+  kamayuk: {
     name: 'Kamayuk',
     hp: 70,
     matk: 7,
@@ -5694,6 +5848,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 1.0,
     frame_delay: 24,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 30,
@@ -5720,7 +5875,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  karambit_warrior_1123: {
+  karambit_warrior: {
     name: 'Karambit Warrior',
     hp: 30,
     matk: 7,
@@ -5730,6 +5885,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 25,
     w: 0,
     g: 15,
@@ -5756,7 +5912,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  keshik_1228: {
+  keshik: {
     name: 'Keshik',
     hp: 120,
     matk: 9,
@@ -5766,6 +5922,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 40,
@@ -5794,7 +5951,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  kipchak_1231: {
+  kipchak: {
     name: 'Kipchak',
     hp: 40,
     matk: 0,
@@ -5804,6 +5961,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.200000047683716,
     range: 4.0,
     frame_delay: 21,
+    accuracy_percent: 90,
     f: 0,
     w: 60,
     g: 35,
@@ -5832,7 +5990,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  knight_38: {
+  knight: {
     name: 'Knight',
     hp: 100,
     matk: 10,
@@ -5842,6 +6000,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 75,
@@ -5869,7 +6028,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  kona_2566: {
+  kona: {
     name: 'Kona',
     hp: 125,
     matk: 9,
@@ -5879,6 +6038,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 40,
@@ -5906,7 +6066,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  konnik_1225: {
+  konnik: {
     name: 'Konnik',
     hp: 100,
     matk: 12,
@@ -5916,6 +6076,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.4000000953674316,
     range: 0.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 70,
@@ -5944,7 +6105,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  legionary_1793: {
+  legionary: {
     name: 'Legionary',
     hp: 75,
     matk: 12,
@@ -5954,6 +6115,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 20,
@@ -5980,7 +6142,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  leitis_1234: {
+  leitis: {
     name: 'Leitis',
     hp: 100,
     matk: 13,
@@ -5990,6 +6152,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 50,
@@ -6018,7 +6181,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  liao_dao_1920: {
+  liao_dao: {
     name: 'Liao Dao',
     hp: 75,
     matk: 9,
@@ -6028,6 +6191,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.4000000953674316,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 40,
     w: 0,
     g: 40,
@@ -6054,7 +6218,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  light_cavalry_546: {
+  light_cavalry: {
     name: 'Light Cavalry',
     hp: 60,
     matk: 7,
@@ -6064,6 +6228,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 0,
@@ -6092,7 +6257,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  liu_bei_1966: {
+  liu_bei: {
     name: 'Liu Bei',
     hp: 425,
     matk: 15,
@@ -6102,6 +6267,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 500,
     w: 0,
     g: 500,
@@ -6129,7 +6295,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  long_swordsman_77: {
+  long_swordsman: {
     name: 'Long Swordsman',
     hp: 60,
     matk: 9,
@@ -6139,6 +6305,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 20,
@@ -6164,7 +6331,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  longboat_250: {
+  longboat: {
     name: 'Longboat',
     hp: 125,
     matk: 0,
@@ -6174,6 +6341,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 6.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 100,
     g: 50,
@@ -6200,7 +6368,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  longbowman_8: {
+  longbowman: {
     name: 'Longbowman',
     hp: 35,
     matk: 0,
@@ -6210,6 +6378,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 10,
+    accuracy_percent: 70,
     f: 0,
     w: 35,
     g: 40,
@@ -6234,7 +6403,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  lou_chuan_1948: {
+  lou_chuan: {
     name: 'Lou Chuan',
     hp: 175,
     matk: 0,
@@ -6244,6 +6413,7 @@ export const units: Record<string, UnitData> = {
     reload: 5.5,
     range: 13.0,
     frame_delay: 18,
+    accuracy_percent: 100,
     f: 0,
     w: 250,
     g: 225,
@@ -6267,7 +6437,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  magyar_huszar_869: {
+  magyar_huszar: {
     name: 'Magyar Huszar',
     hp: 80,
     matk: 10,
@@ -6277,6 +6447,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 0,
     g: 45,
@@ -6305,7 +6476,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  mameluke_282: {
+  mameluke: {
     name: 'Mameluke',
     hp: 80,
     matk: 0,
@@ -6315,6 +6486,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 3.0,
     frame_delay: 24,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 85,
@@ -6345,7 +6517,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  man_at_arms_75: {
+  man_at_arms: {
     name: 'Man-at-Arms',
     hp: 45,
     matk: 6,
@@ -6355,6 +6527,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 20,
@@ -6380,7 +6553,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  mangonel_280: {
+  mangonel: {
     name: 'Mangonel',
     hp: 50,
     matk: 0,
@@ -6390,6 +6563,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.0,
     range: 7.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 160,
     g: 135,
@@ -6414,7 +6588,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  mangudai_11: {
+  mangudai: {
     name: 'Mangudai',
     hp: 60,
     matk: 0,
@@ -6424,6 +6598,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0999999046325684,
     range: 4.0,
     frame_delay: 23,
+    accuracy_percent: 95,
     f: 0,
     w: 55,
     g: 65,
@@ -6454,7 +6629,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  militia_74: {
+  militia: {
     name: 'Militia',
     hp: 40,
     matk: 4,
@@ -6464,6 +6639,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 20,
@@ -6489,7 +6665,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  missionary_775: {
+  missionary: {
     name: 'Missionary',
     hp: 30,
     matk: 0,
@@ -6499,6 +6675,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.600000023841858,
     range: 7.0,
     frame_delay: 0,
+    accuracy_percent: 38,
     f: 0,
     w: 0,
     g: 100,
@@ -6520,7 +6697,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  monaspa_1803: {
+  monaspa: {
     name: 'Monaspa',
     hp: 70,
     matk: 12,
@@ -6530,6 +6707,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 45,
@@ -6558,7 +6736,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  monk_125: {
+  monk: {
     name: 'Monk',
     hp: 30,
     matk: 0,
@@ -6568,6 +6746,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.600000023841858,
     range: 9.0,
     frame_delay: 0,
+    accuracy_percent: 38,
     f: 0,
     w: 0,
     g: 100,
@@ -6587,7 +6766,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  mounted_trebuchet_1923: {
+  mounted_trebuchet: {
     name: 'Mounted Trebuchet',
     hp: 75,
     matk: 0,
@@ -6597,6 +6776,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.5,
     range: 10.0,
     frame_delay: 21,
+    accuracy_percent: 100,
     f: 175,
     w: 0,
     g: 175,
@@ -6625,7 +6805,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  obuch_1701: {
+  obuch: {
     name: 'Obuch',
     hp: 80,
     matk: 8,
@@ -6635,6 +6815,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 20,
@@ -6661,7 +6842,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  onager_550: {
+  onager: {
     name: 'Onager',
     hp: 60,
     matk: 0,
@@ -6671,6 +6852,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.0,
     range: 8.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 160,
     g: 135,
@@ -6694,7 +6876,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  organ_gun_1001: {
+  organ_gun: {
     name: 'Organ Gun',
     hp: 50,
     matk: 0,
@@ -6704,6 +6886,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 7.0,
     frame_delay: 12,
+    accuracy_percent: 0,
     f: 0,
     w: 80,
     g: 70,
@@ -6731,7 +6914,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  paladin_569: {
+  paladin: {
     name: 'Paladin',
     hp: 160,
     matk: 14,
@@ -6741,6 +6924,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 75,
@@ -6768,7 +6952,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  petard_440: {
+  petard: {
     name: 'Petard',
     hp: 50,
     matk: 25,
@@ -6778,6 +6962,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 20,
@@ -6801,7 +6986,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  pikeman_358: {
+  pikeman: {
     name: 'Pikeman',
     hp: 55,
     matk: 4,
@@ -6811,6 +6996,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 25,
     g: 0,
@@ -6850,6 +7036,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 25,
     g: 0,
@@ -6879,7 +7066,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  plumed_archer_763: {
+  plumed_archer: {
     name: 'Plumed Archer',
     hp: 50,
     matk: 0,
@@ -6889,6 +7076,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 4.0,
     frame_delay: 15,
+    accuracy_percent: 80,
     f: 0,
     w: 55,
     g: 55,
@@ -6914,7 +7102,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  ratha_1759: {
+  ratha: {
     name: 'Ratha',
     hp: 100,
     matk: 0,
@@ -6924,6 +7112,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 14,
+    accuracy_percent: 80,
     f: 0,
     w: 60,
     g: 60,
@@ -6953,7 +7142,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  rattan_archer_1129: {
+  rattan_archer: {
     name: 'Rattan Archer',
     hp: 40,
     matk: 0,
@@ -6963,6 +7152,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 4.0,
     frame_delay: 23,
+    accuracy_percent: 80,
     f: 0,
     w: 50,
     g: 45,
@@ -6988,7 +7178,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  rocket_cart_1904: {
+  rocket_cart: {
     name: 'Rocket Cart',
     hp: 45,
     matk: 0,
@@ -6998,6 +7188,7 @@ export const units: Record<string, UnitData> = {
     reload: 5.5,
     range: 7.0,
     frame_delay: 1,
+    accuracy_percent: 100,
     f: 0,
     w: 135,
     g: 155,
@@ -7024,7 +7215,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  samurai_291: {
+  samurai: {
     name: 'Samurai',
     hp: 70,
     matk: 10,
@@ -7034,6 +7225,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 45,
     w: 0,
     g: 30,
@@ -7061,7 +7253,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  savar_1813: {
+  savar: {
     name: 'Savar',
     hp: 145,
     matk: 14,
@@ -7071,6 +7263,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 0.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 75,
@@ -7098,7 +7291,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  scorpion_279: {
+  scorpion: {
     name: 'Scorpion',
     hp: 40,
     matk: 0,
@@ -7108,6 +7301,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.5999999046325684,
     range: 7.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 0,
     w: 75,
     g: 75,
@@ -7132,7 +7326,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  scout_cavalry_448: {
+  scout_cavalry: {
     name: 'Scout Cavalry',
     hp: 45,
     matk: 3,
@@ -7142,6 +7336,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 12,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 0,
@@ -7169,7 +7364,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  serjeant_1658: {
+  serjeant: {
     name: 'Serjeant',
     hp: 50,
     matk: 5,
@@ -7179,6 +7374,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 25,
@@ -7205,7 +7401,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  shotel_warrior_1016: {
+  shotel_warrior: {
     name: 'Shotel Warrior',
     hp: 45,
     matk: 16,
@@ -7215,6 +7411,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 30,
@@ -7242,7 +7439,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  shrivamsha_rider_1751: {
+  shrivamsha_rider: {
     name: 'Shrivamsha Rider',
     hp: 55,
     matk: 8,
@@ -7252,6 +7449,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 30,
@@ -7280,7 +7478,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  siege_elephant_1746: {
+  siege_elephant: {
     name: 'Siege Elephant',
     hp: 220,
     matk: 4,
@@ -7290,6 +7488,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 120,
     w: 0,
     g: 95,
@@ -7318,7 +7517,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  siege_onager_588: {
+  siege_onager: {
     name: 'Siege Onager',
     hp: 70,
     matk: 0,
@@ -7328,6 +7527,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.0,
     range: 8.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 160,
     g: 135,
@@ -7351,7 +7551,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  siege_ram_548: {
+  siege_ram: {
     name: 'Siege Ram',
     hp: 270,
     matk: 4,
@@ -7361,6 +7561,7 @@ export const units: Record<string, UnitData> = {
     reload: 5.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 160,
     g: 75,
@@ -7384,7 +7585,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  siege_tower_1105: {
+  siege_tower: {
     name: 'Siege Tower',
     hp: 175,
     matk: 0,
@@ -7394,6 +7595,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 100,
     g: 120,
@@ -7414,7 +7616,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  skirmisher_7: {
+  skirmisher: {
     name: 'Skirmisher',
     hp: 30,
     matk: 0,
@@ -7424,6 +7626,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 4.0,
     frame_delay: 19,
+    accuracy_percent: 90,
     f: 25,
     w: 35,
     g: 0,
@@ -7451,7 +7654,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  slinger_185: {
+  slinger: {
     name: 'Slinger',
     hp: 35,
     matk: 0,
@@ -7461,6 +7664,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 5.0,
     frame_delay: 14,
+    accuracy_percent: 90,
     f: 70,
     w: 10,
     g: 0,
@@ -7487,7 +7691,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  spearman_93: {
+  spearman: {
     name: 'Spearman',
     hp: 45,
     matk: 3,
@@ -7497,6 +7701,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 25,
     g: 0,
@@ -7536,6 +7741,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 35,
     w: 25,
     g: 0,
@@ -7565,7 +7771,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  steppe_lancer_1370: {
+  steppe_lancer: {
     name: 'Steppe Lancer',
     hp: 60,
     matk: 9,
@@ -7575,6 +7781,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 1.0,
     frame_delay: 13,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 40,
@@ -7601,7 +7808,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  sun_jian_1978: {
+  sun_jian: {
     name: 'Sun Jian',
     hp: 400,
     matk: 15,
@@ -7611,6 +7818,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 500,
     w: 0,
     g: 500,
@@ -7638,7 +7846,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  tarkan_755: {
+  tarkan: {
     name: 'Tarkan',
     hp: 100,
     matk: 8,
@@ -7648,6 +7856,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 60,
@@ -7679,7 +7888,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  temple_guard_2586: {
+  temple_guard: {
     name: 'Temple Guard',
     hp: 100,
     matk: 12,
@@ -7689,6 +7898,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 45,
@@ -7716,7 +7926,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  teutonic_knight_25: {
+  teutonic_knight: {
     name: 'Teutonic Knight',
     hp: 90,
     matk: 14,
@@ -7726,6 +7936,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 85,
     w: 0,
     g: 30,
@@ -7752,7 +7963,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  thirisadai_1750: {
+  thirisadai: {
     name: 'Thirisadai',
     hp: 250,
     matk: 0,
@@ -7762,6 +7973,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.450000047683716,
     range: 7.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 180,
     g: 60,
@@ -7789,7 +8001,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  throwing_axeman_281: {
+  throwing_axeman: {
     name: 'Throwing Axeman',
     hp: 60,
     matk: 0,
@@ -7799,6 +8011,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 3.0,
     frame_delay: 28,
+    accuracy_percent: 100,
     f: 55,
     w: 0,
     g: 25,
@@ -7825,7 +8038,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  tiger_cavalry_1949: {
+  tiger_cavalry: {
     name: 'Tiger Cavalry',
     hp: 115,
     matk: 11,
@@ -7835,6 +8048,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 80,
@@ -7863,7 +8077,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  traction_trebuchet_1942: {
+  traction_trebuchet: {
     name: 'Traction Trebuchet',
     hp: 115,
     matk: 0,
@@ -7873,6 +8087,7 @@ export const units: Record<string, UnitData> = {
     reload: 11.0,
     range: 14.0,
     frame_delay: 20,
+    accuracy_percent: 30,
     f: 0,
     w: 175,
     g: 210,
@@ -7897,7 +8112,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  trade_cart_128: {
+  trade_cart: {
     name: 'Trade Cart',
     hp: 70,
     matk: 0,
@@ -7907,6 +8122,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 100,
     g: 50,
@@ -7925,7 +8141,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  trade_cog_17: {
+  trade_cog: {
     name: 'Trade Cog',
     hp: 80,
     matk: 0,
@@ -7935,6 +8151,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 100,
     g: 50,
@@ -7954,7 +8171,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  transport_ship_545: {
+  transport_ship: {
     name: 'Transport Ship',
     hp: 70,
     matk: 0,
@@ -7964,6 +8181,7 @@ export const units: Record<string, UnitData> = {
     reload: 0.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 0,
     f: 0,
     w: 125,
     g: 0,
@@ -7983,7 +8201,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  trebuchet_packed_331: {
+  trebuchet_packed: {
     name: 'Trebuchet (Packed)',
     hp: 150,
     matk: 0,
@@ -7993,6 +8211,7 @@ export const units: Record<string, UnitData> = {
     reload: 10.0,
     range: 16.0,
     frame_delay: 0,
+    accuracy_percent: 92,
     f: 0,
     w: 200,
     g: 200,
@@ -8014,7 +8233,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  turtle_ship_831: {
+  turtle_ship: {
     name: 'Turtle Ship',
     hp: 275,
     matk: 0,
@@ -8024,6 +8243,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 6.0,
     frame_delay: 1,
+    accuracy_percent: 100,
     f: 0,
     w: 190,
     g: 130,
@@ -8054,7 +8274,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  two_handed_swordsman_473: {
+  two_handed_swordsman: {
     name: 'Two-Handed Swordsman',
     hp: 65,
     matk: 12,
@@ -8064,6 +8284,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 20,
@@ -8089,7 +8310,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  urumi_swordsman_1735: {
+  urumi_swordsman: {
     name: 'Urumi Swordsman',
     hp: 55,
     matk: 9,
@@ -8099,6 +8320,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 20,
@@ -8125,7 +8347,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  villager_83: {
+  villager: {
     name: 'Villager',
     hp: 25,
     matk: 3,
@@ -8135,6 +8357,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 50,
     w: 0,
     g: 0,
@@ -8159,7 +8382,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  war_chariot_1962: {
+  war_chariot: {
     name: 'War Chariot',
     hp: 65,
     matk: 0,
@@ -8169,6 +8392,7 @@ export const units: Record<string, UnitData> = {
     reload: 6.5,
     range: 6.0,
     frame_delay: 3,
+    accuracy_percent: 100,
     f: 65,
     w: 0,
     g: 90,
@@ -8197,7 +8421,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  war_elephant_239: {
+  war_elephant: {
     name: 'War Elephant',
     hp: 450,
     matk: 15,
@@ -8207,6 +8431,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 170,
     w: 0,
     g: 85,
@@ -8237,7 +8462,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  war_galley_21: {
+  war_galley: {
     name: 'War Galley',
     hp: 125,
     matk: 0,
@@ -8247,6 +8472,7 @@ export const units: Record<string, UnitData> = {
     reload: 3.0,
     range: 6.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 90,
     g: 30,
@@ -8272,7 +8498,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  war_hulk_2627: {
+  war_hulk: {
     name: 'War Hulk',
     hp: 115,
     matk: 4,
@@ -8282,6 +8508,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.5,
     range: 1.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 0,
     w: 75,
     g: 35,
@@ -8305,7 +8532,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  war_wagon_827: {
+  war_wagon: {
     name: 'War Wagon',
     hp: 150,
     matk: 0,
@@ -8315,6 +8542,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.5,
     range: 4.0,
     frame_delay: 32,
+    accuracy_percent: 100,
     f: 0,
     w: 200,
     g: 60,
@@ -8343,7 +8571,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  warrior_priest_1811: {
+  warrior_priest: {
     name: 'Warrior Priest',
     hp: 80,
     matk: 11,
@@ -8353,6 +8581,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 40,
     w: 0,
     g: 50,
@@ -8380,7 +8609,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  white_feather_guard_1959: {
+  white_feather_guard: {
     name: 'White Feather Guard',
     hp: 95,
     matk: 7,
@@ -8390,6 +8619,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 60,
     w: 0,
     g: 15,
@@ -8417,7 +8647,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  winged_hussar_1707: {
+  winged_hussar: {
     name: 'Winged Hussar',
     hp: 80,
     matk: 9,
@@ -8427,6 +8657,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.899999976158142,
     range: 0.0,
     frame_delay: 10,
+    accuracy_percent: 100,
     f: 80,
     w: 0,
     g: 0,
@@ -8456,7 +8687,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  woad_raider_232: {
+  woad_raider: {
     name: 'Woad Raider',
     hp: 70,
     matk: 11,
@@ -8466,6 +8697,7 @@ export const units: Record<string, UnitData> = {
     reload: 2.0,
     range: 0.0,
     frame_delay: 0,
+    accuracy_percent: 100,
     f: 70,
     w: 0,
     g: 25,
@@ -8492,7 +8724,7 @@ export const units: Record<string, UnitData> = {
       buildings: [],
     },
   },
-  xianbei_raider_1952: {
+  xianbei_raider: {
     name: 'Xianbei Raider',
     hp: 30,
     matk: 0,
@@ -8502,6 +8734,7 @@ export const units: Record<string, UnitData> = {
     reload: 1.7999999523162842,
     range: 4.0,
     frame_delay: 35,
+    accuracy_percent: 80,
     f: 0,
     w: 65,
     g: 25,

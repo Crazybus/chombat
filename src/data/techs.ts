@@ -1,7 +1,7 @@
 import { TechData } from '../sim/types';
 
 export const techs: Record<string, TechData> = {
-  _elite_phalangite_1291: {
+  _elite_phalangite: {
     name: ' Elite Phalangite',
     f: 600,
     w: 0,
@@ -17,7 +17,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  arrg_make_avail_147: {
+  arrg_make_avail: {
     name: 'ARRG (make avail)',
     f: 0,
     w: 0,
@@ -33,7 +33,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  achaemenids_1024: {
+  achaemenids: {
     name: 'Achaemenids',
     f: 0,
     w: 1,
@@ -49,7 +49,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  achaemenids_static_bonuses_1103: {
+  achaemenids_static_bonuses: {
     name: 'Achaemenids Static Bonuses',
     f: 0,
     w: 0,
@@ -65,7 +65,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  achaemenids_full_tech_tree_1258: {
+  achaemenids_full_tech_tree: {
     name: 'Achaemenids full tech tree',
     f: 0,
     w: 0,
@@ -81,7 +81,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  'agoge,_spartan_unique_tech_1131': {
+  'agoge,_spartan_unique_tech': {
     name: 'Agoge, Spartan Unique Tech',
     f: 500,
     w: 0,
@@ -97,7 +97,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  all_ages_178: {
+  all_ages: {
     name: 'All Ages',
     f: 0,
     w: 0,
@@ -113,7 +113,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  anarchy_16: {
+  anarchy: {
     name: 'Anarchy',
     f: 450,
     w: 0,
@@ -129,7 +129,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 3,
   },
-  andean_sling_516: {
+  andean_sling: {
     name: 'Andean Sling',
     f: 200,
     w: 0,
@@ -141,11 +141,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 185,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 21,
   },
-  antiquity_mode_enabled_1262: {
+  antiquity_mode_enabled: {
     name: 'Antiquity Mode Enabled',
     f: 0,
     w: 0,
@@ -161,7 +169,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  arambai_make_avail_618: {
+  arambai_make_avail: {
     name: 'Arambai (make avail)',
     f: 0,
     w: 0,
@@ -177,7 +185,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 30,
   },
-  arbalest_237: {
+  arbalest: {
     name: 'Arbalest',
     f: 450,
     w: 0,
@@ -193,7 +201,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  archer_make_avail_151: {
+  archer_make_avail: {
     name: 'Archer (make avail)',
     f: 0,
     w: 0,
@@ -209,7 +217,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  archery_range_balanced_doctrine_1278: {
+  archery_range_balanced_doctrine: {
     name: 'Archery Range Balanced Doctrine',
     f: 0,
     w: 0,
@@ -225,7 +233,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  archery_range_mercenaries_doctrine_1280: {
+  archery_range_mercenaries_doctrine: {
     name: 'Archery Range Mercenaries Doctrine',
     f: 0,
     w: 0,
@@ -241,7 +249,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  archery_range_regulars_doctrine_1279: {
+  archery_range_regulars_doctrine: {
     name: 'Archery Range Regulars Doctrine',
     f: 0,
     w: 0,
@@ -257,7 +265,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  archery_rg_upgrade____age_two_134: {
+  archery_rg_upgrade____age_two: {
     name: 'Archery Rg Upgrade -- Age Two',
     f: 0,
     w: 0,
@@ -273,7 +281,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  architecture_51: {
+  architecture: {
     name: 'Architecture',
     f: 300,
     w: 200,
@@ -287,38 +295,178 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 3,
+        t: 5,
+        a: 0,
         v: 1.100000023841858,
         u: -1,
-        c: -1,
+        c: 3,
       },
       {
-        t: 8,
-        a: 3,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 3,
       },
       {
-        t: 8,
-        a: 3,
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
+        c: 3,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 2819.0,
+        u: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 2819.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2442,
         c: -1,
       },
       {
-        t: 8,
-        a: 3,
-        v: 2819.0,
-        u: -1,
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2442,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2413,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2413,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2413,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2413,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  architecture_researched_for_vedic_teachings_1312: {
+  architecture_researched_for_vedic_teachings: {
     name: 'Architecture Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -330,19 +478,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  armenians_915: {
+  armenians: {
     name: 'Armenians',
     f: 0,
     w: 1,
@@ -358,7 +498,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  armored_elephant_make_avail_837: {
+  armored_elephant_make_avail: {
     name: 'Armored Elephant (make avail)',
     f: 0,
     w: 0,
@@ -374,7 +514,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  arquebus_573: {
+  arquebus: {
     name: 'Arquebus',
     f: 700,
     w: 0,
@@ -386,11 +526,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 5,
+        v: 0.5,
+        u: 380,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.20000000298023224,
+        u: 368,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.20000000298023224,
+        u: 506,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.20000000298023224,
+        u: 537,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.5,
+        u: 374,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.5,
+        u: 1119,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.5,
+        u: 1733,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.5,
+        u: 1789,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 24,
   },
-  arrowslits_608: {
+  arrowslits: {
     name: 'Arrowslits',
     f: 250,
     w: 250,
@@ -402,11 +599,75 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 235,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 785,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1868,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  arrowslits_guard_tower_610: {
+  arrowslits_guard_tower: {
     name: 'Arrowslits (Guard tower)',
     f: 0,
     w: 0,
@@ -418,11 +679,75 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 235,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 785,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1868,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  arrowslits_keep_611: {
+  arrowslits_keep: {
     name: 'Arrowslits (Keep)',
     f: 0,
     w: 0,
@@ -434,11 +759,75 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 235,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 785,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1868,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  arrowslits_researched_for_vedic_teachings_1320: {
+  arrowslits_researched_for_vedic_teachings: {
     name: 'Arrowslits Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -450,19 +839,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  arson_602: {
+  arson: {
     name: 'Arson',
     f: 75,
     w: 0,
@@ -476,17 +857,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 5378.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5378.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  artillery_10: {
+  artillery: {
     name: 'Artillery',
     f: 600,
     w: 0,
@@ -498,11 +886,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 236,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 691,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 10,
   },
-  atheism_21: {
+  atheism: {
     name: 'Atheism',
     f: 500,
     w: 300,
@@ -518,7 +942,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 17,
   },
-  athenians_1027: {
+  athenians: {
     name: 'Athenians',
     f: 0,
     w: 1,
@@ -534,7 +958,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  athenians_static_bonuses_1116: {
+  athenians_static_bonuses: {
     name: 'Athenians Static Bonuses',
     f: 0,
     w: 0,
@@ -546,11 +970,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 2110,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 2111,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 47,
   },
-  athenians_full_tech_tree_1259: {
+  athenians_full_tech_tree: {
     name: 'Athenians full tech tree',
     f: 0,
     w: 0,
@@ -566,7 +1005,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  atlatl_460: {
+  atlatl: {
     name: 'Atlatl',
     f: 400,
     w: 0,
@@ -578,11 +1017,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1155,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 15,
   },
-  atonement_319: {
+  atonement: {
     name: 'Atonement',
     f: 0,
     w: 0,
@@ -598,7 +1108,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  auto_upgrade_scout_feudal_age_20: {
+  auto_upgrade_scout_feudal_age: {
     name: 'Auto upgrade Scout Feudal Age',
     f: 0,
     w: 0,
@@ -610,11 +1120,75 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 5,
+        v: 0.3499999940395355,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: -0.3499999940395355,
+        u: 2614,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.3499999940395355,
+        u: -1,
+        c: 61,
+      },
+      {
+        t: 4,
+        a: 5,
+        v: 0.25,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2052.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4098.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7682.0,
+        u: 1755,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  aznauri_cavalry_924: {
+  aznauri_cavalry: {
     name: 'Aznauri Cavalry',
     f: 550,
     w: 0,
@@ -626,19 +1200,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 110,
-        a: 12,
-        v: -0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 4,
     civ: 45,
   },
-  aztecs_543: {
+  aztecs: {
     name: 'Aztecs',
     f: 0,
     w: 1,
@@ -654,7 +1220,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  bagains_686: {
+  bagains: {
     name: 'Bagains',
     f: 900,
     w: 0,
@@ -666,11 +1232,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1029.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1029.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1029.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1029.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1029.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1029.0,
+        u: 1793,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 32,
   },
-  ballista_elephant_make_avail_614: {
+  ballista_elephant_make_avail: {
     name: 'Ballista Elephant (make avail)',
     f: 0,
     w: 0,
@@ -686,7 +1295,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 28,
   },
-  ballistas_883: {
+  ballistas: {
     name: 'Ballistas',
     f: 0,
     w: 400,
@@ -698,11 +1307,61 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 442,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 43,
   },
-  ballistics_93: {
+  ballistics: {
     name: 'Ballistics',
     f: 0,
     w: 300,
@@ -718,7 +1377,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  ballistics_researched_for_vedic_teachings_1315: {
+  ballistics_researched_for_vedic_teachings: {
     name: 'Ballistics Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -730,19 +1389,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  banking_17: {
+  banking: {
     name: 'Banking',
     f: 300,
     w: 0,
@@ -758,7 +1409,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  barracks_make_avail_220: {
+  barracks_make_avail: {
     name: 'Barracks (make avail)',
     f: 0,
     w: 0,
@@ -774,7 +1425,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  barracks_balanced_doctrine_1275: {
+  barracks_balanced_doctrine: {
     name: 'Barracks Balanced Doctrine',
     f: 0,
     w: 0,
@@ -790,7 +1441,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  barracks_mercenaries_doctrine_1277: {
+  barracks_mercenaries_doctrine: {
     name: 'Barracks Mercenaries Doctrine',
     f: 0,
     w: 0,
@@ -806,7 +1457,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  barracks_regulars_doctrine_1276: {
+  barracks_regulars_doctrine: {
     name: 'Barracks Regulars Doctrine',
     f: 0,
     w: 0,
@@ -822,7 +1473,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  bat_ram_make_avail_162: {
+  bat_ram_make_avail: {
     name: 'Bat Ram (make avail)',
     f: 0,
     w: 0,
@@ -838,7 +1489,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  battle_elephant_make_avail_630: {
+  battle_elephant_make_avail: {
     name: 'Battle Elephant (make avail)',
     f: 0,
     w: 0,
@@ -854,7 +1505,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  bearded_axe_83: {
+  bearded_axe: {
     name: 'Bearded Axe',
     f: 300,
     w: 0,
@@ -866,11 +1517,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 281,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 531,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 2,
   },
-  bengalis_823: {
+  bengalis: {
     name: 'Bengalis',
     f: 0,
     w: 1,
@@ -886,7 +1552,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  berbers_583: {
+  berbers: {
     name: 'Berbers',
     f: 0,
     w: 1,
@@ -902,7 +1568,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 27,
   },
-  berserk_399: {
+  berserk: {
     name: 'Berserk',
     f: 0,
     w: 0,
@@ -918,7 +1584,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  berserker_make_avail_270: {
+  berserker_make_avail: {
     name: 'Berserker (make avail)',
     f: 0,
     w: 0,
@@ -934,7 +1600,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  'bessian_metalworking,_thracian_unique_tech_1298': {
+  'bessian_metalworking,_thracian_unique_tech': {
     name: 'Bessian Metalworking, Thracian Unique Tech',
     f: 1100,
     w: 0,
@@ -950,7 +1616,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  bimaristan_28: {
+  bimaristan: {
     name: 'Bimaristan',
     f: 0,
     w: 300,
@@ -966,7 +1632,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 9,
   },
-  bireme_1148: {
+  bireme: {
     name: 'Bireme',
     f: 0,
     w: 160,
@@ -982,7 +1648,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blacksmith_make_avail_281: {
+  blacksmith_make_avail: {
     name: 'Blacksmith (make avail)',
     f: 0,
     w: 0,
@@ -998,7 +1664,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blackwood_archer_make_avail_1388: {
+  blackwood_archer_make_avail: {
     name: 'Blackwood Archer (make avail)',
     f: 0,
     w: 0,
@@ -1014,7 +1680,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  blank_technology_0_1180: {
+  blank_technology_0: {
     name: 'Blank Technology 0',
     f: 0,
     w: 0,
@@ -1046,7 +1712,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_1_1181: {
+  blank_technology_1: {
     name: 'Blank Technology 1',
     f: 0,
     w: 0,
@@ -1078,7 +1744,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_2_1182: {
+  blank_technology_2: {
     name: 'Blank Technology 2',
     f: 0,
     w: 0,
@@ -1110,7 +1776,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_20_1340: {
+  blank_technology_20: {
     name: 'Blank Technology 20',
     f: 0,
     w: 0,
@@ -1126,7 +1792,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_21_1341: {
+  blank_technology_21: {
     name: 'Blank Technology 21',
     f: 0,
     w: 0,
@@ -1142,7 +1808,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_22_1342: {
+  blank_technology_22: {
     name: 'Blank Technology 22',
     f: 0,
     w: 0,
@@ -1158,7 +1824,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_23_1343: {
+  blank_technology_23: {
     name: 'Blank Technology 23',
     f: 0,
     w: 0,
@@ -1174,7 +1840,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_24_1344: {
+  blank_technology_24: {
     name: 'Blank Technology 24',
     f: 0,
     w: 0,
@@ -1190,7 +1856,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_25_1345: {
+  blank_technology_25: {
     name: 'Blank Technology 25',
     f: 0,
     w: 0,
@@ -1206,7 +1872,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_26_1346: {
+  blank_technology_26: {
     name: 'Blank Technology 26',
     f: 0,
     w: 0,
@@ -1222,7 +1888,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_27_1347: {
+  blank_technology_27: {
     name: 'Blank Technology 27',
     f: 0,
     w: 0,
@@ -1238,7 +1904,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_28_1348: {
+  blank_technology_28: {
     name: 'Blank Technology 28',
     f: 0,
     w: 0,
@@ -1254,7 +1920,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_29_1349: {
+  blank_technology_29: {
     name: 'Blank Technology 29',
     f: 0,
     w: 0,
@@ -1270,7 +1936,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_3_1183: {
+  blank_technology_3: {
     name: 'Blank Technology 3',
     f: 0,
     w: 0,
@@ -1302,7 +1968,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_30_1500: {
+  blank_technology_30: {
     name: 'Blank Technology 30',
     f: 0,
     w: 0,
@@ -1318,7 +1984,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_31_1501: {
+  blank_technology_31: {
     name: 'Blank Technology 31',
     f: 0,
     w: 0,
@@ -1334,7 +2000,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_32_1502: {
+  blank_technology_32: {
     name: 'Blank Technology 32',
     f: 0,
     w: 0,
@@ -1350,7 +2016,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_33_1503: {
+  blank_technology_33: {
     name: 'Blank Technology 33',
     f: 0,
     w: 0,
@@ -1366,7 +2032,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_34_1504: {
+  blank_technology_34: {
     name: 'Blank Technology 34',
     f: 0,
     w: 0,
@@ -1382,7 +2048,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_35_1505: {
+  blank_technology_35: {
     name: 'Blank Technology 35',
     f: 0,
     w: 0,
@@ -1398,7 +2064,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_36_1506: {
+  blank_technology_36: {
     name: 'Blank Technology 36',
     f: 0,
     w: 0,
@@ -1414,7 +2080,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_37_1507: {
+  blank_technology_37: {
     name: 'Blank Technology 37',
     f: 0,
     w: 0,
@@ -1430,7 +2096,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_38_1508: {
+  blank_technology_38: {
     name: 'Blank Technology 38',
     f: 0,
     w: 0,
@@ -1446,7 +2112,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_39_1509: {
+  blank_technology_39: {
     name: 'Blank Technology 39',
     f: 0,
     w: 0,
@@ -1462,7 +2128,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_4_1184: {
+  blank_technology_4: {
     name: 'Blank Technology 4',
     f: 0,
     w: 0,
@@ -1494,7 +2160,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_5_1185: {
+  blank_technology_5: {
     name: 'Blank Technology 5',
     f: 0,
     w: 0,
@@ -1526,7 +2192,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_6_1186: {
+  blank_technology_6: {
     name: 'Blank Technology 6',
     f: 0,
     w: 0,
@@ -1558,7 +2224,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_7_1187: {
+  blank_technology_7: {
     name: 'Blank Technology 7',
     f: 0,
     w: 0,
@@ -1590,7 +2256,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_8_1188: {
+  blank_technology_8: {
     name: 'Blank Technology 8',
     f: 0,
     w: 0,
@@ -1622,7 +2288,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blank_technology_9_1189: {
+  blank_technology_9: {
     name: 'Blank Technology 9',
     f: 0,
     w: 0,
@@ -1654,7 +2320,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  blast_furnace_75: {
+  blast_furnace: {
     name: 'Blast Furnace',
     f: 275,
     w: 0,
@@ -1668,24 +2334,87 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1026.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 45,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 46,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 50,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -1026.0,
+        u: 1923,
         c: -1,
       },
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1026.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2626,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2627,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2628,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  block_printing_230: {
+  block_printing: {
     name: 'Block Printing',
     f: 0,
     w: 0,
@@ -1697,11 +2426,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -3.0,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: -1,
+        c: 43,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  bloodlines_435: {
+  bloodlines: {
     name: 'Bloodlines',
     f: 150,
     w: 0,
@@ -1715,17 +2466,73 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 12,
+        t: 4,
+        a: 0,
         v: 20.0,
         u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1715,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1822,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  bodkin_arrow_200: {
+  bodkin_arrow: {
     name: 'Bodkin Arrow',
     f: 200,
     w: 0,
@@ -1739,45 +2546,535 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 0,
+        t: 4,
+        a: 9,
         v: 769.0,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 1,
-        a: 0,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 12,
-        a: 0,
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 54,
         c: -1,
       },
       {
-        t: 23,
-        a: 0,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 109,
         c: -1,
       },
       {
-        t: 130,
-        a: 4,
-        v: -0.5,
-        u: -1,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 885,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 885,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1830,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 2328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1983,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1982,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1936,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1931,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1971,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2631,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2632,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 133,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2575,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1548,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  bogsveigar_49: {
+  bogsveigar: {
     name: 'Bogsveigar',
     f: 650,
     w: 0,
@@ -1789,11 +3086,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 4,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 24,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 492,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 533,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 11,
   },
-  bohemians_777: {
+  bohemians: {
     name: 'Bohemians',
     f: 0,
     w: 1,
@@ -1809,7 +3142,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 39,
   },
-  bolas_rider_make_avail_1377: {
+  bolas_rider_make_avail: {
     name: 'Bolas Rider (make avail)',
     f: 0,
     w: 0,
@@ -1825,7 +3158,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  bolt_magazine_1069: {
+  bolt_magazine: {
     name: 'Bolt Magazine',
     f: 650,
     w: 0,
@@ -1841,7 +3174,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 49,
   },
-  bombard_make_avail_172: {
+  bombard_make_avail: {
     name: 'Bombard (make avail)',
     f: 0,
     w: 0,
@@ -1857,7 +3190,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  bombard_cannon_188: {
+  bombard_cannon: {
     name: 'Bombard Cannon',
     f: 0,
     w: 0,
@@ -1873,7 +3206,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  bombard_tower_64: {
+  bombard_tower: {
     name: 'Bombard Tower',
     f: 800,
     w: 400,
@@ -1885,11 +3218,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 768.5,
+        u: 54,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 768.5,
+        u: 328,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  bow_saw_203: {
+  bow_saw: {
     name: 'Bow Saw',
     f: 150,
     w: 100,
@@ -1905,7 +3253,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  bow_saw_requirement_762: {
+  bow_saw_requirement: {
     name: 'Bow Saw requirement',
     f: 0,
     w: 0,
@@ -1921,7 +3269,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  boyar_make_avail_503: {
+  boyar_make_avail: {
     name: 'Boyar (make avail)',
     f: 0,
     w: 0,
@@ -1937,7 +3285,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 23,
   },
-  bracer_201: {
+  bracer: {
     name: 'Bracer',
     f: 300,
     w: 0,
@@ -1951,45 +3299,528 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 0,
+        t: 4,
+        a: 9,
         v: 769.0,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 1,
-        a: 0,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 12,
-        a: 0,
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 54,
         c: -1,
       },
       {
-        t: 23,
-        a: 0,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 109,
         c: -1,
       },
       {
-        t: 130,
-        a: 4,
-        v: -0.5,
-        u: -1,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 885,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 885,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1830,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 2328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1983,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1982,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1936,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1931,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1971,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2631,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2632,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 133,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2575,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1548,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  britons_529: {
+  britons: {
     name: 'Britons',
     f: 0,
     w: 1,
@@ -2005,7 +3836,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 1,
   },
-  bulgarians_673: {
+  bulgarians: {
     name: 'Bulgarians',
     f: 0,
     w: 1,
@@ -2021,7 +3852,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 32,
   },
-  burgundian_vineyards_754: {
+  burgundian_vineyards: {
     name: 'Burgundian Vineyards',
     f: 400,
     w: 0,
@@ -2037,7 +3868,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 36,
   },
-  burgundians_748: {
+  burgundians: {
     name: 'Burgundians',
     f: 0,
     w: 1,
@@ -2053,7 +3884,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  burmese_652: {
+  burmese: {
     name: 'Burmese',
     f: 0,
     w: 1,
@@ -2069,7 +3900,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 30,
   },
-  butalmapu_1380: {
+  butalmapu: {
     name: 'Butalmapu',
     f: 500,
     w: 0,
@@ -2085,7 +3916,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 58,
   },
-  byzantines_535: {
+  byzantines: {
     name: 'Byzantines',
     f: 0,
     w: 1,
@@ -2101,7 +3932,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 7,
   },
-  c_bonus_420: {
+  c_bonus: {
     name: 'C-Bonus',
     f: 0,
     w: 0,
@@ -2181,7 +4012,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 5,
   },
-  c_bonus_cheaper_traction_treb_1060: {
+  c_bonus_cheaper_traction_treb: {
     name: 'C-Bonus Cheaper Traction Treb',
     f: 0,
     w: 0,
@@ -2197,7 +4028,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  c_bonus_chinese_tc_pop_425: {
+  c_bonus_chinese_tc_pop: {
     name: 'C-Bonus Chinese TC POP',
     f: 0,
     w: 0,
@@ -2213,7 +4044,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  c_bonus_free_war_galley_466: {
+  c_bonus_free_war_galley: {
     name: 'C-Bonus Free War Galley',
     f: 0,
     w: 0,
@@ -2229,7 +4060,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 19,
   },
-  c_bonus_lcav_cheaper_473: {
+  c_bonus_lcav_cheaper: {
     name: 'C-Bonus Lcav Cheaper',
     f: 0,
     w: 0,
@@ -2245,7 +4076,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 22,
   },
-  c_bonus_vil_blast_furnace_476: {
+  c_bonus_vil_blast_furnace: {
     name: 'C-Bonus Vil Blast Furnace',
     f: 0,
     w: 0,
@@ -2259,17 +4090,17 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 1026.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 21,
   },
-  c_bonus_vil_chain_armor_478: {
+  c_bonus_vil_chain_armor: {
     name: 'C-Bonus Vil Chain Armor',
     f: 0,
     w: 0,
@@ -2283,24 +4114,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 21,
   },
-  c_bonus_vil_forging_474: {
+  c_bonus_vil_forging: {
     name: 'C-Bonus Vil Forging',
     f: 0,
     w: 0,
@@ -2314,17 +4145,17 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 21,
   },
-  c_bonus_vil_iron_casting_475: {
+  c_bonus_vil_iron_casting: {
     name: 'C-Bonus Vil Iron Casting',
     f: 0,
     w: 0,
@@ -2338,17 +4169,17 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 21,
   },
-  c_bonus_vil_plate_armor_479: {
+  c_bonus_vil_plate_armor: {
     name: 'C-Bonus Vil Plate Armor',
     f: 0,
     w: 0,
@@ -2362,24 +4193,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 770.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 21,
   },
-  c_bonus_vil_scale_armor_477: {
+  c_bonus_vil_scale_armor: {
     name: 'C-Bonus Vil Scale Armor',
     f: 0,
     w: 0,
@@ -2393,24 +4224,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 21,
   },
-  'c_bonus,_+%_bow_saw_961': {
+  'c_bonus,_+%_bow_saw': {
     name: 'C-Bonus, +% Bow Saw',
     f: 0,
     w: 0,
@@ -2426,7 +4257,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+%_double_bit_axe_960': {
+  'c_bonus,_+%_double_bit_axe': {
     name: 'C-Bonus, +% Double-Bit Axe',
     f: 0,
     w: 0,
@@ -2442,7 +4273,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+%_gold_mining_963': {
+  'c_bonus,_+%_gold_mining': {
     name: 'C-Bonus, +% Gold Mining',
     f: 0,
     w: 0,
@@ -2458,7 +4289,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+%_gold_shaft_mining_964': {
+  'c_bonus,_+%_gold_shaft_mining': {
     name: 'C-Bonus, +% Gold Shaft Mining',
     f: 0,
     w: 0,
@@ -2474,7 +4305,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+%_stone_mining_965': {
+  'c_bonus,_+%_stone_mining': {
     name: 'C-Bonus, +% Stone Mining',
     f: 0,
     w: 0,
@@ -2490,7 +4321,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+%_stone_shaft_mining_966': {
+  'c_bonus,_+%_stone_shaft_mining': {
     name: 'C-Bonus, +% Stone Shaft Mining',
     f: 0,
     w: 0,
@@ -2506,7 +4337,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+%_two_man_saw_962': {
+  'c_bonus,_+%_two_man_saw': {
     name: 'C-Bonus, +% Two-Man Saw',
     f: 0,
     w: 0,
@@ -2522,7 +4353,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_+1_archer_range_382': {
+  'c_bonus,_+1_archer_range': {
     name: 'C-Bonus, +1 Archer range',
     f: 0,
     w: 0,
@@ -2536,31 +4367,38 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 12,
-        a: 0,
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 7,
         c: -1,
       },
       {
-        t: 1,
-        a: 0,
-        v: 1.0,
-        u: -1,
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 6,
         c: -1,
       },
       {
-        t: 23,
-        a: 0,
-        v: 1.0,
-        u: -1,
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 1155,
         c: -1,
       },
     ],
     age: 1,
     civ: 1,
   },
-  'c_bonus,_+1_inf_attk_42': {
+  'c_bonus,_+1_inf_attk': {
     name: 'C-Bonus, +1 inf attk',
     f: 0,
     w: 0,
@@ -2608,7 +4446,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  'c_bonus,_+10_pop_406': {
+  'c_bonus,_+10_pop': {
     name: 'C-Bonus, +10 pop',
     f: 0,
     w: 0,
@@ -2624,7 +4462,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  'c_bonus,_+100_food_per_tc_697': {
+  'c_bonus,_+100_food_per_tc': {
     name: 'C-Bonus, +100 food per TC',
     f: 0,
     w: 0,
@@ -2640,7 +4478,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 35,
   },
-  'c_bonus,_+100f,_+100g_gs_871': {
+  'c_bonus,_+100f,_+100g_gs': {
     name: 'C-Bonus, +100f, +100g GS',
     f: 0,
     w: 0,
@@ -2656,7 +4494,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  'c_bonus,_+100f,_+100g_in_age2_587': {
+  'c_bonus,_+100f,_+100g_in_age2': {
     name: 'C-Bonus, +100f, +100g in age2',
     f: 0,
     w: 0,
@@ -2672,7 +4510,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  'c_bonus,_+100f,_+100g_in_age3_588': {
+  'c_bonus,_+100f,_+100g_in_age3': {
     name: 'C-Bonus, +100f, +100g in age3',
     f: 0,
     w: 0,
@@ -2688,7 +4526,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  'c_bonus,_+100f,_+100g_in_age4_589': {
+  'c_bonus,_+100f,_+100g_in_age4': {
     name: 'C-Bonus, +100f, +100g in age4',
     f: 0,
     w: 0,
@@ -2704,7 +4542,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  'c_bonus,_+100s_228': {
+  'c_bonus,_+100s': {
     name: 'C-Bonus, +100s',
     f: 0,
     w: 0,
@@ -2720,7 +4558,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  'c_bonus,_+15%_farmers_401': {
+  'c_bonus,_+15%_farmers': {
     name: 'C-Bonus, +15% farmers',
     f: 0,
     w: 0,
@@ -2736,7 +4574,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 7,
   },
-  'c_bonus,_+2_vs_animals_69': {
+  'c_bonus,_+2_vs_animals': {
     name: 'C-Bonus, +2 vs Animals',
     f: 0,
     w: 0,
@@ -2748,11 +4586,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 3684.0,
+        u: 83,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 3684.0,
+        u: 293,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 22,
   },
-  'c_bonus,_+2%_arc_hp_castle_643': {
+  'c_bonus,_+2%_arc_hp_castle': {
     name: 'C-Bonus, +2% arc HP castle',
     f: 0,
     w: 0,
@@ -2768,7 +4621,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_+2%_arc_hp_feudal_642': {
+  'c_bonus,_+2%_arc_hp_feudal': {
     name: 'C-Bonus, +2% arc HP feudal',
     f: 0,
     w: 0,
@@ -2784,7 +4637,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_+2%_arc_hp_imp_644': {
+  'c_bonus,_+2%_arc_hp_imp': {
     name: 'C-Bonus, +2% arc HP imp',
     f: 0,
     w: 0,
@@ -2800,7 +4653,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_+20%_cav_bonus_damage_854': {
+  'c_bonus,_+20%_cav_bonus_damage': {
     name: 'C-Bonus, +20% Cav bonus damage',
     f: 0,
     w: 0,
@@ -2814,241 +4667,934 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 376.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 632.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1400.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1656.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1912.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2168.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2424.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2680.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2936.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3192.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3448.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3704.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3960.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4216.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4472.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4728.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4984.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5240.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5496.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5752.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6008.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6264.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6520.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6776.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7032.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7288.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7544.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7800.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 8568.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9080.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9336.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9592.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9848.0,
         u: -1,
-        c: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 376.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 632.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1400.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1656.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1912.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2168.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2424.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2680.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3192.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3448.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3704.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3960.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4216.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4472.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4728.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4984.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5240.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5496.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6008.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6264.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6520.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7032.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7288.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7544.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7800.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8568.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9080.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9336.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9592.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9848.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 376.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 632.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1400.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1656.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1912.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2168.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2424.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2680.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3192.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3448.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3704.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3960.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4216.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4472.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4728.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4984.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5240.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5496.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6008.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6264.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6520.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7032.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7288.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7544.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7800.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8568.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9080.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9336.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9592.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9848.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 376.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 632.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1400.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1656.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1912.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2168.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2424.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2680.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3192.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3448.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3704.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3960.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4216.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4472.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4728.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4984.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5240.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5496.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6008.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6264.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6520.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7032.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7288.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7544.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7800.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8568.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9080.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9336.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9592.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9848.0,
+        u: -1,
+        c: 23,
       },
     ],
     age: 1,
     civ: 42,
   },
-  'c_bonus,_+200w_gs_872': {
+  'c_bonus,_+200w_gs': {
     name: 'C-Bonus, +200w GS',
     f: 0,
     w: 0,
@@ -3064,7 +5610,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'c_bonus,_+200w_in_age2_851': {
+  'c_bonus,_+200w_in_age2': {
     name: 'C-Bonus, +200w in age2',
     f: 0,
     w: 0,
@@ -3080,7 +5626,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'c_bonus,_+200w_in_age3_852': {
+  'c_bonus,_+200w_in_age3': {
     name: 'C-Bonus, +200w in age3',
     f: 0,
     w: 0,
@@ -3096,7 +5642,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'c_bonus,_+200w_in_age4_853': {
+  'c_bonus,_+200w_in_age4': {
     name: 'C-Bonus, +200w in age4',
     f: 0,
     w: 0,
@@ -3112,7 +5658,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'c_bonus,_+25_each_res_1394': {
+  'c_bonus,_+25_each_res': {
     name: 'C-Bonus, +25 each res',
     f: 0,
     w: 0,
@@ -3128,7 +5674,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  'c_bonus,_+25%_shepherd_383': {
+  'c_bonus,_+25%_shepherd': {
     name: 'C-Bonus, +25% Shepherd',
     f: 0,
     w: 0,
@@ -3144,7 +5690,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 1,
   },
-  'c_bonus,_+2vill_gs_873': {
+  'c_bonus,_+2vill_gs': {
     name: 'C-Bonus, +2vill GS',
     f: 0,
     w: 0,
@@ -3160,7 +5706,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  'c_bonus,_+30%_cav_bonus_damage_859': {
+  'c_bonus,_+30%_cav_bonus_damage': {
     name: 'C-Bonus, +30% Cav bonus damage',
     f: 0,
     w: 0,
@@ -3174,241 +5720,934 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 367.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 623.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1391.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1647.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1903.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2159.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2415.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2671.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2927.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3183.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3439.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3695.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3951.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4207.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4463.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4719.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4975.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5231.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5487.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5743.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5999.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6255.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6511.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6767.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7023.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7279.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7535.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7791.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 8559.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9071.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9327.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9583.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9839.0,
         u: -1,
-        c: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 367.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 623.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1391.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1647.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1903.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2159.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2415.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2671.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2927.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3183.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3439.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3695.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3951.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4463.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4719.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4975.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5231.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5487.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5743.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5999.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6255.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6511.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6767.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7023.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7279.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7535.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7791.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8559.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9071.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9327.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9583.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9839.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 367.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 623.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1391.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1647.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1903.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2159.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2415.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2671.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2927.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3183.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3439.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3695.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3951.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4463.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4719.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4975.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5231.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5487.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5743.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5999.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6255.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6511.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6767.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7023.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7279.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7535.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7791.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8559.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9071.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9327.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9583.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9839.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 367.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 623.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1391.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1647.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1903.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2159.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2415.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2671.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2927.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3183.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3439.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3695.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3951.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4463.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4719.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4975.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5231.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5487.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5743.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5999.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6255.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6511.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6767.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7023.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7279.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7535.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7791.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8559.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9071.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9327.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9583.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9839.0,
+        u: -1,
+        c: 23,
       },
     ],
     age: 1,
     civ: 42,
   },
-  'c_bonus,_+40%_cav_bonus_damage_874': {
+  'c_bonus,_+40%_cav_bonus_damage': {
     name: 'C-Bonus, +40% Cav bonus damage',
     f: 0,
     w: 0,
@@ -3422,241 +6661,934 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 361.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 617.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1385.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1641.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 1897.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2153.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2409.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2665.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 2921.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3177.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3433.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3689.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 3945.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4201.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4457.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4713.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 4969.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5225.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5481.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5737.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 5993.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6249.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6505.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 6761.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7017.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7273.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7529.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 7785.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 8553.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9065.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9321.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9577.0,
         u: -1,
-        c: -1,
+        c: 36,
       },
       {
-        t: 9,
-        a: 12,
+        t: 5,
+        a: 9,
         v: 9833.0,
         u: -1,
-        c: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 361.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 617.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1385.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1641.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1897.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2153.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2409.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2665.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2921.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3177.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3433.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3689.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3945.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4201.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4457.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4713.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4969.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5225.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5481.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5737.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5993.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6249.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6505.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6761.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7017.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7273.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7529.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7785.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8553.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9065.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9321.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9577.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9833.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 361.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 617.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1385.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1641.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1897.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2153.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2409.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2665.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2921.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3177.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3433.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3689.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3945.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4201.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4457.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4713.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4969.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5225.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5481.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5737.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5993.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6249.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6505.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6761.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7017.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7273.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7529.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7785.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8553.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9065.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9321.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9577.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9833.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 361.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 617.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1385.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1641.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1897.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2153.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2409.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2665.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2921.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3177.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3433.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3689.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3945.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4201.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4457.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4713.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4969.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5225.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5481.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5737.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5993.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6249.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6505.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6761.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7017.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7273.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7529.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7785.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8553.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9065.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9321.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9577.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9833.0,
+        u: -1,
+        c: 23,
       },
     ],
     age: 1,
     civ: 42,
   },
-  'c_bonus,_+5_monk_hp_29': {
+  'c_bonus,_+5_monk_hp': {
     name: 'C-Bonus, +5 monk HP',
     f: 0,
     w: 0,
@@ -3668,7 +7600,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3684,7 +7652,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3700,7 +7704,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3716,7 +7756,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3732,7 +7808,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3748,7 +7860,43 @@ export const techs: Record<string, TechData> = {
       techs: [47],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3764,7 +7912,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3780,7 +7964,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3796,7 +8016,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3812,7 +8068,43 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
@@ -3828,11 +8120,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 15,
   },
-  'c_bonus,_+50%_demo_hp_396': {
+  'c_bonus,_+50%_demo_hp': {
     name: 'C-Bonus, +50% Demo HP',
     f: 0,
     w: 0,
@@ -3844,11 +8172,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.5,
+        u: 527,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.5,
+        u: 528,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.5,
+        u: 1104,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 6,
   },
-  'c_bonus,_+50f_+50w_223': {
+  'c_bonus,_+50f_+50w': {
     name: 'C-Bonus, +50f +50w',
     f: 0,
     w: 0,
@@ -3864,7 +8214,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  'c_bonus,_+50g_224': {
+  'c_bonus,_+50g': {
     name: 'C-Bonus, +50g',
     f: 0,
     w: 0,
@@ -3880,7 +8230,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  'c_bonus,__100w_225': {
+  'c_bonus,__100w': {
     name: 'C-Bonus, -100w',
     f: 0,
     w: 0,
@@ -3896,7 +8246,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  'c_bonus,__20%_archer_cost_53': {
+  'c_bonus,__20%_archer_cost': {
     name: 'C-Bonus, -20% archer cost',
     f: 0,
     w: 0,
@@ -3912,7 +8262,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  'c_bonus,__200f__50w_226': {
+  'c_bonus,__200f__50w': {
     name: 'C-Bonus, -200f -50w',
     f: 0,
     w: 0,
@@ -3928,7 +8278,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  'c_bonus,__30%_archer_cost_56': {
+  'c_bonus,__30%_archer_cost': {
     name: 'C-Bonus, -30% archer cost',
     f: 0,
     w: 0,
@@ -3944,7 +8294,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  'c_bonus,__50f_227': {
+  'c_bonus,__50f': {
     name: 'C-Bonus, -50f',
     f: 0,
     w: 0,
@@ -3960,7 +8310,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  'c_bonus,_1_2_tcs_381': {
+  'c_bonus,_1_2_tcs': {
     name: 'C-Bonus, 1/2 TCs',
     f: 0,
     w: 0,
@@ -3976,7 +8326,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 1,
   },
-  'c_bonus,_15%_faster_foragers_524': {
+  'c_bonus,_15%_faster_foragers': {
     name: 'C-Bonus, 15% faster foragers',
     f: 0,
     w: 0,
@@ -3992,7 +8342,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 2,
   },
-  'c_bonus,_35%_ca_458': {
+  'c_bonus,_35%_ca': {
     name: 'C-Bonus, 35% CA',
     f: 0,
     w: 0,
@@ -4008,7 +8358,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  'c_bonus,_3x_food_fish_traps_637': {
+  'c_bonus,_3x_food_fish_traps': {
     name: 'C-Bonus, 3x food fish traps',
     f: 0,
     w: 0,
@@ -4024,7 +8374,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_40%_ca_459': {
+  'c_bonus,_40%_ca': {
     name: 'C-Bonus, 40% CA',
     f: 0,
     w: 0,
@@ -4040,7 +8390,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  'c_bonus,_age_up__50%_gold_1367': {
+  'c_bonus,_age_up__50%_gold': {
     name: 'C-Bonus, Age up -50% gold',
     f: 0,
     w: 0,
@@ -4056,7 +8406,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  'c_bonus,_age_up_faster_634': {
+  'c_bonus,_age_up_faster': {
     name: 'C-Bonus, Age up faster',
     f: 0,
     w: 0,
@@ -4072,7 +8422,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_age2_siege_wksp_705': {
+  'c_bonus,_age2_siege_wksp': {
     name: 'C-Bonus, Age2 Siege Wksp',
     f: 0,
     w: 0,
@@ -4088,7 +8438,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  'c_bonus,_all_units__20%_gold_559': {
+  'c_bonus,_all_units__20%_gold': {
     name: 'C-Bonus, All units -20% gold',
     f: 0,
     w: 0,
@@ -4100,33 +8450,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 105,
-        a: 0,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 105,
-        a: 6,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 105,
-        a: 12,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 24,
   },
-  'c_bonus,_animals_dont_decay_993': {
+  'c_bonus,_animals_dont_decay': {
     name: "C-Bonus, Animals don't decay",
     f: 0,
     w: 0,
@@ -4142,7 +8470,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  'c_bonus,_arch_+_champi_+1_armor_age2_1369': {
+  'c_bonus,_arch_+_champi_+1_armor_age2': {
     name: 'C-Bonus, Arch + Champi +1 armor Age2',
     f: 0,
     w: 0,
@@ -4156,17 +8484,73 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2550,
         c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2588,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2562,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2564,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 44,
       },
     ],
     age: 1,
     civ: 57,
   },
-  'c_bonus,_arch_+_champi_+1_armor_age3_1370': {
+  'c_bonus,_arch_+_champi_+1_armor_age3': {
     name: 'C-Bonus, Arch + Champi +1 armor Age3',
     f: 0,
     w: 0,
@@ -4180,17 +8564,73 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2550,
         c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2588,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2562,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2564,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 44,
       },
     ],
     age: 1,
     civ: 57,
   },
-  'c_bonus,_arch_+_champi_+1_armor_age4_1371': {
+  'c_bonus,_arch_+_champi_+1_armor_age4': {
     name: 'C-Bonus, Arch + Champi +1 armor Age4',
     f: 0,
     w: 0,
@@ -4204,17 +8644,73 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2550,
         c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2588,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2562,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2564,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 44,
       },
     ],
     age: 1,
     civ: 57,
   },
-  'c_bonus,_archer_armor_free_451': {
+  'c_bonus,_archer_armor_free': {
     name: 'C-Bonus, Archer armor free',
     f: 0,
     w: 0,
@@ -4230,7 +8726,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 18,
   },
-  'c_bonus,_archers_+1_+1_armor_901': {
+  'c_bonus,_archers_+1_+1_armor': {
     name: 'C-Bonus, Archers +1/+1 armor',
     f: 0,
     w: 0,
@@ -4244,24 +8740,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 882,
         c: -1,
       },
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
-        u: -1,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 185,
         c: -1,
       },
     ],
     age: 1,
     civ: 19,
   },
-  'c_bonus,_archers_+20%_hp_632': {
+  'c_bonus,_archers_+20%_hp': {
     name: 'C-Bonus, Archers +20% HP',
     f: 0,
     w: 0,
@@ -4273,11 +8839,110 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 4,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 24,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 492,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 39,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 474,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1260,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1903,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 31,
   },
-  'c_bonus,_archers_fire_+15%_fas_607': {
+  'c_bonus,_archers_fire_+15%_fas': {
     name: 'C-Bonus, Archers fire +15% fas',
     f: 0,
     w: 0,
@@ -4289,11 +8954,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.8500000238418579,
+        u: 4,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8500000238418579,
+        u: 24,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8500000238418579,
+        u: 492,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 25,
   },
-  'c_bonus,_archers_vs_buildings_age3_725': {
+  'c_bonus,_archers_vs_buildings_age3': {
     name: 'C-Bonus, Archers vs buildings Age3',
     f: 0,
     w: 0,
@@ -4309,7 +8996,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  'c_bonus,_archers_vs_buildings_age4_726': {
+  'c_bonus,_archers_vs_buildings_age4': {
     name: 'C-Bonus, Archers vs buildings Age4',
     f: 0,
     w: 0,
@@ -4325,7 +9012,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  'c_bonus,_barracks_+_range_tech_discount_1397': {
+  'c_bonus,_barracks_+_range_tech_discount': {
     name: 'C-Bonus, Barracks + Range tech discount',
     f: 0,
     w: 0,
@@ -4341,7 +9028,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  'c_bonus,_battle_ele_10%_faster_672': {
+  'c_bonus,_battle_ele_10%_faster': {
     name: 'C-Bonus, Battle Ele 10% faster',
     f: 0,
     w: 0,
@@ -4353,11 +9040,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1134,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 28,
   },
-  'c_bonus,_battle_ele_25%_cheaper_662': {
+  'c_bonus,_battle_ele_25%_cheaper': {
     name: 'C-Bonus, Battle Ele 25% cheaper',
     f: 0,
     w: 0,
@@ -4373,7 +9075,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_battle_ele_35%_cheaper_663': {
+  'c_bonus,_battle_ele_35%_cheaper': {
     name: 'C-Bonus, Battle Ele 35% cheaper',
     f: 0,
     w: 0,
@@ -4389,7 +9091,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_battle_elephant_armor_640': {
+  'c_bonus,_battle_elephant_armor': {
     name: 'C-Bonus, Battle Elephant armor',
     f: 0,
     w: 0,
@@ -4401,11 +9103,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1134,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 30,
   },
-  'c_bonus,_better_fishing_ships_306': {
+  'c_bonus,_better_fishing_ships': {
     name: 'C-Bonus, Better Fishing Ships',
     f: 0,
     w: 0,
@@ -4417,11 +9148,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: -1,
+        c: 21,
+      },
+    ],
     age: 1,
     civ: 5,
   },
-  'c_bonus,_bld_+20%_417': {
+  'c_bonus,_bld_+20%': {
     name: 'C-Bonus, Bld +20%',
     f: 0,
     w: 0,
@@ -4435,17 +9174,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 3,
+        t: 5,
+        a: 0,
         v: 1.09089994430542,
         u: -1,
-        c: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.09089994430542,
+        u: -1,
+        c: 27,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.09089994430542,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.09089994430542,
+        u: -1,
+        c: 49,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.09089994430542,
+        u: -1,
+        c: 39,
       },
     ],
     age: 1,
     civ: 7,
   },
-  'c_bonus,_bld_+30%_418': {
+  'c_bonus,_bld_+30%': {
     name: 'C-Bonus, Bld +30%',
     f: 0,
     w: 0,
@@ -4459,17 +9226,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 3,
+        t: 5,
+        a: 0,
         v: 1.083299994468689,
         u: -1,
-        c: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.083299994468689,
+        u: -1,
+        c: 27,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.083299994468689,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.083299994468689,
+        u: -1,
+        c: 49,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.083299994468689,
+        u: -1,
+        c: 39,
       },
     ],
     age: 1,
     civ: 7,
   },
-  'c_bonus,_bld_+40%_419': {
+  'c_bonus,_bld_+40%': {
     name: 'C-Bonus, Bld +40%',
     f: 0,
     w: 0,
@@ -4483,17 +9278,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 3,
+        t: 5,
+        a: 0,
         v: 1.0769000053405762,
         u: -1,
-        c: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0769000053405762,
+        u: -1,
+        c: 27,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0769000053405762,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0769000053405762,
+        u: -1,
+        c: 49,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0769000053405762,
+        u: -1,
+        c: 39,
       },
     ],
     age: 1,
     civ: 7,
   },
-  'c_bonus,_bonus_damage_increase_802': {
+  'c_bonus,_bonus_damage_increase': {
     name: 'C-Bonus, Bonus damage increase',
     f: 0,
     w: 0,
@@ -4505,11 +9328,355 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 892,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7549.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 1788,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 39,
   },
-  'c_bonus,_bonus_damage_resistance_771': {
+  'c_bonus,_bonus_damage_resistance': {
     name: 'C-Bonus, Bonus damage resistance',
     f: 0,
     w: 0,
@@ -4523,31 +9690,73 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 24,
-        a: 0,
+        t: 0,
+        a: 24,
         v: 0.4000000059604645,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 24,
-        a: 6,
+        t: 0,
+        a: 24,
         v: 0.4000000059604645,
         u: -1,
-        c: -1,
+        c: 35,
       },
       {
-        t: 24,
-        a: 12,
+        t: 0,
+        a: 24,
         v: 0.4000000059604645,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.4000000059604645,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.4000000059604645,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.4000000059604645,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.4000000059604645,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.4000000059604645,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.4000000059604645,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 37,
   },
-  'c_bonus,_building_hp_x15_283': {
+  'c_bonus,_building_hp_x15': {
     name: 'C-Bonus, Building HP x1.5',
     f: 0,
     w: 0,
@@ -4561,17 +9770,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 3,
+        t: 5,
+        a: 0,
         v: 1.100000023841858,
         u: -1,
-        c: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 27,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 49,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 39,
       },
     ],
     age: 1,
     civ: 7,
   },
-  'c_bonus,_building_stone_cost_519': {
+  'c_bonus,_building_stone_cost': {
     name: 'C-Bonus, Building Stone cost',
     f: 0,
     w: 0,
@@ -4583,19 +9820,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 106,
-        a: 3,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 21,
   },
-  'c_bonus,_ca_vs_archers_190': {
+  'c_bonus,_ca_vs_archers': {
     name: 'C-Bonus, CA vs Archers',
     f: 0,
     w: 0,
@@ -4607,11 +9836,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 3842.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 3842.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 3842.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -9730.0,
+        u: -1,
+        c: 36,
+      },
+    ],
     age: 1,
     civ: 5,
   },
-  'c_bonus,_camel_rider_attack_speed_505': {
+  'c_bonus,_camel_rider_attack_speed': {
     name: 'C-Bonus, Camel Rider attack speed',
     f: 0,
     w: 0,
@@ -4623,11 +9881,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333333134651184,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333333134651184,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333333134651184,
+        u: 207,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 20,
   },
-  'c_bonus,_camels_+25%_hp_312': {
+  'c_bonus,_camels_+25%_hp': {
     name: 'C-Bonus, Camels +25% HP',
     f: 0,
     w: 0,
@@ -4639,11 +9926,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 282,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 556,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 207,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1007,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1009,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1923,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 9,
   },
-  'c_bonus,_castle_15%_cheaper_325': {
+  'c_bonus,_castle_15%_cheaper': {
     name: 'C-Bonus, Castle 15% cheaper',
     f: 0,
     w: 0,
@@ -4659,7 +10017,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 2,
   },
-  'c_bonus,_castle_25%_cheaper_330': {
+  'c_bonus,_castle_25%_cheaper': {
     name: 'C-Bonus, Castle 25% cheaper',
     f: 0,
     w: 0,
@@ -4675,7 +10033,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 2,
   },
-  'c_bonus,_cavalry_+20%_hp_290': {
+  'c_bonus,_cavalry_+20%_hp': {
     name: 'C-Bonus, Cavalry +20% HP',
     f: 0,
     w: 0,
@@ -4689,17 +10047,38 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 12,
+        t: 5,
+        a: 0,
         v: 1.2000000476837158,
         u: -1,
-        c: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: -1,
+        c: 36,
       },
     ],
     age: 1,
     civ: 2,
   },
-  'c_bonus,_cavalry_+5%_speed_age2_711': {
+  'c_bonus,_cavalry_+5%_speed_age2': {
     name: 'C-Bonus, Cavalry +5% speed Age2',
     f: 0,
     w: 0,
@@ -4714,16 +10093,37 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 12,
+        a: 5,
         v: 1.0499999523162842,
         u: -1,
-        c: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 23,
       },
     ],
     age: 1,
     civ: 34,
   },
-  'c_bonus,_cavalry_+5%_speed_age3_727': {
+  'c_bonus,_cavalry_+5%_speed_age3': {
     name: 'C-Bonus, Cavalry +5% speed Age3',
     f: 0,
     w: 0,
@@ -4738,16 +10138,37 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 12,
+        a: 5,
         v: 1.0499999523162842,
         u: -1,
-        c: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 23,
       },
     ],
     age: 1,
     civ: 34,
   },
-  'c_bonus,_cavalry_+5%_speed_age4_728': {
+  'c_bonus,_cavalry_+5%_speed_age4': {
     name: 'C-Bonus, Cavalry +5% speed Age4',
     f: 0,
     w: 0,
@@ -4762,16 +10183,37 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 12,
+        a: 5,
         v: 1.0499999523162842,
         u: -1,
-        c: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: -1,
+        c: 23,
       },
     ],
     age: 1,
     civ: 34,
   },
-  'c_bonus,_cavalry_gold_62': {
+  'c_bonus,_cavalry_gold': {
     name: 'C-Bonus, Cavalry gold',
     f: 0,
     w: 0,
@@ -4787,7 +10229,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_cavalry_regeneration_age2_937': {
+  'c_bonus,_cavalry_regeneration_age2': {
     name: 'C-Bonus, Cavalry regeneration age2',
     f: 0,
     w: 0,
@@ -4799,19 +10241,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 12,
-        v: 2.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 45,
   },
-  'c_bonus,_cavalry_regeneration_age3_938': {
+  'c_bonus,_cavalry_regeneration_age3': {
     name: 'C-Bonus, Cavalry regeneration age3',
     f: 0,
     w: 0,
@@ -4823,19 +10257,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 12,
-        v: 6.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 45,
   },
-  'c_bonus,_cavalry_regeneration_age4_939': {
+  'c_bonus,_cavalry_regeneration_age4': {
     name: 'C-Bonus, Cavalry regeneration age4',
     f: 0,
     w: 0,
@@ -4847,19 +10273,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 12,
-        v: 6.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 45,
   },
-  'c_bonus,_cavalry_vs_skirm_877': {
+  'c_bonus,_cavalry_vs_skirm': {
     name: 'C-Bonus, Cavalry vs Skirm',
     f: 0,
     w: 0,
@@ -4873,17 +10291,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 9730.0,
         u: -1,
-        c: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 9730.0,
+        u: -1,
+        c: 12,
       },
     ],
     age: 1,
     civ: 41,
   },
-  'c_bonus,_cheap_farms_314': {
+  'c_bonus,_cheap_farms': {
     name: 'C-Bonus, Cheap Farms',
     f: 0,
     w: 0,
@@ -4899,7 +10324,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  'c_bonus,_cheap_ranges_and_stables_664': {
+  'c_bonus,_cheap_ranges_and_stables': {
     name: 'C-Bonus, Cheap Ranges and Stables',
     f: 0,
     w: 0,
@@ -4915,7 +10340,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  'c_bonus,_cheap_buildings_808': {
+  'c_bonus,_cheap_buildings': {
     name: 'C-Bonus, Cheap buildings',
     f: 0,
     w: 0,
@@ -4931,7 +10356,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 39,
   },
-  'c_bonus,_cheaper_+_healing_settlement_1368': {
+  'c_bonus,_cheaper_+_healing_settlement': {
     name: 'C-Bonus, Cheaper + Healing Settlement',
     f: 0,
     w: 0,
@@ -4947,7 +10372,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  'c_bonus,_cheaper_mule_cart_958': {
+  'c_bonus,_cheaper_mule_cart': {
     name: 'C-Bonus, Cheaper Mule Cart',
     f: 0,
     w: 0,
@@ -4963,7 +10388,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_cheaper_scorpions_892': {
+  'c_bonus,_cheaper_scorpions': {
     name: 'C-Bonus, Cheaper scorpions',
     f: 0,
     w: 0,
@@ -4979,7 +10404,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 43,
   },
-  'c_bonus,_disable_horse_241': {
+  'c_bonus,_disable_horse': {
     name: 'C-Bonus, Disable Horse',
     f: 0,
     w: 0,
@@ -4995,7 +10420,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  'c_bonus,_disable_horse2_242': {
+  'c_bonus,_disable_horse2': {
     name: 'C-Bonus, Disable Horse2',
     f: 0,
     w: 0,
@@ -5011,7 +10436,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  'c_bonus,_docks_garrison_855': {
+  'c_bonus,_docks_garrison': {
     name: 'C-Bonus, Docks garrison',
     f: 0,
     w: 0,
@@ -5027,7 +10452,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  'c_bonus,_dominant_los_405': {
+  'c_bonus,_dominant_los': {
     name: 'C-Bonus, Dominant LOS',
     f: 0,
     w: 0,
@@ -5043,7 +10468,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 13,
   },
-  'c_bonus,_double_blast_furnace_1000': {
+  'c_bonus,_double_blast_furnace': {
     name: 'C-Bonus, Double Blast Furnace',
     f: 0,
     w: 0,
@@ -5057,24 +10482,87 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1026.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 45,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 46,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 50,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -1026.0,
+        u: 1923,
         c: -1,
       },
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1026.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2626,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2627,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2628,
         c: -1,
       },
     ],
     age: 1,
     civ: 53,
   },
-  'c_bonus,_double_chain_mail_890': {
+  'c_bonus,_double_chain_mail': {
     name: 'C-Bonus, Double Chain Mail',
     f: 0,
     w: 0,
@@ -5088,24 +10576,80 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 1,
     civ: 43,
   },
-  'c_bonus,_double_forging_998': {
+  'c_bonus,_double_forging': {
     name: 'C-Bonus, Double Forging',
     f: 0,
     w: 0,
@@ -5119,24 +10663,87 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 45,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 46,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 50,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -1025.0,
+        u: 1923,
         c: -1,
       },
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1025.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2626,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2627,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2628,
         c: -1,
       },
     ],
     age: 1,
     civ: 53,
   },
-  'c_bonus,_double_iron_casting_999': {
+  'c_bonus,_double_iron_casting': {
     name: 'C-Bonus, Double Iron Casting',
     f: 0,
     w: 0,
@@ -5150,24 +10757,87 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 45,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 46,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 50,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -1025.0,
+        u: 1923,
         c: -1,
       },
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1025.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2626,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2627,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2628,
         c: -1,
       },
     ],
     age: 1,
     civ: 53,
   },
-  'c_bonus,_double_plate_mail_891': {
+  'c_bonus,_double_plate_mail': {
     name: 'C-Bonus, Double Plate Mail',
     f: 0,
     w: 0,
@@ -5181,24 +10851,80 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 770.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 1,
     civ: 43,
   },
-  'c_bonus,_double_scale_mail_889': {
+  'c_bonus,_double_scale_mail': {
     name: 'C-Bonus, Double Scale Mail',
     f: 0,
     w: 0,
@@ -5212,24 +10938,80 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 1,
     civ: 43,
   },
-  'c_bonus,_earlier_chemistry_800': {
+  'c_bonus,_earlier_chemistry': {
     name: 'C-Bonus, Earlier Chemistry',
     f: 0,
     w: 0,
@@ -5245,7 +11027,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 39,
   },
-  'c_bonus,_earlier_hand_cannon_801': {
+  'c_bonus,_earlier_hand_cannon': {
     name: 'C-Bonus, Earlier Hand Cannon',
     f: 0,
     w: 0,
@@ -5261,7 +11043,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 39,
   },
-  'c_bonus,_early_+_cheaper_hca_1004': {
+  'c_bonus,_early_+_cheaper_hca': {
     name: 'C-Bonus, Early + Cheaper HCA',
     f: 0,
     w: 0,
@@ -5277,7 +11059,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  'c_bonus,_early_barracks_techs_950': {
+  'c_bonus,_early_barracks_techs': {
     name: 'C-Bonus, Early Barracks techs',
     f: 0,
     w: 0,
@@ -5293,7 +11075,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_elephant_resistance_846': {
+  'c_bonus,_elephant_resistance': {
     name: 'C-Bonus, Elephant resistance',
     f: 0,
     w: 0,
@@ -5305,11 +11087,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 239,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 558,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 873,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 875,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 1746,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 41,
   },
-  'c_bonus,_elevation_bonus_696': {
+  'c_bonus,_elevation_bonus': {
     name: 'C-Bonus, Elevation Bonus',
     f: 0,
     w: 0,
@@ -5325,7 +11178,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'c_bonus,_elevation_bonus_defense_926': {
+  'c_bonus,_elevation_bonus_defense': {
     name: 'C-Bonus, Elevation Bonus Defense',
     f: 0,
     w: 0,
@@ -5341,7 +11194,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  'c_bonus,_enable_donjon_775': {
+  'c_bonus,_enable_donjon': {
     name: 'C-Bonus, Enable Donjon',
     f: 0,
     w: 0,
@@ -5357,7 +11210,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  'c_bonus,_enable_folwark_793': {
+  'c_bonus,_enable_folwark': {
     name: 'C-Bonus, Enable Folwark',
     f: 0,
     w: 0,
@@ -5373,7 +11226,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  'c_bonus,_enable_krepost_695': {
+  'c_bonus,_enable_krepost': {
     name: 'C-Bonus, Enable Krepost',
     f: 0,
     w: 0,
@@ -5389,7 +11242,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 32,
   },
-  'c_bonus,_extra_sheep_from_tc_303': {
+  'c_bonus,_extra_sheep_from_tc': {
     name: 'C-Bonus, Extra sheep from TC',
     f: 0,
     w: 0,
@@ -5405,7 +11258,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'c_bonus,_farms_extra_food_772': {
+  'c_bonus,_farms_extra_food': {
     name: 'C-Bonus, Farms extra food',
     f: 0,
     w: 0,
@@ -5421,7 +11274,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  'c_bonus,_fast_castle_and_tc_770': {
+  'c_bonus,_fast_castle_and_tc': {
     name: 'C-Bonus, Fast Castle and TC',
     f: 0,
     w: 0,
@@ -5437,7 +11290,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  'c_bonus,_feudal_tc_709': {
+  'c_bonus,_feudal_tc': {
     name: 'C-Bonus, Feudal TC',
     f: 0,
     w: 0,
@@ -5453,7 +11306,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  'c_bonus,_fire_lancer_ship_speed_castle_983': {
+  'c_bonus,_fire_lancer_ship_speed_castle': {
     name: 'C-Bonus, Fire Lancer/Ship speed Castle',
     f: 0,
     w: 0,
@@ -5465,11 +11318,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 529,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 532,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 1103,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 1302,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 6,
   },
-  'c_bonus,_fire_lancer_ship_speed_imp_984': {
+  'c_bonus,_fire_lancer_ship_speed_imp': {
     name: 'C-Bonus, Fire Lancer/Ship speed Imp',
     f: 0,
     w: 0,
@@ -5481,11 +11377,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 529,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 532,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 1103,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 1302,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 6,
   },
-  'c_bonus,_fish_trap_33%_cheaper_635': {
+  'c_bonus,_fish_trap_33%_cheaper': {
     name: 'C-Bonus, Fish Trap 33% cheaper',
     f: 0,
     w: 0,
@@ -5501,7 +11440,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  'c_bonus,_fish_carry_844': {
+  'c_bonus,_fish_carry': {
     name: 'C-Bonus, Fish carry',
     f: 0,
     w: 0,
@@ -5517,7 +11456,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'c_bonus,_forager_productivity_1381': {
+  'c_bonus,_forager_productivity': {
     name: 'C-Bonus, Forager productivity',
     f: 0,
     w: 0,
@@ -5533,7 +11472,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_foragers_generate_wood_453': {
+  'c_bonus,_foragers_generate_wood': {
     name: 'C-Bonus, Foragers generate wood',
     f: 0,
     w: 0,
@@ -5549,7 +11488,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  'c_bonus,_fortified_church_929': {
+  'c_bonus,_fortified_church': {
     name: 'C-Bonus, Fortified Church',
     f: 0,
     w: 0,
@@ -5565,7 +11504,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'c_bonus,_fortified_church_area_effect_934': {
+  'c_bonus,_fortified_church_area_effect': {
     name: 'C-Bonus, Fortified Church area effect',
     f: 0,
     w: 0,
@@ -5581,7 +11520,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  'c_bonus,_fre_vill_+_bit_axe_1039': {
+  'c_bonus,_fre_vill_+_bit_axe': {
     name: 'C-Bonus, Fre vill + Bit Axe',
     f: 0,
     w: 0,
@@ -5597,7 +11536,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_bow_saw_1040': {
+  'c_bonus,_fre_vill_+_bow_saw': {
     name: 'C-Bonus, Fre vill + Bow Saw',
     f: 0,
     w: 0,
@@ -5613,7 +11552,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_caravan_1052': {
+  'c_bonus,_fre_vill_+_caravan': {
     name: 'C-Bonus, Fre vill + Caravan',
     f: 0,
     w: 0,
@@ -5629,7 +11568,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_crop_rotation_1044': {
+  'c_bonus,_fre_vill_+_crop_rotation': {
     name: 'C-Bonus, Fre vill + Crop Rotation',
     f: 0,
     w: 0,
@@ -5645,7 +11584,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_gillnets_1051': {
+  'c_bonus,_fre_vill_+_gillnets': {
     name: 'C-Bonus, Fre vill + Gillnets',
     f: 0,
     w: 0,
@@ -5677,7 +11616,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_gold_mining_1045': {
+  'c_bonus,_fre_vill_+_gold_mining': {
     name: 'C-Bonus, Fre vill + Gold Mining',
     f: 0,
     w: 0,
@@ -5693,7 +11632,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_gold_shaft_1046': {
+  'c_bonus,_fre_vill_+_gold_shaft': {
     name: 'C-Bonus, Fre vill + Gold Shaft',
     f: 0,
     w: 0,
@@ -5709,7 +11648,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_guilds_1053': {
+  'c_bonus,_fre_vill_+_guilds': {
     name: 'C-Bonus, Fre vill + Guilds',
     f: 0,
     w: 0,
@@ -5725,7 +11664,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_hand_cart_1050': {
+  'c_bonus,_fre_vill_+_hand_cart': {
     name: 'C-Bonus, Fre vill + Hand Cart',
     f: 0,
     w: 0,
@@ -5741,7 +11680,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_heavy_plow_1043': {
+  'c_bonus,_fre_vill_+_heavy_plow': {
     name: 'C-Bonus, Fre vill + Heavy Plow',
     f: 0,
     w: 0,
@@ -5757,7 +11696,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_horse_collar_1042': {
+  'c_bonus,_fre_vill_+_horse_collar': {
     name: 'C-Bonus, Fre vill + Horse collar',
     f: 0,
     w: 0,
@@ -5773,7 +11712,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_stone_mining_1047': {
+  'c_bonus,_fre_vill_+_stone_mining': {
     name: 'C-Bonus, Fre vill + Stone Mining',
     f: 0,
     w: 0,
@@ -5789,7 +11728,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_stone_shaft_1048': {
+  'c_bonus,_fre_vill_+_stone_shaft': {
     name: 'C-Bonus, Fre vill + Stone Shaft',
     f: 0,
     w: 0,
@@ -5805,7 +11744,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_two_man_saw_1041': {
+  'c_bonus,_fre_vill_+_two_man_saw': {
     name: 'C-Bonus, Fre vill + Two-Man Saw',
     f: 0,
     w: 0,
@@ -5821,7 +11760,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_fre_vill_+_wheelbarrow_1049': {
+  'c_bonus,_fre_vill_+_wheelbarrow': {
     name: 'C-Bonus, Fre vill + Wheelbarrow',
     f: 0,
     w: 0,
@@ -5837,7 +11776,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  'c_bonus,_free_caravan_and_guilds_1374': {
+  'c_bonus,_free_caravan_and_guilds': {
     name: 'C-Bonus, Free Caravan and Guilds',
     f: 0,
     w: 0,
@@ -5853,7 +11792,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  'c_bonus,_free_chemistry_285': {
+  'c_bonus,_free_chemistry': {
     name: 'C-Bonus, Free Chemistry',
     f: 0,
     w: 0,
@@ -5869,7 +11808,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  'c_bonus,_free_hand_cart_400': {
+  'c_bonus,_free_hand_cart': {
     name: 'C-Bonus, Free Hand Cart',
     f: 0,
     w: 0,
@@ -5885,7 +11824,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  'c_bonus,_free_militia_upgrades_693': {
+  'c_bonus,_free_militia_upgrades': {
     name: 'C-Bonus, Free Militia upgrades',
     f: 0,
     w: 0,
@@ -5901,7 +11840,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 32,
   },
-  'c_bonus,_free_parthian_tactics_698': {
+  'c_bonus,_free_parthian_tactics': {
     name: 'C-Bonus, Free Parthian Tactics',
     f: 0,
     w: 0,
@@ -5917,7 +11856,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'c_bonus,_free_pike_590': {
+  'c_bonus,_free_pike': {
     name: 'C-Bonus, Free Pike',
     f: 0,
     w: 0,
@@ -5933,7 +11872,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  'c_bonus,_free_relic_949': {
+  'c_bonus,_free_relic': {
     name: 'C-Bonus, Free Relic',
     f: 0,
     w: 0,
@@ -5949,7 +11888,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_free_relic2_957': {
+  'c_bonus,_free_relic2': {
     name: 'C-Bonus, Free Relic2',
     f: 0,
     w: 0,
@@ -5965,7 +11904,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_free_wheel_392': {
+  'c_bonus,_free_wheel': {
     name: 'C-Bonus, Free Wheel',
     f: 0,
     w: 0,
@@ -5981,7 +11920,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  'c_bonus,_galley_+20%_fire_404': {
+  'c_bonus,_galley_+20%_fire': {
     name: 'C-Bonus, Galley +20% fire',
     f: 0,
     w: 0,
@@ -5993,11 +11932,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 442,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 9,
   },
-  'c_bonus,_gather_price_340': {
+  'c_bonus,_gather_price': {
     name: 'C-Bonus, Gather Price',
     f: 0,
     w: 0,
@@ -6013,7 +11974,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 5,
   },
-  'c_bonus,_gold_productivity_594': {
+  'c_bonus,_gold_productivity': {
     name: 'C-Bonus, Gold productivity',
     f: 0,
     w: 0,
@@ -6029,7 +11990,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 26,
   },
-  'c_bonus,_gunpowder_+25%_hp_301': {
+  'c_bonus,_gunpowder_+25%_hp': {
     name: 'C-Bonus, Gunpowder +25% HP',
     f: 0,
     w: 0,
@@ -6041,11 +12002,152 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 46,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 771,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 773,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 557,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1001,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1003,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 831,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 832,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1704,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1706,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1911,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 10,
   },
-  'c_bonus,_gunpowder__20%_cheaper_500': {
+  'c_bonus,_gunpowder__20%_cheaper': {
     name: 'C-Bonus, Gunpowder -20% cheaper',
     f: 0,
     w: 0,
@@ -6057,11 +12159,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 1911,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 19,
   },
-  'c_bonus,_gunpowder_armor_520': {
+  'c_bonus,_gunpowder_armor': {
     name: 'C-Bonus, Gunpowder armor',
     f: 0,
     w: 0,
@@ -6073,11 +12211,152 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1911,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 20,
   },
-  'c_bonus,_gunpowder_units_+25%_attack_769': {
+  'c_bonus,_gunpowder_units_+25%_attack': {
     name: 'C-Bonus, Gunpowder units +25% attack',
     f: 0,
     w: 0,
@@ -6089,11 +12368,425 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 9,
+        v: 7037.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 381.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 893.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4477.0,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 381.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3965.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 381.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3965.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9085.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6781.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5757.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6781.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5757.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7037.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 381.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 893.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4477.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5501.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2173.0,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 7805.0,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 1903,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 36,
   },
-  'c_bonus,_heavy_cav_+15%_hp_1058': {
+  'c_bonus,_heavy_cav_+15%_hp': {
     name: 'C-Bonus, Heavy Cav +15% HP',
     f: 0,
     w: 0,
@@ -6105,11 +12798,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1952,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 51,
   },
-  'c_bonus,_heavy_cav_+15%_hp_+_bl_1056': {
+  'c_bonus,_heavy_cav_+15%_hp_+_bl': {
     name: 'C-Bonus, Heavy Cav +15% HP + BL',
     f: 0,
     w: 0,
@@ -6121,11 +12836,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1952,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 51,
   },
-  'c_bonus,_heavy_cav_+30%_hp_1059': {
+  'c_bonus,_heavy_cav_+30%_hp': {
     name: 'C-Bonus, Heavy Cav +30% HP',
     f: 0,
     w: 0,
@@ -6137,11 +12958,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0980000495910645,
+        u: 1952,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 51,
   },
-  'c_bonus,_heavy_cav_+30%_hp_+_bl_1057': {
+  'c_bonus,_heavy_cav_+30%_hp_+_bl': {
     name: 'C-Bonus, Heavy Cav +30% HP + BL',
     f: 0,
     w: 0,
@@ -6153,11 +12996,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0980000495910645,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1952,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1952,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 51,
   },
-  'c_bonus,_herdables_garrison_856': {
+  'c_bonus,_herdables_garrison': {
     name: 'C-Bonus, Herdables garrison',
     f: 0,
     w: 0,
@@ -6173,7 +13122,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  'c_bonus,_houses_+5_pop_495': {
+  'c_bonus,_houses_+5_pop': {
     name: 'C-Bonus, Houses +5 pop',
     f: 0,
     w: 0,
@@ -6189,7 +13138,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 21,
   },
-  'c_bonus,_houses_garrison_657': {
+  'c_bonus,_houses_garrison': {
     name: 'C-Bonus, Houses garrison',
     f: 0,
     w: 0,
@@ -6205,7 +13154,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 28,
   },
-  'c_bonus,_hunters_40%_faster_389': {
+  'c_bonus,_hunters_40%_faster': {
     name: 'C-Bonus, Hunters 40% faster',
     f: 0,
     w: 0,
@@ -6221,7 +13170,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 12,
   },
-  'c_bonus,_hunting_bonuses_402': {
+  'c_bonus,_hunting_bonuses': {
     name: 'C-Bonus, Hunting bonuses',
     f: 0,
     w: 0,
@@ -6237,7 +13186,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  'c_bonus,_inf_+15%_hp_415': {
+  'c_bonus,_inf_+15%_hp': {
     name: 'C-Bonus, Inf +15% HP',
     f: 0,
     w: 0,
@@ -6253,7 +13202,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  'c_bonus,_inf_+20%_hp_391': {
+  'c_bonus,_inf_+20%_hp': {
     name: 'C-Bonus, Inf +20% HP',
     f: 0,
     w: 0,
@@ -6283,17 +13232,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 6,
+        t: 5,
+        a: 0,
         v: 1.2000000476837158,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 11,
   },
-  'c_bonus,_inf_attack_spd_341': {
+  'c_bonus,_inf_attack_spd': {
     name: 'C-Bonus, Inf Attack Spd',
     f: 0,
     w: 0,
@@ -6307,17 +13263,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 10,
-        a: 6,
+        t: 5,
+        a: 10,
         v: 0.75,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 5,
   },
-  'c_bonus,_inf_cav_+1_armor_age3_334': {
+  'c_bonus,_inf_cav_+1_armor_age3': {
     name: 'C-Bonus, Inf Cav +1 armor Age3',
     f: 0,
     w: 0,
@@ -6329,11 +13292,236 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 752,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 753,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 207,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1793,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 4,
   },
-  'c_bonus,_inf_cav_+1_armor_age4_335': {
+  'c_bonus,_inf_cav_+1_armor_age4': {
     name: 'C-Bonus, Inf Cav +1 armor Age4',
     f: 0,
     w: 0,
@@ -6345,11 +13533,236 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 752,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 753,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 207,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1788,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1793,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 4,
   },
-  'c_bonus,_inf_v_building_age2_327': {
+  'c_bonus,_inf_v_building_age2': {
     name: 'C-Bonus, Inf v Building Age2',
     f: 0,
     w: 0,
@@ -6363,17 +13776,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 5377.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_inf_v_building_age3_328': {
+  'c_bonus,_inf_v_building_age3': {
     name: 'C-Bonus, Inf v Building Age3',
     f: 0,
     w: 0,
@@ -6387,17 +13807,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 5377.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_inf_v_building_age4_329': {
+  'c_bonus,_inf_v_building_age4': {
     name: 'C-Bonus, Inf v Building Age4',
     f: 0,
     w: 0,
@@ -6411,17 +13838,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 5377.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_infantry_+10%_speed_898': {
+  'c_bonus,_infantry_+10%_speed': {
     name: 'C-Bonus, Infantry +10% speed',
     f: 0,
     w: 0,
@@ -6436,16 +13870,23 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 6,
+        a: 5,
         v: 1.0476200580596924,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0476200580596924,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 13,
   },
-  'c_bonus,_infantry_+15%_speed_899': {
+  'c_bonus,_infantry_+15%_speed': {
     name: 'C-Bonus, Infantry +15% speed',
     f: 0,
     w: 0,
@@ -6460,16 +13901,23 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 6,
+        a: 5,
         v: 1.04544997215271,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 13,
   },
-  'c_bonus,_infantry_+20%_speed_900': {
+  'c_bonus,_infantry_+20%_speed': {
     name: 'C-Bonus, Infantry +20% speed',
     f: 0,
     w: 0,
@@ -6484,16 +13932,23 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 6,
+        a: 5,
         v: 1.0434800386428833,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0434800386428833,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 13,
   },
-  'c_bonus,_infantry_+5%_speed_393': {
+  'c_bonus,_infantry_+5%_speed': {
     name: 'C-Bonus, Infantry +5% speed',
     f: 0,
     w: 0,
@@ -6508,16 +13963,23 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 6,
+        a: 5,
         v: 1.0499999523162842,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 13,
   },
-  'c_bonus,_infantry_cost__15%_344': {
+  'c_bonus,_infantry_cost__15%': {
     name: 'C-Bonus, Infantry Cost -15%',
     f: 0,
     w: 0,
@@ -6529,19 +13991,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 100,
-        a: 6,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_infantry_cost__20%_731': {
+  'c_bonus,_infantry_cost__20%': {
     name: 'C-Bonus, Infantry Cost -20%',
     f: 0,
     w: 0,
@@ -6553,19 +14007,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 100,
-        a: 6,
-        v: 0.9375,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_infantry_cost__25%_732': {
+  'c_bonus,_infantry_cost__25%': {
     name: 'C-Bonus, Infantry Cost -25%',
     f: 0,
     w: 0,
@@ -6577,19 +14023,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 100,
-        a: 6,
-        v: 0.9465000033378601,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_infantry_cost__30%_733': {
+  'c_bonus,_infantry_cost__30%': {
     name: 'C-Bonus, Infantry Cost -30%',
     f: 0,
     w: 0,
@@ -6601,19 +14039,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 100,
-        a: 6,
-        v: 0.9285709857940674,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 3,
   },
-  'c_bonus,_instant_farmers_654': {
+  'c_bonus,_instant_farmers': {
     name: 'C-Bonus, Instant Farmers',
     f: 0,
     w: 0,
@@ -6629,7 +14059,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 28,
   },
-  'c_bonus,_instant_loom_343': {
+  'c_bonus,_instant_loom': {
     name: 'C-Bonus, Instant Loom',
     f: 0,
     w: 0,
@@ -6645,7 +14075,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  'c_bonus,_jian_&_hei_kuang_attack_1076': {
+  'c_bonus,_jian_&_hei_kuang_attack': {
     name: 'C-Bonus, Jian & Hei Kuang attack',
     f: 0,
     w: 0,
@@ -6657,11 +14087,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 1944,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 1946,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 1974,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 1976,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 50,
   },
-  'c_bonus,_light_cavalry_+20%_hp_288': {
+  'c_bonus,_light_cavalry_+20%_hp': {
     name: 'C-Bonus, Light Cavalry +20% HP',
     f: 0,
     w: 0,
@@ -6673,11 +14132,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1372,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 12,
   },
-  'c_bonus,_light_cavalry_+20%_hp_+_bl_286': {
+  'c_bonus,_light_cavalry_+20%_hp_+_bl': {
     name: 'C-Bonus, Light Cavalry +20% HP + BL',
     f: 0,
     w: 0,
@@ -6689,11 +14191,222 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1372,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 12,
   },
-  'c_bonus,_light_cavalry_+30%_hp_388': {
+  'c_bonus,_light_cavalry_+30%_hp': {
     name: 'C-Bonus, Light Cavalry +30% HP',
     f: 0,
     w: 0,
@@ -6705,11 +14418,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.0839999914169312,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0839999914169312,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0839999914169312,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0839999914169312,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0839999914169312,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0839999914169312,
+        u: 1372,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 12,
   },
-  'c_bonus,_light_cavalry_+30%_hp_+_bl_287': {
+  'c_bonus,_light_cavalry_+30%_hp_+_bl': {
     name: 'C-Bonus, Light Cavalry +30% HP + BL',
     f: 0,
     w: 0,
@@ -6721,11 +14477,222 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 100.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -2000.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0833300352096558,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 2000.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.009999999776482582,
+        u: 1372,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 12,
   },
-  'c_bonus,_light_cavalry_+1p_armor_452': {
+  'c_bonus,_light_cavalry_+1p_armor': {
     name: 'C-Bonus, Light cavalry +1P armor',
     f: 0,
     w: 0,
@@ -6737,11 +14704,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1707,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 10,
   },
-  'c_bonus,_lumberjack_food_+_bow_saw_1200': {
+  'c_bonus,_lumberjack_food_+_bow_saw': {
     name: 'C-Bonus, Lumberjack food + Bow Saw',
     f: 0,
     w: 0,
@@ -6757,7 +14753,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'c_bonus,_lumberjack_food_+_double_bit_axe_1199': {
+  'c_bonus,_lumberjack_food_+_double_bit_axe': {
     name: 'C-Bonus, Lumberjack food + Double-Bit Axe',
     f: 0,
     w: 0,
@@ -6773,7 +14769,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'c_bonus,_lumberjack_food_+_two_man_saw_1201': {
+  'c_bonus,_lumberjack_food_+_two_man_saw': {
     name: 'C-Bonus, Lumberjack food + Two-Man Saw',
     f: 0,
     w: 0,
@@ -6789,7 +14785,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'c_bonus,_lumberjacks_15%_faster_385': {
+  'c_bonus,_lumberjacks_15%_faster': {
     name: 'C-Bonus, Lumberjacks 15% faster',
     f: 0,
     w: 0,
@@ -6805,7 +14801,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 13,
   },
-  'c_bonus,_lumberjacks_food_1071': {
+  'c_bonus,_lumberjacks_food': {
     name: 'C-Bonus, Lumberjacks food',
     f: 0,
     w: 0,
@@ -6821,7 +14817,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  'c_bonus,_market_355': {
+  'c_bonus,_market': {
     name: 'C-Bonus, Market',
     f: 0,
     w: 0,
@@ -6837,7 +14833,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  'c_bonus,_military_buildings_+65f_1084': {
+  'c_bonus,_military_buildings_+65f': {
     name: 'C-Bonus, Military Buildings +65f',
     f: 0,
     w: 0,
@@ -6849,19 +14845,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 27,
-        a: 3,
-        v: 55.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 50,
   },
-  'c_bonus,_military_cost__10%_153': {
+  'c_bonus,_military_cost__10%': {
     name: 'C-Bonus, Military cost -10%',
     f: 0,
     w: 0,
@@ -6873,54 +14861,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 103,
-        a: 0,
-        v: 1.0499999523162842,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 1.0499999523162842,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 1.0499999523162842,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 0,
-        v: 0.8999999761581421,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 0.8999999761581421,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 0.8999999761581421,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 21,
   },
-  'c_bonus,_military_cost__15%_154': {
+  'c_bonus,_military_cost__15%': {
     name: 'C-Bonus, Military cost -15%',
     f: 0,
     w: 0,
@@ -6932,54 +14877,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 103,
-        a: 0,
-        v: 1.1050000190734863,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 1.1050000190734863,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 1.1050000190734863,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 0,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 21,
   },
-  'c_bonus,_military_cost__20%_155': {
+  'c_bonus,_military_cost__20%': {
     name: 'C-Bonus, Military cost -20%',
     f: 0,
     w: 0,
@@ -6991,54 +14893,11 @@ export const techs: Record<string, TechData> = {
       techs: [194],
       buildings: [],
     },
-    effects: [
-      {
-        t: 103,
-        a: 0,
-        v: 1.1759999990463257,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 1.1759999990463257,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 1.1759999990463257,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 0,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 21,
   },
-  'c_bonus,_military_cost__5%_152': {
+  'c_bonus,_military_cost__5%': {
     name: 'C-Bonus, Military cost -5%',
     f: 0,
     w: 0,
@@ -7050,33 +14909,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 103,
-        a: 0,
-        v: 0.949999988079071,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 0.949999988079071,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 0.949999988079071,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 21,
   },
-  'c_bonus,_mining_+25%_300': {
+  'c_bonus,_mining_+25%': {
     name: 'C-Bonus, Mining +25%',
     f: 0,
     w: 0,
@@ -7092,7 +14929,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  'c_bonus,_monk_heal_range_347': {
+  'c_bonus,_monk_heal_range': {
     name: 'C-Bonus, Monk Heal Range',
     f: 0,
     w: 0,
@@ -7108,7 +14945,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  'c_bonus,_monk_armor_870': {
+  'c_bonus,_monk_armor': {
     name: 'C-Bonus, Monk armor',
     f: 0,
     w: 0,
@@ -7120,11 +14957,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: 1827,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 41,
   },
-  'c_bonus,_monks_20%_faster_510': {
+  'c_bonus,_monks_20%_faster': {
     name: 'C-Bonus, Monks 20% faster',
     f: 0,
     w: 0,
@@ -7136,11 +15044,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 23,
   },
-  'c_bonus,_monks_faster_faith_1372': {
+  'c_bonus,_monks_faster_faith': {
     name: 'C-Bonus, Monks Faster Faith',
     f: 0,
     w: 0,
@@ -7152,11 +15096,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 2.0,
+        u: -1,
+        c: 18,
+      },
+    ],
     age: 1,
     civ: 57,
   },
-  'c_bonus,_navy_+1_projectile_959': {
+  'c_bonus,_navy_+1_projectile': {
     name: 'C-Bonus, Navy +1 projectile',
     f: 0,
     w: 0,
@@ -7172,7 +15124,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  'c_bonus,_navy_armor_888': {
+  'c_bonus,_navy_armor': {
     name: 'C-Bonus, Navy armor',
     f: 0,
     w: 0,
@@ -7184,11 +15136,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1795,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 43,
   },
-  'c_bonus,_navy_attack_speed_397': {
+  'c_bonus,_navy_attack_speed': {
     name: 'C-Bonus, Navy attack speed',
     f: 0,
     w: 0,
@@ -7200,11 +15209,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 529,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 532,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1103,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1302,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 7,
   },
-  'c_bonus,_no_friendly_damage_1009': {
+  'c_bonus,_no_friendly_damage': {
     name: 'C-Bonus, No friendly damage',
     f: 0,
     w: 0,
@@ -7216,33 +15261,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 119,
-        a: 0,
-        v: 0.5,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 119,
-        a: 6,
-        v: 0.5,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 119,
-        a: 12,
-        v: 0.5,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 52,
   },
-  'c_bonus,_parthian_tactics_age_and_cost_57': {
+  'c_bonus,_parthian_tactics_age_and_cost': {
     name: 'C-Bonus, Parthian Tactics age and cost',
     f: 0,
     w: 0,
@@ -7258,7 +15281,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  'c_bonus,_pastures_1008': {
+  'c_bonus,_pastures': {
     name: 'C-Bonus, Pastures',
     f: 0,
     w: 0,
@@ -7274,7 +15297,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  'c_bonus,_relic_+1_cav_attack_1_699': {
+  'c_bonus,_relic_+1_cav_attack_1': {
     name: 'C-Bonus, Relic +1 cav attack 1',
     f: 0,
     w: 0,
@@ -7286,11 +15309,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1236,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 35,
   },
-  'c_bonus,_relic_+1_cav_attack_2_700': {
+  'c_bonus,_relic_+1_cav_attack_2': {
     name: 'C-Bonus, Relic +1 cav attack 2',
     f: 0,
     w: 0,
@@ -7302,11 +15368,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1236,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 35,
   },
-  'c_bonus,_relic_+1_cav_attack_3_701': {
+  'c_bonus,_relic_+1_cav_attack_3': {
     name: 'C-Bonus, Relic +1 cav attack 3',
     f: 0,
     w: 0,
@@ -7318,11 +15427,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1236,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 35,
   },
-  'c_bonus,_relic_+1_cav_attack_4_702': {
+  'c_bonus,_relic_+1_cav_attack_4': {
     name: 'C-Bonus, Relic +1 cav attack 4',
     f: 0,
     w: 0,
@@ -7334,11 +15486,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1236,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 35,
   },
-  'c_bonus,_reveal_castle_1386': {
+  'c_bonus,_reveal_castle': {
     name: 'C-Bonus, Reveal Castle',
     f: 0,
     w: 0,
@@ -7354,7 +15549,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_siege_and_defensive_techs_995': {
+  'c_bonus,_siege_and_defensive_techs': {
     name: 'C-Bonus, SIege and Defensive techs',
     f: 0,
     w: 0,
@@ -7370,7 +15565,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  'c_bonus,_settlement_garrison_1395': {
+  'c_bonus,_settlement_garrison': {
     name: 'C-Bonus, Settlement garrison',
     f: 0,
     w: 0,
@@ -7386,7 +15581,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  'c_bonus,_sheep_+50%_food_704': {
+  'c_bonus,_sheep_+50%_food': {
     name: 'C-Bonus, Sheep +50% food',
     f: 0,
     w: 0,
@@ -7402,7 +15597,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'c_bonus,_sheep_annex_hp_299': {
+  'c_bonus,_sheep_annex_hp': {
     name: 'C-Bonus, Sheep annex HP',
     f: 0,
     w: 0,
@@ -7414,11 +15609,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 0,
+        a: 0,
+        v: 1.0,
+        u: 890,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 33,
   },
-  'c_bonus,_sheep_bonus_age3_start_310': {
+  'c_bonus,_sheep_bonus_age3_start': {
     name: 'C-Bonus, Sheep bonus age3 start',
     f: 0,
     w: 0,
@@ -7434,7 +15637,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'c_bonus,_sheep_from_second_tc_305': {
+  'c_bonus,_sheep_from_second_tc': {
     name: 'C-Bonus, Sheep from second TC',
     f: 0,
     w: 0,
@@ -7450,7 +15653,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'c_bonus,_ship_los_339': {
+  'c_bonus,_ship_los': {
     name: 'C-Bonus, Ship LOS',
     f: 0,
     w: 0,
@@ -7466,7 +15669,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 5,
   },
-  'c_bonus,_ships_+10%_hp_560': {
+  'c_bonus,_ships_+10%_hp': {
     name: 'C-Bonus, Ships +10% HP',
     f: 0,
     w: 0,
@@ -7478,11 +15681,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 22,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 53,
+      },
+    ],
     age: 1,
     civ: 24,
   },
-  'c_bonus,_ships_+10%_faster_585': {
+  'c_bonus,_ships_+10%_faster': {
     name: 'C-Bonus, Ships +10% faster',
     f: 0,
     w: 0,
@@ -7494,11 +15733,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 22,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 53,
+      },
+    ],
     age: 1,
     civ: 27,
   },
-  'c_bonus,_ships_+15%_hp_1398': {
+  'c_bonus,_ships_+15%_hp': {
     name: 'C-Bonus, Ships +15% HP',
     f: 0,
     w: 0,
@@ -7510,11 +15785,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.0476200580596924,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0476200580596924,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0476200580596924,
+        u: -1,
+        c: 22,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0476200580596924,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.0476200580596924,
+        u: -1,
+        c: 53,
+      },
+    ],
     age: 1,
     civ: 24,
   },
-  'c_bonus,_ships_+20%_hp_1399': {
+  'c_bonus,_ships_+20%_hp': {
     name: 'C-Bonus, Ships +20% HP',
     f: 0,
     w: 0,
@@ -7526,11 +15837,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.04544997215271,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.04544997215271,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.04544997215271,
+        u: -1,
+        c: 22,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.04544997215271,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.04544997215271,
+        u: -1,
+        c: 53,
+      },
+    ],
     age: 1,
     civ: 24,
   },
-  'c_bonus,_ships_regenerate_850': {
+  'c_bonus,_ships_regenerate': {
     name: 'C-Bonus, Ships regenerate',
     f: 0,
     w: 0,
@@ -7546,7 +15893,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  'c_bonus,_siege_+10%_movement_1068': {
+  'c_bonus,_siege_+10%_movement': {
     name: 'C-Bonus, Siege +10% movement',
     f: 0,
     w: 0,
@@ -7558,11 +15905,103 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 35,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1980,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 49,
   },
-  'c_bonus,_siege_+15%_movement_1072': {
+  'c_bonus,_siege_+15%_movement': {
     name: 'C-Bonus, Siege +15% movement',
     f: 0,
     w: 0,
@@ -7574,11 +16013,103 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.045454502105713,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.045454502105713,
+        u: -1,
+        c: 35,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.045454502105713,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.045454502105713,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.045454502105713,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.04544997215271,
+        u: 1980,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 49,
   },
-  'c_bonus,_siege_units_cheaper_511': {
+  'c_bonus,_siege_units_cheaper': {
     name: 'C-Bonus, Siege Units Cheaper',
     f: 0,
     w: 0,
@@ -7594,7 +16125,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 23,
   },
-  'c_bonus,_siege_fire_rate_386': {
+  'c_bonus,_siege_fire_rate': {
     name: 'C-Bonus, Siege fire rate',
     f: 0,
     w: 0,
@@ -7606,11 +16137,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1980,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 13,
   },
-  'c_bonus,_siege_wood_discount_876': {
+  'c_bonus,_siege_wood_discount': {
     name: 'C-Bonus, Siege wood discount',
     f: 0,
     w: 0,
@@ -7626,7 +16228,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'c_bonus,_skirm_spear_+5_hp_castle_1384': {
+  'c_bonus,_skirm_spear_+5_hp_castle': {
     name: 'C-Bonus, Skirm Spear +5 HP Castle',
     f: 0,
     w: 0,
@@ -7640,17 +16242,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 6,
+        t: 4,
+        a: 0,
         v: 5.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1155,
         c: -1,
       },
     ],
     age: 1,
     civ: 58,
   },
-  'c_bonus,_skirm_spear_+5_hp_feudal_1383': {
+  'c_bonus,_skirm_spear_+5_hp_feudal': {
     name: 'C-Bonus, Skirm Spear +5 HP Feudal',
     f: 0,
     w: 0,
@@ -7664,17 +16294,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 6,
+        t: 4,
+        a: 0,
         v: 5.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1155,
         c: -1,
       },
     ],
     age: 1,
     civ: 58,
   },
-  'c_bonus,_skirm_spear_+5_hp_imperial_1385': {
+  'c_bonus,_skirm_spear_+5_hp_imperial': {
     name: 'C-Bonus, Skirm Spear +5 HP Imperial',
     f: 0,
     w: 0,
@@ -7688,17 +16346,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 6,
+        t: 4,
+        a: 0,
         v: 5.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1155,
         c: -1,
       },
     ],
     age: 1,
     civ: 58,
   },
-  'c_bonus,_skirm_and_ea_faster_attack_845': {
+  'c_bonus,_skirm_and_ea_faster_attack': {
     name: 'C-Bonus, Skirm and EA faster attack',
     f: 0,
     w: 0,
@@ -7710,11 +16396,61 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 873,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 875,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 40,
   },
-  'c_bonus,_skirms_pikes_10%_faster_710': {
+  'c_bonus,_skirms_pikes_10%_faster': {
     name: 'C-Bonus, Skirms Pikes 10% faster',
     f: 0,
     w: 0,
@@ -7726,11 +16462,75 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1788,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 35,
   },
-  'c_bonus,_skirms_pikes_cost__25%_284': {
+  'c_bonus,_skirms_pikes_cost__25%': {
     name: 'C-Bonus, Skirms Pikes cost -25%',
     f: 0,
     w: 0,
@@ -7746,7 +16546,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 7,
   },
-  'c_bonus,_skirms_spear_scout_train_25%_faster_1011': {
+  'c_bonus,_skirms_spear_scout_train_25%_faster': {
     name: 'C-Bonus, Skirms Spear Scout train 25% faster',
     f: 0,
     w: 0,
@@ -7762,7 +16562,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  'c_bonus,_skirms_spear_settlements_1382': {
+  'c_bonus,_skirms_spear_settlements': {
     name: 'C-Bonus, Skirms Spear Settlements',
     f: 0,
     w: 0,
@@ -7778,7 +16578,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_skirms_spear_settlements_castle_1406': {
+  'c_bonus,_skirms_spear_settlements_castle': {
     name: 'C-Bonus, Skirms Spear Settlements Castle',
     f: 0,
     w: 0,
@@ -7794,7 +16594,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_skirms_spear_settlements_feudal_1405': {
+  'c_bonus,_skirms_spear_settlements_feudal': {
     name: 'C-Bonus, Skirms Spear Settlements Feudal',
     f: 0,
     w: 0,
@@ -7810,7 +16610,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_skirms_spear_settlements_imperia;_1407': {
+  'c_bonus,_skirms_spear_settlements_imperia;': {
     name: 'C-Bonus, Skirms Spear Settlements Imperia;',
     f: 0,
     w: 0,
@@ -7826,7 +16626,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  'c_bonus,_spr_xport_ship_337': {
+  'c_bonus,_spr_xport_ship': {
     name: 'C-Bonus, Spr Xport Ship',
     f: 0,
     w: 0,
@@ -7838,11 +16638,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 545,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 9,
   },
-  'c_bonus,_stable_units__15%_che_586': {
+  'c_bonus,_stable_units__15%_che': {
     name: 'C-Bonus, Stable units -15% che',
     f: 0,
     w: 0,
@@ -7854,19 +16662,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 100,
-        a: 12,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 27,
   },
-  'c_bonus,_stable_units__20%_che_613': {
+  'c_bonus,_stable_units__20%_che': {
     name: 'C-Bonus, Stable units -20% che',
     f: 0,
     w: 0,
@@ -7878,19 +16678,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 100,
-        a: 12,
-        v: 0.9411764144897461,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 27,
   },
-  'c_bonus,_start_w__2_bushes_857': {
+  'c_bonus,_start_w__2_bushes': {
     name: 'C-Bonus, Start w/ 2 bushes',
     f: 0,
     w: 0,
@@ -7906,7 +16698,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  'c_bonus,_start_w__4_villagers_554': {
+  'c_bonus,_start_w__4_villagers': {
     name: 'C-Bonus, Start w/ 4 villagers',
     f: 0,
     w: 0,
@@ -7922,7 +16714,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  'c_bonus,_start_w__6_villagers_302': {
+  'c_bonus,_start_w__6_villagers': {
     name: 'C-Bonus, Start w/ 6 villagers',
     f: 0,
     w: 0,
@@ -7938,7 +16730,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  'c_bonus,_start_w__horse_238': {
+  'c_bonus,_start_w__horse': {
     name: 'C-Bonus, Start w/ Horse',
     f: 0,
     w: 0,
@@ -7954,7 +16746,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  'c_bonus,_start_w__mule_cart_925': {
+  'c_bonus,_start_w__mule_cart': {
     name: 'C-Bonus, Start w/ mule cart',
     f: 0,
     w: 0,
@@ -7970,7 +16762,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  'c_bonus,_stone_miners_generate_gold_805': {
+  'c_bonus,_stone_miners_generate_gold': {
     name: 'C-Bonus, Stone Miners generate gold',
     f: 0,
     w: 0,
@@ -7986,7 +16778,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  'c_bonus,_super_dock_349': {
+  'c_bonus,_super_dock': {
     name: 'C-Bonus, Super Dock',
     f: 0,
     w: 0,
@@ -7998,11 +16790,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 133,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 805,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 806,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 807,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 808,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 8,
   },
-  'c_bonus,_tc_+_atk_336': {
+  'c_bonus,_tc_+_atk': {
     name: 'C-Bonus, TC + Atk',
     f: 0,
     w: 0,
@@ -8018,7 +16867,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  'c_bonus,_tc_cost_1_2_stone_694': {
+  'c_bonus,_tc_cost_1_2_stone': {
     name: 'C-Bonus, TC Cost 1/2 Stone',
     f: 0,
     w: 0,
@@ -8034,7 +16883,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 32,
   },
-  'c_bonus,_tc_productivity_342': {
+  'c_bonus,_tc_productivity': {
     name: 'C-Bonus, TC Productivity',
     f: 0,
     w: 0,
@@ -8046,11 +16895,152 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 109,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 618,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 619,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 620,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 621,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 614,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 615,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 616,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 617,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 481,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 482,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 483,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 484,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 611,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 612,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 613,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 597,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 8,
   },
-  'c_bonus,_tc_stone_cost_158': {
+  'c_bonus,_tc_stone_cost': {
     name: 'C-Bonus, TC Stone cost',
     f: 0,
     w: 0,
@@ -8066,7 +17056,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 21,
   },
-  'c_bonus,_tc_wood_cost_156': {
+  'c_bonus,_tc_wood_cost': {
     name: 'C-Bonus, TC Wood cost',
     f: 0,
     w: 0,
@@ -8082,7 +17072,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 26,
   },
-  'c_bonus,_tc_and_dock_work_rate_409': {
+  'c_bonus,_tc_and_dock_work_rate': {
     name: 'C-Bonus, TC and Dock work rate',
     f: 0,
     w: 0,
@@ -8098,7 +17088,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  'c_bonus,_tc_constr_time_159': {
+  'c_bonus,_tc_constr_time': {
     name: 'C-Bonus, TC constr time',
     f: 0,
     w: 0,
@@ -8114,7 +17104,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  'c_bonus,_tec_cost_350': {
+  'c_bonus,_tec_cost': {
     name: 'C-Bonus, Tec Cost',
     f: 0,
     w: 0,
@@ -8162,7 +17152,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  'c_bonus,_tech_reward_186': {
+  'c_bonus,_tech_reward': {
     name: 'C-Bonus, Tech reward',
     f: 0,
     w: 0,
@@ -8178,7 +17168,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  'c_bonus,_techs__15%_cost_304': {
+  'c_bonus,_techs__15%_cost': {
     name: 'C-Bonus, Techs -15% cost',
     f: 0,
     w: 0,
@@ -8194,7 +17184,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  'c_bonus,_tower_arrows_333': {
+  'c_bonus,_tower_arrows': {
     name: 'C-Bonus, Tower Arrows',
     f: 0,
     w: 0,
@@ -8226,7 +17216,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  'c_bonus,_unit_cost_35%_345': {
+  'c_bonus,_unit_cost_35%': {
     name: 'C-Bonus, Unit Cost 35%',
     f: 0,
     w: 0,
@@ -8242,7 +17232,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  'c_bonus,_unit_cost_50%_346': {
+  'c_bonus,_unit_cost_50%': {
     name: 'C-Bonus, Unit Cost 50%',
     f: 0,
     w: 0,
@@ -8258,7 +17248,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  'c_bonus,_unit_refund_1396': {
+  'c_bonus,_unit_refund': {
     name: 'C-Bonus, Unit Refund',
     f: 0,
     w: 0,
@@ -8274,7 +17264,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  'c_bonus,_units_cost_less_wood_390': {
+  'c_bonus,_units_cost_less_wood': {
     name: 'C-Bonus, Units cost less wood',
     f: 0,
     w: 0,
@@ -8286,26 +17276,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 104,
-        a: 0,
-        v: 0.5,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 104,
-        a: 6,
-        v: 0.5,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 18,
   },
-  'c_bonus,_university_+80%_faste_561': {
+  'c_bonus,_university_+80%_faste': {
     name: 'C-Bonus, University +80% faste',
     f: 0,
     w: 0,
@@ -8321,7 +17296,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  'c_bonus,_vietnamese_vision_665': {
+  'c_bonus,_vietnamese_vision': {
     name: 'C-Bonus, Vietnamese Vision',
     f: 0,
     w: 0,
@@ -8337,7 +17312,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  'c_bonus,_villager_fervor_804': {
+  'c_bonus,_villager_fervor': {
     name: 'C-Bonus, Villager Fervor',
     f: 0,
     w: 0,
@@ -8352,16 +17327,16 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 4,
+        a: 5,
         v: 1.149999976158142,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 39,
   },
-  'c_bonus,_villager_sanctity_803': {
+  'c_bonus,_villager_sanctity': {
     name: 'C-Bonus, Villager Sanctity',
     f: 0,
     w: 0,
@@ -8375,17 +17350,17 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 4,
+        t: 4,
+        a: 0,
         v: 15.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 39,
   },
-  'c_bonus,_villager_cost_age1_496': {
+  'c_bonus,_villager_cost_age1': {
     name: 'C-Bonus, Villager cost Age1',
     f: 0,
     w: 0,
@@ -8401,7 +17376,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  'c_bonus,_villager_cost_age2_497': {
+  'c_bonus,_villager_cost_age2': {
     name: 'C-Bonus, Villager cost Age2',
     f: 0,
     w: 0,
@@ -8417,7 +17392,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  'c_bonus,_villager_cost_age3_498': {
+  'c_bonus,_villager_cost_age3': {
     name: 'C-Bonus, Villager cost Age3',
     f: 0,
     w: 0,
@@ -8433,7 +17408,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  'c_bonus,_villager_cost_age4_553': {
+  'c_bonus,_villager_cost_age4': {
     name: 'C-Bonus, Villager cost Age4',
     f: 0,
     w: 0,
@@ -8449,7 +17424,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  'c_bonus,_villager_regeneration_792': {
+  'c_bonus,_villager_regeneration': {
     name: 'C-Bonus, Villager regeneration',
     f: 0,
     w: 0,
@@ -8461,19 +17436,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 4,
-        v: 5.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 38,
   },
-  'c_bonus,_villager_regeneration_age2_809': {
+  'c_bonus,_villager_regeneration_age2': {
     name: 'C-Bonus, Villager regeneration age2',
     f: 0,
     w: 0,
@@ -8485,19 +17452,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 4,
-        v: 5.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 38,
   },
-  'c_bonus,_villager_regeneration_age3_810': {
+  'c_bonus,_villager_regeneration_age3': {
     name: 'C-Bonus, Villager regeneration age3',
     f: 0,
     w: 0,
@@ -8509,19 +17468,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 4,
-        v: 5.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 38,
   },
-  'c_bonus,_villager_regeneration_age4_811': {
+  'c_bonus,_villager_regeneration_age4': {
     name: 'C-Bonus, Villager regeneration age4',
     f: 0,
     w: 0,
@@ -8533,19 +17484,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 4,
-        v: 5.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 38,
   },
-  'c_bonus,_villagers_10%_faster_600': {
+  'c_bonus,_villagers_10%_faster': {
     name: 'C-Bonus, Villagers 10% faster',
     f: 0,
     w: 0,
@@ -8560,16 +17503,16 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 4,
+        a: 5,
         v: 1.0476189851760864,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 27,
   },
-  'c_bonus,_villagers_5%_faster_584': {
+  'c_bonus,_villagers_5%_faster': {
     name: 'C-Bonus, Villagers 5% faster',
     f: 0,
     w: 0,
@@ -8584,16 +17527,16 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 4,
+        a: 5,
         v: 1.0499999523162842,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: 27,
   },
-  'c_bonus,_villagers_in_age2_847': {
+  'c_bonus,_villagers_in_age2': {
     name: 'C-Bonus, Villagers in age2',
     f: 0,
     w: 0,
@@ -8609,7 +17552,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  'c_bonus,_villagers_in_age3_848': {
+  'c_bonus,_villagers_in_age3': {
     name: 'C-Bonus, Villagers in age3',
     f: 0,
     w: 0,
@@ -8625,7 +17568,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  'c_bonus,_villagers_in_age4_849': {
+  'c_bonus,_villagers_in_age4': {
     name: 'C-Bonus, Villagers in age4',
     f: 0,
     w: 0,
@@ -8641,7 +17584,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  'c_bonus,_villagers_work_faster_887': {
+  'c_bonus,_villagers_work_faster': {
     name: 'C-Bonus, Villagers work faster',
     f: 0,
     w: 0,
@@ -8653,19 +17596,11 @@ export const techs: Record<string, TechData> = {
       techs: [483],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0499999523162842,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 43,
   },
-  'c_bonus,_warship_cost_age2_395': {
+  'c_bonus,_warship_cost_age2': {
     name: 'C-Bonus, Warship cost age2',
     f: 0,
     w: 0,
@@ -8681,7 +17616,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  'c_bonus,_warship_cost_age3_501': {
+  'c_bonus,_warship_cost_age3': {
     name: 'C-Bonus, Warship cost age3',
     f: 0,
     w: 0,
@@ -8697,7 +17632,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  'c_bonus,_warship_cost_age4_502': {
+  'c_bonus,_warship_cost_age4': {
     name: 'C-Bonus, Warship cost age4',
     f: 0,
     w: 0,
@@ -8713,7 +17648,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  'c_bonus,_archer_range_+1_403': {
+  'c_bonus,_archer_range_+1': {
     name: 'C-Bonus, archer range +1',
     f: 0,
     w: 0,
@@ -8727,31 +17662,38 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 12,
-        a: 0,
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 7,
         c: -1,
       },
       {
-        t: 1,
-        a: 0,
-        v: 1.0,
-        u: -1,
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 6,
         c: -1,
       },
       {
-        t: 23,
-        a: 0,
-        v: 1.0,
-        u: -1,
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 1155,
         c: -1,
       },
     ],
     age: 1,
     civ: 1,
   },
-  'c_bonus,_buildings_cost__15%_w_595': {
+  'c_bonus,_buildings_cost__15%_w': {
     name: 'C-Bonus, buildings cost -15% w',
     f: 0,
     w: 0,
@@ -8763,19 +17705,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 104,
-        a: 3,
-        v: 0.8500000238418579,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 26,
   },
-  'c_bonus,_cav_&_fire_lancer_+25%_attack_994': {
+  'c_bonus,_cav_&_fire_lancer_+25%_attack': {
     name: 'C-Bonus, cav & Fire Lancer +25% attack',
     f: 0,
     w: 0,
@@ -8789,17 +17723,52 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 10,
-        a: 12,
+        t: 5,
+        a: 10,
         v: 0.800000011920929,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 1903,
         c: -1,
       },
     ],
     age: 1,
     civ: 52,
   },
-  'c_bonus,_cheaper_archer_upg_1067': {
+  'c_bonus,_cheaper_archer_upg': {
     name: 'C-Bonus, cheaper archer upg',
     f: 0,
     w: 0,
@@ -8815,7 +17784,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  'c_bonus,_free_careening,_dry_dock_1079': {
+  'c_bonus,_free_careening,_dry_dock': {
     name: 'C-Bonus, free Careening, Dry Dock',
     f: 0,
     w: 0,
@@ -8831,7 +17800,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 50,
   },
-  'c_bonus,_free_lumberjack_upgra_645': {
+  'c_bonus,_free_lumberjack_upgra': {
     name: 'C-Bonus, free lumberjack upgra',
     f: 0,
     w: 0,
@@ -8847,7 +17816,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 30,
   },
-  'c_bonus,_inf_+1_armor_castle_592': {
+  'c_bonus,_inf_+1_armor_castle': {
     name: 'C-Bonus, inf +1 armor castle',
     f: 0,
     w: 0,
@@ -8859,11 +17828,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 752,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 753,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1788,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 26,
   },
-  'c_bonus,_inf_+1_armor_feudal_591': {
+  'c_bonus,_inf_+1_armor_feudal': {
     name: 'C-Bonus, inf +1 armor feudal',
     f: 0,
     w: 0,
@@ -8875,11 +17950,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 752,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 753,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1788,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 26,
   },
-  'c_bonus,_inf_+1_armor_imp_593': {
+  'c_bonus,_inf_+1_armor_imp': {
     name: 'C-Bonus, inf +1 armor imp',
     f: 0,
     w: 0,
@@ -8891,11 +18072,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 752,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 753,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1788,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 26,
   },
-  'c_bonus,_inf_+1_attack_castle_647': {
+  'c_bonus,_inf_+1_attack_castle': {
     name: 'C-Bonus, inf +1 attack castle',
     f: 0,
     w: 0,
@@ -8909,17 +18196,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 30,
   },
-  'c_bonus,_inf_+1_attack_dark_633': {
+  'c_bonus,_inf_+1_attack_dark': {
     name: 'C-Bonus, inf +1 attack dark',
     f: 0,
     w: 0,
@@ -8935,7 +18229,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 30,
   },
-  'c_bonus,_inf_+1_attack_feudal_646': {
+  'c_bonus,_inf_+1_attack_feudal': {
     name: 'C-Bonus, inf +1 attack feudal',
     f: 0,
     w: 0,
@@ -8949,17 +18243,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 30,
   },
-  'c_bonus,_inf_+1_attack_imp_648': {
+  'c_bonus,_inf_+1_attack_imp': {
     name: 'C-Bonus, inf +1 attack imp',
     f: 0,
     w: 0,
@@ -8973,17 +18274,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 1,
     civ: 30,
   },
-  'c_bonus,_inf_regen_castle_1086': {
+  'c_bonus,_inf_regen_castle': {
     name: 'C-Bonus, inf regen Castle',
     f: 0,
     w: 0,
@@ -8995,19 +18303,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 6,
-        v: 5.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 50,
   },
-  'c_bonus,_inf_regen_feudal_1085': {
+  'c_bonus,_inf_regen_feudal': {
     name: 'C-Bonus, inf regen Feudal',
     f: 0,
     w: 0,
@@ -9019,19 +18319,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 6,
-        v: 10.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 50,
   },
-  'c_bonus,_inf_regen_imp_1087': {
+  'c_bonus,_inf_regen_imp': {
     name: 'C-Bonus, inf regen Imp',
     f: 0,
     w: 0,
@@ -9043,19 +18335,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 109,
-        a: 6,
-        v: 15.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 50,
   },
-  'c_bonus,_monastery_techs__50%_cost_649': {
+  'c_bonus,_monastery_techs__50%_cost': {
     name: 'C-Bonus, monastery techs -50% cost',
     f: 0,
     w: 0,
@@ -9071,7 +18355,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 30,
   },
-  'c_bonus,_start_with_eagle_70': {
+  'c_bonus,_start_with_eagle': {
     name: 'C-Bonus, start with eagle',
     f: 0,
     w: 0,
@@ -9087,7 +18371,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 21,
   },
-  'c_bonus:_free_hussars_95': {
+  'c_bonus:_free_hussars': {
     name: 'C-Bonus: free Hussars',
     f: 0,
     w: 0,
@@ -9103,7 +18387,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  caciques_1392: {
+  caciques: {
     name: 'Caciques',
     f: 400,
     w: 0,
@@ -9115,11 +18399,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2550,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2588,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 59,
   },
-  camel_archer_make_avail_564: {
+  camel_archer_make_avail: {
     name: 'Camel Archer (make avail)',
     f: 0,
     w: 0,
@@ -9135,7 +18455,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 27,
   },
-  camel_scout_make_avail_858: {
+  camel_scout_make_avail: {
     name: 'Camel Scout (make avail)',
     f: 0,
     w: 0,
@@ -9151,7 +18471,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  cannon_galleon_37: {
+  cannon_galleon: {
     name: 'Cannon Galleon',
     f: 0,
     w: 0,
@@ -9167,7 +18487,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cao_cao_make_avail_1038: {
+  cao_cao_make_avail: {
     name: 'Cao Cao (make avail)',
     f: 0,
     w: 0,
@@ -9183,7 +18503,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  capped_ram_96: {
+  capped_ram: {
     name: 'Capped Ram',
     f: 300,
     w: 0,
@@ -9199,7 +18519,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  caravan_48: {
+  caravan: {
     name: 'Caravan',
     f: 200,
     w: 0,
@@ -9211,11 +18531,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 17,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 128,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 204,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 846,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.2000000476837158,
+        u: 2149,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  caravanserai_make_avail_518: {
+  caravanserai_make_avail: {
     name: 'Caravanserai (make avail)',
     f: 0,
     w: 0,
@@ -9247,7 +18603,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  caravel_make_avail_596: {
+  caravel_make_avail: {
     name: 'Caravel (make avail)',
     f: 0,
     w: 0,
@@ -9263,7 +18619,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  careening_374: {
+  careening: {
     name: 'Careening',
     f: 100,
     w: 0,
@@ -9275,11 +18631,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 22,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  carrack_904: {
+  carrack: {
     name: 'Carrack',
     f: 0,
     w: 0,
@@ -9295,7 +18680,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cartography_19: {
+  cartography: {
     name: 'Cartography',
     f: 0,
     w: 0,
@@ -9311,7 +18696,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  carvel_hull_907: {
+  carvel_hull: {
     name: 'Carvel Hull',
     f: 350,
     w: 200,
@@ -9323,11 +18708,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 22,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  castle____age_three_137: {
+  castle____age_three: {
     name: 'Castle -- Age Three',
     f: 0,
     w: 0,
@@ -9343,7 +18757,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  castle_age_102: {
+  castle_age: {
     name: 'Castle Age',
     f: 800,
     w: 0,
@@ -9355,11 +18769,159 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 25.0,
+        u: 1658,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1658,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1658,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1658,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 25.0,
+        u: 1660,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1660,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1660,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1660,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2000000476837158,
+        u: 2414,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2414,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2414,
+        c: -1,
+      },
+    ],
     age: 2,
     civ: -1,
   },
-  castle_age_start_309: {
+  castle_age_start: {
     name: 'Castle Age start',
     f: 1,
     w: 0,
@@ -9375,7 +18937,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  castle_barracks_tech_requirement_951: {
+  castle_barracks_tech_requirement: {
     name: 'Castle Barracks tech requirement',
     f: 0,
     w: 0,
@@ -9391,7 +18953,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  castle_built_266: {
+  castle_built: {
     name: 'Castle built',
     f: 0,
     w: 0,
@@ -9407,7 +18969,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  castle_eco_tech_requirement_759: {
+  castle_eco_tech_requirement: {
     name: 'Castle eco tech requirement',
     f: 0,
     w: 0,
@@ -9423,7 +18985,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  cataphract_make_avail_267: {
+  cataphract_make_avail: {
     name: 'Cataphract (make avail)',
     f: 0,
     w: 0,
@@ -9439,7 +19001,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 7,
   },
-  catapult_galleon_make_avail_913: {
+  catapult_galleon_make_avail: {
     name: 'Catapult Galleon (make avail)',
     f: 0,
     w: 0,
@@ -9455,7 +19017,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cav_archer_make_avail_192: {
+  cav_archer_make_avail: {
     name: 'Cav Archer (make avail)',
     f: 0,
     w: 0,
@@ -9471,7 +19033,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cavalier_209: {
+  cavalier: {
     name: 'Cavalier',
     f: 300,
     w: 0,
@@ -9487,7 +19049,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cavalier_requirement_768: {
+  cavalier_requirement: {
     name: 'Cavalier requirement',
     f: 0,
     w: 0,
@@ -9503,7 +19065,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  celts_541: {
+  celts: {
     name: 'Celts',
     f: 0,
     w: 1,
@@ -9519,7 +19081,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 13,
   },
-  centurion_make_avail_881: {
+  centurion_make_avail: {
     name: 'Centurion (make avail)',
     f: 0,
     w: 0,
@@ -9535,7 +19097,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 43,
   },
-  chain_barding_armor_82: {
+  chain_barding_armor: {
     name: 'Chain Barding Armor',
     f: 250,
     w: 0,
@@ -9549,24 +19111,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1738,
         c: -1,
       },
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2557,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  chain_mail_armor_76: {
+  chain_mail_armor: {
     name: 'Chain Mail Armor',
     f: 200,
     w: 0,
@@ -9580,24 +19212,80 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  'chain_mail_for_cavalry,_macedonian_civ_bonus_1272': {
+  'chain_mail_for_cavalry,_macedonian_civ_bonus': {
     name: 'Chain Mail for Cavalry, Macedonian Civ Bonus',
     f: 0,
     w: 0,
@@ -9611,24 +19299,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1738,
         c: -1,
       },
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2557,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 1,
     civ: 54,
   },
-  chakram_thrower_make_avail_829: {
+  chakram_thrower_make_avail: {
     name: 'Chakram Thrower (make avail)',
     f: 0,
     w: 0,
@@ -9644,7 +19402,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  champi_runner_1402: {
+  champi_runner: {
     name: 'Champi Runner',
     f: 100,
     w: 0,
@@ -9660,7 +19418,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  champi_scout_make_avail_1350: {
+  champi_scout_make_avail: {
     name: 'Champi Scout (Make avail)',
     f: 0,
     w: 0,
@@ -9676,7 +19434,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  champi_warrior_1351: {
+  champi_warrior: {
     name: 'Champi Warrior',
     f: 125,
     w: 0,
@@ -9692,7 +19450,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  champion_264: {
+  champion: {
     name: 'Champion',
     f: 650,
     w: 0,
@@ -9724,7 +19482,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  champion_requirement_954: {
+  champion_requirement: {
     name: 'Champion requirement',
     f: 0,
     w: 0,
@@ -9740,7 +19498,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  change_tc_constr_time1_723: {
+  change_tc_constr_time1: {
     name: 'Change TC constr time1',
     f: 0,
     w: 0,
@@ -9756,7 +19514,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  change_tc_constr_time2_724: {
+  change_tc_constr_time2: {
     name: 'Change TC constr time2',
     f: 0,
     w: 0,
@@ -9772,7 +19530,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  chatras_628: {
+  chatras: {
     name: 'Chatras',
     f: 250,
     w: 0,
@@ -9784,11 +19542,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 100.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 100.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 100.0,
+        u: 239,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 100.0,
+        u: 558,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 31,
   },
-  chemistry_47: {
+  chemistry: {
     name: 'Chemistry',
     f: 300,
     w: 0,
@@ -9802,24 +19589,612 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 0,
+        t: 4,
+        a: 9,
         v: 769.0,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
         u: -1,
         c: -1,
       },
       {
-        t: 130,
-        a: 4,
-        v: -0.5,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
         u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 768.0,
+        u: 73,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 54,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 280,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 550,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 588,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 682,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 683,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1126,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1128,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1167,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1168,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1830,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2154,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2156,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2152,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2138,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2139,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1936,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1980,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1982,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1983,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1931,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1971,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1938,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1939,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1934,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 1935,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2631,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2632,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 133,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2575,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2633,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1548,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  'chemistry_+_torsion_609': {
+  'chemistry_+_torsion': {
     name: 'Chemistry + Torsion',
     f: 0,
     w: 0,
@@ -9835,7 +20210,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  chemistry_researched_for_vedic_teachings_1314: {
+  chemistry_researched_for_vedic_teachings: {
     name: 'Chemistry Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -9847,19 +20222,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  chieftains_463: {
+  chieftains: {
     name: 'Chieftains',
     f: 600,
     w: 0,
@@ -9873,24 +20240,38 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 2053.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7684.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2053.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 7684.0,
-        u: -1,
+        u: 1831,
         c: -1,
       },
     ],
     age: 3,
     civ: 11,
   },
-  chinese_534: {
+  chinese: {
     name: 'Chinese',
     f: 0,
     w: 1,
@@ -9906,7 +20287,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  chinese_team_bonus_232: {
+  chinese_team_bonus: {
     name: 'Chinese team bonus',
     f: 1,
     w: 0,
@@ -9922,7 +20303,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  chivalry_493: {
+  chivalry: {
     name: 'Chivalry',
     f: 0,
     w: 600,
@@ -9938,7 +20319,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 2,
   },
-  chu_ko_nu_make_avail_268: {
+  chu_ko_nu_make_avail: {
     name: 'Chu-Ko-Nu (make avail)',
     f: 0,
     w: 0,
@@ -9954,7 +20335,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  church_make_avail_210: {
+  church_make_avail: {
     name: 'Church (make avail)',
     f: 0,
     w: 0,
@@ -9970,7 +20351,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cilician_fleet_922: {
+  cilician_fleet: {
     name: 'Cilician Fleet',
     f: 0,
     w: 350,
@@ -9982,11 +20363,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1795,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 44,
   },
-  circumnavigation_1404: {
+  circumnavigation: {
     name: 'Circumnavigation',
     f: 250,
     w: 150,
@@ -10002,7 +20412,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 24,
   },
-  citadels_7: {
+  citadels: {
     name: 'Citadels',
     f: 0,
     w: 600,
@@ -10014,11 +20424,61 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 259.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4355.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 1830,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 24,
+        v: 0.25,
+        u: 82,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 8,
   },
-  'citadels_+_chemistry_571': {
+  'citadels_+_chemistry': {
     name: 'Citadels + Chemistry',
     f: 0,
     w: 0,
@@ -10034,7 +20494,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  civ_specific_castle_age_prereq_1218: {
+  civ_specific_castle_age_prereq: {
     name: 'Civ specific Castle Age prereq',
     f: 0,
     w: 0,
@@ -10050,7 +20510,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  clinker_construction_908: {
+  clinker_construction: {
     name: 'Clinker Construction',
     f: 150,
     w: 100,
@@ -10062,11 +20522,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 22,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  cog_180: {
+  cog: {
     name: 'Cog',
     f: 0,
     w: 0,
@@ -10082,7 +20571,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  coiled_serpent_array_1070: {
+  coiled_serpent_array: {
     name: 'Coiled Serpent Array',
     f: 350,
     w: 0,
@@ -10098,7 +20587,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 49,
   },
-  coinage_23: {
+  coinage: {
     name: 'Coinage',
     f: 200,
     w: 0,
@@ -10114,7 +20603,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  comitatenses_884: {
+  comitatenses: {
     name: 'Comitatenses',
     f: 700,
     w: 0,
@@ -10130,7 +20619,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 43,
   },
-  composite_bowman_make_avail_917: {
+  composite_bowman_make_avail: {
     name: 'Composite Bowman (make avail)',
     f: 0,
     w: 0,
@@ -10146,7 +20635,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  condottiero_make_avail_522: {
+  condottiero_make_avail: {
     name: 'Condottiero (make avail)',
     f: 1,
     w: 0,
@@ -10162,7 +20651,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  conquistador_make_avail_58: {
+  conquistador_make_avail: {
     name: 'Conquistador (make avail)',
     f: 0,
     w: 0,
@@ -10178,7 +20667,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  conscription_315: {
+  conscription: {
     name: 'Conscription',
     f: 150,
     w: 0,
@@ -10194,7 +20683,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  conversion_enabler_234: {
+  conversion_enabler: {
     name: 'Conversion enabler',
     f: 0,
     w: 0,
@@ -10210,7 +20699,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  convert_ships_317: {
+  convert_ships: {
     name: 'Convert Ships',
     f: 0,
     w: 0,
@@ -10226,7 +20715,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  corvinian_army_514: {
+  corvinian_army: {
     name: 'Corvinian Army',
     f: 200,
     w: 0,
@@ -10242,7 +20731,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 22,
   },
-  cotton_armors_4: {
+  cotton_armors: {
     name: 'Cotton Armors',
     f: 750,
     w: 0,
@@ -10254,11 +20743,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 40.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 40.0,
+        u: 752,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 40.0,
+        u: 753,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 16,
   },
-  counterweights_454: {
+  counterweights: {
     name: 'Counterweights',
     f: 650,
     w: 0,
@@ -10270,11 +20781,264 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 883.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 883.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 280,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 280,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 280,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 280,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 550,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 550,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 550,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 550,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 588,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 588,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 588,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 588,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 1934,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 1934,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 1934,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 1934,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 1935,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 1935,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 1935,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 1935,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2931.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1139.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5235.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9587.0,
+        u: 1948,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 9,
   },
-  coustillier_make_avail_750: {
+  coustillier_make_avail: {
     name: 'Coustillier (make avail)',
     f: 0,
     w: 0,
@@ -10290,7 +21054,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  crenellations_11: {
+  crenellations: {
     name: 'Crenellations',
     f: 600,
     w: 0,
@@ -10304,17 +21068,17 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 130,
-        a: 6,
-        v: -2.5,
-        u: -1,
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 82,
         c: -1,
       },
     ],
     age: 4,
     civ: 4,
   },
-  crop_rotation_12: {
+  crop_rotation: {
     name: 'Crop Rotation',
     f: 250,
     w: 250,
@@ -10330,7 +21094,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  crop_rotation_requirement_766: {
+  crop_rotation_requirement: {
     name: 'Crop Rotation requirement',
     f: 0,
     w: 0,
@@ -10346,7 +21110,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  crossbow_100: {
+  crossbow: {
     name: 'Crossbow',
     f: 175,
     w: 0,
@@ -10362,7 +21126,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cuman_merc_part2_707: {
+  cuman_merc_part2: {
     name: 'Cuman Merc Part2',
     f: 0,
     w: 0,
@@ -10378,7 +21142,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  cuman_mercenaries_690: {
+  cuman_mercenaries: {
     name: 'Cuman Mercenaries',
     f: 650,
     w: 0,
@@ -10394,7 +21158,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 34,
   },
-  cuman_siege_workshop_built_295: {
+  cuman_siege_workshop_built: {
     name: 'Cuman Siege Workshop built',
     f: 0,
     w: 0,
@@ -10410,7 +21174,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  cumans_675: {
+  cumans: {
     name: 'Cumans',
     f: 0,
     w: 1,
@@ -10426,7 +21190,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  curare_1393: {
+  curare: {
     name: 'Curare',
     f: 650,
     w: 0,
@@ -10442,7 +21206,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 59,
   },
-  dark_age_104: {
+  dark_age: {
     name: 'Dark Age',
     f: 0,
     w: 0,
@@ -10458,7 +21222,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  dark_age_naval_building_1221: {
+  dark_age_naval_building: {
     name: 'Dark Age Naval building',
     f: 0,
     w: 0,
@@ -10474,7 +21238,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  defensive_emplacement_1323: {
+  defensive_emplacement: {
     name: 'Defensive Emplacement',
     f: 0,
     w: 100,
@@ -10490,7 +21254,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  defensive_satrapy_upgrade_1197: {
+  defensive_satrapy_upgrade: {
     name: 'Defensive Satrapy Upgrade',
     f: 0,
     w: 100,
@@ -10506,7 +21270,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  'dekate,_athenian_unique_tech_1120': {
+  'dekate,_athenian_unique_tech': {
     name: 'Dekate, Athenian Unique Tech',
     f: 300,
     w: 0,
@@ -10522,7 +21286,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  'delian_league,_athenian_unique_tech_1123': {
+  'delian_league,_athenian_unique_tech': {
     name: 'Delian League, Athenian Unique Tech',
     f: 0,
     w: 500,
@@ -10538,7 +21302,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  demo_galley_make_avail_605: {
+  demo_galley_make_avail: {
     name: 'Demo Galley (make avail)',
     f: 0,
     w: 0,
@@ -10554,7 +21318,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  democracy_1203: {
+  democracy: {
     name: 'Democracy',
     f: 0,
     w: 0,
@@ -10566,19 +21330,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 105,
-        a: 0,
-        v: 0.800000011920929,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 47,
   },
-  demolition_ship_905: {
+  demolition_ship: {
     name: 'Demolition Ship',
     f: 0,
     w: 50,
@@ -10594,7 +21350,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  detinets_455: {
+  detinets: {
     name: 'Detinets',
     f: 0,
     w: 400,
@@ -10610,7 +21366,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 23,
   },
-  devotion_46: {
+  devotion: {
     name: 'Devotion',
     f: 100,
     w: 0,
@@ -10626,7 +21382,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  'dii_plunderers,_thracian_unique_tech_1297': {
+  'dii_plunderers,_thracian_unique_tech': {
     name: 'Dii Plunderers, Thracian Unique Tech',
     f: 0,
     w: 300,
@@ -10642,7 +21398,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  disable_spies_regicide_only_117: {
+  disable_spies_regicide_only: {
     name: 'Disable Spies (Regicide only)',
     f: 0,
     w: 0,
@@ -10658,7 +21414,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  domestication_1014: {
+  domestication: {
     name: 'Domestication',
     f: 50,
     w: 100,
@@ -10674,7 +21430,7 @@ export const techs: Record<string, TechData> = {
     age: 2,
     civ: 53,
   },
-  donjon_built_291: {
+  donjon_built: {
     name: 'Donjon built',
     f: 0,
     w: 0,
@@ -10690,7 +21446,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  double_crossbow_623: {
+  double_crossbow: {
     name: 'Double Crossbow',
     f: 700,
     w: 0,
@@ -10706,7 +21462,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 28,
   },
-  double_bit_axe_202: {
+  double_bit_axe: {
     name: 'Double-Bit Axe',
     f: 100,
     w: 50,
@@ -10722,7 +21478,7 @@ export const techs: Record<string, TechData> = {
     age: 2,
     civ: -1,
   },
-  dragon_ship_1010: {
+  dragon_ship: {
     name: 'Dragon Ship',
     f: 0,
     w: 0,
@@ -10738,7 +21494,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  dravidians_822: {
+  dravidians: {
     name: 'Dravidians',
     f: 0,
     w: 1,
@@ -10754,7 +21510,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  drill_6: {
+  drill: {
     name: 'Drill',
     f: 0,
     w: 500,
@@ -10766,11 +21522,61 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.5,
+        u: 1980,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 12,
   },
-  dromon_make_avail_886: {
+  dromon_make_avail: {
     name: 'Dromon (make avail)',
     f: 0,
     w: 0,
@@ -10786,7 +21592,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  drums_1162: {
+  drums: {
     name: 'Drums',
     f: 300,
     w: 0,
@@ -10798,11 +21604,61 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: -1,
+        c: 22,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8695650100708008,
+        u: 2133,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8695650100708008,
+        u: 2134,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8695650100708008,
+        u: 2135,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  druzhina_513: {
+  druzhina: {
     name: 'Druzhina',
     f: 900,
     w: 0,
@@ -10814,19 +21670,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 22,
-        a: 6,
-        v: 0.5,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 4,
     civ: 23,
   },
-  dry_dock_375: {
+  dry_dock: {
     name: 'Dry Dock',
     f: 200,
     w: 0,
@@ -10838,11 +21686,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 22,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  dupl_castle_age_113: {
+  dupl_castle_age: {
     name: 'Dupl. Castle Age',
     f: 0,
     w: 0,
@@ -10858,7 +21735,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  dupl_dark_age_1208: {
+  dupl_dark_age: {
     name: 'Dupl. Dark Age',
     f: 0,
     w: 0,
@@ -10874,7 +21751,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  dupl_feudal_age_1209: {
+  dupl_feudal_age: {
     name: 'Dupl. Feudal Age',
     f: 0,
     w: 0,
@@ -10890,7 +21767,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  dupl_imperial_age_115: {
+  dupl_imperial_age: {
     name: 'Dupl. Imperial Age',
     f: 0,
     w: 0,
@@ -10906,7 +21783,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  eagle_warrior_make_avail_433: {
+  eagle_warrior_make_avail: {
     name: 'Eagle Warrior (make avail)',
     f: 0,
     w: 0,
@@ -10922,7 +21799,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'early_battle_drills_requirement,_thracian_civ_bonus_1295': {
+  'early_battle_drills_requirement,_thracian_civ_bonus': {
     name: 'Early Battle Drills requirement, Thracian Civ Bonus',
     f: 0,
     w: 0,
@@ -10938,7 +21815,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  eastern_settlement_784: {
+  eastern_settlement: {
     name: 'Eastern Settlement',
     f: 300,
     w: 0,
@@ -10950,11 +21827,152 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 5,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 36,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 46,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 771,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 773,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 557,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1001,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1003,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 831,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 832,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1709,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1704,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1706,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1903,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1911,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 39,
   },
-  economic_satrapy_upgrade_1195: {
+  economic_satrapy_upgrade: {
     name: 'Economic Satrapy Upgrade',
     f: 75,
     w: 125,
@@ -10970,7 +21988,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  'eisphora,_athenian_unique_tech_1122': {
+  'eisphora,_athenian_unique_tech': {
     name: 'Eisphora, Athenian Unique Tech',
     f: 500,
     w: 0,
@@ -10986,7 +22004,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  elephant_archer_make_avail_480: {
+  elephant_archer_make_avail: {
     name: 'Elephant Archer (make avail)',
     f: 0,
     w: 0,
@@ -11002,7 +22020,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_arambai_619: {
+  elite_arambai: {
     name: 'Elite Arambai',
     f: 1000,
     w: 0,
@@ -11018,7 +22036,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 30,
   },
-  elite_armored_elephant_838: {
+  elite_armored_elephant: {
     name: 'Elite Armored Elephant',
     f: 850,
     w: 0,
@@ -11034,7 +22052,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_ballista_elephant_615: {
+  elite_ballista_elephant: {
     name: 'Elite Ballista Elephant',
     f: 1000,
     w: 0,
@@ -11050,7 +22068,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 28,
   },
-  elite_battle_elephant_631: {
+  elite_battle_elephant: {
     name: 'Elite Battle Elephant',
     f: 1100,
     w: 0,
@@ -11066,7 +22084,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_berserk_398: {
+  elite_berserk: {
     name: 'Elite Berserk',
     f: 1075,
     w: 0,
@@ -11082,7 +22100,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  elite_blackwood_archer_1389: {
+  elite_blackwood_archer: {
     name: 'Elite Blackwood Archer',
     f: 600,
     w: 0,
@@ -11098,7 +22116,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  elite_bolas_rider_1378: {
+  elite_bolas_rider: {
     name: 'Elite Bolas Rider',
     f: 800,
     w: 0,
@@ -11114,7 +22132,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  elite_camel_archer_565: {
+  elite_camel_archer: {
     name: 'Elite Camel Archer',
     f: 0,
     w: 1000,
@@ -11130,7 +22148,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 27,
   },
-  elite_cannon_galley_376: {
+  elite_cannon_galley: {
     name: 'Elite Cannon Galley',
     f: 0,
     w: 525,
@@ -11146,7 +22164,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_caravel_597: {
+  elite_caravel: {
     name: 'Elite Caravel',
     f: 700,
     w: 0,
@@ -11162,7 +22180,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  elite_cataphract_361: {
+  elite_cataphract: {
     name: 'Elite Cataphract',
     f: 1200,
     w: 0,
@@ -11178,7 +22196,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 7,
   },
-  elite_centurion_882: {
+  elite_centurion: {
     name: 'Elite Centurion',
     f: 1100,
     w: 0,
@@ -11194,7 +22212,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 43,
   },
-  elite_chakram_thrower_830: {
+  elite_chakram_thrower: {
     name: 'Elite Chakram Thrower',
     f: 1000,
     w: 0,
@@ -11210,7 +22228,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  elite_champi_warrior_1352: {
+  elite_champi_warrior: {
     name: 'Elite Champi Warrior',
     f: 650,
     w: 0,
@@ -11226,7 +22244,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_chu_ko_nu_362: {
+  elite_chu_ko_nu: {
     name: 'Elite Chu Ko Nu',
     f: 1300,
     w: 0,
@@ -11242,7 +22260,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 6,
   },
-  elite_companion_1289: {
+  elite_companion: {
     name: 'Elite Companion',
     f: 1100,
     w: 0,
@@ -11258,7 +22276,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  elite_composite_bowman_918: {
+  elite_composite_bowman: {
     name: 'Elite Composite Bowman',
     f: 0,
     w: 600,
@@ -11274,7 +22292,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  elite_conquistador_60: {
+  elite_conquistador: {
     name: 'Elite Conquistador',
     f: 900,
     w: 0,
@@ -11290,7 +22308,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  elite_coustillier_751: {
+  elite_coustillier: {
     name: 'Elite Coustillier',
     f: 1000,
     w: 0,
@@ -11306,7 +22324,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  elite_eagle_warrior_434: {
+  elite_eagle_warrior: {
     name: 'Elite Eagle Warrior',
     f: 800,
     w: 0,
@@ -11322,7 +22340,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_elephant_archer_481: {
+  elite_elephant_archer: {
     name: 'Elite Elephant Archer',
     f: 900,
     w: 0,
@@ -11338,7 +22356,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_ethiopia_unit_569: {
+  elite_ethiopia_unit: {
     name: 'Elite Ethiopia Unit',
     f: 900,
     w: 0,
@@ -11354,7 +22372,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  elite_fire_archer_1074: {
+  elite_fire_archer: {
     name: 'Elite Fire Archer',
     f: 800,
     w: 0,
@@ -11366,11 +22384,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1971,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 11,
+        v: 5.0,
+        u: 1971,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1971,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 50,
   },
-  elite_fire_lancer_982: {
+  elite_fire_lancer: {
     name: 'Elite Fire Lancer',
     f: 750,
     w: 0,
@@ -11382,11 +22422,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1925,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  elite_galley_1152: {
+  elite_galley: {
     name: 'Elite Galley',
     f: 250,
     w: 0,
@@ -11402,7 +22450,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_genitour_430: {
+  elite_genitour: {
     name: 'Elite Genitour',
     f: 800,
     w: 0,
@@ -11434,7 +22482,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_genitour_post_imperial_606: {
+  elite_genitour_post_imperial: {
     name: 'Elite Genitour (post-imperial)',
     f: 1,
     w: 0,
@@ -11450,7 +22498,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_genoese_bow_468: {
+  elite_genoese_bow: {
     name: 'Elite Genoese Bow',
     f: 900,
     w: 0,
@@ -11466,7 +22514,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 19,
   },
-  elite_ghulam_840: {
+  elite_ghulam: {
     name: 'Elite Ghulam',
     f: 950,
     w: 0,
@@ -11482,7 +22530,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  elite_hippeus_1135: {
+  elite_hippeus: {
     name: 'Elite Hippeus',
     f: 800,
     w: 0,
@@ -11498,7 +22546,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  elite_hoplite_1137: {
+  elite_hoplite: {
     name: 'Elite Hoplite',
     f: 600,
     w: 0,
@@ -11514,7 +22562,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_hoplite_requirement_1267: {
+  elite_hoplite_requirement: {
     name: 'Elite Hoplite requirement',
     f: 0,
     w: 0,
@@ -11530,7 +22578,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  elite_huskarl_365: {
+  elite_huskarl: {
     name: 'Elite Huskarl',
     f: 1200,
     w: 0,
@@ -11546,7 +22594,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  elite_hussite_wagon_781: {
+  elite_hussite_wagon: {
     name: 'Elite Hussite Wagon',
     f: 0,
     w: 800,
@@ -11558,11 +22606,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1119,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 39,
   },
-  elite_ibirapema_warrior_1391: {
+  elite_ibirapema_warrior: {
     name: 'Elite Ibirapema Warrior',
     f: 1000,
     w: 0,
@@ -11578,7 +22634,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  elite_immortal_1115: {
+  elite_immortal: {
     name: 'Elite Immortal',
     f: 850,
     w: 0,
@@ -11594,7 +22650,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  elite_iron_pagoda_991: {
+  elite_iron_pagoda: {
     name: 'Elite Iron Pagoda',
     f: 950,
     w: 0,
@@ -11610,7 +22666,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  elite_jaguar_man_432: {
+  elite_jaguar_man: {
     name: 'Elite Jaguar Man',
     f: 1000,
     w: 0,
@@ -11626,7 +22682,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  elite_jannisary_369: {
+  elite_jannisary: {
     name: 'Elite Jannisary',
     f: 850,
     w: 0,
@@ -11642,7 +22698,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  elite_kamayuk_509: {
+  elite_kamayuk: {
     name: 'Elite Kamayuk',
     f: 900,
     w: 0,
@@ -11658,7 +22714,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 21,
   },
-  elite_karambit_warrior_617: {
+  elite_karambit_warrior: {
     name: 'Elite Karambit Warrior',
     f: 900,
     w: 0,
@@ -11674,7 +22730,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  elite_keshik_680: {
+  elite_keshik: {
     name: 'Elite Keshik',
     f: 700,
     w: 0,
@@ -11690,7 +22746,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  elite_kipchak_682: {
+  elite_kipchak: {
     name: 'Elite Kipchak',
     f: 1100,
     w: 1000,
@@ -11706,7 +22762,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  elite_kona_1376: {
+  elite_kona: {
     name: 'Elite Kona',
     f: 800,
     w: 0,
@@ -11722,7 +22778,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  elite_konnik_678: {
+  elite_konnik: {
     name: 'Elite Konnik',
     f: 1000,
     w: 0,
@@ -11738,7 +22794,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 32,
   },
-  elite_leitis_684: {
+  elite_leitis: {
     name: 'Elite Leitis',
     f: 750,
     w: 0,
@@ -11754,7 +22810,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 35,
   },
-  elite_lembos_1146: {
+  elite_lembos: {
     name: 'Elite Lembos',
     f: 350,
     w: 0,
@@ -11770,7 +22826,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_liao_dao_1002: {
+  elite_liao_dao: {
     name: 'Elite Liao Dao',
     f: 800,
     w: 0,
@@ -11786,7 +22842,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  elite_longbow_360: {
+  elite_longbow: {
     name: 'Elite Longbow',
     f: 850,
     w: 0,
@@ -11802,7 +22858,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 1,
   },
-  elite_magyar_huszar_472: {
+  elite_magyar_huszar: {
     name: 'Elite Magyar Huszar',
     f: 800,
     w: 0,
@@ -11818,7 +22874,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 22,
   },
-  elite_mali_unit_567: {
+  elite_mali_unit: {
     name: 'Elite Mali Unit',
     f: 900,
     w: 0,
@@ -11834,7 +22890,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 26,
   },
-  elite_mameluke_368: {
+  elite_mameluke: {
     name: 'Elite Mameluke',
     f: 600,
     w: 0,
@@ -11850,7 +22906,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  elite_mangudai_371: {
+  elite_mangudai: {
     name: 'Elite Mangudai',
     f: 1100,
     w: 0,
@@ -11866,7 +22922,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 12,
   },
-  elite_monaspa_920: {
+  elite_monaspa: {
     name: 'Elite Monaspa',
     f: 1000,
     w: 0,
@@ -11882,7 +22938,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  elite_obuch_779: {
+  elite_obuch: {
     name: 'Elite Obuch',
     f: 800,
     w: 0,
@@ -11898,7 +22954,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  elite_organ_gun_563: {
+  elite_organ_gun: {
     name: 'Elite Organ Gun',
     f: 1200,
     w: 0,
@@ -11914,7 +22970,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  elite_pattiyodha_longbowman_1326: {
+  elite_pattiyodha_longbowman: {
     name: 'Elite Pattiyodha Longbowman',
     f: 0,
     w: 900,
@@ -11930,7 +22986,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  elite_plumed_archer_27: {
+  elite_plumed_archer: {
     name: 'Elite Plumed Archer',
     f: 700,
     w: 1000,
@@ -11946,7 +23002,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  elite_qizilbash_warrior_967: {
+  elite_qizilbash_warrior: {
     name: 'Elite Qizilbash Warrior',
     f: 850,
     w: 0,
@@ -11962,7 +23018,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_ratha_828: {
+  elite_ratha: {
     name: 'Elite Ratha',
     f: 800,
     w: 800,
@@ -11978,7 +23034,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  elite_rattan_archer_621: {
+  elite_rattan_archer: {
     name: 'Elite Rattan Archer',
     f: 1000,
     w: 0,
@@ -11994,7 +23050,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  elite_rhomphaia_warrior_1301: {
+  elite_rhomphaia_warrior: {
     name: 'Elite Rhomphaia Warrior',
     f: 700,
     w: 0,
@@ -12010,7 +23066,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  elite_samurai_366: {
+  elite_samurai: {
     name: 'Elite Samurai',
     f: 750,
     w: 0,
@@ -12026,7 +23082,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 5,
   },
-  elite_sannahya_1328: {
+  elite_sannahya: {
     name: 'Elite Sannahya',
     f: 1000,
     w: 0,
@@ -12042,7 +23098,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  elite_scythian_horse_archer_1334: {
+  elite_scythian_horse_archer: {
     name: 'Elite Scythian Horse Archer',
     f: 800,
     w: 0,
@@ -12058,7 +23114,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_serjeant_753: {
+  elite_serjeant: {
     name: 'Elite Serjeant',
     f: 800,
     w: 0,
@@ -12074,7 +23130,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  elite_shrivamsha_rider_843: {
+  elite_shrivamsha_rider: {
     name: 'Elite Shrivamsha Rider',
     f: 850,
     w: 0,
@@ -12090,7 +23146,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  elite_siege_tower_504: {
+  elite_siege_tower: {
     name: 'Elite Siege Tower',
     f: 1000,
     w: 0,
@@ -12106,7 +23162,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 23,
   },
-  elite_skirmisher_98: {
+  elite_skirmisher: {
     name: 'Elite Skirmisher',
     f: 0,
     w: 230,
@@ -12122,7 +23178,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_steppe_lancer_715: {
+  elite_steppe_lancer: {
     name: 'Elite Steppe Lancer',
     f: 600,
     w: 0,
@@ -12138,7 +23194,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_strategos_1125: {
+  elite_strategos: {
     name: 'Elite Strategos',
     f: 700,
     w: 0,
@@ -12154,7 +23210,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  elite_tarkan_2: {
+  elite_tarkan: {
     name: 'Elite Tarkan',
     f: 1000,
     w: 0,
@@ -12170,7 +23226,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  elite_temple_guard_1401: {
+  elite_temple_guard: {
     name: 'Elite Temple Guard',
     f: 500,
     w: 0,
@@ -12186,7 +23242,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  elite_teutonic_knight_364: {
+  elite_teutonic_knight: {
     name: 'Elite Teutonic Knight',
     f: 950,
     w: 0,
@@ -12202,7 +23258,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  elite_throwing_axemen_363: {
+  elite_throwing_axemen: {
     name: 'Elite Throwing Axemen',
     f: 850,
     w: 0,
@@ -12218,7 +23274,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 2,
   },
-  elite_tiger_cavalry_1036: {
+  elite_tiger_cavalry: {
     name: 'Elite Tiger Cavalry',
     f: 1000,
     w: 0,
@@ -12234,7 +23290,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  elite_turtle_ship_448: {
+  elite_turtle_ship: {
     name: 'Elite Turtle Ship',
     f: 650,
     w: 0,
@@ -12246,11 +23302,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1029.0,
+        u: 767,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 18,
   },
-  elite_urumi_swordsman_826: {
+  elite_urumi_swordsman: {
     name: 'Elite Urumi Swordsman',
     f: 900,
     w: 0,
@@ -12266,7 +23330,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  elite_war_chariot_1171: {
+  elite_war_chariot: {
     name: 'Elite War Chariot',
     f: 600,
     w: 500,
@@ -12282,7 +23346,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_war_dog_1387: {
+  elite_war_dog: {
     name: 'Elite War Dog',
     f: 450,
     w: 0,
@@ -12298,7 +23362,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  elite_war_elephant_367: {
+  elite_war_elephant: {
     name: 'Elite War Elephant',
     f: 1350,
     w: 0,
@@ -12314,7 +23378,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  elite_war_wagon_450: {
+  elite_war_wagon: {
     name: 'Elite War Wagon',
     f: 0,
     w: 1000,
@@ -12330,7 +23394,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 18,
   },
-  elite_white_feather_guard_1064: {
+  elite_white_feather_guard: {
     name: 'Elite White Feather Guard',
     f: 900,
     w: 0,
@@ -12346,7 +23410,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  elite_woad_raider_370: {
+  elite_woad_raider: {
     name: 'Elite Woad Raider',
     f: 1000,
     w: 0,
@@ -12362,7 +23426,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 13,
   },
-  enable_catapult_ship_1158: {
+  enable_catapult_ship: {
     name: 'Enable Catapult Ship',
     f: 0,
     w: 0,
@@ -12378,7 +23442,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'enable_companion,_macedonian_unique_unit_1288': {
+  'enable_companion,_macedonian_unique_unit': {
     name: 'Enable Companion, Macedonian Unique Unit',
     f: 0,
     w: 0,
@@ -12394,7 +23458,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  enable_galley___antiquity_1150: {
+  enable_galley___antiquity: {
     name: 'Enable Galley - Antiquity',
     f: 0,
     w: 0,
@@ -12410,7 +23474,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'enable_hippeus,_spartan_unique_unit_1134': {
+  'enable_hippeus,_spartan_unique_unit': {
     name: 'Enable Hippeus, Spartan Unique Unit',
     f: 0,
     w: 0,
@@ -12426,7 +23490,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  'enable_hoplite,_greek_regional_unit_1136': {
+  'enable_hoplite,_greek_regional_unit': {
     name: 'Enable Hoplite, Greek Regional Unit',
     f: 1,
     w: 0,
@@ -12442,7 +23506,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'enable_immortal,_achaemenid_unique_unit_1114': {
+  'enable_immortal,_achaemenid_unique_unit': {
     name: 'Enable Immortal, Achaemenid Unique Unit',
     f: 0,
     w: 0,
@@ -12458,7 +23522,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  enable_incendiary_raft_1153: {
+  enable_incendiary_raft: {
     name: 'Enable Incendiary Raft',
     f: 0,
     w: 0,
@@ -12474,7 +23538,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_lembos_1143: {
+  enable_lembos: {
     name: 'Enable Lembos',
     f: 0,
     w: 0,
@@ -12490,7 +23554,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_leviathan_1160: {
+  enable_leviathan: {
     name: 'Enable Leviathan',
     f: 0,
     w: 0,
@@ -12506,7 +23570,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_merchant_ship_1166: {
+  enable_merchant_ship: {
     name: 'Enable Merchant Ship',
     f: 0,
     w: 0,
@@ -12522,7 +23586,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_monoreme_1147: {
+  enable_monoreme: {
     name: 'Enable Monoreme',
     f: 0,
     w: 0,
@@ -12538,7 +23602,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'enable_pattiyodha_longbowman,_puru_unique_unit_1325': {
+  'enable_pattiyodha_longbowman,_puru_unique_unit': {
     name: 'Enable Pattiyodha Longbowman, Puru Unique Unit',
     f: 0,
     w: 0,
@@ -12554,7 +23618,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  'enable_phalangite,_macedonian_unique_unit_1290': {
+  'enable_phalangite,_macedonian_unique_unit': {
     name: 'Enable Phalangite, Macedonian Unique Unit',
     f: 0,
     w: 0,
@@ -12570,7 +23634,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  'enable_rhomphaia_warrior,_thracian_unique_unit_1300': {
+  'enable_rhomphaia_warrior,_thracian_unique_unit': {
     name: 'Enable Rhomphaia Warrior, Thracian Unique Unit',
     f: 0,
     w: 0,
@@ -12586,7 +23650,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  'enable_sannahya,_puru_unique_unit_1327': {
+  'enable_sannahya,_puru_unique_unit': {
     name: 'Enable Sannahya, Puru Unique Unit',
     f: 0,
     w: 0,
@@ -12602,7 +23666,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  enable_scythian_horse_archer_1335: {
+  enable_scythian_horse_archer: {
     name: 'Enable Scythian Horse Archer',
     f: 0,
     w: 0,
@@ -12618,7 +23682,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_shipyard_1140: {
+  enable_shipyard: {
     name: 'Enable Shipyard',
     f: 0,
     w: 0,
@@ -12634,7 +23698,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'enable_strategos,_athenian_unique_unit_1124': {
+  'enable_strategos,_athenian_unique_unit': {
     name: 'Enable Strategos, Athenian Unique Unit',
     f: 0,
     w: 0,
@@ -12650,7 +23714,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  enable_war_chariot_1169: {
+  enable_war_chariot: {
     name: 'Enable War Chariot',
     f: 1,
     w: 0,
@@ -12666,7 +23730,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  enable_war_chariot_full_techs_1170: {
+  enable_war_chariot_full_techs: {
     name: 'Enable War Chariot Full Techs',
     f: 1,
     w: 0,
@@ -12682,7 +23746,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_cows_557: {
+  enable_cows: {
     name: 'Enable cows',
     f: 40,
     w: 25,
@@ -12698,7 +23762,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_llamas_556: {
+  enable_llamas: {
     name: 'Enable llamas',
     f: 40,
     w: 25,
@@ -12714,7 +23778,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_sheep_555: {
+  enable_sheep: {
     name: 'Enable sheep',
     f: 40,
     w: 25,
@@ -12730,7 +23794,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  enable_turkeys_558: {
+  enable_turkeys: {
     name: 'Enable turkeys',
     f: 40,
     w: 25,
@@ -12746,7 +23810,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'ends_of_the_world,_macedonian_unique_tech_1285': {
+  'ends_of_the_world,_macedonian_unique_tech': {
     name: 'Ends of the World, Macedonian Unique Tech',
     f: 0,
     w: 300,
@@ -12762,7 +23826,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  ephorate_1223: {
+  ephorate: {
     name: 'Ephorate',
     f: 200,
     w: 0,
@@ -12778,7 +23842,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  ethiopians_581: {
+  ethiopians: {
     name: 'Ethiopians',
     f: 0,
     w: 1,
@@ -12794,7 +23858,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  eupseong_486: {
+  eupseong: {
     name: 'Eupseong',
     f: 300,
     w: 300,
@@ -12806,11 +23870,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 235,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 18,
   },
-  exclude_age2_from_tech_reward_323: {
+  exclude_age2_from_tech_reward: {
     name: 'Exclude Age2 from tech reward',
     f: 0,
     w: 0,
@@ -12826,7 +23912,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  exclude_age3_from_tech_reward_324: {
+  exclude_age3_from_tech_reward: {
     name: 'Exclude Age3 from tech reward',
     f: 0,
     w: 0,
@@ -12842,7 +23928,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  exclude_age4_from_tech_reward_326: {
+  exclude_age4_from_tech_reward: {
     name: 'Exclude Age4 from tech reward',
     f: 0,
     w: 0,
@@ -12858,7 +23944,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  fabric_shields_517: {
+  fabric_shields: {
     name: 'Fabric Shields',
     f: 600,
     w: 0,
@@ -12870,7 +23956,106 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2550,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2588,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 881,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2550,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2588,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 881,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 185,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 21,
   },
@@ -12886,11 +24071,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 185,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 57,
   },
-  faith_45: {
+  faith: {
     name: 'Faith',
     f: 550,
     w: 0,
@@ -12906,7 +24099,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  farimba_577: {
+  farimba: {
     name: 'Farimba',
     f: 650,
     w: 0,
@@ -12920,17 +24113,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1029.0,
         u: -1,
-        c: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1029.0,
+        u: -1,
+        c: 47,
       },
     ],
     age: 4,
     civ: 26,
   },
-  farm____age_one_109: {
+  farm____age_one: {
     name: 'Farm -- Age One',
     f: 0,
     w: 0,
@@ -12946,7 +24146,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  farms_make_avail_216: {
+  farms_make_avail: {
     name: 'Farms (make avail)',
     f: 0,
     w: 0,
@@ -12962,7 +24162,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  fast_fire_ship_246: {
+  fast_fire_ship: {
     name: 'Fast Fire Ship',
     f: 0,
     w: 0,
@@ -12978,7 +24178,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  feitoria_make_avail_570: {
+  feitoria_make_avail: {
     name: 'Feitoria (make avail)',
     f: 0,
     w: 0,
@@ -12994,7 +24194,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  fereters_921: {
+  fereters: {
     name: 'Fereters',
     f: 550,
     w: 0,
@@ -13008,17 +24208,45 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 6,
+        t: 4,
+        a: 0,
         v: 30.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 30.0,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -30.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -30.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: -30.0,
+        u: 359,
         c: -1,
       },
     ],
     age: 4,
     civ: 44,
   },
-  fervor_252: {
+  fervor: {
     name: 'Fervor',
     f: 0,
     w: 0,
@@ -13030,11 +24258,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  feudal_age_101: {
+  feudal_age: {
     name: 'Feudal Age',
     f: 500,
     w: 0,
@@ -13046,11 +24310,89 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 8.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4102.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 773.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.25,
+        u: 2414,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2414,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2414,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  feudal_age_start_298: {
+  feudal_age_start: {
     name: 'Feudal Age start',
     f: 1,
     w: 0,
@@ -13066,7 +24408,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  feudal_eco_tech_requirement_758: {
+  feudal_eco_tech_requirement: {
     name: 'Feudal eco tech requirement',
     f: 0,
     w: 0,
@@ -13082,7 +24424,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  fire_archer_make_avail_1073: {
+  fire_archer_make_avail: {
     name: 'Fire Archer (make avail)',
     f: 0,
     w: 0,
@@ -13098,7 +24440,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 50,
   },
-  fire_galley_make_avail_604: {
+  fire_galley_make_avail: {
     name: 'Fire Galley (make avail)',
     f: 0,
     w: 0,
@@ -13114,7 +24456,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  fire_lancer_make_avail_981: {
+  fire_lancer_make_avail: {
     name: 'Fire Lancer (make avail)',
     f: 0,
     w: 0,
@@ -13130,7 +24472,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  fire_tower_make_avail_525: {
+  fire_tower_make_avail: {
     name: 'Fire Tower (make avail)',
     f: 0,
     w: 10,
@@ -13142,11 +24484,124 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 789,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 790,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 791,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 792,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 793,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 794,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 796,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 797,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 798,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 799,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 800,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 801,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 802,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 803,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 2.0,
+        u: 804,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  first_crusade_756: {
+  first_crusade: {
     name: 'First Crusade',
     f: 400,
     w: 0,
@@ -13162,7 +24617,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 37,
   },
-  first_change_of_government_1210: {
+  first_change_of_government: {
     name: 'First change of Government',
     f: 0,
     w: 0,
@@ -13178,7 +24633,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  fish_trap_make_avail_357: {
+  fish_trap_make_avail: {
     name: 'Fish Trap (make avail)',
     f: 0,
     w: 0,
@@ -13194,7 +24649,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  fishing_lines_906: {
+  fishing_lines: {
     name: 'Fishing Lines',
     f: 50,
     w: 100,
@@ -13210,7 +24665,7 @@ export const techs: Record<string, TechData> = {
     age: 2,
     civ: -1,
   },
-  fishing_ship_112: {
+  fishing_ship: {
     name: 'Fishing Ship',
     f: 0,
     w: 0,
@@ -13226,7 +24681,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  flaming_camel_make_avail_703: {
+  flaming_camel_make_avail: {
     name: 'Flaming Camel (make avail)',
     f: 0,
     w: 0,
@@ -13242,7 +24697,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  flemish_militia_make_avail_773: {
+  flemish_militia_make_avail: {
     name: 'Flemish Militia (make avail)',
     f: 0,
     w: 0,
@@ -13258,7 +24713,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  flemish_militia_age3_774: {
+  flemish_militia_age3: {
     name: 'Flemish Militia Age3',
     f: 0,
     w: 0,
@@ -13270,11 +24725,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2049.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2049.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2049.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1697,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  flemish_militia_age4_797: {
+  flemish_militia_age4: {
     name: 'Flemish Militia Age4',
     f: 0,
     w: 0,
@@ -13286,11 +24847,117 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2049.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1699,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2049.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1663,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2049.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 1697,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 1697,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  flemish_revolution_755: {
+  flemish_revolution: {
     name: 'Flemish Revolution',
     f: 200,
     w: 0,
@@ -13306,7 +24973,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 36,
   },
-  fletching_199: {
+  fletching: {
     name: 'Fletching',
     f: 100,
     w: 0,
@@ -13320,45 +24987,528 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 0,
+        t: 4,
+        a: 9,
         v: 769.0,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 1,
-        a: 0,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
-        c: -1,
+        c: 0,
       },
       {
-        t: 12,
-        a: 0,
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 54,
         c: -1,
       },
       {
-        t: 23,
-        a: 0,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 109,
         c: -1,
       },
       {
-        t: 130,
-        a: 4,
-        v: -0.5,
-        u: -1,
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 539,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 21,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 533,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 885,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 885,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1004,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1006,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 778,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1750,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1830,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 2328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1983,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1982,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1936,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1931,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1971,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2415,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2417,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2631,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2632,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 133,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2575,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1548,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  folwark_age2_upgrade_794: {
+  folwark_age2_upgrade: {
     name: 'Folwark Age2 upgrade',
     f: 0,
     w: 0,
@@ -13374,7 +25524,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  folwark_age3_upgrade_795: {
+  folwark_age3_upgrade: {
     name: 'Folwark Age3 upgrade',
     f: 0,
     w: 0,
@@ -13390,7 +25540,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  folwark_age4_upgrade_796: {
+  folwark_age4_upgrade: {
     name: 'Folwark Age4 upgrade',
     f: 0,
     w: 0,
@@ -13402,11 +25552,110 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 68,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 68,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 129,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 129,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 130,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 131,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1734,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1734,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1711,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1711,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1720,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1720,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 38,
   },
-  forced_levy_625: {
+  forced_levy: {
     name: 'Forced Levy',
     f: 850,
     w: 0,
@@ -13422,7 +25671,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 29,
   },
-  forging_67: {
+  forging: {
     name: 'Forging',
     f: 150,
     w: 0,
@@ -13436,24 +25685,87 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 45,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 46,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 50,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -1025.0,
+        u: 1923,
         c: -1,
       },
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1025.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2626,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2627,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2628,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  fortified_bastions_996: {
+  fortified_bastions: {
     name: 'Fortified Bastions',
     f: 350,
     w: 250,
@@ -13469,7 +25781,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 52,
   },
-  fortified_church_armenians_941: {
+  fortified_church_armenians: {
     name: 'Fortified Church (Armenians)',
     f: 0,
     w: 0,
@@ -13485,7 +25797,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  fortified_church_georgians_930: {
+  fortified_church_georgians: {
     name: 'Fortified Church (Georgians)',
     f: 0,
     w: 0,
@@ -13501,7 +25813,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  'fortified_church_+_bodkin_944': {
+  'fortified_church_+_bodkin': {
     name: 'Fortified Church + Bodkin',
     f: 0,
     w: 0,
@@ -13513,11 +25825,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1806,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1806,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'fortified_church_+_bracer_945': {
+  'fortified_church_+_bracer': {
     name: 'Fortified Church + Bracer',
     f: 0,
     w: 0,
@@ -13529,11 +25912,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1806,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1806,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'fortified_church_+_chemistry_946': {
+  'fortified_church_+_chemistry': {
     name: 'Fortified Church + Chemistry',
     f: 0,
     w: 0,
@@ -13545,11 +25999,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1806,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'fortified_church_+_fletching_943': {
+  'fortified_church_+_fletching': {
     name: 'Fortified Church + Fletching',
     f: 0,
     w: 0,
@@ -13561,11 +26051,89 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1806,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1806,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1806,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'fortified_church_+_murder_holes_947': {
+  'fortified_church_+_murder_holes': {
     name: 'Fortified Church + Murder Holes',
     f: 0,
     w: 0,
@@ -13581,7 +26149,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'fortified_church_+_svan_towers_931': {
+  'fortified_church_+_svan_towers': {
     name: 'Fortified Church + Svan Towers',
     f: 0,
     w: 0,
@@ -13593,11 +26161,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1806,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  fortified_church_age4_upgrade_942: {
+  fortified_church_age4_upgrade: {
     name: 'Fortified Church Age4 upgrade',
     f: 0,
     w: 0,
@@ -13609,11 +26213,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 104,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 30,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 31,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 32,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1806,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1806,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  fortified_outpost_1270: {
+  fortified_outpost: {
     name: 'Fortified Outpost',
     f: 0,
     w: 50,
@@ -13629,7 +26304,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  fortified_wall_194: {
+  fortified_wall: {
     name: 'Fortified Wall',
     f: 200,
     w: 100,
@@ -13645,7 +26320,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  fortified_wall_researched_for_vedic_teachings_1313: {
+  fortified_wall_researched_for_vedic_teachings: {
     name: 'Fortified Wall Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -13657,19 +26332,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  fourth_change_of_government_1213: {
+  fourth_change_of_government: {
     name: 'Fourth change of Government',
     f: 0,
     w: 0,
@@ -13685,7 +26352,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  franks_530: {
+  franks: {
     name: 'Franks',
     f: 0,
     w: 1,
@@ -13701,7 +26368,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 2,
   },
-  free_elite_hoplite_1266: {
+  free_elite_hoplite: {
     name: 'Free Elite Hoplite',
     f: 1,
     w: 0,
@@ -13717,7 +26384,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  frontier_guards_836: {
+  frontier_guards: {
     name: 'Frontier Guards',
     f: 800,
     w: 0,
@@ -13729,11 +26396,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 207,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 873,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 875,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 42,
   },
-  functional_enable_scythian_horse_archer_1336: {
+  functional_enable_scythian_horse_archer: {
     name: 'Functional Enable Scythian Horse Archer',
     f: 0,
     w: 0,
@@ -13749,7 +26459,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  furor_celtica_5: {
+  furor_celtica: {
     name: 'Furor Celtica',
     f: 750,
     w: 0,
@@ -13761,11 +26471,89 @@ export const techs: Record<string, TechData> = {
       techs: [47],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.399999976158142,
+        u: 1980,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 13,
   },
-  galleon_911: {
+  galleon: {
     name: 'Galleon',
     f: 0,
     w: 0,
@@ -13781,7 +26569,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  gambesons_875: {
+  gambesons: {
     name: 'Gambesons',
     f: 50,
     w: 0,
@@ -13793,11 +26581,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1793,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1901,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1903,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  garland_wars_24: {
+  garland_wars: {
     name: 'Garland Wars',
     f: 450,
     w: 0,
@@ -13811,17 +26656,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1028.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1028.0,
+        u: 1831,
         c: -1,
       },
     ],
     age: 4,
     civ: 15,
   },
-  gbeto_make_avail_566: {
+  gbeto_make_avail: {
     name: 'Gbeto (make avail)',
     f: 0,
     w: 0,
@@ -13837,7 +26689,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 26,
   },
-  genitour_make_avail_427: {
+  genitour_make_avail: {
     name: 'Genitour (make avail)',
     f: 0,
     w: 0,
@@ -13885,7 +26737,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  genoese_bow_make_avail_467: {
+  genoese_bow_make_avail: {
     name: 'Genoese Bow (make avail)',
     f: 0,
     w: 0,
@@ -13901,7 +26753,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 19,
   },
-  georgians_916: {
+  georgians: {
     name: 'Georgians',
     f: 0,
     w: 1,
@@ -13917,7 +26769,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  ghulam_make_avail_839: {
+  ghulam_make_avail: {
     name: 'Ghulam (make avail)',
     f: 0,
     w: 0,
@@ -13933,7 +26785,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  gillnets_65: {
+  gillnets: {
     name: 'Gillnets',
     f: 100,
     w: 125,
@@ -13949,7 +26801,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  gillnets_requirement_912: {
+  gillnets_requirement: {
     name: 'Gillnets requirement',
     f: 0,
     w: 0,
@@ -13965,7 +26817,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  gold_mining_55: {
+  gold_mining: {
     name: 'Gold Mining',
     f: 100,
     w: 75,
@@ -13981,7 +26833,7 @@ export const techs: Record<string, TechData> = {
     age: 2,
     civ: -1,
   },
-  gold_shaft_mining_182: {
+  gold_shaft_mining: {
     name: 'Gold Shaft Mining',
     f: 175,
     w: 75,
@@ -13997,7 +26849,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  gold_shaft_mining_requirement_764: {
+  gold_shaft_mining_requirement: {
     name: 'Gold Shaft Mining requirement',
     f: 0,
     w: 0,
@@ -14013,7 +26865,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  goths_531: {
+  goths: {
     name: 'Goths',
     f: 0,
     w: 1,
@@ -14029,7 +26881,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  grand_trunk_road_506: {
+  grand_trunk_road: {
     name: 'Grand Trunk Road',
     f: 250,
     w: 200,
@@ -14045,7 +26897,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 20,
   },
-  great_wall_462: {
+  great_wall: {
     name: 'Great Wall',
     f: 0,
     w: 400,
@@ -14057,11 +26909,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.2999999523162842,
+        u: -1,
+        c: 27,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2999999523162842,
+        u: -1,
+        c: 39,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2999999523162842,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2999999523162842,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2999999523162842,
+        u: 235,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.2999999523162842,
+        u: 236,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 6,
   },
-  greek_fire_464: {
+  greek_fire: {
     name: 'Greek Fire',
     f: 250,
     w: 0,
@@ -14073,11 +26968,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 529,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 532,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1103,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1302,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 7,
   },
-  'greek_fire_+_chemistry_465': {
+  'greek_fire_+_chemistry': {
     name: 'Greek Fire + Chemistry',
     f: 0,
     w: 0,
@@ -14093,7 +27017,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  grenadier_make_avail_992: {
+  grenadier_make_avail: {
     name: 'Grenadier (make avail)',
     f: 0,
     w: 0,
@@ -14109,7 +27033,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  guard_tower_140: {
+  guard_tower: {
     name: 'Guard Tower',
     f: 100,
     w: 250,
@@ -14121,11 +27045,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4225.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4225.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1868,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4225.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4225.0,
+        u: 1868,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  guard_tower_researched_for_vedic_teachings_1317: {
+  guard_tower_researched_for_vedic_teachings: {
     name: 'Guard Tower Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -14137,19 +27118,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  guecha_warrior_make_avail_1363: {
+  guecha_warrior_make_avail: {
     name: 'Guecha Warrior (make avail)',
     f: 0,
     w: 0,
@@ -14165,7 +27138,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  guecha_warrior_pagoda_1364: {
+  guecha_warrior_pagoda: {
     name: 'Guecha Warrior Pagoda',
     f: 0,
     w: 750,
@@ -14181,7 +27154,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  guilds_15: {
+  guilds: {
     name: 'Guilds',
     f: 300,
     w: 0,
@@ -14197,7 +27170,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  gurjaras_824: {
+  gurjaras: {
     name: 'Gurjaras',
     f: 0,
     w: 1,
@@ -14213,7 +27186,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  halberdier_429: {
+  halberdier: {
     name: 'Halberdier',
     f: 300,
     w: 0,
@@ -14229,7 +27202,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  halberdier_requirement_956: {
+  halberdier_requirement: {
     name: 'Halberdier requirement',
     f: 0,
     w: 0,
@@ -14245,7 +27218,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  hand_cannoneer_85: {
+  hand_cannoneer: {
     name: 'Hand Cannoneer',
     f: 0,
     w: 0,
@@ -14261,7 +27234,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  hand_cart_249: {
+  hand_cart: {
     name: 'Hand Cart',
     f: 300,
     w: 200,
@@ -14275,24 +27248,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 14,
-        a: 4,
-        v: 1.5,
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
         t: 5,
-        a: 4,
+        a: 5,
         v: 1.100000023841858,
-        u: -1,
+        u: 1808,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  hand_cart_requirement_763: {
+  hand_cart_requirement: {
     name: 'Hand Cart requirement',
     f: 0,
     w: 0,
@@ -14308,7 +27281,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  hauberk_757: {
+  hauberk: {
     name: 'Hauberk',
     f: 700,
     w: 0,
@@ -14320,11 +27293,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 38,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 283,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 569,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1813,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1813,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 37,
   },
-  heated_shot_380: {
+  heated_shot: {
     name: 'Heated Shot',
     f: 350,
     w: 0,
@@ -14338,17 +27368,108 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 3,
+        t: 5,
+        a: 9,
+        v: 4321.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
         v: 4100.0,
         u: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4321.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4321.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 1830,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 2631,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 2632,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 1548,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 54,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4100.0,
+        u: 328,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  heated_shot_researched_for_vedic_teachings_1319: {
+  heated_shot_researched_for_vedic_teachings: {
     name: 'Heated Shot Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -14360,19 +27481,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  heavy_camel_236: {
+  heavy_camel: {
     name: 'Heavy Camel',
     f: 325,
     w: 0,
@@ -14404,7 +27517,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  heavy_cavalry_archer_218: {
+  heavy_cavalry_archer: {
     name: 'Heavy Cavalry Archer',
     f: 900,
     w: 0,
@@ -14420,7 +27533,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_demolition_244: {
+  heavy_demolition: {
     name: 'Heavy Demolition',
     f: 0,
     w: 250,
@@ -14436,7 +27549,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_eagle_warrior_384: {
+  heavy_eagle_warrior: {
     name: 'Heavy Eagle Warrior',
     f: 200,
     w: 0,
@@ -14452,7 +27565,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_hei_kuang_cavalry_1033: {
+  heavy_hei_kuang_cavalry: {
     name: 'Heavy Hei-Kuang Cavalry',
     f: 350,
     w: 0,
@@ -14468,7 +27581,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_incendiary_ship_1155: {
+  heavy_incendiary_ship: {
     name: 'Heavy Incendiary Ship',
     f: 0,
     w: 250,
@@ -14484,7 +27597,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_lembos_1145: {
+  heavy_lembos: {
     name: 'Heavy Lembos',
     f: 150,
     w: 0,
@@ -14500,7 +27613,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_plow_13: {
+  heavy_plow: {
     name: 'Heavy Plow',
     f: 125,
     w: 125,
@@ -14516,7 +27629,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  heavy_plow_requirement_761: {
+  heavy_plow_requirement: {
     name: 'Heavy Plow requirement',
     f: 0,
     w: 0,
@@ -14532,7 +27645,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  heavy_rocket_cart_980: {
+  heavy_rocket_cart: {
     name: 'Heavy Rocket Cart',
     f: 0,
     w: 800,
@@ -14548,7 +27661,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  heavy_scorpion_239: {
+  heavy_scorpion: {
     name: 'Heavy Scorpion',
     f: 800,
     w: 750,
@@ -14560,11 +27673,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 378,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 367,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 628,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 772.0,
+        u: 627,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  heavy_warships_35: {
+  heavy_warships: {
     name: 'Heavy Warships',
     f: 0,
     w: 400,
@@ -14580,7 +27722,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  hei_kuang_cavalry_make_avail_1032: {
+  hei_kuang_cavalry_make_avail: {
     name: 'Hei-Kuang Cavalry (make avail)',
     f: 0,
     w: 0,
@@ -14596,7 +27738,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'helot_levies,_spartan_unique_tech_1130': {
+  'helot_levies,_spartan_unique_tech': {
     name: 'Helot Levies, Spartan Unique Tech',
     f: 0,
     w: 500,
@@ -14608,19 +27750,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 101,
-        a: 4,
-        v: 0.6666666865348816,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: 48,
   },
-  herbal_medicine_441: {
+  herbal_medicine: {
     name: 'Herbal Medicine',
     f: 0,
     w: 0,
@@ -14632,19 +27766,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 108,
-        a: 3,
-        v: 6.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 3,
     civ: -1,
   },
-  herbalism_1365: {
+  herbalism: {
     name: 'Herbalism',
     f: 300,
     w: 0,
@@ -14659,16 +27785,93 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 0,
+        a: 5,
+        v: 1.149999976158142,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 2550,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 2552,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 2554,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
         v: 1.149999976158142,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8700000047683716,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8700000047683716,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8700000047683716,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8700000047683716,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8700000047683716,
+        u: 2562,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 0.8700000047683716,
+        u: 2564,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.149999976158142,
+        u: 2588,
         c: -1,
       },
     ],
     age: 3,
     civ: 57,
   },
-  heresy_439: {
+  heresy: {
     name: 'Heresy',
     f: 0,
     w: 0,
@@ -14684,7 +27887,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  hero_shadow_tech_1088: {
+  hero_shadow_tech: {
     name: 'Hero Shadow Tech',
     f: 0,
     w: 0,
@@ -14696,11 +27899,768 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 702,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 702,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 702,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 702,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 698,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 698,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 698,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 698,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 686,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 686,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 686,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 686,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1184,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1184,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1184,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1184,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 559,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 559,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 559,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 559,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1078,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1078,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1078,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1078,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1157,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1157,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1157,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1157,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1073,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 1073,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1073,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1073,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1574,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 1772,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 1772,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1772,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1772,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2052,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2052,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2052,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2052,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2053,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2053,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2053,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2053,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2054,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2054,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2054,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2054,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2042,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 2042,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2042,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2042,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2040,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2040,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2040,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2040,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2038,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2038,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2038,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2038,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2034,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2034,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2034,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2034,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2051,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2051,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2051,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2051,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2044,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 2044,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2044,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2044,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2032,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2032,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2032,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2032,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2061,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2061,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2061,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2061,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2063,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 771.0,
+        u: 2063,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2063,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2063,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2064,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2064,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2064,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2064,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2065,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2065,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2065,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2065,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2066,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2066,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2066,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2066,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  hill_forts_691: {
+  hill_forts: {
     name: 'Hill Forts',
     f: 250,
     w: 0,
@@ -14712,11 +28672,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 621,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 617,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 484,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 3.0,
+        u: 597,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 35,
   },
-  hindustanis_548: {
+  hindustanis: {
     name: 'Hindustanis',
     f: 0,
     w: 1,
@@ -14732,7 +28749,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 20,
   },
-  hippagretai_1226: {
+  hippagretai: {
     name: 'Hippagretai',
     f: 350,
     w: 0,
@@ -14744,11 +28761,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2162,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2164,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2165,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2166,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2167,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2270,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2271,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 50.0,
+        u: 2272,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 48,
   },
-  hoardings_379: {
+  hoardings: {
     name: 'Hoardings',
     f: 400,
     w: 400,
@@ -14760,11 +28834,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.2100000381469727,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.3849999904632568,
+        u: 1251,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.4444444179534912,
+        u: 1665,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  horse_collar_14: {
+  horse_collar: {
     name: 'Horse Collar',
     f: 75,
     w: 75,
@@ -14780,7 +28876,7 @@ export const techs: Record<string, TechData> = {
     age: 2,
     civ: -1,
   },
-  houfnice_787: {
+  houfnice: {
     name: 'Houfnice',
     f: 1100,
     w: 0,
@@ -14796,7 +28892,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 39,
   },
-  howdah_626: {
+  howdah: {
     name: 'Howdah',
     f: 400,
     w: 300,
@@ -14808,11 +28904,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 239,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 239,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 558,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 558,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 30,
   },
-  hulk_make_avail_903: {
+  hulk_make_avail: {
     name: 'Hulk (make avail)',
     f: 0,
     w: 0,
@@ -14828,7 +28981,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  huns_545: {
+  huns: {
     name: 'Huns',
     f: 0,
     w: 1,
@@ -14844,7 +28997,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  husbandry_39: {
+  husbandry: {
     name: 'Husbandry',
     f: 150,
     w: 0,
@@ -14859,16 +29012,72 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 12,
+        a: 5,
         v: 1.100000023841858,
         u: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1715,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1822,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 2557,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  huskarl_make_avail_446: {
+  huskarl_make_avail: {
     name: 'Huskarl (make avail)',
     f: 0,
     w: 0,
@@ -14884,7 +29093,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 3,
   },
-  hussar_428: {
+  hussar: {
     name: 'Hussar',
     f: 500,
     w: 0,
@@ -14900,7 +29109,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  hussite_reforms_785: {
+  hussite_reforms: {
     name: 'Hussite Reforms',
     f: 500,
     w: 0,
@@ -14916,7 +29125,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 39,
   },
-  hussite_wagon_make_avail_780: {
+  hussite_wagon_make_avail: {
     name: 'Hussite Wagon (make avail)',
     f: 0,
     w: 0,
@@ -14932,7 +29141,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 39,
   },
-  hypozomata_1165: {
+  hypozomata: {
     name: 'Hypozomata',
     f: 225,
     w: 0,
@@ -14944,11 +29153,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 22,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  ibirapema_warrior_make_avail_1390: {
+  ibirapema_warrior_make_avail: {
     name: 'Ibirapema Warrior (make avail)',
     f: 0,
     w: 0,
@@ -14964,7 +29202,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  illumination_233: {
+  illumination: {
     name: 'Illumination',
     f: 0,
     w: 0,
@@ -14976,11 +29214,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 1.875,
+        u: -1,
+        c: 18,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  imperial_age_103: {
+  imperial_age: {
     name: 'Imperial Age',
     f: 1000,
     w: 0,
@@ -14992,11 +29238,138 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.1666666269302368,
+        u: 49,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 49,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 49,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 150,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 150,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.1666666269302368,
+        u: 150,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.5,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2275,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2276,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2277,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.1666666269302368,
+        u: 2414,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2414,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2414,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  imperial_age_start_311: {
+  imperial_age_start: {
     name: 'Imperial Age start',
     f: 1,
     w: 0,
@@ -15012,7 +29385,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  imperial_nomads_641: {
+  imperial_nomads: {
     name: 'Imperial Nomads',
     f: 0,
     w: 0,
@@ -15028,7 +29401,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 12,
   },
-  imperial_skirmisher_655: {
+  imperial_skirmisher: {
     name: 'Imperial Skirmisher',
     f: 0,
     w: 300,
@@ -15044,7 +29417,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  imperial_skirmisher_disable_656: {
+  imperial_skirmisher_disable: {
     name: 'Imperial Skirmisher (disable)',
     f: 0,
     w: 0,
@@ -15060,7 +29433,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  imperial_eco_tech_requirement_760: {
+  imperial_eco_tech_requirement: {
     name: 'Imperial eco tech requirement',
     f: 0,
     w: 0,
@@ -15076,7 +29449,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  inca_549: {
+  inca: {
     name: 'Inca',
     f: 0,
     w: 1,
@@ -15092,7 +29465,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 21,
   },
-  incendiaries_910: {
+  incendiaries: {
     name: 'Incendiaries',
     f: 200,
     w: 0,
@@ -15108,7 +29481,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  incendiary_ship_1154: {
+  incendiary_ship: {
     name: 'Incendiary Ship',
     f: 0,
     w: 155,
@@ -15124,7 +29497,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  initial_oligarchy_researched_1214: {
+  initial_oligarchy_researched: {
     name: 'Initial Oligarchy researched',
     f: 1,
     w: 0,
@@ -15140,7 +29513,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  inquisition_492: {
+  inquisition: {
     name: 'Inquisition',
     f: 100,
     w: 0,
@@ -15152,11 +29525,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 775,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 14,
   },
-  iron_casting_68: {
+  iron_casting: {
     name: 'Iron Casting',
     f: 220,
     w: 0,
@@ -15170,24 +29551,87 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 6,
+        t: 4,
+        a: 9,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 45,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 46,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 50,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -1025.0,
+        u: 1923,
         c: -1,
       },
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 1025.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2626,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2627,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2628,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  iron_pagoda_make_avail_990: {
+  iron_pagoda_make_avail: {
     name: 'Iron Pagoda (make avail)',
     f: 0,
     w: 0,
@@ -15203,7 +29647,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  ironclad_489: {
+  ironclad: {
     name: 'Ironclad',
     f: 0,
     w: 400,
@@ -15215,11 +29659,89 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1980,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 4,
   },
-  italians_547: {
+  italians: {
     name: 'Italians',
     f: 0,
     w: 1,
@@ -15235,7 +29757,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 19,
   },
-  jaguar_man_431: {
+  jaguar_man: {
     name: 'Jaguar Man',
     f: 0,
     w: 0,
@@ -15251,7 +29773,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  jannisary_make_avail_271: {
+  jannisary_make_avail: {
     name: 'Jannisary (make avail)',
     f: 0,
     w: 0,
@@ -15267,7 +29789,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  japanese_533: {
+  japanese: {
     name: 'Japanese',
     f: 0,
     w: 1,
@@ -15283,7 +29805,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 5,
   },
-  jian_swordsman_make_avail_1075: {
+  jian_swordsman_make_avail: {
     name: 'Jian Swordsman (make avail)',
     f: 0,
     w: 0,
@@ -15299,7 +29821,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 50,
   },
-  jurchens_986: {
+  jurchens: {
     name: 'Jurchens',
     f: 0,
     w: 1,
@@ -15315,7 +29837,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  kamandaran_488: {
+  kamandaran: {
     name: 'Kamandaran',
     f: 400,
     w: 0,
@@ -15331,7 +29853,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 8,
   },
-  kamayuk_make_avail_508: {
+  kamayuk_make_avail: {
     name: 'Kamayuk (make avail)',
     f: 0,
     w: 0,
@@ -15347,7 +29869,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 21,
   },
-  karambit_warrior_make_avail_616: {
+  karambit_warrior_make_avail: {
     name: 'Karambit Warrior (make avail)',
     f: 0,
     w: 0,
@@ -15363,7 +29885,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  kasbah_578: {
+  kasbah: {
     name: 'Kasbah',
     f: 250,
     w: 0,
@@ -15379,7 +29901,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 27,
   },
-  kataparuto_59: {
+  kataparuto: {
     name: 'Kataparuto',
     f: 0,
     w: 550,
@@ -15391,11 +29913,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 42,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 1923,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 5,
   },
-  keep_63: {
+  keep: {
     name: 'Keep',
     f: 500,
     w: 350,
@@ -15407,11 +29951,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1868,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4207.0,
+        u: 1868,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  keep_researched_for_vedic_teachings_1318: {
+  keep_researched_for_vedic_teachings: {
     name: 'Keep Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -15423,19 +30024,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  keshik_make_avail_679: {
+  keshik_make_avail: {
     name: 'Keshik (make avail)',
     f: 0,
     w: 0,
@@ -15451,7 +30044,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  khitans_988: {
+  khitans: {
     name: 'Khitans',
     f: 0,
     w: 1,
@@ -15467,7 +30060,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  khmer_650: {
+  khmer: {
     name: 'Khmer',
     f: 0,
     w: 1,
@@ -15483,7 +30076,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 28,
   },
-  khmer_requirement_638: {
+  khmer_requirement: {
     name: 'Khmer requirement',
     f: 0,
     w: 0,
@@ -15499,7 +30092,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 28,
   },
-  kipchak_make_avail_681: {
+  kipchak_make_avail: {
     name: 'Kipchak (make avail)',
     f: 0,
     w: 0,
@@ -15515,7 +30108,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  knight_make_avail_166: {
+  knight_make_avail: {
     name: 'Knight (make avail)',
     f: 0,
     w: 0,
@@ -15531,7 +30124,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  kona_make_avail_1375: {
+  kona_make_avail: {
     name: 'Kona (make avail)',
     f: 0,
     w: 0,
@@ -15547,7 +30140,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  konnik_make_avail_677: {
+  konnik_make_avail: {
     name: 'Konnik (make avail)',
     f: 0,
     w: 0,
@@ -15563,7 +30156,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 32,
   },
-  kopis_sarissa_choice_1333: {
+  kopis_sarissa_choice: {
     name: 'Kopis/Sarissa choice',
     f: 0,
     w: 0,
@@ -15579,7 +30172,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  koreans_546: {
+  koreans: {
     name: 'Koreans',
     f: 0,
     w: 1,
@@ -15595,7 +30188,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 18,
   },
-  kotthybos_telamon_choice_1332: {
+  kotthybos_telamon_choice: {
     name: 'Kotthybos/Telamon choice',
     f: 0,
     w: 0,
@@ -15611,7 +30204,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  krepost_built_292: {
+  krepost_built: {
     name: 'Krepost built',
     f: 0,
     w: 0,
@@ -15627,7 +30220,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  kshatriyas_835: {
+  kshatriyas: {
     name: 'Kshatriyas',
     f: 500,
     w: 0,
@@ -15639,33 +30232,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 103,
-        a: 0,
-        v: 0.75,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 6,
-        v: 0.75,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 103,
-        a: 12,
-        v: 0.75,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 3,
     civ: 42,
   },
-  'kshatriyas_+_supplies_861': {
+  'kshatriyas_+_supplies': {
     name: 'Kshatriyas + Supplies',
     f: 0,
     w: 0,
@@ -15681,7 +30252,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  lamellar_armor_1006: {
+  lamellar_armor: {
     name: 'Lamellar Armor',
     f: 450,
     w: 0,
@@ -15693,19 +30264,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 118,
-        a: 6,
-        v: 0.25,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 3,
     civ: 53,
   },
-  'leaf_headed_shafts,_puru_unique_tech_1308': {
+  'leaf_headed_shafts,_puru_unique_tech': {
     name: 'Leaf-Headed Shafts, Puru Unique Tech',
     f: 0,
     w: 300,
@@ -15721,7 +30284,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  leather_archer_armor_212: {
+  leather_archer_armor: {
     name: 'Leather Archer Armor',
     f: 150,
     w: 0,
@@ -15735,24 +30298,150 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1024.0,
+        u: 73,
         c: -1,
       },
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
+        v: 768.0,
+        u: 73,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  lechitic_legacy_783: {
+  lechitic_legacy: {
     name: 'Lechitic Legacy',
     f: 750,
     w: 0,
@@ -15768,7 +30457,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 38,
   },
-  legionary_885: {
+  legionary: {
     name: 'Legionary',
     f: 800,
     w: 0,
@@ -15784,7 +30473,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 43,
   },
-  leitis_make_avail_683: {
+  leitis_make_avail: {
     name: 'Leitis (make avail)',
     f: 0,
     w: 0,
@@ -15800,7 +30489,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 35,
   },
-  'lemboi_cost__10%_and_+1_attack_in_civic_age,_puru_civ_bonus_1304': {
+  'lemboi_cost__10%_and_+1_attack_in_civic_age,_puru_civ_bonus': {
     name: 'Lemboi cost -10% and +1 attack in Civic Age, Puru Civ Bonus',
     f: 0,
     w: 0,
@@ -15812,11 +30501,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2123,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2124,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2125,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2126,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 56,
   },
-  'lemboi_cost__10%_and_+1_attack_in_classical_age,_puru_civ_bonus_1305': {
+  'lemboi_cost__10%_and_+1_attack_in_classical_age,_puru_civ_bonus': {
     name: 'Lemboi cost -10% and +1 attack in Classical Age, Puru Civ Bonus',
     f: 0,
     w: 0,
@@ -15828,11 +30546,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2123,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2124,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2125,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2126,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 56,
   },
-  'lemboi_cost__10%_and_+1_attack_in_imperial_age,_puru_civ_bonus_1306': {
+  'lemboi_cost__10%_and_+1_attack_in_imperial_age,_puru_civ_bonus': {
     name: 'Lemboi cost -10% and +1 attack in Imperial Age, Puru Civ Bonus',
     f: 0,
     w: 0,
@@ -15844,11 +30591,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2123,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2124,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2125,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1025.0,
+        u: 2126,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 56,
   },
-  liao_dao_make_avail_1001: {
+  liao_dao_make_avail: {
     name: 'Liao Dao (make avail)',
     f: 0,
     w: 0,
@@ -15864,7 +30640,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  light_cavalry_254: {
+  light_cavalry: {
     name: 'Light Cavalry',
     f: 150,
     w: 0,
@@ -15880,7 +30656,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  lithuanians_676: {
+  lithuanians: {
     name: 'Lithuanians',
     f: 0,
     w: 1,
@@ -15896,7 +30672,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 35,
   },
-  liu_bei_make_avail_1066: {
+  liu_bei_make_avail: {
     name: 'Liu Bei (make avail)',
     f: 0,
     w: 0,
@@ -15912,7 +30688,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  logistica_61: {
+  logistica: {
     name: 'Logistica',
     f: 800,
     w: 0,
@@ -15924,11 +30700,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 262.0,
+        u: 40,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 262.0,
+        u: 553,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 7,
   },
-  long_swordsman_207: {
+  long_swordsman: {
     name: 'Long Swordsman',
     f: 150,
     w: 0,
@@ -15944,7 +30735,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  long_swordsman_requirement_952: {
+  long_swordsman_requirement: {
     name: 'Long Swordsman requirement',
     f: 0,
     w: 0,
@@ -15960,7 +30751,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  longboat_make_avail_272: {
+  longboat_make_avail: {
     name: 'Longboat (make avail)',
     f: 0,
     w: 0,
@@ -15976,7 +30767,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  longbow_make_avail_263: {
+  longbow_make_avail: {
     name: 'Longbow (make avail)',
     f: 0,
     w: 0,
@@ -15992,7 +30783,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 1,
   },
-  loom_22: {
+  loom: {
     name: 'Loom',
     f: 0,
     w: 0,
@@ -16006,31 +30797,31 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 4,
+        t: 4,
+        a: 0,
         v: 15.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 770.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 1,
     civ: -1,
   },
-  lou_chuan_make_avail_1034: {
+  lou_chuan_make_avail: {
     name: 'Lou Chuan (make avail)',
     f: 0,
     w: 0,
@@ -16046,7 +30837,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  mrkt_tdws_make_avail_148: {
+  mrkt_tdws_make_avail: {
     name: 'MRKT TDWS (make avail)',
     f: 0,
     w: 0,
@@ -16062,7 +30853,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  macedonian_team_bonus_1269: {
+  macedonian_team_bonus: {
     name: 'Macedonian Team Bonus',
     f: 1,
     w: 0,
@@ -16078,7 +30869,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  macedonians_static_bonuses_1268: {
+  macedonians_static_bonuses: {
     name: 'Macedonians Static Bonuses',
     f: 0,
     w: 0,
@@ -16090,11 +30881,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2946.0,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2946.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2946.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2946.0,
+        u: -1,
+        c: 55,
+      },
+    ],
     age: 1,
     civ: 54,
   },
-  maghrebi_camels_579: {
+  maghrebi_camels: {
     name: 'Maghrebi Camels',
     f: 700,
     w: 0,
@@ -16110,7 +30958,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 27,
   },
-  magyar_huszar_make_avail_471: {
+  magyar_huszar_make_avail: {
     name: 'Magyar Huszar (make avail)',
     f: 0,
     w: 0,
@@ -16126,7 +30974,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 22,
   },
-  magyars_550: {
+  magyars: {
     name: 'Magyars',
     f: 0,
     w: 1,
@@ -16142,7 +30990,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 22,
   },
-  mahayana_834: {
+  mahayana: {
     name: 'Mahayana',
     f: 0,
     w: 800,
@@ -16154,19 +31002,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 110,
-        a: 4,
-        v: -0.8999999761581421,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 4,
     civ: 41,
   },
-  make_camels_available_235: {
+  make_camels_available: {
     name: 'Make Camels Available',
     f: 0,
     w: 0,
@@ -16182,7 +31022,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  make_fire_galley_avail_243: {
+  make_fire_galley_avail: {
     name: 'Make Fire Galley Avail',
     f: 0,
     w: 0,
@@ -16198,7 +31038,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  make_scout_ship_avail_240: {
+  make_scout_ship_avail: {
     name: 'Make Scout Ship Avail',
     f: 0,
     w: 0,
@@ -16214,7 +31054,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  malay_651: {
+  malay: {
     name: 'Malay',
     f: 0,
     w: 1,
@@ -16230,7 +31070,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 29,
   },
-  malians_582: {
+  malians: {
     name: 'Malians',
     f: 0,
     w: 1,
@@ -16246,7 +31086,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 26,
   },
-  malon_1379: {
+  malon: {
     name: 'Malon',
     f: 300,
     w: 0,
@@ -16262,7 +31102,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 58,
   },
-  mameluke_make_avail_269: {
+  mameluke_make_avail: {
     name: 'Mameluke (make avail)',
     f: 0,
     w: 0,
@@ -16278,7 +31118,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  man_at_arms_222: {
+  man_at_arms: {
     name: 'Man-At-Arms',
     f: 100,
     w: 0,
@@ -16294,7 +31134,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  mangonel_358: {
+  mangonel: {
     name: 'Mangonel',
     f: 0,
     w: 0,
@@ -16310,7 +31150,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  manipur_cavalry_627: {
+  manipur_cavalry: {
     name: 'Manipur Cavalry',
     f: 300,
     w: 0,
@@ -16324,17 +31164,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 3844.0,
         u: -1,
-        c: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 3844.0,
+        u: -1,
+        c: 47,
       },
     ],
     age: 3,
     civ: 30,
   },
-  mapuche_1361: {
+  mapuche: {
     name: 'Mapuche',
     f: 0,
     w: 1,
@@ -16350,7 +31197,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 58,
   },
-  marauders_483: {
+  marauders: {
     name: 'Marauders',
     f: 0,
     w: 300,
@@ -16366,7 +31213,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 17,
   },
-  masonry_50: {
+  masonry: {
     name: 'Masonry',
     f: 150,
     w: 175,
@@ -16380,38 +31227,178 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 0,
-        a: 3,
+        t: 5,
+        a: 0,
         v: 1.100000023841858,
         u: -1,
-        c: -1,
+        c: 3,
       },
       {
-        t: 8,
-        a: 3,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
-        c: -1,
+        c: 3,
       },
       {
-        t: 8,
-        a: 3,
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
+        c: 3,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 2819.0,
+        u: -1,
+        c: 3,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.100000023841858,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 2819.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2442,
         c: -1,
       },
       {
-        t: 8,
-        a: 3,
-        v: 2819.0,
-        u: -1,
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2442,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2442,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2448,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2412,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 0.9090909361839294,
+        u: 2413,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2413,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2413,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -2819.0,
+        u: 2413,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  masonry_researched_for_vedic_teachings_1311: {
+  masonry_researched_for_vedic_teachings: {
     name: 'Masonry Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -16423,19 +31410,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  maya_544: {
+  maya: {
     name: 'Maya',
     f: 0,
     w: 1,
@@ -16451,7 +31430,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  medical_corps_831: {
+  medical_corps: {
     name: 'Medical Corps',
     f: 300,
     w: 0,
@@ -16467,7 +31446,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 40,
   },
-  military_satrapy_upgrade_1196: {
+  military_satrapy_upgrade: {
     name: 'Military Satrapy Upgrade',
     f: 0,
     w: 125,
@@ -16483,7 +31462,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  mine_has_been_built_282: {
+  mine_has_been_built: {
     name: 'Mine has been built',
     f: 0,
     w: 0,
@@ -16499,7 +31478,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  ming_kuang_armor_1062: {
+  ming_kuang_armor: {
     name: 'Ming-Kuang Armor',
     f: 600,
     w: 0,
@@ -16513,17 +31492,66 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1028.0,
         u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1715,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1028.0,
+        u: 1822,
         c: -1,
       },
     ],
     age: 4,
     civ: 51,
   },
-  missionary_avail_84: {
+  missionary_avail: {
     name: 'Missionary (avail)',
     f: 0,
     w: 0,
@@ -16539,7 +31567,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  mobile_siege_unit_make_avail_273: {
+  mobile_siege_unit_make_avail: {
     name: 'Mobile Siege Unit (make avail)',
     f: 0,
     w: 0,
@@ -16555,7 +31583,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 12,
   },
-  monaspa_make_avail_919: {
+  monaspa_make_avail: {
     name: 'Monaspa (make avail)',
     f: 0,
     w: 0,
@@ -16571,7 +31599,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 45,
   },
-  mongols_540: {
+  mongols: {
     name: 'Mongols',
     f: 0,
     w: 1,
@@ -16587,7 +31615,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 12,
   },
-  monk_make_avail_157: {
+  monk_make_avail: {
     name: 'Monk (make avail)',
     f: 0,
     w: 0,
@@ -16603,7 +31631,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  monk_ranged_heal_407: {
+  monk_ranged_heal: {
     name: 'Monk Ranged Heal',
     f: 0,
     w: 0,
@@ -16619,7 +31647,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  monument_resources_koth_only_729: {
+  monument_resources_koth_only: {
     name: 'Monument Resources (KotH only)',
     f: 0,
     w: 0,
@@ -16635,7 +31663,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  morai_1224: {
+  morai: {
     name: 'Morai',
     f: 100,
     w: 0,
@@ -16651,7 +31679,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  mounted_trebuchet_make_avail_1005: {
+  mounted_trebuchet_make_avail: {
     name: 'Mounted Trebuchet (make avail)',
     f: 0,
     w: 0,
@@ -16667,7 +31695,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 53,
   },
-  muisca_1360: {
+  muisca: {
     name: 'Muisca',
     f: 0,
     w: 1,
@@ -16683,7 +31711,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  mule_cart_make_avail_932: {
+  mule_cart_make_avail: {
     name: 'Mule Cart (make avail)',
     f: 0,
     w: 0,
@@ -16715,7 +31743,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  murder_holes_322: {
+  murder_holes: {
     name: 'Murder Holes',
     f: 200,
     w: 0,
@@ -16727,19 +31755,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 20,
-        a: 3,
-        v: 0.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 3,
     civ: -1,
   },
-  murder_holes_researched_for_vedic_teachings_1321: {
+  murder_holes_researched_for_vedic_teachings: {
     name: 'Murder Holes Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -16751,19 +31771,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  new_research_0: {
+  new_research: {
     name: 'New Research',
     f: 0,
     w: 0,
@@ -18027,7 +33039,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 0,
   },
-  nomads_487: {
+  nomads: {
     name: 'Nomads',
     f: 0,
     w: 300,
@@ -18043,7 +33055,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 12,
   },
-  none_394: {
+  none: {
     name: 'None',
     f: 0,
     w: 0,
@@ -18055,11 +33067,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: -1,
+        c: 36,
+      },
+    ],
     age: 1,
     civ: 12,
   },
-  obsidian_arrows_485: {
+  obsidian_arrows: {
     name: 'Obsidian Arrows',
     f: 300,
     w: 0,
@@ -18075,7 +33095,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 16,
   },
-  obuch_make_avail_778: {
+  obuch_make_avail: {
     name: 'Obuch (make avail)',
     f: 0,
     w: 0,
@@ -18091,7 +33111,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  'odomantian_raiders,_thracian_unique_tech_1296': {
+  'odomantian_raiders,_thracian_unique_tech': {
     name: 'Odomantian Raiders, Thracian Unique Tech',
     f: 300,
     w: 0,
@@ -18107,7 +33127,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  offensive_emplacement_1324: {
+  offensive_emplacement: {
     name: 'Offensive Emplacement',
     f: 0,
     w: 150,
@@ -18123,7 +33143,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  oligarchy_1202: {
+  oligarchy: {
     name: 'Oligarchy',
     f: 0,
     w: 0,
@@ -18139,7 +33159,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  onager_257: {
+  onager: {
     name: 'Onager',
     f: 800,
     w: 0,
@@ -18155,7 +33175,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  onager_ship_1159: {
+  onager_ship: {
     name: 'Onager Ship',
     f: 600,
     w: 0,
@@ -18171,7 +33191,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  ordo_cavalry_1007: {
+  ordo_cavalry: {
     name: 'Ordo Cavalry',
     f: 600,
     w: 0,
@@ -18187,7 +33207,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 53,
   },
-  organ_gun_make_avail_562: {
+  organ_gun_make_avail: {
     name: 'Organ Gun (make avail)',
     f: 0,
     w: 0,
@@ -18203,7 +33223,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  outpost_make_avail_332: {
+  outpost_make_avail: {
     name: 'Outpost (make avail)',
     f: 0,
     w: 0,
@@ -18219,7 +33239,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  padded_archer_armor_211: {
+  padded_archer_armor: {
     name: 'Padded Archer Armor',
     f: 100,
     w: 0,
@@ -18233,24 +33253,150 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1024.0,
+        u: 73,
         c: -1,
       },
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
+        v: 768.0,
+        u: 73,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  paiks_833: {
+  paiks: {
     name: 'Paiks',
     f: 0,
     w: 375,
@@ -18262,11 +33408,110 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1759,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1761,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 239,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 558,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 873,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 875,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8333330154418945,
+        u: 1746,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 41,
   },
-  paladin_265: {
+  paladin: {
     name: 'Paladin',
     f: 1300,
     w: 0,
@@ -18282,7 +33527,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  paladin_make_avail_175: {
+  paladin_make_avail: {
     name: 'Paladin (make avail)',
     f: 0,
     w: 0,
@@ -18298,7 +33543,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  palisade_wall_make_avail_523: {
+  palisade_wall_make_avail: {
     name: 'Palisade Wall (make avail)',
     f: 0,
     w: 0,
@@ -18314,7 +33559,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  palisade_walls_hp_feudal_age_72: {
+  palisade_walls_hp_feudal_age: {
     name: 'Palisade Walls HP feudal age',
     f: 0,
     w: 0,
@@ -18326,11 +33571,138 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 72,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 789,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 790,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 791,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 792,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 793,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 794,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 796,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 797,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 798,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 799,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 800,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 801,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 802,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 803,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 804,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666699647903442,
+        u: 119,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  paper_money_629: {
+  paper_money: {
     name: 'Paper Money',
     f: 550,
     w: 200,
@@ -18346,7 +33718,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 31,
   },
-  'paper_money_+_bow_saw_868': {
+  'paper_money_+_bow_saw': {
     name: 'Paper Money + Bow Saw',
     f: 0,
     w: 0,
@@ -18362,7 +33734,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  'paper_money_+_double_bit_axe_867': {
+  'paper_money_+_double_bit_axe': {
     name: 'Paper Money + Double-Bit Axe',
     f: 0,
     w: 0,
@@ -18378,7 +33750,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  'paper_money_+_two_man_saw_869': {
+  'paper_money_+_two_man_saw': {
     name: 'Paper Money + Two-Man Saw',
     f: 0,
     w: 0,
@@ -18394,7 +33766,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  paphos_naval_1142: {
+  paphos_naval: {
     name: 'Paphos Naval',
     f: 0,
     w: 0,
@@ -18410,7 +33782,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  paphos_port_age_2_1175: {
+  paphos_port_age_2: {
     name: 'Paphos Port Age 2',
     f: 0,
     w: 0,
@@ -18426,7 +33798,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  paphos_port_age_3_1176: {
+  paphos_port_age_3: {
     name: 'Paphos Port Age 3',
     f: 0,
     w: 0,
@@ -18442,7 +33814,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  paphos_port_age_4_1177: {
+  paphos_port_age_4: {
     name: 'Paphos Port Age 4',
     f: 0,
     w: 0,
@@ -18458,7 +33830,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  paphos_shadow_tech_1138: {
+  paphos_shadow_tech: {
     name: 'Paphos Shadow Tech',
     f: 1,
     w: 0,
@@ -18474,7 +33846,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  paphos_full_tech_tree_prereq_1261: {
+  paphos_full_tech_tree_prereq: {
     name: 'Paphos full tech tree prereq',
     f: 0,
     w: 0,
@@ -18490,7 +33862,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  parthian_tactics_436: {
+  parthian_tactics: {
     name: 'Parthian Tactics',
     f: 200,
     w: 0,
@@ -18502,11 +33874,194 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -6914.0,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -6914.0,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1036,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1036,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: -6914.0,
+        u: 1036,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1126,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1126,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1126,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1128,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1128,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1128,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1982,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 6914.0,
+        u: 1983,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  pastoralism_1013: {
+  pastoralism: {
     name: 'Pastoralism',
     f: 100,
     w: 150,
@@ -18522,7 +34077,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 53,
   },
-  pavise_494: {
+  pavise: {
     name: 'Pavise',
     f: 0,
     w: 200,
@@ -18536,24 +34091,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 769.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 882,
         c: -1,
       },
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
-        u: -1,
+        u: 882,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 185,
         c: -1,
       },
     ],
     age: 1,
     civ: 19,
   },
-  'peloponnesian_league,_spartan_unique_tech_1133': {
+  'peloponnesian_league,_spartan_unique_tech': {
     name: 'Peloponnesian League, Spartan Unique Tech',
     f: 700,
     w: 0,
@@ -18565,11 +34190,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 15365.0,
+        u: 2127,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 15365.0,
+        u: 2128,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 15365.0,
+        u: 2129,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 48,
   },
-  'peltasts,_thracian_unique_tech_1299': {
+  'peltasts,_thracian_unique_tech': {
     name: 'Peltasts, Thracian Unique Tech',
     f: 0,
     w: 800,
@@ -18585,7 +34232,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  perfusion_457: {
+  perfusion: {
     name: 'Perfusion',
     f: 0,
     w: 400,
@@ -18601,7 +34248,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 3,
   },
-  persians_536: {
+  persians: {
     name: 'Persians',
     f: 0,
     w: 1,
@@ -18617,7 +34264,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  petard_make_avail_426: {
+  petard_make_avail: {
     name: 'Petard (make avail)',
     f: 0,
     w: 0,
@@ -18633,7 +34280,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'pezhetairoi,_macedonian_unique_tech_1286': {
+  'pezhetairoi,_macedonian_unique_tech': {
     name: 'Pezhetairoi, Macedonian Unique Tech',
     f: 500,
     w: 0,
@@ -18649,7 +34296,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  pikeman_197: {
+  pikeman: {
     name: 'Pikeman',
     f: 160,
     w: 0,
@@ -18665,7 +34312,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  pikeman_requirement_955: {
+  pikeman_requirement: {
     name: 'Pikeman requirement',
     f: 0,
     w: 0,
@@ -18681,7 +34328,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  pirotechnia_902: {
+  pirotechnia: {
     name: 'Pirotechnia',
     f: 650,
     w: 0,
@@ -18693,11 +34340,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 0,
+        a: 11,
+        v: 90.0,
+        u: -1,
+        c: 44,
+      },
+    ],
     age: 4,
     civ: 19,
   },
-  placeholder_1_968: {
+  placeholder_1: {
     name: 'Placeholder 1',
     f: 100,
     w: 0,
@@ -18713,7 +34368,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_10_977: {
+  placeholder_10: {
     name: 'Placeholder 10',
     f: 100,
     w: 0,
@@ -18729,7 +34384,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_2_969: {
+  placeholder_2: {
     name: 'Placeholder 2',
     f: 100,
     w: 0,
@@ -18745,7 +34400,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_3_970: {
+  placeholder_3: {
     name: 'Placeholder 3',
     f: 100,
     w: 0,
@@ -18761,7 +34416,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_4_971: {
+  placeholder_4: {
     name: 'Placeholder 4',
     f: 100,
     w: 0,
@@ -18777,7 +34432,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_5_972: {
+  placeholder_5: {
     name: 'Placeholder 5',
     f: 100,
     w: 0,
@@ -18793,7 +34448,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_6_973: {
+  placeholder_6: {
     name: 'Placeholder 6',
     f: 100,
     w: 0,
@@ -18809,7 +34464,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_7_974: {
+  placeholder_7: {
     name: 'Placeholder 7',
     f: 100,
     w: 0,
@@ -18825,7 +34480,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_8_975: {
+  placeholder_8: {
     name: 'Placeholder 8',
     f: 100,
     w: 0,
@@ -18841,7 +34496,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  placeholder_9_976: {
+  placeholder_9: {
     name: 'Placeholder 9',
     f: 100,
     w: 0,
@@ -18857,7 +34512,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  plate_barding_armor_80: {
+  plate_barding_armor: {
     name: 'Plate Barding Armor',
     f: 350,
     w: 0,
@@ -18871,24 +34526,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1738,
         c: -1,
       },
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 770.0,
-        u: -1,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2557,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  plate_mail_armor_77: {
+  plate_mail_armor: {
     name: 'Plate Mail Armor',
     f: 300,
     w: 0,
@@ -18902,24 +34627,80 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 770.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  'plate_mail_for_cavalry,_macedonian_civ_bonus_1273': {
+  'plate_mail_for_cavalry,_macedonian_civ_bonus': {
     name: 'Plate Mail for Cavalry, Macedonian Civ Bonus',
     f: 0,
     w: 0,
@@ -18933,24 +34714,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1738,
         c: -1,
       },
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 770.0,
-        u: -1,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2557,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 1,
     civ: 54,
   },
-  plumed_archer_make_avail_26: {
+  plumed_archer_make_avail: {
     name: 'Plumed Archer (make avail)',
     f: 0,
     w: 0,
@@ -18966,7 +34817,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  'polemarchs_become_stronger_in_imperial_age,_spartan_civ_bonus_1129': {
+  'polemarchs_become_stronger_in_imperial_age,_spartan_civ_bonus': {
     name: 'Polemarchs become stronger in Imperial Age, Spartan Civ Bonus',
     f: 0,
     w: 0,
@@ -18982,7 +34833,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  poles_776: {
+  poles: {
     name: 'Poles',
     f: 0,
     w: 1,
@@ -18998,7 +34849,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  port_built_1222: {
+  port_built: {
     name: 'Port built',
     f: 1,
     w: 0,
@@ -19014,7 +34865,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  portuguese_580: {
+  portuguese: {
     name: 'Portuguese',
     f: 0,
     w: 1,
@@ -19030,7 +34881,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 24,
   },
-  portuguese_ut_572: {
+  portuguese_ut: {
     name: 'Portuguese UT',
     f: 0,
     w: 200,
@@ -19042,11 +34893,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 22,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 21,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 2,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 20,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 22,
+      },
+    ],
     age: 1,
     civ: 24,
   },
-  post_imperial_age_start_636: {
+  post_imperial_age_start: {
     name: 'Post-Imperial Age start',
     f: 1,
     w: 0,
@@ -19058,11 +34966,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 30.0,
+        u: 1570,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 1570,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 1570,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1570,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'post_tc_+100s_261': {
+  'post_tc_+100s': {
     name: 'Post-TC +100s',
     f: 0,
     w: 0,
@@ -19078,7 +35015,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  'post_tc_+25_each_res_1408': {
+  'post_tc_+25_each_res': {
     name: 'Post-TC +25 each res',
     f: 0,
     w: 0,
@@ -19094,7 +35031,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  'post_tc_+50f_+50w_259': {
+  'post_tc_+50f_+50w': {
     name: 'Post-TC +50f +50w',
     f: 0,
     w: 0,
@@ -19110,7 +35047,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  'post_tc_+50g_260': {
+  'post_tc_+50g': {
     name: 'Post-TC +50g',
     f: 0,
     w: 0,
@@ -19126,7 +35063,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  puru_static_bonuses_1302: {
+  puru_static_bonuses: {
     name: 'Puru Static Bonuses',
     f: 0,
     w: 0,
@@ -19142,7 +35079,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  r_tc_make_avail_187: {
+  r_tc_make_avail: {
     name: 'R TC (make avail)',
     f: 0,
     w: 0,
@@ -19158,7 +35095,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  reserved_878: {
+  reserved: {
     name: 'RESERVED',
     f: 0,
     w: 0,
@@ -19638,7 +35575,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  ratha_make_avail_827: {
+  ratha_make_avail: {
     name: 'Ratha (make avail)',
     f: 0,
     w: 0,
@@ -19654,7 +35591,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 41,
   },
-  rattan_archer_make_avail_620: {
+  rattan_archer_make_avail: {
     name: 'Rattan Archer (make avail)',
     f: 0,
     w: 0,
@@ -19670,7 +35607,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  recurve_bow_515: {
+  recurve_bow: {
     name: 'Recurve Bow',
     f: 0,
     w: 600,
@@ -19682,11 +35619,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+    ],
     age: 4,
     civ: 22,
   },
-  red_cliff_tactics_1080: {
+  red_cliff_tactics: {
     name: 'Red Cliff Tactics',
     f: 400,
     w: 0,
@@ -19702,7 +35654,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 50,
   },
-  redemption_316: {
+  redemption: {
     name: 'Redemption',
     f: 0,
     w: 0,
@@ -19718,7 +35670,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  'reed_arrows,_achaemenid_unique_tech_1111': {
+  'reed_arrows,_achaemenid_unique_tech': {
     name: 'Reed Arrows, Achaemenid Unique Tech',
     f: 400,
     w: 0,
@@ -19730,11 +35682,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 4,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 24,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 492,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2130,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2131,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2132,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 39,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 474,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 46,
   },
-  rename_units_713: {
+  rename_units: {
     name: 'Rename Units',
     f: 0,
     w: 0,
@@ -19750,7 +35773,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  reset_democracy_1206: {
+  reset_democracy: {
     name: 'Reset Democracy',
     f: 1,
     w: 1,
@@ -19762,19 +35785,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 105,
-        a: 0,
-        v: 1.25,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  reset_oligarchy_1205: {
+  reset_oligarchy: {
     name: 'Reset Oligarchy',
     f: 1,
     w: 0,
@@ -19790,7 +35805,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  reset_tyranny_1207: {
+  reset_tyranny: {
     name: 'Reset Tyranny',
     f: 1,
     w: 1,
@@ -19806,7 +35821,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+100%_742': {
+  'resources_last_+100%': {
     name: 'Resources last +100%',
     f: 1,
     w: 0,
@@ -19822,7 +35837,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+125%_743': {
+  'resources_last_+125%': {
     name: 'Resources last +125%',
     f: 1,
     w: 0,
@@ -19838,7 +35853,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+15%_737': {
+  'resources_last_+15%': {
     name: 'Resources last +15%',
     f: 1,
     w: 0,
@@ -19854,7 +35869,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+150%_744': {
+  'resources_last_+150%': {
     name: 'Resources last +150%',
     f: 1,
     w: 0,
@@ -19870,7 +35885,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+175%_745': {
+  'resources_last_+175%': {
     name: 'Resources last +175%',
     f: 1,
     w: 0,
@@ -19886,7 +35901,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+200%_746': {
+  'resources_last_+200%': {
     name: 'Resources last +200%',
     f: 1,
     w: 0,
@@ -19902,7 +35917,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+30%_738': {
+  'resources_last_+30%': {
     name: 'Resources last +30%',
     f: 1,
     w: 0,
@@ -19918,7 +35933,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+300%_747': {
+  'resources_last_+300%': {
     name: 'Resources last +300%',
     f: 1,
     w: 0,
@@ -19934,7 +35949,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+40%_739': {
+  'resources_last_+40%': {
     name: 'Resources last +40%',
     f: 1,
     w: 0,
@@ -19950,7 +35965,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+50%_740': {
+  'resources_last_+50%': {
     name: 'Resources last +50%',
     f: 1,
     w: 0,
@@ -19966,7 +35981,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'resources_last_+75%_741': {
+  'resources_last_+75%': {
     name: 'Resources last +75%',
     f: 1,
     w: 0,
@@ -19982,7 +35997,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  ring_archer_armor_219: {
+  ring_archer_armor: {
     name: 'Ring Archer Armor',
     f: 250,
     w: 0,
@@ -19996,24 +36011,150 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: -1,
+        c: 44,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1024.0,
+        u: 73,
         c: -1,
       },
       {
-        t: 8,
-        a: 0,
+        t: 4,
+        a: 8,
+        v: 768.0,
+        u: 73,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 770.0,
         u: -1,
+        c: 23,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -770.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 4,
     civ: -1,
   },
-  rocket_cart_make_avail_979: {
+  rocket_cart_make_avail: {
     name: 'Rocket Cart (make avail)',
     f: 0,
     w: 0,
@@ -20029,7 +36170,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  rocketry_52: {
+  rocketry: {
     name: 'Rocketry',
     f: 1100,
     w: 0,
@@ -20041,11 +36182,404 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 893.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 381.0,
+        u: 542,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 893.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1405.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 381.0,
+        u: 279,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5757.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6781.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1149.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5757.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6781.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 893.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 893.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 3453.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 8829.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 9597.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2941.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 1148.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5245.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1936,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1936,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1937,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 4221.0,
+        u: 1879,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1879,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 6,
   },
-  'rocketry_+_chemistry_1015': {
+  'rocketry_+_chemistry': {
     name: 'Rocketry + Chemistry',
     f: 0,
     w: 0,
@@ -20061,7 +36595,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  romans_880: {
+  romans: {
     name: 'Romans',
     f: 0,
     w: 1,
@@ -20077,7 +36611,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 43,
   },
-  royal_heirs_574: {
+  royal_heirs: {
     name: 'Royal Heirs',
     f: 300,
     w: 0,
@@ -20089,11 +36623,96 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1016,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1018,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 282,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 556,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 207,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1007,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1009,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 9987.0,
+        u: 1923,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 25,
   },
-  siege_engineers_requirement_978: {
+  siege_engineers_requirement: {
     name: 'SIege Engineers requirement',
     f: 0,
     w: 0,
@@ -20109,7 +36728,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 52,
   },
-  stbl_make_avail_25: {
+  stbl_make_avail: {
     name: 'STBL (make avail)',
     f: 0,
     w: 0,
@@ -20125,7 +36744,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'sagaris,_achaemenid_unique_tech_1113': {
+  'sagaris,_achaemenid_unique_tech': {
     name: 'Sagaris, Achaemenid Unique Tech',
     f: 600,
     w: 0,
@@ -20139,17 +36758,17 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 12,
+        t: 4,
+        a: 9,
         v: 7938.0,
         u: -1,
-        c: -1,
+        c: 12,
       },
     ],
     age: 1,
     civ: 46,
   },
-  samurai_make_avail_262: {
+  samurai_make_avail: {
     name: 'Samurai (make avail)',
     f: 0,
     w: 0,
@@ -20165,7 +36784,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 5,
   },
-  sanctity_231: {
+  sanctity: {
     name: 'Sanctity',
     f: 0,
     w: 0,
@@ -20177,11 +36796,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: -1,
   },
-  sappers_321: {
+  sappers: {
     name: 'Sappers',
     f: 400,
     w: 200,
@@ -20195,31 +36850,31 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 2831.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 3343.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 4355.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 4,
     civ: -1,
   },
-  saracen_zealotry_9: {
+  saracen_zealotry: {
     name: 'Saracen Zealotry',
     f: 400,
     w: 0,
@@ -20231,11 +36886,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 282,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 556,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1755,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 329,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 330,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 207,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1007,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1009,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1923,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 9,
   },
-  saracens_537: {
+  saracens: {
     name: 'Saracens',
     f: 0,
     w: 1,
@@ -20251,7 +36977,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  saracens_ut_490: {
+  saracens_ut: {
     name: 'Saracens UT',
     f: 200,
     w: 0,
@@ -20267,7 +36993,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 9,
   },
-  'sarissophoroi,_macedonian_unique_tech_1287': {
+  'sarissophoroi,_macedonian_unique_tech': {
     name: 'Sarissophoroi, Macedonian Unique Tech',
     f: 300,
     w: 0,
@@ -20283,7 +37009,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  savar_526: {
+  savar: {
     name: 'Savar',
     f: 1200,
     w: 0,
@@ -20299,7 +37025,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  scale_alexanders_soldiers_in_imperial_age_1331: {
+  scale_alexanders_soldiers_in_imperial_age: {
     name: "Scale Alexander's Soldiers in Imperial Age",
     f: 0,
     w: 0,
@@ -20311,11 +37037,432 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2459,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5378.0,
+        u: 2459,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2056.0,
+        u: 2459,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7686.0,
+        u: 2459,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2459,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2459,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2460,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 3841.0,
+        u: 2460,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7169.0,
+        u: 2460,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2460,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2461,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5378.0,
+        u: 2461,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2461,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2461,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 2462,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2462,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2462,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 5.0,
+        u: 2463,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2463,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 259.0,
+        u: 2463,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.0499999523162842,
+        u: 2463,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 2464,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 2465,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2465,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2465,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2050.0,
+        u: 2465,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2466,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 15.0,
+        u: 2466,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 10.0,
+        u: 2467,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2467,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2467,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 10.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 11,
+        v: 10.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 40.0,
+        u: 2469,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2469,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 259.0,
+        u: 2469,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2469,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2469,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2470,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2470,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2470,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2471,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2471,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 100.0,
+        u: 2472,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2472,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2472,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2472,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 10.0,
+        u: 2473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 2473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 11,
+        v: 20.0,
+        u: 2473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2050.0,
+        u: 2474,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2474,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2474,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 2475,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2475,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.800000011920929,
+        u: 2475,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  scale_barding_armor_81: {
+  scale_barding_armor: {
     name: 'Scale Barding Armor',
     f: 150,
     w: 0,
@@ -20329,24 +37476,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1738,
         c: -1,
       },
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2557,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  scale_mail_armor_74: {
+  scale_mail_armor: {
     name: 'Scale Mail Armor',
     f: 100,
     w: 0,
@@ -20360,24 +37577,80 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 6,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1831,
         c: -1,
       },
       {
-        t: 8,
-        a: 6,
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2468,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2468,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  'scale_mail_for_cavalry,_macedonian_civ_bonus_1271': {
+  'scale_mail_for_cavalry,_macedonian_civ_bonus': {
     name: 'Scale Mail for Cavalry, Macedonian Civ Bonus',
     f: 0,
     w: 0,
@@ -20391,24 +37664,94 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
         v: 1025.0,
         u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 12,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 47,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1738,
         c: -1,
       },
       {
-        t: 8,
-        a: 12,
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: -769.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
         v: 769.0,
-        u: -1,
+        u: 775,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2557,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2557,
         c: -1,
       },
     ],
     age: 1,
     civ: 54,
   },
-  scoop_nets_1161: {
+  scoop_nets: {
     name: 'Scoop Nets',
     f: 150,
     w: 200,
@@ -20424,7 +37767,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  scorpion_94: {
+  scorpion: {
     name: 'Scorpion',
     f: 0,
     w: 0,
@@ -20440,7 +37783,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  scout_make_avail_204: {
+  scout_make_avail: {
     name: 'Scout (make avail)',
     f: 0,
     w: 0,
@@ -20456,7 +37799,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'scythed_chariots,_achaemenid_unique_tech_1112': {
+  'scythed_chariots,_achaemenid_unique_tech': {
     name: 'Scythed Chariots, Achaemenid Unique Tech',
     f: 0,
     w: 500,
@@ -20472,7 +37815,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 46,
   },
-  second_change_of_government_1211: {
+  second_change_of_government: {
     name: 'Second change of Government',
     f: 0,
     w: 0,
@@ -20488,7 +37831,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  serjeant_make_avail_752: {
+  serjeant_make_avail: {
     name: 'Serjeant (make avail)',
     f: 0,
     w: 0,
@@ -20504,7 +37847,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  set_max_pop_no_houses_658: {
+  set_max_pop_no_houses: {
     name: 'Set Max pop (no houses)',
     f: 0,
     w: 0,
@@ -20520,7 +37863,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  settlement_make_avail_1353: {
+  settlement_make_avail: {
     name: 'Settlement (make avail)',
     f: 0,
     w: 0,
@@ -20536,7 +37879,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  settlement_age2_upgrade_1354: {
+  settlement_age2_upgrade: {
     name: 'Settlement Age2 upgrade',
     f: 0,
     w: 0,
@@ -20552,7 +37895,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  settlement_age3_upgrade_1355: {
+  settlement_age3_upgrade: {
     name: 'Settlement Age3 upgrade',
     f: 0,
     w: 0,
@@ -20568,7 +37911,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  settlement_age4_upgrade_1356: {
+  settlement_age4_upgrade: {
     name: 'Settlement Age4 upgrade',
     f: 0,
     w: 0,
@@ -20580,11 +37923,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2556,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2556,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2558,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2558,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 2560,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2560,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  shadow_archery_rg____age_two_132: {
+  shadow_archery_rg____age_two: {
     name: 'Shadow Archery Rg -- Age Two',
     f: 0,
     w: 0,
@@ -20600,7 +37986,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_barracks____age_two_122: {
+  shadow_barracks____age_two: {
     name: 'Shadow Barracks -- Age Two',
     f: 0,
     w: 0,
@@ -20616,7 +38002,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_blacksmith____age_one_106: {
+  shadow_blacksmith____age_one: {
     name: 'Shadow Blacksmith -- Age One',
     f: 0,
     w: 0,
@@ -20632,7 +38018,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_blacksmith____age_two_123: {
+  shadow_blacksmith____age_two: {
     name: 'Shadow Blacksmith -- Age Two',
     f: 0,
     w: 0,
@@ -20648,7 +38034,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_church____age_one_107: {
+  shadow_church____age_one: {
     name: 'Shadow Church -- Age One',
     f: 0,
     w: 0,
@@ -20664,7 +38050,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_church____age_two_124: {
+  shadow_church____age_two: {
     name: 'Shadow Church -- Age Two',
     f: 0,
     w: 0,
@@ -20680,7 +38066,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_dock____age_one_108: {
+  shadow_dock____age_one: {
     name: 'Shadow Dock -- Age One',
     f: 0,
     w: 0,
@@ -20696,7 +38082,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_dock____age_two_125: {
+  shadow_dock____age_two: {
     name: 'Shadow Dock -- Age Two',
     f: 0,
     w: 0,
@@ -20712,7 +38098,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_farm____age_two_126: {
+  shadow_farm____age_two: {
     name: 'Shadow Farm -- Age Two',
     f: 0,
     w: 0,
@@ -20728,7 +38114,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_market____age_two_128: {
+  shadow_market____age_two: {
     name: 'Shadow Market -- Age Two',
     f: 0,
     w: 0,
@@ -20744,7 +38130,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_mill____age_one_110: {
+  shadow_mill____age_one: {
     name: 'Shadow Mill -- Age One',
     f: 0,
     w: 0,
@@ -20760,7 +38146,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_mill____age_two_129: {
+  shadow_mill____age_two: {
     name: 'Shadow Mill -- Age Two',
     f: 0,
     w: 0,
@@ -20776,7 +38162,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_mule_cart_1_933: {
+  shadow_mule_cart_1: {
     name: 'Shadow Mule Cart 1',
     f: 0,
     w: 0,
@@ -20792,7 +38178,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'shadow_node_barracks_donjon_+_khmer_667': {
+  'shadow_node_barracks_donjon_+_khmer': {
     name: 'Shadow Node Barracks/Donjon + Khmer',
     f: 0,
     w: 0,
@@ -20808,7 +38194,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'shadow_node_blacksmith_+_khmer_668': {
+  'shadow_node_blacksmith_+_khmer': {
     name: 'Shadow Node Blacksmith + Khmer',
     f: 0,
     w: 0,
@@ -20824,7 +38210,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'shadow_node_mill_+_khmer_666': {
+  'shadow_node_mill_+_khmer': {
     name: 'Shadow Node Mill + Khmer',
     f: 0,
     w: 0,
@@ -20840,7 +38226,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_node_mule_cart_settlement_1358: {
+  shadow_node_mule_cart_settlement: {
     name: 'Shadow Node Mule Cart/Settlement',
     f: 0,
     w: 0,
@@ -20856,7 +38242,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_node_for_age_four_142: {
+  shadow_node_for_age_four: {
     name: 'Shadow Node for Age Four',
     f: 0,
     w: 0,
@@ -20872,7 +38258,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_node_for_age_three_135: {
+  shadow_node_for_age_three: {
     name: 'Shadow Node for Age Three',
     f: 0,
     w: 0,
@@ -20888,7 +38274,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_node_for_age_two_120: {
+  shadow_node_for_age_two: {
     name: 'Shadow Node for Age Two',
     f: 0,
     w: 0,
@@ -20904,7 +38290,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'shadow_node+_for_age_four_661': {
+  'shadow_node+_for_age_four': {
     name: 'Shadow Node+ for Age Four',
     f: 0,
     w: 0,
@@ -20920,7 +38306,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'shadow_node+_for_age_three_660': {
+  'shadow_node+_for_age_three': {
     name: 'Shadow Node+ for Age Three',
     f: 0,
     w: 0,
@@ -20936,7 +38322,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'shadow_node+_for_age_two_659': {
+  'shadow_node+_for_age_two': {
     name: 'Shadow Node+ for Age Two',
     f: 0,
     w: 0,
@@ -20952,7 +38338,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_port____age_one_1220: {
+  shadow_port____age_one: {
     name: 'Shadow Port -- Age One',
     f: 0,
     w: 0,
@@ -20968,7 +38354,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_saw_mill_1_258: {
+  shadow_saw_mill_1: {
     name: 'Shadow Saw Mill 1',
     f: 0,
     w: 0,
@@ -20984,7 +38370,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_settlement____age_one_1357: {
+  shadow_settlement____age_one: {
     name: 'Shadow Settlement -- Age One',
     f: 0,
     w: 0,
@@ -21000,7 +38386,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_tc____age_one_722: {
+  shadow_tc____age_one: {
     name: 'Shadow TC -- Age One',
     f: 0,
     w: 0,
@@ -21016,7 +38402,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_tc_annex_307: {
+  shadow_tc_annex: {
     name: 'Shadow TC Annex',
     f: 0,
     w: 0,
@@ -21032,7 +38418,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_tc_foundation_308: {
+  shadow_tc_foundation: {
     name: 'Shadow TC Foundation',
     f: 0,
     w: 0,
@@ -21048,7 +38434,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_tower____age_four_143: {
+  shadow_tower____age_four: {
     name: 'Shadow Tower -- Age Four',
     f: 0,
     w: 0,
@@ -21064,7 +38450,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_trade_wksp____age_two_131: {
+  shadow_trade_wksp____age_two: {
     name: 'Shadow Trade Wksp -- Age Two',
     f: 0,
     w: 0,
@@ -21080,7 +38466,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_transport_ship____age_four_1164: {
+  shadow_transport_ship____age_four: {
     name: 'Shadow Transport Ship -- Age Four',
     f: 0,
     w: 0,
@@ -21096,7 +38482,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_transport_ship____age_three_1163: {
+  shadow_transport_ship____age_three: {
     name: 'Shadow Transport Ship -- Age Three',
     f: 0,
     w: 0,
@@ -21112,7 +38498,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadow_university____age_three_146: {
+  shadow_university____age_three: {
     name: 'Shadow University -- Age Three',
     f: 0,
     w: 0,
@@ -21128,7 +38514,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shadowsiege_wrksp____age_three_138: {
+  shadowsiege_wrksp____age_three: {
     name: 'ShadowSiege Wrksp -- Age Three',
     f: 0,
     w: 0,
@@ -21144,7 +38530,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shatagni_507: {
+  shatagni: {
     name: 'Shatagni',
     f: 500,
     w: 0,
@@ -21156,11 +38542,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 5,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 20,
   },
-  shinkichon_445: {
+  shinkichon: {
     name: 'Shinkichon',
     f: 1100,
     w: 0,
@@ -21172,11 +38566,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1904,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 832,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 10,
+        v: -0.3499999940395355,
+        u: 1907,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 10,
+        v: -0.3499999940395355,
+        u: 1904,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 18,
   },
-  shipwright_373: {
+  shipwright: {
     name: 'Shipwright',
     f: 1000,
     w: 0,
@@ -21208,7 +38645,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shipyard_built_1141: {
+  shipyard_built: {
     name: 'Shipyard built',
     f: 1,
     w: 0,
@@ -21224,7 +38661,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  shotel_warrior_make_avail_568: {
+  shotel_warrior_make_avail: {
     name: 'Shotel Warrior (make avail)',
     f: 0,
     w: 0,
@@ -21240,7 +38677,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 25,
   },
-  shrivamsha_rider_make_avail_842: {
+  shrivamsha_rider_make_avail: {
     name: 'Shrivamsha Rider (make avail)',
     f: 0,
     w: 0,
@@ -21256,7 +38693,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 42,
   },
-  shu_1028: {
+  shu: {
     name: 'Shu',
     f: 0,
     w: 1,
@@ -21272,7 +38709,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  sicilians_749: {
+  sicilians: {
     name: 'Sicilians',
     f: 0,
     w: 1,
@@ -21288,7 +38725,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 37,
   },
-  siege_engineers_377: {
+  siege_engineers: {
     name: 'Siege Engineers',
     f: 500,
     w: 600,
@@ -21300,11 +38737,586 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: -1,
+        c: 13,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 55,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 1258,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 35,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 422,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 548,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 440,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5772.0,
+        u: 440,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6796.0,
+        u: 440,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: -1,
+        c: 51,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1120,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1122,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 1263,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: -1.0,
+        u: 444,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1744,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 420,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 691,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 831,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 832,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1795,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 1104,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 527,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 528,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2138,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2139,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2140,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 2140,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 2138,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 2139,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1948,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1938,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1938,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1938,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1939,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1939,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1939,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1962,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1980,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1980,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1980,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1980,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1911,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1913,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1913,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1913,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 1923,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 767,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: 767,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: 767,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: -1,
+        c: 64,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 6776.0,
+        u: -1,
+        c: 64,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 5752.0,
+        u: -1,
+        c: 64,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 2133,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 2134,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2956.0,
+        u: 2135,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 2633,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 9,
+        v: 2936.0,
+        u: 2633,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: -1,
   },
-  siege_engineers_researched_for_vedic_teachings_1316: {
+  siege_engineers_researched_for_vedic_teachings: {
     name: 'Siege Engineers Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -21316,19 +39328,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  siege_onager_320: {
+  siege_onager: {
     name: 'Siege Onager',
     f: 1450,
     w: 0,
@@ -21344,7 +39348,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  siege_ram_255: {
+  siege_ram: {
     name: 'Siege Ram',
     f: 1000,
     w: 0,
@@ -21360,7 +39364,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  siege_tower_make_avail_603: {
+  siege_tower_make_avail: {
     name: 'Siege Tower (make avail)',
     f: 0,
     w: 0,
@@ -21376,7 +39380,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  siege_wksp_make_avail_149: {
+  siege_wksp_make_avail: {
     name: 'Siege Wksp (make avail)',
     f: 0,
     w: 0,
@@ -21392,7 +39396,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  silk_armor_687: {
+  silk_armor: {
     name: 'Silk Armor',
     f: 0,
     w: 400,
@@ -21404,11 +39408,138 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1025.0,
+        u: 1740,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 448,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 546,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 441,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1707,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1370,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1372,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 1740,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 33,
   },
-  silk_road_499: {
+  silk_road: {
     name: 'Silk Road',
     f: 250,
     w: 0,
@@ -21424,7 +39555,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 19,
   },
-  sipahi_491: {
+  sipahi: {
     name: 'Sipahi',
     f: 350,
     w: 0,
@@ -21436,11 +39567,33 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1738,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 0,
+        v: 20.0,
+        u: 1740,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 10,
   },
-  siphons_909: {
+  siphons: {
     name: 'Siphons',
     f: 100,
     w: 0,
@@ -21456,7 +39609,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  sitting_tiger_1081: {
+  sitting_tiger: {
     name: 'Sitting Tiger',
     f: 0,
     w: 600,
@@ -21472,7 +39625,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 50,
   },
-  'sitting_tiger_+_chemistry_1082': {
+  'sitting_tiger_+_chemistry': {
     name: 'Sitting Tiger + Chemistry',
     f: 0,
     w: 0,
@@ -21488,7 +39641,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'skandhavaras,_puru_unique_tech_1310': {
+  'skandhavaras,_puru_unique_tech': {
     name: 'Skandhavaras, Puru Unique Tech',
     f: 0,
     w: 800,
@@ -21504,7 +39657,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  skeuophoroi_1225: {
+  skeuophoroi: {
     name: 'Skeuophoroi',
     f: 250,
     w: 0,
@@ -21516,11 +39669,68 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2162,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2164,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2165,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2166,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2167,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2270,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2271,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1026.0,
+        u: 2272,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 48,
   },
-  skirmisher_make_avail_99: {
+  skirmisher_make_avail: {
     name: 'Skirmisher (make avail)',
     f: 0,
     w: 0,
@@ -21536,7 +39746,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'skirmishers_regen_10_hp_in_classical_age,_thracian_civ_bonus_1294': {
+  'skirmishers_regen_10_hp_in_classical_age,_thracian_civ_bonus': {
     name: 'Skirmishers regen 10 hp in Classical Age, Thracian Civ Bonus',
     f: 0,
     w: 0,
@@ -21552,7 +39762,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  'skirmishers_regen_5_hp_in_civic_age,_thracian_civ_bonus_1293': {
+  'skirmishers_regen_5_hp_in_civic_age,_thracian_civ_bonus': {
     name: 'Skirmishers regen 5 hp in Civic Age, Thracian Civ Bonus',
     f: 0,
     w: 0,
@@ -21568,7 +39778,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  slavic_team_bonus_721: {
+  slavic_team_bonus: {
     name: 'Slavic team bonus',
     f: 0,
     w: 0,
@@ -21584,7 +39794,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 23,
   },
-  slavs_551: {
+  slavs: {
     name: 'Slavs',
     f: 0,
     w: 1,
@@ -21600,7 +39810,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 23,
   },
-  slavs_ut_512: {
+  slavs_ut: {
     name: 'Slavs UT',
     f: 200,
     w: 0,
@@ -21612,11 +39822,82 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: -1,
+        c: 18,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: -1,
+        c: 43,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: 1811,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: 1826,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 771.0,
+        u: 1827,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1027.0,
+        u: 1827,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 23,
   },
-  slinger_make_avail_528: {
+  slinger_make_avail: {
     name: 'Slinger (make avail)',
     f: 0,
     w: 0,
@@ -21632,7 +39913,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  spanish_542: {
+  spanish: {
     name: 'Spanish',
     f: 0,
     w: 1,
@@ -21648,7 +39929,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 14,
   },
-  'sparabaras,_achaemenid_unique_tech_1110': {
+  'sparabaras,_achaemenid_unique_tech': {
     name: 'Sparabaras, Achaemenid Unique Tech',
     f: 350,
     w: 0,
@@ -21660,11 +39941,110 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2101,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2101,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2102,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2102,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 769.0,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 1026.0,
+        u: 2175,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 46,
   },
-  spartans_1026: {
+  spartans: {
     name: 'Spartans',
     f: 0,
     w: 1,
@@ -21680,7 +40060,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  spartans_static_bonuses_1126: {
+  spartans_static_bonuses: {
     name: 'Spartans Static Bonuses',
     f: 0,
     w: 0,
@@ -21696,7 +40076,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  spartans_full_tech_tree_1260: {
+  spartans_full_tech_tree: {
     name: 'Spartans full tech tree',
     f: 0,
     w: 0,
@@ -21712,7 +40092,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  spawn_lembos_from_port_1198: {
+  spawn_lembos_from_port: {
     name: 'Spawn Lembos from Port',
     f: 0,
     w: 0,
@@ -21728,7 +40108,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'spawn_first_polemarch,_spartan_civ_bonus_1127': {
+  'spawn_first_polemarch,_spartan_civ_bonus': {
     name: 'Spawn first Polemarch, Spartan Civ bonus',
     f: 0,
     w: 0,
@@ -21744,7 +40124,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  'spawn_second_polemarch,_spartan_civ_bonus_1128': {
+  'spawn_second_polemarch,_spartan_civ_bonus': {
     name: 'Spawn second Polemarch, Spartan Civ Bonus',
     f: 0,
     w: 0,
@@ -21760,7 +40140,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  spearman_114: {
+  spearman: {
     name: 'Spearman',
     f: 0,
     w: 0,
@@ -21776,7 +40156,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  spearman_make_avail_87: {
+  spearman_make_avail: {
     name: 'Spearman (make avail)',
     f: 0,
     w: 0,
@@ -21792,7 +40172,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  spies_treason_408: {
+  spies_treason: {
     name: 'Spies/Treason',
     f: 0,
     w: 0,
@@ -21808,7 +40188,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  squires_215: {
+  squires: {
     name: 'Squires',
     f: 100,
     w: 0,
@@ -21823,16 +40203,44 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 6,
+        a: 5,
         v: 1.100000023841858,
         u: -1,
+        c: 6,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1831,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 2174,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 2175,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 2468,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  stable____age_two_130: {
+  stable____age_two: {
     name: 'Stable -- Age Two',
     f: 0,
     w: 0,
@@ -21848,7 +40256,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  stable_balanced_doctrine_1281: {
+  stable_balanced_doctrine: {
     name: 'Stable Balanced Doctrine',
     f: 0,
     w: 0,
@@ -21864,7 +40272,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  stable_mercenaries_doctrine_1283: {
+  stable_mercenaries_doctrine: {
     name: 'Stable Mercenaries Doctrine',
     f: 0,
     w: 0,
@@ -21880,7 +40288,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  stable_regulars_doctrine_1282: {
+  stable_regulars_doctrine: {
     name: 'Stable Regulars Doctrine',
     f: 0,
     w: 0,
@@ -21896,7 +40304,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  'stable_units_heal_when_no_nearby_enemies,_puru_civ_bonus_1303': {
+  'stable_units_heal_when_no_nearby_enemies,_puru_civ_bonus': {
     name: 'Stable units heal when no nearby enemies, Puru Civ Bonus',
     f: 0,
     w: 0,
@@ -21912,7 +40320,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  steppe_husbandry_689: {
+  steppe_husbandry: {
     name: 'Steppe Husbandry',
     f: 200,
     w: 300,
@@ -21928,7 +40336,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 34,
   },
-  steppe_lancer_make_avail_714: {
+  steppe_lancer_make_avail: {
     name: 'Steppe Lancer (make avail)',
     f: 0,
     w: 0,
@@ -21944,7 +40352,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  stirrups_685: {
+  stirrups: {
     name: 'Stirrups',
     f: 400,
     w: 0,
@@ -21958,17 +40366,24 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 10,
-        a: 12,
+        t: 5,
+        a: 10,
         v: 0.75,
         u: -1,
-        c: -1,
+        c: 47,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: -1,
+        c: 12,
       },
     ],
     age: 3,
     civ: 32,
   },
-  stone_mining_278: {
+  stone_mining: {
     name: 'Stone Mining',
     f: 100,
     w: 75,
@@ -21984,7 +40399,7 @@ export const techs: Record<string, TechData> = {
     age: 2,
     civ: -1,
   },
-  'stone_mining_food_generation_increase,_puru_civ_bonus_1329': {
+  'stone_mining_food_generation_increase,_puru_civ_bonus': {
     name: 'Stone Mining food generation increase, Puru Civ Bonus',
     f: 0,
     w: 0,
@@ -22000,7 +40415,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  stone_mining_gold_generation_increase_806: {
+  stone_mining_gold_generation_increase: {
     name: 'Stone Mining gold generation increase',
     f: 0,
     w: 0,
@@ -22016,7 +40431,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  stone_shaft_mining_279: {
+  stone_shaft_mining: {
     name: 'Stone Shaft Mining',
     f: 175,
     w: 75,
@@ -22032,7 +40447,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  'stone_shaft_mining_food_generation_increase,_puru_civ_bonus_1330': {
+  'stone_shaft_mining_food_generation_increase,_puru_civ_bonus': {
     name: 'Stone Shaft Mining food generation increase, Puru Civ Bonus',
     f: 0,
     w: 0,
@@ -22048,7 +40463,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  stone_shaft_mining_gold_generation_increase_807: {
+  stone_shaft_mining_gold_generation_increase: {
     name: 'Stone Shaft Mining gold generation increase',
     f: 0,
     w: 0,
@@ -22064,7 +40479,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  stone_shaft_mining_requirement_765: {
+  stone_shaft_mining_requirement: {
     name: 'Stone Shaft Mining requirement',
     f: 0,
     w: 0,
@@ -22080,7 +40495,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  stronghold_482: {
+  stronghold: {
     name: 'Stronghold',
     f: 250,
     w: 0,
@@ -22092,11 +40507,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 236,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.75,
+        u: 235,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 13,
   },
-  sub_shadow_age4_359: {
+  sub_shadow_age4: {
     name: 'Sub-Shadow Age4',
     f: 0,
     w: 0,
@@ -22112,7 +40563,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  sun_jian_make_avail_1083: {
+  sun_jian_make_avail: {
     name: 'Sun Jian (make avail)',
     f: 0,
     w: 0,
@@ -22128,7 +40579,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 50,
   },
-  supplies_716: {
+  supplies: {
     name: 'Supplies',
     f: 75,
     w: 0,
@@ -22144,7 +40595,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  supremacy_440: {
+  supremacy: {
     name: 'Supremacy',
     f: 400,
     w: 0,
@@ -22158,38 +40609,38 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 9,
-        a: 4,
+        t: 4,
+        a: 9,
         v: 1030.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 0,
-        a: 4,
+        t: 4,
+        a: 0,
         v: 40.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 1026.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 8,
-        a: 4,
+        t: 4,
+        a: 8,
         v: 770.0,
         u: -1,
-        c: -1,
+        c: 4,
       },
     ],
     age: 4,
     civ: 14,
   },
-  svan_towers_923: {
+  svan_towers: {
     name: 'Svan Towers',
     f: 300,
     w: 0,
@@ -22203,17 +40654,150 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 130,
-        a: 4,
-        v: -1.0,
-        u: -1,
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 79,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 234,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 235,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 236,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 785,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1665,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 505,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 518,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 82,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 746,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 747,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 109,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 71,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 141,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 142,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 54,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 328,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1867,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1868,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 1548,
         c: -1,
       },
     ],
     age: 3,
     civ: 45,
   },
-  'svan_towers_+_chemistry_936': {
+  'svan_towers_+_chemistry': {
     name: 'Svan Towers + Chemistry',
     f: 0,
     w: 0,
@@ -22225,11 +40809,19 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1868,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  swordsman_make_avail_160: {
+  swordsman_make_avail: {
     name: 'Swordsman (make avail)',
     f: 0,
     w: 0,
@@ -22245,7 +40837,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  szlachta_privileges_782: {
+  szlachta_privileges: {
     name: 'Szlachta Privileges',
     f: 500,
     w: 0,
@@ -22261,7 +40853,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 38,
   },
-  't_bonus,_start_w__llama_730': {
+  't_bonus,_start_w__llama': {
     name: 'T-Bonus, Start w/ Llama',
     f: 1,
     w: 0,
@@ -22277,7 +40869,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  tc____age_one_118: {
+  tc____age_one: {
     name: 'TC -- Age One',
     f: 0,
     w: 0,
@@ -22293,7 +40885,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  tc_built_for_polemarch_1230: {
+  tc_built_for_polemarch: {
     name: 'TC built for Polemarch',
     f: 0,
     w: 0,
@@ -22309,7 +40901,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  tarkan_make_avail_1: {
+  tarkan_make_avail: {
     name: 'Tarkan (make avail)',
     f: 0,
     w: 0,
@@ -22325,7 +40917,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 17,
   },
-  tatars_674: {
+  tatars: {
     name: 'Tatars',
     f: 0,
     w: 1,
@@ -22341,7 +40933,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 33,
   },
-  'taxiarchs,_athenian_unique_tech_1121': {
+  'taxiarchs,_athenian_unique_tech': {
     name: 'Taxiarchs, Athenian Unique Tech',
     f: 0,
     w: 500,
@@ -22357,7 +40949,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  temple_guard_make_avail_1400: {
+  temple_guard_make_avail: {
     name: 'Temple Guard (make avail)',
     f: 0,
     w: 0,
@@ -22373,7 +40965,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 57,
   },
-  teutonic_knight_make_avail_276: {
+  teutonic_knight_make_avail: {
     name: 'Teutonic Knight (make avail)',
     f: 0,
     w: 0,
@@ -22389,7 +40981,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  teutons_532: {
+  teutons: {
     name: 'Teutons',
     f: 0,
     w: 1,
@@ -22405,7 +40997,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 4,
   },
-  thalassocracy_624: {
+  thalassocracy: {
     name: 'Thalassocracy',
     f: 300,
     w: 0,
@@ -22421,7 +41013,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 29,
   },
-  'thalassocracy_+_bodkin_670': {
+  'thalassocracy_+_bodkin': {
     name: 'Thalassocracy + Bodkin',
     f: 0,
     w: 0,
@@ -22433,11 +41025,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 133,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'thalassocracy_+_bracer_671': {
+  'thalassocracy_+_bracer': {
     name: 'Thalassocracy + Bracer',
     f: 0,
     w: 0,
@@ -22449,11 +41077,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 133,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'thalassocracy_+_chemistry_734': {
+  'thalassocracy_+_chemistry': {
     name: 'Thalassocracy + Chemistry',
     f: 0,
     w: 0,
@@ -22469,7 +41133,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'thalassocracy_+_fletching_669': {
+  'thalassocracy_+_fletching': {
     name: 'Thalassocracy + Fletching',
     f: 0,
     w: 0,
@@ -22481,11 +41145,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 769.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 1189,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 45,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 47,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 51,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 1.0,
+        u: 133,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  'thalassocracy_+_heated_shot_736': {
+  'thalassocracy_+_heated_shot': {
     name: 'Thalassocracy + Heated Shot',
     f: 0,
     w: 0,
@@ -22501,7 +41208,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'thalassocracy_+_murder_holes_735': {
+  'thalassocracy_+_murder_holes': {
     name: 'Thalassocracy + Murder Holes',
     f: 0,
     w: 0,
@@ -22517,7 +41224,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  theocracy_438: {
+  theocracy: {
     name: 'Theocracy',
     f: 0,
     w: 0,
@@ -22533,7 +41240,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  third_change_of_government_1212: {
+  third_change_of_government: {
     name: 'Third change of Government',
     f: 0,
     w: 0,
@@ -22549,7 +41256,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  thirisadai_make_avail_841: {
+  thirisadai_make_avail: {
     name: 'Thirisadai (make avail)',
     f: 0,
     w: 0,
@@ -22565,7 +41272,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  thracians_static_bonuses_1292: {
+  thracians_static_bonuses: {
     name: 'Thracians Static Bonuses',
     f: 0,
     w: 0,
@@ -22581,7 +41288,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 55,
   },
-  throwing_axemen_make_avail_275: {
+  throwing_axemen_make_avail: {
     name: 'Throwing Axemen (make avail)',
     f: 0,
     w: 0,
@@ -22597,7 +41304,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 2,
   },
-  thumb_ring_437: {
+  thumb_ring: {
     name: 'Thumb Ring',
     f: 300,
     w: 250,
@@ -22611,24 +41318,143 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 11,
-        a: 0,
+        t: 0,
+        a: 11,
         v: 100.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 0,
+        a: 11,
+        v: 100.0,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8500000238418579,
+        u: -1,
+        c: 0,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.8500000238418579,
+        u: -1,
+        c: 36,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764700412750244,
+        u: 7,
         c: -1,
       },
       {
-        t: 10,
-        a: 0,
-        v: 0.8500000238418579,
-        u: -1,
+        t: 5,
+        a: 10,
+        v: 1.1764706373214722,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764706373214722,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764700412750244,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764706373214722,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764706373214722,
+        u: 1036,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764706373214722,
+        u: 185,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.0588200092315674,
+        u: 39,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.058823585510254,
+        u: 474,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.058823585510254,
+        u: 827,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.058823585510254,
+        u: 829,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.9411764740943909,
+        u: 73,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 0.9411759972572327,
+        u: 559,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764700412750244,
+        u: 2562,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 10,
+        v: 1.1764706373214722,
+        u: 2564,
         c: -1,
       },
     ],
     age: 3,
     civ: -1,
   },
-  thunderclap_bombs_997: {
+  thunderclap_bombs: {
     name: 'Thunderclap Bombs',
     f: 900,
     w: 0,
@@ -22644,7 +41470,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 52,
   },
-  tiger_cavalry_make_avail_1035: {
+  tiger_cavalry_make_avail: {
     name: 'Tiger Cavalry (make avail)',
     f: 0,
     w: 0,
@@ -22660,7 +41486,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  tigui_576: {
+  tigui: {
     name: 'Tigui',
     f: 200,
     w: 300,
@@ -22676,7 +41502,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 26,
   },
-  timurid_siegecraft_688: {
+  timurid_siegecraft: {
     name: 'Timurid Siegecraft',
     f: 0,
     w: 500,
@@ -22688,11 +41514,54 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: -1,
+        c: 54,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 331,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 729,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 730,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 1942,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 12,
+        v: 2.0,
+        u: 1923,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 33,
   },
-  torsion_engines_575: {
+  torsion_engines: {
     name: 'Torsion Engines',
     f: 1000,
     w: 0,
@@ -22708,7 +41577,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 25,
   },
-  tower_shields_692: {
+  tower_shields: {
     name: 'Tower Shields',
     f: 500,
     w: 0,
@@ -22720,11 +41589,96 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 7,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 6,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1155,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 93,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 358,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 359,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1010,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1012,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1036,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1786,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1787,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 8,
+        v: 770.0,
+        u: 1788,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 35,
   },
-  town_center_spawn_639: {
+  town_center_spawn: {
     name: 'Town Center Spawn',
     f: 0,
     w: 0,
@@ -22740,7 +41694,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  town_patrol_280: {
+  town_patrol: {
     name: 'Town Patrol',
     f: 300,
     w: 0,
@@ -22752,19 +41706,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 1,
-        a: 3,
-        v: 4.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 3,
     civ: -1,
   },
-  town_watch_8: {
+  town_watch: {
     name: 'Town Watch',
     f: 75,
     w: 0,
@@ -22776,50 +41722,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 1,
-        a: 3,
-        v: 4.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 2,
     civ: -1,
   },
-  tracking_90: {
-    name: 'Tracking',
-    f: 0,
-    w: 0,
-    g: 0,
-    time: 0,
-    building: -1,
-    id: 90,
-    requires: {
-      techs: [],
-      buildings: [],
-    },
-    effects: [
-      {
-        t: 1,
-        a: 6,
-        v: 2.0,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 23,
-        a: 6,
-        v: 2.0,
-        u: -1,
-        c: -1,
-      },
-    ],
-    age: 1,
-    civ: -1,
-  },
-  traction_trebuchet_make_avail_1025: {
+  traction_trebuchet_make_avail: {
     name: 'Traction Trebuchet (make avail)',
     f: 0,
     w: 0,
@@ -22835,7 +41742,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'trade_0%_wood_1359': {
+  'trade_0%_wood': {
     name: 'Trade 0% wood',
     f: 0,
     w: 0,
@@ -22851,7 +41758,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'trade_100%_wood_1373': {
+  'trade_100%_wood': {
     name: 'Trade 100% wood',
     f: 0,
     w: 0,
@@ -22867,7 +41774,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'trade_25%_wood_1215': {
+  'trade_25%_wood': {
     name: 'Trade 25% wood',
     f: 0,
     w: 0,
@@ -22899,7 +41806,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'trade_50%_wood_1216': {
+  'trade_50%_wood': {
     name: 'Trade 50% wood',
     f: 0,
     w: 0,
@@ -22931,7 +41838,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  'trade_75%_wood_1217': {
+  'trade_75%_wood': {
     name: 'Trade 75% wood',
     f: 0,
     w: 0,
@@ -22963,7 +41870,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  trade_cart_make_avail_161: {
+  trade_cart_make_avail: {
     name: 'Trade Cart (make avail)',
     f: 0,
     w: 0,
@@ -22979,7 +41886,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  transhumance_1012: {
+  transhumance: {
     name: 'Transhumance',
     f: 175,
     w: 325,
@@ -22995,7 +41902,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: 53,
   },
-  treadmill_crane_54: {
+  treadmill_crane: {
     name: 'Treadmill Crane',
     f: 0,
     w: 200,
@@ -23011,7 +41918,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  treadmill_crane_researched_for_vedic_teachings_1322: {
+  treadmill_crane_researched_for_vedic_teachings: {
     name: 'Treadmill Crane Researched for Vedic Teachings',
     f: 0,
     w: 0,
@@ -23023,19 +41930,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 13,
-        a: 4,
-        v: 1.0199999809265137,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 1,
     civ: -1,
   },
-  trebuchet_256: {
+  trebuchet: {
     name: 'Trebuchet',
     f: 0,
     w: 0,
@@ -23051,7 +41950,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  trireme_1149: {
+  trireme: {
     name: 'Trireme',
     f: 0,
     w: 280,
@@ -23067,7 +41966,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  tuntian_1061: {
+  tuntian: {
     name: 'Tuntian',
     f: 250,
     w: 300,
@@ -23083,7 +41982,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 51,
   },
-  tupi_1362: {
+  tupi: {
     name: 'Tupi',
     f: 0,
     w: 1,
@@ -23099,7 +41998,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  tupi_team_bonus_1403: {
+  tupi_team_bonus: {
     name: 'Tupi team bonus',
     f: 0,
     w: 0,
@@ -23115,7 +42014,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 59,
   },
-  turk_castle_354: {
+  turk_castle: {
     name: 'Turk Castle',
     f: 0,
     w: 0,
@@ -23131,7 +42030,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  turks_538: {
+  turks: {
     name: 'Turks',
     f: 0,
     w: 1,
@@ -23147,7 +42046,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 10,
   },
-  turtle_ship_make_avail_447: {
+  turtle_ship_make_avail: {
     name: 'Turtle Ship (make avail)',
     f: 0,
     w: 0,
@@ -23163,7 +42062,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 18,
   },
-  tusk_swords_622: {
+  tusk_swords: {
     name: 'Tusk Swords',
     f: 0,
     w: 300,
@@ -23175,11 +42074,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1132,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 1134,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 239,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 558,
+        c: -1,
+      },
+    ],
     age: 3,
     civ: 28,
   },
-  two_handed_swordsman_217: {
+  two_handed_swordsman: {
     name: 'Two-Handed Swordsman',
     f: 200,
     w: 0,
@@ -23207,11 +42135,201 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 74,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 75,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 77,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 473,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 567,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2247,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 2247,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 2247,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2248,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 2248,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 2248,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2249,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 2249,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 2249,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 2250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 5377.0,
+        u: 2250,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7426.0,
+        u: 2250,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  two_handed_swordsman_requirement_953: {
+  two_handed_swordsman_requirement: {
     name: 'Two-Handed Swordsman requirement',
     f: 0,
     w: 0,
@@ -23227,7 +42345,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  two_man_saw_221: {
+  two_man_saw: {
     name: 'Two-Man Saw',
     f: 300,
     w: 200,
@@ -23243,7 +42361,7 @@ export const techs: Record<string, TechData> = {
     age: 4,
     civ: -1,
   },
-  two_man_saw_requirement_767: {
+  two_man_saw_requirement: {
     name: 'Two-Man Saw requirement',
     f: 0,
     w: 0,
@@ -23259,7 +42377,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 36,
   },
-  tyranny_1204: {
+  tyranny: {
     name: 'Tyranny',
     f: 0,
     w: 0,
@@ -23275,7 +42393,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 47,
   },
-  unique_heroic_viking_lbt_372: {
+  unique_heroic_viking_lbt: {
     name: 'Unique Heroic Viking LBT',
     f: 750,
     w: 0,
@@ -23291,7 +42409,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  univ_make_avail_150: {
+  univ_make_avail: {
     name: 'Univ (make avail)',
     f: 0,
     w: 0,
@@ -23307,7 +42425,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  upgrade_camel_scouts_to_riders_860: {
+  upgrade_camel_scouts_to_riders: {
     name: 'Upgrade Camel Scouts to Riders',
     f: 0,
     w: 0,
@@ -23323,7 +42441,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  upgrade_eagle_in_age3_387: {
+  upgrade_eagle_in_age3: {
     name: 'Upgrade Eagle in Age3',
     f: 0,
     w: 0,
@@ -23335,11 +42453,40 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 4,
+        a: 9,
+        v: 1027.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 2050.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 4097.0,
+        u: 751,
+        c: -1,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 7681.0,
+        u: 751,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  upgrade_rams_712: {
+  upgrade_rams: {
     name: 'Upgrade Rams',
     f: 0,
     w: 0,
@@ -23355,7 +42502,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  upgrade_rams_in_castle_706: {
+  upgrade_rams_in_castle: {
     name: 'Upgrade Rams in Castle',
     f: 0,
     w: 0,
@@ -23371,7 +42518,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 34,
   },
-  urumi_swordsman_make_avail_825: {
+  urumi_swordsman_make_avail: {
     name: 'Urumi Swordsman (make avail)',
     f: 0,
     w: 0,
@@ -23387,7 +42534,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 40,
   },
-  'vadhavadha,_puru_unique_tech_1307': {
+  'vadhavadha,_puru_unique_tech': {
     name: 'Vadhavadha, Puru Unique Tech',
     f: 300,
     w: 0,
@@ -23403,7 +42550,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  'vedic_teachings,_puru_unique_tech_1309': {
+  'vedic_teachings,_puru_unique_tech': {
     name: 'Vedic Teachings, Puru Unique Tech',
     f: 1100,
     w: 0,
@@ -23419,7 +42566,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 56,
   },
-  'veteran_chiliarchs,_macedonian_unique_tech_1284': {
+  'veteran_chiliarchs,_macedonian_unique_tech': {
     name: 'Veteran Chiliarchs, Macedonian Unique Tech',
     f: 200,
     w: 0,
@@ -23435,7 +42582,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 54,
   },
-  vietnamese_653: {
+  vietnamese: {
     name: 'Vietnamese',
     f: 0,
     w: 1,
@@ -23451,7 +42598,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 31,
   },
-  vikings_539: {
+  vikings: {
     name: 'Vikings',
     f: 0,
     w: 1,
@@ -23467,7 +42614,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 11,
   },
-  villager_116: {
+  villager: {
     name: 'Villager',
     f: 0,
     w: 0,
@@ -23483,7 +42630,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  wall_2_make_avail_189: {
+  wall_2_make_avail: {
     name: 'Wall 2 (make avail)',
     f: 0,
     w: 0,
@@ -23499,7 +42646,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  walls_hp_castle_age_71: {
+  walls_hp_castle_age: {
     name: 'Walls HP castle age',
     f: 0,
     w: 0,
@@ -23511,11 +42658,131 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 117,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 64,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 78,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 81,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 487,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 88,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 91,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 95,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 490,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 659,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 661,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 663,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 665,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 667,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 669,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 671,
+        c: -1,
+      },
+      {
+        t: 5,
+        a: 0,
+        v: 1.6666666269302368,
+        u: 673,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: -1,
   },
-  war_chariot_make_avail_1065: {
+  war_chariot_make_avail: {
     name: 'War Chariot (make avail)',
     f: 0,
     w: 0,
@@ -23531,7 +42798,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  war_elephant_make_avail_274: {
+  war_elephant_make_avail: {
     name: 'War Elephant (make avail)',
     f: 0,
     w: 0,
@@ -23547,7 +42814,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  war_galley___antiquity_1151: {
+  war_galley___antiquity: {
     name: 'War Galley - Antiquity',
     f: 135,
     w: 0,
@@ -23563,7 +42830,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  war_lembos_1144: {
+  war_lembos: {
     name: 'War Lembos',
     f: 80,
     w: 0,
@@ -23579,7 +42846,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  war_wagon_449: {
+  war_wagon: {
     name: 'War Wagon',
     f: 0,
     w: 0,
@@ -23595,7 +42862,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 18,
   },
-  warrior_priest_make_avail_948: {
+  warrior_priest_make_avail: {
     name: 'Warrior Priest (make avail)',
     f: 0,
     w: 0,
@@ -23611,7 +42878,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 44,
   },
-  warships_34: {
+  warships: {
     name: 'Warships',
     f: 0,
     w: 150,
@@ -23627,7 +42894,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: -1,
   },
-  warwolf_461: {
+  warwolf: {
     name: 'Warwolf',
     f: 0,
     w: 800,
@@ -23639,11 +42906,26 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 0,
+        a: 11,
+        v: 100.0,
+        u: 42,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 11,
+        v: 100.0,
+        u: 1942,
+        c: -1,
+      },
+    ],
     age: 4,
     civ: 1,
   },
-  watch_tower_make_avail_127: {
+  watch_tower_make_avail: {
     name: 'Watch Tower (make avail)',
     f: 0,
     w: 0,
@@ -23659,7 +42941,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  wei_1029: {
+  wei: {
     name: 'Wei',
     f: 0,
     w: 1,
@@ -23675,7 +42957,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  wheelbarrow_213: {
+  wheelbarrow: {
     name: 'Wheelbarrow',
     f: 175,
     w: 50,
@@ -23690,23 +42972,23 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         t: 5,
-        a: 4,
+        a: 5,
         v: 1.100000023841858,
         u: -1,
-        c: -1,
+        c: 4,
       },
       {
-        t: 14,
-        a: 4,
-        v: 1.2695000171661377,
-        u: -1,
+        t: 5,
+        a: 5,
+        v: 1.100000023841858,
+        u: 1808,
         c: -1,
       },
     ],
     age: 2,
     civ: -1,
   },
-  white_feather_guard_make_avail_1063: {
+  white_feather_guard_make_avail: {
     name: 'White Feather Guard (make avail)',
     f: 0,
     w: 0,
@@ -23722,7 +43004,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 49,
   },
-  winged_hussar_786: {
+  winged_hussar: {
     name: 'Winged Hussar',
     f: 600,
     w: 0,
@@ -23738,7 +43020,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  winged_hussar_l_post_imperial_790: {
+  winged_hussar_l_post_imperial: {
     name: 'Winged Hussar (L. post-imperial)',
     f: 1,
     w: 0,
@@ -23754,7 +43036,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 35,
   },
-  winged_hussar_lithuanians_788: {
+  winged_hussar_lithuanians: {
     name: 'Winged Hussar (Lithuanians)',
     f: 0,
     w: 0,
@@ -23770,7 +43052,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 35,
   },
-  winged_hussar_p_post_imperial_791: {
+  winged_hussar_p_post_imperial: {
     name: 'Winged Hussar (P. post-imperial)',
     f: 1,
     w: 0,
@@ -23786,7 +43068,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  winged_hussar_poles_789: {
+  winged_hussar_poles: {
     name: 'Winged Hussar (Poles)',
     f: 0,
     w: 0,
@@ -23802,7 +43084,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 38,
   },
-  woad_berserker_make_avail_277: {
+  woad_berserker_make_avail: {
     name: 'Woad Berserker (make avail)',
     f: 0,
     w: 0,
@@ -23818,7 +43100,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 13,
   },
-  wonder_built_470: {
+  wonder_built: {
     name: 'Wonder Built',
     f: 0,
     w: 0,
@@ -23834,7 +43116,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 0,
   },
-  wonder_plans_144: {
+  wonder_plans: {
     name: 'Wonder Plans',
     f: 0,
     w: 0,
@@ -23850,7 +43132,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  wootz_steel_832: {
+  wootz_steel: {
     name: 'Wootz Steel',
     f: 650,
     w: 0,
@@ -23862,26 +43144,11 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [
-      {
-        t: 63,
-        a: 6,
-        v: 1.0,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 63,
-        a: 12,
-        v: 1.0,
-        u: -1,
-        c: -1,
-      },
-    ],
+    effects: [],
     age: 4,
     civ: 40,
   },
-  wu_1030: {
+  wu: {
     name: 'Wu',
     f: 0,
     w: 1,
@@ -23897,7 +43164,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 50,
   },
-  wu_tb_local_1089: {
+  wu_tb_local: {
     name: 'Wu TB local',
     f: 0,
     w: 0,
@@ -23913,7 +43180,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  wu_team_bonus_1031: {
+  wu_team_bonus: {
     name: 'Wu Team Bonus',
     f: 0,
     w: 0,
@@ -23929,7 +43196,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 50,
   },
-  xianbei_raider_make_avail_1037: {
+  xianbei_raider_make_avail: {
     name: 'Xianbei Raider (make avail)',
     f: 0,
     w: 0,
@@ -23945,7 +43212,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 51,
   },
-  xolotl_disable_313: {
+  xolotl_disable: {
     name: 'Xolotl (disable)',
     f: 0,
     w: 0,
@@ -23961,7 +43228,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  xolotl_make_avail_ande_378: {
+  xolotl_make_avail_ande: {
     name: 'Xolotl (make avail) Ande',
     f: 0,
     w: 0,
@@ -23977,7 +43244,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  xolotl_make_avail_azt_318: {
+  xolotl_make_avail_azt: {
     name: 'Xolotl (make avail) Azt',
     f: 0,
     w: 0,
@@ -23993,7 +43260,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 15,
   },
-  xolotl_make_avail_may_348: {
+  xolotl_make_avail_may: {
     name: 'Xolotl (make avail) May',
     f: 0,
     w: 0,
@@ -24009,7 +43276,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 16,
   },
-  'xyphos,_spartan_unique_tech_1132': {
+  'xyphos,_spartan_unique_tech': {
     name: 'Xyphos, Spartan Unique Tech',
     f: 300,
     w: 0,
@@ -24025,7 +43292,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 48,
   },
-  yasama_484: {
+  yasama: {
     name: 'Yasama',
     f: 300,
     w: 300,
@@ -24041,7 +43308,7 @@ export const techs: Record<string, TechData> = {
     age: 3,
     civ: 5,
   },
-  yeomen_3: {
+  yeomen: {
     name: 'Yeomen',
     f: 0,
     w: 750,
@@ -24055,31 +43322,38 @@ export const techs: Record<string, TechData> = {
     },
     effects: [
       {
-        t: 12,
-        a: 0,
+        t: 4,
+        a: 12,
         v: 1.0,
         u: -1,
+        c: 0,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: -1,
+        c: 52,
+      },
+      {
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 505,
         c: -1,
       },
       {
-        t: 1,
-        a: 0,
-        v: 1.0,
-        u: -1,
-        c: -1,
-      },
-      {
-        t: 23,
-        a: 0,
-        v: 1.0,
-        u: -1,
+        t: 4,
+        a: 9,
+        v: 770.0,
+        u: 518,
         c: -1,
       },
     ],
     age: 3,
     civ: 1,
   },
-  '[ew]_remove_hun_houses_289': {
+  '[ew]_remove_hun_houses': {
     name: '[EW] Remove hun houses',
     f: 0,
     w: 0,
@@ -24091,11 +43365,47 @@ export const techs: Record<string, TechData> = {
       techs: [],
       buildings: [],
     },
-    effects: [],
+    effects: [
+      {
+        t: 0,
+        a: 0,
+        v: -1.0,
+        u: 70,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 0,
+        v: -1.0,
+        u: 463,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 0,
+        v: -1.0,
+        u: 464,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 0,
+        v: -1.0,
+        u: 191,
+        c: -1,
+      },
+      {
+        t: 0,
+        a: 0,
+        v: -1.0,
+        u: 192,
+        c: -1,
+      },
+    ],
     age: 1,
     civ: 17,
   },
-  '[ftt]_disable_paladin_527': {
+  '[ftt]_disable_paladin': {
     name: '[FTT] Disable Paladin',
     f: 0,
     w: 0,
@@ -24111,7 +43421,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 8,
   },
-  '[ftt]_disable_militia_upgrades_895': {
+  '[ftt]_disable_militia_upgrades': {
     name: '[FTT] Disable militia upgrades',
     f: 0,
     w: 0,
@@ -24127,7 +43437,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: 43,
   },
-  '[ftt]_move_armored_elephants_864': {
+  '[ftt]_move_armored_elephants': {
     name: '[FTT] Move Armored Elephants',
     f: 0,
     w: 0,
@@ -24143,7 +43453,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_dromon_894': {
+  '[ftt]_move_dromon': {
     name: '[FTT] Move Dromon',
     f: 0,
     w: 0,
@@ -24159,7 +43469,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_elephant_archers_863': {
+  '[ftt]_move_elephant_archers': {
     name: '[FTT] Move Elephant Archers',
     f: 0,
     w: 0,
@@ -24175,7 +43485,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_flaming_camels_708': {
+  '[ftt]_move_flaming_camels': {
     name: '[FTT] Move Flaming Camels',
     f: 0,
     w: 0,
@@ -24191,7 +43501,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_huskarls_719': {
+  '[ftt]_move_huskarls': {
     name: '[FTT] Move Huskarls',
     f: 0,
     w: 0,
@@ -24207,7 +43517,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_lancers_717': {
+  '[ftt]_move_lancers': {
     name: '[FTT] Move Lancers',
     f: 0,
     w: 0,
@@ -24223,7 +43533,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_shrivamsha_riders_865': {
+  '[ftt]_move_shrivamsha_riders': {
     name: '[FTT] Move Shrivamsha Riders',
     f: 0,
     w: 0,
@@ -24239,7 +43549,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_shrivamsha_riders_2_866': {
+  '[ftt]_move_shrivamsha_riders_2': {
     name: '[FTT] Move Shrivamsha Riders 2',
     f: 0,
     w: 0,
@@ -24255,7 +43565,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_slingers_720': {
+  '[ftt]_move_slingers': {
     name: '[FTT] Move Slingers',
     f: 0,
     w: 0,
@@ -24271,7 +43581,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_tarkans_718': {
+  '[ftt]_move_tarkans': {
     name: '[FTT] Move Tarkans',
     f: 0,
     w: 0,
@@ -24287,7 +43597,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[ftt]_move_tarkans_2_862': {
+  '[ftt]_move_tarkans_2': {
     name: '[FTT] Move Tarkans 2',
     f: 0,
     w: 0,
@@ -24303,7 +43613,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[scen]_move_huskarl_18': {
+  '[scen]_move_huskarl': {
     name: '[SCEN] Move Huskarl',
     f: 0,
     w: 0,
@@ -24319,7 +43629,7 @@ export const techs: Record<string, TechData> = {
     age: 1,
     civ: -1,
   },
-  '[scen]_move_tarkan_469': {
+  '[scen]_move_tarkan': {
     name: '[SCEN] Move Tarkan',
     f: 0,
     w: 0,

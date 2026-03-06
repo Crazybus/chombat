@@ -6,7 +6,7 @@ import { GENERIC_CIV } from '../src/data/civs';
 import { TechData } from '../src/sim/types';
 
 describe('Knight Bonuses (Real Data)', () => {
-  const knight = units['knight_38'];
+  const knight = units['knight'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));

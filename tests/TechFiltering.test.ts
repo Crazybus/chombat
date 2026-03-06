@@ -92,6 +92,136 @@ const eagle: UnitData = {
   trainTime: 50,
 };
 
+const fletchingEffects = [
+  { t: 4, a: 9, v: 769.0, u: -1, c: 0 },
+  { t: 4, a: 9, v: 769.0, u: -1, c: 36 },
+  { t: 4, a: 12, v: 1.0, u: -1, c: 0 },
+  { t: 4, a: 12, v: 1.0, u: -1, c: 36 },
+  { t: 4, a: 9, v: 769.0, u: 54, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: -1, c: 52 },
+  { t: 4, a: 9, v: 769.0, u: 328, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: -1, c: 52 },
+  { t: 4, a: 9, v: 769.0, u: 109, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 71, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 141, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 142, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 82, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 82, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 539, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 539, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 21, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 21, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 442, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 442, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 250, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 250, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 533, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 533, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 505, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 518, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 746, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 747, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 885, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 885, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1004, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 1004, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1006, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 1006, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1251, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 1251, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 778, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 778, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 786, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 787, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1750, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 1750, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1830, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2130, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 2130, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2131, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 2131, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2132, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 2132, c: -1 },
+  { t: 4, a: 12, v: -1.0, u: 2328, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2275, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2276, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2277, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1983, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1982, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1936, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1937, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1931, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1971, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1879, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2415, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 2415, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2417, c: -1 },
+  { t: 4, a: 12, v: 1.0, u: 2417, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2631, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2632, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 133, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1189, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 45, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 47, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 51, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2574, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 2575, c: -1 },
+  { t: 4, a: 9, v: 769.0, u: 1548, c: -1 },
+];
+
+const forgingEffects = [
+  { t: 4, a: 9, v: 1025.0, u: -1, c: 6 },
+  { t: 4, a: 9, v: 1025.0, u: -1, c: 45 },
+  { t: 4, a: 9, v: 1025.0, u: -1, c: 12 },
+  { t: 4, a: 9, v: 1025.0, u: -1, c: 46 },
+  { t: 4, a: 9, v: 1025.0, u: -1, c: 50 },
+  { t: 4, a: 9, v: 1025.0, u: -1, c: 47 },
+  { t: 4, a: 9, v: -1025.0, u: 1923, c: -1 },
+  { t: 4, a: 9, v: 1025.0, u: 1831, c: -1 },
+  { t: 4, a: 9, v: 1025.0, u: 2626, c: -1 },
+  { t: 4, a: 9, v: 1025.0, u: 2627, c: -1 },
+  { t: 4, a: 9, v: 1025.0, u: 2628, c: -1 },
+];
+
+const bloodlinesEffects = [
+  { t: 4, a: 0, v: 20.0, u: -1, c: 47 },
+  { t: 4, a: 0, v: 20.0, u: -1, c: 12 },
+  { t: 4, a: 0, v: 20.0, u: -1, c: 36 },
+  { t: 4, a: 0, v: 20.0, u: -1, c: 23 },
+  { t: 4, a: 0, v: 20.0, u: 775, c: -1 },
+  { t: 4, a: 0, v: 20.0, u: 1263, c: -1 },
+  { t: 4, a: 0, v: 20.0, u: 1715, c: -1 },
+  { t: 4, a: 0, v: 20.0, u: 1822, c: -1 },
+  { t: 4, a: 0, v: 20.0, u: 2557, c: -1 },
+];
+
+const husbandryEffects = [
+  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 47 },
+  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 36 },
+  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 12 },
+  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 23 },
+  { t: 5, a: 5, v: 1.100000023841858, u: 775, c: -1 },
+  { t: 5, a: 5, v: 1.100000023841858, u: 1263, c: -1 },
+  { t: 5, a: 5, v: 1.100000023841858, u: 1715, c: -1 },
+  { t: 5, a: 5, v: 1.100000023841858, u: 1822, c: -1 },
+  { t: 5, a: 5, v: 1.100000023841858, u: 2557, c: -1 },
+];
+
+const scaleBardingEfects = [
+  { t: 4, a: 8, v: 1025.0, u: -1, c: 12 },
+  { t: 4, a: 8, v: 769.0, u: -1, c: 12 },
+  { t: 4, a: 8, v: 1025.0, u: -1, c: 47 },
+  { t: 4, a: 8, v: 769.0, u: -1, c: 47 },
+  { t: 4, a: 8, v: -1025.0, u: 1738, c: -1 },
+  { t: 4, a: 8, v: -769.0, u: 1738, c: -1 },
+  { t: 4, a: 8, v: -1025.0, u: 1740, c: -1 },
+  { t: 4, a: 8, v: -769.0, u: 1740, c: -1 },
+  { t: 4, a: 8, v: 1025.0, u: 775, c: -1 },
+  { t: 4, a: 8, v: 769.0, u: 775, c: -1 },
+  { t: 4, a: 8, v: 1025.0, u: 2557, c: -1 },
+  { t: 4, a: 8, v: 769.0, u: 2557, c: -1 },
+];
+
 describe('TechFiltering', () => {
   it('should include Fletching for Archers', () => {
     const fletching: TechData = {
@@ -99,11 +229,7 @@ describe('TechFiltering', () => {
       building: 103,
       id: 199,
       age: 2,
-      effects: [
-        { t: 9, a: 0, v: 769, u: -1, c: -1 }, // Pierce Atk +1 (cls 3) for targeted class 0
-        { t: 1, a: 0, v: 1.0, u: -1, c: -1 }, // Atk +1
-        { t: 12, a: 0, v: 1.0, u: -1, c: -1 }, // Range +1
-      ],
+      effects: fletchingEffects,
     } as any;
     expect(shouldApplyTech(fletching, archer)).toBe(true);
   });
@@ -114,11 +240,7 @@ describe('TechFiltering', () => {
       building: 103,
       id: 199,
       age: 2,
-      effects: [
-        { t: 9, a: 0, v: 769, u: -1, c: -1 }, // Targets class 0 (Archer)
-        { t: 1, a: 0, v: 1.0, u: -1, c: -1 }, // Targets class 0
-        { t: 12, a: 0, v: 1.0, u: -1, c: -1 }, // Targets class 0
-      ],
+      effects: fletchingEffects,
     } as any;
     expect(shouldApplyTech(fletching, militia)).toBe(false);
   });
@@ -129,10 +251,7 @@ describe('TechFiltering', () => {
       building: 103,
       id: 67,
       age: 2,
-      effects: [
-        { t: 9, a: 6, v: 1025, u: -1, c: -1 }, // Melee Atk +1 for Inf (6)
-        { t: 9, a: 12, v: 1025, u: -1, c: -1 }, // Melee Atk +1 for Cav (12)
-      ],
+      effects: forgingEffects,
     } as any;
     expect(shouldApplyTech(forging, archer)).toBe(false);
   });
@@ -143,10 +262,7 @@ describe('TechFiltering', () => {
       building: 103,
       id: 67,
       age: 2,
-      effects: [
-        { t: 9, a: 6, v: 1025, u: -1, c: -1 }, // Melee Atk +1 for Inf (6)
-        { t: 9, a: 12, v: 1025, u: -1, c: -1 }, // Melee Atk +1 for Cav (12)
-      ],
+      effects: forgingEffects,
     } as any;
     // This will fail currently because scout is class 47 and tech targets 12
     expect(shouldApplyTech(forging, scout)).toBe(true);
@@ -158,9 +274,7 @@ describe('TechFiltering', () => {
       building: 101,
       id: 435,
       age: 2,
-      effects: [
-        { t: 0, a: 12, v: 20.0, u: -1, c: -1 }, // HP +20 (generic but building is Stable)
-      ],
+      effects: bloodlinesEffects,
     } as any;
     expect(shouldApplyTech(bloodlines, archer)).toBe(false);
   });
@@ -171,7 +285,7 @@ describe('TechFiltering', () => {
       building: 101,
       id: 435,
       age: 2,
-      effects: [{ t: 0, a: 12, v: 20.0, u: -1, c: -1 }],
+      effects: bloodlinesEffects,
     } as any;
     expect(shouldApplyTech(bloodlines, scout)).toBe(true);
   });
@@ -182,9 +296,7 @@ describe('TechFiltering', () => {
       building: 101,
       id: 435,
       age: 2,
-      effects: [
-        { t: 0, a: 12, v: 20.0, u: -1, c: 12 }, // HP +20 for class 12 (Cavalry)
-      ],
+      effects: bloodlinesEffects,
     } as any;
     expect(shouldApplyTech(bloodlines, archer)).toBe(false);
   });
@@ -216,7 +328,7 @@ describe('CombatSim Stats', () => {
       archer,
       config,
       {} as any,
-      { 435: { building: 101, effects: [{ t: 0, a: 12, v: 20, u: -1, c: -1 }] } } as any,
+      { 435: { building: 101, effects: bloodlinesEffects } } as any,
       { '448': scout },
     );
     expect(sim.dataA.hp).toBe(65);
@@ -252,11 +364,7 @@ describe('CombatSim Stats', () => {
     const config = { bn: [{ i: '199', e: [true, true, true] }] } as any; // Fletching
     const fletching = {
       building: 103,
-      effects: [
-        { t: 9, a: 0, v: 769, u: -1, c: -1 }, // P-Atk +1
-        { t: 1, a: 0, v: 1, u: -1, c: -1 }, // Generic Atk +1 (will be hidden by dedupe if classes match)
-        { t: 12, a: 0, v: 1, u: -1, c: -1 }, // Range +1
-      ],
+      effects: fletchingEffects,
     };
     const sim = new CombatSim(cav_archer, archer, config, {} as any, { 199: fletching } as any, { '39': cav_archer });
     // Cav Archer has patk 6, range 4. Should go to 7 and 5.
@@ -272,8 +380,8 @@ describe('CombatSim Stats', () => {
       ],
     } as any;
     const techs = {
-      435: { building: 101, effects: [{ t: 0, a: 12, v: 20, u: -1, c: -1 }] }, // Bloodlines
-      39: { building: 101, effects: [{ t: 5, a: 12, v: 1.1, u: -1, c: -1 }] }, // Husbandry
+      435: { building: 101, effects: bloodlinesEffects }, // Bloodlines
+      39: { building: 101, effects: husbandryEffects }, // Husbandry
     };
     const cav_archer_with_speed = { ...cav_archer, speed: 1.4 };
     const sim = new CombatSim(cav_archer_with_speed, archer, config, {} as any, techs as any, {
@@ -287,10 +395,7 @@ describe('CombatSim Stats', () => {
     const config = { bn: [{ i: '81', e: [true, true] }] } as any; // Scale Barding
     const barding = {
       building: 103,
-      effects: [
-        { t: 8, a: 12, v: 1025, u: -1, c: -1 }, // Melee +1 for Cav
-        { t: 8, a: 12, v: 769, u: -1, c: -1 }, // Pierce +1 for Cav
-      ],
+      effects: scaleBardingEfects,
     };
     const sim = new CombatSim(cav_archer, archer, config, {} as any, { 81: barding } as any, { '39': cav_archer });
     expect(sim.dataA.parm).toBe(0);
@@ -301,10 +406,7 @@ describe('CombatSim Stats', () => {
     const config = { bn: [{ i: '81', e: [true, true] }] } as any; // Scale Barding
     const barding = {
       building: 103,
-      effects: [
-        { t: 8, a: 12, v: 1025, u: -1, c: -1 }, // Melee +1 for Cav
-        { t: 8, a: 12, v: 769, u: -1, c: -1 }, // Pierce +1 for Cav
-      ],
+      effects: scaleBardingEfects,
     };
     const sim = new CombatSim(scout, archer, config, {} as any, { 81: barding } as any, { '448': scout });
     expect(sim.dataA.parm).toBe(3);

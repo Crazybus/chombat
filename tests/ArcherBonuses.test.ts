@@ -6,7 +6,7 @@ import { TechData } from '../src/sim/types';
 import { GENERIC_CIV } from '../src/data/civs';
 
 describe('Castle Age Archer Bonuses (Real Data)', () => {
-  const archer = units['archer_4'];
+  const archer = units['archer'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));

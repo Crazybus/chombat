@@ -50,6 +50,10 @@ NAME_CONVERSIONS = {
     'HINDUSTANIS': 'INDIANS'
 }
 
+INVALID_TECHS = {
+    90 # Tracking
+}
+
 RES_FOOD = 0
 RES_WOOD = 1
 RES_STONE = 2
@@ -57,8 +61,20 @@ RES_GOLD = 3
 ARM_PIERCE = 3
 ARM_MELEE = 4
 
-VALID_ATTRS = {0, 3, 4, 5, 6, 8, 9, 12}
+# VALID_ATTRS = {0, 3, 4, 5, 6, 8, 9, 12}
 
+
+VALID_ATTRS = {
+    0,  # HP
+    5,  # Movement Speed
+    8,  # Armour
+    9,  # Attack
+    10, # Attack reload time
+    11, # Accuracy percentage
+    12, # Max range
+    15, # Base armour
+    24 # Hidden damage resistance 
+}
 
 def get_cost(resource_costs):
     cost = {"f": 0, "w": 0, "g": 0, "s": 0}
@@ -197,15 +213,25 @@ def load_extra_data():
 def extract_effects(eff_obj):
     effects = []
     for cmd in eff_obj.effect_commands:
-        if cmd.type in [0, 4, 5]:
-            u_id = cmd.a if cmd.type == 0 else -1
-            c_id = cmd.a if cmd.type in [4, 5] else -1
-            attr_id = cmd.b
+        if cmd.type in [0]:
+            u_id = cmd.a
+            c_id = cmd.b
+            attr_id = cmd.c
             mode = cmd.c
             val = cmd.d
             if attr_id in VALID_ATTRS:
                 effects.append(
-                    {"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id}
+                    {"t": cmd.type, "a": attr_id, "v": val, "u": u_id, "c": c_id}
+                )
+        if cmd.type in [4, 5]:
+            u_id = cmd.a
+            c_id = cmd.b
+            attr_id = cmd.c
+            mode = cmd.c
+            val = cmd.d
+            if attr_id in VALID_ATTRS:
+                effects.append(
+                    {"t": cmd.type, "a": attr_id, "v": val, "u": u_id, "c": c_id}
                 )
     return effects
 
@@ -250,9 +276,14 @@ def convert():
         for unit in civ.units:
             if not unit:
                 continue
+
             uid = str(unit.base_id)
             if uid in processed_ids:
                 continue
+
+            if (unit.base_id == 4):
+                print(unit)
+                print(unit.type_50.accuracy_percent)
 
             name_check = unit_names.get(uid, unit.name)
             is_valid_upgrade = uid in valid_unit_ids and (
@@ -291,6 +322,7 @@ def convert():
                 marm = unit.type_50.displayed_melee_armour
                 patk = atk if unit.type_50.max_range > 1 else 0
                 matk = 0 if unit.type_50.max_range > 1 else atk
+                accuracy_percent = unit.type_50.accuracy_percent
 
                 bonuses = {}
                 for attack in unit.type_50.attacks:
@@ -304,7 +336,7 @@ def convert():
                 cost = get_cost(unit.creatable.resource_costs)
                 name = unit_names.get(uid, unit.name)
                 key = clean_key(name)
-                if key not in units_out:
+                if key in units_out:
                     key = f"{key}_{uid}"
                 units_out[key] = {
                     "name": name,
@@ -316,6 +348,7 @@ def convert():
                     "reload": unit.type_50.reload_time,
                     "range": unit.type_50.max_range,
                     "frame_delay": getattr(unit.type_50, "frame_delay", 0),
+                    "accuracy_percent": accuracy_percent,
                     "f": cost["f"],
                     "w": cost["w"],
                     "g": cost["g"],
@@ -333,7 +366,7 @@ def convert():
                 cost = get_cost(unit.creatable.resource_costs)
                 name = building_names.get(uid, unit.name)
                 key = clean_key(name)
-                if key not in buildings_out:
+                if key in buildings_out:
                     key = f"{key}_{uid}"
                 buildings_out[key] = {
                     "name": name,
@@ -355,6 +388,8 @@ def convert():
         locations = tech.research_locations
         if not locations:
             continue
+        if tid in INVALID_TECHS:
+            continue
         cost = get_cost(tech.resource_costs)
         tid_str = str(tid)
         name = tech_names.get(tid_str, tech.name)
@@ -364,7 +399,7 @@ def convert():
         if tech.effect_id != -1 and tech.effect_id < len(dat.effects):
             effects_out = extract_effects(dat.effects[tech.effect_id])
 
-        if key not in techs_out:
+        if key in techs_out:
             key = f"{key}_{tid}"
 
         age = tech_ages.get(tid, 1)
@@ -388,7 +423,7 @@ def convert():
             civ_name = dat.civs[tech.civ].name.strip().upper()
             if civ_name in NON_RANKED_CIVS:
                 continue
-
+            
             civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
             civ_techs[civ_name][tid] = age
 

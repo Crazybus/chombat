@@ -83,13 +83,13 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
     if ((u.range || 0) <= 1) return false;
   }
 
-  if (e.t === 8 || e.t === 9) {
+  if (e.a === 8 || e.a === 9) {
     const { cls } = decodeEncoded(e.v);
     const hasArmorClass = u.armors && String(cls) in u.armors;
     const matchesBaseClass = cls === u.class;
     if (!hasArmorClass && !matchesBaseClass) return false;
 
-    if (e.t === 9) {
+    if (e.a === 9) {
       if (cls === 3 && (u.patk || 0) === 0) return false;
       if (cls === 4 && (u.matk || 0) === 0) return false;
     }
@@ -99,6 +99,9 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
   if ((e.t === 0 || e.t === 1 || e.t === 2) && e.a === 0) {
     if (allEffects.some((other) => other !== e && other.t === 9)) return false;
   }
+
+  // If has class and not same as unit
+  if (e.c != -1 && e.c != u.class) return false;
 
   return true;
 }

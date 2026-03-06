@@ -1,7 +1,7 @@
 import { BuildingData } from '../sim/types';
 
 export const buildings: Record<string, BuildingData> = {
-  archery_range_87: {
+  archery_range: {
     name: 'Archery Range',
     f: 0,
     w: 175,
@@ -15,7 +15,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  barracks_12: {
+  barracks: {
     name: 'Barracks',
     f: 0,
     w: 175,
@@ -29,7 +29,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  blacksmith_103: {
+  blacksmith: {
     name: 'Blacksmith',
     f: 0,
     w: 150,
@@ -43,7 +43,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  bombard_tower_236: {
+  bombard_tower: {
     name: 'Bombard Tower',
     f: 0,
     w: 0,
@@ -57,7 +57,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  caravanserai_1754: {
+  caravanserai: {
     name: 'Caravanserai',
     f: 0,
     w: 175,
@@ -71,7 +71,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  castle_82: {
+  castle: {
     name: 'Castle',
     f: 0,
     w: 0,
@@ -85,7 +85,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  dock_45: {
+  dock: {
     name: 'Dock',
     f: 0,
     w: 150,
@@ -99,7 +99,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  farm_50: {
+  farm: {
     name: 'Farm',
     f: 0,
     w: 60,
@@ -113,7 +113,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  fish_trap_199: {
+  fish_trap: {
     name: 'Fish Trap',
     f: 0,
     w: 100,
@@ -127,7 +127,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  fortified_church_1806: {
+  fortified_church: {
     name: 'Fortified Church',
     f: 0,
     w: 200,
@@ -141,7 +141,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  fortified_wall_155: {
+  fortified_wall: {
     name: 'Fortified Wall',
     f: 0,
     w: 0,
@@ -155,7 +155,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  gate_487: {
+  gate: {
     name: 'Gate',
     f: 0,
     w: 0,
@@ -169,7 +169,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  guard_tower_234: {
+  guard_tower: {
     name: 'Guard Tower',
     f: 0,
     w: 35,
@@ -183,7 +183,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  house_70: {
+  house: {
     name: 'House',
     f: 0,
     w: 25,
@@ -197,7 +197,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  keep_235: {
+  keep: {
     name: 'Keep',
     f: 0,
     w: 35,
@@ -211,7 +211,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  lumber_camp_562: {
+  lumber_camp: {
     name: 'Lumber Camp',
     f: 0,
     w: 100,
@@ -225,7 +225,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  market_84: {
+  market: {
     name: 'Market',
     f: 0,
     w: 175,
@@ -239,7 +239,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  mill_68: {
+  mill: {
     name: 'Mill',
     f: 0,
     w: 100,
@@ -253,7 +253,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  mining_camp_584: {
+  mining_camp: {
     name: 'Mining Camp',
     f: 0,
     w: 100,
@@ -267,7 +267,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  monastery_104: {
+  monastery: {
     name: 'Monastery',
     f: 0,
     w: 175,
@@ -281,7 +281,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  mule_cart_1808: {
+  mule_cart: {
     name: 'Mule Cart',
     f: 20,
     w: 80,
@@ -295,7 +295,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  outpost_598: {
+  outpost: {
     name: 'Outpost',
     f: 0,
     w: 25,
@@ -309,7 +309,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  palisade_gate_792: {
+  palisade_gate: {
     name: 'Palisade Gate',
     f: 0,
     w: 30,
@@ -323,7 +323,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  palisade_wall_72: {
+  palisade_wall: {
     name: 'Palisade Wall',
     f: 0,
     w: 3,
@@ -337,7 +337,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  settlement_2556: {
+  settlement: {
     name: 'Settlement',
     f: 0,
     w: 125,
@@ -351,7 +351,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  siege_workshop_49: {
+  siege_workshop: {
     name: 'Siege Workshop',
     f: 0,
     w: 200,
@@ -365,7 +365,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  stable_101: {
+  stable: {
     name: 'Stable',
     f: 0,
     w: 175,
@@ -379,7 +379,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  stone_wall_117: {
+  stone_wall: {
     name: 'Stone Wall',
     f: 0,
     w: 0,
@@ -393,7 +393,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  town_center_109: {
+  town_center: {
     name: 'Town Center',
     f: 0,
     w: 275,
@@ -421,7 +421,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  university_209: {
+  university: {
     name: 'University',
     f: 0,
     w: 200,
@@ -435,7 +435,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  watch_tower_79: {
+  watch_tower: {
     name: 'Watch Tower',
     f: 0,
     w: 35,
@@ -449,7 +449,7 @@ export const buildings: Record<string, BuildingData> = {
       buildings: [],
     },
   },
-  wonder_276: {
+  wonder: {
     name: 'Wonder',
     f: 0,
     w: 1000,

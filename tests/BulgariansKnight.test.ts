@@ -6,7 +6,7 @@ import { civs } from '../src/data/civs';
 import { TechData } from '../src/sim/types';
 
 describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
-  const knight = units['knight_38'];
+  const knight = units['knight'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));

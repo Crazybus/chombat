@@ -17,7 +17,7 @@ describe('State Consistency', () => {
     g: 0,
     trainTime: 30,
     id: '448',
-    class: 12,
+    class: 47,
     bonuses: {},
     armors: { '12': 0, '3': 2, '4': 0 },
   };
@@ -25,7 +25,7 @@ describe('State Consistency', () => {
   const techs = {
     102: { id: 102, name: 'Castle Age', building: 109, effects: [], age: 3 },
     101: { id: 101, name: 'Feudal Age', building: 109, effects: [], age: 2 },
-    435: { id: 435, name: 'Bloodlines', building: 101, effects: [{ t: 0, a: 0, v: 20, u: -1, c: -1 }], age: 2 },
+    435: { id: 435, name: 'Bloodlines', building: 101, effects: [{ t: 4, a: 0, v: 20, u: -1, c: 47 }], age: 2 },
   };
 
   it('should be idempotent when switching between ages', () => {

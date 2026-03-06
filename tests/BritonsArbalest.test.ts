@@ -6,7 +6,7 @@ import { civs } from '../src/data/civs';
 import { TechData } from '../src/sim/types';
 
 describe('Imperial Age Britons Arbalest (Real Data)', () => {
-  const arbalest = units['arbalester_492'];
+  const arbalest = units['arbalester'];
 
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
@@ -23,6 +23,8 @@ describe('Imperial Age Britons Arbalest (Real Data)', () => {
       'Ballistics',
       'Bodkin Arrow',
       'Bracer',
+      'C-Bonus, +1 Archer range',
+      'C-Bonus, archer range +1',
       'Chemistry',
       'Fletching',
       'Leather Archer Armor',
@@ -45,6 +47,6 @@ describe('Imperial Age Britons Arbalest (Real Data)', () => {
     const analysis = analyzeArmy({ ps: 'arbalester', age: '4', cv: civKey, bn }, { arbalester: arbalest }, techsById);
 
     expect(analysis?.effectiveStats.patk).toBe(10);
-    expect(analysis?.effectiveStats.range).toBe(8);
+    expect(analysis?.effectiveStats.range).toBe(10);
   });
 });
