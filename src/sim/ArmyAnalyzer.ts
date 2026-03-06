@@ -378,11 +378,8 @@ export function analyzeArmy(
 
   // 3. Final Effective (Everything)
   const simFinal = new CombatSim(baseUnit, baseUnit, armyState, armyState, activeTechs, allUnits);
-  console.log('simFinal', simFinal.dataA);
 
   const finalEffective = { ...simFinal.dataA, count: armyState.c !== undefined ? armyState.c : 1 };
-
-  console.log('finalEffective', finalEffective);
 
   const isMelee = (finalEffective.range || 0) <= 1;
   const groups: Record<string, StatGroup> = {
@@ -598,7 +595,6 @@ export function scrubArmy(
   ];
   numericFields.forEach((field) => {
     const val = normalized[field];
-    console.log('val', val, field);
     if (val !== undefined && val !== null && val !== '') {
       const parsed = parseFloat(String(val));
       if (!isNaN(parsed)) (normalized as any)[field] = parsed;
@@ -635,8 +631,6 @@ export function scrubArmy(
   Object.entries(mapping).forEach(([configKey, statKey]) => {
     const overrideVal = (normalized as any)[configKey];
     const naturalVal = effectiveStats[statKey];
-    console.log('overrideVal', overrideVal);
-    console.log('naturalVal', naturalVal);
     if (
       overrideVal !== undefined &&
       Math.abs(parseFloat(String(overrideVal)) - parseFloat(String(naturalVal || 0))) < 0.01

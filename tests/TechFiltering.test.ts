@@ -302,8 +302,12 @@ describe('TechFiltering', () => {
   });
 
   it('should correctly format labels for encoded effects', () => {
-    expect(getEffectLabel({ t: 9, a: 0, v: 769 })).toBe('Pierce Atk +1');
-    expect(getEffectLabel({ t: 8, a: 0, v: 1025 })).toBe('Melee Arm +1');
+    expect(getEffectLabel({ t: 0, a: 9, v: 769 })).toBe('Pierce Atk +1');
+    expect(getEffectLabel({ t: 0, a: 8, v: 1025 })).toBe('Melee Arm +1');
+    expect(getEffectLabel({ t: 4, a: 9, v: 769 })).toBe('Pierce Atk +1');
+    expect(getEffectLabel({ t: 4, a: 8, v: 1025 })).toBe('Melee Arm +1');
+    expect(getEffectLabel({ t: 5, a: 9, v: 769 })).toBe('Pierce Atk x1');
+    expect(getEffectLabel({ t: 5, a: 8, v: 1025 })).toBe('Melee Arm x1');
   });
 
   it('should deduplicate generic attack if specific attack is present', () => {

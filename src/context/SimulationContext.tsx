@@ -182,7 +182,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
     const newBonuses: { i: string; e: boolean[] }[] = [];
-    if (ageId > 1) {
+    if (ageId >= 1) {
       const relevantTechs = getRecommendedTechs(data, ageId, civKey, techsById, availableTechs);
       relevantTechs
         .sort((a, b) => a.age - b.age || a.id - b.id)
@@ -295,7 +295,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
     // 4. Add recommended techs
     const newBonuses: { i: string; e: boolean[] }[] = [];
-    if (ageId > 1) {
+    if (ageId >= 1) {
       const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
       relevantTechs
         .sort((a, b) => a.age - b.age || a.id - b.id)

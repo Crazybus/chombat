@@ -11,6 +11,19 @@ describe('Franks Fuedal Age Scout (Unique Tech)', () => {
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
+  it('FRANKS: should apply HP increase to Dark Age Scout Cavalry)', () => {
+    const ageId = 1;
+    const civKey = 'FRANKS';
+    const availableTechs = civs[civKey] || {};
+
+    const recommended = getRecommendedTechs(knight, ageId, civKey, techsById, availableTechs);
+    const names = recommended.map((t) => t.name).sort();
+
+    const expected = ['C-Bonus, Cavalry +20% HP'].sort();
+
+    expect(names).toEqual(expected);
+  });
+
   it('FRANKS: should apply HP increase to Feudal Age Scout Cavalry)', () => {
     const ageId = 2;
     const civKey = 'FRANKS';

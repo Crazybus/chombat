@@ -1,3 +1,4 @@
+import { EFFECT_ATTRIBUTES } from '../data/effect_constants';
 import { TechData, UnitData } from './types';
 
 export function decodeEncoded(val: number): { cls: number; amt: number } {
@@ -32,17 +33,21 @@ export const CLASS_ALIASES: Record<number, number[]> = {
 
 export function getEffectLabel(e: any): string {
   const { t, a, v } = e;
-  if (t === 8 || t === 9) {
+  // Armor (a=8) and Attack (a=9): value is encoded as cls|amt
+  if (a === EFFECT_ATTRIBUTES.attack || a === EFFECT_ATTRIBUTES.armor) {
     const { cls, amt } = decodeEncoded(v);
-    const prefix = t === 9 ? 'Atk' : 'Arm';
+    if (amt === 0 || cls < 0) return '';
+    const prefix = a === EFFECT_ATTRIBUTES.attack ? 'Atk' : 'Arm';
+    if (t == 5) return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? 'x' : ''}${amt}`;
     return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
   }
-  const attrMap: Record<number, string> = { 0: 'Atk', 3: 'Range', 12: 'HP', 10: 'Reload' };
-  if (t === 130 || t === 23) return ''; // Hide internal accuracy/projectile speed effects
-  if (t === 12) return `Range +${v}`;
+  const attrMap: Record<number, string> = { 0: 'HP', 9: 'Atk', 10: 'Reload', 12: 'Range', 5: 'Speed', 11: 'Accuracy' };
+  if (a === 11) return ''; // Hide accuracy effects
+  if (e.u !== -1 && v < 0) return ''; // Hide negative unit-specific undo effects
+
   const name = attrMap[a] || 'Stat';
-  if (t === 5 || t === 2) return `${name} x${v}`;
-  return `${name} +${v}`;
+  if (t === 5) return `${name} x${v}`; // Multiplier Attribute Modifier
+  return `${name} +${v}`; // Set or Add Attribute Modifiers
 }
 
 export function matchesUnit(e: any, u: UnitData): boolean {

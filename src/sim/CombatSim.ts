@@ -116,7 +116,6 @@ export class CombatSim {
 
         if (shouldApplyEffect(e, baseUnit, effs)) {
           const val = e.v;
-          console.log(e);
           if (e.t === EFFECT_COMMAND_TYPES.attribute_modifier_set) {
             // Command type 0
             if (e.a == EFFECT_ATTRIBUTES.hp) {

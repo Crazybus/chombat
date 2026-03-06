@@ -67,12 +67,12 @@ ARM_MELEE = 4
 VALID_ATTRS = {
     0,  # HP
     5,  # Movement Speed
-    8,  # Armour
+    8,  # Armor
     9,  # Attack
     10, # Attack reload time
     11, # Accuracy percentage
     12, # Max range
-    15, # Base armour
+    15, # Base armor
     24 # Hidden damage resistance 
 }
 
@@ -316,10 +316,10 @@ def convert():
 
                 atk = unit.type_50.displayed_attack
                 parm = 0
-                for arm in unit.type_50.armours:
+                for arm in unit.type_50.armors:
                     if arm.class_ == ARM_PIERCE:
                         parm = arm.amount
-                marm = unit.type_50.displayed_melee_armour
+                marm = unit.type_50.displayed_melee_armor
                 patk = atk if unit.type_50.max_range > 1 else 0
                 matk = 0 if unit.type_50.max_range > 1 else atk
                 accuracy_percent = unit.type_50.accuracy_percent
@@ -330,7 +330,7 @@ def convert():
                         bonuses[str(attack.class_)] = attack.amount
 
                 armors = {}
-                for arm in unit.type_50.armours:
+                for arm in unit.type_50.armors:
                     armors[str(arm.class_)] = arm.amount
 
                 cost = get_cost(unit.creatable.resource_costs)
