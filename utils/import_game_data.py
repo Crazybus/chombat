@@ -213,25 +213,11 @@ def load_extra_data():
 def extract_effects(eff_obj):
     effects = []
     for cmd in eff_obj.effect_commands:
-        if cmd.type in [0]:
-            u_id = cmd.a
-            c_id = cmd.b
+        if cmd.type in [0, 4, 5]:
             attr_id = cmd.c
-            mode = cmd.c
-            val = cmd.d
             if attr_id in VALID_ATTRS:
                 effects.append(
-                    {"t": cmd.type, "a": attr_id, "v": val, "u": u_id, "c": c_id}
-                )
-        if cmd.type in [4, 5]:
-            u_id = cmd.a
-            c_id = cmd.b
-            attr_id = cmd.c
-            mode = cmd.c
-            val = cmd.d
-            if attr_id in VALID_ATTRS:
-                effects.append(
-                    {"t": cmd.type, "a": attr_id, "v": val, "u": u_id, "c": c_id}
+                    {"t": cmd.type, "a": attr_id, "v": cmd.d, "u": cmd.a, "c": cmd.b}
                 )
     return effects
 
@@ -281,10 +267,6 @@ def convert():
             if uid in processed_ids:
                 continue
 
-            if (unit.base_id == 4):
-                print(unit)
-                print(unit.type_50.accuracy_percent)
-
             name_check = unit_names.get(uid, unit.name)
             is_valid_upgrade = uid in valid_unit_ids and (
                 name_check.endswith("man")
@@ -316,10 +298,10 @@ def convert():
 
                 atk = unit.type_50.displayed_attack
                 parm = 0
-                for arm in unit.type_50.armors:
+                for arm in unit.type_50.armours:
                     if arm.class_ == ARM_PIERCE:
                         parm = arm.amount
-                marm = unit.type_50.displayed_melee_armor
+                marm = unit.type_50.displayed_melee_armour
                 patk = atk if unit.type_50.max_range > 1 else 0
                 matk = 0 if unit.type_50.max_range > 1 else atk
                 accuracy_percent = unit.type_50.accuracy_percent
@@ -330,7 +312,7 @@ def convert():
                         bonuses[str(attack.class_)] = attack.amount
 
                 armors = {}
-                for arm in unit.type_50.armors:
+                for arm in unit.type_50.armours:
                     armors[str(arm.class_)] = arm.amount
 
                 cost = get_cost(unit.creatable.resource_costs)
@@ -402,8 +384,17 @@ def convert():
         if key in techs_out:
             key = f"{key}_{tid}"
 
-        age = tech_ages.get(tid, 1)
-        
+        AGE_UP_TECHS = {101, 102, 103}
+        reqs = tech.required_techs
+        age = 4 if 103 in reqs else 3 if 102 in reqs else 2 if 101 in reqs else tech_ages.get(tid, 1)
+
+        # Fall back to dat file required_techs for prereqs not captured in tech tree JSON (e.g. civ techs)
+        requires = prereqs.get(tid_str, {"techs": [], "buildings": []})
+        if not requires["techs"]:
+            dat_tech_reqs = [r for r in reqs if r > 0 and r not in AGE_UP_TECHS]
+            if dat_tech_reqs:
+                requires = {"techs": dat_tech_reqs, "buildings": requires["buildings"]}
+
         techs_out[key] = {
             "name": name,
             "f": cost["f"],
@@ -412,7 +403,7 @@ def convert():
             "time": locations[0].research_time,
             "building": locations[0].location_id,
             "id": tid,
-            "requires": prereqs.get(tid_str, {"techs": [], "buildings": []}),
+            "requires": requires,
             "effects": effects_out,
             "age": age,
             "civ": tech.civ

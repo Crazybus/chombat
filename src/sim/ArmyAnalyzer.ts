@@ -95,12 +95,13 @@ export function getAgeName(age: string) {
   }
 }
 
+const AGE_OVERRIDES: Record<number, number> = {
+  47: 4, // Chemistry is standardly Imperial (4)
+  93: 3, // Ballistics is standardly Castle (3)
+};
+
 function getTrueAge(t: TechData): number {
-  const overrides: Record<number, number> = {
-    47: 4, // Chemistry is standardly Imperial (4)
-    93: 3, // Ballistics is standardly Castle (3)
-  };
-  return overrides[t.id] || t.age;
+  return AGE_OVERRIDES[t.id] ?? t.age;
 }
 
 function isCombatTech(t: TechData): boolean {
@@ -264,10 +265,13 @@ export function getRecommendedTechs(
       if (t.id !== 93 && t.id !== 47) return false;
     }
 
+    // If civ tech but no civ provided
     if (t.civ > 0 && (!civKey || civKey == GENERIC_CIV)) return false;
 
+    // If civ tech and in civ techs
     if (t.civ > 0 && t.id in availableCivTechs) {
       const classEffects = t.effects.filter((eff) => eff.c !== -1);
+      // Matches class
       if (classEffects.length > 0 && !classEffects.some((eff) => eff.c === unit.class)) return false;
     }
 
@@ -278,6 +282,15 @@ export function getRecommendedTechs(
     } else {
       if (t.id > 1000) return false;
     }
+
+    // Get minimum age from required techs and exclude if a required tech isn't available to the civ.
+    for (const reqId of t.requires?.techs ?? []) {
+      const req = activeTechs[reqId];
+      if (!req || req.building === -1) continue;
+      if (civKey && civKey !== GENERIC_CIV && availableCivTechs[reqId] === undefined) return false;
+      effectiveTechAge = Math.max(effectiveTechAge, getTrueAge(req));
+    }
+    if (effectiveTechAge > ageId) return false;
     const b = buildingsById[t.building.toString()];
     const buildingAge = b
       ? b.age || 1
@@ -292,7 +305,7 @@ export function getRecommendedTechs(
               : t.building === 12
                 ? 1
                 : 1;
-    if (effectiveTechAge > ageId) return false;
+
     if (buildingAge > ageId) return false;
     return shouldApplyTech(t, unit);
   });

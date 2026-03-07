@@ -10,11 +10,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1291,
     requires: {
-      techs: [],
+      techs: [1290],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 54,
   },
   arrg_make_avail: {
@@ -26,11 +26,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 147,
     requires: {
-      techs: [],
+      techs: [667],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   achaemenids: {
@@ -42,7 +42,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1024,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -90,7 +90,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1131,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -182,7 +182,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 30,
   },
   arbalest: {
@@ -194,11 +194,11 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 237,
     requires: {
-      techs: [],
+      techs: [100],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   archer_make_avail: {
@@ -214,7 +214,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   archery_range_balanced_doctrine: {
@@ -278,7 +278,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   architecture: {
@@ -290,7 +290,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 51,
     requires: {
-      techs: [],
+      techs: [50],
       buildings: [],
     },
     effects: [
@@ -475,7 +475,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1312,
     requires: {
-      techs: [],
+      techs: [51, 1309],
       buildings: [],
     },
     effects: [],
@@ -491,7 +491,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 915,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -511,7 +511,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   arquebus: {
@@ -676,7 +676,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 610,
     requires: {
-      techs: [],
+      techs: [608, 140, 775],
       buildings: [],
     },
     effects: [
@@ -756,7 +756,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 611,
     requires: {
-      techs: [],
+      techs: [608, 63, 775],
       buildings: [],
     },
     effects: [
@@ -836,7 +836,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1320,
     requires: {
-      techs: [],
+      techs: [608, 1309],
       buildings: [],
     },
     effects: [],
@@ -951,7 +951,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1027,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -1185,7 +1185,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   aznauri_cavalry: {
@@ -1213,7 +1213,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 543,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -1292,7 +1292,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 28,
   },
   ballistas: {
@@ -1386,7 +1386,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1315,
     requires: {
-      techs: [],
+      techs: [93, 1309],
       buildings: [],
     },
     effects: [],
@@ -1402,7 +1402,7 @@ export const techs: Record<string, TechData> = {
     building: 84,
     id: 17,
     requires: {
-      techs: [],
+      techs: [23],
       buildings: [],
     },
     effects: [],
@@ -1418,7 +1418,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 220,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -1482,11 +1482,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 162,
     requires: {
-      techs: [],
+      techs: [711],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   battle_elephant_make_avail: {
@@ -1502,7 +1502,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   bearded_axe: {
@@ -1545,7 +1545,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 823,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -1561,7 +1561,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 583,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -1581,7 +1581,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 11,
   },
   berserker_make_avail: {
@@ -1593,11 +1593,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 270,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 3,
   },
   'bessian_metalworking,_thracian_unique_tech': {
@@ -1609,7 +1609,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1298,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -1641,11 +1641,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1148,
     requires: {
-      techs: [],
+      techs: [1138, 1147],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   blacksmith_make_avail: {
@@ -1661,7 +1661,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   blackwood_archer_make_avail: {
@@ -1677,7 +1677,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 59,
   },
   blank_technology_0: {
@@ -1689,7 +1689,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1180,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1705,7 +1705,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1240,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1721,7 +1721,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1181,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1737,7 +1737,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1241,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1753,7 +1753,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1182,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1769,7 +1769,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1242,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1785,7 +1785,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1340,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1801,7 +1801,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1341,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1817,7 +1817,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1342,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1833,7 +1833,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1343,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1849,7 +1849,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1344,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1865,7 +1865,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1345,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1881,7 +1881,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1346,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1897,7 +1897,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1347,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1913,7 +1913,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1348,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1929,7 +1929,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1349,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1945,7 +1945,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1183,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1961,7 +1961,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1243,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1977,7 +1977,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1500,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -1993,7 +1993,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1501,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2009,7 +2009,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1502,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2025,7 +2025,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1503,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2041,7 +2041,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1504,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2057,7 +2057,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1505,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2073,7 +2073,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1506,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2089,7 +2089,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1507,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2105,7 +2105,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1508,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2121,7 +2121,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1509,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2137,7 +2137,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1184,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2153,7 +2153,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1244,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2169,7 +2169,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1185,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2185,7 +2185,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1245,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2201,7 +2201,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1186,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2217,7 +2217,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1246,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2233,7 +2233,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1187,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2249,7 +2249,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1247,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2265,7 +2265,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1188,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2281,7 +2281,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1248,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2313,7 +2313,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1249,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -2329,7 +2329,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 75,
     requires: {
-      techs: [],
+      techs: [68],
       buildings: [],
     },
     effects: [
@@ -2541,7 +2541,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 200,
     requires: {
-      techs: [],
+      techs: [199],
       buildings: [],
     },
     effects: [
@@ -3135,7 +3135,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 777,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -3155,7 +3155,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 58,
   },
   bolt_magazine: {
@@ -3183,11 +3183,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 172,
     requires: {
-      techs: [],
+      techs: [47, 285],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   bombard_cannon: {
@@ -3199,11 +3199,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 188,
     requires: {
-      techs: [],
+      techs: [47, 285],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   bombard_tower: {
@@ -3215,7 +3215,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 64,
     requires: {
-      techs: [],
+      techs: [47, 285],
       buildings: [],
     },
     effects: [
@@ -3246,7 +3246,7 @@ export const techs: Record<string, TechData> = {
     building: 562,
     id: 203,
     requires: {
-      techs: [],
+      techs: [202, 762],
       buildings: [],
     },
     effects: [],
@@ -3262,11 +3262,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 762,
     requires: {
-      techs: [],
+      techs: [202],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   boyar_make_avail: {
@@ -3282,7 +3282,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 23,
   },
   bracer: {
@@ -3294,7 +3294,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 201,
     requires: {
-      techs: [],
+      techs: [200],
       buildings: [],
     },
     effects: [
@@ -3845,7 +3845,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 673,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -3877,7 +3877,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 748,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -3893,7 +3893,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 652,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -3925,7 +3925,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 535,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -3945,7 +3945,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 5,
   },
   c_bonus_421: {
@@ -3961,7 +3961,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 5,
   },
   c_bonus_422: {
@@ -3977,7 +3977,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 5,
   },
   c_bonus_423: {
@@ -3993,7 +3993,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 5,
   },
   c_bonus_424: {
@@ -4009,7 +4009,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 5,
   },
   c_bonus_cheaper_traction_treb: {
@@ -4053,11 +4053,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 466,
     requires: {
-      techs: [],
+      techs: [108],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 19,
   },
   c_bonus_lcav_cheaper: {
@@ -4073,7 +4073,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 22,
   },
   c_bonus_vil_blast_furnace: {
@@ -4085,7 +4085,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 476,
     requires: {
-      techs: [],
+      techs: [75, 113],
       buildings: [],
     },
     effects: [
@@ -4109,7 +4109,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 478,
     requires: {
-      techs: [],
+      techs: [76, 113],
       buildings: [],
     },
     effects: [
@@ -4140,7 +4140,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 474,
     requires: {
-      techs: [],
+      techs: [67, 113],
       buildings: [],
     },
     effects: [
@@ -4164,7 +4164,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 475,
     requires: {
-      techs: [],
+      techs: [68, 113],
       buildings: [],
     },
     effects: [
@@ -4188,7 +4188,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 479,
     requires: {
-      techs: [],
+      techs: [77, 113],
       buildings: [],
     },
     effects: [
@@ -4219,7 +4219,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 477,
     requires: {
-      techs: [],
+      techs: [74, 113],
       buildings: [],
     },
     effects: [
@@ -4250,7 +4250,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 961,
     requires: {
-      techs: [],
+      techs: [203],
       buildings: [],
     },
     effects: [],
@@ -4266,7 +4266,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 960,
     requires: {
-      techs: [],
+      techs: [202],
       buildings: [],
     },
     effects: [],
@@ -4282,7 +4282,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 963,
     requires: {
-      techs: [],
+      techs: [55],
       buildings: [],
     },
     effects: [],
@@ -4298,7 +4298,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 964,
     requires: {
-      techs: [],
+      techs: [182],
       buildings: [],
     },
     effects: [],
@@ -4314,7 +4314,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 965,
     requires: {
-      techs: [],
+      techs: [278],
       buildings: [],
     },
     effects: [],
@@ -4330,7 +4330,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 966,
     requires: {
-      techs: [],
+      techs: [279],
       buildings: [],
     },
     effects: [],
@@ -4346,7 +4346,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 962,
     requires: {
-      techs: [],
+      techs: [221],
       buildings: [],
     },
     effects: [],
@@ -4395,7 +4395,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 1,
   },
   'c_bonus,_+1_inf_attk': {
@@ -4459,7 +4459,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 3,
   },
   'c_bonus,_+100_food_per_tc': {
@@ -4471,7 +4471,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 697,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
@@ -4487,7 +4487,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 871,
     requires: {
-      techs: [],
+      techs: [298],
       buildings: [],
     },
     effects: [],
@@ -4507,7 +4507,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 25,
   },
   'c_bonus,_+100f,_+100g_in_age3': {
@@ -4523,7 +4523,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 25,
   },
   'c_bonus,_+100f,_+100g_in_age4': {
@@ -4539,7 +4539,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 25,
   },
   'c_bonus,_+100s': {
@@ -4551,7 +4551,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 228,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -4614,11 +4614,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 643,
     requires: {
-      techs: [],
+      techs: [212],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 29,
   },
   'c_bonus,_+2%_arc_hp_feudal': {
@@ -4630,11 +4630,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 642,
     requires: {
-      techs: [],
+      techs: [211],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 29,
   },
   'c_bonus,_+2%_arc_hp_imp': {
@@ -4646,11 +4646,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 644,
     requires: {
-      techs: [],
+      techs: [219],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 29,
   },
   'c_bonus,_+20%_cav_bonus_damage': {
@@ -5591,7 +5591,7 @@ export const techs: Record<string, TechData> = {
         c: 23,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 42,
   },
   'c_bonus,_+200w_gs': {
@@ -5603,7 +5603,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 872,
     requires: {
-      techs: [],
+      techs: [298],
       buildings: [],
     },
     effects: [],
@@ -5623,7 +5623,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 40,
   },
   'c_bonus,_+200w_in_age3': {
@@ -5639,7 +5639,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 40,
   },
   'c_bonus,_+200w_in_age4': {
@@ -5655,7 +5655,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 40,
   },
   'c_bonus,_+25_each_res': {
@@ -5667,7 +5667,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1394,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -5699,7 +5699,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 873,
     requires: {
-      techs: [],
+      techs: [298, 639],
       buildings: [],
     },
     effects: [],
@@ -6644,7 +6644,7 @@ export const techs: Record<string, TechData> = {
         c: 23,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 42,
   },
   'c_bonus,_+40%_cav_bonus_damage': {
@@ -7585,7 +7585,7 @@ export const techs: Record<string, TechData> = {
         c: 23,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 42,
   },
   'c_bonus,_+5_monk_hp': {
@@ -7597,7 +7597,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 29,
     requires: {
-      techs: [],
+      techs: [319],
       buildings: [],
     },
     effects: [
@@ -7637,7 +7637,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_30': {
@@ -7649,7 +7649,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 30,
     requires: {
-      techs: [],
+      techs: [231],
       buildings: [],
     },
     effects: [
@@ -7689,7 +7689,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_31': {
@@ -7701,7 +7701,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 31,
     requires: {
-      techs: [],
+      techs: [252],
       buildings: [],
     },
     effects: [
@@ -7741,7 +7741,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_32': {
@@ -7753,7 +7753,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 32,
     requires: {
-      techs: [],
+      techs: [316],
       buildings: [],
     },
     effects: [
@@ -7793,7 +7793,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_33': {
@@ -7805,7 +7805,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 33,
     requires: {
-      techs: [],
+      techs: [45],
       buildings: [],
     },
     effects: [
@@ -7845,7 +7845,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_36': {
@@ -7897,7 +7897,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_38': {
@@ -7909,7 +7909,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 38,
     requires: {
-      techs: [],
+      techs: [230],
       buildings: [],
     },
     effects: [
@@ -7949,7 +7949,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_40': {
@@ -7961,7 +7961,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 40,
     requires: {
-      techs: [],
+      techs: [439],
       buildings: [],
     },
     effects: [
@@ -8001,7 +8001,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_41': {
@@ -8013,7 +8013,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 41,
     requires: {
-      techs: [],
+      techs: [438],
       buildings: [],
     },
     effects: [
@@ -8053,7 +8053,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_66': {
@@ -8065,7 +8065,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 66,
     requires: {
-      techs: [],
+      techs: [46],
       buildings: [],
     },
     effects: [
@@ -8105,7 +8105,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+5_monk_hp_456': {
@@ -8117,7 +8117,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 456,
     requires: {
-      techs: [],
+      techs: [441],
       buildings: [],
     },
     effects: [
@@ -8157,7 +8157,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   'c_bonus,_+50%_demo_hp': {
@@ -8207,7 +8207,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 223,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -8223,7 +8223,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 224,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -8239,7 +8239,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 225,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
@@ -8259,7 +8259,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 16,
   },
   'c_bonus,__200f__50w': {
@@ -8271,7 +8271,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 226,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
@@ -8291,7 +8291,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 16,
   },
   'c_bonus,__50f': {
@@ -8303,7 +8303,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 227,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
@@ -8323,7 +8323,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 1,
   },
   'c_bonus,_15%_faster_foragers': {
@@ -8355,7 +8355,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 17,
   },
   'c_bonus,_3x_food_fish_traps': {
@@ -8387,7 +8387,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 17,
   },
   'c_bonus,_age_up__50%_gold': {
@@ -8431,11 +8431,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 705,
     requires: {
-      techs: [],
+      techs: [668],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 34,
   },
   'c_bonus,_all_units__20%_gold': {
@@ -8547,7 +8547,7 @@ export const techs: Record<string, TechData> = {
         c: 44,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 57,
   },
   'c_bonus,_arch_+_champi_+1_armor_age3': {
@@ -8627,7 +8627,7 @@ export const techs: Record<string, TechData> = {
         c: 44,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 57,
   },
   'c_bonus,_arch_+_champi_+1_armor_age4': {
@@ -8707,7 +8707,7 @@ export const techs: Record<string, TechData> = {
         c: 44,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 57,
   },
   'c_bonus,_archer_armor_free': {
@@ -8993,7 +8993,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 9,
   },
   'c_bonus,_archers_vs_buildings_age4': {
@@ -9009,7 +9009,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 9,
   },
   'c_bonus,_barracks_+_range_tech_discount': {
@@ -9072,7 +9072,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 29,
   },
   'c_bonus,_battle_ele_35%_cheaper': {
@@ -9088,7 +9088,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 29,
   },
   'c_bonus,_battle_elephant_armor': {
@@ -9145,7 +9145,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 306,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [
@@ -9209,7 +9209,7 @@ export const techs: Record<string, TechData> = {
         c: 39,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 7,
   },
   'c_bonus,_bld_+30%': {
@@ -9261,7 +9261,7 @@ export const techs: Record<string, TechData> = {
         c: 39,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 7,
   },
   'c_bonus,_bld_+40%': {
@@ -9313,7 +9313,7 @@ export const techs: Record<string, TechData> = {
         c: 39,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 7,
   },
   'c_bonus,_bonus_damage_increase': {
@@ -9765,7 +9765,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 283,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [
@@ -10014,7 +10014,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 2,
   },
   'c_bonus,_castle_25%_cheaper': {
@@ -10030,7 +10030,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 2,
   },
   'c_bonus,_cavalry_+20%_hp': {
@@ -10075,7 +10075,7 @@ export const techs: Record<string, TechData> = {
         c: 36,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 2,
   },
   'c_bonus,_cavalry_+5%_speed_age2': {
@@ -10120,7 +10120,7 @@ export const techs: Record<string, TechData> = {
         c: 23,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 34,
   },
   'c_bonus,_cavalry_+5%_speed_age3': {
@@ -10165,7 +10165,7 @@ export const techs: Record<string, TechData> = {
         c: 23,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 34,
   },
   'c_bonus,_cavalry_+5%_speed_age4': {
@@ -10210,7 +10210,7 @@ export const techs: Record<string, TechData> = {
         c: 23,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 34,
   },
   'c_bonus,_cavalry_gold': {
@@ -10242,7 +10242,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 45,
   },
   'c_bonus,_cavalry_regeneration_age3': {
@@ -10258,7 +10258,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 45,
   },
   'c_bonus,_cavalry_regeneration_age4': {
@@ -10274,7 +10274,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 45,
   },
   'c_bonus,_cavalry_vs_skirm': {
@@ -10413,7 +10413,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 241,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -10477,7 +10477,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1000,
     requires: {
-      techs: [],
+      techs: [75],
       buildings: [],
     },
     effects: [
@@ -10571,7 +10571,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 890,
     requires: {
-      techs: [],
+      techs: [76],
       buildings: [],
     },
     effects: [
@@ -10658,7 +10658,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 998,
     requires: {
-      techs: [],
+      techs: [67],
       buildings: [],
     },
     effects: [
@@ -10752,7 +10752,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 999,
     requires: {
-      techs: [],
+      techs: [68],
       buildings: [],
     },
     effects: [
@@ -10846,7 +10846,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 891,
     requires: {
-      techs: [],
+      techs: [77],
       buildings: [],
     },
     effects: [
@@ -10933,7 +10933,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 889,
     requires: {
-      techs: [],
+      techs: [74],
       buildings: [],
     },
     effects: [
@@ -11024,7 +11024,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 39,
   },
   'c_bonus,_earlier_hand_cannon': {
@@ -11036,7 +11036,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 801,
     requires: {
-      techs: [],
+      techs: [113, 47],
       buildings: [],
     },
     effects: [],
@@ -11068,7 +11068,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 950,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -11171,7 +11171,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 696,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -11187,7 +11187,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 926,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -11203,7 +11203,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 775,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -11239,7 +11239,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 32,
   },
   'c_bonus,_extra_sheep_from_tc': {
@@ -11251,11 +11251,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 303,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 33,
   },
   'c_bonus,_farms_extra_food': {
@@ -11283,7 +11283,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 770,
     requires: {
-      techs: [],
+      techs: [307],
       buildings: [],
     },
     effects: [],
@@ -11303,7 +11303,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 34,
   },
   'c_bonus,_fire_lancer_ship_speed_castle': {
@@ -11362,7 +11362,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 6,
   },
   'c_bonus,_fire_lancer_ship_speed_imp': {
@@ -11421,7 +11421,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 6,
   },
   'c_bonus,_fish_trap_33%_cheaper': {
@@ -11529,7 +11529,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1039,
     requires: {
-      techs: [],
+      techs: [202, 639],
       buildings: [],
     },
     effects: [],
@@ -11545,7 +11545,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1040,
     requires: {
-      techs: [],
+      techs: [203, 639],
       buildings: [],
     },
     effects: [],
@@ -11561,7 +11561,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1052,
     requires: {
-      techs: [],
+      techs: [48, 639],
       buildings: [],
     },
     effects: [],
@@ -11577,7 +11577,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1044,
     requires: {
-      techs: [],
+      techs: [12, 639],
       buildings: [],
     },
     effects: [],
@@ -11593,7 +11593,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1051,
     requires: {
-      techs: [],
+      techs: [65, 639],
       buildings: [],
     },
     effects: [],
@@ -11609,7 +11609,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1054,
     requires: {
-      techs: [],
+      techs: [906, 639],
       buildings: [],
     },
     effects: [],
@@ -11625,7 +11625,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1045,
     requires: {
-      techs: [],
+      techs: [55, 639],
       buildings: [],
     },
     effects: [],
@@ -11641,7 +11641,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1046,
     requires: {
-      techs: [],
+      techs: [182, 639],
       buildings: [],
     },
     effects: [],
@@ -11657,7 +11657,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1053,
     requires: {
-      techs: [],
+      techs: [15, 639],
       buildings: [],
     },
     effects: [],
@@ -11673,7 +11673,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1050,
     requires: {
-      techs: [],
+      techs: [249, 639],
       buildings: [],
     },
     effects: [],
@@ -11689,7 +11689,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1043,
     requires: {
-      techs: [],
+      techs: [13, 639],
       buildings: [],
     },
     effects: [],
@@ -11705,7 +11705,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1042,
     requires: {
-      techs: [],
+      techs: [14, 639],
       buildings: [],
     },
     effects: [],
@@ -11721,7 +11721,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1047,
     requires: {
-      techs: [],
+      techs: [278, 639],
       buildings: [],
     },
     effects: [],
@@ -11737,7 +11737,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1048,
     requires: {
-      techs: [],
+      techs: [279, 639],
       buildings: [],
     },
     effects: [],
@@ -11753,7 +11753,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1041,
     requires: {
-      techs: [],
+      techs: [221, 639],
       buildings: [],
     },
     effects: [],
@@ -11769,7 +11769,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1049,
     requires: {
-      techs: [],
+      techs: [213, 639],
       buildings: [],
     },
     effects: [],
@@ -11801,11 +11801,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 285,
     requires: {
-      techs: [],
+      techs: [146],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 10,
   },
   'c_bonus,_free_hand_cart': {
@@ -11821,7 +11821,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 11,
   },
   'c_bonus,_free_militia_upgrades': {
@@ -11833,7 +11833,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 693,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -11849,7 +11849,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 698,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -11881,7 +11881,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 949,
     requires: {
-      techs: [],
+      techs: [107],
       buildings: [],
     },
     effects: [],
@@ -11917,7 +11917,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 11,
   },
   'c_bonus,_galley_+20%_fire': {
@@ -12196,7 +12196,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 19,
   },
   'c_bonus,_gunpowder_armor': {
@@ -12821,7 +12821,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 51,
   },
   'c_bonus,_heavy_cav_+15%_hp_+_bl': {
@@ -12833,7 +12833,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1056,
     requires: {
-      techs: [],
+      techs: [435],
       buildings: [],
     },
     effects: [
@@ -12943,7 +12943,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 51,
   },
   'c_bonus,_heavy_cav_+30%_hp': {
@@ -12981,7 +12981,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 51,
   },
   'c_bonus,_heavy_cav_+30%_hp_+_bl': {
@@ -12993,7 +12993,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1057,
     requires: {
-      techs: [],
+      techs: [435],
       buildings: [],
     },
     effects: [
@@ -13103,7 +13103,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 51,
   },
   'c_bonus,_herdables_garrison': {
@@ -13199,7 +13199,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 11,
   },
   'c_bonus,_inf_+20%_hp': {
@@ -13215,7 +13215,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 11,
   },
   'c_bonus,_inf_+20%_hp_416': {
@@ -13246,7 +13246,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 11,
   },
   'c_bonus,_inf_attack_spd': {
@@ -13277,7 +13277,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 5,
   },
   'c_bonus,_inf_cav_+1_armor_age3': {
@@ -13518,7 +13518,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 4,
   },
   'c_bonus,_inf_cav_+1_armor_age4': {
@@ -13759,7 +13759,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 4,
   },
   'c_bonus,_inf_v_building_age2': {
@@ -13790,7 +13790,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 3,
   },
   'c_bonus,_inf_v_building_age3': {
@@ -13821,7 +13821,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 3,
   },
   'c_bonus,_inf_v_building_age4': {
@@ -13852,7 +13852,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 3,
   },
   'c_bonus,_infantry_+10%_speed': {
@@ -13883,7 +13883,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 13,
   },
   'c_bonus,_infantry_+15%_speed': {
@@ -13914,7 +13914,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 13,
   },
   'c_bonus,_infantry_+20%_speed': {
@@ -13945,7 +13945,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 13,
   },
   'c_bonus,_infantry_+5%_speed': {
@@ -13957,7 +13957,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 393,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [
@@ -14008,7 +14008,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 3,
   },
   'c_bonus,_infantry_cost__25%': {
@@ -14024,7 +14024,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 3,
   },
   'c_bonus,_infantry_cost__30%': {
@@ -14040,7 +14040,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 3,
   },
   'c_bonus,_instant_farmers': {
@@ -14068,7 +14068,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 343,
     requires: {
-      techs: [],
+      techs: [307],
       buildings: [],
     },
     effects: [],
@@ -14117,7 +14117,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 50,
   },
   'c_bonus,_light_cavalry_+20%_hp': {
@@ -14176,7 +14176,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 12,
   },
   'c_bonus,_light_cavalry_+20%_hp_+_bl': {
@@ -14188,7 +14188,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 286,
     requires: {
-      techs: [],
+      techs: [435],
       buildings: [],
     },
     effects: [
@@ -14403,7 +14403,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 12,
   },
   'c_bonus,_light_cavalry_+30%_hp': {
@@ -14462,7 +14462,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 12,
   },
   'c_bonus,_light_cavalry_+30%_hp_+_bl': {
@@ -14474,7 +14474,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 287,
     requires: {
-      techs: [],
+      techs: [435],
       buildings: [],
     },
     effects: [
@@ -14689,7 +14689,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 12,
   },
   'c_bonus,_light_cavalry_+1p_armor': {
@@ -14746,7 +14746,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1200,
     requires: {
-      techs: [],
+      techs: [203],
       buildings: [],
     },
     effects: [],
@@ -14762,7 +14762,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1199,
     requires: {
-      techs: [],
+      techs: [202],
       buildings: [],
     },
     effects: [],
@@ -14778,7 +14778,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1201,
     requires: {
-      techs: [],
+      techs: [221],
       buildings: [],
     },
     effects: [],
@@ -14862,7 +14862,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 21,
   },
   'c_bonus,_military_cost__15%': {
@@ -14878,7 +14878,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 21,
   },
   'c_bonus,_military_cost__20%': {
@@ -14894,7 +14894,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 21,
   },
   'c_bonus,_military_cost__5%': {
@@ -14906,7 +14906,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 152,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -15278,7 +15278,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 8,
   },
   'c_bonus,_pastures': {
@@ -15306,7 +15306,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 699,
     requires: {
-      techs: [],
+      techs: [104, 107],
       buildings: [],
     },
     effects: [
@@ -15365,7 +15365,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 700,
     requires: {
-      techs: [],
+      techs: [104, 699],
       buildings: [],
     },
     effects: [
@@ -15424,7 +15424,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 701,
     requires: {
-      techs: [],
+      techs: [104, 700],
       buildings: [],
     },
     effects: [
@@ -15483,7 +15483,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 702,
     requires: {
-      techs: [],
+      techs: [104, 701],
       buildings: [],
     },
     effects: [
@@ -15590,7 +15590,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 704,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -15606,7 +15606,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 299,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [
@@ -15630,7 +15630,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 310,
     requires: {
-      techs: [],
+      techs: [308, 309],
       buildings: [],
     },
     effects: [],
@@ -15718,7 +15718,7 @@ export const techs: Record<string, TechData> = {
         c: 53,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 24,
   },
   'c_bonus,_ships_+10%_faster': {
@@ -15822,7 +15822,7 @@ export const techs: Record<string, TechData> = {
         c: 53,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 24,
   },
   'c_bonus,_ships_+20%_hp': {
@@ -15874,7 +15874,7 @@ export const techs: Record<string, TechData> = {
         c: 53,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 24,
   },
   'c_bonus,_ships_regenerate': {
@@ -15998,7 +15998,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 49,
   },
   'c_bonus,_siege_+15%_movement': {
@@ -16106,7 +16106,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 49,
   },
   'c_bonus,_siege_units_cheaper': {
@@ -16277,7 +16277,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 58,
   },
   'c_bonus,_skirm_spear_+5_hp_feudal': {
@@ -16329,7 +16329,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 58,
   },
   'c_bonus,_skirm_spear_+5_hp_imperial': {
@@ -16381,7 +16381,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 58,
   },
   'c_bonus,_skirm_and_ea_faster_attack': {
@@ -16459,7 +16459,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 710,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [
@@ -16571,7 +16571,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1382,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -16587,11 +16587,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1406,
     requires: {
-      techs: [],
+      techs: [1382],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 58,
   },
   'c_bonus,_skirms_spear_settlements_feudal': {
@@ -16603,11 +16603,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1405,
     requires: {
-      techs: [],
+      techs: [1382],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 58,
   },
   'c_bonus,_skirms_spear_settlements_imperia;': {
@@ -16619,11 +16619,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1407,
     requires: {
-      techs: [],
+      techs: [1382],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 58,
   },
   'c_bonus,_spr_xport_ship': {
@@ -16663,7 +16663,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 27,
   },
   'c_bonus,_stable_units__20%_che': {
@@ -16679,7 +16679,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 27,
   },
   'c_bonus,_start_w__2_bushes': {
@@ -16691,7 +16691,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 857,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -16707,7 +16707,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 554,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -16723,7 +16723,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 302,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -16739,7 +16739,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 238,
     requires: {
-      techs: [],
+      techs: [639, 308],
       buildings: [],
     },
     effects: [],
@@ -16755,7 +16755,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 925,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -16876,7 +16876,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 694,
     requires: {
-      techs: [],
+      techs: [307],
       buildings: [],
     },
     effects: [],
@@ -17049,7 +17049,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 158,
     requires: {
-      techs: [],
+      techs: [307],
       buildings: [],
     },
     effects: [],
@@ -17065,7 +17065,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 156,
     requires: {
-      techs: [],
+      techs: [307],
       buildings: [],
     },
     effects: [],
@@ -17081,7 +17081,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 409,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -17097,7 +17097,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 159,
     requires: {
-      techs: [],
+      techs: [307],
       buildings: [],
     },
     effects: [],
@@ -17117,7 +17117,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 6,
   },
   'c_bonus,_tec_cost_351': {
@@ -17133,7 +17133,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 6,
   },
   'c_bonus,_tec_cost_352': {
@@ -17149,7 +17149,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 6,
   },
   'c_bonus,_tech_reward': {
@@ -17197,7 +17197,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 4,
   },
   'c_bonus,_tower_arrows_353': {
@@ -17229,7 +17229,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 3,
   },
   'c_bonus,_unit_cost_50%': {
@@ -17245,7 +17245,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 3,
   },
   'c_bonus,_unit_refund': {
@@ -17273,7 +17273,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 390,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -17321,7 +17321,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 804,
     requires: {
-      techs: [],
+      techs: [252],
       buildings: [],
     },
     effects: [
@@ -17345,7 +17345,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 803,
     requires: {
-      techs: [],
+      techs: [231],
       buildings: [],
     },
     effects: [
@@ -17369,7 +17369,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 496,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -17389,7 +17389,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 20,
   },
   'c_bonus,_villager_cost_age3': {
@@ -17405,7 +17405,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 20,
   },
   'c_bonus,_villager_cost_age4': {
@@ -17421,7 +17421,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 20,
   },
   'c_bonus,_villager_regeneration': {
@@ -17433,7 +17433,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 792,
     requires: {
-      techs: [],
+      techs: [307, 20],
       buildings: [],
     },
     effects: [],
@@ -17449,11 +17449,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 809,
     requires: {
-      techs: [],
+      techs: [792],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 38,
   },
   'c_bonus,_villager_regeneration_age3': {
@@ -17465,11 +17465,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 810,
     requires: {
-      techs: [],
+      techs: [792],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 38,
   },
   'c_bonus,_villager_regeneration_age4': {
@@ -17481,11 +17481,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 811,
     requires: {
-      techs: [],
+      techs: [792],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 38,
   },
   'c_bonus,_villagers_10%_faster': {
@@ -17509,7 +17509,7 @@ export const techs: Record<string, TechData> = {
         c: 4,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 27,
   },
   'c_bonus,_villagers_5%_faster': {
@@ -17521,7 +17521,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 584,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [
@@ -17545,11 +17545,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 847,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 41,
   },
   'c_bonus,_villagers_in_age3': {
@@ -17561,11 +17561,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 848,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 41,
   },
   'c_bonus,_villagers_in_age4': {
@@ -17577,11 +17577,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 849,
     requires: {
-      techs: [],
+      techs: [639],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 41,
   },
   'c_bonus,_villagers_work_faster': {
@@ -17613,7 +17613,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 11,
   },
   'c_bonus,_warship_cost_age3': {
@@ -17629,7 +17629,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 11,
   },
   'c_bonus,_warship_cost_age4': {
@@ -17645,7 +17645,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 11,
   },
   'c_bonus,_archer_range_+1': {
@@ -17690,7 +17690,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 1,
   },
   'c_bonus,_buildings_cost__15%_w': {
@@ -17765,7 +17765,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 52,
   },
   'c_bonus,_cheaper_archer_upg': {
@@ -17935,7 +17935,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 26,
   },
   'c_bonus,_inf_+1_armor_feudal': {
@@ -18057,7 +18057,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 26,
   },
   'c_bonus,_inf_+1_armor_imp': {
@@ -18179,7 +18179,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 26,
   },
   'c_bonus,_inf_+1_attack_castle': {
@@ -18210,7 +18210,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 30,
   },
   'c_bonus,_inf_+1_attack_dark': {
@@ -18222,7 +18222,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 633,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -18257,7 +18257,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 30,
   },
   'c_bonus,_inf_+1_attack_imp': {
@@ -18288,7 +18288,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 30,
   },
   'c_bonus,_inf_regen_castle': {
@@ -18304,7 +18304,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 50,
   },
   'c_bonus,_inf_regen_feudal': {
@@ -18320,7 +18320,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 50,
   },
   'c_bonus,_inf_regen_imp': {
@@ -18336,7 +18336,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 50,
   },
   'c_bonus,_monastery_techs__50%_cost': {
@@ -18384,7 +18384,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 10,
   },
   caciques: {
@@ -18452,7 +18452,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 27,
   },
   camel_scout_make_avail: {
@@ -18468,7 +18468,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 42,
   },
   cannon_galleon: {
@@ -18480,11 +18480,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 37,
     requires: {
-      techs: [],
+      techs: [47, 285],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   cao_cao_make_avail: {
@@ -18500,7 +18500,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 51,
   },
   capped_ram: {
@@ -18512,11 +18512,11 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 96,
     requires: {
-      techs: [],
+      techs: [706],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   caravan: {
@@ -18528,7 +18528,7 @@ export const techs: Record<string, TechData> = {
     building: 84,
     id: 48,
     requires: {
-      techs: [],
+      techs: [759],
       buildings: [],
     },
     effects: [
@@ -18584,7 +18584,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 20,
   },
   caravanserai_make_avail_552: {
@@ -18600,7 +18600,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 8,
   },
   caravel_make_avail: {
@@ -18616,7 +18616,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 24,
   },
   careening: {
@@ -18673,7 +18673,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 904,
     requires: {
-      techs: [],
+      techs: [35],
       buildings: [],
     },
     effects: [],
@@ -18693,7 +18693,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   carvel_hull: {
@@ -18705,7 +18705,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 907,
     requires: {
-      techs: [],
+      techs: [908],
       buildings: [],
     },
     effects: [
@@ -18754,7 +18754,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   castle_age: {
@@ -18766,7 +18766,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 102,
     requires: {
-      techs: [],
+      techs: [660],
       buildings: [],
     },
     effects: [
@@ -18934,7 +18934,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   castle_barracks_tech_requirement: {
@@ -18950,7 +18950,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 44,
   },
   castle_built: {
@@ -18982,7 +18982,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   cataphract_make_avail: {
@@ -18994,11 +18994,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 267,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 7,
   },
   catapult_galleon_make_avail: {
@@ -19010,7 +19010,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 913,
     requires: {
-      techs: [],
+      techs: [115, 1350, 433, 675],
       buildings: [],
     },
     effects: [],
@@ -19030,7 +19030,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   cavalier: {
@@ -19042,11 +19042,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 209,
     requires: {
-      techs: [],
+      techs: [166, 768],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   cavalier_requirement: {
@@ -19058,11 +19058,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 768,
     requires: {
-      techs: [],
+      techs: [166],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 36,
   },
   celts: {
@@ -19074,7 +19074,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 541,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -19094,7 +19094,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 43,
   },
   chain_barding_armor: {
@@ -19106,7 +19106,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 82,
     requires: {
-      techs: [],
+      techs: [81],
       buildings: [],
     },
     effects: [
@@ -19207,7 +19207,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 76,
     requires: {
-      techs: [],
+      techs: [74],
       buildings: [],
     },
     effects: [
@@ -19294,7 +19294,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1272,
     requires: {
-      techs: [],
+      techs: [76],
       buildings: [],
     },
     effects: [
@@ -19399,7 +19399,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 42,
   },
   champi_runner: {
@@ -19411,11 +19411,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1402,
     requires: {
-      techs: [],
+      techs: [1350],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   champi_scout_make_avail: {
@@ -19427,7 +19427,7 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1350,
     requires: {
-      techs: [],
+      techs: [549, 1360, 1361, 1362],
       buildings: [],
     },
     effects: [],
@@ -19443,11 +19443,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1351,
     requires: {
-      techs: [],
+      techs: [1402],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   champion: {
@@ -19459,11 +19459,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 264,
     requires: {
-      techs: [],
+      techs: [217, 954],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   champion_1174: {
@@ -19475,11 +19475,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1174,
     requires: {
-      techs: [],
+      techs: [207, 1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   champion_requirement: {
@@ -19491,7 +19491,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 954,
     requires: {
-      techs: [],
+      techs: [113, 217],
       buildings: [],
     },
     effects: [],
@@ -19507,11 +19507,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 723,
     requires: {
-      techs: [],
+      techs: [722],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 34,
   },
   change_tc_constr_time2: {
@@ -19523,11 +19523,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 724,
     requires: {
-      techs: [],
+      techs: [723],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 34,
   },
   chatras: {
@@ -19584,7 +19584,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 47,
     requires: {
-      techs: [],
+      techs: [800],
       buildings: [],
     },
     effects: [
@@ -20203,7 +20203,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 609,
     requires: {
-      techs: [],
+      techs: [575, 47],
       buildings: [],
     },
     effects: [],
@@ -20219,7 +20219,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1314,
     requires: {
-      techs: [],
+      techs: [47, 1309],
       buildings: [],
     },
     effects: [],
@@ -20280,7 +20280,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 534,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -20328,11 +20328,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 268,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 6,
   },
   church_make_avail: {
@@ -20348,7 +20348,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   cilician_fleet: {
@@ -20487,7 +20487,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 571,
     requires: {
-      techs: [],
+      techs: [47, 7],
       buildings: [],
     },
     effects: [],
@@ -20503,7 +20503,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1218,
     requires: {
-      techs: [],
+      techs: [295],
       buildings: [],
     },
     effects: [],
@@ -20568,7 +20568,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   coiled_serpent_array: {
@@ -20632,7 +20632,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 44,
   },
   condottiero_make_avail: {
@@ -20644,7 +20644,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 522,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -20660,11 +20660,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 58,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 14,
   },
   conscription: {
@@ -21051,7 +21051,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 36,
   },
   crenellations: {
@@ -21087,7 +21087,7 @@ export const techs: Record<string, TechData> = {
     building: 68,
     id: 12,
     requires: {
-      techs: [],
+      techs: [13, 766],
       buildings: [],
     },
     effects: [],
@@ -21103,11 +21103,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 766,
     requires: {
-      techs: [],
+      techs: [13],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 36,
   },
   crossbow: {
@@ -21123,7 +21123,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   cuman_merc_part2: {
@@ -21167,7 +21167,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 295,
     requires: {
-      techs: [],
+      techs: [138],
       buildings: [],
     },
     effects: [],
@@ -21183,7 +21183,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 675,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -21231,7 +21231,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1221,
     requires: {
-      techs: [],
+      techs: [108, 1222],
       buildings: [],
     },
     effects: [],
@@ -21247,7 +21247,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1323,
     requires: {
-      techs: [],
+      techs: [1310],
       buildings: [],
     },
     effects: [],
@@ -21263,7 +21263,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1197,
     requires: {
-      techs: [],
+      techs: [1138, 1209, 1103],
       buildings: [],
     },
     effects: [],
@@ -21279,7 +21279,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1120,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -21295,7 +21295,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1123,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -21315,7 +21315,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   democracy: {
@@ -21327,7 +21327,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1203,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -21343,11 +21343,11 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 905,
     requires: {
-      techs: [],
+      techs: [605],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   detinets: {
@@ -21391,7 +21391,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1297,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -21471,7 +21471,7 @@ export const techs: Record<string, TechData> = {
     building: 562,
     id: 202,
     requires: {
-      techs: [],
+      techs: [758],
       buildings: [],
     },
     effects: [],
@@ -21487,11 +21487,11 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 1010,
     requires: {
-      techs: [],
+      techs: [35],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 6,
   },
   dravidians: {
@@ -21503,7 +21503,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 822,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -21589,7 +21589,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   drums: {
@@ -21601,7 +21601,7 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1162,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [
@@ -21655,7 +21655,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   druzhina: {
@@ -21683,7 +21683,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 375,
     requires: {
-      techs: [],
+      techs: [374],
       buildings: [],
     },
     effects: [
@@ -21732,7 +21732,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   dupl_dark_age: {
@@ -21744,7 +21744,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1208,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -21764,7 +21764,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   dupl_imperial_age: {
@@ -21780,7 +21780,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   eagle_warrior_make_avail: {
@@ -21796,7 +21796,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   'early_battle_drills_requirement,_thracian_civ_bonus': {
@@ -21808,11 +21808,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1295,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 55,
   },
   eastern_settlement: {
@@ -21981,7 +21981,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1195,
     requires: {
-      techs: [],
+      techs: [1138, 1209, 1103],
       buildings: [],
     },
     effects: [],
@@ -21997,7 +21997,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1122,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -22017,7 +22017,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   elite_arambai: {
@@ -22029,11 +22029,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 619,
     requires: {
-      techs: [],
+      techs: [618],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 30,
   },
   elite_armored_elephant: {
@@ -22045,11 +22045,11 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 838,
     requires: {
-      techs: [],
+      techs: [837],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_ballista_elephant: {
@@ -22061,11 +22061,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 615,
     requires: {
-      techs: [],
+      techs: [614],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 28,
   },
   elite_battle_elephant: {
@@ -22077,11 +22077,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 631,
     requires: {
-      techs: [],
+      techs: [630],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_berserk: {
@@ -22093,11 +22093,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 398,
     requires: {
-      techs: [],
+      techs: [399],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 11,
   },
   elite_blackwood_archer: {
@@ -22109,11 +22109,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1389,
     requires: {
-      techs: [],
+      techs: [1388],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 59,
   },
   elite_bolas_rider: {
@@ -22125,11 +22125,11 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 1378,
     requires: {
-      techs: [],
+      techs: [1377],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 58,
   },
   elite_camel_archer: {
@@ -22141,11 +22141,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 565,
     requires: {
-      techs: [],
+      techs: [564],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 27,
   },
   elite_cannon_galley: {
@@ -22157,11 +22157,11 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 376,
     requires: {
-      techs: [],
+      techs: [37],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_caravel: {
@@ -22173,11 +22173,11 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 597,
     requires: {
-      techs: [],
+      techs: [596],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 24,
   },
   elite_cataphract: {
@@ -22189,11 +22189,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 361,
     requires: {
-      techs: [],
+      techs: [267],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 7,
   },
   elite_centurion: {
@@ -22205,11 +22205,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 882,
     requires: {
-      techs: [],
+      techs: [881],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 43,
   },
   elite_chakram_thrower: {
@@ -22221,11 +22221,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 830,
     requires: {
-      techs: [],
+      techs: [829],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 42,
   },
   elite_champi_warrior: {
@@ -22237,11 +22237,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1352,
     requires: {
-      techs: [],
+      techs: [1351],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_chu_ko_nu: {
@@ -22253,11 +22253,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 362,
     requires: {
-      techs: [],
+      techs: [268],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 6,
   },
   elite_companion: {
@@ -22269,11 +22269,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1289,
     requires: {
-      techs: [],
+      techs: [1288],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 54,
   },
   elite_composite_bowman: {
@@ -22285,11 +22285,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 918,
     requires: {
-      techs: [],
+      techs: [917],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 44,
   },
   elite_conquistador: {
@@ -22301,11 +22301,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 60,
     requires: {
-      techs: [],
+      techs: [58],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 14,
   },
   elite_coustillier: {
@@ -22317,11 +22317,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 751,
     requires: {
-      techs: [],
+      techs: [750],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 36,
   },
   elite_eagle_warrior: {
@@ -22333,11 +22333,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 434,
     requires: {
-      techs: [],
+      techs: [384],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_elephant_archer: {
@@ -22349,11 +22349,11 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 481,
     requires: {
-      techs: [],
+      techs: [480],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_ethiopia_unit: {
@@ -22365,11 +22365,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 569,
     requires: {
-      techs: [],
+      techs: [568],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 25,
   },
   elite_fire_archer: {
@@ -22381,7 +22381,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1074,
     requires: {
-      techs: [],
+      techs: [1073],
       buildings: [],
     },
     effects: [
@@ -22407,7 +22407,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 50,
   },
   elite_fire_lancer: {
@@ -22419,7 +22419,7 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 982,
     requires: {
-      techs: [],
+      techs: [981],
       buildings: [],
     },
     effects: [
@@ -22431,7 +22431,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_galley: {
@@ -22443,11 +22443,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1152,
     requires: {
-      techs: [],
+      techs: [1138, 1151],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_genitour: {
@@ -22459,11 +22459,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 430,
     requires: {
-      techs: [],
+      techs: [427],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_genitour_599: {
@@ -22475,7 +22475,7 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 599,
     requires: {
-      techs: [],
+      techs: [115, 601],
       buildings: [],
     },
     effects: [],
@@ -22495,7 +22495,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_genoese_bow: {
@@ -22507,11 +22507,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 468,
     requires: {
-      techs: [],
+      techs: [467],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 19,
   },
   elite_ghulam: {
@@ -22523,11 +22523,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 840,
     requires: {
-      techs: [],
+      techs: [839],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 20,
   },
   elite_hippeus: {
@@ -22539,11 +22539,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1135,
     requires: {
-      techs: [],
+      techs: [1134],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 48,
   },
   elite_hoplite: {
@@ -22555,11 +22555,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1137,
     requires: {
-      techs: [],
+      techs: [1136, 1267],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_hoplite_requirement: {
@@ -22571,11 +22571,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1267,
     requires: {
-      techs: [],
+      techs: [1136],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 48,
   },
   elite_huskarl: {
@@ -22587,11 +22587,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 365,
     requires: {
-      techs: [],
+      techs: [270],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 3,
   },
   elite_hussite_wagon: {
@@ -22603,7 +22603,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 781,
     requires: {
-      techs: [],
+      techs: [780],
       buildings: [],
     },
     effects: [
@@ -22615,7 +22615,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 39,
   },
   elite_ibirapema_warrior: {
@@ -22627,11 +22627,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1391,
     requires: {
-      techs: [],
+      techs: [1390],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 59,
   },
   elite_immortal: {
@@ -22643,11 +22643,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1115,
     requires: {
-      techs: [],
+      techs: [1114],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 46,
   },
   elite_iron_pagoda: {
@@ -22659,11 +22659,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 991,
     requires: {
-      techs: [],
+      techs: [990],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 52,
   },
   elite_jaguar_man: {
@@ -22675,11 +22675,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 432,
     requires: {
-      techs: [],
+      techs: [431],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 15,
   },
   elite_jannisary: {
@@ -22691,11 +22691,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 369,
     requires: {
-      techs: [],
+      techs: [271],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 10,
   },
   elite_kamayuk: {
@@ -22707,11 +22707,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 509,
     requires: {
-      techs: [],
+      techs: [508],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 21,
   },
   elite_karambit_warrior: {
@@ -22723,11 +22723,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 617,
     requires: {
-      techs: [],
+      techs: [616],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 29,
   },
   elite_keshik: {
@@ -22739,11 +22739,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 680,
     requires: {
-      techs: [],
+      techs: [679],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 33,
   },
   elite_kipchak: {
@@ -22755,11 +22755,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 682,
     requires: {
-      techs: [],
+      techs: [681],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 34,
   },
   elite_kona: {
@@ -22771,11 +22771,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1376,
     requires: {
-      techs: [],
+      techs: [1375],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 58,
   },
   elite_konnik: {
@@ -22787,11 +22787,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 678,
     requires: {
-      techs: [],
+      techs: [677],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 32,
   },
   elite_leitis: {
@@ -22803,11 +22803,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 684,
     requires: {
-      techs: [],
+      techs: [683],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 35,
   },
   elite_lembos: {
@@ -22819,11 +22819,11 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1146,
     requires: {
-      techs: [],
+      techs: [1138, 1145],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_liao_dao: {
@@ -22835,11 +22835,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1002,
     requires: {
-      techs: [],
+      techs: [1001],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 53,
   },
   elite_longbow: {
@@ -22851,11 +22851,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 360,
     requires: {
-      techs: [],
+      techs: [263],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 1,
   },
   elite_magyar_huszar: {
@@ -22867,11 +22867,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 472,
     requires: {
-      techs: [],
+      techs: [471],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 22,
   },
   elite_mali_unit: {
@@ -22883,11 +22883,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 567,
     requires: {
-      techs: [],
+      techs: [566],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 26,
   },
   elite_mameluke: {
@@ -22899,11 +22899,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 368,
     requires: {
-      techs: [],
+      techs: [269],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 9,
   },
   elite_mangudai: {
@@ -22915,11 +22915,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 371,
     requires: {
-      techs: [],
+      techs: [273],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 12,
   },
   elite_monaspa: {
@@ -22931,11 +22931,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 920,
     requires: {
-      techs: [],
+      techs: [919],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 45,
   },
   elite_obuch: {
@@ -22947,11 +22947,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 779,
     requires: {
-      techs: [],
+      techs: [778],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 38,
   },
   elite_organ_gun: {
@@ -22963,11 +22963,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 563,
     requires: {
-      techs: [],
+      techs: [562],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 24,
   },
   elite_pattiyodha_longbowman: {
@@ -22979,11 +22979,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1326,
     requires: {
-      techs: [],
+      techs: [1325],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 56,
   },
   elite_plumed_archer: {
@@ -22995,11 +22995,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 27,
     requires: {
-      techs: [],
+      techs: [26],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 16,
   },
   elite_qizilbash_warrior: {
@@ -23015,7 +23015,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_ratha: {
@@ -23027,11 +23027,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 828,
     requires: {
-      techs: [],
+      techs: [827],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 41,
   },
   elite_rattan_archer: {
@@ -23043,11 +23043,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 621,
     requires: {
-      techs: [],
+      techs: [620],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 31,
   },
   elite_rhomphaia_warrior: {
@@ -23059,11 +23059,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1301,
     requires: {
-      techs: [],
+      techs: [1300],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 55,
   },
   elite_samurai: {
@@ -23075,11 +23075,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 366,
     requires: {
-      techs: [],
+      techs: [262],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 5,
   },
   elite_sannahya: {
@@ -23091,11 +23091,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 1328,
     requires: {
-      techs: [],
+      techs: [1327],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 56,
   },
   elite_scythian_horse_archer: {
@@ -23107,7 +23107,7 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 1334,
     requires: {
-      techs: [],
+      techs: [115, 1336],
       buildings: [],
     },
     effects: [],
@@ -23123,11 +23123,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 753,
     requires: {
-      techs: [],
+      techs: [752],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 37,
   },
   elite_shrivamsha_rider: {
@@ -23139,11 +23139,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 843,
     requires: {
-      techs: [],
+      techs: [842],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 42,
   },
   elite_siege_tower: {
@@ -23155,11 +23155,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 504,
     requires: {
-      techs: [],
+      techs: [503],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 23,
   },
   elite_skirmisher: {
@@ -23175,7 +23175,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   elite_steppe_lancer: {
@@ -23187,11 +23187,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 715,
     requires: {
-      techs: [],
+      techs: [714],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_strategos: {
@@ -23203,11 +23203,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1125,
     requires: {
-      techs: [],
+      techs: [1124],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 47,
   },
   elite_tarkan: {
@@ -23219,11 +23219,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 2,
     requires: {
-      techs: [],
+      techs: [1],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 17,
   },
   elite_temple_guard: {
@@ -23235,11 +23235,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1401,
     requires: {
-      techs: [],
+      techs: [1400],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 57,
   },
   elite_teutonic_knight: {
@@ -23251,11 +23251,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 364,
     requires: {
-      techs: [],
+      techs: [276],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 4,
   },
   elite_throwing_axemen: {
@@ -23267,11 +23267,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 363,
     requires: {
-      techs: [],
+      techs: [275],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 2,
   },
   elite_tiger_cavalry: {
@@ -23283,11 +23283,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1036,
     requires: {
-      techs: [],
+      techs: [1035],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 51,
   },
   elite_turtle_ship: {
@@ -23299,7 +23299,7 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 448,
     requires: {
-      techs: [],
+      techs: [447],
       buildings: [],
     },
     effects: [
@@ -23311,7 +23311,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 18,
   },
   elite_urumi_swordsman: {
@@ -23323,11 +23323,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 826,
     requires: {
-      techs: [],
+      techs: [825],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 40,
   },
   elite_war_chariot: {
@@ -23339,7 +23339,7 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 1171,
     requires: {
-      techs: [],
+      techs: [115, 1169, 1170],
       buildings: [],
     },
     effects: [],
@@ -23359,7 +23359,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   elite_war_elephant: {
@@ -23371,11 +23371,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 367,
     requires: {
-      techs: [],
+      techs: [274],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 8,
   },
   elite_war_wagon: {
@@ -23387,11 +23387,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 450,
     requires: {
-      techs: [],
+      techs: [449],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 18,
   },
   elite_white_feather_guard: {
@@ -23403,11 +23403,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1064,
     requires: {
-      techs: [],
+      techs: [1063],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 49,
   },
   elite_woad_raider: {
@@ -23419,11 +23419,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 370,
     requires: {
-      techs: [],
+      techs: [277],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 13,
   },
   enable_catapult_ship: {
@@ -23435,11 +23435,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1158,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   'enable_companion,_macedonian_unique_unit': {
@@ -23455,7 +23455,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 54,
   },
   enable_galley___antiquity: {
@@ -23467,11 +23467,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1150,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   'enable_hippeus,_spartan_unique_unit': {
@@ -23487,7 +23487,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 48,
   },
   'enable_hoplite,_greek_regional_unit': {
@@ -23499,11 +23499,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1136,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   'enable_immortal,_achaemenid_unique_unit': {
@@ -23519,7 +23519,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 46,
   },
   enable_incendiary_raft: {
@@ -23531,11 +23531,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1153,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   enable_lembos: {
@@ -23547,7 +23547,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1143,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
@@ -23563,11 +23563,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1160,
     requires: {
-      techs: [],
+      techs: [1138, 47],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   enable_merchant_ship: {
@@ -23583,7 +23583,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   enable_monoreme: {
@@ -23595,11 +23595,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1147,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   'enable_pattiyodha_longbowman,_puru_unique_unit': {
@@ -23615,7 +23615,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 56,
   },
   'enable_phalangite,_macedonian_unique_unit': {
@@ -23631,7 +23631,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 54,
   },
   'enable_rhomphaia_warrior,_thracian_unique_unit': {
@@ -23647,7 +23647,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 55,
   },
   'enable_sannahya,_puru_unique_unit': {
@@ -23663,7 +23663,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 56,
   },
   enable_scythian_horse_archer: {
@@ -23691,7 +23691,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1140,
     requires: {
-      techs: [],
+      techs: [1209, 1138],
       buildings: [],
     },
     effects: [],
@@ -23711,7 +23711,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 47,
   },
   enable_war_chariot: {
@@ -23723,11 +23723,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1169,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 46,
   },
   enable_war_chariot_full_techs: {
@@ -23739,7 +23739,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1170,
     requires: {
-      techs: [],
+      techs: [113, 1138],
       buildings: [],
     },
     effects: [],
@@ -23819,7 +23819,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1285,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -23835,7 +23835,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1223,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -23851,7 +23851,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 581,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -23905,11 +23905,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 323,
     requires: {
-      techs: [],
+      techs: [186],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 14,
   },
   exclude_age3_from_tech_reward: {
@@ -23921,11 +23921,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 324,
     requires: {
-      techs: [],
+      techs: [186],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 14,
   },
   exclude_age4_from_tech_reward: {
@@ -23937,11 +23937,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 326,
     requires: {
-      techs: [],
+      techs: [186],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 14,
   },
   fabric_shields: {
@@ -24092,7 +24092,7 @@ export const techs: Record<string, TechData> = {
     building: 104,
     id: 45,
     requires: {
-      techs: [],
+      techs: [46, 1138],
       buildings: [],
     },
     effects: [],
@@ -24155,7 +24155,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 216,
     requires: {
-      techs: [],
+      techs: [110, 638, 1357],
       buildings: [],
     },
     effects: [],
@@ -24171,7 +24171,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 246,
     requires: {
-      techs: [],
+      techs: [35],
       buildings: [],
     },
     effects: [],
@@ -24191,7 +24191,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 24,
   },
   fereters: {
@@ -24307,7 +24307,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 101,
     requires: {
-      techs: [],
+      techs: [104, 659],
       buildings: [],
     },
     effects: [
@@ -24401,7 +24401,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 298,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -24417,7 +24417,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 758,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -24437,7 +24437,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 50,
   },
   fire_galley_make_avail: {
@@ -24453,7 +24453,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   fire_lancer_make_avail: {
@@ -24469,7 +24469,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   fire_tower_make_avail: {
@@ -24610,7 +24610,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 756,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -24646,7 +24646,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   fishing_lines: {
@@ -24658,7 +24658,7 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 906,
     requires: {
-      techs: [],
+      techs: [758],
       buildings: [],
     },
     effects: [],
@@ -24694,7 +24694,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 33,
   },
   flemish_militia_make_avail: {
@@ -24710,7 +24710,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   flemish_militia_age3: {
@@ -24832,7 +24832,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   flemish_militia_age4: {
@@ -24954,7 +24954,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   flemish_revolution: {
@@ -24966,7 +24966,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 755,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -25517,11 +25517,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 794,
     requires: {
-      techs: [],
+      techs: [793],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 38,
   },
   folwark_age3_upgrade: {
@@ -25533,11 +25533,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 795,
     requires: {
-      techs: [],
+      techs: [793],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 38,
   },
   folwark_age4_upgrade: {
@@ -25549,7 +25549,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 796,
     requires: {
-      techs: [],
+      techs: [793],
       buildings: [],
     },
     effects: [
@@ -25652,7 +25652,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 38,
   },
   forced_levy: {
@@ -25790,7 +25790,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 941,
     requires: {
-      techs: [],
+      techs: [929],
       buildings: [],
     },
     effects: [],
@@ -25806,7 +25806,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 930,
     requires: {
-      techs: [],
+      techs: [929],
       buildings: [],
     },
     effects: [],
@@ -25822,7 +25822,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 944,
     requires: {
-      techs: [],
+      techs: [200, 930, 941],
       buildings: [],
     },
     effects: [
@@ -25909,7 +25909,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 945,
     requires: {
-      techs: [],
+      techs: [201, 930, 941],
       buildings: [],
     },
     effects: [
@@ -25996,7 +25996,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 946,
     requires: {
-      techs: [],
+      techs: [47, 930, 941],
       buildings: [],
     },
     effects: [
@@ -26048,7 +26048,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 943,
     requires: {
-      techs: [],
+      techs: [199, 930, 941],
       buildings: [],
     },
     effects: [
@@ -26142,7 +26142,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 947,
     requires: {
-      techs: [],
+      techs: [322, 930, 941],
       buildings: [],
     },
     effects: [],
@@ -26158,7 +26158,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 931,
     requires: {
-      techs: [],
+      techs: [923, 930, 941],
       buildings: [],
     },
     effects: [
@@ -26210,7 +26210,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 942,
     requires: {
-      techs: [],
+      techs: [115, 930, 941],
       buildings: [],
     },
     effects: [
@@ -26297,7 +26297,7 @@ export const techs: Record<string, TechData> = {
     building: 598,
     id: 1270,
     requires: {
-      techs: [],
+      techs: [1269],
       buildings: [],
     },
     effects: [],
@@ -26329,7 +26329,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1313,
     requires: {
-      techs: [],
+      techs: [194, 1309],
       buildings: [],
     },
     effects: [],
@@ -26361,7 +26361,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 530,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -26377,11 +26377,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1266,
     requires: {
-      techs: [],
+      techs: [1136],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 48,
   },
   frontier_guards: {
@@ -26452,7 +26452,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1336,
     requires: {
-      techs: [],
+      techs: [113, 1335],
       buildings: [],
     },
     effects: [],
@@ -26562,7 +26562,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 911,
     requires: {
-      techs: [],
+      techs: [35],
       buildings: [],
     },
     effects: [],
@@ -26686,7 +26686,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 26,
   },
   genitour_make_avail: {
@@ -26702,7 +26702,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   genitour_make_avail_598: {
@@ -26714,11 +26714,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 598,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 27,
   },
   genitour_make_avail_601: {
@@ -26730,7 +26730,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 601,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -26750,7 +26750,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 19,
   },
   georgians: {
@@ -26762,7 +26762,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 916,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -26782,7 +26782,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 20,
   },
   gillnets: {
@@ -26794,7 +26794,7 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 65,
     requires: {
-      techs: [],
+      techs: [912, 906],
       buildings: [],
     },
     effects: [],
@@ -26810,11 +26810,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 912,
     requires: {
-      techs: [],
+      techs: [906],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   gold_mining: {
@@ -26826,7 +26826,7 @@ export const techs: Record<string, TechData> = {
     building: 584,
     id: 55,
     requires: {
-      techs: [],
+      techs: [758],
       buildings: [],
     },
     effects: [],
@@ -26842,7 +26842,7 @@ export const techs: Record<string, TechData> = {
     building: 584,
     id: 182,
     requires: {
-      techs: [],
+      techs: [55, 764],
       buildings: [],
     },
     effects: [],
@@ -26858,11 +26858,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 764,
     requires: {
-      techs: [],
+      techs: [55],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   goths: {
@@ -26874,7 +26874,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 531,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -27010,7 +27010,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 465,
     requires: {
-      techs: [],
+      techs: [47, 464],
       buildings: [],
     },
     effects: [],
@@ -27030,7 +27030,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 52,
   },
   guard_tower: {
@@ -27042,7 +27042,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 140,
     requires: {
-      techs: [],
+      techs: [127],
       buildings: [],
     },
     effects: [
@@ -27115,7 +27115,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1317,
     requires: {
-      techs: [],
+      techs: [140, 1309],
       buildings: [],
     },
     effects: [],
@@ -27135,7 +27135,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 57,
   },
   guecha_warrior_pagoda: {
@@ -27147,11 +27147,11 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1364,
     requires: {
-      techs: [],
+      techs: [1363],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 57,
   },
   guilds: {
@@ -27163,7 +27163,7 @@ export const techs: Record<string, TechData> = {
     building: 84,
     id: 15,
     requires: {
-      techs: [],
+      techs: [760],
       buildings: [],
     },
     effects: [],
@@ -27179,7 +27179,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 824,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -27195,11 +27195,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 429,
     requires: {
-      techs: [],
+      techs: [197, 956],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   halberdier_requirement: {
@@ -27211,11 +27211,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 956,
     requires: {
-      techs: [],
+      techs: [197],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 44,
   },
   hand_cannoneer: {
@@ -27227,11 +27227,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 85,
     requires: {
-      techs: [],
+      techs: [47, 285, 801],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   hand_cart: {
@@ -27243,7 +27243,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 249,
     requires: {
-      techs: [],
+      techs: [213, 763],
       buildings: [],
     },
     effects: [
@@ -27274,11 +27274,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 763,
     requires: {
-      techs: [],
+      techs: [213],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   hauberk: {
@@ -27478,7 +27478,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1319,
     requires: {
-      techs: [],
+      techs: [380, 1309],
       buildings: [],
     },
     effects: [],
@@ -27498,7 +27498,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_camel_521: {
@@ -27510,11 +27510,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 521,
     requires: {
-      techs: [],
+      techs: [236],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 20,
   },
   heavy_cavalry_archer: {
@@ -27526,11 +27526,11 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 218,
     requires: {
-      techs: [],
+      techs: [192, 1004],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_demolition: {
@@ -27542,11 +27542,11 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 244,
     requires: {
-      techs: [],
+      techs: [905],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_eagle_warrior: {
@@ -27558,11 +27558,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 384,
     requires: {
-      techs: [],
+      techs: [433],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   heavy_hei_kuang_cavalry: {
@@ -27574,11 +27574,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 1033,
     requires: {
-      techs: [],
+      techs: [1032],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_incendiary_ship: {
@@ -27590,11 +27590,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1155,
     requires: {
-      techs: [],
+      techs: [1138, 1154],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_lembos: {
@@ -27606,11 +27606,11 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1145,
     requires: {
-      techs: [],
+      techs: [1138, 1144],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   heavy_plow: {
@@ -27622,7 +27622,7 @@ export const techs: Record<string, TechData> = {
     building: 68,
     id: 13,
     requires: {
-      techs: [],
+      techs: [14, 761],
       buildings: [],
     },
     effects: [],
@@ -27642,7 +27642,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   heavy_rocket_cart: {
@@ -27654,11 +27654,11 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 980,
     requires: {
-      techs: [],
+      techs: [979],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_scorpion: {
@@ -27670,7 +27670,7 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 239,
     requires: {
-      techs: [],
+      techs: [94],
       buildings: [],
     },
     effects: [
@@ -27703,7 +27703,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   heavy_warships: {
@@ -27715,7 +27715,7 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 35,
     requires: {
-      techs: [],
+      techs: [34],
       buildings: [],
     },
     effects: [],
@@ -27735,7 +27735,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   'helot_levies,_spartan_unique_tech': {
@@ -27747,7 +27747,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1130,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -28742,7 +28742,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 548,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -28758,7 +28758,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1226,
     requires: {
-      techs: [],
+      techs: [1225],
       buildings: [],
     },
     effects: [
@@ -28819,7 +28819,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 48,
   },
   hoardings: {
@@ -28869,7 +28869,7 @@ export const techs: Record<string, TechData> = {
     building: 68,
     id: 14,
     requires: {
-      techs: [],
+      techs: [758],
       buildings: [],
     },
     effects: [],
@@ -28885,11 +28885,11 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 787,
     requires: {
-      techs: [],
+      techs: [188],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 39,
   },
   howdah: {
@@ -28978,7 +28978,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   huns: {
@@ -28990,7 +28990,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 545,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -29090,7 +29090,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 3,
   },
   hussar: {
@@ -29102,11 +29102,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 428,
     requires: {
-      techs: [],
+      techs: [254],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   hussite_reforms: {
@@ -29138,7 +29138,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 39,
   },
   hypozomata: {
@@ -29150,7 +29150,7 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1165,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [
@@ -29183,7 +29183,7 @@ export const techs: Record<string, TechData> = {
         c: 22,
       },
     ],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   ibirapema_warrior_make_avail: {
@@ -29199,7 +29199,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 59,
   },
   illumination: {
@@ -29235,7 +29235,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 103,
     requires: {
-      techs: [],
+      techs: [661],
       buildings: [],
     },
     effects: [
@@ -29382,7 +29382,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   imperial_nomads: {
@@ -29394,11 +29394,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 641,
     requires: {
-      techs: [],
+      techs: [487],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 12,
   },
   imperial_skirmisher: {
@@ -29410,11 +29410,11 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 655,
     requires: {
-      techs: [],
+      techs: [98],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   imperial_skirmisher_disable: {
@@ -29426,7 +29426,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 656,
     requires: {
-      techs: [],
+      techs: [98],
       buildings: [],
     },
     effects: [],
@@ -29446,7 +29446,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 36,
   },
   inca: {
@@ -29458,7 +29458,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 549,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -29474,7 +29474,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 910,
     requires: {
-      techs: [],
+      techs: [909],
       buildings: [],
     },
     effects: [],
@@ -29490,11 +29490,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1154,
     requires: {
-      techs: [],
+      techs: [1138, 1153],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   initial_oligarchy_researched: {
@@ -29506,7 +29506,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1214,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -29546,7 +29546,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 68,
     requires: {
-      techs: [],
+      techs: [67],
       buildings: [],
     },
     effects: [
@@ -29644,7 +29644,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 52,
   },
   ironclad: {
@@ -29750,7 +29750,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 547,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -29770,7 +29770,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   jannisary_make_avail: {
@@ -29786,7 +29786,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 10,
   },
   japanese: {
@@ -29798,7 +29798,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 533,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -29818,7 +29818,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 50,
   },
   jurchens: {
@@ -29830,7 +29830,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 986,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -29866,7 +29866,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 21,
   },
   karambit_warrior_make_avail: {
@@ -29882,7 +29882,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 29,
   },
   kasbah: {
@@ -29948,7 +29948,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 63,
     requires: {
-      techs: [],
+      techs: [140],
       buildings: [],
     },
     effects: [
@@ -30021,7 +30021,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1318,
     requires: {
-      techs: [],
+      techs: [63, 1309],
       buildings: [],
     },
     effects: [],
@@ -30041,7 +30041,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 33,
   },
   khitans: {
@@ -30053,7 +30053,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 988,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -30069,7 +30069,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 650,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -30105,7 +30105,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 34,
   },
   knight_make_avail: {
@@ -30121,7 +30121,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   kona_make_avail: {
@@ -30137,7 +30137,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 58,
   },
   konnik_make_avail: {
@@ -30153,7 +30153,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 32,
   },
   kopis_sarissa_choice: {
@@ -30181,7 +30181,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 546,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -30245,7 +30245,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 861,
     requires: {
-      techs: [],
+      techs: [716, 835],
       buildings: [],
     },
     effects: [],
@@ -30277,7 +30277,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1308,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -30293,7 +30293,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 212,
     requires: {
-      techs: [],
+      techs: [211],
       buildings: [],
     },
     effects: [
@@ -30466,11 +30466,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 885,
     requires: {
-      techs: [],
+      techs: [207],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 43,
   },
   leitis_make_avail: {
@@ -30486,7 +30486,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 35,
   },
   'lemboi_cost__10%_and_+1_attack_in_civic_age,_puru_civ_bonus': {
@@ -30531,7 +30531,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: 56,
   },
   'lemboi_cost__10%_and_+1_attack_in_classical_age,_puru_civ_bonus': {
@@ -30576,7 +30576,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 56,
   },
   'lemboi_cost__10%_and_+1_attack_in_imperial_age,_puru_civ_bonus': {
@@ -30621,7 +30621,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: 56,
   },
   liao_dao_make_avail: {
@@ -30637,7 +30637,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 53,
   },
   light_cavalry: {
@@ -30653,7 +30653,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   lithuanians: {
@@ -30665,7 +30665,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 676,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -30685,7 +30685,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 49,
   },
   logistica: {
@@ -30728,11 +30728,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 207,
     requires: {
-      techs: [],
+      techs: [222, 952],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   long_swordsman_requirement: {
@@ -30744,11 +30744,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 952,
     requires: {
-      techs: [],
+      techs: [222],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 44,
   },
   longboat_make_avail: {
@@ -30764,7 +30764,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 11,
   },
   longbow_make_avail: {
@@ -30776,11 +30776,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 263,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 1,
   },
   loom: {
@@ -30792,7 +30792,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 22,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [
@@ -30834,7 +30834,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   mrkt_tdws_make_avail: {
@@ -30846,11 +30846,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 148,
     requires: {
-      techs: [],
+      techs: [666],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   macedonian_team_bonus: {
@@ -30971,7 +30971,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 22,
   },
   magyars: {
@@ -30983,7 +30983,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 550,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31019,7 +31019,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   make_fire_galley_avail: {
@@ -31035,7 +31035,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   make_scout_ship_avail: {
@@ -31051,7 +31051,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   malay: {
@@ -31063,7 +31063,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 651,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31079,7 +31079,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 582,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31111,11 +31111,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 269,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 9,
   },
   man_at_arms: {
@@ -31131,7 +31131,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   mangonel: {
@@ -31147,7 +31147,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   manipur_cavalry: {
@@ -31190,7 +31190,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1361,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31407,7 +31407,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1311,
     requires: {
-      techs: [],
+      techs: [50, 1309],
       buildings: [],
     },
     effects: [],
@@ -31423,7 +31423,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 544,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31455,7 +31455,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1196,
     requires: {
-      techs: [],
+      techs: [1138, 1209, 1103],
       buildings: [],
     },
     effects: [],
@@ -31564,7 +31564,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 14,
   },
   mobile_siege_unit_make_avail: {
@@ -31576,11 +31576,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 273,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 12,
   },
   monaspa_make_avail: {
@@ -31596,7 +31596,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 45,
   },
   mongols: {
@@ -31608,7 +31608,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 540,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31628,7 +31628,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   monk_ranged_heal: {
@@ -31672,7 +31672,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1224,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -31692,7 +31692,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 53,
   },
   muisca: {
@@ -31704,7 +31704,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1360,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -31768,7 +31768,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1321,
     requires: {
-      techs: [],
+      techs: [322, 1309],
       buildings: [],
     },
     effects: [],
@@ -33108,7 +33108,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 38,
   },
   'odomantian_raiders,_thracian_unique_tech': {
@@ -33120,7 +33120,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1296,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -33136,7 +33136,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1324,
     requires: {
-      techs: [],
+      techs: [1310],
       buildings: [],
     },
     effects: [],
@@ -33152,7 +33152,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1202,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -33172,7 +33172,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   onager_ship: {
@@ -33184,11 +33184,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1159,
     requires: {
-      techs: [],
+      techs: [1138, 1158],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   ordo_cavalry: {
@@ -33220,7 +33220,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 24,
   },
   outpost_make_avail: {
@@ -33520,11 +33520,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 265,
     requires: {
-      techs: [],
+      techs: [209],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   paladin_make_avail: {
@@ -33540,7 +33540,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   palisade_wall_make_avail: {
@@ -33552,7 +33552,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 523,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -33699,7 +33699,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   paper_money: {
@@ -33727,7 +33727,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 868,
     requires: {
-      techs: [],
+      techs: [629, 203],
       buildings: [],
     },
     effects: [],
@@ -33743,7 +33743,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 867,
     requires: {
-      techs: [],
+      techs: [629, 202],
       buildings: [],
     },
     effects: [],
@@ -33759,7 +33759,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 869,
     requires: {
-      techs: [],
+      techs: [629, 221],
       buildings: [],
     },
     effects: [],
@@ -33775,7 +33775,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1142,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
@@ -33791,11 +33791,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1175,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   paphos_port_age_3: {
@@ -33807,11 +33807,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1176,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   paphos_port_age_4: {
@@ -33823,11 +33823,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1177,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   paphos_shadow_tech: {
@@ -33855,7 +33855,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1261,
     requires: {
-      techs: [],
+      techs: [1258, 1259, 1260],
       buildings: [],
     },
     effects: [],
@@ -33871,7 +33871,7 @@ export const techs: Record<string, TechData> = {
     building: 87,
     id: 436,
     requires: {
-      techs: [],
+      techs: [57],
       buildings: [],
     },
     effects: [
@@ -34070,7 +34070,7 @@ export const techs: Record<string, TechData> = {
     building: 68,
     id: 1013,
     requires: {
-      techs: [],
+      techs: [1014],
       buildings: [],
     },
     effects: [],
@@ -34187,7 +34187,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1133,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [
@@ -34225,7 +34225,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1299,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -34257,7 +34257,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 536,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -34277,7 +34277,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   'pezhetairoi,_macedonian_unique_tech': {
@@ -34289,7 +34289,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1286,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -34305,11 +34305,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 197,
     requires: {
-      techs: [],
+      techs: [87, 955],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   pikeman_requirement: {
@@ -34321,11 +34321,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 955,
     requires: {
-      techs: [],
+      techs: [87],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 44,
   },
   pirotechnia: {
@@ -34521,7 +34521,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 80,
     requires: {
-      techs: [],
+      techs: [82],
       buildings: [],
     },
     effects: [
@@ -34622,7 +34622,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 77,
     requires: {
-      techs: [],
+      techs: [76],
       buildings: [],
     },
     effects: [
@@ -34709,7 +34709,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1273,
     requires: {
-      techs: [],
+      techs: [77],
       buildings: [],
     },
     effects: [
@@ -34810,11 +34810,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 26,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 16,
   },
   'polemarchs_become_stronger_in_imperial_age,_spartan_civ_bonus': {
@@ -34826,7 +34826,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1129,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -34842,7 +34842,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 776,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -34874,7 +34874,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 580,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -34890,7 +34890,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 572,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [
@@ -34996,7 +34996,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   'post_tc_+100s': {
@@ -35008,7 +35008,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 261,
     requires: {
-      techs: [],
+      techs: [228],
       buildings: [],
     },
     effects: [],
@@ -35024,7 +35024,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1408,
     requires: {
-      techs: [],
+      techs: [1394],
       buildings: [],
     },
     effects: [],
@@ -35040,7 +35040,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 259,
     requires: {
-      techs: [],
+      techs: [223],
       buildings: [],
     },
     effects: [],
@@ -35056,7 +35056,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 260,
     requires: {
-      techs: [],
+      techs: [224],
       buildings: [],
     },
     effects: [],
@@ -35092,7 +35092,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   reserved: {
@@ -35588,7 +35588,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 41,
   },
   rattan_archer_make_avail: {
@@ -35604,7 +35604,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 31,
   },
   recurve_bow: {
@@ -35679,7 +35679,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1111,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [
@@ -35766,7 +35766,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 713,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -35782,7 +35782,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1206,
     requires: {
-      techs: [],
+      techs: [1202, 1204],
       buildings: [],
     },
     effects: [],
@@ -35798,7 +35798,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1205,
     requires: {
-      techs: [],
+      techs: [1203, 1204],
       buildings: [],
     },
     effects: [],
@@ -35814,7 +35814,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1207,
     requires: {
-      techs: [],
+      techs: [1202, 1203],
       buildings: [],
     },
     effects: [],
@@ -36006,7 +36006,7 @@ export const techs: Record<string, TechData> = {
     building: 103,
     id: 219,
     requires: {
-      techs: [],
+      techs: [212],
       buildings: [],
     },
     effects: [
@@ -36167,7 +36167,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   rocketry: {
@@ -36588,7 +36588,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1015,
     requires: {
-      techs: [],
+      techs: [47, 52],
       buildings: [],
     },
     effects: [],
@@ -36604,7 +36604,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 880,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -36725,7 +36725,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 52,
   },
   stbl_make_avail: {
@@ -36737,11 +36737,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 25,
     requires: {
-      techs: [],
+      techs: [667],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   'sagaris,_achaemenid_unique_tech': {
@@ -36753,7 +36753,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1113,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [
@@ -36777,11 +36777,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 262,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 5,
   },
   sanctity: {
@@ -36970,7 +36970,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 537,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -37002,7 +37002,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1287,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -37018,11 +37018,11 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 526,
     requires: {
-      techs: [],
+      techs: [209],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 8,
   },
   scale_alexanders_soldiers_in_imperial_age: {
@@ -37459,7 +37459,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   scale_barding_armor: {
@@ -37659,7 +37659,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1271,
     requires: {
-      techs: [],
+      techs: [74],
       buildings: [],
     },
     effects: [
@@ -37760,11 +37760,11 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1161,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   scorpion: {
@@ -37780,7 +37780,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   scout_make_avail: {
@@ -37796,7 +37796,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   'scythed_chariots,_achaemenid_unique_tech': {
@@ -37808,7 +37808,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1112,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -37844,7 +37844,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 37,
   },
   set_max_pop_no_houses: {
@@ -37872,7 +37872,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1353,
     requires: {
-      techs: [],
+      techs: [549, 1360, 1361, 1362],
       buildings: [],
     },
     effects: [],
@@ -37888,11 +37888,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1354,
     requires: {
-      techs: [],
+      techs: [1353],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   settlement_age3_upgrade: {
@@ -37904,11 +37904,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1355,
     requires: {
-      techs: [],
+      techs: [1353],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   settlement_age4_upgrade: {
@@ -37920,7 +37920,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1356,
     requires: {
-      techs: [],
+      techs: [1353],
       buildings: [],
     },
     effects: [
@@ -37967,7 +37967,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   shadow_archery_rg____age_two: {
@@ -38187,7 +38187,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 667,
     requires: {
-      techs: [],
+      techs: [122, 638, 291],
       buildings: [],
     },
     effects: [],
@@ -38203,7 +38203,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 668,
     requires: {
-      techs: [],
+      techs: [106, 638],
       buildings: [],
     },
     effects: [],
@@ -38219,7 +38219,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 666,
     requires: {
-      techs: [],
+      techs: [110, 638, 1357],
       buildings: [],
     },
     effects: [],
@@ -38235,7 +38235,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1358,
     requires: {
-      techs: [],
+      techs: [933, 1357],
       buildings: [],
     },
     effects: [],
@@ -38251,7 +38251,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 142,
     requires: {
-      techs: [],
+      techs: [359, 266, 292],
       buildings: [],
     },
     effects: [],
@@ -38267,7 +38267,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 135,
     requires: {
-      techs: [],
+      techs: [132, 106, 130, 1218, 128, 1141],
       buildings: [],
     },
     effects: [],
@@ -38283,7 +38283,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 120,
     requires: {
-      techs: [],
+      techs: [110, 258, 1221, 122, 282, 1358],
       buildings: [],
     },
     effects: [],
@@ -38299,7 +38299,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 661,
     requires: {
-      techs: [],
+      techs: [142, 638],
       buildings: [],
     },
     effects: [],
@@ -38315,7 +38315,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 660,
     requires: {
-      techs: [],
+      techs: [135, 638],
       buildings: [],
     },
     effects: [],
@@ -38331,7 +38331,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 659,
     requires: {
-      techs: [],
+      techs: [120, 638, 1357],
       buildings: [],
     },
     effects: [],
@@ -38479,7 +38479,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   shadow_transport_ship____age_three: {
@@ -38495,7 +38495,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   shadow_university____age_three: {
@@ -38638,11 +38638,11 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1167,
     requires: {
-      techs: [],
+      techs: [1142],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   shipyard_built: {
@@ -38674,7 +38674,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 25,
   },
   shrivamsha_rider_make_avail: {
@@ -38690,7 +38690,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 42,
   },
   shu: {
@@ -38702,7 +38702,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1028,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -38718,7 +38718,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 749,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -38734,7 +38734,7 @@ export const techs: Record<string, TechData> = {
     building: 209,
     id: 377,
     requires: {
-      techs: [],
+      techs: [978],
       buildings: [],
     },
     effects: [
@@ -39325,7 +39325,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1316,
     requires: {
-      techs: [],
+      techs: [377, 1309],
       buildings: [],
     },
     effects: [],
@@ -39341,11 +39341,11 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 320,
     requires: {
-      techs: [],
+      techs: [257],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   siege_ram: {
@@ -39357,11 +39357,11 @@ export const techs: Record<string, TechData> = {
     building: 49,
     id: 255,
     requires: {
-      techs: [],
+      techs: [96],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   siege_tower_make_avail: {
@@ -39377,7 +39377,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   siege_wksp_make_avail: {
@@ -39389,11 +39389,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 149,
     requires: {
-      techs: [],
+      techs: [668, 705],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   silk_armor: {
@@ -39634,7 +39634,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1082,
     requires: {
-      techs: [],
+      techs: [47, 1081],
       buildings: [],
     },
     effects: [],
@@ -39650,7 +39650,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1310,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -39727,7 +39727,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: 48,
   },
   skirmisher_make_avail: {
@@ -39743,7 +39743,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   'skirmishers_regen_10_hp_in_classical_age,_thracian_civ_bonus': {
@@ -39759,7 +39759,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 55,
   },
   'skirmishers_regen_5_hp_in_civic_age,_thracian_civ_bonus': {
@@ -39775,7 +39775,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 55,
   },
   slavic_team_bonus: {
@@ -39803,7 +39803,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 551,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -39910,7 +39910,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   spanish: {
@@ -39922,7 +39922,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 542,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -39938,7 +39938,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1110,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [
@@ -40053,7 +40053,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1026,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -40101,7 +40101,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1198,
     requires: {
-      techs: [],
+      techs: [1220],
       buildings: [],
     },
     effects: [],
@@ -40117,7 +40117,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1127,
     requires: {
-      techs: [],
+      techs: [1209, 1230],
       buildings: [],
     },
     effects: [],
@@ -40133,7 +40133,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1128,
     requires: {
-      techs: [],
+      techs: [113, 1230],
       buildings: [],
     },
     effects: [],
@@ -40165,11 +40165,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 87,
     requires: {
-      techs: [],
+      techs: [950],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   spies_treason: {
@@ -40317,7 +40317,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 56,
   },
   steppe_husbandry: {
@@ -40349,7 +40349,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   stirrups: {
@@ -40392,7 +40392,7 @@ export const techs: Record<string, TechData> = {
     building: 584,
     id: 278,
     requires: {
-      techs: [],
+      techs: [758],
       buildings: [],
     },
     effects: [],
@@ -40408,7 +40408,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1329,
     requires: {
-      techs: [],
+      techs: [1302, 278],
       buildings: [],
     },
     effects: [],
@@ -40424,7 +40424,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 806,
     requires: {
-      techs: [],
+      techs: [805, 278],
       buildings: [],
     },
     effects: [],
@@ -40440,7 +40440,7 @@ export const techs: Record<string, TechData> = {
     building: 584,
     id: 279,
     requires: {
-      techs: [],
+      techs: [278, 765],
       buildings: [],
     },
     effects: [],
@@ -40456,7 +40456,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1330,
     requires: {
-      techs: [],
+      techs: [1302, 279],
       buildings: [],
     },
     effects: [],
@@ -40472,7 +40472,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 807,
     requires: {
-      techs: [],
+      techs: [805, 279],
       buildings: [],
     },
     effects: [],
@@ -40488,11 +40488,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 765,
     requires: {
-      techs: [],
+      techs: [278],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: 36,
   },
   stronghold: {
@@ -40556,7 +40556,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 359,
     requires: {
-      techs: [],
+      techs: [138, 107, 146, 266],
       buildings: [],
     },
     effects: [],
@@ -40576,7 +40576,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 50,
   },
   supplies: {
@@ -40588,7 +40588,7 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 716,
     requires: {
-      techs: [],
+      techs: [1209],
       buildings: [],
     },
     effects: [],
@@ -40806,7 +40806,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 936,
     requires: {
-      techs: [],
+      techs: [47, 923],
       buildings: [],
     },
     effects: [
@@ -40834,7 +40834,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   szlachta_privileges: {
@@ -40862,7 +40862,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 730,
     requires: {
-      techs: [],
+      techs: [639, 307],
       buildings: [],
     },
     effects: [],
@@ -40894,7 +40894,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1230,
     requires: {
-      techs: [],
+      techs: [307, 722],
       buildings: [],
     },
     effects: [],
@@ -40914,7 +40914,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 17,
   },
   tatars: {
@@ -40926,7 +40926,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 674,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -40942,7 +40942,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1121,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -40962,7 +40962,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 57,
   },
   teutonic_knight_make_avail: {
@@ -40974,11 +40974,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 276,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 4,
   },
   teutons: {
@@ -41022,7 +41022,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 670,
     requires: {
-      techs: [],
+      techs: [200, 624],
       buildings: [],
     },
     effects: [
@@ -41074,7 +41074,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 671,
     requires: {
-      techs: [],
+      techs: [201, 624],
       buildings: [],
     },
     effects: [
@@ -41126,7 +41126,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 734,
     requires: {
-      techs: [],
+      techs: [47, 624],
       buildings: [],
     },
     effects: [],
@@ -41142,7 +41142,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 669,
     requires: {
-      techs: [],
+      techs: [199, 624],
       buildings: [],
     },
     effects: [
@@ -41201,7 +41201,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 736,
     requires: {
-      techs: [],
+      techs: [380, 624],
       buildings: [],
     },
     effects: [],
@@ -41217,7 +41217,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 735,
     requires: {
-      techs: [],
+      techs: [322, 624],
       buildings: [],
     },
     effects: [],
@@ -41269,7 +41269,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 40,
   },
   thracians_static_bonuses: {
@@ -41297,11 +41297,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 275,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 2,
   },
   thumb_ring: {
@@ -41483,7 +41483,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 51,
   },
   tigui: {
@@ -41703,7 +41703,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 280,
     requires: {
-      techs: [],
+      techs: [8],
       buildings: [],
     },
     effects: [],
@@ -41739,7 +41739,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   'trade_0%_wood': {
@@ -41751,7 +41751,7 @@ export const techs: Record<string, TechData> = {
     building: 17,
     id: 1359,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -41767,7 +41767,7 @@ export const techs: Record<string, TechData> = {
     building: 17,
     id: 1373,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -41783,7 +41783,7 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1215,
     requires: {
-      techs: [],
+      techs: [1142, 1209],
       buildings: [],
     },
     effects: [],
@@ -41799,7 +41799,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1263,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -41815,7 +41815,7 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1216,
     requires: {
-      techs: [],
+      techs: [1209],
       buildings: [],
     },
     effects: [],
@@ -41831,7 +41831,7 @@ export const techs: Record<string, TechData> = {
     building: 17,
     id: 1264,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -41847,7 +41847,7 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1217,
     requires: {
-      techs: [],
+      techs: [1209],
       buildings: [],
     },
     effects: [],
@@ -41863,7 +41863,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1265,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -41883,7 +41883,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   transhumance: {
@@ -41895,7 +41895,7 @@ export const techs: Record<string, TechData> = {
     building: 68,
     id: 1012,
     requires: {
-      techs: [],
+      techs: [1013],
       buildings: [],
     },
     effects: [],
@@ -41927,7 +41927,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 1322,
     requires: {
-      techs: [],
+      techs: [54, 1309],
       buildings: [],
     },
     effects: [],
@@ -41947,7 +41947,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   trireme: {
@@ -41959,11 +41959,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1149,
     requires: {
-      techs: [],
+      techs: [1138, 1148],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   tuntian: {
@@ -41991,7 +41991,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1362,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -42027,7 +42027,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 10,
   },
   turks: {
@@ -42039,7 +42039,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 538,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -42059,7 +42059,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 18,
   },
   tusk_swords: {
@@ -42116,11 +42116,11 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 217,
     requires: {
-      techs: [],
+      techs: [207, 953],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   two_handed_swordsman_1173: {
@@ -42132,7 +42132,7 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1173,
     requires: {
-      techs: [],
+      techs: [1138, 1295],
       buildings: [],
     },
     effects: [
@@ -42326,7 +42326,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   two_handed_swordsman_requirement: {
@@ -42338,11 +42338,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 953,
     requires: {
-      techs: [],
+      techs: [207],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 44,
   },
   two_man_saw: {
@@ -42354,7 +42354,7 @@ export const techs: Record<string, TechData> = {
     building: 562,
     id: 221,
     requires: {
-      techs: [],
+      techs: [203, 767],
       buildings: [],
     },
     effects: [],
@@ -42370,11 +42370,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 767,
     requires: {
-      techs: [],
+      techs: [203],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 36,
   },
   tyranny: {
@@ -42386,7 +42386,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 1204,
     requires: {
-      techs: [],
+      techs: [1208],
       buildings: [],
     },
     effects: [],
@@ -42402,11 +42402,11 @@ export const techs: Record<string, TechData> = {
     building: 45,
     id: 372,
     requires: {
-      techs: [],
+      techs: [272],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 11,
   },
   univ_make_avail: {
@@ -42422,7 +42422,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   upgrade_camel_scouts_to_riders: {
@@ -42438,7 +42438,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   upgrade_eagle_in_age3: {
@@ -42450,7 +42450,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 387,
     requires: {
-      techs: [],
+      techs: [433],
       buildings: [],
     },
     effects: [
@@ -42483,7 +42483,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   upgrade_rams: {
@@ -42495,7 +42495,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 712,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -42515,7 +42515,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 34,
   },
   urumi_swordsman_make_avail: {
@@ -42531,7 +42531,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 40,
   },
   'vadhavadha,_puru_unique_tech': {
@@ -42543,7 +42543,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1307,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -42559,7 +42559,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1309,
     requires: {
-      techs: [],
+      techs: [115],
       buildings: [],
     },
     effects: [],
@@ -42575,7 +42575,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1284,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -42591,7 +42591,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 653,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -42607,7 +42607,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 539,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -42643,7 +42643,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   walls_hp_castle_age: {
@@ -42779,7 +42779,7 @@ export const techs: Record<string, TechData> = {
         c: -1,
       },
     ],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   war_chariot_make_avail: {
@@ -42795,7 +42795,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 49,
   },
   war_elephant_make_avail: {
@@ -42807,11 +42807,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 274,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 8,
   },
   war_galley___antiquity: {
@@ -42823,11 +42823,11 @@ export const techs: Record<string, TechData> = {
     building: 2119,
     id: 1151,
     requires: {
-      techs: [],
+      techs: [1138, 1150],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: -1,
   },
   war_lembos: {
@@ -42839,11 +42839,11 @@ export const techs: Record<string, TechData> = {
     building: 2172,
     id: 1144,
     requires: {
-      techs: [],
+      techs: [1138],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   war_wagon: {
@@ -42859,7 +42859,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 18,
   },
   warrior_priest_make_avail: {
@@ -42875,7 +42875,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 44,
   },
   warships: {
@@ -42938,7 +42938,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 2,
     civ: -1,
   },
   wei: {
@@ -42950,7 +42950,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1029,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -42966,7 +42966,7 @@ export const techs: Record<string, TechData> = {
     building: 109,
     id: 213,
     requires: {
-      techs: [],
+      techs: [758],
       buildings: [],
     },
     effects: [
@@ -43001,7 +43001,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 49,
   },
   winged_hussar: {
@@ -43013,7 +43013,7 @@ export const techs: Record<string, TechData> = {
     building: 101,
     id: 786,
     requires: {
-      techs: [],
+      techs: [115, 254, 788, 789],
       buildings: [],
     },
     effects: [],
@@ -43033,7 +43033,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 35,
   },
   winged_hussar_lithuanians: {
@@ -43065,7 +43065,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: 38,
   },
   winged_hussar_poles: {
@@ -43093,11 +43093,11 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 277,
     requires: {
-      techs: [],
+      techs: [266],
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 13,
   },
   wonder_built: {
@@ -43129,7 +43129,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 4,
     civ: -1,
   },
   wootz_steel: {
@@ -43157,7 +43157,7 @@ export const techs: Record<string, TechData> = {
     building: 0,
     id: 1030,
     requires: {
-      techs: [],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -43209,7 +43209,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 51,
   },
   xolotl_disable: {
@@ -43221,7 +43221,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 313,
     requires: {
-      techs: [],
+      techs: [204],
       buildings: [],
     },
     effects: [],
@@ -43237,7 +43237,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 378,
     requires: {
-      techs: [],
+      techs: [113, 1350],
       buildings: [],
     },
     effects: [],
@@ -43257,7 +43257,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 15,
   },
   xolotl_make_avail_may: {
@@ -43273,7 +43273,7 @@ export const techs: Record<string, TechData> = {
       buildings: [],
     },
     effects: [],
-    age: 1,
+    age: 3,
     civ: 16,
   },
   'xyphos,_spartan_unique_tech': {
@@ -43285,7 +43285,7 @@ export const techs: Record<string, TechData> = {
     building: 82,
     id: 1132,
     requires: {
-      techs: [],
+      techs: [113],
       buildings: [],
     },
     effects: [],
@@ -43446,7 +43446,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 864,
     requires: {
-      techs: [],
+      techs: [837, 162],
       buildings: [],
     },
     effects: [],
@@ -43462,7 +43462,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 894,
     requires: {
-      techs: [],
+      techs: [37, 886],
       buildings: [],
     },
     effects: [],
@@ -43478,7 +43478,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 863,
     requires: {
-      techs: [],
+      techs: [480, 192],
       buildings: [],
     },
     effects: [],
@@ -43494,7 +43494,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 708,
     requires: {
-      techs: [],
+      techs: [188, 703],
       buildings: [],
     },
     effects: [],
@@ -43510,7 +43510,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 719,
     requires: {
-      techs: [],
+      techs: [16, 433],
       buildings: [],
     },
     effects: [],
@@ -43526,7 +43526,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 717,
     requires: {
-      techs: [],
+      techs: [630, 714],
       buildings: [],
     },
     effects: [],
@@ -43542,7 +43542,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 865,
     requires: {
-      techs: [],
+      techs: [842, 166],
       buildings: [],
     },
     effects: [],
@@ -43558,7 +43558,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 866,
     requires: {
-      techs: [],
+      techs: [631, 842, 166],
       buildings: [],
     },
     effects: [],
@@ -43574,7 +43574,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 720,
     requires: {
-      techs: [],
+      techs: [85, 528],
       buildings: [],
     },
     effects: [],
@@ -43590,7 +43590,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 718,
     requires: {
-      techs: [],
+      techs: [630, 483],
       buildings: [],
     },
     effects: [],
@@ -43606,7 +43606,7 @@ export const techs: Record<string, TechData> = {
     building: -1,
     id: 862,
     requires: {
-      techs: [],
+      techs: [631, 483],
       buildings: [],
     },
     effects: [],

@@ -55,25 +55,12 @@ export function matchesUnit(e: any, u: UnitData): boolean {
 }
 
 export function matchesClass(e: any, u: UnitData): boolean {
-  const isArmorAttackEffect = e.t === 8 || e.t === 9;
-
-  // If 'c' is not -1, it's the primary unit class filter.
-  // If 'c' is -1 AND it's a combat effect (Type 8/9), 'a' is used as the filter.
-  let targetClass = e.c;
-  if (targetClass === -1 && isArmorAttackEffect) {
-    targetClass = e.a;
-  }
-
-  // c: -1 for non-combat effects means 'Global' (e.g. Bloodlines HP)
-  if (targetClass === -1) return true;
-
-  const hasArmorClass = u.armors && String(targetClass) in u.armors;
-  const matchesBaseClass = targetClass == u.class;
-  if (hasArmorClass || matchesBaseClass) return true;
+  if (e.c === -1) return true;
+  if (e.c === u.class) return true;
 
   // Check category aliases
-  if (CLASS_ALIASES[targetClass]) {
-    return CLASS_ALIASES[targetClass].some((alias) => alias == u.class);
+  if (CLASS_ALIASES[e.c]) {
+    return CLASS_ALIASES[e.c].some((alias) => alias == u.class);
   }
 
   return false;
