@@ -6,6 +6,14 @@ interface CivSelectorProps {
   army: 'a' | 'b';
 }
 
+const CivIcon = ({ name }: { name: string }) => {
+  const img = `/img/Civs/${name.toLowerCase()}.png`;
+  if (name == GENERIC_CIV) {
+    return <span className="generic-icon">🏰</span>;
+  }
+  return <img src={img} alt="Civ Icon" className="civ-icon" />;
+};
+
 const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
   const { state, applyAgeBonuses } = useSimulation();
   const [isOpen, setIsOpen] = useState(false);
@@ -76,8 +84,13 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
 
   return (
     <div className="civ-selector" ref={containerRef} style={{ position: 'relative' }}>
-      <button className="nav-btn secondary" title="Click to change civilization" onClick={() => setIsOpen(!isOpen)}>
-        <span>🏰 {formatCivName(armyState.civ || GENERIC_CIV)}</span>
+      <button
+        className="nav-btn secondary icon"
+        title="Click to change civilization"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <CivIcon name={armyState.civ || GENERIC_CIV} />
+        <span>{formatCivName(armyState.civ || GENERIC_CIV)}</span>
         <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>▼</span>
       </button>
 
@@ -100,7 +113,8 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
                 onClick={() => handleSelect(name)}
                 onMouseEnter={() => setSelectedIndex(index)}
               >
-                {name === GENERIC_CIV ? 'None (All Techs)' : formatCivName(name)}
+                <CivIcon name={name} />
+                <span>{name === GENERIC_CIV ? 'None (All Techs)' : formatCivName(name)}</span>
               </div>
             ))}
           </div>
