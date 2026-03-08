@@ -67,39 +67,49 @@ export function matchesUnit(e: any, u: UnitData): boolean {
 
 export function matchesClass(e: any, u: UnitData): boolean {
   const cls = e.class !== undefined ? e.class : -1;
-  if (cls === -1) return true;
-  if (cls === u.class) return true;
+  if (String(cls) === '-1') return true;
+  if (String(cls) === String(u.class)) return true;
 
   // Check category aliases
-  if (CLASS_ALIASES[cls]) {
-    return CLASS_ALIASES[cls].some((alias) => alias == u.class);
+  if (CLASS_ALIASES[Number(cls)]) {
+    return CLASS_ALIASES[Number(cls)].some((alias) => String(alias) === String(u.class));
   }
 
   return false;
 }
 
-export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): boolean {
-  if (!matchesUnit(e, u) || !matchesClass(e, u)) return false;
+export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], currentAgeId: number = 1): boolean {
+  // 0. Age check
+  const effectAge = e.age !== undefined ? Number(e.age) : 1;
+  if (effectAge > currentAgeId) return false;
 
-  // Range/Accuracy check: don't apply these bonuses to melee units
-  // Attribute 3 is Range, 130 is Accuracy, 12 is also Range in some contexts
-  if (e.attribute === 3 || e.attribute === 130 || e.type === 12 || e.type === 130) {
+  // 1. Basic matching
+  if (!matchesUnit(e, u)) return false;
+  if (!matchesClass(e, u)) return false;
+
+  const val = e.value;
+  const attribute = e.attribute;
+  const type = e.type;
+
+  // 2. Range/Accuracy check: don't apply these bonuses to melee units
+  if (attribute === 3 || attribute === 130 || type === 12 || type === 130) {
     if ((u.range || 0) <= 1) return false;
   }
 
-  // Cost check: don't apply if unit doesn't have that cost
-  if (e.attribute === EFFECT_ATTRIBUTES.food_cost && (u.food || 0) === 0) return false;
-  if (e.attribute === EFFECT_ATTRIBUTES.wood_cost && (u.wood || 0) === 0) return false;
-  if (e.attribute === EFFECT_ATTRIBUTES.stone_cost && (u.stone || 0) === 0) return false;
-  if (e.attribute === EFFECT_ATTRIBUTES.gold_cost && (u.gold || 0) === 0) return false;
+  // 3. Cost check: don't apply if unit doesn't have that cost
+  if (attribute === EFFECT_ATTRIBUTES.food_cost && (u.food || 0) === 0) return false;
+  if (attribute === EFFECT_ATTRIBUTES.wood_cost && (u.wood || 0) === 0) return false;
+  if (attribute === EFFECT_ATTRIBUTES.stone_cost && (u.stone || 0) === 0) return false;
+  if (attribute === EFFECT_ATTRIBUTES.gold_cost && (u.gold || 0) === 0) return false;
 
-  if (e.attribute === EFFECT_ATTRIBUTES.armor || e.attribute === EFFECT_ATTRIBUTES.attack) {
-    const { cls: encodedCls } = decodeEncoded(e.value);
+  // 4. Armor/Attack specific class check (Genie format uses encoded value)
+  if (attribute === EFFECT_ATTRIBUTES.armor || attribute === EFFECT_ATTRIBUTES.attack) {
+    const { cls: encodedCls } = decodeEncoded(val);
     const hasArmorClass = u.armors && String(encodedCls) in u.armors;
     const matchesBaseClass = encodedCls === u.class;
     if (!hasArmorClass && !matchesBaseClass) return false;
 
-    if (e.attribute === EFFECT_ATTRIBUTES.attack) {
+    if (attribute === EFFECT_ATTRIBUTES.attack) {
       if (encodedCls === 3 && (u.patk || 0) === 0) return false;
       if (encodedCls === 4 && (u.matk || 0) === 0) return false;
     }
@@ -107,12 +117,8 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
 
   const cls = e.class !== undefined ? e.class : -1;
 
-  // Deduplication: if we are a generic +Atk effect, hide it if specific (+Pierce) is present
-  if (
-    (e.type === 0 || e.type === 1 || e.type === 2 || e.type === 4) &&
-    e.attribute === EFFECT_ATTRIBUTES.attack &&
-    cls === -1
-  ) {
+  // 5. Deduplication: if we are a generic +Atk effect, hide it if specific (+Pierce) is present
+  if ((type === 0 || type === 1 || type === 2 || type === 4) && attribute === EFFECT_ATTRIBUTES.attack && cls === -1) {
     if (
       allEffects.some(
         (other) =>
@@ -125,13 +131,10 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
     }
   }
 
-  // If has class and not same as unit
-  if (cls !== -1 && cls !== u.class) return false;
-
   return true;
 }
 
-export function shouldApplyTech(t: TechData, u: UnitData): boolean {
+export function shouldApplyTech(t: TechData, u: UnitData, ageId: number = 1): boolean {
   // Essential combat techs still need to be relevant to the unit type
   if (t.id === 93) {
     // Ballistics
@@ -180,20 +183,7 @@ export function shouldApplyTech(t: TechData, u: UnitData): boolean {
   // 5. Loom (22) should only apply to Villagers
   if (t.id === 22 && u.id !== '83') return false;
 
-  // Strict Filtering: If a tech has ANY class or unit-constrained effects,
-  // the unit MUST match at least one of them.
-  const constrained = effs.filter((e) => {
-    const hasClass = e.class !== undefined && e.class !== -1;
-    const hasUnit = e.unitId !== undefined && e.unitId !== -1;
-    return hasClass || hasUnit;
-  });
-
-  if (constrained.length > 0) {
-    const hasMatch = constrained.some((e) => shouldApplyEffect(e, u, effs));
-    if (!hasMatch) return false;
-  }
-
-  return effs.some((e) => shouldApplyEffect(e, u, effs));
+  return effs.some((e) => shouldApplyEffect(e, u, effs, ageId));
 }
 
 export const COMBAT_BUILDINGS = [12, 87, 101, 49, 82, 103, 209, 45, 104, 1806, 109];

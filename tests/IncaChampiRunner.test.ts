@@ -3,21 +3,25 @@ import { analyzeArmy, getRecommendedTechs } from '../src/sim/ArmyAnalyzer';
 import { units } from '../src/data/units';
 import { techs } from '../src/data/techs';
 import { civs } from '../src/data/civs';
+import { bonuses as allBonuses } from '../src/data/bonuses';
 import { TechData } from '../src/sim/types';
 
 describe('Inca Champi Runner Discount', () => {
   const runner = units['champi_runner'];
 
-  const techsById: Record<number, TechData> = {};
+  const techsById: Record<number | string, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
+  Object.entries(allBonuses).forEach(([civKey, bonus]) => {
+    (techsById as any)[civKey] = bonus;
+  });
 
   it('INCAS: should have discounted GOLD cost in Dark Age (-5%)', () => {
     const ageId = 1;
     const civKey = 'INCAS';
     const availableTechs = civs[civKey] || {};
 
-    const recommended = getRecommendedTechs(runner, ageId, civKey, techsById, availableTechs);
-    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
+    const bonus = techsById[civKey];
+    const bonuses = [{ id: civKey, effects: bonus.effects.map(() => true) }];
 
     const analysis = analyzeArmy(
       { preset: 'champi_runner', age: '1', civ: civKey, bonuses },
@@ -41,8 +45,8 @@ describe('Inca Champi Runner Discount', () => {
     const civKey = 'INCAS';
     const availableTechs = civs[civKey] || {};
 
-    const recommended = getRecommendedTechs(runner, ageId, civKey, techsById, availableTechs);
-    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
+    const bonus = techsById[civKey];
+    const bonuses = [{ id: civKey, effects: bonus.effects.map(() => true) }];
 
     const analysis = analyzeArmy(
       { preset: 'champi_runner', age: '4', civ: civKey, bonuses },

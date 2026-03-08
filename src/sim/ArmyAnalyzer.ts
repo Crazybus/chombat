@@ -77,8 +77,11 @@ const unitKeyMap: Record<string, string> = {
 const buildingsById: Record<string, any> = {};
 Object.values(buildings).forEach((b) => (buildingsById[b.id] = b));
 
-const techsByIdGlobal: Record<number, TechData> = {};
+const techsByIdGlobal: Record<number | string, TechData> = {};
 Object.values(techs).forEach((t) => (techsByIdGlobal[t.id] = t));
+Object.entries(allBonuses).forEach(([civKey, bonus]) => {
+  (techsByIdGlobal as any)[civKey] = bonus;
+});
 
 export function getAgeName(age: string) {
   switch (age) {
@@ -325,7 +328,7 @@ export function getRecommendedTechs(
                 : 1;
 
     if (buildingAge > ageId) return false;
-    return shouldApplyTech(t, unit);
+    return shouldApplyTech(t, unit, ageId);
   });
 }
 
@@ -388,20 +391,14 @@ export function calculateEqualFight(
 export function analyzeArmy(
   armyState: ArmyState,
   allUnits: Record<string, UnitData>,
-  techsById: Record<number, TechData>,
+  techsById: Record<number | string, TechData>,
 ): ArmyAnalysis | null {
   const baseUnit = resolveBaseUnit(armyState, allUnits);
   const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
 
   // 1. Natural Base (Current Age auto-upgrades but NO techs/overrides)
-  const simNatural = new CombatSim(
-    baseUnit,
-    baseUnit,
-    { age: armyState.age },
-    { age: armyState.age },
-    activeTechs,
-    allUnits,
-  );
+  const configNatural: ArmyState = { age: armyState.age };
+  const simNatural = new CombatSim(baseUnit, baseUnit, configNatural, configNatural, activeTechs, allUnits);
   const naturalBase = simNatural.dataA;
 
   // 2. Modified Base (Resolved Base + Overrides)
@@ -596,6 +593,34 @@ export function analyzeDuel(
       b: (analysisB.modifiedBase.trainTime || 30).toFixed(1) + 's',
       valA: analysisA.modifiedBase.trainTime || 30,
       valB: analysisB.modifiedBase.trainTime || 30,
+    },
+    {
+      label: 'Food Cost',
+      a: uA.food.toFixed(0),
+      b: uB.food.toFixed(0),
+      valA: uA.food,
+      valB: uB.food,
+    },
+    {
+      label: 'Wood Cost',
+      a: uA.wood.toFixed(0),
+      b: uB.wood.toFixed(0),
+      valA: uA.wood,
+      valB: uB.wood,
+    },
+    {
+      label: 'Gold Cost',
+      a: uA.gold.toFixed(0),
+      b: uB.gold.toFixed(0),
+      valA: uA.gold,
+      valB: uB.gold,
+    },
+    {
+      label: 'Total Cost',
+      a: (uA.food + uA.wood + uA.gold).toFixed(0),
+      b: (uB.food + uB.wood + uB.gold).toFixed(0),
+      valA: uA.food + uA.wood + uA.gold,
+      valB: uB.food + uB.wood + uB.gold,
     },
   ];
 

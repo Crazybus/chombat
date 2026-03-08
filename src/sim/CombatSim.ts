@@ -59,7 +59,7 @@ export class CombatSim {
     newUnit.bonuses = { ...(baseUnit.bonuses || {}) };
     newUnit.armors = { ...(baseUnit.armors || {}) };
 
-    // Initialize with standard names
+    // Initialize with standard names (resetting to baseUnit values)
     newUnit.hp = baseUnit.hp;
     newUnit.matk = baseUnit.matk;
     newUnit.patk = baseUnit.patk;
@@ -70,6 +70,9 @@ export class CombatSim {
     newUnit.speed = baseUnit.speed || 1.0;
     newUnit.reloadBase = baseUnit.reload;
     newUnit.accuracy_percent = baseUnit.accuracy_percent;
+    newUnit.food = baseUnit.food || 0;
+    newUnit.wood = baseUnit.wood || 0;
+    newUnit.gold = baseUnit.gold || 0;
 
     // 3. Apply manual overrides from config
     if (config.overrides) {
@@ -117,20 +120,28 @@ export class CombatSim {
     let reloadMult = 1.0;
 
     bonusesState.forEach((state) => {
-      const b = allTechs[parseInt(state.id)];
+      const b = allTechs[state.id as any] || allTechs[parseInt(state.id)];
       if (!b) return;
 
       const effs = b.effects || [];
+      const appliedAttrs = new Set<string>();
+
       effs.forEach((e, idx) => {
         const isActive =
           state.effects && state.effects[idx] !== undefined
             ? state.effects[idx]
             : state.effects && state.effects.length > 0
               ? state.effects[0]
-              : true;
+              : false;
         if (!isActive) return;
 
-        if (shouldApplyEffect(e, baseUnit, effs)) {
+        if (shouldApplyEffect(e, baseUnit, effs, ageId)) {
+          // Prevent double-application of same attribute/type within one tech
+          // (eg. Bloodlines matching both Cavalry and Scout Cav classes)
+          const attrKey = `${e.attribute}_${e.type}_${e.value}`;
+          if (appliedAttrs.has(attrKey)) return;
+          appliedAttrs.add(attrKey);
+
           const val = e.value;
           if (e.type === EFFECT_COMMAND_TYPES.attribute_modifier_set) {
             // Command type 0
@@ -199,11 +210,17 @@ export class CombatSim {
               // eg. Effect 204 - Squires
               if (newUnit.speed !== undefined) newUnit.speed *= val;
             } else if (e.attribute === EFFECT_ATTRIBUTES.food_cost) {
-              if (newUnit.food !== undefined) newUnit.food *= val;
+              if (newUnit.food !== undefined) {
+                newUnit.food *= val;
+              }
             } else if (e.attribute === EFFECT_ATTRIBUTES.wood_cost) {
-              if (newUnit.wood !== undefined) newUnit.wood *= val;
+              if (newUnit.wood !== undefined) {
+                newUnit.wood *= val;
+              }
             } else if (e.attribute === EFFECT_ATTRIBUTES.gold_cost) {
-              if (newUnit.gold !== undefined) newUnit.gold *= val;
+              if (newUnit.gold !== undefined) {
+                newUnit.gold *= val;
+              }
             } else if (e.attribute == EFFECT_ATTRIBUTES.attack) {
               const { cls, amt } = decodeEncoded(val);
               // Class Attack
