@@ -77,7 +77,10 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
                   onClick={() => handleAgeChange(age)}
                   title={`Age ${age}`}
                 >
-                  {age === '1' ? 'I' : age === '2' ? 'II' : age === '3' ? 'III' : 'IV'}
+                  <img
+                    src={`img/Ages/${age === '1' ? 'dark' : age === '2' ? 'feudal' : age === '3' ? 'castle' : 'imperial'}.png`}
+                    className="age-icon"
+                  />
                 </button>
               ))}
             </div>
