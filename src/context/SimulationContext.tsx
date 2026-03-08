@@ -4,6 +4,7 @@ import { scenarios, featuredScenarios } from '../data/scenarios';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
+import { bonuses } from '../data/bonuses';
 import { civs, GENERIC_CIV } from '../data/civs';
 import { analyzeArmy, ArmyAnalysis, getRecommendedTechs, scrubArmy } from '../sim/ArmyAnalyzer';
 import { buildings } from '../data/buildings';
@@ -62,8 +63,8 @@ const initialState: SimulationState = {
     name: 'Archer',
     preset: 'archer',
     bonuses: [
-      { id: '199', effects: [true] }, // Fletching
-      { id: '211', effects: [true] }, // Padded Archer Armor
+      { id: '199', effects: Array(6).fill(true) }, // Fletching
+      { id: '211', effects: Array(6).fill(true) }, // Padded Archer Armor
     ],
     timeline: [
       { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
@@ -118,8 +119,8 @@ const initialState: SimulationState = {
     name: 'Skirmisher',
     preset: 'skirmisher',
     bonuses: [
-      { id: '199', effects: [true] }, // Fletching
-      { id: '211', effects: [true] }, // Padded Archer Armor
+      { id: '199', effects: Array(6).fill(true) }, // Fletching
+      { id: '211', effects: Array(6).fill(true) }, // Padded Archer Armor
     ],
     timeline: [
       { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
@@ -253,8 +254,10 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       const armyState = prev[armyKey];
       const newBonuses = armyState.bonuses?.map((b) => {
         if (b.id === techId) {
-          const allActive = b.effects.every((x) => x);
-          return { ...b, effects: b.effects.map(() => !allActive) };
+          const techDef = Object.values(techs).find((t) => t.id.toString() === techId) || (bonuses as any)[techId];
+          const numEffects = techDef?.effects?.length || b.effects.length;
+          const allActive = b.effects.every((x) => x) && b.effects.length >= numEffects;
+          return { ...b, effects: Array(numEffects).fill(!allActive) };
         }
         return b;
       });
@@ -448,8 +451,8 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         name: archer.name,
         preset: 'archer',
         bonuses: [
-          { id: '199', effects: [true] },
-          { id: '211', effects: [true] },
+          { id: '199', effects: Array(6).fill(true) },
+          { id: '211', effects: Array(6).fill(true) },
         ],
         timeline: [
           { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
@@ -511,8 +514,8 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         name: 'Skirmisher',
         preset: 'skirmisher',
         bonuses: [
-          { id: '199', effects: [true] },
-          { id: '211', effects: [true] },
+          { id: '199', effects: Array(6).fill(true) },
+          { id: '211', effects: Array(6).fill(true) },
         ],
         timeline: [
           { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },

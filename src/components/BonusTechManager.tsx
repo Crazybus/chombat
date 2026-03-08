@@ -11,7 +11,7 @@ interface BonusTechManagerProps {
 }
 
 const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
-  const { state, updateArmy } = useSimulation();
+  const { state, updateArmy, toggleBonus } = useSimulation();
   const [searchTerm, setSearchTerm] = useState('');
   const [isListOpen, setIsListOpen] = useState(false);
 
@@ -55,18 +55,6 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
 
   const removeBonus = (id: string) => {
     const newBonuses = armyState.bonuses?.filter((item) => item.id !== id) || [];
-    updateArmy(army, { bonuses: newBonuses });
-  };
-
-  const toggleEffect = (bonusId: string, effectIndex: number) => {
-    const newBonuses = armyState.bonuses?.map((item) => {
-      if (item.id === bonusId) {
-        const newE = [...item.effects];
-        newE[effectIndex] = !newE[effectIndex];
-        return { ...item, effects: newE };
-      }
-      return item;
-    });
     updateArmy(army, { bonuses: newBonuses });
   };
 
@@ -120,13 +108,10 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
                     if (!applies) return null;
 
                     seenLabels.add(label);
+                    const allActive = item.effects.every((x) => x);
                     return (
                       <div key={idx} className="applied-bonus-effect">
-                        <input
-                          type="checkbox"
-                          checked={!!item.effects[idx]}
-                          onChange={() => toggleEffect(item.id, idx)}
-                        />
+                        <input type="checkbox" checked={allActive} onChange={() => toggleBonus(army, item.id)} />
                         <label>{label}</label>
                       </div>
                     );

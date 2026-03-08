@@ -228,7 +228,7 @@ export function getTechBonusSources(
       })
       .filter((x) => x !== null) as { e: any; label: string; group: string; idx: number }[];
 
-    techEffects.forEach(({ e, label, group, idx }) => {
+    techEffects.forEach(({ e, label, group }) => {
       const attrStripRegex =
         /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload)\s?/i;
       const cleanLabel = label.replace(attrStripRegex, '').trim();
@@ -242,6 +242,7 @@ export function getTechBonusSources(
         const attrName = attrNames[e.attribute] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;
       }
+      const allActive = bState.effects.every((x) => x);
       const groupLabel = `${group}-${finalLabel}`;
       if (seenLabels.has(groupLabel)) return;
       seenLabels.add(groupLabel);
@@ -252,7 +253,7 @@ export function getTechBonusSources(
         isBonus: !finalLabel.includes('-'),
         type: 'tech',
         techId: bState.id,
-        isActive: bState.effects[idx] !== false,
+        isActive: allActive,
       });
     });
   });
