@@ -300,6 +300,25 @@ body {
   border: 1px solid var(--border-color);
 }
 
+.nav-btn.icon {
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn .civ-icon {
+  height: auto;
+  width: 22px;
+}
+
+.nav-btn .generic-icon {
+  font-size: 1rem;
+  line-height: 1;
+  min-width: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -1316,8 +1335,6 @@ main {
 .civ-selector button {
   height: 32px;
   padding: 0 12px;
-  display: flex;
-  align-items: center;
   gap: 8px;
   background: var(--panel-bg-alt);
   border: 1px solid var(--border-color);
@@ -1351,11 +1368,13 @@ main {
 .preset-item,
 .civ-item,
 .scenario-item {
-  padding: 10px 15px;
+  display: flex;
+  padding: 2px 15px;
   cursor: pointer;
   border-bottom: 1px solid var(--border-dim);
   transition: background-color 0.2s;
   background-color: var(--panel-bg);
+  align-items: center;
 }
 
 .preset-item:hover,
@@ -1370,6 +1389,22 @@ main {
   background-color: var(--panel-bg-alt);
   color: var(--accent-color);
   font-weight: bold;
+}
+
+.preset-item .civ-icon {
+  height: auto;
+  width: 30px;
+  margin: 5px 10px 5px 0;
+}
+
+.preset-item .generic-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  line-height: 1;
+  min-width: 30px;
+  margin: 5px 10px 5px 0;
 }
 
 .toggle-prod-section-btn {
