@@ -11,7 +11,7 @@ describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
   const techsById: Record<number, TechData> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
-  it('BULGARIANS: should only automatically apply standard upgrades (Stirrups is manual)', () => {
+  it('BULGARIANS: should automatically apply Stirrups', () => {
     const ageId = 3;
     const civKey = 'BULGARIANS';
     const availableTechs = civs[civKey] || {};
@@ -19,7 +19,7 @@ describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
     const recommended = getRecommendedTechs(knight, ageId, civKey, techsById, availableTechs);
     const names = recommended.map((t) => t.name).sort();
 
-    // Standard Knight upgrades (Castle Age (82) techs are excluded from auto-recommend)
+    // Stirrups should now be included
     const expected = [
       'Bloodlines',
       'Chain Barding Armor',
@@ -27,6 +27,7 @@ describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
       'Husbandry',
       'Iron Casting',
       'Scale Barding Armor',
+      'Stirrups',
     ].sort();
 
     expect(names).toEqual(expected);

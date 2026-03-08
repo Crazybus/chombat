@@ -89,6 +89,8 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
   }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (filteredUnits.length === 0) return;
+
     if (e.key === 'Escape') {
       setIsOpen(false);
     } else if (e.key === 'ArrowDown') {
