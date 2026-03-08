@@ -155,17 +155,17 @@ export function shouldApplyTech(t: TechData, u: UnitData): boolean {
 
   // 5. Loom (22) should only apply to Villagers
   if (t.id === 22 && u.id !== '83') return false;
-  // Strict Filtering: If a tech has ANY class-constrained effects,
-  // the unit MUST match at least one of the intended targets.
-  // Generic effects (class: -1) in a tech with filters shouldn't force-apply it to everyone.
+
+  // Strict Filtering: If a tech has ANY class or unit-constrained effects,
+  // the unit MUST match at least one of them.
   const constrained = effs.filter((e) => {
-    let target = e.class !== undefined ? e.class : -1;
-    if ((e.type === 8 || e.type === 9) && target === -1) target = e.attribute;
-    return target !== -1;
+    const hasClass = e.class !== undefined && e.class !== -1;
+    const hasUnit = e.unitId !== undefined && e.unitId !== -1;
+    return hasClass || hasUnit;
   });
 
   if (constrained.length > 0) {
-    const hasMatch = constrained.some((e) => matchesClass(e, u) && shouldApplyEffect(e, u, effs));
+    const hasMatch = constrained.some((e) => shouldApplyEffect(e, u, effs));
     if (!hasMatch) return false;
   }
 

@@ -282,13 +282,6 @@ export function getRecommendedTechs(
     // If civ tech but no civ provided
     if (t.civ > 0 && (!civKey || civKey == GENERIC_CIV)) return false;
 
-    // If civ tech and in civ techs
-    if (t.civ > 0 && t.id in availableCivTechs) {
-      const classEffects = t.effects.filter((eff) => eff.class !== -1);
-      // Matches class
-      if (classEffects.length > 0 && !classEffects.some((eff) => eff.class === unit.class)) return false;
-    }
-
     let effectiveTechAge = getTrueAge(t);
     if (civKey && civKey !== GENERIC_CIV) {
       if (availableCivTechs[t.id] !== undefined) effectiveTechAge = availableCivTechs[t.id];
