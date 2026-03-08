@@ -122,7 +122,12 @@ export class CombatSim {
 
       const effs = b.effects || [];
       effs.forEach((e, idx) => {
-        const isActive = state.effects && state.effects[idx] !== undefined ? state.effects[idx] : true;
+        const isActive =
+          state.effects && state.effects[idx] !== undefined
+            ? state.effects[idx]
+            : state.effects && state.effects.length > 0
+              ? state.effects[0]
+              : true;
         if (!isActive) return;
 
         if (shouldApplyEffect(e, baseUnit, effs)) {

@@ -1,4 +1,4 @@
-.PHONY: deploy preview dev build format clean data lint test dev-pages hook
+.PHONY: deploy preview dev build format clean data lint test dev-pages hook install
 
 # Standard development server (Vite)
 dev:
@@ -15,6 +15,9 @@ data:
 # Production build
 build: clean
 	npm run build
+
+install:
+	npm install
 
 # Hook target to run all important steps before commiting
 hook: build test format lint
