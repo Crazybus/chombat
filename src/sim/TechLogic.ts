@@ -77,14 +77,14 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
   }
 
   if (e.attribute === 8 || e.attribute === 9) {
-    const { cls } = decodeEncoded(e.value);
-    const hasArmorClass = u.armors && String(cls) in u.armors;
-    const matchesBaseClass = cls === u.class;
+    const { cls: encodedCls } = decodeEncoded(e.value);
+    const hasArmorClass = u.armors && String(encodedCls) in u.armors;
+    const matchesBaseClass = encodedCls === u.class;
     if (!hasArmorClass && !matchesBaseClass) return false;
 
     if (e.attribute === 9) {
-      if (cls === 3 && (u.patk || 0) === 0) return false;
-      if (cls === 4 && (u.matk || 0) === 0) return false;
+      if (encodedCls === 3 && (u.patk || 0) === 0) return false;
+      if (encodedCls === 4 && (u.matk || 0) === 0) return false;
     }
   }
 

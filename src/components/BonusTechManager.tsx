@@ -14,6 +14,7 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
   const { state, updateArmy, toggleBonus } = useSimulation();
   const [searchTerm, setSearchTerm] = useState('');
   const [isListOpen, setIsListOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const armyState = state[army === 'a' ? 'armyA' : 'armyB'];
   const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
@@ -36,6 +37,28 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
       })
       .map(([id, b]) => ({ id, name: b.name }));
   }, [searchTerm, currentUnit]);
+
+  React.useEffect(() => {
+    setSelectedIndex(0);
+  }, [searchTerm]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (availableBonuses.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev + 1) % availableBonuses.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev - 1 + availableBonuses.length) % availableBonuses.length);
+    } else if (e.key === 'Enter') {
+      if (availableBonuses[selectedIndex]) {
+        addBonus(availableBonuses[selectedIndex].id);
+      }
+    } else if (e.key === 'Escape') {
+      setIsListOpen(false);
+    }
+  };
 
   const addBonus = (id: string) => {
     const b = techsById[parseInt(id)] || (bonuses as any)[id];
@@ -72,14 +95,20 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
             setIsListOpen(true);
           }}
           onFocus={() => setIsListOpen(true)}
+          onKeyDown={handleKeyDown}
         />
         {isListOpen && searchTerm && (
           <div
             className="bonus-list"
             style={{ display: 'block', position: 'absolute', top: '100%', left: 0, zIndex: 100, width: '100%' }}
           >
-            {availableBonuses.map((b) => (
-              <div key={b.id} className="preset-item" onClick={() => addBonus(b.id)}>
+            {availableBonuses.map((b, index) => (
+              <div
+                key={b.id}
+                className={`preset-item ${index === selectedIndex ? 'selected' : ''}`}
+                onClick={() => addBonus(b.id)}
+                onMouseEnter={() => setSelectedIndex(index)}
+              >
                 {b.name}
               </div>
             ))}
