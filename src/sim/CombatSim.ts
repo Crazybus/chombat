@@ -143,12 +143,27 @@ export class CombatSim {
             if (e.attribute == EFFECT_ATTRIBUTES.min_range) {
               newUnit.hp = val;
             }
+            if (e.attribute === EFFECT_ATTRIBUTES.food_cost) {
+              newUnit.food = val;
+            }
+            if (e.attribute === EFFECT_ATTRIBUTES.wood_cost) {
+              newUnit.wood = val;
+            }
+            if (e.attribute === EFFECT_ATTRIBUTES.gold_cost) {
+              newUnit.gold = val;
+            }
           } else if (e.type == EFFECT_COMMAND_TYPES.attribute_modifier_add) {
             // Command type 4
             if (e.attribute == EFFECT_ATTRIBUTES.hp) {
               newUnit.hp += val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.speed) {
               if (newUnit.speed !== undefined) newUnit.speed += val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.food_cost) {
+              if (newUnit.food !== undefined) newUnit.food += val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.wood_cost) {
+              if (newUnit.wood !== undefined) newUnit.wood += val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.gold_cost) {
+              if (newUnit.gold !== undefined) newUnit.gold += val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.armor) {
               const { cls, amt } = decodeEncoded(val);
               // Class Armor
@@ -183,6 +198,12 @@ export class CombatSim {
             } else if (e.attribute == EFFECT_ATTRIBUTES.speed) {
               // eg. Effect 204 - Squires
               if (newUnit.speed !== undefined) newUnit.speed *= val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.food_cost) {
+              if (newUnit.food !== undefined) newUnit.food *= val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.wood_cost) {
+              if (newUnit.wood !== undefined) newUnit.wood *= val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.gold_cost) {
+              if (newUnit.gold !== undefined) newUnit.gold *= val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.attack) {
               const { cls, amt } = decodeEncoded(val);
               // Class Attack

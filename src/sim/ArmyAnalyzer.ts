@@ -108,7 +108,7 @@ function isCombatTech(t: TechData): boolean {
   const essentialCombatTechIds = [93, 47, 22, 249, 213]; // Ballistics, Chemistry, Loom, Hand Cart, Wheelbarrow
   if (essentialCombatTechIds.includes(t.id)) return true;
 
-  const buildingOnlyIds = [50, 194, 322, 608, 602, 221, 203, 48, 8, 280, 441]; // Removed 249, 213
+  const buildingOnlyIds = [50, 194, 322, 608, 602, 221, 203, 48, 8, 280, 441, 101, 102, 103]; // Removed 249, 213, added age ups
   if (buildingOnlyIds.includes(t.id)) return false;
 
   const buildingRelatedClasses = [11, 21, 27];
@@ -119,7 +119,7 @@ function isCombatTech(t: TechData): boolean {
       return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
     });
     if (hasBuildingEffect) return false;
-    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24].includes(e.attribute));
+    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24, 100, 101, 102, 103].includes(e.attribute));
   }
   return false;
 }
@@ -227,6 +227,13 @@ export function getTechBonusSources(
           group = 'atk';
         } else if (e.attribute === EFFECT_ATTRIBUTES.max_range) {
           group = 'range';
+        } else if (
+          e.attribute === EFFECT_ATTRIBUTES.food_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.wood_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.stone_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.gold_cost
+        ) {
+          group = 'other';
         }
         return { e, label, group, idx };
       })
@@ -234,7 +241,7 @@ export function getTechBonusSources(
 
     techEffects.forEach(({ e, label, group }) => {
       const attrStripRegex =
-        /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload)\s?/i;
+        /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload|Food|Wood|Stone|Gold)\s?/i;
       const cleanLabel = label.replace(attrStripRegex, '').trim();
       let finalLabel = cleanLabel;
       if (group === 'other') {
@@ -242,6 +249,10 @@ export function getTechBonusSources(
           [EFFECT_ATTRIBUTES.accuracy]: 'Accuracy',
           [EFFECT_ATTRIBUTES.reload]: 'Fire Rate',
           [EFFECT_ATTRIBUTES.speed]: 'Speed',
+          [EFFECT_ATTRIBUTES.food_cost]: 'Food Cost',
+          [EFFECT_ATTRIBUTES.wood_cost]: 'Wood Cost',
+          [EFFECT_ATTRIBUTES.stone_cost]: 'Stone Cost',
+          [EFFECT_ATTRIBUTES.gold_cost]: 'Gold Cost',
         };
         const attrName = attrNames[e.attribute] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;

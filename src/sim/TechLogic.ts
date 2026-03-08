@@ -41,8 +41,19 @@ export function getEffectLabel(e: any): string {
     if (type == 5) return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? 'x' : ''}${amt}`;
     return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
   }
-  const attrMap: Record<number, string> = { 0: 'HP', 9: 'Atk', 10: 'Reload', 12: 'Range', 5: 'Speed', 11: 'Accuracy' };
-  if (attribute === 11) return ''; // Hide accuracy effects
+  const attrMap: Record<number, string> = {
+    [EFFECT_ATTRIBUTES.hp]: 'HP',
+    [EFFECT_ATTRIBUTES.attack]: 'Atk',
+    [EFFECT_ATTRIBUTES.reload]: 'Reload',
+    [EFFECT_ATTRIBUTES.max_range]: 'Range',
+    [EFFECT_ATTRIBUTES.speed]: 'Speed',
+    [EFFECT_ATTRIBUTES.accuracy]: 'Accuracy',
+    [EFFECT_ATTRIBUTES.food_cost]: 'Food',
+    [EFFECT_ATTRIBUTES.wood_cost]: 'Wood',
+    [EFFECT_ATTRIBUTES.stone_cost]: 'Stone',
+    [EFFECT_ATTRIBUTES.gold_cost]: 'Gold',
+  };
+  if (attribute === EFFECT_ATTRIBUTES.accuracy) return ''; // Hide accuracy effects
   if (e.unitId !== -1 && value < 0) return ''; // Hide negative unit-specific undo effects
 
   const name = attrMap[attribute] || 'Stat';
@@ -76,13 +87,19 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
     if ((u.range || 0) <= 1) return false;
   }
 
-  if (e.attribute === 8 || e.attribute === 9) {
+  // Cost check: don't apply if unit doesn't have that cost
+  if (e.attribute === EFFECT_ATTRIBUTES.food_cost && (u.food || 0) === 0) return false;
+  if (e.attribute === EFFECT_ATTRIBUTES.wood_cost && (u.wood || 0) === 0) return false;
+  if (e.attribute === EFFECT_ATTRIBUTES.stone_cost && (u.stone || 0) === 0) return false;
+  if (e.attribute === EFFECT_ATTRIBUTES.gold_cost && (u.gold || 0) === 0) return false;
+
+  if (e.attribute === EFFECT_ATTRIBUTES.armor || e.attribute === EFFECT_ATTRIBUTES.attack) {
     const { cls: encodedCls } = decodeEncoded(e.value);
     const hasArmorClass = u.armors && String(encodedCls) in u.armors;
     const matchesBaseClass = encodedCls === u.class;
     if (!hasArmorClass && !matchesBaseClass) return false;
 
-    if (e.attribute === 9) {
+    if (e.attribute === EFFECT_ATTRIBUTES.attack) {
       if (encodedCls === 3 && (u.patk || 0) === 0) return false;
       if (encodedCls === 4 && (u.matk || 0) === 0) return false;
     }
@@ -91,10 +108,17 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
   const cls = e.class !== undefined ? e.class : -1;
 
   // Deduplication: if we are a generic +Atk effect, hide it if specific (+Pierce) is present
-  if ((e.type === 0 || e.type === 1 || e.type === 2 || e.type === 4) && e.attribute === 9 && cls === -1) {
+  if (
+    (e.type === 0 || e.type === 1 || e.type === 2 || e.type === 4) &&
+    e.attribute === EFFECT_ATTRIBUTES.attack &&
+    cls === -1
+  ) {
     if (
       allEffects.some(
-        (other) => other !== e && other.attribute === 9 && (other.class !== undefined ? other.class : -1) !== -1,
+        (other) =>
+          other !== e &&
+          other.attribute === EFFECT_ATTRIBUTES.attack &&
+          (other.class !== undefined ? other.class : -1) !== -1,
       )
     ) {
       return false;

@@ -32,11 +32,7 @@ describe('Mapuche Health Unique Techs', () => {
     const recommended = getRecommendedTechs(champi, ageId, civKey, techsById, availableTechs);
     const names = recommended.map((t) => t.name).sort();
 
-    const expected = [
-      'C-Bonus, Skirm Spear +5 HP Feudal',
-      'Forging',
-      'Scale Mail Armor',
-    ].sort();
+    const expected = ['C-Bonus, Skirm Spear +5 HP Feudal', 'Forging', 'Scale Mail Armor'].sort();
 
     expect(names).toEqual(expected);
   });

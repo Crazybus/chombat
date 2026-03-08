@@ -73,7 +73,11 @@ VALID_ATTRS = {
     11, # Accuracy percentage
     12, # Max range
     15, # Base armor
-    24 # Hidden damage resistance 
+    24, # Hidden damage resistance
+    100, # Food Cost
+    101, # Wood Cost
+    102, # Gold Cost
+    103, # Stone Cost
 }
 
 def get_cost(resource_costs):
@@ -214,10 +218,16 @@ def extract_effects(eff_obj):
     effects = []
     for cmd in eff_obj.effect_commands:
         if cmd.type in [0, 4, 5]:
-            attr_id = cmd.c
+            attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
             if attr_id in VALID_ATTRS:
                 effects.append(
-                    {"t": cmd.type, "a": attr_id, "v": cmd.d, "u": cmd.a, "c": cmd.b}
+                    {
+                        "type": cmd.type,
+                        "attribute": attr_id,
+                        "value": cmd.d,
+                        "unitId": cmd.a if cmd.type in [0, 4, 5] else -1,
+                        "class": cmd.b if cmd.type in [4, 5] else -1,
+                    }
                 )
     return effects
 
@@ -331,9 +341,9 @@ def convert():
                     "range": unit.type_50.max_range,
                     "frame_delay": getattr(unit.type_50, "frame_delay", 0),
                     "accuracy_percent": accuracy_percent,
-                    "f": cost["f"],
-                    "w": cost["w"],
-                    "g": cost["g"],
+                    "food": cost["f"],
+                    "wood": cost["w"],
+                    "gold": cost["g"],
                     "trainTime": locations[0].train_time,
                     "building": locations[0].unit_id,
                     "id": uid,
@@ -352,10 +362,10 @@ def convert():
                     key = f"{key}_{uid}"
                 buildings_out[key] = {
                     "name": name,
-                    "f": cost["f"],
-                    "w": cost["w"],
-                    "g": cost["g"],
-                    "s": cost["s"],
+                    "food": cost["f"],
+                    "wood": cost["w"],
+                    "gold": cost["g"],
+                    "stone": cost["s"],
                     "time": 50,
                     "id": uid,
                     "age": building_ages.get(uid, 1),
@@ -397,9 +407,9 @@ def convert():
 
         techs_out[key] = {
             "name": name,
-            "f": cost["f"],
-            "w": cost["w"],
-            "g": cost["g"],
+            "food": cost["f"],
+            "wood": cost["w"],
+            "gold": cost["g"],
             "time": locations[0].research_time,
             "building": locations[0].location_id,
             "id": tid,
@@ -442,19 +452,18 @@ def convert():
                         new_age = max(age_id, int(cmd.b) + 1)
                         crawl_effects(int(cmd.a), new_age)
                     elif cmd.type in [0, 4, 5]: # Attribute modifiers
-                        u_id = cmd.a if cmd.type == 0 else -1
-                        c_id = cmd.a if cmd.type in [4, 5] else -1
-                        attr_id = cmd.b
-                        mode = cmd.c
+                        attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
+                        u_id = cmd.a if cmd.type in [0, 4, 5] else -1
+                        c_id = cmd.b if cmd.type in [4, 5] else -1
                         val = cmd.d
                         if attr_id in VALID_ATTRS:
                             bonus_effects.append(
                                 {
-                                    "t": mode,
-                                    "a": attr_id,
-                                    "v": val,
-                                    "u": u_id,
-                                    "c": c_id,
+                                    "type": cmd.type,
+                                    "attribute": attr_id,
+                                    "value": val,
+                                    "unitId": u_id,
+                                    "class": c_id,
                                     "age": age_id,
                                 }
                             )
