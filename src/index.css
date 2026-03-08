@@ -1282,17 +1282,21 @@ main {
   background: var(--btn-bg);
   color: var(--btn-text);
   border: 1px solid var(--border-color);
-  padding: 4px 12px;
+  padding-top: 3px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: bold;
+  margin: 0px 2px;
 }
 
 .age-btn.active {
   background: var(--accent-color);
   color: black;
   border-color: var(--accent-color);
+}
+
+.age-icon {
+  width: 30px;
+  height: auto;
 }
 
 /* Searchable Lists (Dropdowns) */
