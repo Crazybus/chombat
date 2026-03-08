@@ -72,68 +72,79 @@ export class CombatSim {
     newUnit.accuracy_percent = baseUnit.accuracy_percent;
 
     // 3. Apply manual overrides from config
-    const overrides: Record<string, keyof ArmyState> = {
-      hp: 'h',
-      matk: 'am',
-      patk: 'ap',
-      marm: 'aa',
-      parm: 'ar',
-      reload: 'rl',
-      range: 'n',
-      atk_speed: 'as',
-      bonus_red: 'ab',
-      speed: 'speed',
-      f: 'af',
-      w: 'aw',
-      g: 'ag',
-      disc_all: 'da',
-      disc_f: 'df',
-      disc_w: 'dw',
-      disc_g: 'dg',
-      eng: 'e',
-      micro: 'mc',
-    };
+    if (config.overrides) {
+      const simpleOverrides: Record<string, keyof NonNullable<ArmyState['overrides']>> = {
+        hp: 'hp',
+        matk: 'meleeAttack',
+        patk: 'pierceAttack',
+        marm: 'meleeArmor',
+        parm: 'pierceArmor',
+        reload: 'reload',
+        range: 'range',
+        attackSpeed: 'attackSpeed',
+        bonusReduction: 'bonusReduction',
+        speed: 'speed',
+        engagement: 'engagement',
+        micro: 'micro',
+      };
 
-    for (const [unitKey, configKey] of Object.entries(overrides)) {
-      if ((config as any)[configKey] !== undefined) {
-        (newUnit as any)[unitKey] = (config as any)[configKey];
-        if (unitKey === 'reload') newUnit.reloadBase = (config as any)[configKey];
+      for (const [unitKey, overrideKey] of Object.entries(simpleOverrides)) {
+        if ((config.overrides as any)[overrideKey] !== undefined) {
+          (newUnit as any)[unitKey] = (config.overrides as any)[overrideKey];
+          if (unitKey === 'reload') newUnit.reloadBase = (config.overrides as any)[overrideKey];
+        }
+      }
+
+      if (config.overrides.cost) {
+        if (config.overrides.cost.food !== undefined) newUnit.food = config.overrides.cost.food;
+        if (config.overrides.cost.wood !== undefined) newUnit.wood = config.overrides.cost.wood;
+        if (config.overrides.cost.gold !== undefined) newUnit.gold = config.overrides.cost.gold;
+      }
+
+      if (config.overrides.discount) {
+        if (config.overrides.discount.all !== undefined) (newUnit as any).discountAll = config.overrides.discount.all;
+        if (config.overrides.discount.food !== undefined)
+          (newUnit as any).discountFood = config.overrides.discount.food;
+        if (config.overrides.discount.wood !== undefined)
+          (newUnit as any).discountWood = config.overrides.discount.wood;
+        if (config.overrides.discount.gold !== undefined)
+          (newUnit as any).discountGold = config.overrides.discount.gold;
       }
     }
 
     // 4. Apply tech bonuses from scratch
-    const bonusesState = config.bn || [];
+    const bonusesState = config.bonuses || [];
     let reloadMult = 1.0;
 
     bonusesState.forEach((state) => {
-      const b = allTechs[parseInt(state.i)];
+      const b = allTechs[parseInt(state.id)];
       if (!b) return;
 
       const effs = b.effects || [];
       effs.forEach((e, idx) => {
-        const isActive = state.e && state.e[idx] !== undefined ? state.e[idx] : true;
+        const isActive = state.effects && state.effects[idx] !== undefined ? state.effects[idx] : true;
         if (!isActive) return;
 
         if (shouldApplyEffect(e, baseUnit, effs)) {
-          const val = e.v;
-          if (e.t === EFFECT_COMMAND_TYPES.attribute_modifier_set) {
+          const val = e.value;
+          if (e.type === EFFECT_COMMAND_TYPES.attribute_modifier_set) {
             // Command type 0
-            if (e.a == EFFECT_ATTRIBUTES.hp) {
+            if (e.attribute == EFFECT_ATTRIBUTES.hp) {
               newUnit.hp = val;
             }
-            if (e.a == EFFECT_ATTRIBUTES.accuracy) {
+            if (e.attribute == EFFECT_ATTRIBUTES.accuracy) {
               newUnit.accuracy_percent = val;
             }
-            if (e.a == EFFECT_ATTRIBUTES.min_range) {
+            if (e.attribute == EFFECT_ATTRIBUTES.min_range) {
               newUnit.hp = val;
             }
-          } else if (e.t == EFFECT_COMMAND_TYPES.attribute_modifier_add) {
+          } else if (e.type == EFFECT_COMMAND_TYPES.attribute_modifier_add) {
             // Command type 4
-            if (e.a == EFFECT_ATTRIBUTES.hp) {
+            if (e.attribute == EFFECT_ATTRIBUTES.hp) {
               newUnit.hp += val;
-            } else if (e.a == EFFECT_ATTRIBUTES.speed) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.speed) {
               if (newUnit.speed !== undefined) newUnit.speed += val;
-            } else if (e.a == EFFECT_ATTRIBUTES.armor) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.armor) {
               const { cls, amt } = decodeEncoded(val);
               // Class Armor
               if (cls === 3) {
@@ -143,7 +154,7 @@ export class CombatSim {
               } else {
                 newUnit.armors![cls] = (newUnit.armors![cls] || 0) + amt;
               }
-            } else if (e.a == EFFECT_ATTRIBUTES.attack) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.attack) {
               const { cls, amt } = decodeEncoded(val);
               // Class Attack
               if (cls === 3) {
@@ -153,21 +164,21 @@ export class CombatSim {
               } else {
                 newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
               }
-            } else if (e.a == EFFECT_ATTRIBUTES.accuracy) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.accuracy) {
               if (newUnit.accuracy_percent !== undefined) newUnit.accuracy_percent += val;
-            } else if (e.a == EFFECT_ATTRIBUTES.max_range) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.max_range) {
               if (newUnit.range !== undefined) newUnit.range += val;
             }
-          } else if (e.t == EFFECT_COMMAND_TYPES.attribute_modifier_multiply) {
+          } else if (e.type == EFFECT_COMMAND_TYPES.attribute_modifier_multiply) {
             // Command type 5
             // Add Attack (Generic)
-            if (e.a == EFFECT_ATTRIBUTES.hp) {
+            if (e.attribute == EFFECT_ATTRIBUTES.hp) {
               // eg. Effect 285 - C-Bonus, Cavalry +20% HP
               newUnit.hp *= val;
-            } else if (e.a == EFFECT_ATTRIBUTES.speed) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.speed) {
               // eg. Effect 204 - Squires
               if (newUnit.speed !== undefined) newUnit.speed *= val;
-            } else if (e.a == EFFECT_ATTRIBUTES.attack) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.attack) {
               const { cls, amt } = decodeEncoded(val);
               // Class Attack
               if (cls === 3) {
@@ -177,7 +188,7 @@ export class CombatSim {
               } else {
                 newUnit.bonuses![cls] = (newUnit.bonuses![cls] || 0) + amt;
               }
-            } else if (e.a == EFFECT_ATTRIBUTES.reload) {
+            } else if (e.attribute == EFFECT_ATTRIBUTES.reload) {
               // eg. Effect 612 - Archers fire 15% faster
               reloadMult *= val;
             }
@@ -205,7 +216,7 @@ export class CombatSim {
 
     // Ensure we keep the ID and Count
     newUnit.id = baseUnit.id;
-    (newUnit as any).count = config.c;
+    (newUnit as any).count = config.count;
 
     return newUnit;
   }
@@ -226,7 +237,7 @@ export class CombatSim {
       }
     }
 
-    const reduction = 1 - (defender.bonus_red || 0) / 100;
+    const reduction = 1 - (defender.bonusReduction || 0) / 100;
     const bonusOnly = totalDmg - Math.max(1, baseAtk - baseArm);
     return Math.max(1, Math.max(1, baseAtk - baseArm) + bonusOnly * reduction);
   }
@@ -243,8 +254,8 @@ export class CombatSim {
       const hpRatioA = eA.getTotalHp() / (eA.initialCount * eA.hpPerUnit) || 0;
       const hpRatioB = eB.getTotalHp() / (eB.initialCount * eB.hpPerUnit) || 0;
 
-      const attackersA = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.eng / 100)));
-      const attackersB = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.eng / 100)));
+      const attackersA = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.engagement / 100)));
+      const attackersB = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.engagement / 100)));
       const damagePerHitA = this.calculateDamage(eA, eB) * attackersA;
       const damagePerHitB = this.calculateDamage(eB, eA) * attackersB;
 
@@ -269,12 +280,12 @@ export class CombatSim {
       let dmgBtoA = 0;
 
       if (eA.attackCooldown <= 0) {
-        const attackers = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.eng / 100)));
+        const attackers = Math.min(eA.currentCount, Math.max(1, eA.initialCount * (eA.engagement / 100)));
         dmgAtoB = this.calculateDamage(eA, eB) * attackers;
       }
 
       if (eB.attackCooldown <= 0) {
-        const attackers = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.eng / 100)));
+        const attackers = Math.min(eB.currentCount, Math.max(1, eB.initialCount * (eB.engagement / 100)));
         dmgBtoA = this.calculateDamage(eB, eA) * attackers;
       }
 

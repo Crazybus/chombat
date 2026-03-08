@@ -41,9 +41,9 @@ describe('Knight Bonuses (Real Data)', () => {
     // Total Arm: 2 + 1 + 1 = 4
 
     const recommended = getRecommendedTechs(knight, 3, GENERIC_CIV, techsById, {});
-    const bn = recommended.map((t) => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
+    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
 
-    const analysis = analyzeArmy({ ps: 'knight', age: '3', bn }, { knight: knight }, techsById);
+    const analysis = analyzeArmy({ preset: 'knight', age: '3', bonuses }, { knight: knight }, techsById);
 
     expect(analysis).not.toBeNull();
     expect(analysis?.effectiveStats.hp).toBe(120);

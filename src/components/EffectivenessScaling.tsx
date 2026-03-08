@@ -42,8 +42,8 @@ const EffectivenessScaling: React.FC = () => {
       const sim = new CombatSim(
         analysisA.baseUnit,
         analysisB.baseUnit,
-        { ...state.a, c: cntA },
-        { ...state.b, c: cntB },
+        { ...state.armyA, count: cntA },
+        { ...state.armyB, count: cntB },
         techsById,
         allUnits,
       );
@@ -84,8 +84,8 @@ const EffectivenessScaling: React.FC = () => {
     return results;
   };
 
-  const res1vX = useMemo(() => runScaling('1vX'), [state.a, state.b, analysisA, analysisB]);
-  const resXv1 = useMemo(() => runScaling('Xv1'), [state.a, state.b, analysisA, analysisB]);
+  const res1vX = useMemo(() => runScaling('1vX'), [state.armyA, state.armyB, analysisA, analysisB]);
+  const resXv1 = useMemo(() => runScaling('Xv1'), [state.armyA, state.armyB, analysisA, analysisB]);
 
   if (!analysisA || !analysisB) return null;
   const nameA = analysisA.unitName;

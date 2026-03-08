@@ -32,35 +32,36 @@ export const CLASS_ALIASES: Record<number, number[]> = {
 };
 
 export function getEffectLabel(e: any): string {
-  const { t, a, v } = e;
+  const { type, attribute, value } = e;
   // Armor (a=8) and Attack (a=9): value is encoded as cls|amt
-  if (a === EFFECT_ATTRIBUTES.attack || a === EFFECT_ATTRIBUTES.armor) {
-    const { cls, amt } = decodeEncoded(v);
+  if (attribute === EFFECT_ATTRIBUTES.attack || attribute === EFFECT_ATTRIBUTES.armor) {
+    const { cls, amt } = decodeEncoded(value);
     if (amt === 0 || cls < 0) return '';
-    const prefix = a === EFFECT_ATTRIBUTES.attack ? 'Atk' : 'Arm';
-    if (t == 5) return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? 'x' : ''}${amt}`;
+    const prefix = attribute === EFFECT_ATTRIBUTES.attack ? 'Atk' : 'Arm';
+    if (type == 5) return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? 'x' : ''}${amt}`;
     return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
   }
   const attrMap: Record<number, string> = { 0: 'HP', 9: 'Atk', 10: 'Reload', 12: 'Range', 5: 'Speed', 11: 'Accuracy' };
-  if (a === 11) return ''; // Hide accuracy effects
-  if (e.u !== -1 && v < 0) return ''; // Hide negative unit-specific undo effects
+  if (attribute === 11) return ''; // Hide accuracy effects
+  if (e.unitId !== -1 && value < 0) return ''; // Hide negative unit-specific undo effects
 
-  const name = attrMap[a] || 'Stat';
-  if (t === 5) return `${name} x${v}`; // Multiplier Attribute Modifier
-  return `${name} +${v}`; // Set or Add Attribute Modifiers
+  const name = attrMap[attribute] || 'Stat';
+  if (type === 5) return `${name} x${value}`; // Multiplier Attribute Modifier
+  return `${name} +${value}`; // Set or Add Attribute Modifiers
 }
 
 export function matchesUnit(e: any, u: UnitData): boolean {
-  return e.u === -1 || String(e.u) === u.id;
+  return e.unitId === -1 || String(e.unitId) === u.id;
 }
 
 export function matchesClass(e: any, u: UnitData): boolean {
-  if (e.c === -1) return true;
-  if (e.c === u.class) return true;
+  const cls = e.class !== undefined ? e.class : -1;
+  if (cls === -1) return true;
+  if (cls === u.class) return true;
 
   // Check category aliases
-  if (CLASS_ALIASES[e.c]) {
-    return CLASS_ALIASES[e.c].some((alias) => alias == u.class);
+  if (CLASS_ALIASES[cls]) {
+    return CLASS_ALIASES[cls].some((alias) => alias == u.class);
   }
 
   return false;
@@ -71,29 +72,37 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
 
   // Range/Accuracy check: don't apply these bonuses to melee units
   // Attribute 3 is Range, 130 is Accuracy, 12 is also Range in some contexts
-  if (e.a === 3 || e.a === 130 || e.t === 12 || e.t === 130) {
+  if (e.attribute === 3 || e.attribute === 130 || e.type === 12 || e.type === 130) {
     if ((u.range || 0) <= 1) return false;
   }
 
-  if (e.a === 8 || e.a === 9) {
-    const { cls } = decodeEncoded(e.v);
+  if (e.attribute === 8 || e.attribute === 9) {
+    const { cls } = decodeEncoded(e.value);
     const hasArmorClass = u.armors && String(cls) in u.armors;
     const matchesBaseClass = cls === u.class;
     if (!hasArmorClass && !matchesBaseClass) return false;
 
-    if (e.a === 9) {
+    if (e.attribute === 9) {
       if (cls === 3 && (u.patk || 0) === 0) return false;
       if (cls === 4 && (u.matk || 0) === 0) return false;
     }
   }
 
+  const cls = e.class !== undefined ? e.class : -1;
+
   // Deduplication: if we are a generic +Atk effect, hide it if specific (+Pierce) is present
-  if ((e.t === 0 || e.t === 1 || e.t === 2) && e.a === 0) {
-    if (allEffects.some((other) => other !== e && other.t === 9)) return false;
+  if ((e.type === 0 || e.type === 1 || e.type === 2 || e.type === 4) && e.attribute === 9 && cls === -1) {
+    if (
+      allEffects.some(
+        (other) => other !== e && other.attribute === 9 && (other.class !== undefined ? other.class : -1) !== -1,
+      )
+    ) {
+      return false;
+    }
   }
 
   // If has class and not same as unit
-  if (e.c != -1 && e.c != u.class) return false;
+  if (cls !== -1 && cls !== u.class) return false;
 
   return true;
 }
@@ -148,10 +157,10 @@ export function shouldApplyTech(t: TechData, u: UnitData): boolean {
   if (t.id === 22 && u.id !== '83') return false;
   // Strict Filtering: If a tech has ANY class-constrained effects,
   // the unit MUST match at least one of the intended targets.
-  // Generic effects (c: -1) in a tech with filters shouldn't force-apply it to everyone.
+  // Generic effects (class: -1) in a tech with filters shouldn't force-apply it to everyone.
   const constrained = effs.filter((e) => {
-    let target = e.c;
-    if ((e.t === 8 || e.t === 9) && target === -1) target = e.a;
+    let target = e.class !== undefined ? e.class : -1;
+    if ((e.type === 8 || e.type === 9) && target === -1) target = e.attribute;
     return target !== -1;
   });
 

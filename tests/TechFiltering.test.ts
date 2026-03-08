@@ -14,9 +14,9 @@ const archer: UnitData = {
   id: '4',
   class: 0,
   armors: { '4': 0, '3': 0, '15': 0, '0': 0 }, // Realistic: has Melee(4) and Pierce(3) and Archer(0)
-  f: 0,
-  w: 25,
-  g: 45,
+  food: 0,
+  wood: 25,
+  gold: 45,
   trainTime: 35,
 };
 
@@ -32,9 +32,9 @@ const militia: UnitData = {
   id: '74',
   class: 6,
   armors: { '6': 0, '1': 0, '4': 0, '3': 1 },
-  f: 50,
-  w: 0,
-  g: 20,
+  food: 50,
+  wood: 0,
+  gold: 20,
   trainTime: 21,
 };
 
@@ -50,9 +50,9 @@ const scout: UnitData = {
   id: '448',
   class: 47,
   armors: { '47': 0, '8': 0, '3': 2, '4': 0 }, // REAL: has Scout Cav(47), Cav(8)
-  f: 80,
-  w: 0,
-  g: 0,
+  food: 80,
+  wood: 0,
+  gold: 0,
   trainTime: 30,
 };
 
@@ -68,9 +68,9 @@ const cav_archer: UnitData = {
   id: '39',
   class: 36,
   armors: { '36': 0, '15': 0, '8': 0, '3': 0, '4': 0 },
-  f: 0,
-  w: 40,
-  g: 60,
+  food: 0,
+  wood: 40,
+  gold: 60,
   trainTime: 37,
 };
 
@@ -86,140 +86,140 @@ const eagle: UnitData = {
   id: '751',
   class: 6,
   armors: { '6': 0, '1': 0, '4': 0, '3': 2 },
-  f: 20,
-  w: 0,
-  g: 50,
+  food: 20,
+  wood: 0,
+  gold: 50,
   trainTime: 50,
 };
 
 const fletchingEffects = [
-  { t: 4, a: 9, v: 769.0, u: -1, c: 0 },
-  { t: 4, a: 9, v: 769.0, u: -1, c: 36 },
-  { t: 4, a: 12, v: 1.0, u: -1, c: 0 },
-  { t: 4, a: 12, v: 1.0, u: -1, c: 36 },
-  { t: 4, a: 9, v: 769.0, u: 54, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: -1, c: 52 },
-  { t: 4, a: 9, v: 769.0, u: 328, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: -1, c: 52 },
-  { t: 4, a: 9, v: 769.0, u: 109, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 71, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 141, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 142, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 82, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 82, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 539, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 539, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 21, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 21, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 442, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 442, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 250, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 250, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 533, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 533, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 505, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 518, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 746, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 747, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 885, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 885, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1004, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 1004, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1006, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 1006, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1251, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 1251, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 778, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 778, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 786, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 787, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1750, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 1750, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1830, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2130, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 2130, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2131, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 2131, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2132, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 2132, c: -1 },
-  { t: 4, a: 12, v: -1.0, u: 2328, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2275, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2276, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2277, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1983, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1982, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1936, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1937, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1931, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1971, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1879, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2415, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 2415, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2417, c: -1 },
-  { t: 4, a: 12, v: 1.0, u: 2417, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2631, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2632, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 133, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1189, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 45, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 47, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 51, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2574, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 2575, c: -1 },
-  { t: 4, a: 9, v: 769.0, u: 1548, c: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: -1, class: 0 },
+  { type: 4, attribute: 9, value: 769.0, unitId: -1, class: 36 },
+  { type: 4, attribute: 12, value: 1.0, unitId: -1, class: 0 },
+  { type: 4, attribute: 12, value: 1.0, unitId: -1, class: 36 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 54, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: -1, class: 52 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 328, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: -1, class: 52 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 109, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 71, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 141, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 142, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 82, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 82, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 539, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 539, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 21, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 21, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 442, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 442, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 250, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 250, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 533, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 533, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 505, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 518, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 746, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 747, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 885, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 885, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1004, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 1004, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1006, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 1006, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1251, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 1251, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 778, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 778, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 786, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 787, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1750, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 1750, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1830, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2130, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 2130, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2131, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 2131, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2132, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 2132, class: -1 },
+  { type: 4, attribute: 12, v: -1.0, unitId: 2328, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2275, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2276, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2277, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1983, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1982, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1936, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1937, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1931, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1971, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1879, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2415, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 2415, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2417, class: -1 },
+  { type: 4, attribute: 12, value: 1.0, unitId: 2417, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2631, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2632, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 133, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1189, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 45, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 47, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 51, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2574, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 2575, class: -1 },
+  { type: 4, attribute: 9, value: 769.0, unitId: 1548, class: -1 },
 ];
 
 const forgingEffects = [
-  { t: 4, a: 9, v: 1025.0, u: -1, c: 6 },
-  { t: 4, a: 9, v: 1025.0, u: -1, c: 45 },
-  { t: 4, a: 9, v: 1025.0, u: -1, c: 12 },
-  { t: 4, a: 9, v: 1025.0, u: -1, c: 46 },
-  { t: 4, a: 9, v: 1025.0, u: -1, c: 50 },
-  { t: 4, a: 9, v: 1025.0, u: -1, c: 47 },
-  { t: 4, a: 9, v: -1025.0, u: 1923, c: -1 },
-  { t: 4, a: 9, v: 1025.0, u: 1831, c: -1 },
-  { t: 4, a: 9, v: 1025.0, u: 2626, c: -1 },
-  { t: 4, a: 9, v: 1025.0, u: 2627, c: -1 },
-  { t: 4, a: 9, v: 1025.0, u: 2628, c: -1 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: -1, class: 6 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: -1, class: 45 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: -1, class: 12 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: -1, class: 46 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: -1, class: 50 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: -1, class: 47 },
+  { type: 4, attribute: 9, v: -1025.0, unitId: 1923, class: -1 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: 1831, class: -1 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: 2626, class: -1 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: 2627, class: -1 },
+  { type: 4, attribute: 9, value: 1025.0, unitId: 2628, class: -1 },
 ];
 
 const bloodlinesEffects = [
-  { t: 4, a: 0, v: 20.0, u: -1, c: 47 },
-  { t: 4, a: 0, v: 20.0, u: -1, c: 12 },
-  { t: 4, a: 0, v: 20.0, u: -1, c: 36 },
-  { t: 4, a: 0, v: 20.0, u: -1, c: 23 },
-  { t: 4, a: 0, v: 20.0, u: 775, c: -1 },
-  { t: 4, a: 0, v: 20.0, u: 1263, c: -1 },
-  { t: 4, a: 0, v: 20.0, u: 1715, c: -1 },
-  { t: 4, a: 0, v: 20.0, u: 1822, c: -1 },
-  { t: 4, a: 0, v: 20.0, u: 2557, c: -1 },
+  { type: 4, attribute: 0, value: 20.0, unitId: -1, class: 47 },
+  { type: 4, attribute: 0, value: 20.0, unitId: -1, class: 12 },
+  { type: 4, attribute: 0, value: 20.0, unitId: -1, class: 36 },
+  { type: 4, attribute: 0, value: 20.0, unitId: -1, class: 23 },
+  { type: 4, attribute: 0, value: 20.0, unitId: 775, class: -1 },
+  { type: 4, attribute: 0, value: 20.0, unitId: 1263, class: -1 },
+  { type: 4, attribute: 0, value: 20.0, unitId: 1715, class: -1 },
+  { type: 4, attribute: 0, value: 20.0, unitId: 1822, class: -1 },
+  { type: 4, attribute: 0, value: 20.0, unitId: 2557, class: -1 },
 ];
 
 const husbandryEffects = [
-  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 47 },
-  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 36 },
-  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 12 },
-  { t: 5, a: 5, v: 1.100000023841858, u: -1, c: 23 },
-  { t: 5, a: 5, v: 1.100000023841858, u: 775, c: -1 },
-  { t: 5, a: 5, v: 1.100000023841858, u: 1263, c: -1 },
-  { t: 5, a: 5, v: 1.100000023841858, u: 1715, c: -1 },
-  { t: 5, a: 5, v: 1.100000023841858, u: 1822, c: -1 },
-  { t: 5, a: 5, v: 1.100000023841858, u: 2557, c: -1 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: -1, class: 47 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: -1, class: 36 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: -1, class: 12 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: -1, class: 23 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: 775, class: -1 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: 1263, class: -1 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: 1715, class: -1 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: 1822, class: -1 },
+  { type: 5, attribute: 5, value: 1.100000023841858, unitId: 2557, class: -1 },
 ];
 
 const scaleBardingEfects = [
-  { t: 4, a: 8, v: 1025.0, u: -1, c: 12 },
-  { t: 4, a: 8, v: 769.0, u: -1, c: 12 },
-  { t: 4, a: 8, v: 1025.0, u: -1, c: 47 },
-  { t: 4, a: 8, v: 769.0, u: -1, c: 47 },
-  { t: 4, a: 8, v: -1025.0, u: 1738, c: -1 },
-  { t: 4, a: 8, v: -769.0, u: 1738, c: -1 },
-  { t: 4, a: 8, v: -1025.0, u: 1740, c: -1 },
-  { t: 4, a: 8, v: -769.0, u: 1740, c: -1 },
-  { t: 4, a: 8, v: 1025.0, u: 775, c: -1 },
-  { t: 4, a: 8, v: 769.0, u: 775, c: -1 },
-  { t: 4, a: 8, v: 1025.0, u: 2557, c: -1 },
-  { t: 4, a: 8, v: 769.0, u: 2557, c: -1 },
+  { type: 4, attribute: 8, value: 1025.0, unitId: -1, class: 12 },
+  { type: 4, attribute: 8, value: 769.0, unitId: -1, class: 12 },
+  { type: 4, attribute: 8, value: 1025.0, unitId: -1, class: 47 },
+  { type: 4, attribute: 8, value: 769.0, unitId: -1, class: 47 },
+  { type: 4, attribute: 8, v: -1025.0, unitId: 1738, class: -1 },
+  { type: 4, attribute: 8, v: -769.0, unitId: 1738, class: -1 },
+  { type: 4, attribute: 8, v: -1025.0, unitId: 1740, class: -1 },
+  { type: 4, attribute: 8, v: -769.0, unitId: 1740, class: -1 },
+  { type: 4, attribute: 8, value: 1025.0, unitId: 775, class: -1 },
+  { type: 4, attribute: 8, value: 769.0, unitId: 775, class: -1 },
+  { type: 4, attribute: 8, value: 1025.0, unitId: 2557, class: -1 },
+  { type: 4, attribute: 8, value: 769.0, unitId: 2557, class: -1 },
 ];
 
 describe('TechFiltering', () => {
@@ -302,22 +302,22 @@ describe('TechFiltering', () => {
   });
 
   it('should correctly format labels for encoded effects', () => {
-    expect(getEffectLabel({ t: 0, a: 9, v: 769 })).toBe('Pierce Atk +1');
-    expect(getEffectLabel({ t: 0, a: 8, v: 1025 })).toBe('Melee Arm +1');
-    expect(getEffectLabel({ t: 4, a: 9, v: 769 })).toBe('Pierce Atk +1');
-    expect(getEffectLabel({ t: 4, a: 8, v: 1025 })).toBe('Melee Arm +1');
-    expect(getEffectLabel({ t: 5, a: 9, v: 769 })).toBe('Pierce Atk x1');
-    expect(getEffectLabel({ t: 5, a: 8, v: 1025 })).toBe('Melee Arm x1');
+    expect(getEffectLabel({ type: 0, attribute: 9, value: 769 })).toBe('Pierce Atk +1');
+    expect(getEffectLabel({ type: 0, attribute: 8, value: 1025 })).toBe('Melee Arm +1');
+    expect(getEffectLabel({ type: 4, attribute: 9, value: 769 })).toBe('Pierce Atk +1');
+    expect(getEffectLabel({ type: 4, attribute: 8, value: 1025 })).toBe('Melee Arm +1');
+    expect(getEffectLabel({ type: 5, attribute: 9, value: 769 })).toBe('Pierce Atk x1');
+    expect(getEffectLabel({ type: 5, attribute: 8, value: 1025 })).toBe('Melee Arm x1');
   });
 
   it('should deduplicate generic attack if specific attack is present', () => {
     const effects = [
-      { t: 9, a: 0, v: 769, u: -1, c: -1 }, // Pierce Atk +1
-      { t: 1, a: 0, v: 1.0, u: -1, c: -1 }, // Generic Atk +1
+      { type: 4, attribute: 9, value: 769, unitId: -1, class: 0 }, // Pierce Atk +1 (specific class 0)
+      { type: 4, attribute: 9, value: 1.0, unitId: -1, class: -1 }, // Generic Atk +1 (generic)
     ];
     // The first effect (specific) should be applied
     expect(shouldApplyEffect(effects[0], archer, effects)).toBe(true);
-    // The second effect (generic) should be skipped
+    // The second effect (generic) should be skipped because a specific one exists
     expect(shouldApplyEffect(effects[1], archer, effects)).toBe(false);
   });
 });
@@ -326,7 +326,7 @@ import { CombatSim } from '../src/sim/CombatSim';
 
 describe('CombatSim Stats', () => {
   it('should apply Bloodlines HP correctly', () => {
-    const config = { bn: [{ i: '435', e: [true] }] } as any; // Bloodlines
+    const config = { bonuses: [{ id: '435', effects: [true] }] } as any; // Bloodlines
     const sim = new CombatSim(
       scout,
       archer,
@@ -339,7 +339,7 @@ describe('CombatSim Stats', () => {
   });
 
   it('should apply Scout auto-upgrade in Feudal Age', () => {
-    const config = { age: '2', bn: [{ i: '102', e: [true] }] } as any; // Feudal Age
+    const config = { age: '2', bonuses: [{ id: '102', effects: [true] }] } as any; // Feudal Age
     const sim = new CombatSim(
       scout,
       archer,
@@ -352,7 +352,7 @@ describe('CombatSim Stats', () => {
   });
 
   it('should apply Eagle auto-upgrade in Feudal Age', () => {
-    const config = { age: '2', bn: [{ i: '102', e: [true] }] } as any; // Feudal Age
+    const config = { age: '2', bonuses: [{ id: '102', effects: [true] }] } as any; // Feudal Age
     const sim = new CombatSim(
       eagle,
       archer,
@@ -365,7 +365,7 @@ describe('CombatSim Stats', () => {
   });
 
   it('should apply Fletching to Cav Archer', () => {
-    const config = { bn: [{ i: '199', e: [true, true, true] }] } as any; // Fletching
+    const config = { bonuses: [{ id: '199', effects: [true, true, true] }] } as any; // Fletching
     const fletching = {
       building: 103,
       effects: fletchingEffects,
@@ -378,9 +378,9 @@ describe('CombatSim Stats', () => {
 
   it('should apply Bloodlines and Husbandry to Cav Archer', () => {
     const config = {
-      bn: [
-        { i: '435', e: [true] },
-        { i: '39', e: [true] },
+      bonuses: [
+        { id: '435', effects: [true] },
+        { id: '39', effects: [true] },
       ],
     } as any;
     const techs = {
@@ -396,7 +396,7 @@ describe('CombatSim Stats', () => {
   });
 
   it('should NOT apply Barding Armor to Cav Archer', () => {
-    const config = { bn: [{ i: '81', e: [true, true] }] } as any; // Scale Barding
+    const config = { bonuses: [{ id: '81', effects: [true, true] }] } as any; // Scale Barding
     const barding = {
       building: 103,
       effects: scaleBardingEfects,
@@ -407,7 +407,7 @@ describe('CombatSim Stats', () => {
   });
 
   it('should apply Barding Armor to Scout Cavalry', () => {
-    const config = { bn: [{ i: '81', e: [true, true] }] } as any; // Scale Barding
+    const config = { bonuses: [{ id: '81', effects: [true, true] }] } as any; // Scale Barding
     const barding = {
       building: 103,
       effects: scaleBardingEfects,

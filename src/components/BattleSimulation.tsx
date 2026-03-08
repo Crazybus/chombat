@@ -18,9 +18,9 @@ const BattleSimulation: React.FC = () => {
     Object.values(techs).forEach((t) => (techsByIdMap[t.id] = t));
     const allUnits = { ...units, ...presets };
 
-    const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, state.a, state.b, techsByIdMap, allUnits);
+    const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, state.armyA, state.armyB, techsByIdMap, allUnits);
     return sim.run();
-  }, [state.a, state.b, analysisA, analysisB]);
+  }, [state.armyA, state.armyB, analysisA, analysisB]);
 
   if (!res || !analysisA || !analysisB) return null;
 
@@ -44,32 +44,38 @@ const BattleSimulation: React.FC = () => {
   const allUnits = { ...units, ...presets };
 
   const setEqualResources = () => {
-    const newCountB = calculateEqualResources(state.a.c || 1, analysisA.baseUnit, state.a, analysisB.baseUnit, state.b);
-    updateArmy('b', { c: Math.max(1, newCountB) });
+    const newCountB = calculateEqualResources(
+      state.armyA.count || 1,
+      analysisA.baseUnit,
+      state.armyA,
+      analysisB.baseUnit,
+      state.armyB,
+    );
+    updateArmy('b', { count: Math.max(1, newCountB) });
   };
 
   const setEqualProduction = () => {
     const newCountB = calculateEqualProductionTime(
-      state.a.c || 1,
+      state.armyA.count || 1,
       analysisA.baseUnit,
-      state.a,
+      state.armyA,
       analysisB.baseUnit,
-      state.b,
+      state.armyB,
     );
-    updateArmy('b', { c: Math.max(1, newCountB) });
+    updateArmy('b', { count: Math.max(1, newCountB) });
   };
 
   const setEqualFight = () => {
     const newCountB = calculateEqualFight(
-      state.a.c || 1,
+      state.armyA.count || 1,
       analysisA.baseUnit,
-      state.a,
+      state.armyA,
       analysisB.baseUnit,
-      state.b,
+      state.armyB,
       techsById,
       allUnits,
     );
-    updateArmy('b', { c: Math.max(1, newCountB) });
+    updateArmy('b', { count: Math.max(1, newCountB) });
   };
 
   return (
@@ -80,7 +86,7 @@ const BattleSimulation: React.FC = () => {
       </div>
 
       <div className="ratio-bar">
-        <ArmyCounter army="a" analysis={analysisA} count={state.a.c || 1} />
+        <ArmyCounter army="a" analysis={analysisA} count={state.armyA.count || 1} />
 
         <div className="simulation-actions">
           <button className="nav-btn secondary" onClick={setEqualResources}>
@@ -94,7 +100,7 @@ const BattleSimulation: React.FC = () => {
           </button>
         </div>
 
-        <ArmyCounter army="b" analysis={analysisB} count={state.b.c || 1} />
+        <ArmyCounter army="b" analysis={analysisB} count={state.armyB.count || 1} />
       </div>
 
       <section id="results" className="results-area" style={{ width: '100%' }}>
@@ -135,7 +141,7 @@ const ArmyCounter: React.FC<{ army: 'a' | 'b'; analysis: any; count: number }> =
   }, [count]);
 
   const handleChange = (newVal: number) => {
-    updateArmy(army, { c: Math.max(1, newVal) });
+    updateArmy(army, { count: Math.max(1, newVal) });
   };
 
   const startRepeating = (dir: number) => {

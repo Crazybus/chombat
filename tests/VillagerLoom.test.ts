@@ -23,11 +23,11 @@ describe('Villager Loom Recommendation', () => {
     const handCart = recommended.find((t) => t.id === 249);
     expect(handCart).toBeDefined();
 
-    const bonuses = [{ i: '249', e: [true, true, true, true] }]; // Hand Cart
-    const sim = new CombatSim(villager, villager, { age: '4', bn: bonuses }, { age: '4' }, techsById, {});
+    const bonuses = [{ id: '249', effects: [true, true, true, true] }]; // Hand Cart
+    const sim = new CombatSim(villager, villager, { age: '4', bonuses: bonuses }, { age: '4' }, techsById, {});
 
     // Base speed is 1.0, Hand Cart is usually 1.1x speed (depends on dataset, but should be > 1.0)
-    // Actually Hand Cart is often t: 2, a: 5, v: 1.1
+    // Actually Hand Cart is often type: 2, attribute: 5, value: 1.1
     expect(sim.dataA.speed).toBeGreaterThan(1.0);
   });
 
@@ -37,8 +37,8 @@ describe('Villager Loom Recommendation', () => {
     const wheelbarrow = recommended.find((t) => t.id === 213);
     expect(wheelbarrow).toBeDefined();
 
-    const bonuses = [{ i: '213', e: [true, true, true, true] }]; // Wheelbarrow
-    const sim = new CombatSim(villager, villager, { age: '2', bn: bonuses }, { age: '2' }, techsById, {});
+    const bonuses = [{ id: '213', effects: [true, true, true, true] }]; // Wheelbarrow
+    const sim = new CombatSim(villager, villager, { age: '2', bonuses: bonuses }, { age: '2' }, techsById, {});
 
     // Base speed is 1.0, Wheelbarrow is usually 1.1x speed
     expect(sim.dataA.speed).toBeGreaterThan(1.0);

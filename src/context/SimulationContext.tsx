@@ -26,54 +26,151 @@ interface SimulationContextType {
 }
 
 const defaultArmy: ArmyState = {
-  c: 10,
+  count: 10,
   age: '2',
-  tl: [
-    { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-    { t: 'tech', n: 'Feudal Age', d: 130, c: 1, co: 500, i: '101', bt: 109, b: true, lim: true },
-    { t: 'building', n: 'Barracks', d: 50, c: 1, co: 175, prod: true, i: '87', b: false },
-    { t: 'production', n: 'Unit Production', v: 0, tr: 30, lim: false, d: 0 },
+  timeline: [
+    { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+    {
+      type: 'tech',
+      name: 'Feudal Age',
+      delay: 130,
+      count: 1,
+      cost: 500,
+      id: '101',
+      buildingTarget: 109,
+      isBlocking: true,
+      limitedProduction: true,
+    },
+    {
+      type: 'building',
+      name: 'Barracks',
+      delay: 50,
+      count: 1,
+      cost: 175,
+      producesUnits: true,
+      id: '87',
+      isBlocking: false,
+    },
+    { type: 'production', name: 'Unit Production', value: 0, trainSpeed: 30, limitedProduction: false, delay: 0 },
   ],
-  bn: [],
+  bonuses: [],
 };
 
 const initialState: SimulationState = {
-  a: {
+  armyA: {
     ...defaultArmy,
-    nm: 'Archer',
-    ps: 'archer',
-    bn: [
-      { i: '199', e: [true] }, // Fletching
-      { i: '211', e: [true] }, // Padded Archer Armor
+    name: 'Archer',
+    preset: 'archer',
+    bonuses: [
+      { id: '199', effects: [true] }, // Fletching
+      { id: '211', effects: [true] }, // Padded Archer Armor
     ],
-    tl: [
-      { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-      { t: 'tech', n: 'Feudal Age', d: 130, c: 1, co: 500, i: '101', bt: 109, b: true, lim: true },
-      { t: 'building', n: 'Archery Range', d: 50, c: 1, co: 175, prod: true, i: '87', b: false },
-      { t: 'tech', n: 'Fletching', d: 30, c: 1, co: 150, i: '199', bt: 103, b: false, lim: false },
-      { t: 'tech', n: 'Padded Archer Armor', d: 40, c: 1, co: 150, i: '211', bt: 103, b: false, lim: false },
-      { t: 'production', n: 'Archer Production', v: 0, tr: 35, lim: false, d: 0 },
+    timeline: [
+      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+      {
+        type: 'tech',
+        name: 'Feudal Age',
+        delay: 130,
+        count: 1,
+        cost: 500,
+        id: '101',
+        buildingTarget: 109,
+        isBlocking: true,
+        limitedProduction: true,
+      },
+      {
+        type: 'building',
+        name: 'Archery Range',
+        delay: 50,
+        count: 1,
+        cost: 175,
+        producesUnits: true,
+        id: '87',
+        isBlocking: false,
+      },
+      {
+        type: 'tech',
+        name: 'Fletching',
+        delay: 30,
+        count: 1,
+        cost: 150,
+        id: '199',
+        buildingTarget: 103,
+        isBlocking: false,
+        limitedProduction: false,
+      },
+      {
+        type: 'tech',
+        name: 'Padded Archer Armor',
+        delay: 40,
+        count: 1,
+        cost: 150,
+        id: '211',
+        buildingTarget: 103,
+        isBlocking: false,
+        limitedProduction: false,
+      },
+      { type: 'production', name: 'Archer Production', value: 0, trainSpeed: 35, limitedProduction: false, delay: 0 },
     ],
   },
-  b: {
+  armyB: {
     ...defaultArmy,
-    nm: 'Skirmisher',
-    ps: 'skirmisher',
-    bn: [
-      { i: '199', e: [true] }, // Fletching
-      { i: '211', e: [true] }, // Padded Archer Armor
+    name: 'Skirmisher',
+    preset: 'skirmisher',
+    bonuses: [
+      { id: '199', effects: [true] }, // Fletching
+      { id: '211', effects: [true] }, // Padded Archer Armor
     ],
-    tl: [
-      { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-      { t: 'tech', n: 'Feudal Age', d: 130, c: 1, co: 500, i: '101', bt: 109, b: true, lim: true },
-      { t: 'building', n: 'Archery Range', d: 50, c: 1, co: 175, prod: true, i: '87', b: false },
-      { t: 'tech', n: 'Fletching', d: 30, c: 1, co: 150, i: '199', bt: 103, b: false, lim: false },
-      { t: 'tech', n: 'Padded Archer Armor', d: 40, c: 1, co: 150, i: '211', bt: 103, b: false, lim: false },
-      { t: 'production', n: 'Skirmisher Production', v: 0, tr: 22, lim: false },
+    timeline: [
+      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+      {
+        type: 'tech',
+        name: 'Feudal Age',
+        delay: 130,
+        count: 1,
+        cost: 500,
+        id: '101',
+        buildingTarget: 109,
+        isBlocking: true,
+        limitedProduction: true,
+      },
+      {
+        type: 'building',
+        name: 'Archery Range',
+        delay: 50,
+        count: 1,
+        cost: 175,
+        producesUnits: true,
+        id: '87',
+        isBlocking: false,
+      },
+      {
+        type: 'tech',
+        name: 'Fletching',
+        delay: 30,
+        count: 1,
+        cost: 150,
+        id: '199',
+        buildingTarget: 103,
+        isBlocking: false,
+        limitedProduction: false,
+      },
+      {
+        type: 'tech',
+        name: 'Padded Archer Armor',
+        delay: 40,
+        count: 1,
+        cost: 150,
+        id: '211',
+        buildingTarget: 103,
+        isBlocking: false,
+        limitedProduction: false,
+      },
+      { type: 'production', name: 'Skirmisher Production', value: 0, trainSpeed: 22, limitedProduction: false },
     ],
   },
-  desc: '',
-  sid: undefined,
+  description: '',
+  scenarioId: undefined,
 };
 
 const SimulationContext = createContext<SimulationContextType | undefined>(undefined);
@@ -86,14 +183,14 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const analysisA = useMemo(() => {
     const techsById: Record<number, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
-    return analyzeArmy(state.a, units, techsById);
-  }, [state.a]);
+    return analyzeArmy(state.armyA, units, techsById);
+  }, [state.armyA]);
 
   const analysisB = useMemo(() => {
     const techsById: Record<number, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
-    return analyzeArmy(state.b, units, techsById);
-  }, [state.b]);
+    return analyzeArmy(state.armyB, units, techsById);
+  }, [state.armyB]);
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -102,78 +199,85 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const updateArmy = (army: 'a' | 'b', updates: Partial<ArmyState>) => {
     clearURL();
-    setState((prev) => ({
-      ...prev,
-      [army]: { ...prev[army], ...updates },
-      sid: undefined,
-    }));
+    const armyKey = army === 'a' ? 'armyA' : 'armyB';
+    setState((prev) => {
+      const currentArmy = prev[armyKey];
+      const newOverrides = updates.overrides
+        ? {
+            ...currentArmy.overrides,
+            ...updates.overrides,
+            cost: { ...currentArmy.overrides?.cost, ...updates.overrides.cost },
+            discount: { ...currentArmy.overrides?.discount, ...updates.overrides.discount },
+          }
+        : currentArmy.overrides;
+
+      return {
+        ...prev,
+        [armyKey]: {
+          ...currentArmy,
+          ...updates,
+          overrides: newOverrides,
+        },
+        scenarioId: undefined,
+      };
+    });
   };
 
   const swapArmies = () => {
     clearURL();
     setState((prev) => ({
       ...prev,
-      a: prev.b,
-      b: prev.a,
-      sid: undefined,
+      armyA: prev.armyB,
+      armyB: prev.armyA,
+      scenarioId: undefined,
     }));
   };
 
   const clearOverrides = (army: 'a' | 'b') => {
     clearURL();
-    updateArmy(army, {
-      h: undefined,
-      am: undefined,
-      ap: undefined,
-      aa: undefined,
-      ar: undefined,
-      rl: undefined,
-      n: undefined,
-      as: undefined,
-      ab: undefined,
-      ad: undefined,
-      af: undefined,
-      aw: undefined,
-      ag: undefined,
-      da: undefined,
-      df: undefined,
-      dw: undefined,
-      dg: undefined,
-      e: undefined,
-      mc: undefined,
-    });
+    const armyKey = army === 'a' ? 'armyA' : 'armyB';
+    setState((prev) => ({
+      ...prev,
+      [armyKey]: {
+        ...prev[armyKey],
+        overrides: undefined,
+      },
+      scenarioId: undefined,
+    }));
   };
 
   const toggleBonus = (army: 'a' | 'b', techId: string) => {
     clearURL();
+    const armyKey = army === 'a' ? 'armyA' : 'armyB';
     setState((prev) => {
-      const armyState = prev[army];
-      const newBonuses = armyState.bn?.map((b) => {
-        if (b.i === techId) {
-          const allActive = b.e.every((x) => x);
-          return { ...b, e: b.e.map(() => !allActive) };
+      const armyState = prev[armyKey];
+      const newBonuses = armyState.bonuses?.map((b) => {
+        if (b.id === techId) {
+          const allActive = b.effects.every((x) => x);
+          return { ...b, effects: b.effects.map(() => !allActive) };
         }
         return b;
       });
-      return { ...prev, [army]: { ...armyState, bn: newBonuses }, sid: undefined };
+      return { ...prev, [armyKey]: { ...armyState, bonuses: newBonuses }, scenarioId: undefined };
     });
   };
 
   const applyAgeBonuses = (army: 'a' | 'b', age: string, civOverride?: string) => {
     clearURL();
-    const armyState = state[army];
+    const armyKey = army === 'a' ? 'armyA' : 'armyB';
+    const armyState = state[armyKey];
     const allUnits: Record<string, UnitData> = { ...units, ...presets };
 
-    let data = armyState.ps ? allUnits[armyState.ps] : null;
-    if (!data && armyState.nm) {
-      data = Object.values(allUnits).find((u) => u.name === armyState.nm) || null;
+    let data = armyState.preset ? allUnits[armyState.preset] : null;
+    if (!data && armyState.name) {
+      data = Object.values(allUnits).find((u) => u.name === armyState.name) || null;
     }
 
     const ageId = parseInt(age);
-    const civKey = civOverride !== undefined ? civOverride : armyState.cv;
+    const civKey = civOverride !== undefined ? civOverride : armyState.civ;
 
     if (!data) {
-      updateArmy(army, { age, cv: civKey });
+      updateArmy(army, { age, civ: civKey });
       return;
     }
 
@@ -181,20 +285,20 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const techsById: Record<number, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
-    const newBonuses: { i: string; e: boolean[] }[] = [];
+    const newBonuses: { id: string; effects: boolean[] }[] = [];
     if (ageId >= 1) {
       const relevantTechs = getRecommendedTechs(data, ageId, civKey, techsById, availableTechs);
       relevantTechs
         .sort((a, b) => a.age - b.age || a.id - b.id)
         .forEach((t) => {
-          newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
+          newBonuses.push({ id: t.id.toString(), effects: (t.effects || []).map(() => true) });
         });
     }
 
     setState((prev) => ({
       ...prev,
-      [army]: { ...prev[army], age, cv: civKey, bn: newBonuses },
-      sid: undefined,
+      [armyKey]: { ...prev[armyKey], age, civ: civKey, bonuses: newBonuses },
+      scenarioId: undefined,
     }));
   };
 
@@ -204,26 +308,18 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const u = allUnits[id];
     if (!u) return;
 
-    const currentAge = state[army].age || '1';
-    const currentCiv = state[army].cv || GENERIC_CIV;
+    const armyKey = army === 'a' ? 'armyA' : 'armyB';
+    const currentAge = state[armyKey].age || '1';
+    const currentCiv = state[armyKey].civ || GENERIC_CIV;
     const ageId = parseInt(currentAge);
 
     const newArmyState: ArmyState = {
-      ...state[army],
-      ps: id,
-      nm: u.name,
-      h: undefined,
-      am: undefined,
-      ap: undefined,
-      aa: undefined,
-      ar: undefined,
-      rl: undefined,
-      n: undefined,
-      af: undefined,
-      aw: undefined,
-      ag: undefined,
-      bn: [],
-      tl: [],
+      ...state[armyKey],
+      preset: id,
+      name: u.name,
+      overrides: undefined,
+      bonuses: [],
+      timeline: [],
     };
 
     const techsById: Record<number, TechData> = {};
@@ -233,46 +329,52 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const unitBuildingId = u.building || 87; // fallback to barracks
 
     // 1. Add continuous villager production
-    newArmyState.tl?.push({ t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false });
+    newArmyState.timeline?.push({
+      type: 'villagers',
+      name: 'Villagers',
+      value: 1,
+      delay: 25,
+      limitedProduction: false,
+    });
 
     // 2. Add Age Up techs sequentially
     if (ageId >= 2) {
-      newArmyState.tl?.push({
-        t: 'tech',
-        n: 'Feudal Age',
-        d: 130,
-        c: 1,
-        co: 500,
-        i: '101',
-        bt: 109,
-        b: true,
-        lim: true,
+      newArmyState.timeline?.push({
+        type: 'tech',
+        name: 'Feudal Age',
+        delay: 130,
+        count: 1,
+        cost: 500,
+        id: '101',
+        buildingTarget: 109,
+        isBlocking: true,
+        limitedProduction: true,
       });
     }
     if (ageId >= 3) {
-      newArmyState.tl?.push({
-        t: 'tech',
-        n: 'Castle Age',
-        d: 160,
-        c: 1,
-        co: 1000,
-        i: '102',
-        bt: 109,
-        b: true,
-        lim: true,
+      newArmyState.timeline?.push({
+        type: 'tech',
+        name: 'Castle Age',
+        delay: 160,
+        count: 1,
+        cost: 1000,
+        id: '102',
+        buildingTarget: 109,
+        isBlocking: true,
+        limitedProduction: true,
       });
     }
     if (ageId >= 4) {
-      newArmyState.tl?.push({
-        t: 'tech',
-        n: 'Imperial Age',
-        d: 190,
-        c: 1,
-        co: 1800,
-        i: '103',
-        bt: 109,
-        b: true,
-        lim: true,
+      newArmyState.timeline?.push({
+        type: 'tech',
+        name: 'Imperial Age',
+        delay: 190,
+        count: 1,
+        cost: 1800,
+        id: '103',
+        buildingTarget: 109,
+        isBlocking: true,
+        limitedProduction: true,
       });
     }
 
@@ -281,52 +383,59 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       (buildings as any)[unitBuildingId.toString()] ||
       Object.values(buildings).find((b) => b.id === unitBuildingId.toString());
     if (bData) {
-      newArmyState.tl?.push({
-        t: 'building',
-        n: bData.name,
-        d: bData.time || 50,
-        c: 1,
-        co: (bData.f || 0) + (bData.w || 0) + (bData.g || 0) + (bData.s || 0),
-        prod: true,
-        i: unitBuildingId.toString(),
-        b: false,
+      newArmyState.timeline?.push({
+        type: 'building',
+        name: bData.name,
+        delay: bData.time || 50,
+        count: 1,
+        cost: (bData.food || 0) + (bData.wood || 0) + (bData.gold || 0) + (bData.stone || 0),
+        producesUnits: true,
+        id: unitBuildingId.toString(),
+        isBlocking: false,
       });
     }
 
     // 4. Add recommended techs
-    const newBonuses: { i: string; e: boolean[] }[] = [];
+    const newBonuses: { id: string; effects: boolean[] }[] = [];
     if (ageId >= 1) {
       const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
       relevantTechs
         .sort((a, b) => a.age - b.age || a.id - b.id)
         .forEach((t) => {
-          newBonuses.push({ i: t.id.toString(), e: (t.effects || []).map(() => true) });
+          newBonuses.push({ id: t.id.toString(), effects: (t.effects || []).map(() => true) });
 
-          // Only block Build Order progress (lim: true) IF it's researched at the unit's building or TC
-          // AND set b: true to reduce current lane capacity
+          // Only block Build Order progress (limitedProduction: true) IF it's researched at the unit's building or TC
+          // AND set isBlocking: true to reduce current lane capacity
           const isSameBuilding = t.building === unitBuildingId;
           const isTC = t.building === 109;
           const shouldWait = isSameBuilding || isTC;
 
-          newArmyState.tl?.push({
-            t: 'tech',
-            n: t.name,
-            d: t.time || 40,
-            c: 1,
-            co: (t.f || 0) + (t.w || 0) + (t.g || 0),
-            i: t.id.toString(),
-            bt: t.building,
-            b: shouldWait,
-            lim: shouldWait,
+          newArmyState.timeline?.push({
+            type: 'tech',
+            name: t.name,
+            delay: t.time || 40,
+            count: 1,
+            cost: (t.food || 0) + (t.wood || 0) + (t.gold || 0),
+            id: t.id.toString(),
+            buildingTarget: t.building,
+            isBlocking: shouldWait,
+            limitedProduction: shouldWait,
           });
         });
     }
-    newArmyState.bn = newBonuses;
+    newArmyState.bonuses = newBonuses;
 
-    // 5. Add unit production - use v: 0 if buildings were added to avoid duplication
-    newArmyState.tl?.push({ t: 'production', n: `${u.name} Production`, v: 0, tr: u.trainTime, lim: false, d: 0 });
+    // 5. Add unit production - use value: 0 if buildings were added to avoid duplication
+    newArmyState.timeline?.push({
+      type: 'production',
+      name: `${u.name} Production`,
+      value: 0,
+      trainSpeed: u.trainTime,
+      limitedProduction: false,
+      delay: 0,
+    });
 
-    setState((prev) => ({ ...prev, [army]: newArmyState, sid: undefined }));
+    setState((prev) => ({ ...prev, [armyKey]: newArmyState, scenarioId: undefined }));
   };
 
   const resetToNewScenario = () => {
@@ -334,43 +443,128 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     const archer = units['archer'];
 
     setState({
-      a: {
+      armyA: {
         ...defaultArmy,
-        nm: archer.name,
-        ps: 'archer',
-        bn: [
-          { i: '199', e: [true] },
-          { i: '211', e: [true] },
+        name: archer.name,
+        preset: 'archer',
+        bonuses: [
+          { id: '199', effects: [true] },
+          { id: '211', effects: [true] },
         ],
-        tl: [
-          { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-          { t: 'tech', n: 'Feudal Age', d: 130, c: 1, co: 500, i: '101', bt: 109, b: true, lim: true },
-          { t: 'building', n: 'Archery Range', d: 50, c: 1, co: 175, prod: true, i: '87', b: false },
-          { t: 'tech', n: 'Fletching', d: 30, c: 1, co: 150, i: '199', bt: 103, b: false, lim: false },
-          { t: 'tech', n: 'Padded Archer Armor', d: 40, c: 1, co: 150, i: '211', bt: 103, b: false, lim: false },
-          { t: 'production', n: 'Archer Production', v: 0, tr: 35, lim: false, d: 0 },
+        timeline: [
+          { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+          {
+            type: 'tech',
+            name: 'Feudal Age',
+            delay: 130,
+            count: 1,
+            cost: 500,
+            id: '101',
+            buildingTarget: 109,
+            isBlocking: true,
+            limitedProduction: true,
+          },
+          {
+            type: 'building',
+            name: 'Archery Range',
+            delay: 50,
+            count: 1,
+            cost: 175,
+            producesUnits: true,
+            id: '87',
+            isBlocking: false,
+          },
+          {
+            type: 'tech',
+            name: 'Fletching',
+            delay: 30,
+            count: 1,
+            cost: 150,
+            id: '199',
+            buildingTarget: 103,
+            isBlocking: false,
+            limitedProduction: false,
+          },
+          {
+            type: 'tech',
+            name: 'Padded Archer Armor',
+            delay: 40,
+            count: 1,
+            cost: 150,
+            id: '211',
+            buildingTarget: 103,
+            isBlocking: false,
+            limitedProduction: false,
+          },
+          {
+            type: 'production',
+            name: 'Archer Production',
+            value: 0,
+            trainSpeed: 35,
+            limitedProduction: false,
+            delay: 0,
+          },
         ],
       },
-      b: {
+      armyB: {
         ...defaultArmy,
-        nm: 'Skirmisher',
-        ps: 'skirmisher',
-        bn: [
-          { i: '199', e: [true] },
-          { i: '211', e: [true] },
+        name: 'Skirmisher',
+        preset: 'skirmisher',
+        bonuses: [
+          { id: '199', effects: [true] },
+          { id: '211', effects: [true] },
         ],
-        tl: [
-          { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-          { t: 'tech', n: 'Feudal Age', d: 130, c: 1, co: 500, i: '101', bt: 109, b: true, lim: true },
-          { t: 'building', n: 'Archery Range', d: 50, c: 1, co: 175, prod: true, i: '87', b: false },
-          { t: 'tech', n: 'Fletching', d: 30, c: 1, co: 150, i: '199', bt: 103, b: false, lim: false },
-          { t: 'tech', n: 'Padded Archer Armor', d: 40, c: 1, co: 150, i: '211', bt: 103, b: false, lim: false },
-          { t: 'production', n: 'Skirmisher Production', v: 0, tr: 22, lim: false },
+        timeline: [
+          { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+          {
+            type: 'tech',
+            name: 'Feudal Age',
+            delay: 130,
+            count: 1,
+            cost: 500,
+            id: '101',
+            buildingTarget: 109,
+            isBlocking: true,
+            limitedProduction: true,
+          },
+          {
+            type: 'building',
+            name: 'Archery Range',
+            delay: 50,
+            count: 1,
+            cost: 175,
+            producesUnits: true,
+            id: '87',
+            isBlocking: false,
+          },
+          {
+            type: 'tech',
+            name: 'Fletching',
+            delay: 30,
+            count: 1,
+            cost: 150,
+            id: '199',
+            buildingTarget: 103,
+            isBlocking: false,
+            limitedProduction: false,
+          },
+          {
+            type: 'tech',
+            name: 'Padded Archer Armor',
+            delay: 40,
+            count: 1,
+            cost: 150,
+            id: '211',
+            buildingTarget: 103,
+            isBlocking: false,
+            limitedProduction: false,
+          },
+          { type: 'production', name: 'Skirmisher Production', value: 0, trainSpeed: 22, limitedProduction: false },
         ],
       },
-      desc: 'New scenario description...',
+      description: 'New scenario description...',
       name: 'New Scenario',
-      sid: 'new',
+      scenarioId: 'new',
     });
   };
 
@@ -383,11 +577,11 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
       setState({
-        a: scrubArmy(scenario.a, allUnits, techsById),
-        b: scrubArmy(scenario.b, allUnits, techsById),
-        desc: scenario.desc || '',
+        armyA: scrubArmy(scenario.armyA, allUnits, techsById),
+        armyB: scrubArmy(scenario.armyB, allUnits, techsById),
+        description: scenario.description || '',
         name: scenario.name,
-        sid: id,
+        scenarioId: id,
       });
     }
   };
@@ -398,7 +592,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       !params.get('s') &&
       !params.get('id') &&
       !params.get('scenario') &&
-      !state.a.ps &&
+      !state.armyA.preset &&
       featuredScenarios.length > 0
     ) {
       loadScenario(featuredScenarios[0]);

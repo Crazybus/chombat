@@ -30,11 +30,11 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
         Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
         setState({
-          a: scrubArmy(loaded.a, allUnits, techsById),
-          b: scrubArmy(loaded.b, allUnits, techsById),
-          desc: loaded.desc || '',
+          armyA: scrubArmy(loaded.armyA, allUnits, techsById),
+          armyB: scrubArmy(loaded.armyB, allUnits, techsById),
+          description: loaded.description || '',
           name: loaded.name || 'Shared Scenario',
-          sid: scenarioId,
+          scenarioId: scenarioId,
         });
       } else if (shortId) {
         // Resolve short ID from API
@@ -48,11 +48,11 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
               Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
               setState({
-                a: scrubArmy(loaded.a, allUnits, techsById),
-                b: scrubArmy(loaded.b, allUnits, techsById),
-                desc: loaded.desc || '',
+                armyA: scrubArmy(loaded.armyA, allUnits, techsById),
+                armyB: scrubArmy(loaded.armyB, allUnits, techsById),
+                description: loaded.description || '',
                 name: loaded.name || 'Shared Scenario',
-                sid: loaded.sid,
+                scenarioId: loaded.scenarioId,
               });
             } else {
               console.error('Failed to resolve short URL:', result.error || res.statusText);
@@ -70,11 +70,11 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
           Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
           setState({
-            a: scrubArmy(loaded.a, allUnits, techsById),
-            b: scrubArmy(loaded.b, allUnits, techsById),
-            desc: loaded.desc || '',
+            armyA: scrubArmy(loaded.armyA, allUnits, techsById),
+            armyB: scrubArmy(loaded.armyB, allUnits, techsById),
+            description: loaded.description || '',
             name: loaded.name || 'Shared Scenario',
-            sid: loaded.sid,
+            scenarioId: loaded.scenarioId,
           });
         } catch (e) {
           console.error('Failed to load scenario from base64 URL', e);
@@ -89,11 +89,11 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
     if (!explicit) return;
 
     const exportData = {
-      a: state.a,
-      b: state.b,
+      armyA: state.armyA,
+      armyB: state.armyB,
       name: state.name,
-      desc: state.desc,
-      sid: state.sid,
+      description: state.description,
+      scenarioId: state.scenarioId,
     };
 
     try {
@@ -147,11 +147,11 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
 
   const getCleanState = () => {
     return {
-      a: state.a,
-      b: state.b,
+      armyA: state.armyA,
+      armyB: state.armyB,
       name: state.name,
-      desc: state.desc,
-      sid: state.sid,
+      description: state.description,
+      scenarioId: state.scenarioId,
     };
   };
 

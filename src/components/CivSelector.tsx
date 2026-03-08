@@ -12,7 +12,7 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const armyState = state[army];
+  const armyState = state[army === 'a' ? 'armyA' : 'armyB'];
   const civNames = useMemo(() => Object.keys(civs).sort(), []);
 
   const filteredCivs = useMemo(() => {
@@ -43,7 +43,7 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
   return (
     <div className="civ-selector" ref={containerRef} style={{ position: 'relative' }}>
       <button className="nav-btn secondary" title="Click to change civilization" onClick={() => setIsOpen(!isOpen)}>
-        <span>🏰 {formatCivName(armyState.cv || GENERIC_CIV)}</span>
+        <span>🏰 {formatCivName(armyState.civ || GENERIC_CIV)}</span>
         <span style={{ fontSize: '0.6rem', opacity: 0.5 }}>▼</span>
       </button>
 

@@ -2,7 +2,6 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useSimulation } from '../context/SimulationContext';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
-import { ArmyState } from '../sim/types';
 import UnitSelector from './UnitSelector';
 import BonusTechManager from './BonusTechManager';
 import CivSelector from './CivSelector';
@@ -14,14 +13,15 @@ interface ArmyPanelProps {
 
 const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
   const { state, updateArmy, loadPreset, applyAgeBonuses, clearOverrides } = useSimulation();
-  const armyState = state[army];
+  const armyKey = army === 'a' ? 'armyA' : 'armyB';
+  const armyState = state[armyKey];
   const [isConfigCollapsed, setIsConfigCollapsed] = useState(true);
 
   const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
-  const currentUnit = armyState.ps ? allUnits[armyState.ps] : null;
+  const currentUnit = armyState.preset ? allUnits[armyState.preset] : null;
 
-  const handleStatChange = (field: keyof ArmyState, value: any) => {
-    updateArmy(army, { [field]: value });
+  const handleNameChange = (value: string) => {
+    updateArmy(army, { name: value });
   };
 
   const handleAgeChange = (age: string) => {
@@ -95,8 +95,8 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
           <div style={{ display: 'flex', gap: '8px' }}>
             <input
               type="text"
-              value={armyState.nm || ''}
-              onChange={(e) => handleStatChange('nm', e.target.value)}
+              value={armyState.name || ''}
+              onChange={(e) => handleNameChange(e.target.value)}
               style={{ flex: 1 }}
             />
             <button
@@ -110,24 +110,72 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
         </div>
 
         <div className="grid-fields">
-          <StatField army={army} label="HP" field="h" value={armyState.h || currentUnit?.hp || 0} step={5} />
+          <StatField
+            army={army}
+            label="HP"
+            field="hp"
+            value={armyState.overrides?.hp || currentUnit?.hp || 0}
+            step={5}
+          />
           <StatField
             army={army}
             label="Reload (s)"
-            field="rl"
-            value={armyState.rl || currentUnit?.reload || 0}
+            field="reload"
+            value={armyState.overrides?.reload || currentUnit?.reload || 0}
             step={0.1}
           />
-          <StatField army={army} label="M. Attack" field="am" value={armyState.am || currentUnit?.matk || 0} step={1} />
-          <StatField army={army} label="M. Armor" field="aa" value={armyState.aa || currentUnit?.marm || 0} step={1} />
-          <StatField army={army} label="P. Attack" field="ap" value={armyState.ap || currentUnit?.patk || 0} step={1} />
-          <StatField army={army} label="P. Armor" field="ar" value={armyState.ar || currentUnit?.parm || 0} step={1} />
-          <StatField army={army} label="Range" field="n" value={armyState.n || currentUnit?.range || 0} step={1} />
+          <StatField
+            army={army}
+            label="M. Attack"
+            field="meleeAttack"
+            value={armyState.overrides?.meleeAttack || currentUnit?.matk || 0}
+            step={1}
+          />
+          <StatField
+            army={army}
+            label="M. Armor"
+            field="meleeArmor"
+            value={armyState.overrides?.meleeArmor || currentUnit?.marm || 0}
+            step={1}
+          />
+          <StatField
+            army={army}
+            label="P. Attack"
+            field="pierceAttack"
+            value={armyState.overrides?.pierceAttack || currentUnit?.patk || 0}
+            step={1}
+          />
+          <StatField
+            army={army}
+            label="P. Armor"
+            field="pierceArmor"
+            value={armyState.overrides?.pierceArmor || currentUnit?.parm || 0}
+            step={1}
+          />
+          <StatField
+            army={army}
+            label="Range"
+            field="range"
+            value={armyState.overrides?.range || currentUnit?.range || 0}
+            step={1}
+          />
         </div>
 
         <div className="grid-fields">
-          <StatField army={army} label="Atk Speed %" field="as" value={armyState.as || 0} step={5} />
-          <StatField army={army} label="Bonus Red %" field="ab" value={armyState.ab || 0} step={5} />
+          <StatField
+            army={army}
+            label="Atk Speed %"
+            field="attackSpeed"
+            value={armyState.overrides?.attackSpeed || 0}
+            step={5}
+          />
+          <StatField
+            army={army}
+            label="Bonus Red %"
+            field="bonusReduction"
+            value={armyState.overrides?.bonusReduction || 0}
+            step={5}
+          />
         </div>
 
         <BonusTechManager army={army} />
@@ -136,26 +184,26 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
           <h3>Engagement Efficiency</h3>
           <div className="field">
             <label>
-              Engagement % <span className="val-display">{armyState.e || 100}%</span>
+              Engagement % <span className="val-display">{armyState.overrides?.engagement || 100}%</span>
             </label>
             <input
               type="range"
               min="1"
               max="100"
-              value={armyState.e || 100}
-              onChange={(e) => handleStatChange('e', parseInt(e.target.value))}
+              value={armyState.overrides?.engagement || 100}
+              onChange={(e) => updateArmy(army, { overrides: { engagement: parseInt(e.target.value) } })}
             />
           </div>
           <div className="field">
             <label>
-              Target Micro <span className="val-display">{getMicroLabel(armyState.mc || 5)}</span>
+              Target Micro <span className="val-display">{getMicroLabel(armyState.overrides?.micro || 5)}</span>
             </label>
             <input
               type="range"
               min="1"
               max="5"
-              value={armyState.mc || 5}
-              onChange={(e) => handleStatChange('mc', parseInt(e.target.value))}
+              value={armyState.overrides?.micro || 5}
+              onChange={(e) => updateArmy(army, { overrides: { micro: parseInt(e.target.value) } })}
             />
           </div>
         </div>
@@ -167,7 +215,7 @@ const ArmyPanel: React.FC<ArmyPanelProps> = ({ army }) => {
 interface StatFieldProps {
   army: 'a' | 'b';
   label: string;
-  field: keyof ArmyState;
+  field: string;
   value: number;
   step: number;
 }
@@ -184,7 +232,7 @@ const StatField: React.FC<StatFieldProps> = ({ army, label, field, value, step }
 
   const handleChange = (newVal: number) => {
     const rounded = Math.round(newVal * 100) / 100;
-    updateArmy(army, { [field]: rounded });
+    updateArmy(army, { overrides: { [field]: rounded } });
   };
 
   const startRepeating = (dir: number) => {

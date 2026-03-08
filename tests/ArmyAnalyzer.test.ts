@@ -12,9 +12,9 @@ describe('ArmyAnalyzer', () => {
     parm: 0,
     reload: 2,
     range: 4,
-    f: 0,
-    w: 25,
-    g: 45,
+    food: 0,
+    wood: 25,
+    gold: 45,
     trainTime: 35,
     id: '4',
     class: 0,
@@ -28,26 +28,26 @@ describe('ArmyAnalyzer', () => {
       name: 'Fletching',
       building: 103,
       effects: [
-        { t: 4, a: 9, v: 769, u: -1, c: 0 }, // P-Atk +1
-        { t: 4, a: 12, v: 1, u: -1, c: 0 }, // Range +1
+        { type: 4, attribute: 9, value: 769, unitId: -1, class: 0 }, // P-Atk +1
+        { type: 4, attribute: 12, value: 1, unitId: -1, class: 0 }, // Range +1
       ],
       age: 2,
     },
   };
 
   describe('resolveBaseUnit', () => {
-    it('should resolve by ps ID', () => {
-      const unit = resolveBaseUnit({ ps: 'archer' }, { archer: baseArcher });
+    it('should resolve by preset ID', () => {
+      const unit = resolveBaseUnit({ preset: 'archer' }, { archer: baseArcher });
       expect(unit.name).toBe('Archer');
     });
 
     it('should resolve by name', () => {
-      const unit = resolveBaseUnit({ nm: 'Archer' }, { some_id: baseArcher });
+      const unit = resolveBaseUnit({ name: 'Archer' }, { some_id: baseArcher });
       expect(unit.id).toBe('4');
     });
 
     it('should return custom unit if not found', () => {
-      const unit = resolveBaseUnit({ nm: 'Ghost' }, {});
+      const unit = resolveBaseUnit({ name: 'Ghost' }, {});
       expect(unit.id).toBe('custom');
       expect(unit.name).toBe('Ghost');
     });
@@ -55,7 +55,7 @@ describe('ArmyAnalyzer', () => {
 
   describe('applyManualOverrides', () => {
     it('should apply HP override', () => {
-      const modified = applyManualOverrides(baseArcher, { h: 99 });
+      const modified = applyManualOverrides(baseArcher, { overrides: { hp: 99 } });
       expect(modified.hp).toBe(99);
       expect(modified.patk).toBe(4); // remains same
     });
@@ -63,20 +63,20 @@ describe('ArmyAnalyzer', () => {
 
   describe('getManualOverrideSources', () => {
     it('should detect differences from base', () => {
-      const sources = getManualOverrideSources(baseArcher, { h: 35, am: 1 });
-      expect(sources.hp[0].label).toContain('+5');
-      expect(sources.atk[0].label).toContain('+1');
+      const sources = getManualOverrideSources(baseArcher, { overrides: { hp: 35, meleeAttack: 1 } });
+      expect(sources.hp?.[0].label).toContain('+5');
+      expect(sources.atk?.[0].label).toContain('+1');
     });
 
     it('should NOT detect if value matches base', () => {
-      const sources = getManualOverrideSources(baseArcher, { h: 30 });
+      const sources = getManualOverrideSources(baseArcher, { overrides: { hp: 30 } });
       expect(sources.hp).toBeUndefined();
     });
   });
 
   describe('analyzeArmy (Integration)', () => {
     it('should correctly resolve and analyze a standard unit', () => {
-      const state: ArmyState = { ps: 'archer', age: '2', bn: [{ i: '199', e: [true, true] }] };
+      const state: ArmyState = { preset: 'archer', age: '2', bonuses: [{ id: '199', effects: [true, true] }] };
       const analysis = analyzeArmy(state, { archer: baseArcher }, techs as any);
 
       expect(analysis).not.toBeNull();
@@ -92,7 +92,7 @@ describe('ArmyAnalyzer', () => {
 
     it('should handle scout auto-upgrades in Feudal Age', () => {
       const scout: UnitData = { ...baseArcher, name: 'Scout Cavalry', id: '448', matk: 3, class: 47 };
-      const state: ArmyState = { ps: 'scout', age: '2' };
+      const state: ArmyState = { preset: 'scout', age: '2' };
       const analysis = analyzeArmy(state, { scout: scout }, {});
 
       expect(analysis?.effectiveStats.matk).toBe(5); // 3 + 2

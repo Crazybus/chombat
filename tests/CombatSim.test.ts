@@ -13,8 +13,8 @@ describe('Battle Simulation', () => {
 
   it('should simulate a battle and produce a result with history', () => {
     // 10 Archers vs 10 Skirmishers
-    const configA = { ps: 'archer', c: 10, age: '2' };
-    const configB = { ps: 'skirmisher', c: 10, age: '2' };
+    const configA = { preset: 'archer', count: 10, age: '2' };
+    const configB = { preset: 'skirmisher', count: 10, age: '2' };
 
     const sim = new CombatSim(archer, skirm, configA, configB, techsById, units);
     const result = sim.run();
@@ -29,8 +29,8 @@ describe('Battle Simulation', () => {
   });
 
   it('should handle large armies without crashing', () => {
-    const configA = { ps: 'archer', c: 60, age: '4' };
-    const configB = { ps: 'skirmisher', c: 60, age: '4' };
+    const configA = { preset: 'archer', count: 60, age: '4' };
+    const configB = { preset: 'skirmisher', count: 60, age: '4' };
 
     const sim = new CombatSim(archer, skirm, configA, configB, techsById, units);
     const result = sim.run();
@@ -41,10 +41,10 @@ describe('Battle Simulation', () => {
 
   it('should respect engagement efficiency', () => {
     // 100% efficiency vs 10% efficiency
-    const configA = { ps: 'archer', c: 20, age: '2', e: 100 };
-    const configB = { ps: 'archer', c: 20, age: '2', e: 10 };
+    const configA = { preset: 'archer', count: 20, age: '2', overrides: { engagement: 100 } };
+    const configB = { preset: 'archer', count: 20, age: '2', overrides: { engagement: 10 } };
 
-    const sim = new CombatSim(archer, archer, configA, configB, techsById, units);
+    const sim = new CombatSim(archer, archer, configA as any, configB as any, techsById, units);
     const result = sim.run();
 
     // Army A should win decisively
@@ -54,10 +54,10 @@ describe('Battle Simulation', () => {
   it('should respect micro settings (Target Fire)', () => {
     // 40 Archers vs 40 Archers
     // Perfect Micro (5) vs Poor Micro (1)
-    const configA = { ps: 'archer', c: 40, age: '2', mc: 5 };
-    const configB = { ps: 'archer', c: 40, age: '2', mc: 1 };
+    const configA = { preset: 'archer', count: 40, age: '2', overrides: { micro: 5 } };
+    const configB = { preset: 'archer', count: 40, age: '2', overrides: { micro: 1 } };
 
-    const sim = new CombatSim(archer, archer, configA, configB, techsById, units);
+    const sim = new CombatSim(archer, archer, configA as any, configB as any, techsById, units);
     const result = sim.run();
 
     // Army A (better micro) should win

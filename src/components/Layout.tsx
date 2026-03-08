@@ -288,8 +288,8 @@ const Layout: React.FC = () => {
           <textarea
             id="scenario-desc"
             placeholder="Add a description for this matchup scenario..."
-            value={state.desc || ''}
-            onChange={(e) => setState((prev) => ({ ...prev, desc: e.target.value }))}
+            value={state.description || ''}
+            onChange={(e) => setState((prev) => ({ ...prev, description: e.target.value }))}
           />
         </div>
 
