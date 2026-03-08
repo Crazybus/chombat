@@ -41,6 +41,19 @@ NON_RANKED_CIVS = {
     "PURU",
 }
 
+NAME_CONVERSIONS = {
+    'BRITISH': 'BRITONS',
+    'MAYAN': 'MAYANS',
+    'BYZANTINE': 'BYZANTINES',
+    'MAGYAR': 'MAGYARS',
+    'FRENCH': 'FRANKS',
+    'HINDUSTANIS': 'INDIANS'
+}
+
+INVALID_TECHS = {
+    90 # Tracking
+}
+
 RES_FOOD = 0
 RES_WOOD = 1
 RES_STONE = 2
@@ -48,8 +61,20 @@ RES_GOLD = 3
 ARM_PIERCE = 3
 ARM_MELEE = 4
 
-VALID_ATTRS = {0, 3, 4, 5, 6, 8, 9, 12}
+# VALID_ATTRS = {0, 3, 4, 5, 6, 8, 9, 12}
 
+
+VALID_ATTRS = {
+    0,  # HP
+    5,  # Movement Speed
+    8,  # Armor
+    9,  # Attack
+    10, # Attack reload time
+    11, # Accuracy percentage
+    12, # Max range
+    15, # Base armor
+    24 # Hidden damage resistance 
+}
 
 def get_cost(resource_costs):
     cost = {"f": 0, "w": 0, "g": 0, "s": 0}
@@ -102,6 +127,7 @@ def load_extra_data():
                 civ_name = filename.replace(".json", "")
                 if civ_name in NON_RANKED_CIVS:
                     continue
+                civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
                 civ_techs[civ_name] = {}  # TechID -> AgeID
                 with open(os.path.join(dir_path, filename), "r") as f:
                     try:
@@ -188,14 +214,10 @@ def extract_effects(eff_obj):
     effects = []
     for cmd in eff_obj.effect_commands:
         if cmd.type in [0, 4, 5]:
-            u_id = cmd.a if cmd.type == 0 else -1
-            c_id = cmd.a if cmd.type in [4, 5] else -1
-            attr_id = cmd.b
-            mode = cmd.c
-            val = cmd.d
+            attr_id = cmd.c
             if attr_id in VALID_ATTRS:
                 effects.append(
-                    {"t": mode, "a": attr_id, "v": val, "u": u_id, "c": c_id}
+                    {"t": cmd.type, "a": attr_id, "v": cmd.d, "u": cmd.a, "c": cmd.b}
                 )
     return effects
 
@@ -240,6 +262,7 @@ def convert():
         for unit in civ.units:
             if not unit:
                 continue
+
             uid = str(unit.base_id)
             if uid in processed_ids:
                 continue
@@ -281,6 +304,7 @@ def convert():
                 marm = unit.type_50.displayed_melee_armour
                 patk = atk if unit.type_50.max_range > 1 else 0
                 matk = 0 if unit.type_50.max_range > 1 else atk
+                accuracy_percent = unit.type_50.accuracy_percent
 
                 bonuses = {}
                 for attack in unit.type_50.attacks:
@@ -306,6 +330,7 @@ def convert():
                     "reload": unit.type_50.reload_time,
                     "range": unit.type_50.max_range,
                     "frame_delay": getattr(unit.type_50, "frame_delay", 0),
+                    "accuracy_percent": accuracy_percent,
                     "f": cost["f"],
                     "w": cost["w"],
                     "g": cost["g"],
@@ -345,6 +370,8 @@ def convert():
         locations = tech.research_locations
         if not locations:
             continue
+        if tid in INVALID_TECHS:
+            continue
         cost = get_cost(tech.resource_costs)
         tid_str = str(tid)
         name = tech_names.get(tid_str, tech.name)
@@ -356,6 +383,18 @@ def convert():
 
         if key in techs_out:
             key = f"{key}_{tid}"
+
+        AGE_UP_TECHS = {101, 102, 103}
+        reqs = tech.required_techs
+        age = 4 if 103 in reqs else 3 if 102 in reqs else 2 if 101 in reqs else tech_ages.get(tid, 1)
+
+        # Fall back to dat file required_techs for prereqs not captured in tech tree JSON (e.g. civ techs)
+        requires = prereqs.get(tid_str, {"techs": [], "buildings": []})
+        if not requires["techs"]:
+            dat_tech_reqs = [r for r in reqs if r > 0 and r not in AGE_UP_TECHS]
+            if dat_tech_reqs:
+                requires = {"techs": dat_tech_reqs, "buildings": requires["buildings"]}
+
         techs_out[key] = {
             "name": name,
             "f": cost["f"],
@@ -364,14 +403,25 @@ def convert():
             "time": locations[0].research_time,
             "building": locations[0].location_id,
             "id": tid,
-            "requires": prereqs.get(tid_str, {"techs": [], "buildings": []}),
+            "requires": requires,
             "effects": effects_out,
-            "age": tech_ages.get(tid, 1),
+            "age": age,
+            "civ": tech.civ
         }
+
+        # If a tech is associated with a civ, add to civs
+        if tech.civ > 0:
+            civ_name = dat.civs[tech.civ].name.strip().upper()
+            if civ_name in NON_RANKED_CIVS:
+                continue
+            
+            civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
+            civ_techs[civ_name][tid] = age
 
     # Extract Civ Bonuses
     for civ in dat.civs:
         civ_name = civ.name.strip().upper()
+        civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
         if civ_name in NON_RANKED_CIVS:
             continue
 
@@ -391,7 +441,7 @@ def convert():
                         # cmd.b is age req
                         new_age = max(age_id, int(cmd.b) + 1)
                         crawl_effects(int(cmd.a), new_age)
-                    elif cmd.type in [0, 4, 5]:
+                    elif cmd.type in [0, 4, 5]: # Attribute modifiers
                         u_id = cmd.a if cmd.type == 0 else -1
                         c_id = cmd.a if cmd.type in [4, 5] else -1
                         attr_id = cmd.b

@@ -9,6 +9,7 @@ export interface UnitData {
   reloadBase?: number; // base reload before tech multipliers
   range: number;
   frame_delay?: number;
+  accuracy_percent?: number;
   f: number;
   w: number;
   g: number;
@@ -47,6 +48,7 @@ export interface TechData {
   };
   effects: TechEffect[];
   age: number;
+  civ: number;
 }
 
 export interface BuildingData {

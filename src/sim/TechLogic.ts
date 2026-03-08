@@ -1,3 +1,4 @@
+import { EFFECT_ATTRIBUTES } from '../data/effect_constants';
 import { TechData, UnitData } from './types';
 
 export function decodeEncoded(val: number): { cls: number; amt: number } {
@@ -32,17 +33,21 @@ export const CLASS_ALIASES: Record<number, number[]> = {
 
 export function getEffectLabel(e: any): string {
   const { t, a, v } = e;
-  if (t === 8 || t === 9) {
+  // Armor (a=8) and Attack (a=9): value is encoded as cls|amt
+  if (a === EFFECT_ATTRIBUTES.attack || a === EFFECT_ATTRIBUTES.armor) {
     const { cls, amt } = decodeEncoded(v);
-    const prefix = t === 9 ? 'Atk' : 'Arm';
+    if (amt === 0 || cls < 0) return '';
+    const prefix = a === EFFECT_ATTRIBUTES.attack ? 'Atk' : 'Arm';
+    if (t == 5) return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? 'x' : ''}${amt}`;
     return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
   }
-  const attrMap: Record<number, string> = { 0: 'Atk', 3: 'Range', 12: 'HP', 10: 'Reload' };
-  if (t === 130 || t === 23) return ''; // Hide internal accuracy/projectile speed effects
-  if (t === 12) return `Range +${v}`;
+  const attrMap: Record<number, string> = { 0: 'HP', 9: 'Atk', 10: 'Reload', 12: 'Range', 5: 'Speed', 11: 'Accuracy' };
+  if (a === 11) return ''; // Hide accuracy effects
+  if (e.u !== -1 && v < 0) return ''; // Hide negative unit-specific undo effects
+
   const name = attrMap[a] || 'Stat';
-  if (t === 5 || t === 2) return `${name} x${v}`;
-  return `${name} +${v}`;
+  if (t === 5) return `${name} x${v}`; // Multiplier Attribute Modifier
+  return `${name} +${v}`; // Set or Add Attribute Modifiers
 }
 
 export function matchesUnit(e: any, u: UnitData): boolean {
@@ -50,25 +55,12 @@ export function matchesUnit(e: any, u: UnitData): boolean {
 }
 
 export function matchesClass(e: any, u: UnitData): boolean {
-  const isArmorAttackEffect = e.t === 8 || e.t === 9;
-
-  // If 'c' is not -1, it's the primary unit class filter.
-  // If 'c' is -1 AND it's a combat effect (Type 8/9), 'a' is used as the filter.
-  let targetClass = e.c;
-  if (targetClass === -1 && isArmorAttackEffect) {
-    targetClass = e.a;
-  }
-
-  // c: -1 for non-combat effects means 'Global' (e.g. Bloodlines HP)
-  if (targetClass === -1) return true;
-
-  const hasArmorClass = u.armors && String(targetClass) in u.armors;
-  const matchesBaseClass = targetClass == u.class;
-  if (hasArmorClass || matchesBaseClass) return true;
+  if (e.c === -1) return true;
+  if (e.c === u.class) return true;
 
   // Check category aliases
-  if (CLASS_ALIASES[targetClass]) {
-    return CLASS_ALIASES[targetClass].some((alias) => alias == u.class);
+  if (CLASS_ALIASES[e.c]) {
+    return CLASS_ALIASES[e.c].some((alias) => alias == u.class);
   }
 
   return false;
@@ -83,13 +75,13 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
     if ((u.range || 0) <= 1) return false;
   }
 
-  if (e.t === 8 || e.t === 9) {
+  if (e.a === 8 || e.a === 9) {
     const { cls } = decodeEncoded(e.v);
     const hasArmorClass = u.armors && String(cls) in u.armors;
     const matchesBaseClass = cls === u.class;
     if (!hasArmorClass && !matchesBaseClass) return false;
 
-    if (e.t === 9) {
+    if (e.a === 9) {
       if (cls === 3 && (u.patk || 0) === 0) return false;
       if (cls === 4 && (u.matk || 0) === 0) return false;
     }
@@ -99,6 +91,9 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = []): 
   if ((e.t === 0 || e.t === 1 || e.t === 2) && e.a === 0) {
     if (allEffects.some((other) => other !== e && other.t === 9)) return false;
   }
+
+  // If has class and not same as unit
+  if (e.c != -1 && e.c != u.class) return false;
 
   return true;
 }

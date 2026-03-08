@@ -2,6 +2,7 @@ import { ArmyState, UnitData, TechData } from './types';
 import { CombatSim } from './CombatSim';
 import { Unit } from './Unit';
 import { getEffectLabel, decodeEncoded, COMBAT_BUILDINGS, shouldApplyTech } from './TechLogic';
+import { EFFECT_ATTRIBUTES } from '../data/effect_constants';
 import { GENERIC_CIV } from '../data/civs';
 import { buildings } from '../data/buildings';
 import { techs } from '../data/techs';
@@ -94,12 +95,13 @@ export function getAgeName(age: string) {
   }
 }
 
+const AGE_OVERRIDES: Record<number, number> = {
+  47: 4, // Chemistry is standardly Imperial (4)
+  93: 3, // Ballistics is standardly Castle (3)
+};
+
 function getTrueAge(t: TechData): number {
-  const overrides: Record<number, number> = {
-    47: 4, // Chemistry is standardly Imperial (4)
-    93: 3, // Ballistics is standardly Castle (3)
-  };
-  return overrides[t.id] || t.age;
+  return AGE_OVERRIDES[t.id] ?? t.age;
 }
 
 function isCombatTech(t: TechData): boolean {
@@ -113,11 +115,11 @@ function isCombatTech(t: TechData): boolean {
   if (t.effects && t.effects.length > 0) {
     const hasBuildingEffect = t.effects.some((e) => {
       const { cls } = decodeEncoded(e.v);
-      const targetClass = e.c !== -1 ? e.c : e.t === 8 || e.t === 9 ? e.a : -1;
+      const targetClass = e.c !== -1 ? e.c : e.a === 8 || e.a === 9 ? e.a : -1;
       return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
     });
     if (hasBuildingEffect) return false;
-    return t.effects.some((e) => [0, 3, 4, 5, 6, 8, 9, 12].includes(e.a));
+    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24].includes(e.a));
   }
   return false;
 }
@@ -199,34 +201,35 @@ export function getTechBonusSources(
         let label = getEffectLabel(e);
         if (!label) return null;
         label = label.replace(/(\d+\.\d{3,})/g, (match) => parseFloat(match).toFixed(2));
+        // Route group by attribute (e.a), matching applyBonuses logic
         let group = 'other';
-        if (e.t === 0) group = 'hp';
-        else if (e.t === 1 || e.t === 9) group = 'atk';
-        else if (e.t === 8) {
+        if (e.a === EFFECT_ATTRIBUTES.hp) {
+          group = 'hp';
+        } else if (e.a === EFFECT_ATTRIBUTES.armor) {
           const { cls } = decodeEncoded(e.v);
           if (cls === 4) group = 'marm';
           else if (cls === 3) group = 'parm';
-        } else if (e.t === 12 || e.a === 3) group = 'range';
+        } else if (e.a === EFFECT_ATTRIBUTES.attack || e.a === EFFECT_ATTRIBUTES.reload) {
+          group = 'atk';
+        } else if (e.a === EFFECT_ATTRIBUTES.max_range) {
+          group = 'range';
+        }
         return { e, label, group, idx };
       })
       .filter((x) => x !== null) as { e: any; label: string; group: string; idx: number }[];
 
     techEffects.forEach(({ e, label, group, idx }) => {
-      if (e.t === 1 && techEffects.some((other) => other.e.t === 9 && other.group === group)) return;
       const attrStripRegex =
         /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload)\s?/i;
       const cleanLabel = label.replace(attrStripRegex, '').trim();
       let finalLabel = cleanLabel;
       if (group === 'other') {
         const attrNames: Record<number, string> = {
-          130: 'Accuracy',
-          10: 'Fire Rate',
-          5: 'Speed',
-          1: 'Speed',
-          2: 'Speed',
-          23: 'Projectile Speed',
+          [EFFECT_ATTRIBUTES.accuracy]: 'Accuracy',
+          [EFFECT_ATTRIBUTES.reload]: 'Fire Rate',
+          [EFFECT_ATTRIBUTES.speed]: 'Speed',
         };
-        const attrName = attrNames[e.a] || attrNames[e.t] || 'Stat';
+        const attrName = attrNames[e.a] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;
       }
       const groupLabel = `${group}-${finalLabel}`;
@@ -255,12 +258,23 @@ export function getRecommendedTechs(
 ): TechData[] {
   const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
   return Object.values(activeTechs).filter((t) => {
-    if (!COMBAT_BUILDINGS.includes(t.building)) return false;
+    if (!COMBAT_BUILDINGS.includes(t.building) && !t.civ) return false;
     if (!isCombatTech(t)) return false;
     if (t.building === 82) return false;
     if (t.building === 209 || t.building === 49) {
       if (t.id !== 93 && t.id !== 47) return false;
     }
+
+    // If civ tech but no civ provided
+    if (t.civ > 0 && (!civKey || civKey == GENERIC_CIV)) return false;
+
+    // If civ tech and in civ techs
+    if (t.civ > 0 && t.id in availableCivTechs) {
+      const classEffects = t.effects.filter((eff) => eff.c !== -1);
+      // Matches class
+      if (classEffects.length > 0 && !classEffects.some((eff) => eff.c === unit.class)) return false;
+    }
+
     let effectiveTechAge = getTrueAge(t);
     if (civKey && civKey !== GENERIC_CIV) {
       if (availableCivTechs[t.id] !== undefined) effectiveTechAge = availableCivTechs[t.id];
@@ -268,6 +282,15 @@ export function getRecommendedTechs(
     } else {
       if (t.id > 1000) return false;
     }
+
+    // Get minimum age from required techs and exclude if a required tech isn't available to the civ.
+    for (const reqId of t.requires?.techs ?? []) {
+      const req = activeTechs[reqId];
+      if (!req || req.building === -1) continue;
+      if (civKey && civKey !== GENERIC_CIV && availableCivTechs[reqId] === undefined) return false;
+      effectiveTechAge = Math.max(effectiveTechAge, getTrueAge(req));
+    }
+    if (effectiveTechAge > ageId) return false;
     const b = buildingsById[t.building.toString()];
     const buildingAge = b
       ? b.age || 1
@@ -282,7 +305,7 @@ export function getRecommendedTechs(
               : t.building === 12
                 ? 1
                 : 1;
-    if (effectiveTechAge > ageId) return false;
+
     if (buildingAge > ageId) return false;
     return shouldApplyTech(t, unit);
   });
@@ -368,6 +391,7 @@ export function analyzeArmy(
 
   // 3. Final Effective (Everything)
   const simFinal = new CombatSim(baseUnit, baseUnit, armyState, armyState, activeTechs, allUnits);
+
   const finalEffective = { ...simFinal.dataA, count: armyState.c !== undefined ? armyState.c : 1 };
 
   const isMelee = (finalEffective.range || 0) <= 1;

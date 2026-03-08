@@ -65,7 +65,7 @@ describe('Scenario Scrubbing', () => {
   it('should KEEP meaningful overrides', () => {
     const champiBase = units['champi_scout'];
     const rawScenarioArmy: ArmyState = {
-      ps: 'champi_scout',
+      ps: 'champi_scout_2550',
       age: '1',
       h: champiBase.hp + 10, // INTENTIONAL OVERRIDE
       bn: [],

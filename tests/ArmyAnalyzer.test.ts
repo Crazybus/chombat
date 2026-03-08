@@ -24,12 +24,12 @@ describe('ArmyAnalyzer', () => {
 
   const techs = {
     199: {
-      id: 199,
+      id: 192,
       name: 'Fletching',
       building: 103,
       effects: [
-        { t: 9, a: 0, v: 769, u: -1, c: -1 }, // P-Atk +1
-        { t: 12, a: 0, v: 1, u: -1, c: -1 }, // Range +1
+        { t: 4, a: 9, v: 769, u: -1, c: 0 }, // P-Atk +1
+        { t: 4, a: 12, v: 1, u: -1, c: 0 }, // Range +1
       ],
       age: 2,
     },
@@ -91,7 +91,7 @@ describe('ArmyAnalyzer', () => {
     });
 
     it('should handle scout auto-upgrades in Feudal Age', () => {
-      const scout: UnitData = { ...baseArcher, name: 'Scout Cavalry', id: '448', matk: 3, class: 12 };
+      const scout: UnitData = { ...baseArcher, name: 'Scout Cavalry', id: '448', matk: 3, class: 47 };
       const state: ArmyState = { ps: 'scout', age: '2' };
       const analysis = analyzeArmy(state, { scout: scout }, {});
 
