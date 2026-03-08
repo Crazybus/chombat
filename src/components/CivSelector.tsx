@@ -18,18 +18,16 @@ const CivSelector: React.FC<CivSelectorProps> = ({ army }) => {
 
   const filteredOptions = useMemo(() => {
     const options: string[] = [];
-    
+
     // Check if "None" matches search
-    if (!searchTerm || 
-        "generic".includes(searchTerm.toLowerCase()) || 
-        "none".includes(searchTerm.toLowerCase())) {
+    if (!searchTerm || 'generic'.includes(searchTerm.toLowerCase()) || 'none'.includes(searchTerm.toLowerCase())) {
       options.push(GENERIC_CIV);
     }
 
-    const filteredCivs = civNames.filter((name) => 
-      !searchTerm || name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredCivs = civNames.filter(
+      (name) => !searchTerm || name.toLowerCase().includes(searchTerm.toLowerCase()),
     );
-    
+
     return [...options, ...filteredCivs];
   }, [civNames, searchTerm]);
 
