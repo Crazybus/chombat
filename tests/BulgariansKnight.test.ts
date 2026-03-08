@@ -40,10 +40,10 @@ describe('Bulgarians Castle Age Knight (Unique Tech)', () => {
     const stirrupsId = '685';
     const stirrups = techsById[685];
 
-    const bn = [{ i: stirrupsId, e: stirrups.effects.map(() => true) }];
+    const bonuses = [{ id: stirrupsId, effects: stirrups.effects.map(() => true) }];
 
     const analysis = analyzeArmy(
-      { ps: 'knight', age: ageId.toString(), cv: civKey, bn },
+      { preset: 'knight', age: ageId.toString(), civ: civKey, bonuses },
       { knight: knight },
       techsById,
     );

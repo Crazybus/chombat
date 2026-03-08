@@ -116,9 +116,12 @@ const UnitSelector: React.FC<UnitSelectorProps> = ({ army, onSelect }) => {
     }
   };
 
-  const currentUnitId = state[army].ps;
+  const armyKey = army === 'a' ? 'armyA' : 'armyB';
+  const currentUnitId = state[armyKey].preset;
   const unitMap: Record<string, any> = { ...units, ...presets };
-  const currentUnitName = currentUnitId ? unitMap[currentUnitId]?.name : state[army].nm || `Unit ${army.toUpperCase()}`;
+  const currentUnitName = currentUnitId
+    ? unitMap[currentUnitId]?.name
+    : state[armyKey].name || `Unit ${army.toUpperCase()}`;
 
   return (
     <div className="unit-selector-container" ref={containerRef}>

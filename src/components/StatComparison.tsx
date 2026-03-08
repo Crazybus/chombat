@@ -15,8 +15,8 @@ const StatComparison: React.FC = () => {
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
     const allUnits = { ...units, ...presets };
 
-    return analyzeDuel(state.a, state.b, analysisA, analysisB, techsById, allUnits);
-  }, [analysisA, analysisB, state.a, state.b]);
+    return analyzeDuel(state.armyA, state.armyB, analysisA, analysisB, techsById, allUnits);
+  }, [analysisA, analysisB, state.armyA, state.armyB]);
 
   if (!duelAnalysis || !analysisA || !analysisB) return null;
   const { winner, winnerColor, remainingInfo, rows, nameA, nameB } = duelAnalysis;

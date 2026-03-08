@@ -65,8 +65,16 @@ const ProductionSimulation: React.FC = () => {
   const result: ProductionAnalysisResult | null = useMemo(() => {
     if (!analysisA || !analysisB) return null;
     const allUnits = { ...units, ...presets };
-    return analyzeProduction(state.a, state.b, analysisA.baseUnit, analysisB.baseUnit, techsById, allUnits, maxTime);
-  }, [state.a, state.b, analysisA, analysisB, techsById, maxTime]);
+    return analyzeProduction(
+      state.armyA,
+      state.armyB,
+      analysisA.baseUnit,
+      analysisB.baseUnit,
+      techsById,
+      allUnits,
+      maxTime,
+    );
+  }, [state.armyA, state.armyB, analysisA, analysisB, techsById, maxTime]);
 
   if (!result || !analysisA || !analysisB) return null;
   const { finalResA, finalResB, labels, countA, countB, advantage, tideTurnsAt, economyA, economyB, mergedEvents } =
@@ -320,9 +328,9 @@ const ProductionSimulation: React.FC = () => {
         <BuildOrderSummary
           army="a"
           name={nameA}
-          timeline={state.a.tl || []}
+          timeline={state.armyA.timeline || []}
           onEdit={() => setIsCollapsedA(!isCollapsedA)}
-          onReset={() => state.a.ps && loadPreset('a', state.a.ps)}
+          onReset={() => state.armyA.preset && loadPreset('a', state.armyA.preset)}
         />
         <div
           className={`production-content ${isCollapsedA ? 'collapsed' : ''}`}
@@ -343,9 +351,9 @@ const ProductionSimulation: React.FC = () => {
         <BuildOrderSummary
           army="b"
           name={nameB}
-          timeline={state.b.tl || []}
+          timeline={state.armyB.timeline || []}
           onEdit={() => setIsCollapsedB(!isCollapsedB)}
-          onReset={() => state.b.ps && loadPreset('b', state.b.ps)}
+          onReset={() => state.armyB.preset && loadPreset('b', state.armyB.preset)}
         />
         <div
           className={`production-content ${isCollapsedB ? 'collapsed' : ''}`}
@@ -658,10 +666,10 @@ const BuildOrderSummary: React.FC<{
       {timeline && timeline.length > 0 ? (
         timeline.map((step: any, i: number) => {
           let label = '';
-          const n = (step.n || '').toLowerCase();
-          switch (step.t) {
+          const n = (step.name || '').toLowerCase();
+          switch (step.type) {
             case 'villagers':
-              label = `👨‍🌾${step.c || 1} villagers`;
+              label = `👨‍🌾${step.count || 1} villagers`;
               break;
             case 'building':
               label = n;
@@ -674,10 +682,10 @@ const BuildOrderSummary: React.FC<{
               break;
             case 'units':
             case 'wait':
-              label = `🎯wait ${step.c || 0}`;
+              label = `🎯wait ${step.count || 0}`;
               break;
             case 'delay':
-              label = `⏳${step.d || 0}s`;
+              label = `⏳${step.delay || 0}s`;
               break;
             default:
               label = n;
@@ -712,7 +720,8 @@ const TechButton: React.FC<{ id: number; label: string; onClick: (id: number) =>
 
 const TimelineEditor: React.FC<{ army: 'a' | 'b'; name: string }> = ({ army, name }) => {
   const { state, updateArmy, loadPreset, analysisA, analysisB } = useSimulation();
-  const armyState = state[army];
+  const armyKey = army === 'a' ? 'armyA' : 'armyB';
+  const armyState = state[armyKey];
   const unitBuildingId = (army === 'a' ? analysisA?.baseUnit?.building : analysisB?.baseUnit?.building) || 87;
 
   const sensors = useSensors(
@@ -724,61 +733,70 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b'; name: string }> = ({ army, nam
   const addStep = (type: string, data: any = {}) => {
     // Normalize properties
     const newStep: any = {
-      t: type,
-      n: data.name || type,
-      d: data.time !== undefined ? data.time : 30,
-      c: 1,
-      co: data.cost || 0,
-      i: data.i || data.id?.toString(),
-      bt: data.bt !== undefined ? parseInt(data.bt.toString()) : undefined,
-      lim: false, // Default to infinite/continuous
+      type: type,
+      name: data.name || type,
+      delay: data.time !== undefined ? data.time : 30,
+      count: 1,
+      cost: data.cost || 0,
+      id: data.id || data.id?.toString(),
+      buildingTarget: data.buildingTarget !== undefined ? parseInt(data.buildingTarget.toString()) : undefined,
+      limitedProduction: false, // Default to infinite/continuous
       ...data,
     };
 
     if (type === 'villagers') {
-      newStep.n = 'Villagers';
-      newStep.d = 25;
-      newStep.co = 50;
-      newStep.lim = true;
+      newStep.name = 'Villagers';
+      newStep.delay = 25;
+      newStep.cost = 50;
+      newStep.limitedProduction = true;
     } else if (type === 'production') {
       const unit = army === 'a' ? analysisA?.baseUnit : analysisB?.baseUnit;
-      newStep.n = (unit?.name || 'Unit') + ' Production';
-      newStep.d = unit?.trainTime || 20;
-      newStep.tr = unit?.trainTime || 20;
-      newStep.v = 1;
-      newStep.co = unit ? unit.f + unit.w + unit.g : 0;
+      newStep.name = (unit?.name || 'Unit') + ' Production';
+      newStep.delay = unit?.trainTime || 20;
+      newStep.trainSpeed = unit?.trainTime || 20;
+      newStep.value = 1;
+      newStep.cost = unit ? (unit.food || 0) + (unit.wood || 0) + (unit.gold || 0) : 0;
     }
 
     // Remove redundant/wrong properties
+    delete (newStep as any).t;
+    delete (newStep as any).n;
+    delete (newStep as any).d;
+    delete (newStep as any).c;
+    delete (newStep as any).co;
+    delete (newStep as any).i;
+    delete (newStep as any).bt;
+    delete (newStep as any).lim;
+    delete (newStep as any).tr;
+    delete (newStep as any).v;
+    delete (newStep as any).b;
     delete (newStep as any).time;
-    delete (newStep as any).cost;
-    delete (newStep as any).id;
 
-    updateArmy(army, { tl: [...(armyState.tl || []), newStep] });
+    updateArmy(army, { timeline: [...(armyState.timeline || []), newStep] });
   };
 
   const addTechById = (id: number) => {
     const t = (techs as any)[id] || Object.values(techs).find((x) => x.id === id);
     if (!t) return;
     addStep('tech', {
-      n: t.name,
-      d: t.time || 40,
-      c: 1,
-      co: (t.f || 0) + (t.w || 0) + (t.g || 0),
-      i: t.id.toString(),
-      bt: t.building,
-      b: t.building === unitBuildingId || t.building === 109,
-      lim: true, // Techs are inherently "Once"
+      name: t.name,
+      delay: t.time || 40,
+      count: 1,
+      cost: (t.food || 0) + (t.wood || 0) + (t.gold || 0),
+      id: t.id.toString(),
+      buildingTarget: t.building,
+      isBlocking: t.building === unitBuildingId || t.building === 109,
+      limitedProduction: true, // Techs are inherently "Once"
     });
   };
 
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
     if (over && active.id !== over.id) {
-      const oldIndex = armyState.tl?.findIndex((_, i) => `step-${army}-${i}` === active.id) ?? -1;
-      const newIndex = armyState.tl?.findIndex((_, i) => `step-${army}-${i}` === over.id) ?? -1;
+      const oldIndex = armyState.timeline?.findIndex((_, i) => `step-${army}-${i}` === active.id) ?? -1;
+      const newIndex = armyState.timeline?.findIndex((_, i) => `step-${army}-${i}` === over.id) ?? -1;
       if (oldIndex !== -1 && newIndex !== -1) {
-        updateArmy(army, { tl: arrayMove(armyState.tl!, oldIndex, newIndex) });
+        updateArmy(army, { timeline: arrayMove(armyState.timeline!, oldIndex, newIndex) });
       }
     }
   };
@@ -798,10 +816,10 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b'; name: string }> = ({ army, nam
         style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}
       >
         <h3 style={{ margin: 0 }}>{name}</h3>
-        {armyState.ps && (
+        {armyState.preset && (
           <button
             className="nav-btn secondary"
-            onClick={() => loadPreset(army, armyState.ps!)}
+            onClick={() => loadPreset(army, armyState.preset!)}
             title="Refresh to default build order plan for this unit"
             style={{ fontSize: '0.75rem', padding: '4px 12px' }}
           >
@@ -818,46 +836,59 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b'; name: string }> = ({ army, nam
           <AutocompleteSelector
             label="+ Building"
             options={Object.values(buildings).map((b) => ({
-              i: b.id,
+              id: b.id,
               name: b.name,
               time: b.time,
-              cost: (b.f || 0) + (b.w || 0) + (b.g || 0) + (b.s || 0),
-              prod: true,
-              bt: parseInt(b.id),
-              lim: true,
+              cost: (b.food || 0) + (b.wood || 0) + (b.gold || 0) + (b.stone || 0),
+              producesUnits: true,
+              buildingTarget: parseInt(b.id),
+              limitedProduction: true,
             }))}
             onSelect={(b) => addStep('building', b)}
           />
           <AutocompleteSelector
             label="+ Tech"
             options={Object.values(techs).map((t) => ({
-              i: t.id.toString(),
+              id: t.id.toString(),
               name: t.name,
               time: t.time,
-              cost: (t.f || 0) + (t.w || 0) + (t.g || 0),
-              bt: t.building,
-              lim: true,
+              cost: (t.food || 0) + (t.wood || 0) + (t.gold || 0),
+              buildingTarget: t.building,
+              limitedProduction: true,
             }))}
             onSelect={(t) => addStep('tech', t)}
           />
           <button
             className="add-step-btn"
-            onClick={() => addStep('villagers', { name: 'Villagers', v: 1, d: 25, lim: false, cost: 50 })}
+            onClick={() =>
+              addStep('villagers', { name: 'Villagers', value: 1, delay: 25, limitedProduction: false, cost: 50 })
+            }
           >
             + Vills
           </button>
-          <button className="add-step-btn" onClick={() => addStep('delay', { name: 'Idle Time', d: 30, lim: true })}>
+          <button
+            className="add-step-btn"
+            onClick={() => addStep('delay', { name: 'Idle Time', delay: 30, limitedProduction: true })}
+          >
             + Delay
           </button>
           <button
             className="add-step-btn"
-            onClick={() => addStep('units', { name: 'Wait for units', c: 5, lim: true })}
+            onClick={() => addStep('units', { name: 'Wait for units', count: 5, limitedProduction: true })}
           >
             + Wait
           </button>
           <button
             className="add-step-btn"
-            onClick={() => addStep('production', { name: `${name} Production`, v: 1, tr: 30, lim: false, d: 0 })}
+            onClick={() =>
+              addStep('production', {
+                name: `${name} Production`,
+                value: 1,
+                trainSpeed: 30,
+                limitedProduction: false,
+                delay: 0,
+              })
+            }
           >
             + {name} Production
           </button>
@@ -1070,11 +1101,11 @@ const TimelineEditor: React.FC<{ army: 'a' | 'b'; name: string }> = ({ army, nam
 
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext
-            items={(armyState.tl || []).map((_, i) => `step-${army}-${i}`)}
+            items={(armyState.timeline || []).map((_, i) => `step-${army}-${i}`)}
             strategy={verticalListSortingStrategy}
           >
             <div className="production-timeline-table" style={{ display: 'flex', flexDirection: 'column' }}>
-              {armyState.tl?.map((step, idx) => (
+              {armyState.timeline?.map((step, idx) => (
                 <SortableStep
                   key={idx}
                   id={`step-${army}-${idx}`}
@@ -1104,6 +1135,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
   const timerRef = useRef<any>(null);
   const intervalRef = useRef<any>(null);
   const stepRef = useRef(step);
+  const armyKey = army === 'a' ? 'armyA' : 'armyB';
 
   useEffect(() => {
     stepRef.current = step;
@@ -1119,10 +1151,10 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
   };
 
   const update = (updates: any) => {
-    const currentList = state[army].tl || [];
+    const currentList = state[armyKey].timeline || [];
     const newList = [...currentList];
     newList[index] = { ...newList[index], ...updates };
-    updateArmy(army, { tl: newList });
+    updateArmy(army, { timeline: newList });
   };
 
   const startRepeating = (field: string, dir: number, stepVal: number = 1) => {
@@ -1149,22 +1181,22 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
   }, []);
 
   const remove = () => {
-    const currentList = state[army].tl || [];
+    const currentList = state[armyKey].timeline || [];
     const newList = [...currentList];
     newList.splice(index, 1);
-    updateArmy(army, { tl: newList });
+    updateArmy(army, { timeline: newList });
   };
 
   const toggleBlock = (target: number) => {
-    if (step.b && step.bt === target) {
-      update({ b: false, bt: undefined });
+    if (step.isBlocking && step.buildingTarget === target) {
+      update({ isBlocking: false, buildingTarget: undefined });
     } else {
-      update({ b: true, bt: target });
+      update({ isBlocking: true, buildingTarget: target });
     }
   };
 
   const typeIcon = useMemo(() => {
-    switch (step.t) {
+    switch (step.type) {
       case 'villagers':
         return '👨‍🌾';
       case 'building':
@@ -1180,10 +1212,10 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
       default:
         return '❓';
     }
-  }, [step.t]);
+  }, [step.type]);
 
-  const isTCActive = !!(step.b && step.bt === 109);
-  const isUnitActive = !!(step.b && step.bt === unitBuildingId && step.b);
+  const isTCActive = !!(step.isBlocking && step.buildingTarget === 109);
+  const isUnitActive = !!(step.isBlocking && step.buildingTarget === unitBuildingId);
 
   return (
     <div ref={setNodeRef} style={style} className="timeline-row">
@@ -1194,15 +1226,15 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
       <div style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' }}>
         <span style={{ fontSize: '1rem' }}>{typeIcon}</span>
         <span style={{ fontSize: '0.65rem', fontWeight: 'bold', textTransform: 'uppercase', color: 'var(--text-dim)' }}>
-          {step.t.slice(0, 4)}
+          {step.type.slice(0, 4)}
         </span>
       </div>
 
       <div>
         <input
           type="text"
-          value={step.n || ''}
-          onChange={(e) => update({ n: e.target.value })}
+          value={step.name || ''}
+          onChange={(e) => update({ name: e.target.value })}
           className="compact-input"
           style={{
             width: '100%',
@@ -1219,7 +1251,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
           className="step-btn"
           onPointerDown={(e) => {
             e.preventDefault();
-            startRepeating(step.t === 'production' ? 'tr' : 'd', -1, step.t === 'production' ? 1 : 5);
+            startRepeating(step.type === 'production' ? 'trainSpeed' : 'delay', -1, step.type === 'production' ? 1 : 5);
           }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
@@ -1228,11 +1260,11 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
         </button>
         <input
           type="number"
-          value={step.t === 'production' ? step.tr || 0 : step.d || 0}
+          value={step.type === 'production' ? step.trainSpeed || 0 : step.delay || 0}
           onChange={(e) => {
             const val = parseInt(e.target.value) || 0;
-            if (step.t === 'production') update({ tr: val, d: val });
-            else update({ d: val });
+            if (step.type === 'production') update({ trainSpeed: val, delay: val });
+            else update({ delay: val });
           }}
           className="compact-input"
           style={{
@@ -1248,7 +1280,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
           className="step-btn"
           onPointerDown={(e) => {
             e.preventDefault();
-            startRepeating(step.t === 'production' ? 'tr' : 'd', 1, step.t === 'production' ? 1 : 5);
+            startRepeating(step.type === 'production' ? 'trainSpeed' : 'delay', 1, step.type === 'production' ? 1 : 5);
           }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
@@ -1262,18 +1294,18 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
           className="step-btn"
           onPointerDown={(e) => {
             e.preventDefault();
-            startRepeating(step.t === 'production' ? 'v' : 'c', -1);
+            startRepeating(step.type === 'production' ? 'value' : 'count', -1);
           }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
         >
           −
         </button>
-        {step.t === 'production' ? (
+        {step.type === 'production' ? (
           <input
             type="number"
-            value={step.v || 1}
-            onChange={(e) => update({ v: parseInt(e.target.value) || 1 })}
+            value={step.value || 1}
+            onChange={(e) => update({ value: parseInt(e.target.value) || 1 })}
             className="compact-input"
             title="Multiplier / Capacity"
             style={{
@@ -1288,8 +1320,8 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
         ) : (
           <input
             type="number"
-            value={step.c || 1}
-            onChange={(e) => update({ c: parseInt(e.target.value) || 1 })}
+            value={step.count || 1}
+            onChange={(e) => update({ count: parseInt(e.target.value) || 1 })}
             className="compact-input"
             style={{
               width: '50px',
@@ -1305,7 +1337,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
           className="step-btn"
           onPointerDown={(e) => {
             e.preventDefault();
-            startRepeating(step.t === 'production' ? 'v' : 'c', 1);
+            startRepeating(step.type === 'production' ? 'value' : 'count', 1);
           }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
@@ -1319,7 +1351,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
           className="step-btn"
           onPointerDown={(e) => {
             e.preventDefault();
-            startRepeating('co', -1, 5);
+            startRepeating('cost', -1, 5);
           }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
@@ -1328,8 +1360,8 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
         </button>
         <input
           type="number"
-          value={step.co || 0}
-          onChange={(e) => update({ co: parseInt(e.target.value) || 0 })}
+          value={step.cost || 0}
+          onChange={(e) => update({ cost: parseInt(e.target.value) || 0 })}
           className="compact-input"
           style={{
             width: '50px',
@@ -1344,7 +1376,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
           className="step-btn"
           onPointerDown={(e) => {
             e.preventDefault();
-            startRepeating('co', 1, 5);
+            startRepeating('cost', 1, 5);
           }}
           onPointerUp={stopRepeating}
           onPointerLeave={stopRepeating}
@@ -1354,7 +1386,7 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
       </div>
 
       <div style={{ display: 'flex', gap: '2px', justifyContent: 'center' }}>
-        {step.t === 'tech' || step.t === 'building' || step.t === 'production' ? (
+        {step.type === 'tech' || step.type === 'building' || step.type === 'production' ? (
           <>
             <button
               className={`tiny-toggle-btn ${isTCActive ? 'active' : ''}`}
@@ -1399,23 +1431,23 @@ const SortableStep: React.FC<{ id: string; army: 'a' | 'b'; index: number; step:
       </div>
 
       <div style={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
-        {step.t === 'villagers' || step.t === 'production' ? (
+        {step.type === 'villagers' || step.type === 'production' ? (
           <div
-            className={`custom-checkbox ${step.lim ? 'checked' : ''}`}
-            onClick={() => update({ lim: !step.lim })}
+            className={`custom-checkbox ${step.limitedProduction ? 'checked' : ''}`}
+            onClick={() => update({ limitedProduction: !step.limitedProduction })}
             title="Toggle Limited Production (Produce exactly X and wait)"
             style={{
               width: '22px',
               height: '22px',
               borderRadius: '4px',
               border: '1px solid var(--border-dim)',
-              background: step.lim ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
+              background: step.limitedProduction ? 'var(--accent-color)' : 'rgba(255,255,255,0.05)',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '0.9rem',
-              color: step.lim ? 'black' : 'transparent',
+              color: step.limitedProduction ? 'black' : 'transparent',
               transition: 'all 0.2s',
               fontWeight: 'bold',
             }}

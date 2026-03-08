@@ -32,8 +32,12 @@ describe('Civilization-Specific Tech Filtering (Explicit)', () => {
     expect(names).toEqual(expected);
 
     // Stats: Base (5) + Fletching (1) + Bodkin (1) + Chemistry (1) = 8
-    const bn = recommended.map((t) => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { crossbowman: crossbow }, techsById);
+    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
+    const analysis = analyzeArmy(
+      { preset: 'crossbowman', age: '3', civ: civKey, bonuses },
+      { crossbowman: crossbow },
+      techsById,
+    );
     expect(analysis?.effectiveStats.patk).toBe(8);
   });
 
@@ -58,8 +62,12 @@ describe('Civilization-Specific Tech Filtering (Explicit)', () => {
     expect(names).toEqual(expected);
 
     // Stats: Base (5) + Fletching (1) + Bodkin (1) = 7
-    const bn = recommended.map((t) => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { crossbowman: crossbow }, techsById);
+    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
+    const analysis = analyzeArmy(
+      { preset: 'crossbowman', age: '3', civ: civKey, bonuses },
+      { crossbowman: crossbow },
+      techsById,
+    );
     expect(analysis?.effectiveStats.patk).toBe(7);
   });
 
@@ -82,8 +90,12 @@ describe('Civilization-Specific Tech Filtering (Explicit)', () => {
     expect(names).toEqual(expected);
 
     // Stats: Base (5) + Fletching (1) + Bodkin (1) = 7
-    const bn = recommended.map((t) => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
-    const analysis = analyzeArmy({ ps: 'crossbowman', age: '3', cv: civKey, bn }, { crossbowman: crossbow }, techsById);
+    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
+    const analysis = analyzeArmy(
+      { preset: 'crossbowman', age: '3', civ: civKey, bonuses },
+      { crossbowman: crossbow },
+      techsById,
+    );
     expect(analysis?.effectiveStats.patk).toBe(7);
   });
 });

@@ -12,9 +12,9 @@ describe('Duel Analysis Logic', () => {
     parm: 0,
     reload: 2,
     range: 4,
-    f: 0,
-    w: 25,
-    g: 45,
+    food: 0,
+    wood: 25,
+    gold: 45,
     trainTime: 35,
     id: '4',
     class: 0,
@@ -31,9 +31,9 @@ describe('Duel Analysis Logic', () => {
     parm: 0,
     reload: 3,
     range: 0,
-    f: 35,
-    w: 25,
-    g: 0,
+    food: 35,
+    wood: 25,
+    gold: 0,
     trainTime: 22,
     id: '93',
     class: 0,
@@ -44,8 +44,8 @@ describe('Duel Analysis Logic', () => {
   const allUnits = { archer: baseArcher, spear: baseSpear };
 
   it('should correctly identify the winner in a simple 1v1', () => {
-    const stateA: ArmyState = { ps: 'archer', age: '2' };
-    const stateB: ArmyState = { ps: 'spear', age: '2' };
+    const stateA: ArmyState = { preset: 'archer', age: '2' };
+    const stateB: ArmyState = { preset: 'spear', age: '2' };
 
     const analysisA = analyzeArmy(stateA, allUnits, {})!;
     const analysisB = analyzeArmy(stateB, allUnits, {})!;
@@ -58,8 +58,8 @@ describe('Duel Analysis Logic', () => {
   });
 
   it('should provide formatted rows for stat comparison', () => {
-    const stateA: ArmyState = { ps: 'archer', age: '2' };
-    const stateB: ArmyState = { ps: 'spear', age: '2' };
+    const stateA: ArmyState = { preset: 'archer', age: '2' };
+    const stateB: ArmyState = { preset: 'spear', age: '2' };
 
     const analysisA = analyzeArmy(stateA, allUnits, {})!;
     const analysisB = analyzeArmy(stateB, allUnits, {})!;

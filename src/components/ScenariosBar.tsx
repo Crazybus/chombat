@@ -28,14 +28,14 @@ const ScenariosBar: React.FC = () => {
         {featuredScenarios.map((id) => {
           const scenario = (scenarios as any)[id];
           if (!scenario) return null;
-          const isActive = state.sid === id;
+          const isActive = state.scenarioId === id;
           return (
             <button key={id} className={`scenario-btn ${isActive ? 'active' : ''}`} onClick={() => loadScenario(id)}>
               {scenario.name}
             </button>
           );
         })}
-        {state.name === 'Shared Scenario' && !state.sid && (
+        {state.name === 'Shared Scenario' && !state.scenarioId && (
           <button className="scenario-btn active">🔗 Shared Scenario</button>
         )}
       </div>

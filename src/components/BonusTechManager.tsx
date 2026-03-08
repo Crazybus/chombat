@@ -15,9 +15,9 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isListOpen, setIsListOpen] = useState(false);
 
-  const armyState = state[army];
+  const armyState = state[army === 'a' ? 'armyA' : 'armyB'];
   const allUnits = useMemo<Record<string, any>>(() => ({ ...units, ...presets }), []);
-  const currentUnit = armyState.ps ? allUnits[armyState.ps] : null;
+  const currentUnit = armyState.preset ? allUnits[armyState.preset] : null;
 
   const techsById = useMemo(() => {
     const map: Record<number, any> = {};
@@ -42,32 +42,32 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
     if (!b) return;
 
     // Prevent duplicates
-    if (armyState.bn?.some((item) => item.i === id)) return;
+    if (armyState.bonuses?.some((item) => item.id === id)) return;
 
     const effects = b.effects || [];
     const effectsState = effects.map(() => true);
 
-    const newBonuses = [...(armyState.bn || []), { i: id, e: effectsState }];
-    updateArmy(army, { bn: newBonuses });
+    const newBonuses = [...(armyState.bonuses || []), { id: id, effects: effectsState }];
+    updateArmy(army, { bonuses: newBonuses });
     setSearchTerm('');
     setIsListOpen(false);
   };
 
   const removeBonus = (id: string) => {
-    const newBonuses = armyState.bn?.filter((item) => item.i !== id) || [];
-    updateArmy(army, { bn: newBonuses });
+    const newBonuses = armyState.bonuses?.filter((item) => item.id !== id) || [];
+    updateArmy(army, { bonuses: newBonuses });
   };
 
   const toggleEffect = (bonusId: string, effectIndex: number) => {
-    const newBonuses = armyState.bn?.map((item) => {
-      if (item.i === bonusId) {
-        const newE = [...item.e];
+    const newBonuses = armyState.bonuses?.map((item) => {
+      if (item.id === bonusId) {
+        const newE = [...item.effects];
         newE[effectIndex] = !newE[effectIndex];
-        return { ...item, e: newE };
+        return { ...item, effects: newE };
       }
       return item;
     });
-    updateArmy(army, { bn: newBonuses });
+    updateArmy(army, { bonuses: newBonuses });
   };
 
   return (
@@ -100,15 +100,15 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
       </div>
 
       <div className="applied-bonuses">
-        {armyState.bn?.map((item) => {
-          const b = techsById[parseInt(item.i)] || (bonuses as any)[item.i];
+        {armyState.bonuses?.map((item) => {
+          const b = techsById[parseInt(item.id)] || (bonuses as any)[item.id];
           if (!b) return null;
 
           const effs = b.effects || [];
           const seenLabels = new Set<string>();
 
           return (
-            <div key={item.i} className="applied-bonus" data-id={item.i}>
+            <div key={item.id} className="applied-bonus" data-id={item.id}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                 <span className="applied-bonus-name">{b.name}</span>
                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
@@ -122,14 +122,18 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
                     seenLabels.add(label);
                     return (
                       <div key={idx} className="applied-bonus-effect">
-                        <input type="checkbox" checked={!!item.e[idx]} onChange={() => toggleEffect(item.i, idx)} />
+                        <input
+                          type="checkbox"
+                          checked={!!item.effects[idx]}
+                          onChange={() => toggleEffect(item.id, idx)}
+                        />
                         <label>{label}</label>
                       </div>
                     );
                   })}
                 </div>
               </div>
-              <button className="remove-bonus-btn" onClick={() => removeBonus(item.i)}>
+              <button className="remove-bonus-btn" onClick={() => removeBonus(item.id)}>
                 &times;
               </button>
             </div>

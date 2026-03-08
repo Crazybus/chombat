@@ -10,9 +10,9 @@ export interface UnitData {
   range: number;
   frame_delay?: number;
   accuracy_percent?: number;
-  f: number;
-  w: number;
-  g: number;
+  food: number;
+  wood: number;
+  gold: number;
   trainTime: number;
   building?: number;
   id?: string;
@@ -27,18 +27,18 @@ export interface UnitData {
 }
 
 export interface TechEffect {
-  t: number; // type: 0=Set, 1=Add, 2=Mult, 4=ClassAdd, 5=ClassMult
-  a: number; // attr: 0=HP, 3=Range, 4=Atk, 5=MeleeArm, 6=PierceArm, 8=ArmorEncoded, 9=AttackEncoded, 12=RangeSimple
-  v: number; // value
-  u: number; // unit_id (-1 for all)
-  c: number; // class (-1 for all)
+  type: number; // type: 0=Set, 1=Add, 2=Mult, 4=ClassAdd, 5=ClassMult
+  attribute: number; // attr: 0=HP, 3=Range, 4=Atk, 5=MeleeArm, 6=PierceArm, 8=ArmorEncoded, 9=AttackEncoded, 12=RangeSimple
+  value: number; // value
+  unitId: number; // unit_id (-1 for all)
+  class: number; // class (-1 for all)
 }
 
 export interface TechData {
   name: string;
-  f: number;
-  w: number;
-  g: number;
+  food: number;
+  wood: number;
+  gold: number;
   time: number;
   building: number;
   id: number;
@@ -53,10 +53,10 @@ export interface TechData {
 
 export interface BuildingData {
   name: string;
-  f: number;
-  w: number;
-  g: number;
-  s: number;
+  food: number;
+  wood: number;
+  gold: number;
+  stone: number;
   time: number;
   id: string;
   age?: number;
@@ -67,55 +67,60 @@ export interface BuildingData {
 }
 
 export interface TimelineStep {
-  t: string; // type: villagers, building, production, tech, cost
-  n?: string; // name
-  d?: number; // delay
-  c?: number; // count
-  co?: number; // cost (lump sum)
-  b?: boolean; // isBlocking
-  v?: number; // value (capacity)
-  i?: string; // id (tech or building)
-  tr?: number; // train speed
-  f?: number; // food cost override
-  w?: number; // wood cost override
-  g?: number; // gold cost override
-  bt?: number; // building target (e.g. 109 for TC)
-  prod?: boolean; // produces units
-  lim?: boolean; // limited production (exact count)
-  bi?: number; // block index (which facility to block)
+  type: string; // type: villagers, building, production, tech, cost
+  name?: string; // name
+  delay?: number; // delay
+  count?: number; // count
+  cost?: number; // cost (lump sum)
+  isBlocking?: boolean; // isBlocking
+  value?: number; // value (capacity)
+  id?: string; // id (tech or building)
+  trainSpeed?: number; // train speed
+  food?: number; // food cost override
+  wood?: number; // wood cost override
+  gold?: number; // gold cost override
+  buildingTarget?: number; // building target (e.g. 109 for TC)
+  producesUnits?: boolean; // produces units
+  limitedProduction?: boolean; // limited production (exact count)
+  blockIndex?: number; // block index (which facility to block)
 }
 
 export interface ArmyState {
-  nm?: string; // name override
-  c?: number; // count
-  ps?: string; // preset id
-  cv?: string; // civ id
-  age?: string; // age id
-  tl?: TimelineStep[];
-  bn?: { i: string; e: boolean[] }[]; // bonus tech states
-  sv?: number; // start villagers
-  tr?: number; // training time override
-  // Individual stat overrides
-  h?: number;
-  am?: number;
-  ap?: number;
-  aa?: number;
-  ar?: number;
-  rl?: number;
-  n?: number;
-  as?: number;
-  ab?: number;
-  ad?: number;
-  af?: number;
-  aw?: number;
-  ag?: number;
-  da?: number;
-  df?: number;
-  dw?: number;
-  dg?: number;
-  e?: number;
-  mc?: number;
-  speed?: number;
+  name?: string;
+  count?: number;
+  preset?: string;
+  civ?: string;
+  age?: string;
+  timeline?: TimelineStep[];
+  bonuses?: { id: string; effects: boolean[] }[];
+  startVillagers?: number;
+  overrides?: {
+    trainingTime?: number;
+    hp?: number;
+    meleeAttack?: number;
+    pierceAttack?: number;
+    meleeArmor?: number;
+    pierceArmor?: number;
+    reload?: number;
+    range?: number;
+    attackSpeed?: number;
+    bonusReduction?: number;
+    accuracy?: number;
+    cost?: {
+      food?: number;
+      wood?: number;
+      gold?: number;
+    };
+    discount?: {
+      all?: number;
+      food?: number;
+      wood?: number;
+      gold?: number;
+    };
+    engagement?: number;
+    micro?: number;
+    speed?: number;
+  };
 }
 
 export interface CivBonusEffect extends TechEffect {
@@ -128,9 +133,9 @@ export interface CivBonus {
 }
 
 export interface SimulationState {
-  a: ArmyState;
-  b: ArmyState;
-  desc: string;
+  armyA: ArmyState;
+  armyB: ArmyState;
+  description: string;
   name?: string;
-  sid?: string; // current scenario id
+  scenarioId?: string; // current scenario id
 }

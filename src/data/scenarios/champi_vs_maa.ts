@@ -1,28 +1,44 @@
 export const champi_vs_maa = {
   name: 'Champi scout vs MAA',
-  desc: 'All in dark age champi scout rush vs 19 pop no loom Man-at-arms',
-  a: {
-    ps: 'champi_scout',
-    nm: 'Champi Scout',
-    c: 10,
+  description: 'All in dark age champi scout rush vs 19 pop no loom Man-at-arms',
+  armyA: {
+    preset: 'champi_scout',
+    name: 'Champi Scout',
     age: '1',
-    tl: [
-      { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-      { t: 'building', n: 'Barracks', d: 50, c: 1, co: 175, prod: true, i: '87' },
-      { t: 'production', n: 'Champi Scout Production', v: 0, tr: 30, lim: false },
+    timeline: [
+      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+      { type: 'building', name: 'Barracks', delay: 50, cost: 175, producesUnits: true, id: '87' },
+      { type: 'production', name: 'Champi Scout Production', value: 0, trainSpeed: 30, limitedProduction: false },
     ],
   },
-  b: {
-    ps: 'man_at_arms',
-    nm: 'Man-at-Arms',
-    c: 7,
+  armyB: {
+    preset: 'man_at_arms',
+    name: 'Man-at-Arms',
     age: '2',
-    tl: [
-      { t: 'villagers', n: 'Villagers', v: 1, d: 25, lim: false },
-      { t: 'tech', n: 'Feudal Age', d: 130, c: 1, co: 500, i: '101', bt: 109, b: true, lim: true },
-      { t: 'building', n: 'Barracks', d: 50, c: 1, co: 175, prod: true, i: '87' },
-      { t: 'tech', n: 'Man-At-Arms', d: 40, c: 1, co: 140, i: '222', bt: 12, b: true, lim: true },
-      { t: 'production', n: 'MAA Production', v: 0, tr: 21, lim: false },
+    timeline: [
+      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+      {
+        type: 'tech',
+        name: 'Feudal Age',
+        delay: 130,
+        cost: 500,
+        id: '101',
+        buildingTarget: 109,
+        isBlocking: true,
+        limitedProduction: true,
+      },
+      { type: 'building', name: 'Barracks', delay: 50, cost: 175, producesUnits: true, id: '87' },
+      {
+        type: 'tech',
+        name: 'Man-At-Arms',
+        delay: 40,
+        cost: 140,
+        id: '222',
+        buildingTarget: 12,
+        isBlocking: true,
+        limitedProduction: true,
+      },
+      { type: 'production', name: 'MAA Production', value: 0, trainSpeed: 21, limitedProduction: false },
     ],
   },
 };

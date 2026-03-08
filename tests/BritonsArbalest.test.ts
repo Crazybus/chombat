@@ -42,9 +42,13 @@ describe('Imperial Age Britons Arbalest (Real Data)', () => {
     const availableTechs = civs[civKey] || {};
 
     const recommended = getRecommendedTechs(arbalest, ageId, civKey, techsById, availableTechs);
-    const bn = recommended.map((t) => ({ i: t.id.toString(), e: t.effects.map(() => true) }));
+    const bonuses = recommended.map((t) => ({ id: t.id.toString(), effects: t.effects.map(() => true) }));
 
-    const analysis = analyzeArmy({ ps: 'arbalester', age: '4', cv: civKey, bn }, { arbalester: arbalest }, techsById);
+    const analysis = analyzeArmy(
+      { preset: 'arbalester', age: '4', civ: civKey, bonuses },
+      { arbalester: arbalest },
+      techsById,
+    );
 
     expect(analysis?.effectiveStats.patk).toBe(10);
     expect(analysis?.effectiveStats.range).toBe(10);

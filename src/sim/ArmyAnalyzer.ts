@@ -38,39 +38,39 @@ export interface ArmyAnalysis {
 // --- Maps & Helpers ---
 
 const fieldLabelMap: Record<string, string> = {
-  h: 'HP',
-  am: 'Melee Atk',
-  ap: 'Pierce Atk',
-  aa: 'Melee Arm',
-  ar: 'Pierce Arm',
-  rl: 'Reload',
-  n: 'Range',
-  as: 'Atk Speed',
-  ab: 'Bonus Red',
+  hp: 'HP',
+  meleeAttack: 'Melee Atk',
+  pierceAttack: 'Pierce Atk',
+  meleeArmor: 'Melee Arm',
+  pierceArmor: 'Pierce Arm',
+  reload: 'Reload',
+  range: 'Range',
+  attackSpeed: 'Atk Speed',
+  bonusReduction: 'Bonus Red',
 };
 
 const fieldToGroupMap: Record<string, string> = {
-  h: 'hp',
-  am: 'atk',
-  ap: 'atk',
-  aa: 'marm',
-  ar: 'parm',
-  rl: 'atk',
-  n: 'range',
-  as: 'atk',
-  ab: 'other',
+  hp: 'hp',
+  meleeAttack: 'atk',
+  pierceAttack: 'atk',
+  meleeArmor: 'marm',
+  pierceArmor: 'parm',
+  reload: 'atk',
+  range: 'range',
+  attackSpeed: 'atk',
+  bonusReduction: 'other',
 };
 
 const unitKeyMap: Record<string, string> = {
-  h: 'hp',
-  am: 'matk',
-  ap: 'patk',
-  aa: 'marm',
-  ar: 'parm',
-  rl: 'reload',
-  n: 'range',
-  as: 'atk_speed',
-  ab: 'bonus_red',
+  hp: 'hp',
+  meleeAttack: 'matk',
+  pierceAttack: 'patk',
+  meleeArmor: 'marm',
+  pierceArmor: 'parm',
+  reload: 'reload',
+  range: 'range',
+  attackSpeed: 'attackSpeed',
+  bonusReduction: 'bonusReduction',
   speed: 'speed',
 };
 
@@ -114,12 +114,12 @@ function isCombatTech(t: TechData): boolean {
   const buildingRelatedClasses = [11, 21, 27];
   if (t.effects && t.effects.length > 0) {
     const hasBuildingEffect = t.effects.some((e) => {
-      const { cls } = decodeEncoded(e.v);
-      const targetClass = e.c !== -1 ? e.c : e.a === 8 || e.a === 9 ? e.a : -1;
+      const { cls } = decodeEncoded(e.value);
+      const targetClass = e.class !== -1 ? e.class : e.attribute === 8 || e.attribute === 9 ? e.attribute : -1;
       return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
     });
     if (hasBuildingEffect) return false;
-    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24].includes(e.a));
+    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24].includes(e.attribute));
   }
   return false;
 }
@@ -127,25 +127,25 @@ function isCombatTech(t: TechData): boolean {
 // --- Main Library Functions ---
 
 export function resolveBaseUnit(armyState: ArmyState, allUnits: Record<string, UnitData>): UnitData {
-  let baseUnit = armyState.ps ? allUnits[armyState.ps] : null;
-  if (!baseUnit && armyState.nm) {
-    baseUnit = Object.values(allUnits).find((u) => u.name === armyState.nm) || null;
+  let baseUnit = armyState.preset ? allUnits[armyState.preset] : null;
+  if (!baseUnit && armyState.name) {
+    baseUnit = Object.values(allUnits).find((u) => u.name === armyState.name) || null;
   }
   if (!baseUnit) {
     return {
-      name: armyState.nm || 'Custom Unit',
-      hp: armyState.h || 0,
-      matk: armyState.am || 0,
-      patk: armyState.ap || 0,
-      marm: armyState.aa || 0,
-      parm: armyState.ar || 0,
-      reload: armyState.rl || 2,
-      range: armyState.n || 0,
+      name: armyState.name || 'Custom Unit',
+      hp: armyState.overrides?.hp || 0,
+      matk: armyState.overrides?.meleeAttack || 0,
+      patk: armyState.overrides?.pierceAttack || 0,
+      marm: armyState.overrides?.meleeArmor || 0,
+      parm: armyState.overrides?.pierceArmor || 0,
+      reload: armyState.overrides?.reload || 2,
+      range: armyState.overrides?.range || 0,
       id: 'custom',
       class: -1,
-      f: armyState.af || 0,
-      w: armyState.aw || 0,
-      g: armyState.ag || 0,
+      food: armyState.overrides?.cost?.food || 0,
+      wood: armyState.overrides?.cost?.wood || 0,
+      gold: armyState.overrides?.cost?.gold || 0,
       trainTime: 30,
     };
   }
@@ -156,11 +156,19 @@ export function applyManualOverrides(baseUnit: UnitData, armyState: ArmyState): 
   const modified = { ...baseUnit };
   modified.bonuses = { ...(baseUnit.bonuses || {}) };
   modified.armors = { ...(baseUnit.armors || {}) };
-  Object.entries(unitKeyMap).forEach(([configKey, unitKey]) => {
-    if ((armyState as any)[configKey] !== undefined) {
-      (modified as any)[unitKey] = (armyState as any)[configKey];
+  if (armyState.overrides) {
+    Object.entries(unitKeyMap).forEach(([configKey, unitKey]) => {
+      if ((armyState.overrides as any)[configKey] !== undefined) {
+        (modified as any)[unitKey] = (armyState.overrides as any)[configKey];
+      }
+    });
+    if (armyState.overrides.cost) {
+      if (armyState.overrides.cost.food !== undefined) modified.food = armyState.overrides.cost.food;
+      if (armyState.overrides.cost.wood !== undefined) modified.wood = armyState.overrides.cost.wood;
+      if (armyState.overrides.cost.gold !== undefined) modified.gold = armyState.overrides.cost.gold;
     }
-  });
+    if (armyState.overrides.trainingTime !== undefined) modified.trainTime = armyState.overrides.trainingTime;
+  }
   return modified;
 }
 
@@ -169,8 +177,10 @@ export function getManualOverrideSources(
   armyState: ArmyState,
 ): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
+  if (!armyState.overrides) return sources;
+
   Object.entries(fieldLabelMap).forEach(([configKey]) => {
-    const val = (armyState as any)[configKey];
+    const val = (armyState.overrides as any)[configKey];
     if (val !== undefined) {
       const unitKey = unitKeyMap[configKey];
       const baseVal = (ageResolvedBase as any)[unitKey];
@@ -192,8 +202,8 @@ export function getTechBonusSources(
   bonuses: Record<string, any>,
 ): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
-  armyState.bn?.forEach((bState) => {
-    const tech = techsById[parseInt(bState.i)] || (bonuses as any)[bState.i];
+  armyState.bonuses?.forEach((bState) => {
+    const tech = techsById[parseInt(bState.id)] || (bonuses as any)[bState.id];
     if (!tech || !tech.effects) return;
     const seenLabels = new Set<string>();
     const techEffects = tech.effects
@@ -201,17 +211,17 @@ export function getTechBonusSources(
         let label = getEffectLabel(e);
         if (!label) return null;
         label = label.replace(/(\d+\.\d{3,})/g, (match) => parseFloat(match).toFixed(2));
-        // Route group by attribute (e.a), matching applyBonuses logic
+        // Route group by attribute (e.attribute), matching applyBonuses logic
         let group = 'other';
-        if (e.a === EFFECT_ATTRIBUTES.hp) {
+        if (e.attribute === EFFECT_ATTRIBUTES.hp) {
           group = 'hp';
-        } else if (e.a === EFFECT_ATTRIBUTES.armor) {
-          const { cls } = decodeEncoded(e.v);
+        } else if (e.attribute === EFFECT_ATTRIBUTES.armor) {
+          const { cls } = decodeEncoded(e.value);
           if (cls === 4) group = 'marm';
           else if (cls === 3) group = 'parm';
-        } else if (e.a === EFFECT_ATTRIBUTES.attack || e.a === EFFECT_ATTRIBUTES.reload) {
+        } else if (e.attribute === EFFECT_ATTRIBUTES.attack || e.attribute === EFFECT_ATTRIBUTES.reload) {
           group = 'atk';
-        } else if (e.a === EFFECT_ATTRIBUTES.max_range) {
+        } else if (e.attribute === EFFECT_ATTRIBUTES.max_range) {
           group = 'range';
         }
         return { e, label, group, idx };
@@ -229,7 +239,7 @@ export function getTechBonusSources(
           [EFFECT_ATTRIBUTES.reload]: 'Fire Rate',
           [EFFECT_ATTRIBUTES.speed]: 'Speed',
         };
-        const attrName = attrNames[e.a] || 'Stat';
+        const attrName = attrNames[e.attribute] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;
       }
       const groupLabel = `${group}-${finalLabel}`;
@@ -241,8 +251,8 @@ export function getTechBonusSources(
         label: finalLabel,
         isBonus: !finalLabel.includes('-'),
         type: 'tech',
-        techId: bState.i,
-        isActive: bState.e[idx] !== false,
+        techId: bState.id,
+        isActive: bState.effects[idx] !== false,
       });
     });
   });
@@ -270,9 +280,9 @@ export function getRecommendedTechs(
 
     // If civ tech and in civ techs
     if (t.civ > 0 && t.id in availableCivTechs) {
-      const classEffects = t.effects.filter((eff) => eff.c !== -1);
+      const classEffects = t.effects.filter((eff) => eff.class !== -1);
       // Matches class
-      if (classEffects.length > 0 && !classEffects.some((eff) => eff.c === unit.class)) return false;
+      if (classEffects.length > 0 && !classEffects.some((eff) => eff.class === unit.class)) return false;
     }
 
     let effectiveTechAge = getTrueAge(t);
@@ -336,8 +346,8 @@ export function calculateEqualProductionTime(
   unitB: UnitData,
   _stateB: ArmyState,
 ): number {
-  const timeA = stateA.tr || unitA.trainTime || 30;
-  const timeB = _stateB.tr || unitB.trainTime || 30;
+  const timeA = stateA.overrides?.trainingTime || unitA.trainTime || 30;
+  const timeB = _stateB.overrides?.trainingTime || unitB.trainTime || 30;
 
   if (timeB <= 0) return countA;
   return Math.round((countA * timeA) / timeB);
@@ -356,7 +366,7 @@ export function calculateEqualFight(
 
   // Simple linear search to find the "tipping point"
   for (let b = 1; b <= 200; b++) {
-    const sim = new CombatSim(unitA, unitB, { ...stateA, c: countA }, { ...stateB, c: b }, techsById, allUnits);
+    const sim = new CombatSim(unitA, unitB, { ...stateA, count: countA }, { ...stateB, count: b }, techsById, allUnits);
     const res = sim.run();
     if (res.armyA.totalHp > res.armyB.totalHp) {
       bestB = b;
@@ -392,7 +402,7 @@ export function analyzeArmy(
   // 3. Final Effective (Everything)
   const simFinal = new CombatSim(baseUnit, baseUnit, armyState, armyState, activeTechs, allUnits);
 
-  const finalEffective = { ...simFinal.dataA, count: armyState.c !== undefined ? armyState.c : 1 };
+  const finalEffective = { ...simFinal.dataA, count: armyState.count !== undefined ? armyState.count : 1 };
 
   const isMelee = (finalEffective.range || 0) <= 1;
   const groups: Record<string, StatGroup> = {
@@ -449,8 +459,8 @@ export function analyzeDuel(
   techsById: Record<number, TechData>,
   allUnits: Record<string, UnitData>,
 ): DuelAnalysis {
-  const configA = { ...stateA, c: 1 };
-  const configB = { ...stateB, c: 1 };
+  const configA = { ...stateA, count: 1 };
+  const configB = { ...stateB, count: 1 };
 
   const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
   const res = sim.run();
@@ -491,7 +501,7 @@ export function analyzeDuel(
   const nB = getNetDmg(uB, uA);
 
   const getBaseAtk = (u: Unit, b: any) => (u.isMelee() ? b.matk : b.patk);
-  const getBaseArm = (u: Unit, b: any) => (u.isMelee() ? b.marm : b.parm);
+  const getBaseArm = (atk: Unit, defBase: any) => (atk.isMelee() ? defBase.marm : defBase.parm);
 
   const hitsToKillA = Math.ceil(uB.hpPerUnit / nA.net);
   const hitsToKillB = Math.ceil(uA.hpPerUnit / nB.net);
@@ -531,10 +541,10 @@ export function analyzeDuel(
     { label: 'Bonus Dmg', a: nA.bonus.toFixed(0), b: nB.bonus.toFixed(0), valA: nA.bonus, valB: nB.bonus },
     {
       label: 'Armor',
-      a: formatWithBase(nA.arm, getBaseArm(uA, baseA)),
-      b: formatWithBase(nB.arm, getBaseArm(uB, baseB)),
-      valA: nA.arm,
-      valB: nB.arm,
+      a: formatWithBase(nB.arm, getBaseArm(uB, baseA)),
+      b: formatWithBase(nA.arm, getBaseArm(uA, baseB)),
+      valA: nB.arm,
+      valB: nA.arm,
     },
     {
       label: 'Damage Per Hit',
@@ -572,6 +582,13 @@ export function analyzeDuel(
       valA: nA.net / uA.reload,
       valB: nB.net / uB.reload,
     },
+    {
+      label: 'Production Time',
+      a: (analysisA.modifiedBase.trainTime || 30).toFixed(1) + 's',
+      b: (analysisB.modifiedBase.trainTime || 30).toFixed(1) + 's',
+      valA: analysisA.modifiedBase.trainTime || 30,
+      valB: analysisB.modifiedBase.trainTime || 30,
+    },
   ];
 
   return { winner, winnerColor, remainingInfo, rows, nameA, nameB };
@@ -583,72 +600,99 @@ export function scrubArmy(
   techsById: Record<number, TechData>,
 ): ArmyState {
   const normalized = { ...army };
-  const numericFields: (keyof ArmyState)[] = [
-    'c',
-    'h',
-    'am',
-    'ap',
-    'aa',
-    'ar',
-    'rl',
-    'n',
-    'as',
-    'ab',
-    'ad',
-    'af',
-    'aw',
-    'ag',
-    'da',
-    'df',
-    'dw',
-    'dg',
-    'e',
-    'mc',
-    'sv',
-  ];
-  numericFields.forEach((field) => {
-    const val = normalized[field];
+  if (normalized.overrides) {
+    const numericFields = [
+      'hp',
+      'meleeAttack',
+      'pierceAttack',
+      'meleeArmor',
+      'pierceArmor',
+      'reload',
+      'range',
+      'attackSpeed',
+      'bonusReduction',
+      'accuracy',
+      'engagement',
+      'micro',
+      'trainingTime',
+    ];
+    numericFields.forEach((field) => {
+      const val = (normalized.overrides as any)[field];
+      if (val !== undefined && val !== null && val !== '') {
+        const parsed = parseFloat(String(val));
+        if (!isNaN(parsed)) (normalized.overrides as any)[field] = parsed;
+      }
+    });
+
+    if (normalized.overrides.cost) {
+      ['food', 'wood', 'gold'].forEach((field) => {
+        const val = (normalized.overrides!.cost as any)[field];
+        if (val !== undefined && val !== null && val !== '') {
+          const parsed = parseFloat(String(val));
+          if (!isNaN(parsed)) (normalized.overrides!.cost as any)[field] = parsed;
+        }
+      });
+    }
+
+    if (normalized.overrides.discount) {
+      ['all', 'food', 'wood', 'gold'].forEach((field) => {
+        const val = (normalized.overrides!.discount as any)[field];
+        if (val !== undefined && val !== null && val !== '') {
+          const parsed = parseFloat(String(val));
+          if (!isNaN(parsed)) (normalized.overrides!.discount as any)[field] = parsed;
+        }
+      });
+    }
+  }
+
+  // count and startVillagers are top-level
+  ['count', 'startVillagers'].forEach((field) => {
+    const val = (normalized as any)[field];
     if (val !== undefined && val !== null && val !== '') {
       const parsed = parseFloat(String(val));
       if (!isNaN(parsed)) (normalized as any)[field] = parsed;
     }
   });
-  const u = normalized.ps
-    ? allUnits[normalized.ps]
-    : normalized.nm
-      ? Object.values(allUnits).find((x) => x.name === normalized.nm)
+
+  const u = normalized.preset
+    ? allUnits[normalized.preset]
+    : normalized.name
+      ? Object.values(allUnits).find((x) => x.name === normalized.name)
       : null;
   if (!u) return normalized;
   const cleanState: ArmyState = {
-    ps: normalized.ps,
-    nm: normalized.nm,
+    preset: normalized.preset,
+    name: normalized.name,
     age: normalized.age,
-    cv: normalized.cv,
-    bn: normalized.bn,
+    civ: normalized.civ,
+    bonuses: normalized.bonuses,
   };
   const analysis = analyzeArmy(cleanState, allUnits, techsById);
   if (!analysis) return normalized;
   const { effectiveStats } = analysis;
   const scrubbed = { ...normalized };
   const mapping: Record<string, string> = {
-    h: 'hp',
-    am: 'matk',
-    ap: 'patk',
-    aa: 'marm',
-    ar: 'parm',
-    rl: 'reload',
-    n: 'range',
-    as: 'atk_speed',
-    ab: 'bonus_red',
+    hp: 'hp',
+    meleeAttack: 'matk',
+    pierceAttack: 'patk',
+    meleeArmor: 'marm',
+    pierceArmor: 'parm',
+    reload: 'reload',
+    range: 'range',
+    attackSpeed: 'attackSpeed',
+    bonusReduction: 'bonusReduction',
   };
-  Object.entries(mapping).forEach(([configKey, statKey]) => {
-    const overrideVal = (normalized as any)[configKey];
-    const naturalVal = effectiveStats[statKey];
-    if (
-      overrideVal !== undefined &&
-      Math.abs(parseFloat(String(overrideVal)) - parseFloat(String(naturalVal || 0))) < 0.01
-    )
-      delete (scrubbed as any)[configKey];
-  });
+  if (scrubbed.overrides) {
+    Object.entries(mapping).forEach(([configKey, statKey]) => {
+      const overrideVal = (scrubbed.overrides as any)[configKey];
+      const naturalVal = effectiveStats[statKey];
+      if (
+        overrideVal !== undefined &&
+        Math.abs(parseFloat(String(overrideVal)) - parseFloat(String(naturalVal || 0))) < 0.01
+      )
+        delete (scrubbed.overrides as any)[configKey];
+    });
+    if (Object.keys(scrubbed.overrides).length === 0) delete scrubbed.overrides;
+  }
   return scrubbed;
 }
