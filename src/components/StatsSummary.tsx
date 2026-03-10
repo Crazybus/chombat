@@ -20,17 +20,19 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({
   const analysis = army === 'a' ? analysisA : analysisB;
 
   const formatStat = (base: number, total: number) => {
-    const diff = Math.round(total - base);
+    const diff = total - base;
+    const displayBase = Math.round(base);
+    const displayDiff = Math.abs(diff) < 0.01 ? 0 : diff;
+
+    const diffText =
+      Math.abs(displayDiff) >= 0.1
+        ? (displayDiff > 0 ? ' +' : ' ') + (Number.isInteger(displayDiff) ? displayDiff : displayDiff.toFixed(1))
+        : '';
+
     return (
       <>
-        <span>{Math.round(base)}</span>
-        {Math.abs(diff) >= 1 && (
-          <span className={diff > 0 ? 'stat-bonus' : 'stat-penalty'}>
-            {' '}
-            {diff > 0 ? '+' : ''}
-            {diff}
-          </span>
-        )}
+        <span>{displayBase}</span>
+        {diffText && <span className={displayDiff > 0 ? 'stat-bonus' : 'stat-penalty'}>{diffText}</span>}
       </>
     );
   };
@@ -97,6 +99,30 @@ const StatsSummary: React.FC<StatsSummaryProps> = ({
             <div className="stat-badge" title="Range" style={{ padding: '4px 6px' }}>
               <span className="stat-icon">🎯</span>
               <span className="stat-text">{formatStat(modifiedBase.range, effectiveStats.range)}</span>
+            </div>
+          )}
+          {effectiveStats.food > 0 && (
+            <div className="stat-badge" title="Food Cost" style={{ padding: '4px 6px', borderColor: '#e67e22' }}>
+              <span className="stat-icon">🥩</span>
+              <span className="stat-text">{formatStat(modifiedBase.food, effectiveStats.food)}</span>
+            </div>
+          )}
+          {effectiveStats.wood > 0 && (
+            <div className="stat-badge" title="Wood Cost" style={{ padding: '4px 6px', borderColor: '#27ae60' }}>
+              <span className="stat-icon">🪵</span>
+              <span className="stat-text">{formatStat(modifiedBase.wood, effectiveStats.wood)}</span>
+            </div>
+          )}
+          {effectiveStats.gold > 0 && (
+            <div className="stat-badge" title="Gold Cost" style={{ padding: '4px 6px', borderColor: '#f1c40f' }}>
+              <span className="stat-icon">💰</span>
+              <span className="stat-text">{formatStat(modifiedBase.gold, effectiveStats.gold)}</span>
+            </div>
+          )}
+          {effectiveStats.stone > 0 && (
+            <div className="stat-badge" title="Stone Cost" style={{ padding: '4px 6px', borderColor: '#95a5a6' }}>
+              <span className="stat-icon">💎</span>
+              <span className="stat-text">{formatStat(modifiedBase.stone, effectiveStats.stone)}</span>
             </div>
           )}
         </div>

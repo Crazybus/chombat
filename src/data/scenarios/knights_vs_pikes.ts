@@ -1,13 +1,17 @@
 export const knights_vs_pikes = {
-  name: 'Knights vs Pikes',
-  description:
-    '3 barracks pikes to catch up to a player with double stable knights and 8 on the field. Was Nili wrong all along?',
   armyA: {
     preset: 'knight',
     name: 'Knight',
     age: '3',
     timeline: [
-      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false, cost: 50 },
+      {
+        type: 'villagers',
+        name: 'Villagers',
+        value: 1,
+        delay: 25,
+        limitedProduction: false,
+        cost: 50,
+      },
       {
         type: 'tech',
         name: 'Feudal Age',
@@ -28,21 +32,51 @@ export const knights_vs_pikes = {
         isBlocking: true,
         limitedProduction: true,
       },
-      { type: 'building', name: 'Stable', delay: 50, cost: 350, producesUnits: true, id: '101' },
-      { type: 'production', name: 'Knight Production', value: 0, trainSpeed: 30, limitedProduction: false },
+      {
+        type: 'building',
+        name: 'Stable',
+        delay: 50,
+        cost: 350,
+        producesUnits: true,
+        id: '101',
+      },
+      {
+        type: 'production',
+        name: 'Knight Production',
+        value: 0,
+        trainSpeed: 30,
+        limitedProduction: false,
+      },
     ],
     bonuses: [
-      { id: '67', effects: [true] },
-      { id: '81', effects: [true] },
-      { id: '435', effects: [true] },
+      {
+        id: '67',
+        effects: [true],
+      },
+      {
+        id: '81',
+        effects: [true],
+      },
+      {
+        id: '435',
+        effects: [true],
+      },
     ],
+    count: 10,
   },
   armyB: {
     preset: 'pikeman',
     name: 'Pikeman',
     age: '3',
     timeline: [
-      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false, cost: 50 },
+      {
+        type: 'villagers',
+        name: 'Villagers',
+        value: 1,
+        delay: 25,
+        limitedProduction: false,
+        cost: 50,
+      },
       {
         type: 'tech',
         name: 'Feudal Age',
@@ -63,7 +97,14 @@ export const knights_vs_pikes = {
         isBlocking: true,
         limitedProduction: true,
       },
-      { type: 'building', name: 'Barracks', delay: 50, cost: 525, producesUnits: true, id: '87' },
+      {
+        type: 'building',
+        name: 'Barracks',
+        delay: 50,
+        cost: 525,
+        producesUnits: true,
+        id: '87',
+      },
       {
         type: 'tech',
         name: 'Pikeman',
@@ -74,11 +115,27 @@ export const knights_vs_pikes = {
         isBlocking: true,
         limitedProduction: true,
       },
-      { type: 'production', name: 'Pikeman Production', value: 0, trainSpeed: 22, limitedProduction: false },
+      {
+        type: 'production',
+        name: 'Pikeman Production',
+        value: 0,
+        trainSpeed: 22,
+        limitedProduction: false,
+      },
     ],
     bonuses: [
-      { id: '67', effects: [true] },
-      { id: '74', effects: [true] },
+      {
+        id: '67',
+        effects: [true],
+      },
+      {
+        id: '74',
+        effects: [true],
+      },
     ],
+    count: 11,
   },
+  name: 'Knights vs Pikes',
+  description:
+    '3 barracks pikes to catch up to a player with double stable knights and 8 on the field. Was Nili wrong all along?',
 };
