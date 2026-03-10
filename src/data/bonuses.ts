@@ -1,7454 +1,10528 @@
 import { CivBonus } from '../sim/types';
 
 export const bonuses: Record<string, CivBonus> = {
-  FRANKS: {
-    name: 'Franks Bonuses',
-    effects: [
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  BYZANTINES: {
-    name: 'Byzantines Bonuses',
-    effects: [
-      {
-        type: 1,
-        attribute: 0,
-        value: 3.0,
-        unitId: 6,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.1666666269302368,
-        unitId: 49,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 49,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 49,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 150,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 150,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.1666666269302368,
-        unitId: 150,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.5,
-        unitId: 1665,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 102,
-        value: 1.0,
-        unitId: 1665,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1665,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1665,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2275,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2275,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2276,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2276,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2277,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2277,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.1666666269302368,
-        unitId: 2414,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2414,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2414,
-        class: -1,
-        age: 4,
-      },
-    ],
-  },
-  TURKS: {
-    name: 'Turks Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 279,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 542,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 539,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 21,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 768.0,
-        unitId: 73,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 505,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 518,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 54,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 328,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 250,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 533,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 746,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 54,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 280,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 550,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 588,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 682,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 683,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 747,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 109,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 71,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 141,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 142,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1004,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1006,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1120,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1122,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1126,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1128,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1251,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 51,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1167,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1168,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 778,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 786,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 787,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1750,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1795,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1830,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2130,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2131,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2132,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2154,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2155,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2156,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2152,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2138,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2139,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1936,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1937,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1942,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1982,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1983,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1931,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1971,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1948,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1938,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1939,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1879,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2415,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1934,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1935,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2417,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2631,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2632,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 133,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 45,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 47,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 51,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1189,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2574,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2575,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2633,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1548,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 768.5,
-        unitId: 54,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 768.5,
-        unitId: 328,
-        class: -1,
-        age: 2,
-      },
-    ],
-  },
-  SPANISH: {
-    name: 'Spanish Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 4,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 6,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 12,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 45,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 46,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 50,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 47,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1026.0,
-        unitId: 1923,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 1831,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2626,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2627,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2628,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 1.875,
-        unitId: -1,
-        class: 18,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 4,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 1808,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 6,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1831,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2174,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2175,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2468,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 12,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 47,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 1738,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 1740,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 775,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 775,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2557,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2557,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 45,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 46,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 50,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2626,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2627,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2628,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 12,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 47,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -770.0,
-        unitId: 1738,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -770.0,
-        unitId: 1740,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 775,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 775,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2557,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2557,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 6,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 1831,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2174,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2175,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2468,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 4,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 1.2999999523162842,
-        unitId: 621,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 1.2999999523162842,
-        unitId: 617,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 1.2999999523162842,
-        unitId: 484,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 1.2999999523162842,
-        unitId: 597,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 1.0833300352096558,
-        unitId: 276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 0.8500000238418579,
-        unitId: -1,
-        class: 44,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 0.8500000238418579,
-        unitId: 36,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 0.8500000238418579,
-        unitId: 420,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 0.8500000238418579,
-        unitId: 691,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 0.8500000238418579,
-        unitId: 1709,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  AZTECS: {
-    name: 'Aztecs Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 55,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 22,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 35,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 54,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 13,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 51,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8695651888847351,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-    ],
-  },
-  MAYANS: {
-    name: 'Mayans Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 100,
-        value: 0.8999999761581421,
-        unitId: 4,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 100,
-        value: 0.8999999761581421,
-        unitId: 24,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 100,
-        value: 0.8999999761581421,
-        unitId: 492,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 100,
-        value: 0.8999999761581421,
-        unitId: 763,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 100,
-        value: 0.8999999761581421,
-        unitId: 765,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.8700000047683716,
-        unitId: 199,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  HUNS: {
-    name: 'Huns Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 11,
-        value: 35.0,
-        unitId: 42,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 2,
-        attribute: 0,
-        value: 0.0,
-        unitId: 70,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  KOREANS: {
-    name: 'Koreans Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.5,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.5,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-    ],
-  },
-  ITALIANS: {
-    name: 'Italians Bonuses',
-    effects: [
-      {
-        type: 1,
-        attribute: 0,
-        value: 1.0,
-        unitId: 6,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 2.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 102,
-        value: 1.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 8.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 6914.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 4102.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 773.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 7681.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.25,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 2.0,
-        unitId: 6,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: 79,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 25.0,
-        unitId: 1658,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1027.0,
-        unitId: 1658,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1026.0,
-        unitId: 1658,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1658,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 25.0,
-        unitId: 1660,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1027.0,
-        unitId: 1660,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1026.0,
-        unitId: 1660,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1660,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 101,
-        value: 0.75,
-        unitId: 1660,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 102,
-        value: 1.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 3.0,
-        unitId: 6,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.1666666269302368,
-        unitId: 49,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 49,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 49,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 150,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 150,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.1666666269302368,
-        unitId: 150,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.5,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 102,
-        value: 1.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.1666666269302368,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2414,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 2,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 21,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 22,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 20,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 53,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: -1,
-        class: 13,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 13,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: -1,
-        class: 54,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 54,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 55,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: -1,
-        class: 55,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 1258,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 35,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 422,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 548,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 440,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5772.0,
-        unitId: 440,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6796.0,
-        unitId: 440,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: -1,
-        class: 51,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 51,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1120,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1120,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1122,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1122,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 1263,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 444,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1744,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1746,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 420,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 420,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 691,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 691,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 832,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1795,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1795,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1795,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1795,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 1104,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 527,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 528,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2138,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2139,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2140,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 2140,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 2138,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 2139,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1948,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1948,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1948,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1948,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1938,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1938,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1938,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1939,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1939,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1939,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1911,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1911,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1911,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1911,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1913,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1913,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1913,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 767,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: 767,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: 767,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: -1,
-        class: 64,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 6776.0,
-        unitId: -1,
-        class: 64,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 5752.0,
-        unitId: -1,
-        class: 64,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 2133,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 2134,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2956.0,
-        unitId: 2135,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2633,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 2936.0,
-        unitId: 2633,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 21,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 2,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 20,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 22,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 279,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 542,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 539,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 21,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 768.0,
-        unitId: 73,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 505,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 518,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 54,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 328,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 250,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 533,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 746,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 54,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 280,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 550,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 588,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 682,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 683,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 747,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 109,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 71,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 141,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 142,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1004,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1006,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1120,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1122,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1126,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1128,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1251,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 51,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1167,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1168,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 778,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 786,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 787,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1750,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1795,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1830,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2130,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2131,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2132,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2154,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2155,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2156,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2152,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2138,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2139,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1936,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1937,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1942,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1982,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1983,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1931,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1971,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1948,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1938,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1939,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1879,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2415,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1934,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1935,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2417,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2631,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2632,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 133,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 45,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 47,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 51,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1189,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2574,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2575,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2633,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1548,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 2819.0,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 2819.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 2819.0,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 2819.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2448,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2412,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 0.9090909361839294,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -2819.0,
-        unitId: 2413,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 505,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 518,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 4207.0,
-        unitId: 505,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 4207.0,
-        unitId: 518,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1867,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1868,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 4207.0,
-        unitId: 1867,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 9,
-        value: 4207.0,
-        unitId: 1868,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 768.5,
-        unitId: 54,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 768.5,
-        unitId: 328,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1034.0,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 2818.0,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 54,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 328,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 109,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 71,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 141,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 142,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 539,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 539,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 21,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 21,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 442,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 250,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 250,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 533,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 533,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 505,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 518,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 746,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 747,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 885,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 885,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1004,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1004,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1006,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1006,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1251,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1251,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 778,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 778,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 786,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 787,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1750,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 1750,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1830,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2130,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2130,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2131,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2131,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2132,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2132,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 2328,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2275,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2276,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2277,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1983,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1982,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1936,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1937,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1931,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1971,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1879,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2415,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2415,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2417,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: 2417,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2631,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2632,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 133,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1189,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 45,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 47,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 51,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2574,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 2575,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 769.0,
-        unitId: 1548,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2100000381469727,
-        unitId: 82,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.3849999904632568,
-        unitId: 1251,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.4444444179534912,
-        unitId: 1665,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: 1.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 7,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 6,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 12,
-        value: -1.0,
-        unitId: 1155,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.04544997215271,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.04544997215271,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.0476200580596924,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.0476200580596924,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.0434800386428833,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.0434800386428833,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 20,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 21,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 2,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 22,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 20,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 21,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 2,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 22,
-        age: 1,
-      },
-    ],
-  },
-  MAGYARS: {
-    name: 'Magyars Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 45,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 46,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 50,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2626,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2627,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2628,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 45,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 46,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 50,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2626,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2627,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2628,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 45,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 46,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 50,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1026.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2626,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2627,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2628,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  SLAVS: {
-    name: 'Slavs Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 380,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.20000000298023224,
-        unitId: 368,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.20000000298023224,
-        unitId: 506,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.20000000298023224,
-        unitId: 537,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 374,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 1119,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 1733,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 1789,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  MALAY: {
-    name: 'Malay Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  VIETNAMESE: {
-    name: 'Vietnamese Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 0,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 36,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 44,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 44,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1024.0,
-        unitId: 73,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 768.0,
-        unitId: 73,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 23,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 23,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1738,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1740,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2174,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2175,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2468,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 0,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 36,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 44,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 44,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1024.0,
-        unitId: 73,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 768.0,
-        unitId: 73,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 23,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 23,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1738,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1740,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2174,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2175,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2468,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: -1,
-        class: 18,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: -1,
-        class: 43,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: 1811,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: 1826,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: 1827,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.04544997215271,
-        unitId: -1,
-        class: 6,
-        age: 2,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.04544997215271,
-        unitId: 1831,
-        class: -1,
-        age: 2,
-      },
-    ],
-  },
-  BULGARIANS: {
-    name: 'Bulgarians Bonuses',
-    effects: [
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 45,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 46,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 50,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2626,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2627,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2628,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 45,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 46,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 50,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1025.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2626,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2627,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1025.0,
-        unitId: 2628,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 45,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 46,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 50,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: -1026.0,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2626,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2627,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 9,
-        value: 1026.0,
-        unitId: 2628,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 4,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 1808,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 4,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -770.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -770.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 770.0,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 10,
-        value: 1.875,
-        unitId: -1,
-        class: 18,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: -1,
-        class: 13,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: -1,
-        class: 55,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: -1,
-        class: 51,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: -1,
-        class: 54,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1923,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1120,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1122,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1744,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1746,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1962,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.399999976158142,
-        unitId: 1980,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  BURGUNDIANS: {
-    name: 'Burgundians Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 47,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 12,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: -1,
-        class: 23,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 775,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 1263,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 1715,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 1822,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.100000023841858,
-        unitId: 2557,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.2000000476837158,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 44,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 44,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1024.0,
-        unitId: 73,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 768.0,
-        unitId: 73,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 23,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 23,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 0,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 36,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 44,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 44,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1024.0,
-        unitId: 73,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 768.0,
-        unitId: 73,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: -1,
-        class: 23,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: -1,
-        class: 23,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1738,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 1025.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: 769.0,
-        unitId: 1740,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2174,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2175,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -769.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 8,
-        value: -1025.0,
-        unitId: 2468,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: -1,
-        class: 18,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: -1,
-        class: 43,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: 1811,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: 1826,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 0,
-        value: 15.0,
-        unitId: 1827,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.10000000149011612,
-        unitId: 237,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 1,
-        attribute: 0,
-        value: 0.15000000596046448,
-        unitId: 78,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.04544997215271,
-        unitId: -1,
-        class: 6,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 5,
-        value: 1.04544997215271,
-        unitId: 1831,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  DRAVIDIANS: {
-    name: 'Dravidians Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.25,
-        unitId: 280,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.25,
-        unitId: 42,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.09089994430542,
-        unitId: -1,
-        class: 3,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.09089994430542,
-        unitId: -1,
-        class: 27,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.09089994430542,
-        unitId: -1,
-        class: 52,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.09089994430542,
-        unitId: -1,
-        class: 49,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 0,
-        value: 1.09089994430542,
-        unitId: -1,
-        class: 39,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 380,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.20000000298023224,
-        unitId: 368,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.20000000298023224,
-        unitId: 506,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.20000000298023224,
-        unitId: 537,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 374,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 1119,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 1733,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 4,
-        attribute: 5,
-        value: 0.5,
-        unitId: 1789,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
-  INCAS: {
-    name: 'Incas Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 103,
-        value: 0.95,
-        unitId: -1,
-        class: -1,
-        age: 1,
-      },
-      {
-        type: 5,
-        attribute: 103,
-        value: 0.9,
-        unitId: -1,
-        class: -1,
-        age: 2,
-      },
-      {
-        type: 5,
-        attribute: 103,
-        value: 0.85,
-        unitId: -1,
-        class: -1,
-        age: 3,
-      },
-      {
-        type: 5,
-        attribute: 103,
-        value: 0.8,
-        unitId: -1,
-        class: -1,
-        age: 4,
-      },
-    ],
-  },
-  PORTUGUESE: {
-    name: 'Portuguese Bonuses',
-    effects: [
-      {
-        type: 5,
-        attribute: 100,
-        value: 0.8,
-        unitId: -1,
-        class: -1,
-        age: 1,
-      },
-    ],
-  },
+    "BRITONS": {
+        "name": "Britons Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 2.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -2.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -2.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -2.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "FRANKS": {
+        "name": "Franks Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 12,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 23,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 47,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 82,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7500000269973981,
+                "unitId": 82,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.10000000149011612,
+                "unitId": 237,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "GOTHS": {
+        "name": "Goths Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 5377.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 10754.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 16131.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 5377.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 10754.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 16131.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7968750223517418,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.754242211315781,
+                "unitId": -1,
+                "class": 6,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.700367433688992,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            }
+        ]
+    },
+    "TEUTONS": {
+        "name": "Teutons Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.6000000238418579,
+                "unitId": 50,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.6000000238418579,
+                "unitId": 1187,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 93,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 93,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 358,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 358,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 359,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 359,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 74,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 74,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 75,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 75,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 77,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 77,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 473,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 473,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 567,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 567,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 751,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 751,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 752,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 752,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 753,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 753,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 882,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 882,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 448,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 448,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 546,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 546,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 441,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 441,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 38,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 38,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 283,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 283,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 569,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 569,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1755,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1755,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 329,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 329,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 330,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 330,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 207,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 207,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1132,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1132,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1134,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1134,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1370,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1370,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1372,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1372,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1707,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1707,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1786,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1786,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1787,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1787,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1788,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1788,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1793,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1793,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 1813,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 1813,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 8.0,
+                "unitId": 90,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "JAPANESE": {
+        "name": "Japanese Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": -5888.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3842.0,
+                "unitId": 1738,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3842.0,
+                "unitId": 1740,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": -1,
+                "class": 21,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 68,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 562,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 584,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 129,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 130,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 131,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 585,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 586,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 587,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 563,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 564,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.5,
+                "unitId": 565,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.75,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.75,
+                "unitId": 1831,
+                "class": -1,
+                "age": 2
+            }
+        ]
+    },
+    "CHINESE": {
+        "name": "Chinese Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 85,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.949999988079071,
+                "unitId": 85,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.8999999761581421,
+                "unitId": 85,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.8500000238418579,
+                "unitId": 85,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.5,
+                "unitId": 527,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.5,
+                "unitId": 528,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.5,
+                "unitId": 1104,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 1901,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 1901,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 1903,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 1903,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 529,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 529,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 532,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 532,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 1103,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 1103,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 1302,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 1302,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "BYZANTINES": {
+        "name": "Byzantines Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 3,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1999899647450434,
+                "unitId": -1,
+                "class": 3,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2999491221707877,
+                "unitId": -1,
+                "class": 3,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.3999152166081985,
+                "unitId": -1,
+                "class": 3,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 27,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1999899647450434,
+                "unitId": -1,
+                "class": 27,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2999491221707877,
+                "unitId": -1,
+                "class": 27,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.3999152166081985,
+                "unitId": -1,
+                "class": 27,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1999899647450434,
+                "unitId": -1,
+                "class": 52,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2999491221707877,
+                "unitId": -1,
+                "class": 52,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.3999152166081985,
+                "unitId": -1,
+                "class": 52,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 49,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1999899647450434,
+                "unitId": -1,
+                "class": 49,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2999491221707877,
+                "unitId": -1,
+                "class": 49,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.3999152166081985,
+                "unitId": -1,
+                "class": 49,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 39,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1999899647450434,
+                "unitId": -1,
+                "class": 39,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2999491221707877,
+                "unitId": -1,
+                "class": 39,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.3999152166081985,
+                "unitId": -1,
+                "class": 39,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1755,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 329,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 93,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 330,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 358,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 359,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1010,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1012,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1786,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1787,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1788,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 529,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 532,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1103,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1302,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 3.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1666666269302368,
+                "unitId": 49,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 49,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 150,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1666666269302368,
+                "unitId": 150,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.5,
+                "unitId": 1665,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 102,
+                "value": 1.0,
+                "unitId": 1665,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1665,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 2275,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 2276,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 2277,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1666666269302368,
+                "unitId": 2414,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 2414,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "PERSIANS": {
+        "name": "Persians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 109,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 618,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 619,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 620,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 621,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 71,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 614,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 615,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 616,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 617,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 141,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 481,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 482,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 483,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 484,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 142,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 611,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 612,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 613,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 597,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 45,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 133,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 47,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 51,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 805,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 806,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 807,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 808,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "SARACENS": {
+        "name": "Saracens Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 282,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 556,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1755,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 329,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 330,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 207,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1007,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1009,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1263,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 2.0,
+                "unitId": 545,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.05000000074505806,
+                "unitId": 78,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 539,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 21,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 442,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "TURKS": {
+        "name": "Turks Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 5,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 36,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 420,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 46,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 691,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 771,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 773,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 557,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1001,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1003,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 832,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1709,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1704,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1706,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1904,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1907,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1901,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1903,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1911,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 448,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 546,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 441,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 1707,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": -1,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 279,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 542,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 539,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 21,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 768.0,
+                "unitId": 73,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 505,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 518,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 54,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1537.5,
+                "unitId": 54,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 328,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1537.5,
+                "unitId": 328,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 250,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 533,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 746,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 280,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 550,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 588,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 682,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 683,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 747,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 109,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 71,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 141,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 142,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1004,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1006,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1126,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1128,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1251,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1167,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1168,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 778,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 786,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 787,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1750,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1830,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2130,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2131,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2132,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2154,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2156,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2152,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2275,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2276,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2277,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 2138,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 2139,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1936,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1937,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1942,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1982,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1983,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1931,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1971,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1948,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1938,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1939,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1879,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2415,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1934,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1935,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2417,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2631,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2632,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 133,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 45,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 47,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 51,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1189,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2574,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2575,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 2633,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1548,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "VIKINGS": {
+        "name": "Vikings Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": -1,
+                "class": 53,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8470529570300585,
+                "unitId": -1,
+                "class": 53,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7972208122451016,
+                "unitId": -1,
+                "class": 53,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": -1,
+                "class": 22,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8470529570300585,
+                "unitId": -1,
+                "class": 22,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7972208122451016,
+                "unitId": -1,
+                "class": 22,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1831,
+                "class": -1,
+                "age": 2
+            }
+        ]
+    },
+    "MONGOLS": {
+        "name": "Mongols Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 448,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.6910348971675413,
+                "unitId": 448,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 546,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.6910348971675413,
+                "unitId": 546,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 441,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.6910348971675413,
+                "unitId": 441,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 1707,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.6910348971675413,
+                "unitId": 1707,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 1370,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.6910348971675413,
+                "unitId": 1370,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 1372,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.6910348971675413,
+                "unitId": 1372,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 448,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 448,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 546,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 546,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 441,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 441,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1707,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1707,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1370,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1370,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1372,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1372,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            }
+        ]
+    },
+    "CELTS": {
+        "name": "Celts Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1744,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1746,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.149996026326538,
+                "unitId": -1,
+                "class": 6,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1999978979903783,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1000010110082599,
+                "unitId": 1831,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.149996026326538,
+                "unitId": 1831,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1999978979903783,
+                "unitId": 1831,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 97,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "SPANISH": {
+        "name": "Spanish Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.0000002911457528,
+                "unitId": 621,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9999999812016114,
+                "unitId": 617,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9999999812016114,
+                "unitId": 484,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9999999812016114,
+                "unitId": 597,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 300.0,
+                "unitId": 269,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 4,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": -1,
+                "class": 45,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": -1,
+                "class": 46,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": -1,
+                "class": 50,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": -2051.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": 2626,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": 2627,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2051.0,
+                "unitId": 2628,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 1.875,
+                "unitId": -1,
+                "class": 18,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1808,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": 2174,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": 2175,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": 2468,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3589.0,
+                "unitId": 1738,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3589.0,
+                "unitId": 1740,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": 775,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3589.0,
+                "unitId": 2557,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.0833300352096558,
+                "unitId": 276,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 44,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 36,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 420,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 691,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 1709,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "AZTECS": {
+        "name": "Aztecs Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 35.0,
+                "unitId": -1,
+                "class": 18,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 55.0,
+                "unitId": -1,
+                "class": 18,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 35.0,
+                "unitId": -1,
+                "class": 43,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 55.0,
+                "unitId": -1,
+                "class": 43,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 35.0,
+                "unitId": 1811,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 55.0,
+                "unitId": 1811,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 35.0,
+                "unitId": 1826,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 55.0,
+                "unitId": 1826,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 35.0,
+                "unitId": 1827,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 55.0,
+                "unitId": 1827,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 35,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695651888847351,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            }
+        ]
+    },
+    "MAYANS": {
+        "name": "Mayans Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": 4,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.800099977517128,
+                "unitId": 4,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.700087480327487,
+                "unitId": 4,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": 24,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8009999659061435,
+                "unitId": 24,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7048799661779408,
+                "unitId": 24,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": 492,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8009999659061435,
+                "unitId": 492,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7048799661779408,
+                "unitId": 492,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": 763,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8009999659061435,
+                "unitId": 763,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7048799661779408,
+                "unitId": 763,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": 765,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8009999659061435,
+                "unitId": 765,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7048799661779408,
+                "unitId": 765,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8700000047683716,
+                "unitId": 199,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "HUNS": {
+        "name": "Huns Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8999999761581421,
+                "unitId": -1,
+                "class": 36,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8000000920560595,
+                "unitId": -1,
+                "class": 36,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 11,
+                "value": 35.0,
+                "unitId": 42,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 2,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 70,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "KOREANS": {
+        "name": "Koreans Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.5,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.5,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            }
+        ]
+    },
+    "ITALIANS": {
+        "name": "Italians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.800000011920929,
+                "unitId": 5,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.800000011920929,
+                "unitId": 36,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.800000011920929,
+                "unitId": 420,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.800000011920929,
+                "unitId": 691,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.800000011920929,
+                "unitId": 1709,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1904,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1907,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1901,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1903,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 1911,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 882,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -1794.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -1794.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -1794.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -1794.0,
+                "unitId": 185,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 3.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 5.200000111262,
+                "unitId": 1665,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 102,
+                "value": 3.0,
+                "unitId": 1665,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5382.0,
+                "unitId": 1665,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 8.0,
+                "unitId": 1665,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 19470.0,
+                "unitId": 1665,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.750000009934105,
+                "unitId": 2414,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5382.0,
+                "unitId": 2414,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 79,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 25.0,
+                "unitId": 1658,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1027.0,
+                "unitId": 1658,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1795.0,
+                "unitId": 1658,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 25.0,
+                "unitId": 1660,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1027.0,
+                "unitId": 1660,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1795.0,
+                "unitId": 1660,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.75,
+                "unitId": 1660,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 2275,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 2276,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 2277,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1666666269302368,
+                "unitId": 49,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 49,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 150,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1666666269302368,
+                "unitId": 150,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 2,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 21,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 20,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 53,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 1258,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 35,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 422,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 548,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 115953569472.0,
+                "unitId": 440,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 1263,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 444,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 1744,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 1746,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 420,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 420,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 691,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 691,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 832,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 1104,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 527,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 528,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2138,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2139,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2140,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 2140,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 2138,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 2139,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1948,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1948,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1938,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1939,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1911,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1911,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1913,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": 767,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 114432220672.0,
+                "unitId": -1,
+                "class": 64,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 2133,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 2134,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2956.0,
+                "unitId": 2135,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2633,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2936.0,
+                "unitId": 2633,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 21,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 2,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 20,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": -1,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 279,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 542,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 539,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 21,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 768.0,
+                "unitId": 73,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2307.0,
+                "unitId": 505,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2307.0,
+                "unitId": 518,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2306.5,
+                "unitId": 54,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2306.5,
+                "unitId": 328,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 250,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 533,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 746,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 280,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 550,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 588,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 682,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 683,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 747,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 109,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 71,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 141,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 142,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1004,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1006,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1126,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1128,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1251,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1167,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1168,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 778,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 786,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 787,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1750,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1830,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2130,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2131,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2132,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2154,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2156,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 2152,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2275,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2276,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2277,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 2138,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 2139,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1936,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1937,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1942,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1982,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1983,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1931,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1971,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1948,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1938,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1939,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1879,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2415,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1934,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1935,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2417,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2631,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2632,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 133,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 45,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 47,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 51,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1189,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2574,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 2575,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 2633,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1538.0,
+                "unitId": 1548,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 3,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 9226.0,
+                "unitId": -1,
+                "class": 3,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 9226.0,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 0.8264463302517733,
+                "unitId": 2442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -9226.0,
+                "unitId": 2442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 0.8264463302517733,
+                "unitId": 2448,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -9226.0,
+                "unitId": 2448,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 0.8264463302517733,
+                "unitId": 2412,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -9226.0,
+                "unitId": 2412,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 0.8264463302517733,
+                "unitId": 2413,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -9226.0,
+                "unitId": 2413,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 505,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 518,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1867,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1868,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 1867,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 1868,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3852.0,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4520001034736651,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 2.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 539,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 21,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 250,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 533,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 885,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 885,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1004,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1006,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1251,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 778,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 1750,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2130,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2131,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2132,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 2328,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2415,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": 1.0,
+                "unitId": 2417,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.3849999904632568,
+                "unitId": 1251,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 12,
+                "value": -1.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1428551928437718,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1428551928437718,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 20,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 21,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 2,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            }
+        ]
+    },
+    "INDIANS": {
+        "name": "Indians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.9200000166893005,
+                "unitId": 83,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8699998631943799,
+                "unitId": 83,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8200001208001942,
+                "unitId": 83,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7699997701115242,
+                "unitId": 83,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.9200000166893005,
+                "unitId": 293,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8699998631943799,
+                "unitId": 293,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8200001208001942,
+                "unitId": 293,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7699997701115242,
+                "unitId": 293,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8333330154418945,
+                "unitId": 1755,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8333333134651184,
+                "unitId": 329,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8333333134651184,
+                "unitId": 330,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8333333134651184,
+                "unitId": 207,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 5,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 36,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 420,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 691,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1709,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1904,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1907,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1901,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1903,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1911,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "INCAS": {
+        "name": "Incas Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 0,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 0,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 0,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 35,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 35,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 35,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 35,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 6,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 36,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 36,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 47,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 47,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 47,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 12,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 12,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 12,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 44,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 44,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 44,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 44,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.949999988079071,
+                "unitId": -1,
+                "class": 23,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8977499241828938,
+                "unitId": -1,
+                "class": 23,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.84321165449497,
+                "unitId": -1,
+                "class": 23,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.793293535726543,
+                "unitId": -1,
+                "class": 23,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 4,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": -1,
+                "class": 4,
+                "age": 1
+            }
+        ]
+    },
+    "MAGYARS": {
+        "name": "Magyars Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3684.0,
+                "unitId": 83,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3684.0,
+                "unitId": 293,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8500000238418579,
+                "unitId": 448,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8500000238418579,
+                "unitId": 546,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8500000238418579,
+                "unitId": 441,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 103,
+                "value": 0.8500000238418579,
+                "unitId": 1707,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 45,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 46,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 50,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": -3076.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2626,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2627,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2628,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "SLAVS": {
+        "name": "Slavs Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 18,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 43,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.2000000476837158,
+                "unitId": 1811,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.2000000476837158,
+                "unitId": 1826,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.2000000476837158,
+                "unitId": 1827,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1744,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1746,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 380,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.20000000298023224,
+                "unitId": 368,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.20000000298023224,
+                "unitId": 506,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.20000000298023224,
+                "unitId": 537,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 374,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 1119,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 1733,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 1789,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "PORTUGUESE": {
+        "name": "Portuguese Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8,
+                "unitId": -1,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "ETHIOPIANS": {
+        "name": "Ethiopians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 4,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 24,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.8500000238418579,
+                "unitId": 492,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "MALIANS": {
+        "name": "Malians Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 93,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 93,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 93,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 358,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 358,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 358,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 359,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 359,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 359,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 74,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 74,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 74,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 75,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 75,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 75,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 77,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 77,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 77,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 473,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 473,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 473,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 567,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 567,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 567,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 751,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 751,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 751,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 752,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 752,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 752,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 753,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 753,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 753,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 882,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 882,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 882,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 1786,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 1786,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 1786,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 1787,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 1787,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 1787,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 769.0,
+                "unitId": 1788,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1538.0,
+                "unitId": 1788,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2307.0,
+                "unitId": 1788,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "BERBERS": {
+        "name": "Berbers Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": -1,
+                "class": 4,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0999998844805248,
+                "unitId": -1,
+                "class": 4,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 2,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 20,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 21,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 53,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 12,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7999999747556785,
+                "unitId": -1,
+                "class": 12,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 47,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.7999999747556785,
+                "unitId": -1,
+                "class": 47,
+                "age": 4
+            }
+        ]
+    },
+    "KHMER": {
+        "name": "Khmer Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 96,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1132,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1134,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "MALAY": {
+        "name": "Malay Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.6666669845581055,
+                "unitId": 199,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 2130.0,
+                "unitId": 88,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1132,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.6500002294778824,
+                "unitId": 1132,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1134,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.6500002294778824,
+                "unitId": 1134,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2174,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2175,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2468,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "BURMESE": {
+        "name": "Burmese Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1132,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1134,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2050.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3075.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1025.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 2050.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3075.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "VIETNAMESE": {
+        "name": "Vietnamese Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 4,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 24,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 492,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 5,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 39,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 474,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1010,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1012,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1260,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1901,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1903,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 5.0,
+                "unitId": 209,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 44,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3584.0,
+                "unitId": 73,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 23,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 1738,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 1740,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3588.0,
+                "unitId": 2174,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3588.0,
+                "unitId": 2175,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3588.0,
+                "unitId": 2468,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": -1,
+                "class": 18,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": -1,
+                "class": 43,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1811,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1826,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1827,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.10000000149011612,
+                "unitId": 237,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.04544997215271,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.04544997215271,
+                "unitId": 1831,
+                "class": -1,
+                "age": 2
+            }
+        ]
+    },
+    "BULGARIANS": {
+        "name": "Bulgarians Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 45,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 46,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 50,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": -3076.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2626,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2627,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2628,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.210000052452088,
+                "unitId": -1,
+                "class": 4,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1808,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2174,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2175,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2468,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -5383.0,
+                "unitId": 1738,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -5383.0,
+                "unitId": 1740,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 775,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2557,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 1.875,
+                "unitId": -1,
+                "class": 18,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1120,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1122,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1744,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1746,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1962,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.399999976158142,
+                "unitId": 1980,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "CUMANS": {
+        "name": "Cumans Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": -1,
+                "class": 47,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.102499899864199,
+                "unitId": -1,
+                "class": 47,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.157624842286117,
+                "unitId": -1,
+                "class": 47,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.102499899864199,
+                "unitId": -1,
+                "class": 36,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.157624842286117,
+                "unitId": -1,
+                "class": 36,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": -1,
+                "class": 12,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.102499899864199,
+                "unitId": -1,
+                "class": 12,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.157624842286117,
+                "unitId": -1,
+                "class": 12,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.0499999523162842,
+                "unitId": -1,
+                "class": 23,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.102499899864199,
+                "unitId": -1,
+                "class": 23,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.157624842286117,
+                "unitId": -1,
+                "class": 23,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.7999999523162842,
+                "unitId": 621,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.000007960531235,
+                "unitId": 621,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.7999999523162842,
+                "unitId": 617,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.000007960531235,
+                "unitId": 617,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.7999999523162842,
+                "unitId": 484,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.000007960531235,
+                "unitId": 484,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.7999999523162842,
+                "unitId": 597,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.000007960531235,
+                "unitId": 597,
+                "class": -1,
+                "age": 3
+            }
+        ]
+    },
+    "LITHUANIANS": {
+        "name": "Lithuanians Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 4100.0,
+                "unitId": 38,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 4100.0,
+                "unitId": 283,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 4100.0,
+                "unitId": 569,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 4100.0,
+                "unitId": 1813,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 4100.0,
+                "unitId": 1234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 4100.0,
+                "unitId": 1236,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 93,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 358,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 359,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1786,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1787,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1788,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "BURGUNDIANS": {
+        "name": "Burgundians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.1524347376301196e+16,
+                "unitId": 5,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2.479179493771009e+21,
+                "unitId": 36,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2.479179493771009e+21,
+                "unitId": 1709,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 5.2858321852221394e+23,
+                "unitId": 420,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 5.2858321852221394e+23,
+                "unitId": 691,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 6.64027421672702e+21,
+                "unitId": 1904,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 6.64027421672702e+21,
+                "unitId": 1907,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 5.896478575893672e+16,
+                "unitId": 1911,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 6.357494362714871e+20,
+                "unitId": 1901,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 1.1556979390501493e+17,
+                "unitId": 1903,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 23,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 775,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1263,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1715,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1822,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 2557,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 44,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3584.0,
+                "unitId": 73,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": -1,
+                "class": 23,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 1738,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3588.0,
+                "unitId": 1740,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3588.0,
+                "unitId": 2174,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3588.0,
+                "unitId": 2175,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3588.0,
+                "unitId": 2468,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": -1,
+                "class": 18,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": -1,
+                "class": 43,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1811,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1826,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1827,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.10000000149011612,
+                "unitId": 237,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.15000000596046448,
+                "unitId": 78,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.04544997215271,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.04544997215271,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "SICILIANS": {
+        "name": "Sicilians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.6666669845581055,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.5,
+                "unitId": 621,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.5,
+                "unitId": 617,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.5,
+                "unitId": 484,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.5,
+                "unitId": 597,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 27,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 39,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 0,
+                "attribute": 0,
+                "value": 0.4000000059604645,
+                "unitId": -1,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 0,
+                "attribute": 12,
+                "value": 0.4000000059604645,
+                "unitId": -1,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "POLES": {
+        "name": "Poles Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.10000000149011612,
+                "unitId": 237,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 238,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 68.0,
+                "unitId": 239,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 68,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 129,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 130,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 131,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1734,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1711,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1720,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 13.0,
+                "unitId": 33,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "BOHEMIANS": {
+        "name": "Bohemians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 93,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 358,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 359,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 892,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 1786,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 1787,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 3.7947250314835726e+25,
+                "unitId": 1788,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": -1,
+                "class": 4,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.149999976158142,
+                "unitId": -1,
+                "class": 4,
+                "age": 1
+            }
+        ]
+    },
+    "DRAVIDIANS": {
+        "name": "Dravidians Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1010,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1012,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 873,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 875,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 280,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.25,
+                "unitId": 42,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.09089994430542,
+                "unitId": -1,
+                "class": 3,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.09089994430542,
+                "unitId": -1,
+                "class": 27,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.09089994430542,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.09089994430542,
+                "unitId": -1,
+                "class": 49,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.09089994430542,
+                "unitId": -1,
+                "class": 39,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 380,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.20000000298023224,
+                "unitId": 368,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.20000000298023224,
+                "unitId": 506,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.20000000298023224,
+                "unitId": 537,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 374,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 1119,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 1733,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 5,
+                "value": 0.5,
+                "unitId": 1789,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "BENGALIS": {
+        "name": "Bengalis Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1798.0,
+                "unitId": -1,
+                "class": 18,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1798.0,
+                "unitId": -1,
+                "class": 43,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1798.0,
+                "unitId": 1811,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1798.0,
+                "unitId": 1826,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1798.0,
+                "unitId": 1827,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 9730.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 9730.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            }
+        ]
+    },
+    "GURJARAS": {
+        "name": "Gurjaras Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 1.7802645447597728e+119,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2.8454392568162237e+238,
+                "unitId": -1,
+                "class": 36,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": Infinity,
+                "unitId": -1,
+                "class": 36,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 1.7802645447597728e+119,
+                "unitId": -1,
+                "class": 47,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2.8454392568162237e+238,
+                "unitId": -1,
+                "class": 47,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": Infinity,
+                "unitId": -1,
+                "class": 47,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 1.7802645447597728e+119,
+                "unitId": -1,
+                "class": 12,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2.8454392568162237e+238,
+                "unitId": -1,
+                "class": 12,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": Infinity,
+                "unitId": -1,
+                "class": 12,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 1.7802645447597728e+119,
+                "unitId": -1,
+                "class": 23,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 2.8454392568162237e+238,
+                "unitId": -1,
+                "class": 23,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": Infinity,
+                "unitId": -1,
+                "class": 23,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 254,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "ROMANS": {
+        "name": "Romans Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 539,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 21,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1794.0,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2174,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2175,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 5383.0,
+                "unitId": 2468,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "ARMENIANS": {
+        "name": "Armenians Bonuses",
+        "effects": [
+            {
+                "type": 2,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 562,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 2,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 584,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 283,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1808,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 102,
+                "value": 1.0,
+                "unitId": 539,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 102,
+                "value": 1.0,
+                "unitId": 21,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 102,
+                "value": 1.0,
+                "unitId": 442,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 102,
+                "value": 1.0,
+                "unitId": 1795,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "GEORGIANS": {
+        "name": "Georgians Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 2,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 562,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 2,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 584,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 9.0,
+                "unitId": 33,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "SHU": {
+        "name": "Shu Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 13,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499999772418619,
+                "unitId": -1,
+                "class": 13,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 35,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499999772418619,
+                "unitId": -1,
+                "class": 35,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 51,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499999772418619,
+                "unitId": -1,
+                "class": 51,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 55,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499999772418619,
+                "unitId": -1,
+                "class": 55,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 54,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499999772418619,
+                "unitId": -1,
+                "class": 54,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1948,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1948,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1923,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1923,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1120,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1120,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1122,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1122,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1744,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1744,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1746,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1746,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1962,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1962,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.100000023841858,
+                "unitId": 1980,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 5,
+                "value": 1.1499949942934506,
+                "unitId": 1980,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 16.0,
+                "unitId": 33,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "WU": {
+        "name": "Wu Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1026.0,
+                "unitId": 1944,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1026.0,
+                "unitId": 1946,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1026.0,
+                "unitId": 1974,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 1026.0,
+                "unitId": 1976,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "WEI": {
+        "name": "Wei Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 234,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 1944,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.689989768629675,
+                "unitId": 1944,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 1946,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.689989768629675,
+                "unitId": 1946,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.4400000822544095,
+                "unitId": 1952,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.7360699771809165,
+                "unitId": 1952,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1944,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1944,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1946,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1946,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1952,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 0.0,
+                "unitId": 1952,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1940,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1942,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 1948,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "JURCHENS": {
+        "name": "Jurchens Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 1.0,
+                "unitId": 292,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 12,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 47,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 23,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1901,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 0.800000011920929,
+                "unitId": 1903,
+                "class": -1,
+                "age": 2
+            }
+        ]
+    },
+    "KHITANS": {
+        "name": "Khitans Bonuses",
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 45,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 46,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 50,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": -1,
+                "class": 47,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": -3076.0,
+                "unitId": 1923,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 1831,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2626,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2627,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 3076.0,
+                "unitId": 2628,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 7,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 448,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 546,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 93,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 441,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 6,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 358,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 359,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 1155,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 1010,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 1012,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 1786,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 1787,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.8695650100708008,
+                "unitId": 1788,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    },
+    "MUISCA": {
+        "name": "Muisca Bonuses",
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 2556,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 2558,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 100,
+                "value": 0.75,
+                "unitId": 2560,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 28.0,
+                "unitId": 33,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": -1,
+                "class": 0,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 2550,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 2550,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": 2550,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 2552,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 2552,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": 2552,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 2554,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 2554,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": 2554,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": 2588,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": 2588,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": 2588,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -1025.0,
+                "unitId": 2562,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -2050.0,
+                "unitId": 2562,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3075.0,
+                "unitId": 2562,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -1025.0,
+                "unitId": 2564,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -2050.0,
+                "unitId": 2564,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": -3075.0,
+                "unitId": 2564,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": -1,
+                "class": 36,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 1025.0,
+                "unitId": -1,
+                "class": 44,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 2050.0,
+                "unitId": -1,
+                "class": 44,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3075.0,
+                "unitId": -1,
+                "class": 44,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 10,
+                "value": 2.0,
+                "unitId": -1,
+                "class": 18,
+                "age": 1
+            }
+        ]
+    },
+    "MAPUCHE": {
+        "name": "Mapuche Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 26.0,
+                "unitId": 33,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 5.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 10.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": -1,
+                "class": 6,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 5.0,
+                "unitId": 185,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 10.0,
+                "unitId": 185,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 185,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 5.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 10.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 5.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 10.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 5.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 10.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 4,
+                "attribute": 0,
+                "value": 15.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 82.0,
+                "unitId": 204,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 2.0,
+                "unitId": 93,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.5,
+                "unitId": 93,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9998999834060669,
+                "unitId": 93,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 2.0,
+                "unitId": 358,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.5,
+                "unitId": 358,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9998999834060669,
+                "unitId": 358,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 2.0,
+                "unitId": 359,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.5,
+                "unitId": 359,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9998999834060669,
+                "unitId": 359,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 2.0,
+                "unitId": 7,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.5,
+                "unitId": 7,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9998999834060669,
+                "unitId": 7,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 2.0,
+                "unitId": 6,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.5,
+                "unitId": 6,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9998999834060669,
+                "unitId": 6,
+                "class": -1,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 2.0,
+                "unitId": 1155,
+                "class": -1,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 1.5,
+                "unitId": 1155,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 101,
+                "value": 0.9998999834060669,
+                "unitId": 1155,
+                "class": -1,
+                "age": 4
+            }
+        ]
+    },
+    "TUPI": {
+        "name": "Tupi Bonuses",
+        "effects": [
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 27.0,
+                "unitId": 33,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 1,
+                "attribute": 0,
+                "value": 0.15000000596046448,
+                "unitId": 295,
+                "class": -1,
+                "age": 1
+            }
+        ]
+    }
 };

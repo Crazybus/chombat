@@ -434,7 +434,7 @@ def convert():
             civ_techs[civ_name][tid] = age
 
     # Extract Civ Bonuses
-    for civ in dat.civs:
+    for civ_index, civ in enumerate(dat.civs):
         civ_name = civ.name.strip().upper()
         civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
         if civ_name in NON_RANKED_CIVS:
@@ -442,14 +442,34 @@ def convert():
         
         print(f"Processing civ: {civ_name} (orig: {civ.name.strip().upper()}) tech_tree_id: {civ.tech_tree_id}")
 
-        bonus_effects = []
-        # Check all possible tech_tree_ids (Genie dat files sometimes have multiple)
-        # Actually, civ.tech_tree_id is the primary one for DE.
-        if civ.tech_tree_id != -1 and civ.tech_tree_id < len(dat.effects):
-            main_eff_obj = dat.effects[civ.tech_tree_id]
-            seen_effects = set()
+        raw_effects = []
 
-            # Recursively explore 101 'Apply Effect' commands
+        # 1. Process technologies associated with this civ (passive bonuses)
+        for tid, tech in enumerate(dat.techs):
+            if tech.civ == civ_index:
+                is_passive = not tech.research_locations or all(loc.location_id == -1 for loc in tech.research_locations)
+                if is_passive and tech.effect_id != -1 and tech.effect_id < len(dat.effects):
+                    AGE_UP_TECHS = {101, 102, 103}
+                    reqs = tech.required_techs
+                    age = 4 if 103 in reqs else 3 if 102 in reqs else 2 if 101 in reqs else 1
+                    
+                    eff_obj = dat.effects[tech.effect_id]
+                    for cmd in eff_obj.effect_commands:
+                        if cmd.type in [0, 1, 2, 4, 5]: # Attribute modifiers
+                            attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
+                            if attr_id in VALID_ATTRS:
+                                raw_effects.append({
+                                    "type": cmd.type,
+                                    "attribute": attr_id,
+                                    "value": cmd.d,
+                                    "unitId": cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1,
+                                    "class": cmd.b if cmd.type in [4, 5] else -1,
+                                    "age": age,
+                                })
+
+        # 2. Check tech_tree_id
+        if civ.tech_tree_id != -1 and civ.tech_tree_id < len(dat.effects):
+            seen_effects = set()
             def crawl_effects(eff_id, age_id):
                 if eff_id == -1 or eff_id >= len(dat.effects) or eff_id in seen_effects:
                     return
@@ -457,29 +477,60 @@ def convert():
                 eff_obj = dat.effects[eff_id]
                 for cmd in eff_obj.effect_commands:
                     if cmd.type == 101:
-                        # cmd.b is age req
                         new_age = max(age_id, int(cmd.b) + 1)
-                        # print(f"  Following 101 to effect {int(cmd.a)} age {new_age}")
                         crawl_effects(int(cmd.a), new_age)
                     elif cmd.type in [0, 1, 2, 4, 5]: # Attribute modifiers
                         attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
-                        u_id = cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1
-                        c_id = cmd.b if cmd.type in [4, 5] else -1
-                        val = cmd.d
-                        # print(f"  Found attr modifier: type {cmd.type} attr {attr_id} val {val} unit {u_id} class {c_id}")
                         if attr_id in VALID_ATTRS:
-                            bonus_effects.append(
-                                {
-                                    "type": cmd.type,
-                                    "attribute": attr_id,
-                                    "value": val,
-                                    "unitId": u_id,
-                                    "class": c_id,
-                                    "age": age_id,
-                                }
-                            )
-
+                            raw_effects.append({
+                                "type": cmd.type,
+                                "attribute": attr_id,
+                                "value": cmd.d,
+                                "unitId": cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1,
+                                "class": cmd.b if cmd.type in [4, 5] else -1,
+                                "age": age_id,
+                            })
             crawl_effects(civ.tech_tree_id, 1)
+
+        # 3. Collapse effects by age and target to handle cumulative multipliers
+        bonus_effects = []
+        if raw_effects:
+            # Group by target: (type, attribute, unitId, class)
+            groups = {}
+            for e in raw_effects:
+                key = (e["type"], e["attribute"], e["unitId"], e["class"])
+                if key not in groups:
+                    groups[key] = []
+                groups[key].append(e)
+            
+            for key, effects in groups.items():
+                eff_type, attr_id, unit_id, class_id = key
+                # Sort by age
+                effects.sort(key=lambda x: x["age"])
+                
+                # Cumulative value tracker
+                cum_val = 1.0 if eff_type == 5 else 0.0
+                age_vals = {} # age -> final_val
+                
+                for e in effects:
+                    if eff_type == 5: # Multiply
+                        cum_val *= e["value"]
+                    elif eff_type == 4: # Add
+                        cum_val += e["value"]
+                    else: # Set (0, 1, 2)
+                        cum_val = e["value"]
+                    age_vals[e["age"]] = cum_val
+                
+                # Emit one effect per age with the cumulative value
+                for age, final_val in sorted(age_vals.items()):
+                    bonus_effects.append({
+                        "type": eff_type,
+                        "attribute": attr_id,
+                        "value": final_val,
+                        "unitId": unit_id,
+                        "class": class_id,
+                        "age": age,
+                    })
 
         if bonus_effects:
             print(f"Found {len(bonus_effects)} bonus effects for {civ_name}")
@@ -491,20 +542,6 @@ def convert():
     # Manual overrides for missing bonuses to pass tests
     # Note: Use IDs from effect_constants.ts: Food=103, Gold=100, Wood=101, Stone=102
     MANUAL_BONUSES = {
-        'INCAS': [
-            {"type": 5, "attribute": 103, "value": 0.85, "unitId": -1, "class": 6, "age": 3}, # Castle Age Infantry Food Discount
-            {"type": 5, "attribute": 103, "value": 0.94117647, "unitId": -1, "class": 6, "age": 4}, # Imperial Age Infantry Food Discount
-            {"type": 5, "attribute": 103, "value": 0.85, "unitId": -1, "class": 0, "age": 3}, # Castle Age Archer Food Discount
-            {"type": 5, "attribute": 103, "value": 0.94117647, "unitId": -1, "class": 0, "age": 4}, # Imperial Age Archer Food Discount
-            # The Inca gold discount is staged in the test as specific multipliers for each age
-            {"type": 5, "attribute": 100, "value": 0.95, "unitId": -1, "class": -1, "age": 1}, # Tech 152
-            {"type": 5, "attribute": 100, "value": 1.05, "unitId": -1, "class": -1, "age": 2}, # Tech 153 part 1
-            {"type": 5, "attribute": 100, "value": 0.90, "unitId": -1, "class": -1, "age": 2}, # Tech 153 part 2
-            {"type": 5, "attribute": 100, "value": 1.105, "unitId": -1, "class": -1, "age": 3}, # Tech 154 part 1
-            {"type": 5, "attribute": 100, "value": 0.85, "unitId": -1, "class": -1, "age": 3}, # Tech 154 part 2
-            {"type": 5, "attribute": 100, "value": 1.176, "unitId": -1, "class": -1, "age": 4}, # Tech 155 part 1
-            {"type": 5, "attribute": 100, "value": 0.80, "unitId": -1, "class": -1, "age": 4}, # Tech 155 part 2
-        ],
         'KOREANS': [
             {"type": 5, "attribute": 101, "value": 0.50, "unitId": -1, "class": 0, "age": 1}, # Archer Wood Discount
             {"type": 5, "attribute": 101, "value": 0.50, "unitId": -1, "class": 6, "age": 1}, # Infantry Wood Discount

@@ -84,7 +84,6 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], c
   if (effectAge > currentAgeId) return false;
 
   // 1. Latest Age wins: if there's another matching effect in the same tech with a higher age (but still <= current age), skip this one.
-  // This handles staggered bonuses (like Inca cost discounts) correctly.
   if (
     allEffects.some(
       (other) =>
