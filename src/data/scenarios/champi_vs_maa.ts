@@ -1,22 +1,46 @@
 export const champi_vs_maa = {
-  name: 'Champi scout vs MAA',
-  description: 'All in dark age champi scout rush vs 19 pop no loom Man-at-arms',
   armyA: {
     preset: 'champi_scout',
     name: 'Champi Scout',
     age: '1',
     timeline: [
-      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
-      { type: 'building', name: 'Barracks', delay: 50, cost: 175, producesUnits: true, id: '87' },
-      { type: 'production', name: 'Champi Scout Production', value: 0, trainSpeed: 30, limitedProduction: false },
+      {
+        type: 'villagers',
+        name: 'Villagers',
+        value: 1,
+        delay: 25,
+        limitedProduction: false,
+      },
+      {
+        type: 'building',
+        name: 'Barracks',
+        delay: 50,
+        cost: 175,
+        producesUnits: true,
+        id: '87',
+      },
+      {
+        type: 'production',
+        name: 'Champi Scout Production',
+        value: 0,
+        trainSpeed: 30,
+        limitedProduction: false,
+      },
     ],
+    count: 10,
   },
   armyB: {
     preset: 'man_at_arms',
     name: 'Man-at-Arms',
     age: '2',
     timeline: [
-      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+      {
+        type: 'villagers',
+        name: 'Villagers',
+        value: 1,
+        delay: 25,
+        limitedProduction: false,
+      },
       {
         type: 'tech',
         name: 'Feudal Age',
@@ -27,7 +51,14 @@ export const champi_vs_maa = {
         isBlocking: true,
         limitedProduction: true,
       },
-      { type: 'building', name: 'Barracks', delay: 50, cost: 175, producesUnits: true, id: '87' },
+      {
+        type: 'building',
+        name: 'Barracks',
+        delay: 50,
+        cost: 175,
+        producesUnits: true,
+        id: '87',
+      },
       {
         type: 'tech',
         name: 'Man-At-Arms',
@@ -38,7 +69,16 @@ export const champi_vs_maa = {
         isBlocking: true,
         limitedProduction: true,
       },
-      { type: 'production', name: 'MAA Production', value: 0, trainSpeed: 21, limitedProduction: false },
+      {
+        type: 'production',
+        name: 'MAA Production',
+        value: 0,
+        trainSpeed: 21,
+        limitedProduction: false,
+      },
     ],
+    count: 7,
   },
+  name: 'Champi scout vs MAA',
+  description: 'All in dark age champi scout rush vs 19 pop no loom Man-at-arms',
 };

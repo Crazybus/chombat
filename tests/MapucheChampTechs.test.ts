@@ -46,8 +46,8 @@ describe('Mapuche Health Unique Techs', () => {
     const names = recommended.map((t) => t.name).sort();
 
     const expected = [
-      'C-Bonus, Skirm Spear +5 HP Feudal',
       'C-Bonus, Skirm Spear +5 HP Castle',
+      'C-Bonus, Skirm Spear +5 HP Feudal',
       'Chain Mail Armor',
       'Forging',
       'Iron Casting',
@@ -67,8 +67,8 @@ describe('Mapuche Health Unique Techs', () => {
 
     const expected = [
       'Blast Furnace',
-      'C-Bonus, Skirm Spear +5 HP Feudal',
       'C-Bonus, Skirm Spear +5 HP Castle',
+      'C-Bonus, Skirm Spear +5 HP Feudal',
       'C-Bonus, Skirm Spear +5 HP Imperial',
       'Chain Mail Armor',
       'Forging',

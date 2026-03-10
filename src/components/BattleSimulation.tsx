@@ -5,6 +5,7 @@ import { calculateEqualResources, calculateEqualProductionTime, calculateEqualFi
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
+import { bonuses } from '../data/bonuses';
 import CombatCharts from './CombatCharts';
 import StatsSummary from './StatsSummary';
 
@@ -39,8 +40,11 @@ const BattleSimulation: React.FC = () => {
   const survivorsB = isNaN(res.armyB.remaining) ? 0 : Math.ceil(res.armyB.remaining);
   const duration = isNaN(res.duration) ? 0 : res.duration;
 
-  const techsById: Record<number, any> = {};
+  const techsById: Record<number | string, any> = {};
   Object.values(techs).forEach((t) => (techsById[t.id] = t));
+  Object.entries(bonuses).forEach(([civKey, bonus]) => {
+    techsById[civKey] = bonus;
+  });
   const allUnits = { ...units, ...presets };
 
   const setEqualResources = () => {
@@ -50,6 +54,8 @@ const BattleSimulation: React.FC = () => {
       state.armyA,
       analysisB.baseUnit,
       state.armyB,
+      techsById,
+      allUnits,
     );
     updateArmy('b', { count: Math.max(1, newCountB) });
   };
@@ -61,6 +67,8 @@ const BattleSimulation: React.FC = () => {
       state.armyA,
       analysisB.baseUnit,
       state.armyB,
+      techsById,
+      allUnits,
     );
     updateArmy('b', { count: Math.max(1, newCountB) });
   };

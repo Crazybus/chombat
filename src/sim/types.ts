@@ -13,6 +13,7 @@ export interface UnitData {
   food: number;
   wood: number;
   gold: number;
+  stone?: number;
   trainTime: number;
   building?: number;
   id?: string;

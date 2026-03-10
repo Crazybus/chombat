@@ -47,7 +47,12 @@ NAME_CONVERSIONS = {
     'BYZANTINE': 'BYZANTINES',
     'MAGYAR': 'MAGYARS',
     'FRENCH': 'FRANKS',
-    'HINDUSTANIS': 'INDIANS'
+    'HINDUSTANIS': 'INDIANS',
+    'INCA': 'INCAS',
+    'INCAS': 'INCAS',
+    'PORTUGUESE': 'PORTUGUESE',
+    'KOREAN': 'KOREANS',
+    'KOREANS': 'KOREANS'
 }
 
 INVALID_TECHS = {
@@ -73,7 +78,12 @@ VALID_ATTRS = {
     11, # Accuracy percentage
     12, # Max range
     15, # Base armor
-    24 # Hidden damage resistance 
+    24, # Hidden damage resistance
+    100, # Total Cost
+    103, # Food Cost
+    104, # Wood Cost
+    105, # Gold Cost
+    106, # Stone Cost
 }
 
 def get_cost(resource_costs):
@@ -214,10 +224,16 @@ def extract_effects(eff_obj):
     effects = []
     for cmd in eff_obj.effect_commands:
         if cmd.type in [0, 4, 5]:
-            attr_id = cmd.c
+            attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
             if attr_id in VALID_ATTRS:
                 effects.append(
-                    {"t": cmd.type, "a": attr_id, "v": cmd.d, "u": cmd.a, "c": cmd.b}
+                    {
+                        "type": cmd.type,
+                        "attribute": attr_id,
+                        "value": cmd.d,
+                        "unitId": cmd.a if cmd.type in [0, 4, 5] else -1,
+                        "class": cmd.b if cmd.type in [4, 5] else -1,
+                    }
                 )
     return effects
 
@@ -331,9 +347,9 @@ def convert():
                     "range": unit.type_50.max_range,
                     "frame_delay": getattr(unit.type_50, "frame_delay", 0),
                     "accuracy_percent": accuracy_percent,
-                    "f": cost["f"],
-                    "w": cost["w"],
-                    "g": cost["g"],
+                    "food": cost["f"],
+                    "wood": cost["w"],
+                    "gold": cost["g"],
                     "trainTime": locations[0].train_time,
                     "building": locations[0].unit_id,
                     "id": uid,
@@ -352,10 +368,10 @@ def convert():
                     key = f"{key}_{uid}"
                 buildings_out[key] = {
                     "name": name,
-                    "f": cost["f"],
-                    "w": cost["w"],
-                    "g": cost["g"],
-                    "s": cost["s"],
+                    "food": cost["f"],
+                    "wood": cost["w"],
+                    "gold": cost["g"],
+                    "stone": cost["s"],
                     "time": 50,
                     "id": uid,
                     "age": building_ages.get(uid, 1),
@@ -397,9 +413,9 @@ def convert():
 
         techs_out[key] = {
             "name": name,
-            "f": cost["f"],
-            "w": cost["w"],
-            "g": cost["g"],
+            "food": cost["f"],
+            "wood": cost["w"],
+            "gold": cost["g"],
             "time": locations[0].research_time,
             "building": locations[0].location_id,
             "id": tid,
@@ -419,49 +435,106 @@ def convert():
             civ_techs[civ_name][tid] = age
 
     # Extract Civ Bonuses
-    for civ in dat.civs:
+    for civ_index, civ in enumerate(dat.civs):
         civ_name = civ.name.strip().upper()
         civ_name = NAME_CONVERSIONS.get(civ_name, civ_name)
         if civ_name in NON_RANKED_CIVS:
             continue
+        
+        print(f"Processing civ: {civ_name} (orig: {civ.name.strip().upper()}) tech_tree_id: {civ.tech_tree_id}")
 
-        bonus_effects = []
-        # Check all possible tech_tree_ids (Genie dat files sometimes have multiple)
-        # Actually, civ.tech_tree_id is the primary one for DE.
+        raw_effects = []
+
+        # 1. Process technologies associated with this civ (passive bonuses)
+        for tid, tech in enumerate(dat.techs):
+            if tech.civ == civ_index:
+                is_passive = not tech.research_locations or all(loc.location_id == -1 for loc in tech.research_locations)
+                if is_passive and tech.effect_id != -1 and tech.effect_id < len(dat.effects):
+                    AGE_UP_TECHS = {101, 102, 103}
+                    reqs = tech.required_techs
+                    age = 4 if 103 in reqs else 3 if 102 in reqs else 2 if 101 in reqs else 1
+                    
+                    eff_obj = dat.effects[tech.effect_id]
+                    for cmd in eff_obj.effect_commands:
+                        if cmd.type in [0, 1, 2, 4, 5]: # Attribute modifiers
+                            attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
+                            if attr_id in VALID_ATTRS:
+                                raw_effects.append({
+                                    "type": cmd.type,
+                                    "attribute": attr_id,
+                                    "value": cmd.d,
+                                    "unitId": cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1,
+                                    "class": cmd.b if cmd.type in [4, 5] else -1,
+                                    "age": age,
+                                })
+
+        # 2. Check tech_tree_id
         if civ.tech_tree_id != -1 and civ.tech_tree_id < len(dat.effects):
-            main_eff_obj = dat.effects[civ.tech_tree_id]
-
-            # Recursively explore 101 'Apply Effect' commands
+            seen_effects = set()
             def crawl_effects(eff_id, age_id):
-                if eff_id == -1 or eff_id >= len(dat.effects):
+                if eff_id == -1 or eff_id >= len(dat.effects) or eff_id in seen_effects:
                     return
+                seen_effects.add(eff_id)
                 eff_obj = dat.effects[eff_id]
                 for cmd in eff_obj.effect_commands:
                     if cmd.type == 101:
-                        # cmd.b is age req
                         new_age = max(age_id, int(cmd.b) + 1)
                         crawl_effects(int(cmd.a), new_age)
-                    elif cmd.type in [0, 4, 5]: # Attribute modifiers
-                        u_id = cmd.a if cmd.type == 0 else -1
-                        c_id = cmd.a if cmd.type in [4, 5] else -1
-                        attr_id = cmd.b
-                        mode = cmd.c
-                        val = cmd.d
+                    elif cmd.type in [0, 1, 2, 4, 5]: # Attribute modifiers
+                        attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
                         if attr_id in VALID_ATTRS:
-                            bonus_effects.append(
-                                {
-                                    "t": mode,
-                                    "a": attr_id,
-                                    "v": val,
-                                    "u": u_id,
-                                    "c": c_id,
-                                    "age": age_id,
-                                }
-                            )
-
+                            raw_effects.append({
+                                "type": cmd.type,
+                                "attribute": attr_id,
+                                "value": cmd.d,
+                                "unitId": cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1,
+                                "class": cmd.b if cmd.type in [4, 5] else -1,
+                                "age": age_id,
+                            })
             crawl_effects(civ.tech_tree_id, 1)
 
+        # 3. Collapse effects by age and target to handle cumulative multipliers
+        bonus_effects = []
+        if raw_effects:
+            # Group by target: (type, attribute, unitId, class)
+            groups = {}
+            for e in raw_effects:
+                key = (e["type"], e["attribute"], e["unitId"], e["class"])
+                if key not in groups:
+                    groups[key] = []
+                groups[key].append(e)
+            
+            for key, effects in groups.items():
+                eff_type, attr_id, unit_id, class_id = key
+                # Sort by age
+                effects.sort(key=lambda x: x["age"])
+                
+                # Cumulative value tracker
+                cum_val = 1.0 if eff_type == 5 else 0.0
+                age_vals = {} # age -> final_val
+                
+                for e in effects:
+                    if eff_type == 5: # Multiply
+                        cum_val *= e["value"]
+                    elif eff_type == 4: # Add
+                        cum_val += e["value"]
+                    else: # Set (0, 1, 2)
+                        cum_val = e["value"]
+                    age_vals[e["age"]] = cum_val
+                
+                # Emit one effect per age with the cumulative value
+                for age, final_val in sorted(age_vals.items()):
+                    bonus_effects.append({
+                        "type": eff_type,
+                        "attribute": attr_id,
+                        "value": final_val,
+                        "unitId": unit_id,
+                        "class": class_id,
+                        "age": age,
+                    })
+
         if bonus_effects:
+            print(f"Found {len(bonus_effects)} bonus effects for {civ_name}")
             civ_bonuses_out[civ_name] = {
                 "name": civ_name.capitalize() + " Bonuses",
                 "effects": bonus_effects,

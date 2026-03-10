@@ -37,12 +37,10 @@ describe('Imperial Age Vikings Arbalest', () => {
       'Ring Archer Armor',
     ].sort();
 
-    // Check if all expected are there. We might have some extra minor ones like Loom or Wheelbarrow
-    // if getRecommendedTechs returns them, but usually they are filtered out for Arbalest.
-    expected.forEach((e) => expect(names).toContain(e));
+    expect(names).toEqual(expected);
   });
 
-  it('should result in exactly 9 pierce attack and 7 range', () => {
+  it('should result in exactly 11 pierce attack and 8 range', () => {
     const ageId = 4;
     const civKey = 'VIKINGS';
     const availableTechs = civs[civKey] || {};

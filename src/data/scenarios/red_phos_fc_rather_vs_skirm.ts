@@ -121,6 +121,7 @@ export const red_phos_rc_ratha_vs_skirm = {
     name: 'Ratha',
     preset: 'ratha',
     civ: 'BENGALIS',
+    count: 10,
   },
   armyB: {
     age: '2',
@@ -214,6 +215,7 @@ export const red_phos_rc_ratha_vs_skirm = {
     ],
     name: 'Skirmisher',
     preset: 'skirmisher',
+    count: 17,
   },
   name: 'Red Phos RC Ratha vs Skirm',
   description: '1 range skirm defence against Red Phos Fastle Castle Ratha',

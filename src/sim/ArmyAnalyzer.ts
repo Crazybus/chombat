@@ -77,8 +77,11 @@ const unitKeyMap: Record<string, string> = {
 const buildingsById: Record<string, any> = {};
 Object.values(buildings).forEach((b) => (buildingsById[b.id] = b));
 
-const techsByIdGlobal: Record<number, TechData> = {};
+const techsByIdGlobal: Record<number | string, TechData> = {};
 Object.values(techs).forEach((t) => (techsByIdGlobal[t.id] = t));
+Object.entries(allBonuses).forEach(([civKey, bonus]) => {
+  (techsByIdGlobal as any)[civKey] = bonus;
+});
 
 export function getAgeName(age: string) {
   switch (age) {
@@ -108,7 +111,7 @@ function isCombatTech(t: TechData): boolean {
   const essentialCombatTechIds = [93, 47, 22, 249, 213]; // Ballistics, Chemistry, Loom, Hand Cart, Wheelbarrow
   if (essentialCombatTechIds.includes(t.id)) return true;
 
-  const buildingOnlyIds = [50, 194, 322, 608, 602, 221, 203, 48, 8, 280, 441]; // Removed 249, 213
+  const buildingOnlyIds = [50, 194, 322, 608, 602, 221, 203, 48, 8, 280, 441, 101, 102, 103]; // Removed 249, 213, added age ups
   if (buildingOnlyIds.includes(t.id)) return false;
 
   const buildingRelatedClasses = [11, 21, 27];
@@ -119,7 +122,7 @@ function isCombatTech(t: TechData): boolean {
       return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
     });
     if (hasBuildingEffect) return false;
-    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24].includes(e.attribute));
+    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24, 100, 101, 102, 103].includes(e.attribute));
   }
   return false;
 }
@@ -198,20 +201,21 @@ export function getManualOverrideSources(
 
 export function getTechBonusSources(
   armyState: ArmyState,
-  techsById: Record<number, TechData>,
+  techsById: Record<number | string, TechData>,
   bonuses: Record<string, any>,
   allUnits: Record<string, UnitData>,
 ): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
   const baseUnit = resolveBaseUnit(armyState, allUnits);
+  const ageId = parseInt(armyState.age || '1');
 
   armyState.bonuses?.forEach((bState) => {
-    const tech = techsById[parseInt(bState.id)] || (bonuses as any)[bState.id];
+    const tech = techsById[bState.id] || (bonuses as any)[bState.id];
     if (!tech || !tech.effects) return;
     const seenLabels = new Set<string>();
     const techEffects = tech.effects
       .map((e: any, idx: number) => {
-        if (!shouldApplyEffect(e, baseUnit, tech.effects)) return null;
+        if (!shouldApplyEffect(e, baseUnit, tech.effects, ageId)) return null;
         let label = getEffectLabel(e);
         if (!label) return null;
         label = label.replace(/(\d+\.\d{3,})/g, (match) => parseFloat(match).toFixed(2));
@@ -227,6 +231,14 @@ export function getTechBonusSources(
           group = 'atk';
         } else if (e.attribute === EFFECT_ATTRIBUTES.max_range) {
           group = 'range';
+        } else if (
+          e.attribute === EFFECT_ATTRIBUTES.food_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.wood_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.stone_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.gold_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.total_cost
+        ) {
+          group = 'other';
         }
         return { e, label, group, idx };
       })
@@ -234,7 +246,7 @@ export function getTechBonusSources(
 
     techEffects.forEach(({ e, label, group }) => {
       const attrStripRegex =
-        /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload)\s?/i;
+        /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload|Food|Wood|Stone|Gold|Cost)\s?/i;
       const cleanLabel = label.replace(attrStripRegex, '').trim();
       let finalLabel = cleanLabel;
       if (group === 'other') {
@@ -242,6 +254,11 @@ export function getTechBonusSources(
           [EFFECT_ATTRIBUTES.accuracy]: 'Accuracy',
           [EFFECT_ATTRIBUTES.reload]: 'Fire Rate',
           [EFFECT_ATTRIBUTES.speed]: 'Speed',
+          [EFFECT_ATTRIBUTES.food_cost]: 'Food Cost',
+          [EFFECT_ATTRIBUTES.wood_cost]: 'Wood Cost',
+          [EFFECT_ATTRIBUTES.stone_cost]: 'Stone Cost',
+          [EFFECT_ATTRIBUTES.gold_cost]: 'Gold Cost',
+          [EFFECT_ATTRIBUTES.total_cost]: 'Cost',
         };
         const attrName = attrNames[e.attribute] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;
@@ -282,13 +299,6 @@ export function getRecommendedTechs(
     // If civ tech but no civ provided
     if (t.civ > 0 && (!civKey || civKey == GENERIC_CIV)) return false;
 
-    // If civ tech and in civ techs
-    if (t.civ > 0 && t.id in availableCivTechs) {
-      const classEffects = t.effects.filter((eff) => eff.class !== -1);
-      // Matches class
-      if (classEffects.length > 0 && !classEffects.some((eff) => eff.class === unit.class)) return false;
-    }
-
     let effectiveTechAge = getTrueAge(t);
     if (civKey && civKey !== GENERIC_CIV) {
       if (availableCivTechs[t.id] !== undefined) effectiveTechAge = availableCivTechs[t.id];
@@ -321,7 +331,7 @@ export function getRecommendedTechs(
                 : 1;
 
     if (buildingAge > ageId) return false;
-    return shouldApplyTech(t, unit);
+    return shouldApplyTech(t, unit, ageId);
   });
 }
 
@@ -331,13 +341,19 @@ export function calculateEqualResources(
   stateA: ArmyState,
   unitB: UnitData,
   stateB: ArmyState,
+  techsById: Record<number | string, TechData>,
+  allUnits: Record<string, UnitData>,
 ): number {
-  const uA = new CombatSim(unitA, unitA, stateA, stateA, {}, {}).dataA;
-  const uB = new CombatSim(unitB, unitB, stateB, stateB, {}, {}).dataB;
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
+  const simA = new CombatSim(unitA, unitA, stateA, stateA, activeTechs, allUnits);
+  const uA = simA.dataA;
+  const simB = new CombatSim(unitB, unitB, stateB, stateB, activeTechs, allUnits);
+  const uB = simB.dataB;
 
-  // Use the Unit class to get parsed costs including discounts
-  const costA = new Unit({ ...unitA, ...stateA, ...uA } as any).getParsedCost().total;
-  const costB = new Unit({ ...unitB, ...stateB, ...uB } as any).getParsedCost().total;
+  // Use the Unit class with the FULLY RESOLVED data from applyBonuses.
+  // uA already contains overrides AND tech discounts applied to the base fields.
+  const costA = new Unit(uA).getParsedCost().total;
+  const costB = new Unit(uB).getParsedCost().total;
 
   if (costB <= 0) return countA;
   return Math.round((countA * costA) / costB);
@@ -348,10 +364,15 @@ export function calculateEqualProductionTime(
   unitA: UnitData,
   stateA: ArmyState,
   unitB: UnitData,
-  _stateB: ArmyState,
+  stateB: ArmyState,
+  techsById: Record<number | string, TechData>,
+  allUnits: Record<string, UnitData>,
 ): number {
-  const timeA = stateA.overrides?.trainingTime || unitA.trainTime || 30;
-  const timeB = _stateB.overrides?.trainingTime || unitB.trainTime || 30;
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
+  const simA = new CombatSim(unitA, unitA, stateA, stateA, activeTechs, allUnits);
+  const timeA = simA.dataA.trainTime || 30;
+  const simB = new CombatSim(unitB, unitB, stateB, stateB, activeTechs, allUnits);
+  const timeB = simB.dataB.trainTime || 30;
 
   if (timeB <= 0) return countA;
   return Math.round((countA * timeA) / timeB);
@@ -367,10 +388,18 @@ export function calculateEqualFight(
   allUnits: Record<string, UnitData>,
 ): number {
   let bestB = 1;
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
 
   // Simple linear search to find the "tipping point"
   for (let b = 1; b <= 200; b++) {
-    const sim = new CombatSim(unitA, unitB, { ...stateA, count: countA }, { ...stateB, count: b }, techsById, allUnits);
+    const sim = new CombatSim(
+      unitA,
+      unitB,
+      { ...stateA, count: countA },
+      { ...stateB, count: b },
+      activeTechs,
+      allUnits,
+    );
     const res = sim.run();
     if (res.armyA.totalHp > res.armyB.totalHp) {
       bestB = b;
@@ -384,20 +413,14 @@ export function calculateEqualFight(
 export function analyzeArmy(
   armyState: ArmyState,
   allUnits: Record<string, UnitData>,
-  techsById: Record<number, TechData>,
+  techsById: Record<number | string, TechData>,
 ): ArmyAnalysis | null {
   const baseUnit = resolveBaseUnit(armyState, allUnits);
   const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
 
   // 1. Natural Base (Current Age auto-upgrades but NO techs/overrides)
-  const simNatural = new CombatSim(
-    baseUnit,
-    baseUnit,
-    { age: armyState.age },
-    { age: armyState.age },
-    activeTechs,
-    allUnits,
-  );
+  const configNatural: ArmyState = { age: armyState.age };
+  const simNatural = new CombatSim(baseUnit, baseUnit, configNatural, configNatural, activeTechs, allUnits);
   const naturalBase = simNatural.dataA;
 
   // 2. Modified Base (Resolved Base + Overrides)
@@ -460,13 +483,14 @@ export function analyzeDuel(
   stateB: ArmyState,
   analysisA: ArmyAnalysis,
   analysisB: ArmyAnalysis,
-  techsById: Record<number, TechData>,
+  techsById: Record<number | string, TechData>,
   allUnits: Record<string, UnitData>,
 ): DuelAnalysis {
   const configA = { ...stateA, count: 1 };
   const configB = { ...stateB, count: 1 };
 
-  const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
+  const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, activeTechs, allUnits);
   const res = sim.run();
 
   const uA = new Unit(sim.dataA);
@@ -479,7 +503,7 @@ export function analyzeDuel(
   const formatWithBase = (total: number, base: number) => {
     const diff = total - base;
     if (Math.abs(diff) < 0.01) return total.toFixed(0);
-    return `${total.toFixed(0)} (${base.toFixed(0)} + ${diff.toFixed(0)})`;
+    return `${total.toFixed(0)} (${base.toFixed(0)}${diff > 0 ? ' +' : ' '}${diff.toFixed(0)})`;
   };
 
   const getNetDmg = (atk: Unit, def: Unit) => {
@@ -585,6 +609,34 @@ export function analyzeDuel(
       b: (nB.net / uB.reload).toFixed(2),
       valA: nA.net / uA.reload,
       valB: nB.net / uB.reload,
+    },
+    {
+      label: 'Food Cost',
+      a: formatWithBase(uA.food, baseA?.food || 0),
+      b: formatWithBase(uB.food, baseB?.food || 0),
+      valA: uA.food,
+      valB: uB.food,
+    },
+    {
+      label: 'Wood Cost',
+      a: formatWithBase(uA.wood, baseA?.wood || 0),
+      b: formatWithBase(uB.wood, baseB?.wood || 0),
+      valA: uA.wood,
+      valB: uB.wood,
+    },
+    {
+      label: 'Gold Cost',
+      a: formatWithBase(uA.gold, baseA?.gold || 0),
+      b: formatWithBase(uB.gold, baseB?.gold || 0),
+      valA: uA.gold,
+      valB: uB.gold,
+    },
+    {
+      label: 'Total Cost',
+      a: (uA.food + uA.wood + uA.gold).toFixed(0),
+      b: (uB.food + uB.wood + uB.gold).toFixed(0),
+      valA: uA.food + uA.wood + uA.gold,
+      valB: uB.food + uB.wood + uB.gold,
     },
     {
       label: 'Production Time',

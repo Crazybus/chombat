@@ -48,6 +48,7 @@ export const archer_vs_skirm = {
         effects: [true],
       },
     ],
+    count: 10,
   },
   armyB: {
     preset: 'skirmisher',
@@ -106,6 +107,7 @@ export const archer_vs_skirm = {
         effects: [true],
       },
     ],
+    count: 5,
   },
   name: 'Archer vs Skirm',
   description: 'Switching into skirmishers to counter an existing archer mass',
