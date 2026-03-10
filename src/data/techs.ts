@@ -21557,10 +21557,10 @@ export const techs: Record<string, TechData> = {
   },
   champi_runner: {
     name: 'Champi Runner',
-    food: 100,
+    food: 120,
     wood: 0,
     gold: 60,
-    time: 40,
+    time: 50,
     building: 12,
     id: 1402,
     requires: {
@@ -21580,7 +21580,7 @@ export const techs: Record<string, TechData> = {
     building: 12,
     id: 1350,
     requires: {
-      techs: [549, 1360, 1361, 1362],
+      techs: [104],
       buildings: [],
     },
     effects: [],
@@ -21589,9 +21589,9 @@ export const techs: Record<string, TechData> = {
   },
   champi_warrior: {
     name: 'Champi Warrior',
-    food: 125,
+    food: 200,
     wood: 0,
-    gold: 100,
+    gold: 175,
     time: 50,
     building: 12,
     id: 1351,
@@ -46298,6 +46298,22 @@ export const techs: Record<string, TechData> = {
     effects: [],
     age: 1,
     civ: 8,
+  },
+  '[ftt]_disable_south_american_regionals': {
+    name: '[FTT] Disable South American Regionals',
+    food: 0,
+    wood: 0,
+    gold: 0,
+    time: 0,
+    building: -1,
+    id: 121,
+    requires: {
+      techs: [104],
+      buildings: [],
+    },
+    effects: [],
+    age: 1,
+    civ: -1,
   },
   '[ftt]_disable_militia_upgrades': {
     name: '[FTT] Disable militia upgrades',
