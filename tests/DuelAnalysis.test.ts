@@ -81,7 +81,7 @@ describe('Duel Analysis Logic', () => {
           id: 'BYZANTINES',
           effects: [
             { type: 5, attribute: 100, value: 0.75, unitId: 93, class: -1, age: 1 }, // Spearman (93) 25% cheaper
-          ],
+          ] as any,
         },
       ],
     };

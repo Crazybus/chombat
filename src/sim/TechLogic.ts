@@ -118,7 +118,8 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], c
   if (attribute === EFFECT_ATTRIBUTES.wood_cost && (u.wood || 0) === 0) return false;
   if (attribute === EFFECT_ATTRIBUTES.stone_cost && (u.stone || 0) === 0) return false;
   if (attribute === EFFECT_ATTRIBUTES.gold_cost && (u.gold || 0) === 0) return false;
-  if (attribute === EFFECT_ATTRIBUTES.total_cost && (u.food || 0) === 0 && (u.wood || 0) === 0 && (u.gold || 0) === 0) return false;
+  if (attribute === EFFECT_ATTRIBUTES.total_cost && (u.food || 0) === 0 && (u.wood || 0) === 0 && (u.gold || 0) === 0)
+    return false;
 
   // 4. Armor/Attack specific class check (Genie format uses encoded value)
   if (attribute === EFFECT_ATTRIBUTES.armor || attribute === EFFECT_ATTRIBUTES.attack) {

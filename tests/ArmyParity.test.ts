@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { calculateEqualResources, calculateEqualProductionTime } from '../src/sim/ArmyAnalyzer';
+import { ArmyState } from '../src/sim/types';
 import { units } from '../src/data/units';
 
 describe('Army Parity Logic', () => {
@@ -24,7 +25,7 @@ describe('Army Parity Logic', () => {
       bonuses: [
         {
           id: 'BYZANTINES',
-          effects: [{ type: 5, attribute: 100, value: 0.75, unitId: -1, class: 0, age: 1 }],
+          effects: [{ type: 5, attribute: 100, value: 0.75, unitId: -1, class: 0, age: 1 }] as any,
         },
       ],
     };
@@ -46,7 +47,7 @@ describe('Army Parity Logic', () => {
           effects: [
             // Collapse logic means we only need the Feudal one
             { type: 5, attribute: 103, value: 0.9, unitId: -1, class: 6, age: 2 },
-          ],
+          ] as any,
         },
       ],
     };

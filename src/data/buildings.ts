@@ -1,474 +1,466 @@
 import { BuildingData } from '../sim/types';
 
 export const buildings: Record<string, BuildingData> = {
-    "archery_range": {
-        "name": "Archery Range",
-        "food": 0,
-        "wood": 175,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "87",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  archery_range: {
+    name: 'Archery Range',
+    food: 0,
+    wood: 175,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '87',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "barracks": {
-        "name": "Barracks",
-        "food": 0,
-        "wood": 175,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "12",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  barracks: {
+    name: 'Barracks',
+    food: 0,
+    wood: 175,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '12',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "blacksmith": {
-        "name": "Blacksmith",
-        "food": 0,
-        "wood": 150,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "103",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  blacksmith: {
+    name: 'Blacksmith',
+    food: 0,
+    wood: 150,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '103',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "bombard_tower": {
-        "name": "Bombard Tower",
-        "food": 0,
-        "wood": 0,
-        "gold": 100,
-        "stone": 125,
-        "time": 50,
-        "id": "236",
-        "age": 4,
-        "requires": {
-            "techs": [
-                64
-            ],
-            "buildings": []
-        }
+  },
+  bombard_tower: {
+    name: 'Bombard Tower',
+    food: 0,
+    wood: 0,
+    gold: 100,
+    stone: 125,
+    time: 50,
+    id: '236',
+    age: 4,
+    requires: {
+      techs: [64],
+      buildings: [],
     },
-    "caravanserai": {
-        "name": "Caravanserai",
-        "food": 0,
-        "wood": 175,
-        "gold": 0,
-        "stone": 50,
-        "time": 50,
-        "id": "1754",
-        "age": 4,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  caravanserai: {
+    name: 'Caravanserai',
+    food: 0,
+    wood: 175,
+    gold: 0,
+    stone: 50,
+    time: 50,
+    id: '1754',
+    age: 4,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "castle": {
-        "name": "Castle",
-        "food": 0,
-        "wood": 0,
-        "gold": 0,
-        "stone": 650,
-        "time": 50,
-        "id": "82",
-        "age": 3,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  castle: {
+    name: 'Castle',
+    food: 0,
+    wood: 0,
+    gold: 0,
+    stone: 650,
+    time: 50,
+    id: '82',
+    age: 3,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "dock": {
-        "name": "Dock",
-        "food": 0,
-        "wood": 150,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "45",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  dock: {
+    name: 'Dock',
+    food: 0,
+    wood: 150,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '45',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "farm": {
-        "name": "Farm",
-        "food": 0,
-        "wood": 60,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "50",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  farm: {
+    name: 'Farm',
+    food: 0,
+    wood: 60,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '50',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "fish_trap": {
-        "name": "Fish Trap",
-        "food": 0,
-        "wood": 100,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "199",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  fish_trap: {
+    name: 'Fish Trap',
+    food: 0,
+    wood: 100,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '199',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "fortified_church": {
-        "name": "Fortified Church",
-        "food": 0,
-        "wood": 200,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "1806",
-        "age": 3,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  fortified_church: {
+    name: 'Fortified Church',
+    food: 0,
+    wood: 200,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '1806',
+    age: 3,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "fortified_wall": {
-        "name": "Fortified Wall",
-        "food": 0,
-        "wood": 0,
-        "gold": 0,
-        "stone": 5,
-        "time": 50,
-        "id": "155",
-        "age": 3,
-        "requires": {
-            "techs": [
-                194
-            ],
-            "buildings": []
-        }
+  },
+  fortified_wall: {
+    name: 'Fortified Wall',
+    food: 0,
+    wood: 0,
+    gold: 0,
+    stone: 5,
+    time: 50,
+    id: '155',
+    age: 3,
+    requires: {
+      techs: [194],
+      buildings: [],
     },
-    "gate": {
-        "name": "Gate",
-        "food": 0,
-        "wood": 0,
-        "gold": 0,
-        "stone": 30,
-        "time": 50,
-        "id": "487",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  gate: {
+    name: 'Gate',
+    food: 0,
+    wood: 0,
+    gold: 0,
+    stone: 30,
+    time: 50,
+    id: '487',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "guard_tower": {
-        "name": "Guard Tower",
-        "food": 0,
-        "wood": 35,
-        "gold": 0,
-        "stone": 125,
-        "time": 50,
-        "id": "234",
-        "age": 3,
-        "requires": {
-            "techs": [
-                140
-            ],
-            "buildings": []
-        }
+  },
+  guard_tower: {
+    name: 'Guard Tower',
+    food: 0,
+    wood: 35,
+    gold: 0,
+    stone: 125,
+    time: 50,
+    id: '234',
+    age: 3,
+    requires: {
+      techs: [140],
+      buildings: [],
     },
-    "house": {
-        "name": "House",
-        "food": 0,
-        "wood": 25,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "70",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  house: {
+    name: 'House',
+    food: 0,
+    wood: 25,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '70',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "keep": {
-        "name": "Keep",
-        "food": 0,
-        "wood": 35,
-        "gold": 0,
-        "stone": 125,
-        "time": 50,
-        "id": "235",
-        "age": 4,
-        "requires": {
-            "techs": [
-                63
-            ],
-            "buildings": []
-        }
+  },
+  keep: {
+    name: 'Keep',
+    food: 0,
+    wood: 35,
+    gold: 0,
+    stone: 125,
+    time: 50,
+    id: '235',
+    age: 4,
+    requires: {
+      techs: [63],
+      buildings: [],
     },
-    "lumber_camp": {
-        "name": "Lumber Camp",
-        "food": 0,
-        "wood": 100,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "562",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  lumber_camp: {
+    name: 'Lumber Camp',
+    food: 0,
+    wood: 100,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '562',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "market": {
-        "name": "Market",
-        "food": 0,
-        "wood": 175,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "84",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  market: {
+    name: 'Market',
+    food: 0,
+    wood: 175,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '84',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "mill": {
-        "name": "Mill",
-        "food": 0,
-        "wood": 100,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "68",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  mill: {
+    name: 'Mill',
+    food: 0,
+    wood: 100,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '68',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "mining_camp": {
-        "name": "Mining Camp",
-        "food": 0,
-        "wood": 100,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "584",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  mining_camp: {
+    name: 'Mining Camp',
+    food: 0,
+    wood: 100,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '584',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "monastery": {
-        "name": "Monastery",
-        "food": 0,
-        "wood": 175,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "104",
-        "age": 3,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  monastery: {
+    name: 'Monastery',
+    food: 0,
+    wood: 175,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '104',
+    age: 3,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "mule_cart": {
-        "name": "Mule Cart",
-        "food": 20,
-        "wood": 80,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "1808",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  mule_cart: {
+    name: 'Mule Cart',
+    food: 20,
+    wood: 80,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '1808',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "outpost": {
-        "name": "Outpost",
-        "food": 0,
-        "wood": 25,
-        "gold": 0,
-        "stone": 5,
-        "time": 50,
-        "id": "598",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  outpost: {
+    name: 'Outpost',
+    food: 0,
+    wood: 25,
+    gold: 0,
+    stone: 5,
+    time: 50,
+    id: '598',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "palisade_gate": {
-        "name": "Palisade Gate",
-        "food": 0,
-        "wood": 30,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "792",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  palisade_gate: {
+    name: 'Palisade Gate',
+    food: 0,
+    wood: 30,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '792',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "palisade_wall": {
-        "name": "Palisade Wall",
-        "food": 0,
-        "wood": 3,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "72",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  palisade_wall: {
+    name: 'Palisade Wall',
+    food: 0,
+    wood: 3,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '72',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "settlement": {
-        "name": "Settlement",
-        "food": 0,
-        "wood": 125,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "2556",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  settlement: {
+    name: 'Settlement',
+    food: 0,
+    wood: 125,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '2556',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "siege_workshop": {
-        "name": "Siege Workshop",
-        "food": 0,
-        "wood": 200,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "49",
-        "age": 3,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  siege_workshop: {
+    name: 'Siege Workshop',
+    food: 0,
+    wood: 200,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '49',
+    age: 3,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "stable": {
-        "name": "Stable",
-        "food": 0,
-        "wood": 175,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "101",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  stable: {
+    name: 'Stable',
+    food: 0,
+    wood: 175,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '101',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "stone_wall": {
-        "name": "Stone Wall",
-        "food": 0,
-        "wood": 0,
-        "gold": 0,
-        "stone": 5,
-        "time": 50,
-        "id": "117",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  stone_wall: {
+    name: 'Stone Wall',
+    food: 0,
+    wood: 0,
+    gold: 0,
+    stone: 5,
+    time: 50,
+    id: '117',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "town_center": {
-        "name": "Town Center",
-        "food": 0,
-        "wood": 275,
-        "gold": 0,
-        "stone": 100,
-        "time": 50,
-        "id": "109",
-        "age": 1,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  town_center: {
+    name: 'Town Center',
+    food: 0,
+    wood: 275,
+    gold: 0,
+    stone: 100,
+    time: 50,
+    id: '109',
+    age: 1,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "town_center_621": {
-        "name": "Town Center",
-        "food": 0,
-        "wood": 275,
-        "gold": 0,
-        "stone": 100,
-        "time": 50,
-        "id": "621",
-        "age": 3,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  town_center_621: {
+    name: 'Town Center',
+    food: 0,
+    wood: 275,
+    gold: 0,
+    stone: 100,
+    time: 50,
+    id: '621',
+    age: 3,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "university": {
-        "name": "University",
-        "food": 0,
-        "wood": 200,
-        "gold": 0,
-        "stone": 0,
-        "time": 50,
-        "id": "209",
-        "age": 3,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  university: {
+    name: 'University',
+    food: 0,
+    wood: 200,
+    gold: 0,
+    stone: 0,
+    time: 50,
+    id: '209',
+    age: 3,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "watch_tower": {
-        "name": "Watch Tower",
-        "food": 0,
-        "wood": 35,
-        "gold": 0,
-        "stone": 125,
-        "time": 50,
-        "id": "79",
-        "age": 2,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
+  },
+  watch_tower: {
+    name: 'Watch Tower',
+    food: 0,
+    wood: 35,
+    gold: 0,
+    stone: 125,
+    time: 50,
+    id: '79',
+    age: 2,
+    requires: {
+      techs: [],
+      buildings: [],
     },
-    "wonder": {
-        "name": "Wonder",
-        "food": 0,
-        "wood": 1000,
-        "gold": 1000,
-        "stone": 1000,
-        "time": 50,
-        "id": "276",
-        "age": 4,
-        "requires": {
-            "techs": [],
-            "buildings": []
-        }
-    }
+  },
+  wonder: {
+    name: 'Wonder',
+    food: 0,
+    wood: 1000,
+    gold: 1000,
+    stone: 1000,
+    time: 50,
+    id: '276',
+    age: 4,
+    requires: {
+      techs: [],
+      buildings: [],
+    },
+  },
 };
