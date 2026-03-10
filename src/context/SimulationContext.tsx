@@ -304,7 +304,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         newBonuses.push({ id: civKey, effects: (bonuses as any)[civKey].effects.map(() => true) });
       }
       relevantTechs
-        .filter((t) => !t.name.startsWith('C-Bonus') || !(bonuses as any)[civKey]) // Filter out internal data-only bonuses only if we have a better one in bonuses.ts
+        .filter((t) => !t.name.startsWith('C-Bonus') || (civKey && !(bonuses as any)[civKey])) // Filter out internal data-only bonuses only if we have a better one in bonuses.ts
         .sort((a, b) => a.age - b.age || a.id - b.id)
         .forEach((t) => {
           newBonuses.push({ id: t.id.toString(), effects: (t.effects || []).map(() => true) });
@@ -423,7 +423,7 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         newBonuses.push({ id: currentCiv, effects: (bonuses as any)[currentCiv].effects.map(() => true) });
       }
       relevantTechs
-        .filter((t) => !t.name.startsWith('C-Bonus') || !(bonuses as any)[currentCiv]) // Filter out internal data-only bonuses only if we have a better one in bonuses.ts
+        .filter((t) => !t.name.startsWith('C-Bonus') || (currentCiv && !(bonuses as any)[currentCiv])) // Filter out internal data-only bonuses only if we have a better one in bonuses.ts
         .sort((a, b) => a.age - b.age || a.id - b.id)
         .forEach((t) => {
           newBonuses.push({ id: t.id.toString(), effects: (t.effects || []).map(() => true) });

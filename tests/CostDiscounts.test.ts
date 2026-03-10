@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { analyzeArmy, getRecommendedTechs } from '../src/sim/ArmyAnalyzer';
+import { analyzeArmy } from '../src/sim/ArmyAnalyzer';
 import { units } from '../src/data/units';
 import { techs } from '../src/data/techs';
-import { civs } from '../src/data/civs';
 import { bonuses as allBonuses } from '../src/data/bonuses';
 import { TechData } from '../src/sim/types';
 
