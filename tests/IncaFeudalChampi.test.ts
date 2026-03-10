@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { analyzeArmy } from '../src/sim/ArmyAnalyzer';
+import { analyzeArmy, calculateEqualResources } from '../src/sim/ArmyAnalyzer';
 import { units } from '../src/data/units';
 import { techs } from '../src/data/techs';
 import { bonuses as allBonuses } from '../src/data/bonuses';
@@ -33,9 +33,36 @@ describe('Inca Feudal Champi Runner', () => {
     // Check that there is only one food discount source if possible
     const miscSources = analysis?.groups.other.sources || [];
     const foodDiscountSources = miscSources.filter((s) => s.label.includes('Food Cost'));
-    
+
     // User said "and nothing else", implying they only want the 10% discount to show up.
     expect(foodDiscountSources.length).toBe(1);
     expect(foodDiscountSources[0].label).toContain('x0.9');
+  });
+
+  it('INCAS: calculateEqualResources should correctly equalize with a larger army for Incas', () => {
+    const civKeyIncas = 'INCAS';
+    const bonusIncas = techsById[civKeyIncas];
+    const stateIncas: any = {
+      preset: 'champi_runner',
+      age: '2',
+      civ: civKeyIncas,
+      bonuses: [{ id: civKeyIncas, effects: bonusIncas.effects.map(() => true) }],
+      count: 100,
+    };
+
+    const stateGeneric: any = {
+      preset: 'champi_runner',
+      age: '2',
+      civ: 'GENERIC',
+      bonuses: [],
+      count: 100,
+    };
+
+    const countB = calculateEqualResources(100, runner, stateGeneric, runner, stateIncas, techsById as any, units);
+
+    // Generic: 45 Food, 25 Gold = 70. Total = 7000.
+    // Incas: 40.5 Food, 25 Gold = 65.5.
+    // 7000 / 65.5 = 106.87 -> 107.
+    expect(countB).toBe(107);
   });
 });

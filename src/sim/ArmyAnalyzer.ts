@@ -339,13 +339,18 @@ export function calculateEqualResources(
   stateA: ArmyState,
   unitB: UnitData,
   stateB: ArmyState,
+  techsById: Record<number | string, TechData>,
+  allUnits: Record<string, UnitData>,
 ): number {
-  const uA = new CombatSim(unitA, unitA, stateA, stateA, {}, {}).dataA;
-  const uB = new CombatSim(unitB, unitB, stateB, stateB, {}, {}).dataB;
+  const simA = new CombatSim(unitA, unitA, stateA, stateA, techsById, allUnits);
+  const uA = simA.dataA;
+  const simB = new CombatSim(unitB, unitB, stateB, stateB, techsById, allUnits);
+  const uB = simB.dataB;
 
-  // Use the Unit class to get parsed costs including discounts
-  const costA = new Unit({ ...unitA, ...stateA, ...uA } as any).getParsedCost().total;
-  const costB = new Unit({ ...unitB, ...stateB, ...uB } as any).getParsedCost().total;
+  // Use the Unit class with the FULLY RESOLVED data from applyBonuses.
+  // uA already contains overrides AND tech discounts applied to the base fields.
+  const costA = new Unit(uA).getParsedCost().total;
+  const costB = new Unit(uB).getParsedCost().total;
 
   if (costB <= 0) return countA;
   return Math.round((countA * costA) / costB);
@@ -356,10 +361,18 @@ export function calculateEqualProductionTime(
   unitA: UnitData,
   stateA: ArmyState,
   unitB: UnitData,
-  _stateB: ArmyState,
+  stateB: ArmyState,
+  techsById: Record<number | string, TechData>,
+  allUnits: Record<string, UnitData>,
 ): number {
-  const timeA = stateA.overrides?.trainingTime || unitA.trainTime || 30;
-  const timeB = _stateB.overrides?.trainingTime || unitB.trainTime || 30;
+  const simA = new CombatSim(unitA, unitA, stateA, stateA, techsById, allUnits);
+  const uA = simA.dataA;
+  const simB = new CombatSim(unitB, unitB, stateB, stateB, techsById, allUnits);
+  const uB = simB.dataB;
+
+  // uA already has trainTime and trainingTime overrides applied.
+  const timeA = uA.trainTime || unitA.trainTime || 30;
+  const timeB = uB.trainTime || unitB.trainTime || 30;
 
   if (timeB <= 0) return countA;
   return Math.round((countA * timeA) / timeB);

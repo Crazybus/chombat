@@ -50,6 +50,8 @@ const BattleSimulation: React.FC = () => {
       state.armyA,
       analysisB.baseUnit,
       state.armyB,
+      techsById,
+      allUnits,
     );
     updateArmy('b', { count: Math.max(1, newCountB) });
   };
@@ -61,6 +63,8 @@ const BattleSimulation: React.FC = () => {
       state.armyA,
       analysisB.baseUnit,
       state.armyB,
+      techsById,
+      allUnits,
     );
     updateArmy('b', { count: Math.max(1, newCountB) });
   };

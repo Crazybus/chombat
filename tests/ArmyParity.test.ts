@@ -9,7 +9,7 @@ describe('Army Parity Logic', () => {
   it('should calculate equal resources correctly', () => {
     // 10 Knights = 1350 resources.
     // 1350 / 60 = 22.5 -> 23 Pikemen
-    const count = calculateEqualResources(10, knight, { age: '3' }, pikeman, { age: '3' });
+    const count = calculateEqualResources(10, knight, { age: '3' }, pikeman, { age: '3' }, {}, units);
     expect(count).toBe(23);
   });
 
@@ -17,7 +17,7 @@ describe('Army Parity Logic', () => {
     // Knight train time: 30s. Pikeman train time: 22s.
     // 10 Knights = 300s.
     // 300 / 22 = 13.6 -> 14 Pikemen
-    const count = calculateEqualProductionTime(10, knight, { age: '3' }, pikeman, { age: '3' });
+    const count = calculateEqualProductionTime(10, knight, { age: '3' }, pikeman, { age: '3' }, {}, units);
     expect(count).toBe(14);
   });
 });

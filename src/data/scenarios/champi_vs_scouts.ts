@@ -1,24 +1,47 @@
 export const champi_vs_scouts = {
-  name: 'Champi Scout vs FU Scouts',
-  description:
-    'All in dark age champi scout rush vs a theoretical perfect 18 pop constant scout production into fully upgraded feudal scouts.',
   armyA: {
     preset: 'champi_scout',
     name: 'Champi Scout',
     age: '1',
     timeline: [
-      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
-      { type: 'building', name: 'Barracks', delay: 50, cost: 175, producesUnits: true, id: '87' },
-      { type: 'production', name: 'Champi Scout Production', value: 0, trainSpeed: 30, limitedProduction: false },
+      {
+        type: 'villagers',
+        name: 'Villagers',
+        value: 1,
+        delay: 25,
+        limitedProduction: false,
+      },
+      {
+        type: 'building',
+        name: 'Barracks',
+        delay: 50,
+        cost: 175,
+        producesUnits: true,
+        id: '87',
+      },
+      {
+        type: 'production',
+        name: 'Champi Scout Production',
+        value: 0,
+        trainSpeed: 30,
+        limitedProduction: false,
+      },
     ],
     bonuses: [],
+    count: 10,
   },
   armyB: {
     preset: 'scout_cavalry',
     name: 'Scout Cavalry',
     age: '2',
     timeline: [
-      { type: 'villagers', name: 'Villagers', value: 1, delay: 25, limitedProduction: false },
+      {
+        type: 'villagers',
+        name: 'Villagers',
+        value: 1,
+        delay: 25,
+        limitedProduction: false,
+      },
       {
         type: 'tech',
         name: 'Feudal Age',
@@ -29,7 +52,15 @@ export const champi_vs_scouts = {
         isBlocking: true,
         limitedProduction: true,
       },
-      { type: 'building', name: 'Stable', delay: 50, cost: 175, producesUnits: true, id: '101', isBlocking: true },
+      {
+        type: 'building',
+        name: 'Stable',
+        delay: 50,
+        cost: 175,
+        producesUnits: true,
+        id: '101',
+        isBlocking: true,
+      },
       {
         type: 'tech',
         name: 'Bloodlines',
@@ -60,12 +91,31 @@ export const champi_vs_scouts = {
         isBlocking: false,
         limitedProduction: false,
       },
-      { type: 'production', name: 'Scout Production', value: 0, trainSpeed: 30, limitedProduction: false },
+      {
+        type: 'production',
+        name: 'Scout Production',
+        value: 0,
+        trainSpeed: 30,
+        limitedProduction: false,
+      },
     ],
     bonuses: [
-      { id: '67', effects: [true] },
-      { id: '81', effects: [true] },
-      { id: '435', effects: [true] },
+      {
+        id: '67',
+        effects: [true],
+      },
+      {
+        id: '81',
+        effects: [true],
+      },
+      {
+        id: '435',
+        effects: [true],
+      },
     ],
+    count: 4,
   },
+  name: 'Champi Scout vs FU Scouts',
+  description:
+    'All in dark age champi scout rush vs a theoretical perfect 18 pop constant scout production into fully upgraded feudal scouts.',
 };
