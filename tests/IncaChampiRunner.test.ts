@@ -15,7 +15,7 @@ describe('Inca Champi Runner Discount', () => {
     (techsById as any)[civKey] = bonus;
   });
 
-  it('INCAS: should have discounted GOLD cost in Dark Age (-5%)', () => {
+  it('INCAS: should have discounted FOOD cost in Dark Age (-5%)', () => {
     const ageId = 1;
     const civKey = 'INCAS';
     const availableTechs = civs[civKey] || {};
@@ -30,17 +30,17 @@ describe('Inca Champi Runner Discount', () => {
     );
 
     // Champi Runner base: 45 Food, 25 Gold.
-    // Dark Age (Tech 152): -5% Gold
-    expect(analysis?.effectiveStats.food).toBe(45);
-    expect(analysis?.effectiveStats.gold).toBeCloseTo(23.75, 2);
+    // Dark Age: -5% Food
+    expect(analysis?.effectiveStats.food).toBeCloseTo(42.75, 2);
+    expect(analysis?.effectiveStats.gold).toBe(25);
 
     // Check if it appears in Misc (other) group
     const miscSources = analysis?.groups.other.sources || [];
-    const discountSource = miscSources.find((s) => s.label.includes('Gold Cost'));
+    const discountSource = miscSources.find((s) => s.label.includes('Food Cost'));
     expect(discountSource).toBeDefined();
   });
 
-  it('INCAS: should have discounted GOLD cost in Imperial Age (~ -20%)', () => {
+  it('INCAS: should have discounted FOOD cost in Imperial Age (-20%)', () => {
     const ageId = 4;
     const civKey = 'INCAS';
     const availableTechs = civs[civKey] || {};
@@ -54,8 +54,9 @@ describe('Inca Champi Runner Discount', () => {
       techsById,
     );
 
-    // Imperial Age (Techs 152, 153, 154, 155): Cumulative result
-    // 25 * 0.95 * (1.05 * 0.90) * (1.105 * 0.85) * (1.176 * 0.80) = 19.83...
-    expect(analysis?.effectiveStats.gold).toBeCloseTo(19.83, 2);
+    // Imperial Age: -20% Food
+    // 45 * 0.8 = 36.0
+    expect(analysis?.effectiveStats.food).toBeCloseTo(36.0, 2);
+    expect(analysis?.effectiveStats.gold).toBe(25);
   });
 });

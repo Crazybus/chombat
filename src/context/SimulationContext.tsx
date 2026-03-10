@@ -182,15 +182,21 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const { clearURL, setScenarioInURL } = useSyncURL(state, setState);
 
   const analysisA = useMemo(() => {
-    const techsById: Record<number, TechData> = {};
+    const techsById: Record<string, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
-    return analyzeArmy(state.armyA, units, techsById);
+    Object.entries(bonuses).forEach(([key, bonus]) => {
+      (techsById as any)[key] = bonus;
+    });
+    return analyzeArmy(state.armyA, units, techsById as any);
   }, [state.armyA]);
 
   const analysisB = useMemo(() => {
-    const techsById: Record<number, TechData> = {};
+    const techsById: Record<string, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
-    return analyzeArmy(state.armyB, units, techsById);
+    Object.entries(bonuses).forEach(([key, bonus]) => {
+      (techsById as any)[key] = bonus;
+    });
+    return analyzeArmy(state.armyB, units, techsById as any);
   }, [state.armyB]);
 
   const showToast = (msg: string) => {
@@ -285,13 +291,20 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }
 
     const availableTechs: Record<number, number> = civKey ? (civs as any)[civKey] || {} : {};
-    const techsById: Record<number, TechData> = {};
+    const techsById: Record<string, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
+    Object.entries(bonuses).forEach(([key, bonus]) => {
+      (techsById as any)[key] = bonus;
+    });
 
     const newBonuses: { id: string; effects: boolean[] }[] = [];
     if (ageId >= 1) {
-      const relevantTechs = getRecommendedTechs(data, ageId, civKey, techsById, availableTechs);
+      const relevantTechs = getRecommendedTechs(data, ageId, civKey, techsById as any, availableTechs);
+      if (civKey && (bonuses as any)[civKey]) {
+        newBonuses.push({ id: civKey, effects: (bonuses as any)[civKey].effects.map(() => true) });
+      }
       relevantTechs
+        .filter((t) => !t.name.startsWith('C-Bonus') || !(bonuses as any)[civKey]) // Filter out internal data-only bonuses only if we have a better one in bonuses.ts
         .sort((a, b) => a.age - b.age || a.id - b.id)
         .forEach((t) => {
           newBonuses.push({ id: t.id.toString(), effects: (t.effects || []).map(() => true) });
@@ -325,8 +338,12 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       timeline: [],
     };
 
-    const techsById: Record<number, TechData> = {};
+    const techsById: Record<string, TechData> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
+    Object.entries(bonuses).forEach(([key, bonus]) => {
+      (techsById as any)[key] = bonus;
+    });
+
     const availableTechs: Record<number, number> = currentCiv ? (civs as any)[currentCiv] || {} : {};
 
     const unitBuildingId = u.building || 87; // fallback to barracks
@@ -401,8 +418,12 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     // 4. Add recommended techs
     const newBonuses: { id: string; effects: boolean[] }[] = [];
     if (ageId >= 1) {
-      const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById, availableTechs);
+      const relevantTechs = getRecommendedTechs(u, ageId, currentCiv, techsById as any, availableTechs);
+      if (currentCiv && (bonuses as any)[currentCiv]) {
+        newBonuses.push({ id: currentCiv, effects: (bonuses as any)[currentCiv].effects.map(() => true) });
+      }
       relevantTechs
+        .filter((t) => !t.name.startsWith('C-Bonus') || !(bonuses as any)[currentCiv]) // Filter out internal data-only bonuses only if we have a better one in bonuses.ts
         .sort((a, b) => a.age - b.age || a.id - b.id)
         .forEach((t) => {
           newBonuses.push({ id: t.id.toString(), effects: (t.effects || []).map(() => true) });

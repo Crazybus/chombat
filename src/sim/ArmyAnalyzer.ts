@@ -201,20 +201,21 @@ export function getManualOverrideSources(
 
 export function getTechBonusSources(
   armyState: ArmyState,
-  techsById: Record<number, TechData>,
+  techsById: Record<number | string, TechData>,
   bonuses: Record<string, any>,
   allUnits: Record<string, UnitData>,
 ): Record<string, StatSource[]> {
   const sources: Record<string, StatSource[]> = {};
   const baseUnit = resolveBaseUnit(armyState, allUnits);
+  const ageId = parseInt(armyState.age || '1');
 
   armyState.bonuses?.forEach((bState) => {
-    const tech = techsById[parseInt(bState.id)] || (bonuses as any)[bState.id];
+    const tech = techsById[bState.id] || (bonuses as any)[bState.id];
     if (!tech || !tech.effects) return;
     const seenLabels = new Set<string>();
     const techEffects = tech.effects
       .map((e: any, idx: number) => {
-        if (!shouldApplyEffect(e, baseUnit, tech.effects)) return null;
+        if (!shouldApplyEffect(e, baseUnit, tech.effects, ageId)) return null;
         let label = getEffectLabel(e);
         if (!label) return null;
         label = label.replace(/(\d+\.\d{3,})/g, (match) => parseFloat(match).toFixed(2));

@@ -83,7 +83,24 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], c
   const effectAge = e.age !== undefined ? Number(e.age) : 1;
   if (effectAge > currentAgeId) return false;
 
-  // 1. Basic matching
+  // 1. Latest Age wins: if there's another matching effect in the same tech with a higher age (but still <= current age), skip this one.
+  // This handles staggered bonuses (like Inca cost discounts) correctly.
+  if (
+    allEffects.some(
+      (other) =>
+        other !== e &&
+        other.attribute === e.attribute &&
+        other.type === e.type &&
+        other.unitId === e.unitId &&
+        other.class === e.class &&
+        (other.age !== undefined ? Number(other.age) : 1) > effectAge &&
+        (other.age !== undefined ? Number(other.age) : 1) <= currentAgeId,
+    )
+  ) {
+    return false;
+  }
+
+  // 2. Basic matching
   if (!matchesUnit(e, u)) return false;
   if (!matchesClass(e, u)) return false;
 
