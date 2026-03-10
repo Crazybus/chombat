@@ -29,6 +29,7 @@ describe('Resource Cost Discounts', () => {
 
       // Base Food: 45. Discount: 15% (Approx 37.94 in dat file)
       expect(analysis?.effectiveStats.food).toBeCloseTo(37.94, 1);
+      expect(analysis?.effectiveStats.gold).toBe(25);
     });
 
     it('INCAS: Elite Champi Warrior should have 20% food discount in Imperial Age', () => {
@@ -44,6 +45,7 @@ describe('Resource Cost Discounts', () => {
 
       // Base Food: 45. Discount: 20% (Approx 35.70 in dat file)
       expect(analysis?.effectiveStats.food).toBeCloseTo(35.7, 1);
+      expect(analysis?.effectiveStats.gold).toBe(25);
     });
   });
 
@@ -78,6 +80,28 @@ describe('Resource Cost Discounts', () => {
 
       // Base Gold: 75. Discount: 20% -> 75 * 0.8 = 60.0
       expect(analysis?.effectiveStats.gold).toBeCloseTo(60.0, 2);
+    });
+  });
+
+  describe('Byzantine Skirmisher Food Discount', () => {
+    const skirm = units['skirmisher'];
+
+    it('BYZANTINES: Skirmisher should have 25% food discount in Feudal Age', () => {
+      const civKey = 'BYZANTINES';
+      const bonus = techsById[civKey];
+      const bonuses = [{ id: civKey, effects: bonus.effects.map(() => true) }];
+
+      const analysis = analyzeArmy(
+        { preset: 'skirmisher', age: '2', civ: civKey, bonuses },
+        { skirmisher: skirm },
+        techsById,
+      );
+
+      // Base Food: 25. Base Wood: 35.
+      // Byzantine bonus is Attr 100 (Total Cost) x0.75.
+      // Expected: Food 25*0.75 = 18.75, Wood 35*0.75 = 26.25
+      expect(analysis?.effectiveStats.food).toBeCloseTo(18.75, 2);
+      expect(analysis?.effectiveStats.wood).toBeCloseTo(26.25, 2);
     });
   });
 });

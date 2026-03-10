@@ -52,6 +52,7 @@ export function getEffectLabel(e: any): string {
     [EFFECT_ATTRIBUTES.wood_cost]: 'Wood',
     [EFFECT_ATTRIBUTES.stone_cost]: 'Stone',
     [EFFECT_ATTRIBUTES.gold_cost]: 'Gold',
+    [EFFECT_ATTRIBUTES.total_cost]: 'Cost',
   };
   if (attribute === EFFECT_ATTRIBUTES.accuracy) return ''; // Hide accuracy effects
   if (e.unitId !== -1 && value < 0) return ''; // Hide negative unit-specific undo effects
@@ -117,6 +118,7 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], c
   if (attribute === EFFECT_ATTRIBUTES.wood_cost && (u.wood || 0) === 0) return false;
   if (attribute === EFFECT_ATTRIBUTES.stone_cost && (u.stone || 0) === 0) return false;
   if (attribute === EFFECT_ATTRIBUTES.gold_cost && (u.gold || 0) === 0) return false;
+  if (attribute === EFFECT_ATTRIBUTES.total_cost && (u.food || 0) === 0 && (u.wood || 0) === 0 && (u.gold || 0) === 0) return false;
 
   // 4. Armor/Attack specific class check (Genie format uses encoded value)
   if (attribute === EFFECT_ATTRIBUTES.armor || attribute === EFFECT_ATTRIBUTES.attack) {

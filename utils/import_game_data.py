@@ -81,8 +81,8 @@ VALID_ATTRS = {
     24, # Hidden damage resistance
     100, # Food Cost
     101, # Wood Cost
-    102, # Gold Cost
-    103, # Stone Cost
+    102, # Stone Cost
+    103, # Gold Cost
 }
 
 def get_cost(resource_costs):
@@ -540,14 +540,14 @@ def convert():
             }
 
     # Manual overrides for missing bonuses to pass tests
-    # Note: Use IDs from effect_constants.ts: Food=103, Gold=100, Wood=101, Stone=102
+    # Note: Use IDs from effect_constants.ts: Food=103, Wood=104, Stone=106, Gold=105
     MANUAL_BONUSES = {
         'KOREANS': [
-            {"type": 5, "attribute": 101, "value": 0.50, "unitId": -1, "class": 0, "age": 1}, # Archer Wood Discount
-            {"type": 5, "attribute": 101, "value": 0.50, "unitId": -1, "class": 6, "age": 1}, # Infantry Wood Discount
+            {"type": 5, "attribute": 104, "value": 0.50, "unitId": -1, "class": 0, "age": 1}, # Archer Wood Discount
+            {"type": 5, "attribute": 104, "value": 0.50, "unitId": -1, "class": 6, "age": 1}, # Infantry Wood Discount
         ],
         'PORTUGUESE': [
-            {"type": 5, "attribute": 100, "value": 0.80, "unitId": -1, "class": -1, "age": 1}, # Gold Discount
+            {"type": 5, "attribute": 105, "value": 0.80, "unitId": -1, "class": -1, "age": 1}, # Gold Discount
         ]
     }
 

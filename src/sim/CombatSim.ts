@@ -163,6 +163,11 @@ export class CombatSim {
             if (e.attribute === EFFECT_ATTRIBUTES.gold_cost) {
               newUnit.gold = val;
             }
+            if (e.attribute === EFFECT_ATTRIBUTES.total_cost) {
+              newUnit.food = val;
+              newUnit.wood = val;
+              newUnit.gold = val;
+            }
           } else if (e.type == EFFECT_COMMAND_TYPES.attribute_modifier_add) {
             // Command type 4
             if (e.attribute == EFFECT_ATTRIBUTES.hp) {
@@ -174,6 +179,10 @@ export class CombatSim {
             } else if (e.attribute === EFFECT_ATTRIBUTES.wood_cost) {
               if (newUnit.wood !== undefined) newUnit.wood += val;
             } else if (e.attribute === EFFECT_ATTRIBUTES.gold_cost) {
+              if (newUnit.gold !== undefined) newUnit.gold += val;
+            } else if (e.attribute === EFFECT_ATTRIBUTES.total_cost) {
+              if (newUnit.food !== undefined) newUnit.food += val;
+              if (newUnit.wood !== undefined) newUnit.wood += val;
               if (newUnit.gold !== undefined) newUnit.gold += val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.armor) {
               const { cls, amt } = decodeEncoded(val);
@@ -221,6 +230,10 @@ export class CombatSim {
               if (newUnit.gold !== undefined) {
                 newUnit.gold *= val;
               }
+            } else if (e.attribute === EFFECT_ATTRIBUTES.total_cost) {
+              if (newUnit.food !== undefined) newUnit.food *= val;
+              if (newUnit.wood !== undefined) newUnit.wood *= val;
+              if (newUnit.gold !== undefined) newUnit.gold *= val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.attack) {
               const { cls, amt } = decodeEncoded(val);
               // Class Attack

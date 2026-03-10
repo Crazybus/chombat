@@ -3843,7 +3843,7 @@ export const bonuses: Record<string, CivBonus> = {
         "effects": [
             {
                 "type": 5,
-                "attribute": 101,
+                "attribute": 104,
                 "value": 0.5,
                 "unitId": -1,
                 "class": 0,
@@ -3851,7 +3851,7 @@ export const bonuses: Record<string, CivBonus> = {
             },
             {
                 "type": 5,
-                "attribute": 101,
+                "attribute": 104,
                 "value": 0.5,
                 "unitId": -1,
                 "class": 6,
@@ -6601,7 +6601,7 @@ export const bonuses: Record<string, CivBonus> = {
         "effects": [
             {
                 "type": 5,
-                "attribute": 100,
+                "attribute": 105,
                 "value": 0.8,
                 "unitId": -1,
                 "class": -1,
