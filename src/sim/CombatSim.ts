@@ -105,13 +105,13 @@ export class CombatSim {
       }
 
       if (config.overrides.discount) {
-        if (config.overrides.discount.all !== undefined) (newUnit as any).discountAll = config.overrides.discount.all;
-        if (config.overrides.discount.food !== undefined)
-          (newUnit as any).discountFood = config.overrides.discount.food;
-        if (config.overrides.discount.wood !== undefined)
-          (newUnit as any).discountWood = config.overrides.discount.wood;
-        if (config.overrides.discount.gold !== undefined)
-          (newUnit as any).discountGold = config.overrides.discount.gold;
+        const e = 1 - (config.overrides.discount.all || 0) / 100;
+        if (newUnit.food !== undefined)
+          newUnit.food *= (1 - (config.overrides.discount.food || 0) / 100) * e;
+        if (newUnit.wood !== undefined)
+          newUnit.wood *= (1 - (config.overrides.discount.wood || 0) / 100) * e;
+        if (newUnit.gold !== undefined)
+          newUnit.gold *= (1 - (config.overrides.discount.gold || 0) / 100) * e;
       }
     }
 

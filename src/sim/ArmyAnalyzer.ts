@@ -235,7 +235,8 @@ export function getTechBonusSources(
           e.attribute === EFFECT_ATTRIBUTES.food_cost ||
           e.attribute === EFFECT_ATTRIBUTES.wood_cost ||
           e.attribute === EFFECT_ATTRIBUTES.stone_cost ||
-          e.attribute === EFFECT_ATTRIBUTES.gold_cost
+          e.attribute === EFFECT_ATTRIBUTES.gold_cost ||
+          e.attribute === EFFECT_ATTRIBUTES.total_cost
         ) {
           group = 'other';
         }
@@ -245,7 +246,7 @@ export function getTechBonusSources(
 
     techEffects.forEach(({ e, label, group }) => {
       const attrStripRegex =
-        /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload|Food|Wood|Stone|Gold)\s?/i;
+        /^(Pierce|Melee|Arc|Skirm|Inf|Cav|Bldg|Ram|Siege|Ship|Wall|Castle|Elephant|Unique)?\s?(Atk|Arm|HP|Range|Stat|Reload|Food|Wood|Stone|Gold|Cost)\s?/i;
       const cleanLabel = label.replace(attrStripRegex, '').trim();
       let finalLabel = cleanLabel;
       if (group === 'other') {
@@ -257,6 +258,7 @@ export function getTechBonusSources(
           [EFFECT_ATTRIBUTES.wood_cost]: 'Wood Cost',
           [EFFECT_ATTRIBUTES.stone_cost]: 'Stone Cost',
           [EFFECT_ATTRIBUTES.gold_cost]: 'Gold Cost',
+          [EFFECT_ATTRIBUTES.total_cost]: 'Cost',
         };
         const attrName = attrNames[e.attribute] || 'Stat';
         finalLabel = `${attrName} ${cleanLabel}`;
@@ -342,9 +344,10 @@ export function calculateEqualResources(
   techsById: Record<number | string, TechData>,
   allUnits: Record<string, UnitData>,
 ): number {
-  const simA = new CombatSim(unitA, unitA, stateA, stateA, techsById, allUnits);
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
+  const simA = new CombatSim(unitA, unitA, stateA, stateA, activeTechs, allUnits);
   const uA = simA.dataA;
-  const simB = new CombatSim(unitB, unitB, stateB, stateB, techsById, allUnits);
+  const simB = new CombatSim(unitB, unitB, stateB, stateB, activeTechs, allUnits);
   const uB = simB.dataB;
 
   // Use the Unit class with the FULLY RESOLVED data from applyBonuses.
@@ -365,14 +368,11 @@ export function calculateEqualProductionTime(
   techsById: Record<number | string, TechData>,
   allUnits: Record<string, UnitData>,
 ): number {
-  const simA = new CombatSim(unitA, unitA, stateA, stateA, techsById, allUnits);
-  const uA = simA.dataA;
-  const simB = new CombatSim(unitB, unitB, stateB, stateB, techsById, allUnits);
-  const uB = simB.dataB;
-
-  // uA already has trainTime and trainingTime overrides applied.
-  const timeA = uA.trainTime || unitA.trainTime || 30;
-  const timeB = uB.trainTime || unitB.trainTime || 30;
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
+  const simA = new CombatSim(unitA, unitA, stateA, stateA, activeTechs, allUnits);
+  const timeA = simA.dataA.trainTime || 30;
+  const simB = new CombatSim(unitB, unitB, stateB, stateB, activeTechs, allUnits);
+  const timeB = simB.dataB.trainTime || 30;
 
   if (timeB <= 0) return countA;
   return Math.round((countA * timeA) / timeB);
@@ -388,10 +388,18 @@ export function calculateEqualFight(
   allUnits: Record<string, UnitData>,
 ): number {
   let bestB = 1;
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
 
   // Simple linear search to find the "tipping point"
   for (let b = 1; b <= 200; b++) {
-    const sim = new CombatSim(unitA, unitB, { ...stateA, count: countA }, { ...stateB, count: b }, techsById, allUnits);
+    const sim = new CombatSim(
+      unitA,
+      unitB,
+      { ...stateA, count: countA },
+      { ...stateB, count: b },
+      activeTechs,
+      allUnits,
+    );
     const res = sim.run();
     if (res.armyA.totalHp > res.armyB.totalHp) {
       bestB = b;
@@ -475,13 +483,14 @@ export function analyzeDuel(
   stateB: ArmyState,
   analysisA: ArmyAnalysis,
   analysisB: ArmyAnalysis,
-  techsById: Record<number, TechData>,
+  techsById: Record<number | string, TechData>,
   allUnits: Record<string, UnitData>,
 ): DuelAnalysis {
   const configA = { ...stateA, count: 1 };
   const configB = { ...stateB, count: 1 };
 
-  const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, techsById, allUnits);
+  const activeTechs = techsById && Object.keys(techsById).length > 0 ? techsById : techsByIdGlobal;
+  const sim = new CombatSim(analysisA.baseUnit, analysisB.baseUnit, configA, configB, activeTechs, allUnits);
   const res = sim.run();
 
   const uA = new Unit(sim.dataA);
@@ -494,7 +503,7 @@ export function analyzeDuel(
   const formatWithBase = (total: number, base: number) => {
     const diff = total - base;
     if (Math.abs(diff) < 0.01) return total.toFixed(0);
-    return `${total.toFixed(0)} (${base.toFixed(0)} + ${diff.toFixed(0)})`;
+    return `${total.toFixed(0)} (${base.toFixed(0)}${diff > 0 ? ' +' : ' '}${diff.toFixed(0)})`;
   };
 
   const getNetDmg = (atk: Unit, def: Unit) => {
@@ -602,30 +611,23 @@ export function analyzeDuel(
       valB: nB.net / uB.reload,
     },
     {
-      label: 'Production Time',
-      a: (analysisA.modifiedBase.trainTime || 30).toFixed(1) + 's',
-      b: (analysisB.modifiedBase.trainTime || 30).toFixed(1) + 's',
-      valA: analysisA.modifiedBase.trainTime || 30,
-      valB: analysisB.modifiedBase.trainTime || 30,
-    },
-    {
       label: 'Food Cost',
-      a: uA.food.toFixed(0),
-      b: uB.food.toFixed(0),
+      a: formatWithBase(uA.food, baseA?.food || 0),
+      b: formatWithBase(uB.food, baseB?.food || 0),
       valA: uA.food,
       valB: uB.food,
     },
     {
       label: 'Wood Cost',
-      a: uA.wood.toFixed(0),
-      b: uB.wood.toFixed(0),
+      a: formatWithBase(uA.wood, baseA?.wood || 0),
+      b: formatWithBase(uB.wood, baseB?.wood || 0),
       valA: uA.wood,
       valB: uB.wood,
     },
     {
       label: 'Gold Cost',
-      a: uA.gold.toFixed(0),
-      b: uB.gold.toFixed(0),
+      a: formatWithBase(uA.gold, baseA?.gold || 0),
+      b: formatWithBase(uB.gold, baseB?.gold || 0),
       valA: uA.gold,
       valB: uB.gold,
     },
@@ -635,6 +637,13 @@ export function analyzeDuel(
       b: (uB.food + uB.wood + uB.gold).toFixed(0),
       valA: uA.food + uA.wood + uA.gold,
       valB: uB.food + uB.wood + uB.gold,
+    },
+    {
+      label: 'Production Time',
+      a: (analysisA.modifiedBase.trainTime || 30).toFixed(1) + 's',
+      b: (analysisB.modifiedBase.trainTime || 30).toFixed(1) + 's',
+      valA: analysisA.modifiedBase.trainTime || 30,
+      valB: analysisB.modifiedBase.trainTime || 30,
     },
   ];
 

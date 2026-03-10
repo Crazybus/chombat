@@ -4,6 +4,7 @@ import { analyzeDuel } from '../sim/ArmyAnalyzer';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
 import { techs } from '../data/techs';
+import { bonuses } from '../data/bonuses';
 
 const StatComparison: React.FC = () => {
   const { state, analysisA, analysisB } = useSimulation();
@@ -11,8 +12,11 @@ const StatComparison: React.FC = () => {
   const duelAnalysis = useMemo(() => {
     if (!analysisA || !analysisB) return null;
 
-    const techsById: Record<number, any> = {};
+    const techsById: Record<number | string, any> = {};
     Object.values(techs).forEach((t) => (techsById[t.id] = t));
+    Object.entries(bonuses).forEach(([civKey, bonus]) => {
+      techsById[civKey] = bonus;
+    });
     const allUnits = { ...units, ...presets };
 
     return analyzeDuel(state.armyA, state.armyB, analysisA, analysisB, techsById, allUnits);

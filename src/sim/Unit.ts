@@ -27,10 +27,6 @@ export class Unit {
   food: number;
   wood: number;
   gold: number;
-  discountAll: number;
-  discountFood: number;
-  discountWood: number;
-  discountGold: number;
   engagement: number;
   class: number;
   bonuses: Record<string, number>;
@@ -74,10 +70,6 @@ export class Unit {
     this.food = parse(d.food !== undefined ? d.food : d.overrides?.cost?.food, 0);
     this.wood = parse(d.wood !== undefined ? d.wood : d.overrides?.cost?.wood, 0);
     this.gold = parse(d.gold !== undefined ? d.gold : d.overrides?.cost?.gold, 0);
-    this.discountAll = parse(d.discountAll !== undefined ? d.discountAll : d.overrides?.discount?.all, 0);
-    this.discountFood = parse(d.discountFood !== undefined ? d.discountFood : d.overrides?.discount?.food, 0);
-    this.discountWood = parse(d.discountWood !== undefined ? d.discountWood : d.overrides?.discount?.wood, 0);
-    this.discountGold = parse(d.discountGold !== undefined ? d.discountGold : d.overrides?.discount?.gold, 0);
     this.engagement = parse(d.engagement !== undefined ? d.engagement : d.overrides?.engagement, 100);
     this.class = d.class;
     this.bonuses = d.bonuses || {};
@@ -94,10 +86,9 @@ export class Unit {
   }
 
   getParsedCost() {
-    const e = 1 - (this.discountAll || 0) / 100;
-    const f = (this.food || 0) * (1 - (this.discountFood || 0) / 100) * e;
-    const w = (this.wood || 0) * (1 - (this.discountWood || 0) / 100) * e;
-    const g = (this.gold || 0) * (1 - (this.discountGold || 0) / 100) * e;
+    const f = this.food || 0;
+    const w = this.wood || 0;
+    const g = this.gold || 0;
     return { f, w, g, total: f + w + g };
   }
 }

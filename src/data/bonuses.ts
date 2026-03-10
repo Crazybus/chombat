@@ -5,6 +5,166 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Britons Bonuses",
         "effects": [
             {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 109,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 618,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 619,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 620,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 621,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 71,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 614,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 615,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 616,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 617,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 141,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 481,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 482,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 483,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 484,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 142,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 611,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 612,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 613,
+                "class": -1,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 597,
+                "class": -1,
+                "age": 3
+            },
+            {
                 "type": 4,
                 "attribute": 12,
                 "value": 1.0,
@@ -1436,14 +1596,6 @@ export const bonuses: Record<string, CivBonus> = {
             },
             {
                 "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1665,
-                "class": -1,
-                "age": 4
-            },
-            {
-                "type": 4,
                 "attribute": 8,
                 "value": 1794.0,
                 "unitId": 1665,
@@ -1817,6 +1969,30 @@ export const bonuses: Record<string, CivBonus> = {
                 "attribute": 0,
                 "value": 0.05000000074505806,
                 "unitId": 78,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 84,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 116,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 137,
                 "class": -1,
                 "age": 1
             },
@@ -3198,38 +3374,6 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Spanish Bonuses",
         "effects": [
             {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.0000002911457528,
-                "unitId": 621,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9999999812016114,
-                "unitId": 617,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9999999812016114,
-                "unitId": 484,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9999999812016114,
-                "unitId": 597,
-                "class": -1,
-                "age": 1
-            },
-            {
                 "type": 1,
                 "attribute": 0,
                 "value": 300.0,
@@ -3439,14 +3583,6 @@ export const bonuses: Record<string, CivBonus> = {
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 1.0833300352096558,
-                "unitId": 276,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
                 "attribute": 10,
                 "value": 0.8500000238418579,
                 "unitId": -1,
@@ -3569,86 +3705,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": 1827,
                 "class": -1,
                 "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 0,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 55,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 22,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 35,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 6,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 54,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 13,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 51,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 36,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695651888847351,
-                "unitId": -1,
-                "class": 12,
-                "age": 1
             }
         ]
     },
@@ -3782,14 +3838,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": 234,
                 "class": -1,
                 "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8700000047683716,
-                "unitId": 199,
-                "class": -1,
-                "age": 1
             }
         ]
     },
@@ -3855,6 +3903,118 @@ export const bonuses: Record<string, CivBonus> = {
                 "value": 0.5,
                 "unitId": -1,
                 "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 8,
+                "value": 3852.0,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2000000476837158,
+                "unitId": 82,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 505,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 518,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 505,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 518,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1867,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 769.0,
+                "unitId": 1868,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 1867,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 9,
+                "value": 4207.0,
+                "unitId": 1868,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 768.5,
+                "unitId": 54,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 9,
+                "value": 768.5,
+                "unitId": 328,
+                "class": -1,
                 "age": 1
             }
         ]
@@ -4008,14 +4168,6 @@ export const bonuses: Record<string, CivBonus> = {
             },
             {
                 "type": 4,
-                "attribute": 102,
-                "value": 3.0,
-                "unitId": 1665,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 4,
                 "attribute": 8,
                 "value": 5382.0,
                 "unitId": 1665,
@@ -4111,14 +4263,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "age": 1
             },
             {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 1660,
-                "class": -1,
-                "age": 1
-            },
-            {
                 "type": 4,
                 "attribute": 8,
                 "value": 3588.0,
@@ -4171,6 +4315,14 @@ export const bonuses: Record<string, CivBonus> = {
                 "attribute": 0,
                 "value": 1.1666666269302368,
                 "unitId": 150,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 13,
                 "class": -1,
                 "age": 1
             },
@@ -6257,6 +6409,166 @@ export const bonuses: Record<string, CivBonus> = {
                 "age": 4
             },
             {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 109,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 618,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 619,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 620,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 621,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 71,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 614,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 615,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 616,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 617,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 141,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 481,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 482,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 483,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 484,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 142,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 611,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 612,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 613,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.9999995631330023,
+                "unitId": 597,
+                "class": -1,
+                "age": 1
+            },
+            {
                 "type": 4,
                 "attribute": 9,
                 "value": 3076.0,
@@ -6270,6 +6582,38 @@ export const bonuses: Record<string, CivBonus> = {
                 "value": 5383.0,
                 "unitId": -1,
                 "class": 4,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 3,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 27,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 39,
                 "age": 1
             }
         ]
@@ -6600,12 +6944,252 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Portuguese Bonuses",
         "effects": [
             {
-                "type": 5,
-                "attribute": 105,
-                "value": 0.8,
-                "unitId": -1,
+                "type": 1,
+                "attribute": 0,
+                "value": 12.0,
+                "unitId": 33,
                 "class": -1,
                 "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 0,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 6,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 12,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 18,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 43,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 19,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 22,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 2,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 36,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 44,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 55,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 35,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 2,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1523820888428702,
+                "unitId": -1,
+                "class": 2,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2047578226900604,
+                "unitId": -1,
+                "class": 2,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 21,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1523820888428702,
+                "unitId": -1,
+                "class": 21,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2047578226900604,
+                "unitId": -1,
+                "class": 21,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 22,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1523820888428702,
+                "unitId": -1,
+                "class": 22,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2047578226900604,
+                "unitId": -1,
+                "class": 22,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 20,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1523820888428702,
+                "unitId": -1,
+                "class": 20,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2047578226900604,
+                "unitId": -1,
+                "class": 20,
+                "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.100000023841858,
+                "unitId": -1,
+                "class": 53,
+                "age": 2
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.1523820888428702,
+                "unitId": -1,
+                "class": 53,
+                "age": 3
+            },
+            {
+                "type": 5,
+                "attribute": 0,
+                "value": 1.2047578226900604,
+                "unitId": -1,
+                "class": 53,
+                "age": 4
             }
         ]
     },
@@ -6642,6 +7226,166 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Malians Bonuses",
         "effects": [
             {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 109,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 618,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 619,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 620,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 621,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 71,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 614,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 615,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 616,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 617,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 141,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 481,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 482,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 483,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 484,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 142,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 611,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 612,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 613,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.9999995631330023,
+                "unitId": 597,
+                "class": -1,
+                "age": 1
+            },
+            {
                 "type": 4,
                 "attribute": 8,
                 "value": 769.0,
@@ -7000,6 +7744,38 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": 1788,
                 "class": -1,
                 "age": 4
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 3,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 39,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 52,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 27,
+                "age": 1
             }
         ]
     },
@@ -7560,6 +8336,166 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Bulgarians Bonuses",
         "effects": [
             {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 109,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 618,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 619,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 620,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 621,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 71,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 614,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 615,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 616,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 617,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 141,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 481,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 482,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 483,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 484,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 142,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 611,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 612,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 613,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 597,
+                "class": -1,
+                "age": 1
+            },
+            {
                 "type": 4,
                 "attribute": 9,
                 "value": 3076.0,
@@ -7853,6 +8789,54 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Cumans Bonuses",
         "effects": [
             {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 87,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 10,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 14,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 101,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 86,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 153,
+                "class": -1,
+                "age": 1
+            },
+            {
                 "type": 5,
                 "attribute": 5,
                 "value": 1.0499999523162842,
@@ -7947,70 +8931,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": -1,
                 "class": 23,
                 "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 621,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.000007960531235,
-                "unitId": 621,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 617,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.000007960531235,
-                "unitId": 617,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 484,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.000007960531235,
-                "unitId": 484,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 597,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.000007960531235,
-                "unitId": 597,
-                "class": -1,
-                "age": 3
             }
         ]
     },
@@ -8468,70 +9388,6 @@ export const bonuses: Record<string, CivBonus> = {
         "name": "Sicilians Bonuses",
         "effects": [
             {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": 82,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 621,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 617,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 484,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 597,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": -1,
-                "class": 27,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": -1,
-                "class": 39,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": -1,
-                "class": 52,
-                "age": 1
-            },
-            {
                 "type": 0,
                 "attribute": 0,
                 "value": 0.4000000059604645,
@@ -8716,6 +9572,54 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": -1,
                 "class": 4,
                 "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 103,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 105,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 18,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 19,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 209,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 210,
+                "class": -1,
+                "age": 1
             }
         ]
     },
@@ -8776,6 +9680,38 @@ export const bonuses: Record<string, CivBonus> = {
                 "value": 0.800000011920929,
                 "unitId": 875,
                 "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 13,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 51,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 54,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 55,
                 "age": 1
             },
             {
@@ -9184,6 +10120,22 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": 2468,
                 "class": -1,
                 "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.5,
+                "unitId": 279,
+                "class": -1,
+                "age": 1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.5,
+                "unitId": 542,
+                "class": -1,
+                "age": 1
             }
         ]
     },
@@ -9227,38 +10179,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "attribute": 100,
                 "value": 0.75,
                 "unitId": 1808,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 539,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 21,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 442,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1795,
                 "class": -1,
                 "age": 1
             }
@@ -9843,118 +10763,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": 2628,
                 "class": -1,
                 "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 7,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 448,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 546,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 93,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 441,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 6,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 358,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 359,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1155,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1010,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1012,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1786,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1787,
-                "class": -1,
-                "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1788,
-                "class": -1,
-                "age": 1
             }
         ]
     },
@@ -10357,150 +11165,6 @@ export const bonuses: Record<string, CivBonus> = {
                 "unitId": 204,
                 "class": -1,
                 "age": 1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 93,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.5,
-                "unitId": 93,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9998999834060669,
-                "unitId": 93,
-                "class": -1,
-                "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 358,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.5,
-                "unitId": 358,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9998999834060669,
-                "unitId": 358,
-                "class": -1,
-                "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 359,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.5,
-                "unitId": 359,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9998999834060669,
-                "unitId": 359,
-                "class": -1,
-                "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 7,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.5,
-                "unitId": 7,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9998999834060669,
-                "unitId": 7,
-                "class": -1,
-                "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 6,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.5,
-                "unitId": 6,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9998999834060669,
-                "unitId": 6,
-                "class": -1,
-                "age": 4
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 1155,
-                "class": -1,
-                "age": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.5,
-                "unitId": 1155,
-                "class": -1,
-                "age": 3
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.9998999834060669,
-                "unitId": 1155,
-                "class": -1,
-                "age": 4
             }
         ]
     },

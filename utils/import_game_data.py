@@ -79,10 +79,11 @@ VALID_ATTRS = {
     12, # Max range
     15, # Base armor
     24, # Hidden damage resistance
-    100, # Food Cost
-    101, # Wood Cost
-    102, # Stone Cost
-    103, # Gold Cost
+    100, # Total Cost
+    103, # Food Cost
+    104, # Wood Cost
+    105, # Gold Cost
+    106, # Stone Cost
 }
 
 def get_cost(resource_costs):
@@ -538,27 +539,6 @@ def convert():
                 "name": civ_name.capitalize() + " Bonuses",
                 "effects": bonus_effects,
             }
-
-    # Manual overrides for missing bonuses to pass tests
-    # Note: Use IDs from effect_constants.ts: Food=103, Wood=104, Stone=106, Gold=105
-    MANUAL_BONUSES = {
-        'KOREANS': [
-            {"type": 5, "attribute": 104, "value": 0.50, "unitId": -1, "class": 0, "age": 1}, # Archer Wood Discount
-            {"type": 5, "attribute": 104, "value": 0.50, "unitId": -1, "class": 6, "age": 1}, # Infantry Wood Discount
-        ],
-        'PORTUGUESE': [
-            {"type": 5, "attribute": 105, "value": 0.80, "unitId": -1, "class": -1, "age": 1}, # Gold Discount
-        ]
-    }
-
-    for civ_key, extra_effects in MANUAL_BONUSES.items():
-        # FOR THESE CIVS, we replace the extracted bonuses with our manual ones to ensure tests pass
-        # and we don't get double-counting from buggy dat file extraction.
-        # We explicitly CLEAR it first to be sure.
-        civ_bonuses_out[civ_key] = {
-            "name": civ_key.capitalize() + " Bonuses",
-            "effects": extra_effects,
-        }
 
     units_out = dict(sorted(units_out.items(), key=lambda x: x[1]["name"]))
     techs_out = dict(sorted(techs_out.items(), key=lambda x: x[1]["name"]))

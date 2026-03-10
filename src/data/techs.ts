@@ -3318,43 +3318,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 24,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 492,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 1962,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 4,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 3.0,
-                "unitId": 1980,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 4,
         "civ": 49
     },
@@ -8746,7 +8710,148 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 109,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 618,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 619,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 620,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 621,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 71,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 614,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 615,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 616,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 617,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 141,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 481,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 482,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 483,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 484,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 142,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 611,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 612,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 613,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": 597,
+                "class": -1
+            }
+        ],
         "age": 3,
         "civ": 1
     },
@@ -8892,7 +8997,113 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 0
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 6
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 12
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 13
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 18
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 43
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 19
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 22
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 2
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 36
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 51
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 44
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 54
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 55
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 35
+            }
+        ],
         "age": 1,
         "civ": 24
     },
@@ -10247,7 +10458,176 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 3
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 52
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 27
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 39
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 109,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 618,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 619,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 620,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 621,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 71,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 614,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 615,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 616,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 617,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 141,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 481,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 482,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 483,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 484,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 142,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 611,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 612,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 613,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 1.1764700412750244,
+                "unitId": 597,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 21
     },
@@ -10794,7 +11174,50 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 87,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 10,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 14,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 101,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 86,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -75.0,
+                "unitId": 153,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 34
     },
@@ -10810,7 +11233,50 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 103,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 105,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 18,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 19,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 209,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 210,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 39
     },
@@ -10888,7 +11354,22 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.5,
+                "unitId": 279,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.5,
+                "unitId": 542,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 43
     },
@@ -11733,64 +12214,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": 82,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 621,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 617,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 484,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 597,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": -1,
-                "class": 27
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": -1,
-                "class": 39
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666669845581055,
-                "unitId": -1,
-                "class": 52
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": 37
     },
@@ -15567,7 +15991,29 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 84,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 116,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -100.0,
+                "unitId": 137,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 9
     },
@@ -16258,36 +16704,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 539,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 21,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 442,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1795,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": 44
     },
@@ -17466,7 +17883,36 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 13
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 51
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 54
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.6666669845581055,
+                "unitId": -1,
+                "class": 55
+            }
+        ],
         "age": 1,
         "civ": 40
     },
@@ -17901,106 +18347,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 7,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 448,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 546,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 93,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 441,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 6,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 358,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 359,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1155,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1010,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1012,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1786,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1787,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8695650100708008,
-                "unitId": 1788,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": 53
     },
@@ -18036,50 +18383,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 93,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 358,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 359,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 7,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 6,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 1155,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 58
     },
@@ -18097,50 +18401,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 93,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 358,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 359,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 7,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 6,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 2.0,
-                "unitId": 1155,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 2,
         "civ": 58
     },
@@ -18158,50 +18419,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6665999889373779,
-                "unitId": 93,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6665999889373779,
-                "unitId": 358,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6665999889373779,
-                "unitId": 359,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6665999889373779,
-                "unitId": 7,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6665999889373779,
-                "unitId": 6,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6665999889373779,
-                "unitId": 1155,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 4,
         "civ": 58
     },
@@ -18505,7 +18723,148 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 109,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 618,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 619,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 620,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 621,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 71,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 614,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 615,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 616,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 617,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 141,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 481,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 482,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 483,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 484,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 142,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 611,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 612,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 613,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.5,
+                "unitId": 597,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 32
     },
@@ -18680,7 +19039,148 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 109,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 618,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 619,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 620,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 621,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 71,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 614,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 615,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 616,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 617,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 141,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 481,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 482,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 483,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 484,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 142,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 611,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 612,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 613,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 106,
+                "value": 0.8500000238418579,
+                "unitId": 597,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 21
     },
@@ -18698,7 +19198,148 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 109,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 618,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 619,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 620,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 621,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 71,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 614,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 615,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 616,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 617,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 141,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 481,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 482,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 483,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 484,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 142,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 611,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 612,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 613,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": 597,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 26
     },
@@ -18734,36 +19375,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.7692310214042664,
-                "unitId": 621,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.7692307829856873,
-                "unitId": 617,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.7692307829856873,
-                "unitId": 484,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.7692307829856873,
-                "unitId": 597,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": 14
     },
@@ -18941,7 +19553,36 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": -1,
+                "class": 0
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": -1,
+                "class": 6
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 22
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.5,
+                "unitId": -1,
+                "class": 36
+            }
+        ],
         "age": 1,
         "civ": 18
     },
@@ -19500,7 +20141,176 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 3
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 39
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 52
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 0.8500000238418579,
+                "unitId": -1,
+                "class": 27
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 109,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 618,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 619,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 620,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 621,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 71,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 614,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 615,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 616,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 617,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 141,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 481,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 482,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 483,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 484,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 142,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 611,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 612,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 613,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 104,
+                "value": 1.1764700412750244,
+                "unitId": 597,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 26
     },
@@ -20645,22 +21455,8 @@ export const techs: Record<string, TechData> = {
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": 1660,
-                "class": -1
-            },
-            {
-                "type": 5,
                 "attribute": 0,
                 "value": 1.2000000476837158,
-                "unitId": 1665,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
                 "unitId": 1665,
                 "class": -1
             },
@@ -21376,36 +22172,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 621,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 617,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 484,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 1.7999999523162842,
-                "unitId": 597,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 2,
         "civ": 34
     },
@@ -21423,36 +22190,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5555599927902222,
-                "unitId": 621,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5555599927902222,
-                "unitId": 617,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5555599927902222,
-                "unitId": 484,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5555599927902222,
-                "unitId": 597,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 34
     },
@@ -22346,36 +23084,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": -1,
-                "class": 21
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": -1,
-                "class": 22
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": -1,
-                "class": 2
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.75,
-                "unitId": -1,
-                "class": 20
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 24
     },
@@ -22580,92 +23289,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 38,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 283,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 569,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 1813,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 74,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 75,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 77,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 473,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 567,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 1793,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 1790,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666269302368,
-                "unitId": 1792,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 4,
         "civ": 43
     },
@@ -23410,7 +24034,22 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 22
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.800000011920929,
+                "unitId": -1,
+                "class": 0
+            }
+        ],
         "age": 1,
         "civ": 47
     },
@@ -23444,7 +24083,78 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 79,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 106,
+                "value": -50.0,
+                "unitId": 79,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 234,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 106,
+                "value": -50.0,
+                "unitId": 234,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 235,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 106,
+                "value": -50.0,
+                "unitId": 235,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 236,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 106,
+                "value": -50.0,
+                "unitId": 236,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 260.0,
+                "unitId": 82,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 106,
+                "value": -260.0,
+                "unitId": 82,
+                "class": -1
+            }
+        ],
         "age": 3,
         "civ": 23
     },
@@ -23542,36 +24252,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 542,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 279,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1120,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1122,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 4,
         "civ": 28
     },
@@ -24138,9 +24819,23 @@ export const techs: Record<string, TechData> = {
         "effects": [
             {
                 "type": 4,
+                "attribute": 105,
+                "value": -15.0,
+                "unitId": 2110,
+                "class": -1
+            },
+            {
+                "type": 4,
                 "attribute": 103,
                 "value": 15.0,
                 "unitId": 2110,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -15.0,
+                "unitId": 2111,
                 "class": -1
             },
             {
@@ -26432,13 +27127,6 @@ export const techs: Record<string, TechData> = {
                 "value": 1.0,
                 "unitId": 185,
                 "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.800000011920929,
-                "unitId": 185,
-                "class": -1
             }
         ],
         "age": 4,
@@ -26688,13 +27376,6 @@ export const techs: Record<string, TechData> = {
                 "type": 5,
                 "attribute": 0,
                 "value": 2.0,
-                "unitId": 1665,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
                 "unitId": 1665,
                 "class": -1
             },
@@ -28064,6 +28745,48 @@ export const techs: Record<string, TechData> = {
             "buildings": []
         },
         "effects": [
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -20.0,
+                "unitId": 74,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -20.0,
+                "unitId": 75,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -20.0,
+                "unitId": 77,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -20.0,
+                "unitId": 473,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -20.0,
+                "unitId": 567,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -20.0,
+                "unitId": 1793,
+                "class": -1
+            },
             {
                 "type": 4,
                 "attribute": 103,
@@ -30320,99 +31043,7 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 7,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 6,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1155,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 93,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 358,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 359,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1010,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1012,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1036,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1786,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1787,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": 1788,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6666666865348816,
-                "unitId": -1,
-                "class": 4
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": 48
     },
@@ -31968,13 +32599,6 @@ export const techs: Record<string, TechData> = {
             },
             {
                 "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1665,
-                "class": -1
-            },
-            {
-                "type": 4,
                 "attribute": 8,
                 "value": 1025.0,
                 "unitId": 1665,
@@ -32557,7 +33181,50 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -45.0,
+                "unitId": 4,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -45.0,
+                "unitId": 24,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 105,
+                "value": -45.0,
+                "unitId": 492,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 25.0,
+                "unitId": 4,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 25.0,
+                "unitId": 24,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 25.0,
+                "unitId": 492,
+                "class": -1
+            }
+        ],
         "age": 3,
         "civ": 8
     },
@@ -36007,50 +36674,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 7,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 6,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1155,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1010,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1012,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 1.0,
-                "unitId": 1036,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 16
     },
@@ -38818,7 +39442,22 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 1.25,
+                "unitId": -1,
+                "class": 22
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 1.25,
+                "unitId": -1,
+                "class": 0
+            }
+        ],
         "age": 1,
         "civ": -1
     },
@@ -38856,7 +39495,113 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 87,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 12,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 101,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 10,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 14,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 498,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 132,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 20,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 86,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 57.75,
+                "unitId": 153,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 2117,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 2118,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 50.0,
+                "unitId": 2119,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 66.66670227050781,
+                "unitId": 49,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": 66.66670227050781,
+                "unitId": 150,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": -1
     },
@@ -38872,15 +39617,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -38896,15 +39633,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.4440000057220459,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -38920,15 +39649,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.8700000047683716,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -38944,15 +39665,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.4000000059604645,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -38968,15 +39681,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.36399999260902405,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -38992,15 +39697,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.3330000042915344,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -39016,15 +39713,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.7699999809265137,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -39040,15 +39729,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.25,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -39064,15 +39745,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.7139999866485596,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -39088,15 +39761,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.6669999957084656,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -39112,15 +39777,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5709999799728394,
-                "unitId": 199,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -41788,20 +42445,6 @@ export const techs: Record<string, TechData> = {
             },
             {
                 "type": 4,
-                "attribute": 102,
-                "value": 6.0,
-                "unitId": 1904,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 6.0,
-                "unitId": 1907,
-                "class": -1
-            },
-            {
-                "type": 4,
                 "attribute": 12,
                 "value": 1.0,
                 "unitId": 831,
@@ -41811,20 +42454,6 @@ export const techs: Record<string, TechData> = {
                 "type": 4,
                 "attribute": 12,
                 "value": 1.0,
-                "unitId": 832,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 831,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
                 "unitId": 832,
                 "class": -1
             },
@@ -41861,29 +42490,29 @@ export const techs: Record<string, TechData> = {
         "effects": [
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 21
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 22
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 2
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 20
             }
@@ -41908,29 +42537,29 @@ export const techs: Record<string, TechData> = {
         "effects": [
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 21
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 22
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 2
             },
             {
                 "type": 5,
-                "attribute": 101,
-                "value": 0.6499999761581421,
+                "attribute": 104,
+                "value": 0.800000011920929,
                 "unitId": -1,
                 "class": 20
             }
@@ -42959,36 +43588,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 1942,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 1948,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": -1,
-                "class": 54
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": -1,
-                "class": 54
-            }
-        ],
+        "effects": [],
         "age": 4,
         "civ": 50
     },
@@ -43722,64 +44322,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 448,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 546,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 441,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 1707,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 39,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 474,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 1370,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 1372,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 34
     },
@@ -44396,7 +44939,36 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.4000000059604645,
+                "unitId": 38,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.4000000059604645,
+                "unitId": 283,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.4000000059604645,
+                "unitId": 569,
+                "class": -1
+            },
+            {
+                "type": 5,
+                "attribute": 105,
+                "value": 0.4000000059604645,
+                "unitId": 1813,
+                "class": -1
+            }
+        ],
         "age": 3,
         "civ": 38
     },
@@ -45072,36 +45644,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 8.0,
-                "unitId": 109,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 8.0,
-                "unitId": 71,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 8.0,
-                "unitId": 141,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 8.0,
-                "unitId": 142,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 26
     },
@@ -46038,7 +46581,113 @@ export const techs: Record<string, TechData> = {
             ],
             "buildings": []
         },
-        "effects": [],
+        "effects": [
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 87,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 12,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 101,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 10,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 14,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 498,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 132,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 20,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 86,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -57.75,
+                "unitId": 153,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -50.0,
+                "unitId": 2117,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -50.0,
+                "unitId": 2118,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -50.0,
+                "unitId": 2119,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -66.66670227050781,
+                "unitId": 49,
+                "class": -1
+            },
+            {
+                "type": 4,
+                "attribute": 104,
+                "value": -66.66670227050781,
+                "unitId": 150,
+                "class": -1
+            }
+        ],
         "age": 1,
         "civ": 47
     },
@@ -46125,13 +46774,6 @@ export const techs: Record<string, TechData> = {
                 "type": 4,
                 "attribute": 9,
                 "value": 4097.0,
-                "unitId": 751,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.699999988079071,
                 "unitId": 751,
                 "class": -1
             },
@@ -46853,50 +47495,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 70,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 191,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 192,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 463,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 464,
-                "class": -1
-            },
-            {
-                "type": 5,
-                "attribute": 101,
-                "value": 0.5,
-                "unitId": 465,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 1,
         "civ": -1
     },
@@ -47031,36 +47630,7 @@ export const techs: Record<string, TechData> = {
             "techs": [],
             "buildings": []
         },
-        "effects": [
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 79,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 234,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 235,
-                "class": -1
-            },
-            {
-                "type": 4,
-                "attribute": 102,
-                "value": 2.0,
-                "unitId": 785,
-                "class": -1
-            }
-        ],
+        "effects": [],
         "age": 3,
         "civ": 5
     },
