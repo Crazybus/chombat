@@ -148,9 +148,6 @@ export class CombatSim {
             if (e.attribute == EFFECT_ATTRIBUTES.accuracy) {
               newUnit.accuracy_percent = val;
             }
-            if (e.attribute == EFFECT_ATTRIBUTES.min_range) {
-              newUnit.hp = val;
-            }
             if (e.attribute === EFFECT_ATTRIBUTES.food_cost) {
               newUnit.food = val;
             }

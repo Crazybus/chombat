@@ -44149,7 +44149,7 @@ export const techs: Record<string, TechData> = {
     effects: [
       {
         type: 0,
-        attribute: 0,
+        attribute: 11,
         value: 100.0,
         unitId: -1,
         class: -1,
