@@ -220,11 +220,20 @@ def load_extra_data():
     )
 
 
-def extract_effects(eff_obj):
+def extract_effects(eff_obj, tech_id=None):
     effects = []
     for cmd in eff_obj.effect_commands:
         if cmd.type in [0, 4, 5]:
             attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
+            
+            # Data bug fixes
+            if tech_id == 437 and cmd.type == 0 and attr_id == 0 and cmd.d == 100.0:
+                # Thumb Ring: Fix HP 100 -> Accuracy 100
+                attr_id = 11
+            if tech_id == 924 and cmd.type == 0 and attr_id == 12:
+                # Aznauri Cavalry: Fix attribute 12 -> Accuracy 11
+                attr_id = 11
+
             if attr_id in VALID_ATTRS:
                 effects.append(
                     {
@@ -395,7 +404,7 @@ def convert():
 
         effects_out = []
         if tech.effect_id != -1 and tech.effect_id < len(dat.effects):
-            effects_out = extract_effects(dat.effects[tech.effect_id])
+            effects_out = extract_effects(dat.effects[tech.effect_id], tid)
 
         if key in techs_out:
             key = f"{key}_{tid}"
@@ -454,19 +463,10 @@ def convert():
                     reqs = tech.required_techs
                     age = 4 if 103 in reqs else 3 if 102 in reqs else 2 if 101 in reqs else 1
                     
-                    eff_obj = dat.effects[tech.effect_id]
-                    for cmd in eff_obj.effect_commands:
-                        if cmd.type in [0, 1, 2, 4, 5]: # Attribute modifiers
-                            attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
-                            if attr_id in VALID_ATTRS:
-                                raw_effects.append({
-                                    "type": cmd.type,
-                                    "attribute": attr_id,
-                                    "value": cmd.d,
-                                    "unitId": cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1,
-                                    "class": cmd.b if cmd.type in [4, 5] else -1,
-                                    "age": age,
-                                })
+                    eff_out_raw = extract_effects(dat.effects[tech.effect_id], tid)
+                    for e in eff_out_raw:
+                        e["age"] = age
+                        raw_effects.append(e)
 
         # 2. Check tech_tree_id
         if civ.tech_tree_id != -1 and civ.tech_tree_id < len(dat.effects):
@@ -476,21 +476,17 @@ def convert():
                     return
                 seen_effects.add(eff_id)
                 eff_obj = dat.effects[eff_id]
+                
+                # Check for age-up linkages first
                 for cmd in eff_obj.effect_commands:
                     if cmd.type == 101:
                         new_age = max(age_id, int(cmd.b) + 1)
                         crawl_effects(int(cmd.a), new_age)
-                    elif cmd.type in [0, 1, 2, 4, 5]: # Attribute modifiers
-                        attr_id = cmd.c if cmd.type in [4, 5] else cmd.b
-                        if attr_id in VALID_ATTRS:
-                            raw_effects.append({
-                                "type": cmd.type,
-                                "attribute": attr_id,
-                                "value": cmd.d,
-                                "unitId": cmd.a if cmd.type in [0, 1, 2, 4, 5] else -1,
-                                "class": cmd.b if cmd.type in [4, 5] else -1,
-                                "age": age_id,
-                            })
+                
+                # Now extract attribute modifiers
+                for e in extract_effects(eff_obj):
+                    e["age"] = age_id
+                    raw_effects.append(e)
             crawl_effects(civ.tech_tree_id, 1)
 
         # 3. Collapse effects by age and target to handle cumulative multipliers

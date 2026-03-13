@@ -26,9 +26,9 @@ describe('Inca Champi Runner Discount', () => {
       techsById,
     );
 
-    // Champi Runner base: 45 Food, 25 Gold.
+    // Champi Runner base: 50 Food, 25 Gold.
     // Dark Age: -5% Food
-    expect(analysis?.effectiveStats.food).toBeCloseTo(42.75, 2);
+    expect(analysis?.effectiveStats.food).toBeCloseTo(47.5, 2);
     expect(analysis?.effectiveStats.gold).toBe(25);
 
     // Check if it appears in Misc (other) group
@@ -49,9 +49,9 @@ describe('Inca Champi Runner Discount', () => {
       techsById,
     );
 
-    // Imperial Age: -20% Food
-    // 45 * 0.8 = 36.0 (Approx 35.7 in dat file)
-    expect(analysis?.effectiveStats.food).toBeCloseTo(35.7, 1);
+    // Imperial Age: -20.7% Food
+    // 50 * 0.7932 = 39.66 (Approx 39.66 in dat file)
+    expect(analysis?.effectiveStats.food).toBeCloseTo(39.66, 1);
     expect(analysis?.effectiveStats.gold).toBe(25);
   });
 });
