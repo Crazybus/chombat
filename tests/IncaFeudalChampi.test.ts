@@ -25,9 +25,9 @@ describe('Inca Feudal Champi Runner', () => {
       techsById,
     );
 
-    // Champi Runner base: 45 Food, 25 Gold.
-    // Expected: 10% food discount (approx 40.40 in dat file)
-    expect(analysis?.effectiveStats.food).toBeCloseTo(40.4, 1);
+    // Champi Runner base: 50 Food, 25 Gold.
+    // Expected: ~10.2% food discount (approx 44.89 in dat file)
+    expect(analysis?.effectiveStats.food).toBeCloseTo(44.89, 1);
     expect(analysis?.effectiveStats.gold).toBe(25);
 
     // Check that there is only one food discount source if possible

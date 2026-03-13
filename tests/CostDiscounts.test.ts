@@ -27,8 +27,8 @@ describe('Resource Cost Discounts', () => {
         techsById,
       );
 
-      // Base Food: 45. Discount: 15% (Approx 37.94 in dat file)
-      expect(analysis?.effectiveStats.food).toBeCloseTo(37.94, 1);
+      // Base Food: 50. Discount: ~15.7% (Approx 42.16 in dat file)
+      expect(analysis?.effectiveStats.food).toBeCloseTo(42.16, 1);
       expect(analysis?.effectiveStats.gold).toBe(25);
     });
 
@@ -43,8 +43,8 @@ describe('Resource Cost Discounts', () => {
         techsById,
       );
 
-      // Base Food: 45. Discount: 20% (Approx 35.70 in dat file)
-      expect(analysis?.effectiveStats.food).toBeCloseTo(35.7, 1);
+      // Base Food: 50. Discount: ~20.7% (Approx 39.66 in dat file)
+      expect(analysis?.effectiveStats.food).toBeCloseTo(39.66, 1);
       expect(analysis?.effectiveStats.gold).toBe(25);
     });
   });

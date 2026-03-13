@@ -710,6 +710,7 @@ export const civs: Record<string, Record<number, number>> = {
     '215': 3,
     '435': 2,
     '39': 3,
+    '211': 2,
     '199': 2,
     '200': 3,
     '201': 4,
