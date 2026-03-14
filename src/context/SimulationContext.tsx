@@ -611,14 +611,11 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (
-      !params.get('s') &&
-      !params.get('id') &&
-      !params.get('scenario') &&
-      !state.armyA.preset &&
-      featuredScenarios.length > 0
-    ) {
+    // Check if we're on a clean path (no scenario loaded)
+    const path = window.location.pathname;
+    const isCleanPath = path === '/' || path === '';
+
+    if (isCleanPath && !state.armyA.preset && featuredScenarios.length > 0) {
       loadScenario(featuredScenarios[0]);
     }
   }, []);
@@ -645,7 +642,19 @@ export const SimulationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       {toast && (
         <div
           className="share-toast"
-          style={{ position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)', zIndex: 10000 }}
+          style={{
+            position: 'fixed',
+            top: '80px',
+            right: '20px',
+            background: 'var(--color-pos)',
+            color: 'white',
+            padding: '12px 20px',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+            zIndex: 10000,
+            fontWeight: '500',
+            animation: 'slideIn 0.3s ease-out',
+          }}
         >
           {toast}
         </div>

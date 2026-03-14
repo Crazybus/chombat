@@ -176,7 +176,7 @@ const EffectivenessScaling: React.FC = () => {
                         color: 'var(--text-dim)',
                         position: 'sticky',
                         top: 0,
-                        background: '#111',
+                        background: 'var(--panel-bg)',
                         zIndex: 1,
                       }}
                     >
@@ -189,8 +189,8 @@ const EffectivenessScaling: React.FC = () => {
                       <tr
                         key={i}
                         style={{
-                          borderBottom: '1px solid rgba(255,255,255,0.05)',
-                          background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                          borderBottom: '1px solid var(--border-dim)',
+                          background: i % 2 === 0 ? 'var(--panel-bg-alt)' : 'transparent',
                         }}
                       >
                         <td style={{ padding: '6px 8px', whiteSpace: 'nowrap' }}>{row.ratio}</td>
@@ -245,7 +245,7 @@ const EffectivenessScaling: React.FC = () => {
                         color: 'var(--text-dim)',
                         position: 'sticky',
                         top: 0,
-                        background: '#111',
+                        background: 'var(--panel-bg)',
                         zIndex: 1,
                       }}
                     >
@@ -258,8 +258,8 @@ const EffectivenessScaling: React.FC = () => {
                       <tr
                         key={i}
                         style={{
-                          borderBottom: '1px solid rgba(255,255,255,0.05)',
-                          background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent',
+                          borderBottom: '1px solid var(--border-dim)',
+                          background: i % 2 === 0 ? 'var(--panel-bg-alt)' : 'transparent',
                         }}
                       >
                         <td style={{ padding: '6px 8px', whiteSpace: 'nowrap' }}>{row.ratio}</td>

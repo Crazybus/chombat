@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { SimulationState, TechData, UnitData } from '../sim/types';
 import { scrubArmy } from '../sim/ArmyAnalyzer';
 import { units } from '../data/units';
@@ -11,78 +11,76 @@ import { inflate, deflate } from 'pako';
 export function useSyncURL(state: SimulationState, setState: React.Dispatch<React.SetStateAction<SimulationState>>) {
   const navigate = useNavigate();
   const location = useLocation();
+  const params = useParams();
   const isInitialLoad = useRef(true);
 
-  // Load from URL
+  // Load from URL path
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const base64Data = params.get('s');
-    const shortId = params.get('id');
-    const scenarioId = params.get('scenario');
+    // Parse path: /s/:scenario, /l/:title/:id, /d/:title/:data
+    // Title is informational only (ignored on load, any value works)
+    const pathParts = params['*']?.split('/').filter(Boolean) || [];
+    const pathType = pathParts[0]; // s, l, or d
+    let pathValue: string | undefined;
 
-    if (isInitialLoad.current) {
+    if (pathType === 'd' && pathParts.length >= 3) {
+      // /d/:title/:data - title at index 1 (ignored), data at index 2
+      pathValue = pathParts[2];
+    } else if (pathType === 'l' && pathParts.length >= 3) {
+      // /l/:title/:id - title at index 1 (ignored), id at index 2
+      pathValue = pathParts[2];
+    } else if (pathType === 's' && pathParts.length >= 2) {
+      // /s/:scenario
+      pathValue = pathParts[1];
+    }
+
+    if (isInitialLoad.current && pathType && pathValue) {
       const allScenarios = scenarios as Record<string, any>;
-      if (scenarioId && allScenarios[scenarioId]) {
-        // Load named scenario from path
-        const loaded = allScenarios[scenarioId];
-        const allUnits: Record<string, UnitData> = { ...units, ...presets };
-        const techsById: Record<number, TechData> = {};
-        Object.values(techs).forEach((t) => (techsById[t.id] = t));
 
-        setState({
-          armyA: scrubArmy(loaded.armyA, allUnits, techsById),
-          armyB: scrubArmy(loaded.armyB, allUnits, techsById),
-          description: loaded.description || '',
-          name: loaded.name || 'Shared Scenario',
-          scenarioId: scenarioId,
-        });
-      } else if (shortId) {
-        // Resolve short ID from API
-        fetch(`/api/resolve/${shortId}`)
+      // New path-based routing
+      if (pathType === 's' && allScenarios[pathValue]) {
+        // Named scenario: /s/champi_vs_scouts
+        const loaded = allScenarios[pathValue];
+        loadScenarioData(loaded, pathValue);
+      } else if (pathType === 'l') {
+        // Short link: /l/qoQ5Hd or /l/qoQ5Hd/champi_vs_scouts (title ignored)
+        fetch(`/api/resolve/${pathValue}`)
           .then(async (res) => {
             const result = await res.json();
             if (res.ok && result.data) {
-              const loaded = result.data;
-              const allUnits: Record<string, UnitData> = { ...units, ...presets };
-              const techsById: Record<number, TechData> = {};
-              Object.values(techs).forEach((t) => (techsById[t.id] = t));
-
-              setState({
-                armyA: scrubArmy(loaded.armyA, allUnits, techsById),
-                armyB: scrubArmy(loaded.armyB, allUnits, techsById),
-                description: loaded.description || '',
-                name: loaded.name || 'Shared Scenario',
-                scenarioId: loaded.scenarioId,
-              });
+              loadScenarioData(result.data, result.data.scenarioId);
             } else {
               console.error('Failed to resolve short URL:', result.error || res.statusText);
             }
           })
           .catch((err) => console.error('Error fetching short URL:', err));
-      } else if (base64Data) {
+      } else if (pathType === 'd') {
+        // Direct data: /d/:title/:data or /d/:data (title ignored, just for readability)
         try {
-          const bin = atob(base64Data.replace(/-/g, '+').replace(/_/g, '/'));
+          const bin = atob(pathValue.replace(/-/g, '+').replace(/_/g, '/'));
           const json = inflate(new Uint8Array([...bin].map((c) => c.charCodeAt(0))), { to: 'string' });
           const loaded = JSON.parse(json);
-
-          const allUnits: Record<string, UnitData> = { ...units, ...presets };
-          const techsById: Record<number, TechData> = {};
-          Object.values(techs).forEach((t) => (techsById[t.id] = t));
-
-          setState({
-            armyA: scrubArmy(loaded.armyA, allUnits, techsById),
-            armyB: scrubArmy(loaded.armyB, allUnits, techsById),
-            description: loaded.description || '',
-            name: loaded.name || 'Shared Scenario',
-            scenarioId: loaded.scenarioId,
-          });
+          loadScenarioData(loaded, loaded.scenarioId);
         } catch (e) {
-          console.error('Failed to load scenario from base64 URL', e);
+          console.error('Failed to load scenario from direct data URL', e);
         }
       }
     }
     isInitialLoad.current = false;
-  }, []);
+  }, [params]);
+
+  const loadScenarioData = (loaded: any, scenarioId: string) => {
+    const allUnits: Record<string, UnitData> = { ...units, ...presets };
+    const techsById: Record<number, TechData> = {};
+    Object.values(techs).forEach((t) => (techsById[t.id] = t));
+
+    setState({
+      armyA: scrubArmy(loaded.armyA, allUnits, techsById),
+      armyB: scrubArmy(loaded.armyB, allUnits, techsById),
+      description: loaded.description || '',
+      name: loaded.name || 'Shared Scenario',
+      scenarioId: scenarioId,
+    });
+  };
 
   // Save to URL
   const syncURL = async (explicit = false) => {
@@ -106,18 +104,28 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
 
       if (response.ok) {
         const { id } = await response.json();
-        const url = `${window.location.origin}${window.location.pathname}?id=${id}`;
-        navigate(`?id=${id}`, { replace: true });
-        return url;
+        // Generate title slug from scenario name (required, informational only)
+        const titleSlug = exportData.name
+          ? exportData.name
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '_')
+              .replace(/_+/g, '_')
+              .replace(/^_|_$/g, '')
+              .slice(0, 50)
+          : 'scenario';
+        // Navigate to /l/:title/:id format
+        const path = `/l/${titleSlug}/${id}`;
+        navigate(path, { replace: true });
+        return `${window.location.origin}${path}`;
       } else {
         const err = await response.json();
         console.warn('URL shortening failed:', err.error || response.statusText);
       }
     } catch (apiError) {
-      console.warn('URL shortening API unreachable, falling back to base64', apiError);
+      console.warn('URL shortening API unreachable, falling back to direct data', apiError);
     }
 
-    // 2. Fallback to base64 encoding
+    // 2. Fallback to direct data encoding: /d/:title/:data
     try {
       const json = JSON.stringify(exportData);
       const compressed = deflate(json);
@@ -126,23 +134,33 @@ export function useSyncURL(state: SimulationState, setState: React.Dispatch<Reac
         .replace(/\//g, '_')
         .replace(/=+$/, '');
 
-      const url = `${window.location.origin}${window.location.pathname}?s=${base64}`;
-      navigate(`?s=${base64}`, { replace: true });
-      return url;
+      // Generate title slug from scenario name (required, informational only)
+      const titleSlug = exportData.name
+        ? exportData.name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '_')
+            .replace(/_+/g, '_')
+            .replace(/^_|_$/g, '')
+            .slice(0, 50)
+        : 'scenario';
+
+      const path = `/d/${titleSlug}/${base64}`;
+      navigate(path, { replace: true });
+      return `${window.location.origin}${path}`;
     } catch (e) {
-      console.error('Failed to generate base64 sync URL', e);
+      console.error('Failed to generate direct data URL', e);
       return null;
     }
   };
 
   const clearURL = () => {
-    if (location.search) {
-      navigate(window.location.pathname, { replace: true });
+    if (location.pathname !== '/' || location.search) {
+      navigate('/', { replace: true });
     }
   };
 
   const setScenarioInURL = (id: string) => {
-    navigate(`?scenario=${id}`, { replace: true });
+    navigate(`/s/${id}`, { replace: true });
   };
 
   const getCleanState = () => {
