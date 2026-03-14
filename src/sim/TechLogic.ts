@@ -1,5 +1,5 @@
 import { EFFECT_ATTRIBUTES } from '../data/effect_constants';
-import { TechData, UnitData } from './types';
+import { TechData, TechTargetException, UnitData } from './types';
 
 export function decodeEncoded(val: number): { cls: number; amt: number } {
   const iv = Math.floor(val);
@@ -79,7 +79,15 @@ export function matchesClass(e: any, u: UnitData): boolean {
   return false;
 }
 
-export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], currentAgeId: number = 1): boolean {
+export function shouldApplyEffect(
+  e: any,
+  u: UnitData,
+  allEffects: any[] = [],
+  currentAgeId: number = 1,
+  _techId?: number | string,
+  techBuilding?: number,
+  techTargetExceptions?: TechTargetException[],
+): boolean {
   // 0. Age check
   const effectAge = e.age !== undefined ? Number(e.age) : 1;
   if (effectAge > currentAgeId) return false;
@@ -102,7 +110,24 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], c
 
   // 2. Basic matching
   if (!matchesUnit(e, u)) return false;
-  if (!matchesClass(e, u)) return false;
+
+  let matchesCls = matchesClass(e, u);
+
+  // Check tech target exceptions (e.g., Inca villagers getting blacksmith infantry techs)
+  if (!matchesCls && techTargetExceptions) {
+    const exception = techTargetExceptions.find(
+      (ex) =>
+        String(ex.unitId) === String(u.id) &&
+        ex.building === techBuilding &&
+        ex.targetClass === e.class &&
+        ex.minAge <= currentAgeId,
+    );
+    if (exception) {
+      matchesCls = true;
+    }
+  }
+
+  if (!matchesCls) return false;
 
   const val = e.value;
   const attribute = e.attribute;
@@ -153,7 +178,12 @@ export function shouldApplyEffect(e: any, u: UnitData, allEffects: any[] = [], c
   return true;
 }
 
-export function shouldApplyTech(t: TechData, u: UnitData, ageId: number = 1): boolean {
+export function shouldApplyTech(
+  t: TechData,
+  u: UnitData,
+  ageId: number = 1,
+  techTargetExceptions?: TechTargetException[],
+): boolean {
   // Essential combat techs still need to be relevant to the unit type
   if (t.id === 93) {
     // Ballistics
@@ -202,7 +232,7 @@ export function shouldApplyTech(t: TechData, u: UnitData, ageId: number = 1): bo
   // 5. Loom (22) should only apply to Villagers
   if (t.id === 22 && u.id !== '83') return false;
 
-  return effs.some((e) => shouldApplyEffect(e, u, effs, ageId));
+  return effs.some((e) => shouldApplyEffect(e, u, effs, ageId, t.id, t.building, techTargetExceptions));
 }
 
 export const COMBAT_BUILDINGS = [12, 87, 101, 49, 82, 103, 209, 45, 104, 1806, 109];
