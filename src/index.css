@@ -219,14 +219,26 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 4px 0;
 }
 
 .social-link {
   color: var(--text-dim);
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: color 0.2s;
   margin: 0 2px;
+}
+
+.social-link svg {
+  display: block;
+}
+
+/* Discord icon needs extra space for the feet */
+.social-link[title='Join Discord'] {
+  padding: 3px 2px;
+  margin-bottom: 2px;
 }
 
 .social-link:hover {
@@ -469,8 +481,8 @@ main {
 /* Results Area */
 .results-area {
   width: 100%;
-  background: #1a1a1a;
-  padding: 15px 0;
+  background: var(--panel-bg);
+  padding: 20px;
   border-radius: var(--border-radius);
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -1426,4 +1438,15 @@ main {
 .toggle-prod-section-btn:hover {
   background: var(--accent-color);
   color: black;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
