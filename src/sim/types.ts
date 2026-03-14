@@ -133,6 +133,13 @@ export interface CivBonus {
   effects: CivBonusEffect[];
 }
 
+export interface TechTargetException {
+  unitId: number; // which unit gets the exception (e.g., 83 for Villager)
+  building: number; // which building's techs (e.g., 103 for Blacksmith)
+  targetClass: number; // which class the tech targets (e.g., 6 for Infantry)
+  minAge: number; // minimum age for the exception (e.g., 3 for Castle Age)
+}
+
 export interface SimulationState {
   armyA: ArmyState;
   armyB: ArmyState;

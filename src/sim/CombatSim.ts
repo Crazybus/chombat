@@ -2,6 +2,7 @@ import { Unit } from './Unit';
 import { UnitData, ArmyState, TechData } from './types';
 import { decodeEncoded, shouldApplyEffect } from './TechLogic';
 import { EFFECT_ATTRIBUTES, EFFECT_COMMAND_TYPES } from '../data/effect_constants';
+import { techTargetExceptions } from '../rules/tech_target_exceptions';
 
 export interface BattleTick {
   time: number;
@@ -115,6 +116,7 @@ export class CombatSim {
     // 4. Apply tech bonuses from scratch
     const bonusesState = config.bonuses || [];
     let reloadMult = 1.0;
+    const civExceptions = config.civ ? techTargetExceptions[config.civ] : undefined;
 
     bonusesState.forEach((state) => {
       const b = allTechs[state.id as any] || allTechs[parseInt(state.id)];
@@ -132,7 +134,7 @@ export class CombatSim {
               : false;
         if (!isActive) return;
 
-        if (shouldApplyEffect(e, baseUnit, effs, ageId)) {
+        if (shouldApplyEffect(e, baseUnit, effs, ageId, state.id, b.building, civExceptions)) {
           // Prevent double-application of same attribute/type within one tech
           // (eg. Bloodlines matching both Cavalry and Scout Cav classes)
           const attrKey = `${e.attribute}_${e.type}_${e.value}`;

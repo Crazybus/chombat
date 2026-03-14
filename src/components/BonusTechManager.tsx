@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useSimulation } from '../context/SimulationContext';
 import { techs } from '../data/techs';
 import { bonuses } from '../data/bonuses';
+import { techTargetExceptions } from '../rules/tech_target_exceptions';
 import { getEffectLabel, shouldApplyTech, shouldApplyEffect } from '../sim/TechLogic';
 import { units } from '../data/units';
 import { presets } from '../data/presets';
@@ -28,15 +29,16 @@ const BonusTechManager: React.FC<BonusTechManagerProps> = ({ army }) => {
 
   const availableBonuses = useMemo(() => {
     const combined: Record<string, any> = { ...techs, ...bonuses };
+    const civExceptions = armyState.civ ? techTargetExceptions[armyState.civ] : undefined;
     return Object.entries(combined)
       .filter(([, b]) => {
         if (searchTerm && !b.name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
         if (!currentUnit) return true;
         // Basic filtering to show relevant techs
-        return shouldApplyTech(b as any, currentUnit);
+        return shouldApplyTech(b as any, currentUnit, parseInt(armyState.age || '1'), civExceptions);
       })
       .map(([id, b]) => ({ id, name: b.name }));
-  }, [searchTerm, currentUnit]);
+  }, [searchTerm, currentUnit, armyState.civ, armyState.age]);
 
   React.useEffect(() => {
     setSelectedIndex(0);

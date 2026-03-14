@@ -7,6 +7,7 @@ import { GENERIC_CIV } from '../data/civs';
 import { buildings } from '../data/buildings';
 import { techs } from '../data/techs';
 import { bonuses as allBonuses } from '../data/bonuses';
+import { techTargetExceptions } from '../rules/tech_target_exceptions';
 
 // --- Interfaces ---
 
@@ -208,6 +209,7 @@ export function getTechBonusSources(
   const sources: Record<string, StatSource[]> = {};
   const baseUnit = resolveBaseUnit(armyState, allUnits);
   const ageId = parseInt(armyState.age || '1');
+  const civExceptions = armyState.civ ? techTargetExceptions[armyState.civ] : undefined;
 
   armyState.bonuses?.forEach((bState) => {
     const tech = techsById[bState.id] || (bonuses as any)[bState.id];
@@ -215,7 +217,7 @@ export function getTechBonusSources(
     const seenLabels = new Set<string>();
     const techEffects = tech.effects
       .map((e: any, idx: number) => {
-        if (!shouldApplyEffect(e, baseUnit, tech.effects, ageId)) return null;
+        if (!shouldApplyEffect(e, baseUnit, tech.effects, ageId, bState.id, tech.building, civExceptions)) return null;
         let label = getEffectLabel(e);
         if (!label) return null;
         label = label.replace(/(\d+\.\d{3,})/g, (match) => parseFloat(match).toFixed(2));
@@ -331,7 +333,8 @@ export function getRecommendedTechs(
                 : 1;
 
     if (buildingAge > ageId) return false;
-    return shouldApplyTech(t, unit, ageId);
+    const civExceptions = civKey ? techTargetExceptions[civKey] : undefined;
+    return shouldApplyTech(t, unit, ageId, civExceptions);
   });
 }
 
