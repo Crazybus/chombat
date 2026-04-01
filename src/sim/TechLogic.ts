@@ -151,7 +151,8 @@ export function shouldApplyEffect(
     const { cls: encodedCls } = decodeEncoded(val);
     const hasArmorClass = u.armors && String(encodedCls) in u.armors;
     const matchesBaseClass = encodedCls === u.class;
-    if (!hasArmorClass && !matchesBaseClass) return false;
+    const hasBonusClass = u.bonuses && String(encodedCls) in u.bonuses;
+    if (!hasArmorClass && !matchesBaseClass && !hasBonusClass) return false;
 
     if (attribute === EFFECT_ATTRIBUTES.attack) {
       if (encodedCls === 3 && (u.patk || 0) === 0) return false;
