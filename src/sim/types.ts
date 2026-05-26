@@ -21,6 +21,8 @@ export interface UnitData {
   bonuses?: Record<string, number>;
   armors?: Record<string, number>;
   speed?: number;
+  poisonDamage?: number; // poison damage per tick (from DOT effects)
+  poisonDuration?: number; // poison duration in seconds
   requires?: {
     techs: number[];
     buildings: number[];

@@ -32,6 +32,8 @@ export class Unit {
   bonuses: Record<string, number>;
   armors: Record<string, number>;
   micro: number;
+  poisonDamage: number; // poison damage per tick
+  poisonDuration: number; // poison duration in seconds
 
   constructor(data: UnitData & ArmyState) {
     const d = data as any;
@@ -75,6 +77,8 @@ export class Unit {
     this.bonuses = d.bonuses || {};
     this.armors = d.armors || {};
     this.micro = parse(d.micro !== undefined ? d.micro : d.overrides?.micro, 5);
+    this.poisonDamage = parse(d.poisonDamage !== undefined ? d.poisonDamage : 0, 0);
+    this.poisonDuration = parse(d.poisonDuration !== undefined ? d.poisonDuration : 0, 0);
   }
 
   isMelee(): boolean {

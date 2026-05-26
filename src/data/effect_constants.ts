@@ -15,6 +15,7 @@ export const EFFECT_ATTRIBUTES: Record<string, number> = {
   base_armor: 15,
   min_range: 20,
   damage_resistance: 24,
+  poison_damage: 25, // encoded: (duration_seconds << 8) | damage_per_tick
   total_cost: 100,
   food_cost: 103,
   wood_cost: 104,

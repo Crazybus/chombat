@@ -41,6 +41,13 @@ export function getEffectLabel(e: any): string {
     if (type == 5) return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? 'x' : ''}${amt}`;
     return `${CLASS_NAMES[cls] || `Cls${cls}`} ${prefix} ${amt >= 0 ? '+' : ''}${amt}`;
   }
+  // Poison (a=25): value is encoded as (duration << 8) | damage
+  if (attribute === EFFECT_ATTRIBUTES.poison_damage) {
+    const damage = value & 0xFF;
+    const duration = (value >> 8) & 0xFF;
+    if (damage === 0) return '';
+    return `Poison +${damage}/${duration}s`;
+  }
   const attrMap: Record<number, string> = {
     [EFFECT_ATTRIBUTES.hp]: 'HP',
     [EFFECT_ATTRIBUTES.attack]: 'Atk',

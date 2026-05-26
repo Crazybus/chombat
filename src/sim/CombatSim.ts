@@ -204,6 +204,12 @@ export class CombatSim {
               if (newUnit.accuracy_percent !== undefined) newUnit.accuracy_percent += val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.max_range) {
               if (newUnit.range !== undefined) newUnit.range += val;
+            } else if (e.attribute == EFFECT_ATTRIBUTES.poison_damage) {
+              // Poison damage: encoded as (duration_seconds << 8) | damage_per_tick
+              const damage = val & 0xFF;
+              const duration = (val >> 8) & 0xFF;
+              newUnit.poisonDamage = damage;
+              newUnit.poisonDuration = duration;
             }
           } else if (e.type == EFFECT_COMMAND_TYPES.attribute_modifier_multiply) {
             // Command type 5
@@ -302,6 +308,12 @@ export class CombatSim {
     const initialValA = (this.dataA.count || 0) * costA;
     const initialValB = (this.dataB.count || 0) * costB;
 
+    // DOT (Damage Over Time) tracking
+    // Each entry: { damage: number, remaining: number } (remaining seconds)
+    const dotsOnB: Array<{ damage: number; remaining: number }> = [];
+    const dotsOnA: Array<{ damage: number; remaining: number }> = [];
+    let dotAccumulator = 0; // accumulates tick time for 1-second DOT intervals
+
     const record = () => {
       const hpRatioA = eA.getTotalHp() / (eA.initialCount * eA.hpPerUnit) || 0;
       const hpRatioB = eB.getTotalHp() / (eB.initialCount * eB.hpPerUnit) || 0;
@@ -341,8 +353,20 @@ export class CombatSim {
         dmgBtoA = this.calculateDamage(eB, eA) * attackers;
       }
 
-      if (dmgAtoB > 0) this.applyDamage(eB, dmgAtoB, eA.micro);
-      if (dmgBtoA > 0) this.applyDamage(eA, dmgBtoA, eB.micro);
+      if (dmgAtoB > 0) {
+        this.applyDamage(eB, dmgAtoB, eA.micro);
+        // Apply poison DOT from A's attack onto B
+        if (eA.poisonDamage > 0 && eA.poisonDuration > 0) {
+          dotsOnB.push({ damage: eA.poisonDamage, remaining: eA.poisonDuration });
+        }
+      }
+      if (dmgBtoA > 0) {
+        this.applyDamage(eA, dmgBtoA, eB.micro);
+        // Apply poison DOT from B's attack onto A
+        if (eB.poisonDamage > 0 && eB.poisonDuration > 0) {
+          dotsOnA.push({ damage: eB.poisonDamage, remaining: eB.poisonDuration });
+        }
+      }
 
       if (eA.attackCooldown <= 0) eA.attackCooldown = eA.reload;
       else eA.attackCooldown -= this.tick;
@@ -351,6 +375,27 @@ export class CombatSim {
       else eB.attackCooldown -= this.tick;
 
       this.time += this.tick;
+
+      // Process DOT ticks (every 1 second)
+      dotAccumulator += this.tick;
+      if (dotAccumulator >= 1.0) {
+        dotAccumulator -= 1.0;
+        // Tick DOTs on B (from A's poison)
+        for (const dot of dotsOnB) {
+          if (dot.remaining > 0 && eB.currentCount > 0) {
+            this.applyDamage(eB, dot.damage, 5); // DOT uses default micro
+            dot.remaining -= 1;
+          }
+        }
+        // Tick DOTs on A (from B's poison)
+        for (const dot of dotsOnA) {
+          if (dot.remaining > 0 && eA.currentCount > 0) {
+            this.applyDamage(eA, dot.damage, 5);
+            dot.remaining -= 1;
+          }
+        }
+      }
+
       if (Math.round(this.time * 100) % 25 === 0) record();
     }
     record();

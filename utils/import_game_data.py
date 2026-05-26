@@ -79,6 +79,7 @@ VALID_ATTRS = {
     12, # Max range
     15, # Base armor
     24, # Hidden damage resistance
+    25, # Poison damage (encoded: (duration_seconds << 8) | damage_per_tick)
     100, # Total Cost
     103, # Food Cost
     104, # Wood Cost
@@ -245,6 +246,40 @@ def extract_effects(eff_obj, tech_id=None):
                     }
                 )
     return effects
+
+
+def _inject_curare_effects(techs_out: dict):
+    """Inject Curare poison effects for Tupi archer line.
+
+    Curare (tech 1393) is a new DOT mechanic. Raw balance values sourced
+    from game data; encoded as (duration_seconds << 8) | damage_per_tick.
+    When .dat parsing supports poison attribute (25), this can be removed.
+
+    Archer line:   +5 damage/tick over 6s -> (6 << 8) | 5 = 1541
+    Elite line:    +2 damage/tick over 6s -> (6 << 8) | 2 = 1538
+    """
+    curare_key = None
+    for key, tech in techs_out.items():
+        if tech.get("id") == 1393:
+            curare_key = key
+            break
+
+    if curare_key is None:
+        return
+
+    # Archer unit IDs: Archer(4), Blackwood Archer(2579), Camel Archer(464)
+    # Elite Archer unit IDs: Elite Blackwood Archer(2581), Elite Camel Archer(1896)
+    # Defensive structures are explicitly excluded
+    poison_attr = 25  # poison_damage
+    techs_out[curare_key]["effects"] = [
+        # Base archer line: +5/tick, 6s duration
+        {"type": 4, "attribute": poison_attr, "value": 1541, "unitId": 4, "class": -1},
+        {"type": 4, "attribute": poison_attr, "value": 1541, "unitId": 2579, "class": -1},
+        {"type": 4, "attribute": poison_attr, "value": 1541, "unitId": 464, "class": -1},
+        # Elite archer line: +2/tick, 6s duration
+        {"type": 4, "attribute": poison_attr, "value": 1538, "unitId": 2581, "class": -1},
+        {"type": 4, "attribute": poison_attr, "value": 1538, "unitId": 1896, "class": -1},
+    ]
 
 
 def convert():
@@ -535,6 +570,12 @@ def convert():
                 "name": civ_name.capitalize() + " Bonuses",
                 "effects": bonus_effects,
             }
+
+    # Post-process: Inject Curare poison effects for Tupi archer line
+    # Curare (tech 1393) is a new DOT mechanic not yet in the .dat effects.
+    # Values sourced from game balance data; encoded as (duration << 8) | damage
+    # When .dat parsing supports poison attribute, this block can be removed.
+    _inject_curare_effects(techs_out)
 
     units_out = dict(sorted(units_out.items(), key=lambda x: x[1]["name"]))
     techs_out = dict(sorted(techs_out.items(), key=lambda x: x[1]["name"]))
