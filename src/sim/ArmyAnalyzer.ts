@@ -123,7 +123,9 @@ function isCombatTech(t: TechData): boolean {
       return buildingRelatedClasses.includes(targetClass) || buildingRelatedClasses.includes(cls);
     });
     if (hasBuildingEffect) return false;
-    return t.effects.some((e) => [0, 5, 8, 9, 10, 11, 12, 15, 20, 24, 25, 100, 101, 102, 103, 105].includes(e.attribute));
+    return t.effects.some((e) =>
+      [0, 5, 8, 9, 10, 11, 12, 15, 20, 24, 25, 100, 101, 102, 103, 105].includes(e.attribute),
+    );
   }
   return false;
 }

@@ -25,8 +25,8 @@ describe('Curare Poison (Tupi)', () => {
     expect(archerEffects.length).toBe(3);
     for (const e of archerEffects) {
       expect(e.value).toBe(1541);
-      const damage = e.value & 0xFF;
-      const duration = (e.value >> 8) & 0xFF;
+      const damage = e.value & 0xff;
+      const duration = (e.value >> 8) & 0xff;
       expect(damage).toBe(5);
       expect(duration).toBe(6);
     }
@@ -36,8 +36,8 @@ describe('Curare Poison (Tupi)', () => {
     expect(eliteEffects.length).toBe(2);
     for (const e of eliteEffects) {
       expect(e.value).toBe(1538);
-      const damage = e.value & 0xFF;
-      const duration = (e.value >> 8) & 0xFF;
+      const damage = e.value & 0xff;
+      const duration = (e.value >> 8) & 0xff;
       expect(damage).toBe(2);
       expect(duration).toBe(6);
     }
@@ -49,11 +49,7 @@ describe('Curare Poison (Tupi)', () => {
     const curare = techs['curare']!;
     const bonuses = [{ id: curare.id.toString(), effects: curare.effects.map(() => true) }];
 
-    const analysis = analyzeArmy(
-      { preset: 'archer', age: '4', civ: TUPI_CIV, bonuses },
-      { archer },
-      techsById,
-    );
+    const analysis = analyzeArmy({ preset: 'archer', age: '4', civ: TUPI_CIV, bonuses }, { archer }, techsById);
 
     expect(analysis).not.toBeNull();
     const effective = analysis!.effectiveStats;

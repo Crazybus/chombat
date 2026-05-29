@@ -206,8 +206,8 @@ export class CombatSim {
               if (newUnit.range !== undefined) newUnit.range += val;
             } else if (e.attribute == EFFECT_ATTRIBUTES.poison_damage) {
               // Poison damage: encoded as (duration_seconds << 8) | damage_per_tick
-              const damage = val & 0xFF;
-              const duration = (val >> 8) & 0xFF;
+              const damage = val & 0xff;
+              const duration = (val >> 8) & 0xff;
               newUnit.poisonDamage = damage;
               newUnit.poisonDuration = duration;
             }

@@ -43,8 +43,8 @@ export function getEffectLabel(e: any): string {
   }
   // Poison (a=25): value is encoded as (duration << 8) | damage
   if (attribute === EFFECT_ATTRIBUTES.poison_damage) {
-    const damage = value & 0xFF;
-    const duration = (value >> 8) & 0xFF;
+    const damage = value & 0xff;
+    const duration = (value >> 8) & 0xff;
     if (damage === 0) return '';
     return `Poison +${damage}/${duration}s`;
   }
